@@ -1022,7 +1022,7 @@ ex:platform/limewire [FileHostingService] (shared singleton)
 | `run/main.py` | API shape, `_REVOLVER_LABEL_SYNONYMS` |
 | `scripts/verify/verify_claims.py` | `_GENERIC_PLATFORMS` |
 | `data/case_studies.json` | Editorial case metadata |
-| `../CAC-Ontology/ontology/*.ttl` | Ontology source files |
+| `ontology/cacontology-*.ttl` (pinned; see `CAC_ONTOLOGY_VERSION`) or `$CAC_ONTOLOGY_DIR` | Ontology / SHACL source files |
 
 ## Appendix B: CAC Ontology Files Read
 

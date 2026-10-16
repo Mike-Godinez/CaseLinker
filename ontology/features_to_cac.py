@@ -60,9 +60,66 @@ logger = logging.getLogger(__name__)
 
 _THIS_DIR = Path(__file__).parent
 _REPO_ROOT = _THIS_DIR.parent
-_CAC_ONTOLOGY_DIR = _REPO_ROOT.parent / "CAC-Ontology" / "ontology"
 _OUTPUT_DIR = _THIS_DIR / "output"
 _TEST_OUTPUT_DIR = _THIS_DIR / "graph_output"
+_SHACL_NS = Namespace("http://www.w3.org/ns/shacl#")
+_CORE_SHAPES_FILENAME = "cacontology-core-shapes.ttl"
+
+
+def get_cac_ontology_dir() -> Path:
+    """Resolve the CAC Ontology TTL directory.
+
+    Precedence:
+      1. ``CAC_ONTOLOGY_DIR`` environment variable (absolute or ``~`` path)
+      2. Pinned copies shipped in this ``ontology/`` package directory
+
+    See ``CAC_ONTOLOGY_VERSION`` for the upstream commit of the pinned files.
+    """
+    env = os.environ.get("CAC_ONTOLOGY_DIR", "").strip()
+    if env:
+        return Path(env).expanduser().resolve()
+    return _THIS_DIR.resolve()
+
+
+def get_core_shapes_path() -> Path:
+    """Path to ``cacontology-core-shapes.ttl`` under :func:`get_cac_ontology_dir`."""
+    return get_cac_ontology_dir() / _CORE_SHAPES_FILENAME
+
+
+def load_core_shapes_graph() -> Tuple[Graph, int]:
+    """Parse core SHACL shapes; raise if missing or empty.
+
+    Returns
+    -------
+    (shapes_graph, shape_count)
+        ``shape_count`` is the number of ``sh:NodeShape`` + ``sh:PropertyShape``
+        subjects. Never returns a zero-shape graph.
+    """
+    shapes_path = get_core_shapes_path()
+    if not shapes_path.is_file():
+        raise FileNotFoundError(
+            f"SHACL shapes file not found at {shapes_path}. "
+            f"Set CAC_ONTOLOGY_DIR to a CAC Ontology ontology/ directory, "
+            f"or ensure pinned copies exist under {_THIS_DIR}."
+        )
+
+    shapes_graph = Graph()
+    shapes_graph.parse(str(shapes_path), format="turtle")
+    shape_iris = set(shapes_graph.subjects(RDF.type, _SHACL_NS.NodeShape)) | set(
+        shapes_graph.subjects(RDF.type, _SHACL_NS.PropertyShape)
+    )
+    shape_count = len(shape_iris)
+    if shape_count == 0:
+        raise RuntimeError(
+            f"SHACL shapes graph loaded 0 NodeShape/PropertyShape subjects from "
+            f"{shapes_path} ({len(shapes_graph)} triples). Refusing to validate "
+            f"(empty shapes would report conforms=True)."
+        )
+    return shapes_graph, shape_count
+
+
+# Back-compat for callers/tests that imported the old constant.
+_CAC_ONTOLOGY_DIR = get_cac_ontology_dir()
 
 # ---------------------------------------------------------------------------
 # CAC / UCO Namespaces
@@ -942,38 +999,44 @@ class CaseToCAC:
         """
         Run pyshacl against cacontology-core-shapes.ttl.
 
+        Raises
+        ------
+        FileNotFoundError
+            If the shapes file is missing.
+        RuntimeError
+            If the shapes graph has zero ``sh:NodeShape`` / ``sh:PropertyShape``
+            subjects, or if pyshacl is not installed.
+        Exception
+            Other pyshacl / parse errors propagate (never swallowed into
+            ``conforms=True``).
+
         Returns
         -------
         (conforms, report_text)
         """
-        shapes_path = _CAC_ONTOLOGY_DIR / "cacontology-core-shapes.ttl"
-        if not shapes_path.exists():
-            return False, f"SHACL shapes file not found at {shapes_path}"
+        shapes_graph, _shape_count = load_core_shapes_graph()
 
         try:
             from pyshacl import validate as shacl_validate
+        except ImportError as exc:
+            raise RuntimeError(
+                "pyshacl is required for SHACL validation; pip install pyshacl"
+            ) from exc
 
-            data_graph = Graph()
-            for ctx in graph.graphs():
-                for triple in ctx:
-                    data_graph.add(triple)
+        data_graph = Graph()
+        for ctx in graph.graphs():
+            for triple in ctx:
+                data_graph.add(triple)
 
-            shapes_graph = Graph()
-            shapes_graph.parse(str(shapes_path), format="turtle")
-
-            conforms, _results_graph, results_text = shacl_validate(
-                data_graph=data_graph,
-                shacl_graph=shapes_graph,
-                inference="none",
-                advanced=False,
-                allow_infos=True,
-                abort_on_first=False,
-            )
-            return conforms, results_text
-        except ImportError:
-            return False, "pyshacl not installed"
-        except Exception as exc:
-            return False, f"SHACL validation error: {exc}"
+        conforms, _results_graph, results_text = shacl_validate(
+            data_graph=data_graph,
+            shacl_graph=shapes_graph,
+            inference="none",
+            advanced=False,
+            allow_infos=True,
+            abort_on_first=False,
+        )
+        return conforms, results_text
 
     def export_case(
         self,

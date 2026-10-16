@@ -45,8 +45,6 @@ def generate_graphs(
             conforms, shacl_report = True, ""
             if validate_shacl:
                 conforms, shacl_report = mapper.validate(graph)
-                if shacl_report == "pyshacl not installed":
-                    raise RuntimeError("pip install pyshacl")
 
             jsonld_path = out_dir / f"{cid}.jsonld"
             ttl_path = out_dir / f"{cid}.ttl"

@@ -18,7 +18,7 @@ The repo README keeps the one-page method summary. This file is the working docu
 
 The [CAC Ontology](https://github.com/Project-VIC-International/CAC-Ontology) (Crimes Against Children, Project VIC) is the investigation vocabulary. It sits on the Linux Foundation [Cyber Domain Ontology](https://cyberdomainontology.org/) stack: [UCO](https://unifiedcyberontology.org/) (identity, role, core) and [CASE](https://caseontology.org/). CaseLinker does not invent predicates; it binds extracted features to CAC classes and UCO types so the same SPARQL and SHACL tools used in forensic workflows apply here.
 
-Pinned copies of core / grooming / platforms / sextortion modules and their SHACL shapes live in this folder (`cacontology-*.ttl`). Bindings and class lookup: [CASE/UCO SDK](https://github.com/vulnmaster/CASE-UCO-SDK) with `CASE_UCO_EXTENSIONS=cac`.
+Pinned copies of core / grooming / platforms / sextortion modules and their SHACL shapes live in this folder (`cacontology-*.ttl`) — real Turtle files, not symlinks. Upstream pin is recorded in [`CAC_ONTOLOGY_VERSION`](CAC_ONTOLOGY_VERSION) (commit `b73b51b`, describe `v3.0.0-3-gb73b51b`, 2026-06-30). Override the search path with `CAC_ONTOLOGY_DIR` (directory containing `cacontology-core-shapes.ttl`); otherwise the mapper uses these pinned files. Missing or empty shapes raise; validation never reports `conforms=True` with zero shapes loaded. Bindings and class lookup: [CASE/UCO SDK](https://github.com/vulnmaster/CASE-UCO-SDK) with `CASE_UCO_EXTENSIONS=cac`.
 
 **Prefixes used in instance graphs** (full list and SPARQL preamble: [docs/SPARQL.md](docs/SPARQL.md#namespaces)):
 

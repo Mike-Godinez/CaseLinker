@@ -10,7 +10,7 @@ The live release includes all features and a processed case corpus from publicly
 
 ## Technical Reports
 
-- **Report #1: [CaseLinker: An Open-Source System for Cross-Case Analysis of Internet Crimes Against Children Reports](https://arxiv.org/abs/2603.18020)** - Initial technical report documenting the prototype architecture, deterministic extraction pipeline, and evaluation baseline on 47 cases.
+- **Report #1: [CaseLinker: An Open-Source System for Cross-Case Analysis of Internet Crimes Against Children Reports](https://arxiv.org/pdf/2603.18020)** - Initial technical report documenting the prototype architecture, deterministic extraction pipeline, and evaluation baseline on 47 cases.
 
 - **Report #2: [Interpretable ML Approaches for Analyzing Internet Crimes Against Children Reports](https://mrinaalr.github.io/website/CaseLinker-%20Interpretable%20ML%20Approaches%20for%20Analyzing%20Internet%20Crimes%20Against%20Children%20Reports.pdf)** - Second report covering NER integration, dataset expansion to 207 cases, and emerging patterns from the expanded dataset including the distributed network of 215 law enforcement organizations.
 
@@ -269,7 +269,7 @@ Access the **Platform Harm Dashboard** via the [live demo](https://caselinker.up
 
 Access Search via the [live demo](https://caselinker.up.railway.app/search) or locally at http://localhost:8000/search
 
-Search provides a **facet decision tree** over the stored case corpus: the server builds a deterministic partition tree from structured facets (not a precomputed file on disk). The view uses **D3.js** (SVG) to render cohort nodes and edges. You can limit tree depth, **prune** which partition dimensions apply and optionally filter allowed values per facet (extracted feature), then **click any node** (branch or leaf) to list **case IDs** in that cohort for use elsewhere (e.g. single-case visualization, manual cross-case analysis). Small cohorts (fewer than three cases) have IDs gated behind a demo access key. When IDs are listed, the dialog can copy a SPARQL query limited to those case graphs, or open the same set on Ontology & Graphs. See `src/Storage Layer/facet_tree.py` and `/api/facet-tree` for the partition order and semantics. How Search relates to SPARQL, Query, LLM, Patterns, and MCP: **[search.md](search.md)**.
+Search provides a **facet decision tree** over the stored case corpus: the server builds a deterministic partition tree from structured facets (not a precomputed file on disk). The view uses **D3.js** (SVG) to render cohort nodes and edges. You can limit tree depth, **prune** which partition dimensions apply and optionally filter allowed values per facet (extracted feature), then **click any node** (branch or leaf) to list **case IDs** in that cohort for use elsewhere (e.g. single-case visualization, manual cross-case analysis). Small cohorts (fewer than three cases) have IDs gated behind a demo access key. See `src/Storage Layer/facet_tree.py` and `/api/facet-tree` for the partition order and semantics. How Search relates to SPARQL, Query, LLM, Patterns, and MCP: **[search.md](search.md)**.
 
 
 ## Using Advanced Case Analysis and Triage

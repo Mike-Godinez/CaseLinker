@@ -221,9 +221,6 @@ def generate_graphs(ids: List[str]) -> Dict[str, Any]:
 
             graph, warnings = mapper.map_case(case)
             conforms, shacl_report = mapper.validate(graph)
-            if shacl_report == "pyshacl not installed":
-                print("ERROR: pip install pyshacl", file=sys.stderr)
-                sys.exit(1)
 
             jsonld_path = GRAPH_DIR / f"{cid}.jsonld"
             ttl_path = GRAPH_DIR / f"{cid}.ttl"
