@@ -98,3 +98,11 @@ def test_severity_and_relationship_static():
     assert infer_tag_category("grooming") == "severity_indicators"
     assert infer_tag_category("sexual_abuse") == "severity_indicators"
     assert infer_tag_category("father") == "relationship_to_victim"
+
+
+def test_twitter_aliases_to_stored_label():
+    """Stored platform is 'Twitter / X'; bare 'twitter' must not query as 'twitter'."""
+    assert normalize_tag("twitter") == "twitter / x"
+    assert resolve_tags(["twitter"]) == [
+        {"tag": "twitter / x", "category": "platforms_used"}
+    ]
