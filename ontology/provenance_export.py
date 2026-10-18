@@ -24,8 +24,8 @@ _STORAGE = _REPO / "src" / "Storage Layer"
 PROV = Namespace("http://www.w3.org/ns/prov#")
 OA = Namespace("http://www.w3.org/ns/oa#")
 CAC_CORE = Namespace("https://cacontology.projectvic.org/core#")
-CL = Namespace("https://caselinker.projectvic.org/ns/provenance#")
-BASE = Namespace("https://caselinker.projectvic.org/resource/")
+CL = Namespace("https://w3id.org/caselinker/ns/provenance#")
+BASE = Namespace("https://w3id.org/caselinker/resource/")
 
 _ROLE_TYPE = {
     "victim": Namespace("https://cacontology.projectvic.org#").VictimRole,
@@ -79,6 +79,12 @@ def build_provenance_graph(
     narrative = _iri(case_id, "narrative")
     g.add((narrative, RDF.type, PROV.Entity))
     g.add((narrative, DCTERMS.identifier, Literal(case_id)))
+
+    # The case IRI is the same node as cac:CACInvestigation. Sharing the
+    # extraction activity with the annotations is the hop from case to evidence.
+    case = BASE[f"case/{quote_part(case_id)}"]
+    g.add((case, PROV.wasGeneratedBy, activity))
+    g.add((case, PROV.wasDerivedFrom, narrative))
 
     agents: Dict[str, URIRef] = {}
 

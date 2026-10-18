@@ -215,6 +215,26 @@ def detect_source_from_content(text: str, filename: str) -> str:
         and 'icac' in filename_lower
     ):
         return 'USSS'
+    elif 'alert_ice' in filename_lower or 'alertice' in filename_lower:
+        return 'ALERT ICE'
+    elif 'mdsp_csea' in filename_lower or 'mdsp' in filename_lower and 'csea' in filename_lower:
+        return 'MDSP'
+    elif 'scotland_police' in filename_lower or 'scotlandpolice' in filename_lower:
+        return 'SCOTLAND POLICE'
+    elif 'vaag_icac' in filename_lower or ('vaag' in filename_lower and 'icac' in filename_lower):
+        return 'VA AG'
+    elif 'nova_icac' in filename_lower or 'novaicac' in filename_lower:
+        return 'NOVA ICAC'
+    elif 'spf_csea' in filename_lower:
+        return 'SPF'
+    elif 'cocbi' in filename_lower or 'co_cbi' in filename_lower:
+        return 'CO CBI'
+    elif 'mnbca' in filename_lower or 'mn_bca' in filename_lower:
+        return 'MN BCA'
+    elif 'nbi_csea' in filename_lower:
+        return 'NBI'
+    elif 'garda_csea' in filename_lower:
+        return 'GARDA'
     elif 'ice_child' in filename_lower or (
         'ice' in filename_lower and 'child' in filename_lower
     ):
@@ -249,12 +269,17 @@ def detect_source_from_content(text: str, filename: str) -> str:
         return 'EUROPOL'
     elif 'nca_csea' in filename_lower or ('nca' in filename_lower and 'csea' in filename_lower):
         return 'NCA'
+    elif 'widoj_icac' in filename_lower or ('widoj' in filename_lower and 'icac' in filename_lower):
+        return 'WI DOJ'
+    elif 'nzdia_csea' in filename_lower or ('nzdia' in filename_lower and 'csea' in filename_lower):
+        return 'NZ DIA'
     elif (
         'doj_ai_csam' in filename_lower
         or ('doj' in filename_lower and 'ai' in filename_lower and 'csam' in filename_lower)
     ):
-        # USAO AI-CSAM harvest — under Project Safe Childhood, not CEOS section news.
-        return 'DOJ SAFE CHILDHOOD'
+        # USAO AI-CSAM harvest. Own id prefix (doj_ai_csam_), as in v2.5.
+        # The published source count still folds this label into Project Safe Childhood.
+        return 'DOJ AI CSAM'
     elif (
         'safe_childhood' in filename_lower
         or 'safe-childhood' in filename_lower
@@ -272,8 +297,9 @@ def detect_source_from_content(text: str, filename: str) -> str:
     ):
         return 'DOJ CEOS'
     elif 'doj_archives' in filename_lower or ('doj' in filename_lower and 'archive' in filename_lower):
-        # Folded into DOJ CEOS for the published 56-source taxonomy.
-        return 'DOJ CEOS'
+        # Own id prefix (doj_archives_), as in v2.5. The published source count
+        # still folds this label into DOJ CEOS.
+        return 'DOJ ARCHIVES'
     elif 'fbi' in filename_lower:
         return 'FBI'
 
@@ -650,7 +676,7 @@ def detect_source_from_content(text: str, filename: str) -> str:
     ):
         return 'DOJ SAFE CHILDHOOD'
 
-    # DOJ AI-CSAM supplemental bundle → Project Safe Childhood (USAO topic harvest)
+    # DOJ AI-CSAM supplemental bundle. Distinct from the Project Safe Childhood PDF.
     if re.search(r'justice\.gov', text_sample, re.I) and re.search(
         r'AI[- ]generated|artificial intelligence|deepfake|computer[- ]generated',
         text_sample,
@@ -663,7 +689,7 @@ def detect_source_from_content(text: str, filename: str) -> str:
         'doj_ai_csam' in filename_lower
         or ('ai' in filename_lower and 'csam' in filename_lower)
     ):
-        return 'DOJ SAFE CHILDHOOD'
+        return 'DOJ AI CSAM'
 
     # U.S. DOJ CEOS news (federal child exploitation press releases)
     if re.search(r'justice\.gov', text_sample, re.I) and re.search(
@@ -692,6 +718,27 @@ def detect_source_from_content(text: str, filename: str) -> str:
         re.I,
     ):
         return 'PA AG'
+
+    if re.search(r'alert-ab\.ca', text_sample, re.I):
+        return 'ALERT ICE'
+    if re.search(r'mdsp\.maryland\.gov', text_sample, re.I):
+        return 'MDSP'
+    if re.search(r'scotland\.police\.uk', text_sample, re.I):
+        return 'SCOTLAND POLICE'
+    if re.search(r'novadcicac\.vsp\.virginia\.gov', text_sample, re.I):
+        return 'NOVA ICAC'
+    if re.search(r'oag\.state\.va\.us', text_sample, re.I):
+        return 'VA AG'
+    if re.search(r'police\.gov\.sg', text_sample, re.I):
+        return 'SPF'
+    if re.search(r'cbi\.colorado\.gov', text_sample, re.I):
+        return 'CO CBI'
+    if re.search(r'dps\.mn\.gov', text_sample, re.I):
+        return 'MN BCA'
+    if re.search(r'nbi\.gov\.ph', text_sample, re.I):
+        return 'NBI'
+    if re.search(r'garda\.ie', text_sample, re.I):
+        return 'GARDA'
 
     # Delimited "Case 1 : ... Case 2 : ..." scrapes (news, LinkedIn PDFs, etc.)
     if re.search(r'(?m)(?:^|\n)\s*Case\s+1\s*:', text_sample, re.IGNORECASE):

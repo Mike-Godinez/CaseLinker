@@ -216,11 +216,18 @@ _SOURCES: list[dict[str, str]] = [
     {"code": "CBP", "name": "U.S. Customs and Border Protection", "description": "Child sexual exploitation border enforcement releases"},
     {"code": "ARMY CID", "name": "U.S. Army Criminal Investigation Division", "description": "ICAC releases"},
     {"code": "AF OSI", "name": "U.S. Air Force Office of Special Investigations", "description": "CSAM and exploitation press releases"},
-    {"code": "AFP", "name": "Australian Federal Police", "description": "Child exploitation media releases (harvested, ingest on request)"},
-    {"code": "QPS", "name": "Queensland Police Service", "description": "Child exploitation news posts (harvested, ingest on request)"},
-    {"code": "BRAZIL PF", "name": "Brazil Federal Police", "description": "Child sexual abuse operation press releases (harvested, ingest on request)"},
-    {"code": "EUROPOL", "name": "Europol", "description": "Child sexual exploitation operation press releases (harvested, ingest on request)"},
-    {"code": "NCA", "name": "UK National Crime Agency", "description": "Child sexual abuse prosecution press releases (harvested, ingest on request)"},
+    {"code": "AFP", "name": "Australian Federal Police", "description": "Child exploitation media releases"},
+    {"code": "QPS", "name": "Queensland Police Service", "description": "Child exploitation news posts"},
+    {"code": "BRAZIL PF", "name": "Brazil Federal Police", "description": "Child sexual abuse operation press releases, translated locally from Portuguese"},
+    {"code": "EUROPOL", "name": "Europol", "description": "Child sexual exploitation operation press releases"},
+    {"code": "NCA", "name": "National Crime Agency", "description": "Child sexual abuse prosecution press releases"},
+    {"code": "ALERT ICE", "name": "Alberta Law Enforcement Response Teams, Internet Child Exploitation Unit", "description": "Charge, arrest, and sentencing releases"},
+    {"code": "MDSP", "name": "Maryland State Police", "description": "Child Exploitation Unit arrest releases"},
+    {"code": "SCOTLAND POLICE", "name": "Police Scotland", "description": "Child sexual abuse and indecent-image sentencing releases"},
+    {"code": "NOVA ICAC", "name": "Northern Virginia–DC Internet Crimes Against Children Task Force", "description": "Task force press releases"},
+    {"code": "MN BCA", "name": "Minnesota Bureau of Criminal Apprehension", "description": "Predatory-crimes and ICAC releases"},
+    {"code": "NBI", "name": "Philippines National Bureau of Investigation", "description": "Child sexual abuse and exploitation arrest releases"},
+    {"code": "GARDA", "name": "An Garda Síochána", "description": "Online Child Exploitation Unit and Child Trafficking and Pornography Act releases"},
 ]
 
 
@@ -1177,22 +1184,22 @@ async def export_case_graph_ttl(
 
 @mcp.tool()
 async def get_all_cases(include_raw_data: bool = False) -> dict[str, Any]:
-    """Bulk-export every case in the corpus (trusted key required).
+    """Bulk-export the corpus tables (trusted key required).
 
-    Wraps GET /api/cases. Returns 403 unless CASELINKER_KEY is in
-    CASELINKER_TRUSTED_KEYS on the server. Set include_raw_data=True for full
-    raw narrative payloads (much larger). Prefer get_cases_page for public access.
+    Wraps GET /api/corpus. Returns 403 unless CASELINKER_KEY is in
+    CASELINKER_TRUSTED_KEYS on the server. The body is one JSON object of
+    table rows (cases, field_assertions, resolutions, review queue, and the
+    rest). Every column is included. include_raw_data is accepted so existing
+    callers keep working; it does not drop columns.
+    Prefer get_cases_page for public access.
     """
     try:
         if err := require_caselinker_key():
             return err
-        result = await api_get(
-            "/api/cases",
-            params={"include_raw_data": include_raw_data},
-            timeout=BULK_TIMEOUT,
-        )
-        if isinstance(result, list):
-            return {"count": len(result), "cases": result}
+        _ = include_raw_data
+        result = await api_get("/api/corpus", timeout=600.0)
+        if isinstance(result, dict) and isinstance(result.get("cases"), list):
+            result.setdefault("count", len(result["cases"]))
         return result if isinstance(result, dict) else {"cases": result}
     except Exception as e:
         logger.exception("get_all_cases failed")

@@ -31,7 +31,7 @@ uco-identity: https://ontology.unifiedcyberontology.org/uco/identity/
 uco-role:     https://ontology.unifiedcyberontology.org/uco/role/
 ```
 
-Instance IRIs are `https://caselinker.projectvic.org/resource/{case|platform|agency}/…`. Each case is also a **named graph** at `…/resource/case/{case_id}`. `dcterms:identifier` on `cac:CACInvestigation` is the CaseLinker case id.
+Instance IRIs are `https://w3id.org/caselinker/resource/{case|platform|agency}/…`. Each case is a **named graph** at `https://w3id.org/caselinker/resource/case/{case_id}`. Its provenance graph is `https://w3id.org/caselinker/resource/case/{case_id}/provenance`. `dcterms:identifier` on `cac:CACInvestigation` is the CaseLinker case id. The public application, including SPARQL, stays at `https://caselinker.up.railway.app/`. CAC, CASE, and UCO namespaces are unchanged. Provenance terms are `https://w3id.org/caselinker/ns/provenance#`.
 
 ## What a case graph contains
 
@@ -98,7 +98,7 @@ How to query the live store, including GET vs POST, `VALUES` + `LIMIT` ordering,
 
 ## Graph pools
 
-The repo holds **10,362** press-release case graphs (`cac:CACInvestigation`, one named graph per case) for the **10,362 case reports** / **126,314 extracted features** corpus. Live SPARQL on Railway updates when those graphs are loaded. Separately, **297** PACER CASE-UCO graphs live under `urn:pacer:kg:…` (see [docs/SPARQL.md](docs/SPARQL.md#two-pacer-named-graph-families)). Ontology & Graphs **Find/load/compare** uses the full staging set (`pool=full`, max **2000** graphs merged at once). Big Bang / Universe / Analysis remain secret merge modes over locked subsets (`*_ids.txt`).
+The repo still holds the previous **10,362** press-release case graphs (`cac:CACInvestigation`, one named graph per case). The live corpus is **10,711 case reports** and **131,332 extracted features**. Live SPARQL on Railway updates when those graphs are loaded. Separately, **297** PACER CASE-UCO graphs live under `urn:pacer:kg:…` (see [docs/SPARQL.md](docs/SPARQL.md#two-pacer-named-graph-families)). Ontology & Graphs **Find/load/compare** uses the full staging set (`pool=full`, max **2000** graphs merged at once). Big Bang / Universe / Analysis remain secret merge modes over locked subsets (`*_ids.txt`).
 
 | Pool | ID list | Folder | Used by |
 |---|---|---|---|

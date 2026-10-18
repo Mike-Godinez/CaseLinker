@@ -255,7 +255,7 @@ def has_victimization_cue(text: str, start: int, end: int) -> bool:
 # ("videos ... were located molesting a 3 year old"), so this is lexical, not a dependency link.
 _MATERIAL_LEFT = re.compile(
     r"\b(?:images?|videos?|photos?|photographs?|pictures?|files?|material|depictions?|depict(?:s|ed|ing)|"
-    r"CSAM|content|pornography|recordings?)\b[^.;:]{0,90}$",
+    r"CSAM|content|pornography|movies?|recordings?)\b[^.;:]{0,90}$",
     re.IGNORECASE,
 )
 _PRODUCTION_LEFT = re.compile(
@@ -410,7 +410,7 @@ DURATION_RE = re.compile(
     # No digit or decimal point before the number: "13.3 years" must not yield "3 years".
     rf"(?<![\d.,/])\b(?P<approx>(?:over|more\s+than|nearly|almost|about|approximately)\s+)?"
     rf"(?:(?P<low>{NUMBER_RE})\s*(?:-|to|and)\s*)?"
-    rf"(?P<n>{NUMBER_RE})(?P<half>\s+and\s+(?:a\s+)?half)?\s*-?\s*"
+    rf"(?P<n>{NUMBER_RE})(?P<half>[\s-]+and[\s-]+(?:a[\s-]+)?half)?\s*-?\s*"
     r"(?P<unit>years?|yrs?|months?|weeks?|days?)\b(?!\s*-?\s*olds?\b)(?!\s+of\s+age\b)"
     # One term written in two units: "five years and three months", "14 years, two months"
     rf"(?:,?\s+(?:and\s+)?(?P<n2>{NUMBER_RE})\s*-?\s*months?\b)?",
@@ -549,8 +549,16 @@ def sentence_kind(text: str, start: int, end: int) -> str:
 
     if token.startswith("$") and _BAIL_CUES.search(clause):
         return "not_sentence"  # bond / bail / reward amounts are never sentences, exposure or not
+    # "jailed for 20 months after trading" is the term. "two years after the arrest" is a gap.
+    time_offset = _NOT_SENTENCE_AFTER.match(after)
+    offset_follows_imposed = bool(
+        time_offset
+        and re.search(r"\bafter\b", time_offset.group(0), re.I)
+        and re.search(r"\b(?:jailed|imprisoned)\s+for\s+$|\bsentenced\s+to\s+(?:serve\s+)?$", before, re.I)
+    )
     if not token.startswith("$") and (
-        _NOT_SENTENCE_BEFORE.search(before) or _NOT_SENTENCE_AFTER.match(after)
+        _NOT_SENTENCE_BEFORE.search(before)
+        or (time_offset and not offset_follows_imposed)
         or re.search(r"\bregister\w*\b[^.]{0,40}$", before, re.I)
         # "abusing a minor for over 5 years" is how long the abuse lasted, not the term.
         or re.search(r"\babus\w*(?:\s+\w+){0,4}\s+for\s+$", before, re.I)
@@ -573,6 +581,28 @@ def sentence_kind(text: str, start: int, end: int) -> str:
         return "probation"
     if _LICENCE_AFTER.match(after):
         return "supervised_release"
+    # "starting point of 4 years" and "starting point for sentencing, 18 months"
+    # and "starting point that he be sentenced to four years" are not the term.
+    # A later "sentenced him to" in the same clause is the term, so it stays.
+    start_pt = re.search(r"\bstarting\s+point\b(?P<mid>[\s\S]{0,120})$", before, re.I)
+    if start_pt:
+        mid = start_pt.group("mid")
+        hypothetical = re.search(
+            r"\b(?:that\s+(?:he|she)\s+be|to\s+be)\s+sentenced\b", mid, re.I
+        )
+        real_term_later = re.search(r"\b(?:sentenced|jailed|imprisoned)\b", mid, re.I)
+        if hypothetical or not real_term_later:
+            return "not_sentence"
+    if re.search(r"sentencing\s+starting\s+point", after, re.I):
+        return "not_sentence"
+    if re.search(
+        r"\bminimum\s+(?:period\s+of\s+imprisonment|imprisonable\s+period)\s+of\s+$",
+        before,
+        re.I,
+    ):
+        return "not_sentence"
+    if re.search(r"\baged\s+$", before, re.I):
+        return "not_sentence"
     if _IMPOSED_CUES.search(clause):
         return "imposed"
     return "unknown"

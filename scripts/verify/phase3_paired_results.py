@@ -54,6 +54,22 @@ READINGS = {
     ("phase3", "doj_safe_childhood_2024_179", "age", "13"): "false_flag",
     ("v2", "doj_ceos_2013_138", "age", "15"): "false_flag",
     ("v2", "doj_safe_childhood_2024_251", "age", "30"): "false_flag",
+    # Holdout, seed 20261018. Readings only. No extractor change was made from these.
+    ("phase3", "doj_ceos_2010_022", "sentence", "five years supervised release"): "false_flag",
+    ("phase3", "doj_safe_childhood_2026_047", "sentence", "ten years supervised release"): "false_flag",
+    ("phase3", "doj_safe_childhood_2022_129", "sentence", "lifetime term supervised release"): "false_flag",
+    ("phase3", "doj_safe_childhood_2025_036", "sentence", "life term supervised release"): "false_flag",
+    ("phase3", "illinois_ag_2025_007", "sentence", "three and a half years"): "false_flag",
+    ("phase3", "pa_ag_2026_025", "sentence", "six years probation"): "false_flag",
+    ("phase3", "ohio_ag_2015_005", "age", "6"): "false_flag",
+    ("phase3", "texas_ag_2018_004", "age", "61"): "false_flag",
+    ("phase3", "svicac_2021_002", "age", "10"): "false_flag",
+    ("phase3", "doj_safe_childhood_2024_264", "age", "4"): "real_wrong",
+    ("phase3", "doj_safe_childhood_2024_264", "age", "6"): "real_wrong",
+    ("phase3", "pa_ag_2025_026", "sentence", "30 Years"): "real_wrong",
+    ("v2", "svicac_2021_002", "age", "10"): "false_flag",
+    ("v2", "de_ag_2017_006", "age", "35"): "real_wrong",
+    ("v2", "pa_ag_2025_026", "sentence", "30 Years"): "real_wrong",
 }
 # 2.x sentence flags read as statutory exposure, a fine, or a bare
 # "supervised release" fragment that does not state the imposed term.
@@ -91,6 +107,61 @@ REAL_WRONG = {
     ("v2", "usss_2016_002", "sentence", "mandatory minimum sentence"),
     ("v2", "wy_dci_2024_004", "sentence", "264 years"),
     ("v2", "wy_dci_2024_004", "sentence", "$240,000"),
+    # Holdout 2.x sentences: exposure, a statutory ceiling, a bond, or a fragment.
+    ("v2", "doj_archives_2007_030", "sentence", "mandatory minimum sentence"),
+    ("v2", "doj_archives_2008_010", "sentence", "15 years"),
+    ("v2", "doj_archives_2008_010", "sentence", "10 years"),
+    ("v2", "doj_archives_2008_010", "sentence", "20 years"),
+    ("v2", "doj_archives_2005_025", "sentence", "mandatory minimum sentence"),
+    ("v2", "doj_ceos_2013_090", "sentence", "15 years"),
+    ("v2", "doj_ceos_2013_090", "sentence", "supervised release"),
+    ("v2", "doj_ceos_2013_068", "sentence", "mandatory minimum"),
+    ("v2", "doj_ceos_2013_068", "sentence", "25 years"),
+    ("v2", "doj_ceos_2013_068", "sentence", "50 years"),
+    ("v2", "doj_ceos_2013_068", "sentence", "$250,000"),
+    ("v2", "doj_safe_childhood_2022_553", "sentence", "10 years"),
+    ("v2", "doj_safe_childhood_2022_553", "sentence", "20 years"),
+    ("v2", "doj_safe_childhood_2022_553", "sentence", "supervised release"),
+    ("v2", "doj_safe_childhood_2024_519", "sentence", "15 years"),
+    ("v2", "doj_safe_childhood_2024_519", "sentence", "30 years"),
+    ("v2", "doj_safe_childhood_2026_284", "sentence", "mandatory minimum"),
+    ("v2", "doj_safe_childhood_2026_284", "sentence", "15 years"),
+    ("v2", "doj_safe_childhood_2026_284", "sentence", "40 years"),
+    ("v2", "doj_safe_childhood_2026_041", "sentence", "10 years"),
+    ("v2", "doj_safe_childhood_2026_041", "sentence", "20 years"),
+    ("v2", "doj_safe_childhood_2026_041", "sentence", "supervised release"),
+    ("v2", "doj_safe_childhood_2026_041", "sentence", "15 years"),
+    ("v2", "doj_safe_childhood_2026_258", "sentence", "20 years"),
+    ("v2", "doj_safe_childhood_2026_258", "sentence", "$250,000"),
+    ("v2", "doj_safe_childhood_2026_258", "sentence", "$17,000"),
+    ("v2", "doj_safe_childhood_2025_036", "sentence", "supervised release"),
+    ("v2", "hi_ag_2024_001", "sentence", "10 years"),
+    ("v2", "illinois_ag_2018_001", "sentence", "30 years"),
+    ("v2", "illinois_ag_2018_001", "sentence", "$400,000"),
+    ("v2", "illinois_ag_2015_004", "sentence", "30 years"),
+    ("v2", "illinois_ag_2015_004", "sentence", "15 years"),
+    ("v2", "illinois_ag_2015_004", "sentence", "$750,000"),
+    ("v2", "illinois_ag_2023_007", "sentence", "30 years"),
+    ("v2", "illinois_ag_2014_008", "sentence", "30 years"),
+    ("v2", "ncmec_2023_202", "sentence", "150 years"),
+    ("v2", "ncmec_2023_027", "sentence", "15 years"),
+    ("v2", "ncmec_2025_863", "sentence", "10 years"),
+    ("v2", "scag_icac_2026_043", "sentence", "10 years"),
+    ("v2", "scag_icac_2021_078", "sentence", "10 years"),
+    ("v2", "scag_icac_2021_022", "sentence", "10 years"),
+    ("v2", "scag_icac_2024_064", "sentence", "20 years"),
+    ("v2", "scag_icac_2024_064", "sentence", "10 years"),
+    ("v2", "scag_icac_2024_002", "sentence", "20 years"),
+    ("v2", "scag_icac_2024_002", "sentence", "10 years"),
+    ("v2", "scag_icac_2024_067", "sentence", "10 years"),
+    ("v2", "scag_icac_2022_032", "sentence", "10 years"),
+    ("v2", "scag_icac_2022_004", "sentence", "10 years"),
+    ("v2", "scag_icac_2021_057", "sentence", "10 years"),
+    ("v2", "texas_ag_2018_004", "sentence", "10 years"),
+    ("v2", "texas_ag_2018_004", "sentence", "60 years"),
+    ("v2", "vt_ag_2024_025", "sentence", "5 years"),
+    ("v2", "wy_dci_2023_001", "sentence", "10 years"),
+    ("v2", "wy_dci_2023_001", "sentence", "$5,000"),
 }
 
 EXPOSURE = re.compile(
@@ -279,8 +350,8 @@ def allocate(by_source: dict[str, list[str]]) -> dict[str, int]:
     return alloc
 
 
-def sample_ids(by_source: dict[str, list[str]], alloc: dict[str, int]) -> list[str]:
-    rng = random.Random(SEED)
+def sample_ids(by_source: dict[str, list[str]], alloc: dict[str, int], seed: int = SEED) -> list[str]:
+    rng = random.Random(seed)
     chosen: list[str] = []
     for source in sorted(by_source):
         ids = by_source[source][:]
@@ -405,6 +476,8 @@ def summarize(rows: list[dict]) -> dict[str, int]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ids", type=Path, help="judge these case ids in file order")
+    parser.add_argument("--exclude", type=Path, help="case ids a fresh draw must not use")
+    parser.add_argument("--seed", type=int, default=SEED, help="seed for a fresh draw")
     parser.add_argument("--write-ids", type=Path, help="write the draw, one id per line")
     parser.add_argument("--write-results", type=Path, help="write one JSON object per case")
     args = parser.parse_args()
@@ -417,7 +490,17 @@ def main() -> None:
         paired = {case_id for ids in by_source.values() for case_id in ids}
         require_present("paired corpus", chosen, paired)
     else:
-        chosen = sample_ids(by_source, allocate(by_source))
+        if args.exclude:
+            banned = {
+                line.strip() for line in args.exclude.read_text().splitlines()
+                if line.strip() and not line.strip().startswith("#")
+            }
+            by_source = {
+                source: [case_id for case_id in ids if case_id not in banned]
+                for source, ids in by_source.items()
+            }
+            by_source = {source: ids for source, ids in by_source.items() if ids}
+        chosen = sample_ids(by_source, allocate(by_source), seed=args.seed)
     phase3 = fetch_postgres(postgres, chosen)
     prior = fetch_baseline(baseline, chosen)
     postgres.close()
@@ -454,7 +537,7 @@ def main() -> None:
     print(f"paired_cases {len(chosen)}")
     print(f"shared_sources {len(by_source)}")
     print(f"sources_in_sample {len({phase3[case_id]['source'] for case_id in chosen})}")
-    print(f"ids {'file' if args.ids else 'fresh'}")
+    print(f"ids {'file' if args.ids else 'fresh'} seed {args.seed if not args.ids else 'frozen'}")
     print("side\tage_stored\tage_wrong\tsentence_stored\tsentence_wrong")
     for side in ("v2", "phase3"):
         row = totals[side]

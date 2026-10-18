@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Wholesale Oxigraph reload from canonical case2cac Turtle graphs.
 
-Rebuilds the triplestore by writing one N-Quads file (named graph per case) and
-PUT-replacing /store. Not incremental.
+Rebuilds the triplestore by writing one N-Quads file and PUT-replacing /store.
+Each case is one named graph. A sibling ``{case_id}.provenance.ttl`` is a
+second named graph, ``…/case/{case_id}/provenance``. Not incremental.
 
 Usage (from repo root):
   python3 scripts/rebuild_oxigraph.py
@@ -76,14 +77,18 @@ def main() -> int:
     result = build_nquads(ttl_by_id, args.output)
     print(
         f"Wrote {result['quads']} quads from {result['cases_loaded']}/{result['cases_requested']} "
-        f"cases → {result['destination']}",
+        f"cases and {result['provenance_loaded']} provenance graphs → {result['destination']}",
         flush=True,
     )
     print(f"Source pools: {result['pool_counts']}", flush=True)
-    failed = result.get("failed") or []
-    if failed:
-        print(f"Failed parses: {len(failed)}", file=sys.stderr)
-        for row in failed[:10]:
+    failed = list(result.get("failed") or [])
+    provenance_failed = list(result.get("provenance_failed") or [])
+    if failed or provenance_failed:
+        print(
+            f"Failed parses: {len(failed)} cases, {len(provenance_failed)} provenance",
+            file=sys.stderr,
+        )
+        for row in (failed + provenance_failed)[:10]:
             print(f"  {row['case_id']}: {row['reason']}", file=sys.stderr)
 
     if args.no_put:
@@ -103,7 +108,7 @@ def main() -> int:
     else:
         print("Skipping PUT (pass --put with OXIGRAPH_URL, or omit --no-put when the env is set).")
 
-    return 1 if failed else 0
+    return 1 if failed or provenance_failed else 0
 
 
 if __name__ == "__main__":

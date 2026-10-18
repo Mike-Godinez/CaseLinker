@@ -128,7 +128,7 @@ def test_values_after_where_injects_limit_before_values():
     """Regression: SPARQL 1.1 ValuesClause follows LimitOffset, not precedes it."""
     q = (
         "SELECT ?s WHERE { ?s ?p ?o } "
-        "VALUES ?s { <https://caselinker.projectvic.org/resource/case/nj_ag_2017_001> }"
+        "VALUES ?s { <https://w3id.org/caselinker/resource/case/nj_ag_2017_001> }"
     )
     prepared = prepare_sparql_query(q)
     assert prepared.kind == "SelectQuery"

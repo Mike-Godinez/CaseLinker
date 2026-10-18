@@ -14,6 +14,23 @@ from __future__ import annotations
 import json
 from typing import Any, Dict, List
 
+
+class CaseIdCollision(RuntimeError):
+    """Two different source files tried to store the same case id.
+
+    The ingest must stop. A later file must not be skipped, and it must not
+    take the next free number, or the PDF is marked done with articles missing.
+    """
+
+    def __init__(self, case_id: str, existing_source_file: str, new_source_file: str) -> None:
+        self.case_id = case_id
+        self.existing_source_file = existing_source_file
+        self.new_source_file = new_source_file
+        super().__init__(
+            f"Case ID collision for {case_id}: "
+            f"{existing_source_file} already holds it; refusing {new_source_file}"
+        )
+
 # Omitted from extracted_features blob: narrative, raw duplicate, and fields already
 # persisted as columns on `cases` (avoids triplicating the same strings in SQLite/Postgres).
 _SLIM_EXCLUDED_KEYS = frozenset(

@@ -194,6 +194,18 @@ def case_batching(text: str, org_name: str = "case", source: str = None, source_
     is_brazil_pf = False
     is_europol = False
     is_nca = False
+    is_alert_ice = False
+    is_mdsp = False
+    is_scotland_police = False
+    is_va_ag = False
+    is_nova_icac = False
+    is_spf = False
+    is_co_cbi = False
+    is_mn_bca = False
+    is_nbi = False
+    is_garda = False
+    is_wi_doj = False
+    is_nz_dia = False
     is_doj_ceos = False
     is_doj_ai_csam = False
     is_doj_archives = False
@@ -318,6 +330,30 @@ def case_batching(text: str, org_name: str = "case", source: str = None, source_
             is_europol = True
         elif source_upper == 'NCA':
             is_nca = True
+        elif source_upper == 'ALERT ICE':
+            is_alert_ice = True
+        elif source_upper == 'MDSP':
+            is_mdsp = True
+        elif source_upper == 'SCOTLAND POLICE':
+            is_scotland_police = True
+        elif source_upper == 'VA AG':
+            is_va_ag = True
+        elif source_upper == 'NOVA ICAC':
+            is_nova_icac = True
+        elif source_upper == 'SPF':
+            is_spf = True
+        elif source_upper == 'CO CBI':
+            is_co_cbi = True
+        elif source_upper == 'MN BCA':
+            is_mn_bca = True
+        elif source_upper == 'NBI':
+            is_nbi = True
+        elif source_upper == 'GARDA':
+            is_garda = True
+        elif source_upper == 'WI DOJ':
+            is_wi_doj = True
+        elif source_upper == 'NZ DIA':
+            is_nz_dia = True
         elif source_upper == 'DOJ CEOS':
             is_doj_ceos = True
         elif source_upper == 'DOJ AI CSAM':
@@ -450,11 +486,37 @@ def case_batching(text: str, org_name: str = "case", source: str = None, source_
         return _batch_merged_icac_news_cases(text, org_name, source_file, "EUROPOL")
     elif is_nca:
         return _batch_merged_icac_news_cases(text, org_name, source_file, "NCA")
-    elif is_doj_ceos or is_doj_archives:
-        # Archives PDFs share the DOJ CEOS source label.
+    elif is_alert_ice:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "ALERT ICE")
+    elif is_mdsp:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "MDSP")
+    elif is_scotland_police:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "SCOTLAND POLICE")
+    elif is_va_ag:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "VA AG")
+    elif is_nova_icac:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "NOVA ICAC")
+    elif is_spf:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "SPF")
+    elif is_co_cbi:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "CO CBI")
+    elif is_mn_bca:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "MN BCA")
+    elif is_nbi:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "NBI")
+    elif is_garda:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "GARDA")
+    elif is_wi_doj:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "WI DOJ")
+    elif is_nz_dia:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "NZ DIA")
+    elif is_doj_archives:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "DOJ ARCHIVES")
+    elif is_doj_ceos:
         return _batch_merged_icac_news_cases(text, org_name, source_file, "DOJ CEOS")
-    elif is_doj_safe_childhood or is_doj_ai_csam:
-        # AI-CSAM USAO topic harvest shares Project Safe Childhood source label.
+    elif is_doj_ai_csam:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "DOJ AI CSAM")
+    elif is_doj_safe_childhood:
         return _batch_merged_icac_news_cases(text, org_name, source_file, "DOJ SAFE CHILDHOOD")
     elif is_other_external:
         return _batch_external_cases(text, org_name, source_file)
@@ -1504,20 +1566,28 @@ _MERGED_ICAC_NEWS_PDF_CANDIDATES: Dict[str, List[str]] = {
     "MICHIGAN ICAC": ["Michigan ICAC.pdf"],
     "EUROPOL": ["EUROPOL_CSEA_All.pdf"],
     "NCA": ["NCA_CSEA_All.pdf"],
+    "ALERT ICE": ["ALERT_ICE_CSEA_All.pdf"],
+    "MDSP": ["MDSP_CSEA_All.pdf"],
+    "SCOTLAND POLICE": ["SCOTLAND_POLICE_CSEA_All.pdf"],
+    "VA AG": ["VAAG_ICAC_All.pdf"],
+    "NOVA ICAC": ["NOVA_ICAC_All.pdf"],
+    "SPF": ["SPF_CSEA_All.pdf"],
+    "CO CBI": ["COCBI_CSEA_All.pdf"],
+    "MN BCA": ["MNBCA_CSEA_All.pdf"],
+    "NBI": ["NBI_CSEA_All.pdf"],
+    "GARDA": ["GARDA_CSEA_All.pdf"],
+    "WI DOJ": ["WIDOJ_ICAC_All.pdf"],
+    "NZ DIA": ["NZDIA_CSEA_All.pdf"],
     "DOJ CEOS": [
         "DOJ_CEOS_All.pdf",
         "DOJ_BULK.pdf",
         "doj_ceos_output/DOJ_CEOS_All.pdf",
-        "DOJ_ARCHIVES_All.pdf",
-        "doj_archives_output/DOJ_ARCHIVES_All.pdf",
     ],
     "DOJ AI CSAM": ["DOJ_AI_CSAM_All.pdf", "collector/state/ai_csam_backfill/AI_CSAM_DOJ_batch.pdf"],
     "DOJ ARCHIVES": ["DOJ_ARCHIVES_All.pdf", "doj_archives_output/DOJ_ARCHIVES_All.pdf"],
     "DOJ SAFE CHILDHOOD": [
         "DOJ_SAFE_CHILDHOOD.pdf",
         "DOJ_SAFE_CHILDHOOD_All.pdf",
-        "DOJ_AI_CSAM_All.pdf",
-        "collector/state/ai_csam_backfill/AI_CSAM_DOJ_batch.pdf",
     ],
 }
 
@@ -1995,6 +2065,10 @@ def _merged_news_title_starts(lines: List[str], sources: List[int]) -> List[int]
                 and lines[t].strip()
                 and _merged_news_line_looks_like_title_case_headline(lines[t])
             ):
+                # A long body sentence can also look like Title Case. Once a closer
+                # headline line is already claimed, do not walk into that sentence.
+                if title_start < hi and _merged_news_line_looks_like_narrative_body(lines[t]):
+                    break
                 title_start = t
                 t -= 1
             while t > prev_barrier and _merged_news_is_likely_preface_before_date(lines[t]):

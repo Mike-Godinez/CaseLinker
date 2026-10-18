@@ -79,7 +79,7 @@ _DEFENDANT_CHARGE_RE = re.compile(
     re.I,
 )
 _YO_PERP_RE = re.compile(
-    r"(\d{1,2})\s+year\s+old\s+(?:man|woman|male|resident)\b",
+    r"(\d{1,2})\s*-?\s*year\s*-?\s*old\s+(?:man|woman|male|resident|student)\b",
     re.I,
 )
 

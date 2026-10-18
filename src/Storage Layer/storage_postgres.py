@@ -21,6 +21,7 @@ from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime
 
 from case_storage_utils import (
+    CaseIdCollision,
     dumps_json_safe,
     hydrate_case_text_from_raw_data,
     slim_extracted_features_for_storage,
@@ -96,6 +97,47 @@ def return_connection(conn):
     """Return connection to pool"""
     pool = get_pool()
     pool.putconn(conn)
+
+
+# Fields stored inside extracted_features and copied onto the case dict.
+# Every loader must use this list. get_all_cases once omitted perpetrator_gender,
+# so /api/stats skipped 309 stored values that get_case already returned.
+EXTRACTED_FEATURE_FIELDS = (
+    "perpetrator_age",
+    "perpetrator_gender",
+    "perpetrator_registered_sex_offender",
+    "press_digest_pollution",
+    "multi_defendant_operation",
+    "agencies_involved",
+    "organizations",
+    "locations",
+    "investigation_type",
+    "investigation_types",
+    "evidence_volume",
+    "prosecution_outcome",
+    "case_demographics",
+    "victim_demographics",
+    "relationship_to_victim",
+    "severity_phrases",
+    "perpetrator_admissions",
+    "perpetrator_admission_themes",
+    "case_text",
+    "comparison_values",
+    "investigation_technology",
+    "anonymization_network",
+    "p2p_clients",
+    "offense_technology",
+)
+
+
+def merge_extracted_feature_fields(case_dict: Dict[str, Any]) -> None:
+    """Copy stored feature fields onto the case dict. Missing keys stay absent."""
+    extracted = case_dict.get("extracted_features") or {}
+    if not isinstance(extracted, dict):
+        return
+    for key in EXTRACTED_FEATURE_FIELDS:
+        if key in extracted:
+            case_dict[key] = extracted[key]
 
 
 class CaseStorage:
@@ -251,7 +293,7 @@ class CaseStorage:
     def _store_case_on_cursor(self, cursor, case: Dict[str, Any]) -> bool:
         """
         Upsert one case (and related demo/prosecution rows) on an open cursor.
-        Does not commit. Returns False on source-file conflict (skip).
+        Does not commit. Raises CaseIdCollision when another source file holds the id.
         """
         date_range = case.get('date_range', {})
         date_start = date_range.get('start') if isinstance(date_range, dict) else None
@@ -294,11 +336,10 @@ class CaseStorage:
                     pass
 
             if new_source_file and existing_source_file and new_source_file != existing_source_file:
-                print(f"⚠️  Warning: Case ID conflict detected for {case_id}")
+                print(f"❌ Case ID collision for {case_id}")
                 print(f"   Existing case from: {existing_source_file}")
-                print(f"   New case from: {new_source_file}")
-                print(f"   Skipping new case to prevent data loss")
-                return False
+                print(f"   Refused case from: {new_source_file}")
+                raise CaseIdCollision(case_id, existing_source_file, new_source_file)
 
             created_at = existing_created_at
             updated_at = current_time
@@ -469,6 +510,13 @@ class CaseStorage:
             if ok:
                 conn.commit()
             return ok
+        except CaseIdCollision:
+            if conn is not None:
+                try:
+                    conn.rollback()
+                except Exception:
+                    pass
+            raise
         except Exception as e:
             print(f"Error storing case: {e}")
             import traceback
@@ -497,6 +545,12 @@ class CaseStorage:
                     stored += 1
             conn.commit()
             return stored
+        except CaseIdCollision:
+            try:
+                conn.rollback()
+            except Exception:
+                pass
+            raise
         except Exception as e:
             print(f"⚠️  Batch store failed ({e}); falling back to per-case commits")
             try:
@@ -509,6 +563,12 @@ class CaseStorage:
                     if self._store_case_on_cursor(cursor, case):
                         conn.commit()
                         stored += 1
+                except CaseIdCollision:
+                    try:
+                        conn.rollback()
+                    except Exception:
+                        pass
+                    raise
                 except Exception as case_exc:
                     print(f"Error storing case: {case_exc}")
                     try:
@@ -550,6 +610,13 @@ class CaseStorage:
                 stored_count += self._commit_case_batch(conn, cursor, batch)
                 print(f"  … stored {stored_count}/{len(cases)} cases")
             return stored_count
+        except CaseIdCollision:
+            if conn is not None:
+                try:
+                    conn.rollback()
+                except Exception:
+                    pass
+            raise
         except Exception as e:
             print(f"Error storing cases: {e}")
             import traceback
@@ -771,18 +838,7 @@ class CaseStorage:
                 'end': case_dict.get('date_end')
             }
             
-            # Merge extracted_features back into case_dict
-            extracted_features = case_dict.get('extracted_features', {})
-            if isinstance(extracted_features, dict):
-                for key in ['perpetrator_age', 'perpetrator_gender', 'perpetrator_registered_sex_offender',
-                           'press_digest_pollution', 'multi_defendant_operation',
-                           'agencies_involved', 'organizations', 'locations', 'investigation_type', 'investigation_types', 'evidence_volume',
-                           'prosecution_outcome', 'case_demographics', 'victim_demographics', 'relationship_to_victim',
-                           'severity_phrases', 'perpetrator_admissions', 'perpetrator_admission_themes',
-                           'case_text', 'comparison_values',
-                           'investigation_technology', 'anonymization_network', 'p2p_clients', 'offense_technology']:
-                    if key in extracted_features:
-                        case_dict[key] = extracted_features[key]
+            merge_extracted_feature_fields(case_dict)
             
             # Merge prosecution_outcome from prosecution_outcomes table
             if not case_dict.get('prosecution_outcome') and case_dict.get('prosecution_outcomes'):
@@ -936,18 +992,7 @@ class CaseStorage:
                         except (json.JSONDecodeError, TypeError):
                             pass
                 
-                # Merge extracted_features
-                extracted_features = case_dict.get('extracted_features', {})
-                if isinstance(extracted_features, dict):
-                    for key in ['perpetrator_age', 'perpetrator_registered_sex_offender',
-                               'press_digest_pollution', 'multi_defendant_operation',
-                               'agencies_involved', 'organizations', 'locations', 'investigation_type', 'investigation_types', 'evidence_volume',
-                               'prosecution_outcome', 'case_demographics', 'victim_demographics', 'relationship_to_victim',
-                               'severity_phrases', 'perpetrator_admissions', 'perpetrator_admission_themes',
-                           'case_text', 'comparison_values',
-                               'investigation_technology', 'anonymization_network', 'p2p_clients', 'offense_technology']:
-                        if key in extracted_features:
-                            case_dict[key] = extracted_features[key]
+                merge_extracted_feature_fields(case_dict)
                 
                 if include_raw_data:
                     hydrate_case_text_from_raw_data(case_dict)
@@ -1070,36 +1115,7 @@ class CaseStorage:
                             case_dict[json_field] = json.loads(case_dict[json_field])
                         except (json.JSONDecodeError, TypeError):
                             pass
-                extracted_features = case_dict.get("extracted_features", {})
-                if isinstance(extracted_features, dict):
-                    for key in [
-                        "perpetrator_age",
-                        "perpetrator_gender",
-                        "perpetrator_registered_sex_offender",
-                        "press_digest_pollution",
-                        "multi_defendant_operation",
-                        "agencies_involved",
-                        "organizations",
-                        "locations",
-                        "investigation_type",
-                        "investigation_types",
-                        "evidence_volume",
-                        "prosecution_outcome",
-                        "case_demographics",
-                        "victim_demographics",
-                        "relationship_to_victim",
-                        "severity_phrases",
-                        "perpetrator_admissions",
-                        "perpetrator_admission_themes",
-                        "case_text",
-                        "comparison_values",
-                        "investigation_technology",
-                        "anonymization_network",
-                        "p2p_clients",
-                        "offense_technology",
-                    ]:
-                        if key in extracted_features:
-                            case_dict[key] = extracted_features[key]
+                merge_extracted_feature_fields(case_dict)
                 if include_raw_data:
                     hydrate_case_text_from_raw_data(case_dict)
                 else:
@@ -1262,36 +1278,7 @@ class CaseStorage:
                             case_dict[json_field] = json.loads(case_dict[json_field])
                         except (json.JSONDecodeError, TypeError):
                             pass
-                extracted_features = case_dict.get("extracted_features", {})
-                if isinstance(extracted_features, dict):
-                    for key in [
-                        "perpetrator_age",
-                        "perpetrator_gender",
-                        "perpetrator_registered_sex_offender",
-                        "press_digest_pollution",
-                        "multi_defendant_operation",
-                        "agencies_involved",
-                        "organizations",
-                        "locations",
-                        "investigation_type",
-                        "investigation_types",
-                        "evidence_volume",
-                        "prosecution_outcome",
-                        "case_demographics",
-                        "victim_demographics",
-                        "relationship_to_victim",
-                        "severity_phrases",
-                        "perpetrator_admissions",
-                        "perpetrator_admission_themes",
-                        "case_text",
-                        "comparison_values",
-                        "investigation_technology",
-                        "anonymization_network",
-                        "p2p_clients",
-                        "offense_technology",
-                    ]:
-                        if key in extracted_features:
-                            case_dict[key] = extracted_features[key]
+                merge_extracted_feature_fields(case_dict)
                 case_dict.pop("raw_data", None)
                 case_dict.pop("case_text", None)
                 if case_dict.get("date_start") or case_dict.get("date_end"):

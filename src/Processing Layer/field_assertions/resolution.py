@@ -8,6 +8,8 @@ them. Rules, per mention (one span of the original text):
 2. ``unknown`` is abstention, never a competing role.
 3. Votes are counted by evidence *family*, not by method. A family that asserts
    two different roles for the same mention contradicts itself and abstains.
+   Victim and perpetrator on that same mention block a final from any family:
+   the age stays in review.
 4. Two families asserting different roles for the same mention veto it: the
    mention is contested and never finalizes.
 5. One typed role from ≥2 families → agreed; from one family at confidence ≥0.7
@@ -95,6 +97,15 @@ def _vote(items: List[Dict]) -> Dict[str, Any]:
             self_contradictions.append({"family": fam, "roles": sorted(roles)})
     distinct = sorted(set(votes.values()))
     out: Dict[str, Any] = {"self_contradictions": self_contradictions}
+    # "jailing of a 22-year-old student": the surface family has both a victim noun
+    # and a defendant cue, so it abstains. Another family may still have a clean
+    # victim vote. Both cues on one mention means the age is not a final.
+    if any(
+        "victim" in sc["roles"] and "perpetrator" in sc["roles"]
+        for sc in self_contradictions
+    ):
+        out["state"] = "unknown"
+        return out
     if len(distinct) > 1:
         out["state"] = "contested"
         out["roles"] = {r: sorted(f for f, v in votes.items() if v == r) for r in distinct}
