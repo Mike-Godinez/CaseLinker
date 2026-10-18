@@ -1,0 +1,122 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 06:39:37.091744" ;
+    dcterms:identifier "scag_icac_2025_118" ;
+    dcterms:modified "2026-10-18 06:39:37.091744" ;
+    dcterms:source <https://www.scag.gov/about-the-office/news/calhoun-county-man-arrested-on-child-sexual-abuse-material-charges-1/>,
+        "SCAG ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/elloree>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/event/possession>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/calhoun-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/us-secret-service> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/elloree>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/calhoun-county-sheriffs-office> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/hsi> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/us-secret-service> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118/charge/1> a ns4:CriminalCharge,
+        ns4:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118/charge/2> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118/charge/3> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118/event/distribution> a ns7:Event,
+        ns4:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/charge/1>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/charge/2>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/charge/3> ;
+    ns4:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 31 .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118/phase/charged> a ns1:LegalProcessPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/columbia> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Columbia" ;
+    ns2:name "Columbia" .
+
+<https://w3id.org/caselinker/resource/location/elloree> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Elloree" ;
+    ns2:name "Elloree" .
+
+<https://w3id.org/caselinker/resource/location/sc> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "S.c." ;
+    ns2:name "S.c." .
+
+<https://w3id.org/caselinker/resource/location/south-carolina> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Carolina" ;
+    ns2:name "South Carolina" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118/event/possession> a ns1:CSAMIncident,
+        ns7:Event ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2025_118> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/scag_icac_2025_118/provenance> .

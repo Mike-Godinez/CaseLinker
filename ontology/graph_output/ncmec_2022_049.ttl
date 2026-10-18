@@ -1,141 +1,134 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2022_049> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_049/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_049> ;
+    ns3:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-06-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_049/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_049/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/menomonie-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/menomonie-police-department> a ns3:OrganizationLikeEntity,
+        ns6:LocalAgency ;
     rdfs:label "Menomonie Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.029287" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:20.104802" ;
     dcterms:identifier "ncmec_2022_049" ;
-    dcterms:modified "2026-09-15T20:45:06.029287" ;
+    dcterms:modified "2026-10-17 21:51:20.104802" ;
     dcterms:source <https://www.weau.com/2022/06/15/menomonie-man-accused-possessing-child-pornography/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/dunn-county>,
-        <https://caselinker.up.railway.app/resource/location/menomonie>,
-        <https://caselinker.up.railway.app/resource/location/wis> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/menomonie-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/dunn-county>,
-        <https://caselinker.up.railway.app/resource/location/menomonie>,
-        <https://caselinker.up.railway.app/resource/location/wis> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/dunn-county>,
+        <https://w3id.org/caselinker/resource/location/menomonie>,
+        <https://w3id.org/caselinker/resource/location/wis> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_049/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_049/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_049/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_049/operation> ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2022_049/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/menomonie-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/dunn-county>,
+        <https://w3id.org/caselinker/resource/location/menomonie>,
+        <https://w3id.org/caselinker/resource/location/wis> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns2:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Dunn County Jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_049/charge/1> ;
+    ns2:hasProceedingBeginPoint "2022-06-14T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/operation> a cac-core:Event,
-        cacontology-taskforce:ReactiveOperation .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049/operation> a ns3:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 20 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-06-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_049/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_049/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$1,000\"]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
     rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/platform/dropbox> a cac-core:DigitalSystemEntity,
-        cacontology-platforms:FileHostingService ;
+<https://w3id.org/caselinker/resource/platform/dropbox> a <https://cacontology.projectvic.org/platforms#FileHostingService> ;
     rdfs:label "Dropbox" .
 
-<https://caselinker.up.railway.app/resource/platform/facebook> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "Facebook" .
 
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
     rdfs:label "Kik" .
 
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
     rdfs:label "Snapchat" .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/platform/tiktok> a cac-core:DigitalSystemEntity,
-        cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/tiktok> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "TikTok" .
 
-<https://caselinker.up.railway.app/resource/location/dunn-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/dunn-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Dunn County" ;
-    uco-core:name "Dunn County" .
+    ns4:name "Dunn County" .
 
-<https://caselinker.up.railway.app/resource/location/menomonie> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/menomonie> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Menomonie" ;
-    uco-core:name "Menomonie" .
+    ns4:name "Menomonie" .
 
-<https://caselinker.up.railway.app/resource/location/wis> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/wis> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wis." ;
+    ns4:name "Wis." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "has never sent any of the child pornography to anyone" ;
     dcterms:source <https://www.weau.com/2022/06/15/menomonie-man-accused-possessing-child-pornography/> ;
-    ns1:admissionContext "best.” On Placzkowski’s phone, authorities found “multiple photos of child pornography.” Placzkowski said he has never sent any of the ch..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "has never sent any of the child pornography to anyone" .
+    ns5:admissionContext "best.” On Placzkowski’s phone, authorities found “multiple photos of child pornography.” Placzkowski said he has never sent any of the ch..." ;
+    ns5:admissionFrame "said_paraphrase" ;
+    ns5:admissionTheme "harm_conduct" ;
+    ns5:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_049/role/offender/1> ;
+    ns5:evidenceTier "press_release_stated" ;
+    ns5:quoteType "paraphrase" ;
+    ns4:description "has never sent any of the child pornography to anyone" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_049/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/admission/1> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/dropbox>,
-        <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/kik>,
-        <https://caselinker.up.railway.app/resource/platform/snapchat>,
-        <https://caselinker.up.railway.app/resource/platform/social-media>,
-        <https://caselinker.up.railway.app/resource/platform/tiktok> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_049/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_049/admission/1> ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/dropbox>,
+        <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/kik>,
+        <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media>,
+        <https://w3id.org/caselinker/resource/platform/tiktok> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_049/facet/possession> .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_049> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_049/provenance> .

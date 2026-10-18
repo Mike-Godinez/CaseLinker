@@ -1,0 +1,109 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_002> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 06:04:24.003378" ;
+    dcterms:identifier "newyork_sp_2025_002" ;
+    dcterms:modified "2026-10-18 06:04:24.003378" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/provenance> ;
+    dcterms:source <https://troopers.ny.gov/news/warren-man-arrested-sex-offense-charges>,
+        "NEWYORK SP" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/albany>,
+        <https://w3id.org/caselinker/resource/location/herkimer>,
+        <https://w3id.org/caselinker/resource/location/herkimer-county>,
+        <https://w3id.org/caselinker/resource/location/new-york>,
+        <https://w3id.org/caselinker/resource/location/richfield-springs>,
+        <https://w3id.org/caselinker/resource/location/warren> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/crimes-against-children-task-force>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/new-york-state-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/albany>,
+        <https://w3id.org/caselinker/resource/location/herkimer>,
+        <https://w3id.org/caselinker/resource/location/herkimer-county>,
+        <https://w3id.org/caselinker/resource/location/new-york>,
+        <https://w3id.org/caselinker/resource/location/richfield-springs>,
+        <https://w3id.org/caselinker/resource/location/warren> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-12-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-12-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/crimes-against-children-task-force> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/new-york-state-police-department> a ns4:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/charge/1> a ns7:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns1:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/event/distribution> a ns5:Event,
+        ns7:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns7:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remanded to Herkimer County Correctional Facility" ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/charge/1> ;
+    ns7:hasProceedingBeginPoint "2025-12-10T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 28 .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_002/phase/arrested> a ns2:InitialPhase,
+        ns5:Phase ;
+    ns2:hasPhaseBeginPoint "2025-12-10T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/albany> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Albany" ;
+    ns3:name "Albany" .
+
+<https://w3id.org/caselinker/resource/location/herkimer> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Herkimer" ;
+    ns3:name "Herkimer" .
+
+<https://w3id.org/caselinker/resource/location/herkimer-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Herkimer County" ;
+    ns3:name "Herkimer County" .
+
+<https://w3id.org/caselinker/resource/location/new-york> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New York" ;
+    ns3:name "New York" .
+
+<https://w3id.org/caselinker/resource/location/richfield-springs> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Richfield Springs" ;
+    ns3:name "Richfield Springs" .
+
+<https://w3id.org/caselinker/resource/location/warren> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Warren" ;
+    ns3:name "Warren" .
+

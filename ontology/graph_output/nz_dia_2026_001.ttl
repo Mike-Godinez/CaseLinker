@@ -1,0 +1,89 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_001> a ns2:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 14:04:14.905571" ;
+    dcterms:identifier "nz_dia_2026_001" ;
+    dcterms:modified "2026-10-18 14:04:14.905571" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/provenance> ;
+    dcterms:source <https://www.dia.govt.nz/press.nsf/d77da9b523f12931cc256ac5000d19b6/3a9a5da6d2f4b60ccc256e7600769e61!OpenDocument>,
+        "NZ DIA" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/the-hutt-valley>,
+        <https://w3id.org/caselinker/resource/location/wellington> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/event/possession>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/legal-step/sentenced> ;
+    ns2:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-internal-affairs>,
+        <https://w3id.org/caselinker/resource/agency/department-of-internal-affairs-gaming-and-censorship-regulation-group> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/the-hutt-valley>,
+        <https://w3id.org/caselinker/resource/location/wellington> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_001/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_001/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/department-of-internal-affairs> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/department-of-internal-affairs-gaming-and-censorship-regulation-group> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_001/event/distribution> a ns1:Event,
+        ns4:CSAM_Distribution ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_001/legal-step/sentenced> a ns1:Event,
+        ns1:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_001/phase/sentenced> a ns1:Phase,
+        ns4:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/the-hutt-valley> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the Hutt Valley" ;
+    ns5:name "the Hutt Valley" .
+
+<https://w3id.org/caselinker/resource/location/wellington> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wellington" ;
+    ns5:name "Wellington" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_001/event/hands-on> a ns2:ChildSexualAbuseEvent,
+        ns1:Event ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_001/event/possession> a ns2:CSAMIncident,
+        ns1:Event ;
+    ns2:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/nz_dia_2026_001/facet/possession> .
+

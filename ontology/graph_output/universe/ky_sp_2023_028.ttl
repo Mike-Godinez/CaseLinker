@@ -1,0 +1,88 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2023_028> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 05:15:33.480446" ;
+    dcterms:identifier "ky_sp_2023_028" ;
+    dcterms:modified "2026-10-18 05:15:33.480446" ;
+    dcterms:source <https://www.kentuckystatepolice.ky.gov/news/p5-2-7-2023-2/>,
+        "KY SP" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/campbellsburg>,
+        <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/owen-county>,
+        <https://w3id.org/caselinker/resource/location/owenton> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ky_sp_2023_028/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ky_sp_2023_028/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ky_sp_2023_028/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ky_sp_2023_028/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/kentucky-state-police-department> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/campbellsburg>,
+        <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/owen-county>,
+        <https://w3id.org/caselinker/resource/location/owenton> .
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2023_028/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-02-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ky_sp_2023_028/event/hands-on> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ky_sp_2023_028/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2023_028/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-02-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ky_sp_2023_028/event/hands-on> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ky_sp_2023_028/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/kentucky-state-police-department> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2023_028/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): lodged at the Carroll County Detention Center; remains lodged at the Carroll County Detention Center" ;
+    ns6:hasProceedingBeginPoint "2023-02-07T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2023_028/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 26 .
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2023_028/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2023_028/phase/charged> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2023-02-07T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/campbellsburg> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Campbellsburg" ;
+    ns4:name "Campbellsburg" .
+
+<https://w3id.org/caselinker/resource/location/ky> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ky." ;
+    ns4:name "Ky." .
+
+<https://w3id.org/caselinker/resource/location/owen-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Owen County" ;
+    ns4:name "Owen County" .
+
+<https://w3id.org/caselinker/resource/location/owenton> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Owenton" ;
+    ns4:name "Owenton" .
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2023_028/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns3:Event ;
+    ns1:severityLevel 3 .
+
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2023_028> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ky_sp_2023_028/provenance> .

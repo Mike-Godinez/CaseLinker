@@ -1,0 +1,114 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_005> a ns3:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 05:52:14.240313" ;
+    dcterms:identifier "nj_ag_2021_005" ;
+    dcterms:modified "2026-10-18 05:52:14.240313" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nj_ag_2021_005/provenance> ;
+    dcterms:source <https://www.njoag.gov/jersey-city-police-officer-arrested-for-traveling-to-atlantic-city-in-an-alleged-attempt-to-sexually-assault-two-underage-girls>,
+        "NJ AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/atlantic-city>,
+        <https://w3id.org/caselinker/resource/location/bayonne>,
+        <https://w3id.org/caselinker/resource/location/jersey-city>,
+        <https://w3id.org/caselinker/resource/location/nj>,
+        <https://w3id.org/caselinker/resource/location/trenton> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/nj_ag_2021_005/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/nj_ag_2021_005/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/nj_ag_2021_005/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2021_005/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2021_005/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/financial-cyber-crimes-bureau>,
+        <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/jersey-city-police-department>,
+        <https://w3id.org/caselinker/resource/agency/new-jersey-state-police-department> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/atlantic-city>,
+        <https://w3id.org/caselinker/resource/location/bayonne>,
+        <https://w3id.org/caselinker/resource/location/jersey-city>,
+        <https://w3id.org/caselinker/resource/location/nj>,
+        <https://w3id.org/caselinker/resource/location/trenton> .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_005/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2021-02-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/nj_ag_2021_005/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_005/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2021-02-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/nj_ag_2021_005/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
+
+<https://w3id.org/caselinker/resource/agency/financial-cyber-crimes-bureau> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/hsi> a ns1:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/jersey-city-police-department> a ns4:OrganizationLikeEntity,
+        ns1:LocalAgency ;
+    rdfs:label "Jersey City Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/new-jersey-state-police-department> a ns1:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_005/event/distribution> a ns4:Event,
+        ns5:CSAM_Distribution ;
+    ns3:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_005/event/trafficking> a ns4:Event,
+        ns5:SexTrafficking ;
+    ns3:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_005/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): lodged in the Atlantic County Jail" ;
+    ns5:hasProceedingBeginPoint "2021-02-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_005/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 34 .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_005/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_005/phase/charged> a ns3:LegalProcessPhase,
+        ns4:Phase ;
+    ns3:hasPhaseBeginPoint "2021-02-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/atlantic-city> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Atlantic City" ;
+    ns2:name "Atlantic City" .
+
+<https://w3id.org/caselinker/resource/location/bayonne> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Bayonne" ;
+    ns2:name "Bayonne" .
+
+<https://w3id.org/caselinker/resource/location/jersey-city> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Jersey City" ;
+    ns2:name "Jersey City" .
+
+<https://w3id.org/caselinker/resource/location/nj> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "N.j." ;
+    ns2:name "N.j." .
+
+<https://w3id.org/caselinker/resource/location/trenton> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Trenton" ;
+    ns2:name "Trenton" .
+

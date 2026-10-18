@@ -1,82 +1,97 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1075> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:11.087767" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1075> a ns3:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:37.816726" ;
     dcterms:identifier "ncmec_2024_1075" ;
-    dcterms:modified "2026-09-15T21:08:11.087767" ;
-    dcterms:source <https://www.bbbtv12.com/2024/03/two-charged-with-sex-crimes-in-roane-county/>,
+    dcterms:modified "2026-10-17 23:04:37.816726" ;
+    dcterms:source <https://www.greenvillechronicle.com/s/1630/Quinlan-Man-Arrested-on-Child-Porn-Charges.php>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/roane-county>,
-        <https://caselinker.up.railway.app/resource/location/rockwood> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/operation> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/roane-county>,
-        <https://caselinker.up.railway.app/resource/location/rockwood> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/greenville>,
+        <https://w3id.org/caselinker/resource/location/hunt-county>,
+        <https://w3id.org/caselinker/resource/location/kaufman-county>,
+        <https://w3id.org/caselinker/resource/location/quinlan> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1075/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1075/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_1075/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1075/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/terrell-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/greenville>,
+        <https://w3id.org/caselinker/resource/location/hunt-county>,
+        <https://w3id.org/caselinker/resource/location/kaufman-county>,
+        <https://w3id.org/caselinker/resource/location/quinlan> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1075/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-02-04T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1075/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1075/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1075/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-02-04T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1075/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1075/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of a minor" .
+<https://w3id.org/caselinker/resource/agency/terrell-police-department> a ns2:OrganizationLikeEntity,
+        ns7:LocalAgency ;
+    rdfs:label "Terrell Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1075/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns5:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1075/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/operation> a cac-core:Event,
-        cacontology-taskforce:UndercoverUnit .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1075/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_1075/charge/1> ;
+    ns5:hasProceedingBeginPoint "2024-02-04T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1075/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 44 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 15 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1075/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$100,000\", \"$100,000.00\", \"$25,000.00\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1075/phase/arrested> a ns3:InitialPhase,
+        ns2:Phase ;
+    ns3:hasPhaseBeginPoint "2024-02-04T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1075/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/greenville> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Greenville" ;
+    ns4:name "Greenville" .
 
-<https://caselinker.up.railway.app/resource/location/roane-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Roane County" ;
-    uco-core:name "Roane County" .
+<https://w3id.org/caselinker/resource/location/hunt-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hunt County" ;
+    ns4:name "Hunt County" .
 
-<https://caselinker.up.railway.app/resource/location/rockwood> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Rockwood" ;
-    uco-core:name "Rockwood" .
+<https://w3id.org/caselinker/resource/location/kaufman-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kaufman County" ;
+    ns4:name "Kaufman County" .
 
+<https://w3id.org/caselinker/resource/location/quinlan> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Quinlan" ;
+    ns4:name "Quinlan" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1075/event/possession> a ns3:CSAMIncident,
+        ns2:Event ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_1075/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1075> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_1075/provenance> .

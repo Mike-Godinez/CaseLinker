@@ -1,182 +1,137 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/admission/1/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/admission/1> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_1008> ;
+    ns6:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-02-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/3/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/3> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/agency/department-of-criminal-investigations> a ns6:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "Department of Criminal Investigations" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/person/victim/1> .
+<https://w3id.org/caselinker/resource/agency/hartford-police-department> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/weber-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Weber County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/agency/wisconsin-department-of-justice> a ns4:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "aggravated sexual exploitation of a minor" ;
-    cacontology-legal-outcomes:indictmentCounts 42 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008> a ns2:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:26.922006" ;
+    dcterms:identifier "ncmec_2025_1008" ;
+    dcterms:modified "2026-10-18 00:01:26.922006" ;
+    dcterms:source <https://www.gmtoday.com/daily_news/news/hartford-man-charged-with-15-felonies-for-possession-of-child-porn/article_7a0979e8-ae30-5425-8c1d-2f949ac203e0.html>,
+        "NCMEC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/hartford>,
+        <https://w3id.org/caselinker/resource/location/washington-county>,
+        <https://w3id.org/caselinker/resource/location/west-bend> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/phase/convicted> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/phase/convicted> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/legal-step/convicted> ;
+    ns2:investigationStatus "unknown" ;
+    ns2:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/tech/cybertipline> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-criminal-investigations>,
+        <https://w3id.org/caselinker/resource/agency/hartford-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/wisconsin-department-of-justice> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/hartford>,
+        <https://w3id.org/caselinker/resource/location/washington-county>,
+        <https://w3id.org/caselinker/resource/location/west-bend> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child sexual abuse material" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns1:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/event/multi-jurisdiction> a ns6:Event,
+        ns4:MultiJurisdictionalInvestigation .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/charge/1> ;
+    ns1:hasProceedingBeginPoint "2025-02-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/legal-step/convicted> a ns6:Event,
+        ns6:LegalEvent,
+        ns1:LegalProceeding,
+        ns1:SentencingHearing ;
+    ns1:hasProceedingBeginPoint "2025-02-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 8 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 63 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-02-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/tech/cybertipline> a ns7:NCMECCybertipReport ;
     rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "USED AI TO EDIT FACE OF AT LEAST ONE LOCAL CHILD ONTO PORNOGRAPHIC IMAGE GEPHARDT DAILY By Gephardt Daily Staff March..." ;
-    dcterms:source <https://gephardtdaily.com/top-stories/weber-co-sheriff-west-haven-man-jailed-after-admitting-he-used-ai-to-edit-face-of-at-least-one-local-child-onto-pornographic-image/> ;
-    ns1:admissionContext "WEBER CO. SHERIFF: WEST HAVEN MAN JAILED AFTER ADMITTING HE USED AI TO EDIT FACE OF AT LEAST ONE LOCAL CHILD ONTO PORNOGRAPHIC IMAGE GEPH..." ;
-    ns1:admissionFrame "admitted_he_she" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "USED AI TO EDIT FACE OF AT LEAST ONE LOCAL CHILD ONTO PORNOGRAPHIC IMAGE GEPHARDT DAILY By Gephardt Daily Staff March 5, 2025 https://gephardtdaily" .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns4:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/phase/convicted> a ns6:Phase,
+        ns1:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2025-02-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/utah> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/hartford> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hartford" ;
+    ns5:name "Hartford" .
 
-<https://caselinker.up.railway.app/resource/location/west-haven> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "West Haven" ;
-    uco-core:name "West Haven" .
+<https://w3id.org/caselinker/resource/location/washington-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington County" ;
+    ns5:name "Washington County" .
 
-<https://caselinker.up.railway.app/resource/platform/gen-ai> a cacontology-platforms:FileHostingService ;
-    rdfs:label "Gen AI" .
+<https://w3id.org/caselinker/resource/location/west-bend> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "West Bend" ;
+    ns5:name "West Bend" .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "had child pornography on the computer in his residence, but that he was going to delete it and just had not done so yet" ;
+    dcterms:source <https://www.gmtoday.com/daily_news/news/hartford-man-charged-with-15-felonies-for-possession-of-child-porn/article_7a0979e8-ae30-5425-8c1d-2f949ac203e0.html> ;
+    ns3:admissionContext "ndant stated he watches ‘Live Gore’ every once and a while.\" According to the complaint, Litza admitted that he had child pornography on..." ;
+    ns3:admissionFrame "admitted_paraphrase" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns5:description "had child pornography on the computer in his residence, but that he was going to delete it and just had not done so yet" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:14.237080" ;
-    dcterms:identifier "ncmec_2025_1008" ;
-    dcterms:modified "2026-09-15T21:27:14.237080" ;
-    dcterms:source <https://gephardtdaily.com/top-stories/weber-co-sheriff-west-haven-man-jailed-after-admitting-he-used-ai-to-edit-face-of-at-least-one-local-child-onto-pornographic-image/>,
-        "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/utah>,
-        <https://caselinker.up.railway.app/resource/location/west-haven> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/weber-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/utah>,
-        <https://caselinker.up.railway.app/resource/location/west-haven> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008/event/possession> a ns2:CSAMIncident,
+        ns6:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/admission/1> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/event/ai-csam> a cacontology:DigitallyGeneratedCSAMIncident,
-        <https://cacontology.projectvic.org/ai-csam#AIGeneratedCSAM>,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/3> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/gen-ai>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/3> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/gen-ai>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/facet/possession> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "being the user on the account and editing the files with him in them, including the one of the 15-year-old female" ;
-    dcterms:source <https://gephardtdaily.com/top-stories/weber-co-sheriff-west-haven-man-jailed-after-admitting-he-used-ai-to-edit-face-of-at-least-one-local-child-onto-pornographic-image/> ;
-    ns1:admissionContext "icting child sexual abuse material and child sexual exploitation material were located. “During an interview with Sean, he admitted to be..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "being the user on the account and editing the files with him in them, including the one of the 15-year-old female" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/admission/3> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "to being the user on the account and editing the files with him in them, including the one of the 15-year-old female" ;
-    dcterms:source <https://gephardtdaily.com/top-stories/weber-co-sheriff-west-haven-man-jailed-after-admitting-he-used-ai-to-edit-face-of-at-least-one-local-child-onto-pornographic-image/> ;
-    ns1:admissionContext "ial and child sexual exploitation material were located. “During an interview with Sean, he admitted to being the user on the account and..." ;
-    ns1:admissionFrame "he_admitted_paraphrase" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_1008/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "to being the user on the account and editing the files with him in them, including the one of the 15-year-old female" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1008> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_1008/provenance> .

@@ -1,131 +1,136 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.236240" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/admission/1/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_289/admission/1> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_289> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2022-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_289/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_289/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289> a ns4:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:22.842820" ;
     dcterms:identifier "ncmec_2022_289" ;
-    dcterms:modified "2026-09-15T20:45:06.236240" ;
-    dcterms:source <https://www.wevv.com/news/police-pike-county-man-accused-of-online-child-sex-crimes/article_76d7bb2e-82bb-11ec-841a-8704d252dbcf.html>,
+    dcterms:modified "2026-10-17 21:51:22.842820" ;
+    dcterms:source <https://sports.yahoo.com/scranton-man-arrested-child-pornography-035900720.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/indiana>,
-        <https://caselinker.up.railway.app/resource/location/petersburg>,
-        <https://caselinker.up.railway.app/resource/location/pike-county>,
-        <https://caselinker.up.railway.app/resource/location/potts> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/indiana-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/indiana>,
-        <https://caselinker.up.railway.app/resource/location/petersburg>,
-        <https://caselinker.up.railway.app/resource/location/pike-county>,
-        <https://caselinker.up.railway.app/resource/location/potts> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/lackawanna>,
+        <https://w3id.org/caselinker/resource/location/pa>,
+        <https://w3id.org/caselinker/resource/location/scranton>,
+        <https://w3id.org/caselinker/resource/location/south-scranton> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_289/phase/charged> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_289/phase/charged> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_289/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_289/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_289/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_289/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_289/legal-proceeding> ;
+    ns4:investigationStatus "unknown" ;
+    ns4:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2022_289/tech/cybertipline> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/lackawanna>,
+        <https://w3id.org/caselinker/resource/location/pa>,
+        <https://w3id.org/caselinker/resource/location/scranton>,
+        <https://w3id.org/caselinker/resource/location/south-scranton> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/charge/1> a ns8:CSAM_Possession,
+        ns8:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns8:indictmentCounts 188 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/charge/2> a ns8:CriminalCharge ;
+    rdfs:label "disseminating photos or films of child sex acts and three counts of criminal use of a" ;
+    ns8:indictmentCounts 73 .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/cybertip> a ns5:NCMECCybertipReport ;
+    ns5:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/agency/indiana-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/event/distribution> a ns6:Event,
+        ns8:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns8:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in the county prison" ;
+    ns8:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_289/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_289/charge/2> ;
+    ns8:hasProceedingBeginPoint "2022-09-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 38 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2022-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_289/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_289/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/tech/cybertipline> a ns5:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/platform/telegram> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Telegram" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/phase/charged> a ns4:LegalProcessPhase,
+        ns6:Phase ;
+    ns4:hasPhaseBeginPoint "2022-09-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/location/lackawanna> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lackawanna" ;
+    ns2:name "Lackawanna" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/pa> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pa." ;
+    ns2:name "Pa." .
 
-<https://caselinker.up.railway.app/resource/location/indiana> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/scranton> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Scranton" ;
+    ns2:name "Scranton" .
 
-<https://caselinker.up.railway.app/resource/location/petersburg> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Petersburg" ;
-    uco-core:name "Petersburg" .
+<https://w3id.org/caselinker/resource/location/south-scranton> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Scranton" ;
+    ns2:name "South Scranton" .
 
-<https://caselinker.up.railway.app/resource/location/pike-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "used Telegram, a messaging app, to trade the files" ;
+    dcterms:source <https://sports.yahoo.com/scranton-man-arrested-child-pornography-035900720.html> ;
+    ns1:admissionContext "but then found the illicit files of children and started saving them, the complaint said. He said he used Telegram, a messaging app, to t..." ;
+    ns1:admissionFrame "he_said_paraphrase" ;
+    ns1:admissionTheme "tech_use" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_289/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns2:description "used Telegram, a messaging app, to trade the files" .
 
-<https://caselinker.up.railway.app/resource/location/potts> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Potts'" ;
-    uco-core:name "Potts'" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289/event/possession> a ns4:CSAMIncident,
+        ns6:Event ;
+    ns4:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_289/admission/1> ;
+    ns4:usesChannel <https://w3id.org/caselinker/resource/platform/telegram> ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_289/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/platform/facebook> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Facebook" .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_289/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_289/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2022_289> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_289/provenance> .

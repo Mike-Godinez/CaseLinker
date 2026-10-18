@@ -1,0 +1,65 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_011> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 14:18:20.429204" ;
+    dcterms:identifier "scotland_police_2023_011" ;
+    dcterms:modified "2026-10-18 14:18:20.429204" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scotland_police_2023_011/provenance> ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2023/november/rowland-reilly-guilty-of-sexual-offences-against-children/>,
+        "SCOTLAND POLICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/edinburgh>,
+        <https://w3id.org/caselinker/resource/location/scotland> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/scotland_police_2023_011/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/scotland_police_2023_011/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/scotland_police_2023_011/legal-step/sentenced> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/police-scotland> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/edinburgh>,
+        <https://w3id.org/caselinker/resource/location/scotland> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_011/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2023_011/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_011/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2023_011/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/police-scotland> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_011/legal-step/sentenced> a ns2:Event,
+        ns2:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_011/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 57 .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_011/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_011/phase/sentenced> a ns2:Phase,
+        ns3:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/edinburgh> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Edinburgh" ;
+    ns4:name "Edinburgh" .
+
+<https://w3id.org/caselinker/resource/location/scotland> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Scotland" ;
+    ns4:name "Scotland" .
+

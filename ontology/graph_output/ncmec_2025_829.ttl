@@ -1,79 +1,124 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_829> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:14.044219" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:24.490589" ;
     dcterms:identifier "ncmec_2025_829" ;
-    dcterms:modified "2026-09-15T21:27:14.044219" ;
-    dcterms:source <https://www.tapinto.net/towns/hoboken/sections/law-and-justice/articles/13-month-investigation-by-hoboken-police-department-leads-to-child-pornography-arrest>,
+    dcterms:modified "2026-10-18 00:01:24.490589" ;
+    dcterms:source <https://westmetronews.com/lexington-county-man-arrested-on-child-sexual-abuse-material-charges-4/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/hoboken>,
-        <https://caselinker.up.railway.app/resource/location/new-jersey> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_829/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_829/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/department-of-homeland-security>,
-        <https://caselinker.up.railway.app/resource/agency/hoboken-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/hoboken>,
-        <https://caselinker.up.railway.app/resource/location/new-jersey> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/batesburg-leesville>,
+        <https://w3id.org/caselinker/resource/location/lexington-county>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_829/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_829/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_829/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_829/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_829/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_829/tech/cybertipline> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/lexington-county-sheriffs-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/batesburg-leesville>,
+        <https://w3id.org/caselinker/resource/location/lexington-county>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_829/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_829/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_829/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-01-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_829/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_829/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_829/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_829/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_829/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-01-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_829/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_829/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/department-of-homeland-security> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns4:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/hoboken-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_829/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/agency/lexington-county-sheriffs-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/charge/2> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
     rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns2:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_829/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/charge/3> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns7:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_829/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_829/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_829/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_829/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_829/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_829/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_829/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_829/charge/3> ;
+    ns2:hasProceedingBeginPoint "2025-01-23T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_829/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 38 .
 
-<https://caselinker.up.railway.app/resource/location/hoboken> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/new-jersey> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/tech/cybertipline> a ns8:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_829/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_829/facet/possession> .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns4:FederalAgency .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/phase/charged> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2025-01-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/batesburg-leesville> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Batesburg-leesville" ;
+    ns6:name "Batesburg-leesville" .
+
+<https://w3id.org/caselinker/resource/location/lexington-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lexington County" ;
+    ns6:name "Lexington County" .
+
+<https://w3id.org/caselinker/resource/location/sc> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "S.c." ;
+    ns6:name "S.c." .
+
+<https://w3id.org/caselinker/resource/location/south-carolina> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Carolina" ;
+    ns6:name "South Carolina" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:severityLevel 3 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_829/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_829> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_829/provenance> .

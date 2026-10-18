@@ -1,79 +1,100 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_500> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.178291" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500> a ns2:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:34.023816" ;
     dcterms:identifier "ncmec_2023_500" ;
-    dcterms:modified "2026-09-15T20:55:01.178291" ;
-    dcterms:source <https://thesuncoastnews.com/2023/05/sarasota-man-faces-additional-charges-for-video-voyeurism-and-possessing-obscene-material-of-a-child/>,
+    dcterms:modified "2026-10-17 22:21:34.023816" ;
+    dcterms:source <https://www.carolinacoastonline.com/news_times/article_f68f0376-cffa-11ed-b00c-bbcd8d301acb.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/sarasota> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_500/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_500/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_500/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_500/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/sarasota> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/beaufort>,
+        <https://w3id.org/caselinker/resource/location/carteret-county>,
+        <https://w3id.org/caselinker/resource/location/morehead-city> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_500/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_500/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_500/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_500/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_500/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_500/operation> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/morehead-city-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/beaufort>,
+        <https://w3id.org/caselinker/resource/location/carteret-county>,
+        <https://w3id.org/caselinker/resource/location/morehead-city> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_500/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_500/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_500/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_500/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_500/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_500/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_500/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_500/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_500/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_500/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_500/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possessing material depicting child sex and video" ;
-    cacontology-legal-outcomes:indictmentCounts 40 .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_500/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/agency/morehead-city-police-department> a ns1:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Morehead City Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_500/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500/charge/1> a ns6:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_500/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_500/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_500/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_500/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500/event/distribution> a ns1:Event,
+        ns6:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_500/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_500/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in the Carteret County Detention Center" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_500/charge/1> ;
+    ns6:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_500/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500/operation> a ns1:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_500/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 19 .
 
-<https://caselinker.up.railway.app/resource/location/sarasota> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Sarasota" ;
-    uco-core:name "Sarasota" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_500/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_500/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500/phase/charged> a ns2:LegalProcessPhase,
+        ns1:Phase ;
+    ns2:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/location/beaufort> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Beaufort" ;
+    ns7:name "Beaufort" .
+
+<https://w3id.org/caselinker/resource/location/carteret-county> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Carteret County" ;
+    ns7:name "Carteret County" .
+
+<https://w3id.org/caselinker/resource/location/morehead-city> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Morehead City" ;
+    ns7:name "Morehead City" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500/event/possession> a ns2:CSAMIncident,
+        ns1:Event ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_500/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_500> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_500/provenance> .

@@ -1,0 +1,96 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns8: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_034> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 05:05:32.853943" ;
+    dcterms:identifier "idaho_icac_2024_034" ;
+    dcterms:modified "2026-10-18 05:05:32.853943" ;
+    dcterms:source <https://www.ag.idaho.gov/newsroom/category/icac/?showall=true>,
+        "Idaho ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/idaho>,
+        <https://w3id.org/caselinker/resource/location/twin-falls-county> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/cybertip>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/legal-proceeding> ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/idaho-falls-police-department>,
+        <https://w3id.org/caselinker/resource/agency/jerome-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/rupert-police-department>,
+        <https://w3id.org/caselinker/resource/agency/twin-falls-county-sheriffs-office> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/idaho>,
+        <https://w3id.org/caselinker/resource/location/twin-falls-county> .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-08-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-08-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/idaho-falls-police-department> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/jerome-police-department> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/rupert-police-department> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/twin-falls-county-sheriffs-office> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/charge/1> a ns8:CriminalCharge,
+        ns8:StateCharge ;
+    rdfs:label "Sexual Exploitation of a child" ;
+    ns8:indictmentCounts 21 .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/charge/2> a ns8:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/cybertip> a ns4:NCMECCybertipReport ;
+    ns4:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns8:LegalProceeding ;
+    ns8:hasCharge <https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/charge/1>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/charge/2> ;
+    ns8:hasProceedingBeginPoint "2024-08-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 56 .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns1:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/phase/arrested> a ns2:InitialPhase,
+        ns5:Phase ;
+    ns2:hasPhaseBeginPoint "2024-08-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/idaho> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Idaho" ;
+    ns7:name "Idaho" .
+
+<https://w3id.org/caselinker/resource/location/twin-falls-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Twin Falls County" ;
+    ns7:name "Twin Falls County" .
+
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_034> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/idaho_icac_2024_034/provenance> .

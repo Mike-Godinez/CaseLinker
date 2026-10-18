@@ -1,91 +1,120 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_270> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.222220" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_270/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_270> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-09-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_270/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_270/event/production> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_270/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/fbi> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:22.663816" ;
     dcterms:identifier "ncmec_2022_270" ;
-    dcterms:modified "2026-09-15T20:45:06.222220" ;
-    dcterms:source <https://www2.ljworld.com/news/public-safety/2022/mar/24/lawrence-man-charged-with-multiple-counts-of-child-pornography/>,
+    dcterms:modified "2026-10-17 21:51:22.663816" ;
+    dcterms:source <https://www.8newsnow.com/investigators/las-vegas-police-man-took-shared-photos-of-children-women-at-gyms-pools/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/douglas-county>,
-        <https://caselinker.up.railway.app/resource/location/kansas> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_270/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_270/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_270/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_270/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_270/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/douglas-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/douglas-county>,
-        <https://caselinker.up.railway.app/resource/location/kansas> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/las-vegas>,
+        <https://w3id.org/caselinker/resource/location/wausau> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_270/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_270/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_270/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_270/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_270/event/production>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_270/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/las-vegas>,
+        <https://w3id.org/caselinker/resource/location/wausau> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_270/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_270/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_270/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_270/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_270/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_270/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/douglas-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Douglas County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_270/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
     rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_270/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/charge/2> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_270/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_270/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_270/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_270/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/event/distribution> a ns3:Event,
+        ns4:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_270/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 40 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_270/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_270/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$20,000,\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_270/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_270/charge/2> ;
+    ns4:hasProceedingBeginPoint "2022-09-15T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_270/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/douglas-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Douglas County" ;
-    uco-core:name "Douglas County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/kansas> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Kansas" ;
-    uco-core:name "Kansas" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-09-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_270/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_270/event/production> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_270/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_270/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_270/facet/possession> .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "knows taking these images were wrong,” police wrote in the report" ;
+    dcterms:source <https://www.8newsnow.com/investigators/las-vegas-police-man-took-shared-photos-of-children-women-at-gyms-pools/> ;
+    ns2:admissionContext "area of another juvenile female walking through a parking lot in her gymnastics leotard, James admitted he knows taking these images were..." ;
+    ns2:admissionFrame "admitted_he_she" ;
+    ns2:admissionTheme "other" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_270/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns5:description "knows taking these images were wrong,” police wrote in the report" .
+
+<https://w3id.org/caselinker/resource/location/las-vegas> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Las Vegas" ;
+    ns5:name "Las Vegas" .
+
+<https://w3id.org/caselinker/resource/location/wausau> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wausau" ;
+    ns5:name "Wausau" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/event/csam> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_270/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270/event/production> a ns3:Event,
+        <https://cacontology.projectvic.org/production#ProductionOffense> ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_270/facet/production> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_270> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_270/provenance> .

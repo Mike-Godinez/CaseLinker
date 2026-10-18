@@ -1,0 +1,120 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001> a ns2:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 07:37:09.218124" ;
+    dcterms:identifier "ut_ag_2016_001" ;
+    dcterms:modified "2026-10-18 07:37:09.218124" ;
+    dcterms:source <https://attorneygeneral.utah.gov/utah-attorney-generals-office-announces-sentencing-benjamin-neilson/>,
+        "UT AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/salt-lake-city>,
+        <https://w3id.org/caselinker/resource/location/utah>,
+        <https://w3id.org/caselinker/resource/location/utah-county> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/phase/pleaded-guilty> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/phase/pleaded-guilty> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/legal-step/pleaded-guilty> ;
+    ns2:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/utah-attorney-generals-office> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/salt-lake-city>,
+        <https://w3id.org/caselinker/resource/location/utah>,
+        <https://w3id.org/caselinker/resource/location/utah-county> .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/utah-attorney-generals-office> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/charge/1> a ns1:CriminalCharge,
+        ns1:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/charge/2> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/charge/3> a ns1:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/event/distribution> a ns6:Event,
+        ns1:CSAM_Distribution ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/charge/3> ;
+    ns1:hasProceedingBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/legal-step/pleaded-guilty> a ns6:Event,
+        ns6:LegalEvent,
+        ns1:LegalProceeding,
+        ns1:PleaBargaining ;
+    ns1:hasProceedingBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 40 .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/phase/pleaded-guilty> a ns6:Phase,
+        ns1:PreTrialPhase ;
+    ns2:hasPhaseBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/salt-lake-city> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Salt Lake City" ;
+    ns3:name "Salt Lake City" .
+
+<https://w3id.org/caselinker/resource/location/utah> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Utah" ;
+    ns3:name "Utah" .
+
+<https://w3id.org/caselinker/resource/location/utah-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Utah County" ;
+    ns3:name "Utah County" .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/event/hands-on> a ns2:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001/event/possession> a ns2:CSAMIncident,
+        ns6:Event ;
+    ns2:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ut_ag_2016_001/provenance> .

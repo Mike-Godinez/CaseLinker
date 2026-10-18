@@ -1,108 +1,92 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_143> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.241203" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_143> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:26.067733" ;
     dcterms:identifier "ncmec_2024_143" ;
-    dcterms:modified "2026-09-15T21:08:10.241203" ;
-    dcterms:source <https://www.hernandosheriff.org/Applications/PressReleases/PressReleases/20241017_Possession_of_Child_Pornography_Arrest_%E2%80%93_Andor_Storz_%E2%80%93_2024-00243929.pdf>,
+    dcterms:modified "2026-10-17 23:04:26.067733" ;
+    dcterms:source <https://www.wpbf.com/article/florida-sebastian-police-volunteer-arrested-possession-child-sexual-abuse-material/60513553#:~:text=SEBASTIAN%2C%20Fla.%20%E2%80%94&text=is%20under%20arrest.-,According%20to%20the%20Sebastian%20Police%20Department%2C%20Arnold%20Flannery%20was%20arrested,of%20child%20sexual%20abuse%20material.&text=County%20Sheriff's%20Office-,Flannery%20was%20a%20member%20of%20the%20Sebastian,volunteer%20program%20since%20January%202022>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/hernando-county>,
-        <https://caselinker.up.railway.app/resource/location/spring-hill> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/operation> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/hernando-county>,
-        <https://caselinker.up.railway.app/resource/location/spring-hill> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/sebastian>,
+        <https://w3id.org/caselinker/resource/location/south-florida> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_143/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_143/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_143/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_143/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/indian-river-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/sebastian-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/sebastian>,
+        <https://w3id.org/caselinker/resource/location/south-florida> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_143/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-04-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_143/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_143/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_143/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-04-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_143/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_143/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/sentence/1> .
+<https://w3id.org/caselinker/resource/agency/indian-river-county-sheriffs-office> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/agency/sebastian-police-department> a ns4:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Sebastian Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_143/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "possession of child sexual abuse material" ;
+    ns1:indictmentCounts 51 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_143/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_143/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_143/charge/1> ;
+    ns1:hasProceedingBeginPoint "2024-04-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_143/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_143/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_143/phase/arrested> a ns2:InitialPhase,
+        ns4:Phase ;
+    ns2:hasPhaseBeginPoint "2024-04-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/hernando-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/fla> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns6:name "Fla." .
 
-<https://caselinker.up.railway.app/resource/location/spring-hill> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/sebastian> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sebastian" ;
+    ns6:name "Sebastian" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "owning the social media account in question, however, he denied viewing or possessing the files of CSAM" ;
-    dcterms:source <https://www.hernandosheriff.org/Applications/PressReleases/PressReleases/20241017_Possession_of_Child_Pornography_Arrest_%E2%80%93_Andor_Storz_%E2%80%93_2024-00243929.pdf> ;
-    ns1:admissionContext "sponded to Storz’s residence at 12543 Little Farms Drive in Spring Hill to speak to him. During the interview, Storz’s admitted to owning..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct",
-        "minimization",
-        "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "owning the social media account in question, however, he denied viewing or possessing the files of CSAM" .
+<https://w3id.org/caselinker/resource/location/south-florida> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Florida" ;
+    ns6:name "South Florida" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_143/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/admission/1> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_143/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_143/event/possession> a ns2:CSAMIncident,
+        ns4:Event ;
+    ns2:severityLevel 3 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_143/facet/possession> .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_143> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_143/provenance> .

@@ -1,145 +1,135 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.451824" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_322/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_322> ;
+    ns5:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-05-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_322/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_322/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:28.516646" ;
     dcterms:identifier "ncmec_2024_322" ;
-    dcterms:modified "2026-09-15T21:08:10.451824" ;
-    dcterms:source <https://www.illinoisattorneygeneral.gov/news/story/attorney-general-raoul-charges-macon-county-man-with-dissemination-possession-of-child-sexual-abuse-material>,
+    dcterms:modified "2026-10-17 23:04:28.516646" ;
+    dcterms:source <https://www.fox32chicago.com/news/east-dundee-man-sentenced-child-pornography>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/chicago>,
-        <https://caselinker.up.railway.app/resource/location/decatur>,
-        <https://caselinker.up.railway.app/resource/location/illinois>,
-        <https://caselinker.up.railway.app/resource/location/macon-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/offense-event/charge-3> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/decatur-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/macon-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/chicago>,
-        <https://caselinker.up.railway.app/resource/location/decatur>,
-        <https://caselinker.up.railway.app/resource/location/illinois>,
-        <https://caselinker.up.railway.app/resource/location/macon-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/east-dundee>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/kane-county>,
+        <https://w3id.org/caselinker/resource/location/michigan> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_322/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_322/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_322/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_322/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_322/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_322/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_322/legal-step/sentenced> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/east-dundee>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/kane-county>,
+        <https://w3id.org/caselinker/resource/location/michigan> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/decatur-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Decatur Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/agency/macon-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Macon County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/charge/2> a ns4:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/offense-event/charge-3> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/offense-event/charge-3> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/event/distribution> a ns5:Event,
+        ns4:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_322/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_322/charge/2> ;
+    ns4:hasProceedingBeginPoint "2024-05-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2024_322/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_322/sentence/2> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2024-05-15T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 26 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-05-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_322/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_322/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"30 years\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/sentence/1> a ns4:CriminalSentence,
+        ns4:PrisonSentence ;
+    rdfs:label "8 years" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/sentence/2> a ns4:CriminalSentence,
+        ns4:PrisonSentence ;
+    rdfs:label "23 days" .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/phase/sentenced> a ns5:Phase,
+        ns4:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2024-05-15T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/east-dundee> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "East Dundee" ;
+    ns2:name "East Dundee" .
 
-<https://caselinker.up.railway.app/resource/location/chicago> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/illinois> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Illinois" ;
+    ns2:name "Illinois" .
 
-<https://caselinker.up.railway.app/resource/location/decatur> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Decatur" ;
-    uco-core:name "Decatur" .
+<https://w3id.org/caselinker/resource/location/kane-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kane County" ;
+    ns2:name "Kane County" .
 
-<https://caselinker.up.railway.app/resource/location/illinois> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/michigan> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Michigan" ;
+    ns2:name "Michigan" .
 
-<https://caselinker.up.railway.app/resource/location/macon-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Macon County" ;
-    uco-core:name "Macon County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "sharing a video that depicted the sexual abuse of a child under 13" ;
+    dcterms:source <https://www.fox32chicago.com/news/east-dundee-man-sentenced-child-pornography> ;
+    ns3:admissionContext "r pleading guilty to sharing child pornography. The Kane County State's Attorney's Office announced that Eric Torres, 26, reached a plea..." ;
+    ns3:admissionFrame "admitted_to" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_322/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns2:description "sharing a video that depicted the sexual abuse of a child under 13" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_322/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322/event/csam> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_322/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_322/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_322/offense-event/charge-3> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child exploitation" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_322> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_322/provenance> .

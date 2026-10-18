@@ -1,0 +1,100 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 05:32:21.789610" ;
+    dcterms:identifier "lapd_2022_003" ;
+    dcterms:modified "2026-10-18 05:32:21.789610" ;
+    dcterms:source <https://www.lapdonline.org/newsroom/detectives-seeking-additional-victims-of-sexual-exploitation-nr22252mc/>,
+        "LAPD" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/los-angeles>,
+        <https://w3id.org/caselinker/resource/location/woodland-hills> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/lapd_2022_003/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/lapd_2022_003/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/lapd_2022_003/cybertip>,
+        <https://w3id.org/caselinker/resource/case/lapd_2022_003/event/possession>,
+        <https://w3id.org/caselinker/resource/case/lapd_2022_003/legal-proceeding> ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/lapd_2022_003/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/los-angeles-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/los-angeles>,
+        <https://w3id.org/caselinker/resource/location/woodland-hills> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/lapd_2022_003/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/lapd_2022_003/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/lapd_2022_003/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/lapd_2022_003/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/los-angeles-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns2:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003/charge/2> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked to Van Nuys Jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/lapd_2022_003/charge/1>,
+        <https://w3id.org/caselinker/resource/case/lapd_2022_003/charge/2> ;
+    ns2:hasProceedingBeginPoint "2022-09-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003/tech/cybertipline> a ns7:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003/phase/booked> a ns1:InitialPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2022-09-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/los-angeles> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Los Angeles" ;
+    ns5:name "Los Angeles" .
+
+<https://w3id.org/caselinker/resource/location/woodland-hills> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Woodland Hills" ;
+    ns5:name "Woodland Hills" .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003/event/possession> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/lapd_2022_003/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/lapd_2022_003/provenance> .

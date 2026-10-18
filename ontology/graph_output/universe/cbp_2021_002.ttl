@@ -1,68 +1,108 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/production#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2021_002> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:36:36.684081" ;
+<https://w3id.org/caselinker/resource/case/cbp_2021_002> a ns2:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 00:55:13.502738" ;
     dcterms:identifier "cbp_2021_002" ;
-    dcterms:modified "2026-09-10T19:36:36.684081" ;
+    dcterms:modified "2026-10-18 00:55:13.502738" ;
     dcterms:source <https://www.cbp.gov/newsroom/local-media-release/cbp-officers-hidalgo-snatch-fugitive-wanted-child-sexual-assault>,
         "CBP" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/cbp_2021_002/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/cbp_2021_002/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/cbp_2021_002/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/cbp_2021_002/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/hidalgo-county-sheriffs-office> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/alamo>,
+        <https://w3id.org/caselinker/resource/location/dfolaredo>,
+        <https://w3id.org/caselinker/resource/location/hidalgo>,
+        <https://w3id.org/caselinker/resource/location/hidalgo-county>,
+        <https://w3id.org/caselinker/resource/location/mexico>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/cbp_2021_002/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/cbp_2021_002/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/cbp_2021_002/event/multi-jurisdiction> ;
+    ns2:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/hidalgo-county-sheriffs-office> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/alamo>,
+        <https://w3id.org/caselinker/resource/location/dfolaredo>,
+        <https://w3id.org/caselinker/resource/location/hidalgo>,
+        <https://w3id.org/caselinker/resource/location/hidalgo-county>,
+        <https://w3id.org/caselinker/resource/location/mexico>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2021_002/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/cbp_2021_002/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/cbp_2021_002/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/cbp_2021_002/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2021_002/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/cbp_2021_002/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/cbp_2021_002/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/cbp_2021_002/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/platform/instagram> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/instagram> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "Instagram" .
 
-<https://caselinker.up.railway.app/resource/platform/twitter-x> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/twitter-x> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "Twitter / X" .
 
-<https://caselinker.up.railway.app/resource/agency/hidalgo-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/hidalgo-county-sheriffs-office> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2021_002/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 3 ;
-    cacontology-multi:crossesBorders true .
+<https://w3id.org/caselinker/resource/case/cbp_2021_002/event/multi-jurisdiction> a ns7:Event,
+        ns5:MultiJurisdictionalInvestigation ;
+    ns2:severityLevel 3 ;
+    ns5:crossesBorders true .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2021_002/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/cbp_2021_002/sentence/1> .
+<https://w3id.org/caselinker/resource/case/cbp_2021_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 50 .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2021_002/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 50 .
+<https://w3id.org/caselinker/resource/case/cbp_2021_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns1:victimAge 8 .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2021_002/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/cbp_2021_002/phase/charged> a ns2:LegalProcessPhase,
+        ns7:Phase ;
+    ns2:hasPhaseBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2021_002/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:ProbationSentence ;
-    rdfs:label "probation" .
+<https://w3id.org/caselinker/resource/location/alamo> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Alamo" ;
+    ns4:name "Alamo" .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2021_002/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/dfolaredo> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "@dfolaredo" ;
+    ns4:name "@dfolaredo" .
 
+<https://w3id.org/caselinker/resource/location/hidalgo> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hidalgo" ;
+    ns4:name "Hidalgo" .
+
+<https://w3id.org/caselinker/resource/location/hidalgo-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hidalgo County" ;
+    ns4:name "Hidalgo County" .
+
+<https://w3id.org/caselinker/resource/location/mexico> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mexico" ;
+    ns4:name "Mexico" .
+
+<https://w3id.org/caselinker/resource/location/texas> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns4:name "Texas" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns4:name "United States" .
+
+
+<https://w3id.org/caselinker/resource/case/cbp_2021_002> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/cbp_2021_002/provenance> .

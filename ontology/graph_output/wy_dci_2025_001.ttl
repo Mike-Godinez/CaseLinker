@@ -1,106 +1,100 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_001/admission/1/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/admission/1> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/wy_dci_2025_001> ;
+    ns2:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_001/role/victim/1> a ns6:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns6:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:participatesInEvent <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/goshen-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/goshen-county-sheriffs-office> a ns2:OrganizationLikeEntity,
+        ns4:LocalAgency ;
     rdfs:label "Goshen County Sheriff's Office" .
 
-<https://caselinker.up.railway.app/resource/agency/torrington-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/torrington-police-department> a ns2:OrganizationLikeEntity,
+        ns4:LocalAgency ;
     rdfs:label "Torrington Police Department" .
 
-<https://caselinker.up.railway.app/resource/agency/wyoming-division-of-criminal-investigation> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/wyoming-division-of-criminal-investigation> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/wy_dci_2025_001> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:42:27.133075" ;
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_001> a ns6:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 07:49:26.946710" ;
     dcterms:identifier "wy_dci_2025_001" ;
-    dcterms:modified "2026-09-15T20:42:27.133075" ;
+    dcterms:modified "2026-10-18 07:49:26.946710" ;
     dcterms:source <https://cowboystatedaily.com/2025/01/07/suspect-runs-over-alleged-child-porn-tablet-then-woman-steals-it/>,
         "WY DCI" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/goshen-county> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/goshen-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/torrington-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/wyoming-division-of-criminal-investigation> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/goshen-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/goshen-county> ;
+    ns6:hasStep <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/admission/1>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/event/possession>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/legal-proceeding> ;
+    ns6:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/goshen-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/torrington-police-department>,
+        <https://w3id.org/caselinker/resource/agency/wyoming-division-of-criminal-investigation> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/goshen-county> .
 
-<https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_001/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
     rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns7:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/sentence/1> .
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_001/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/charge/1> ;
+    ns7:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 47 .
 
-<https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_001/role/offender/1> a ns6:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns6:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:participatesInEvent <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"10 years\", \"$10,000\"]" .
-
-<https://caselinker.up.railway.app/resource/platform/facebook> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "Facebook" .
 
-<https://caselinker.up.railway.app/resource/location/goshen-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/goshen-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Goshen County" ;
-    uco-core:name "Goshen County" .
+    ns5:name "Goshen County" .
 
-<https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_001/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "possessing the tablet and taking screenshots of child porn on it, and to possessing more child pornography on his sma..." ;
     dcterms:source <https://cowboystatedaily.com/2025/01/07/suspect-runs-over-alleged-child-porn-tablet-then-woman-steals-it/> ;
     ns1:admissionContext "to the Torrington Police Department and told him his Miranda rights, the affidavit says. Lechleidner admitted to possessing the tablet an..." ;
     ns1:admissionFrame "admitted_to" ;
     ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/role/offender/1> ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/role/offender/1> ;
     ns1:evidenceTier "press_release_stated" ;
     ns1:quoteType "paraphrase" ;
-    uco-core:description "possessing the tablet and taking screenshots of child porn on it, and to possessing more child pornography on his smartphone, Kniss wrote" .
+    ns5:description "possessing the tablet and taking screenshots of child porn on it, and to possessing more child pornography on his smartphone, Kniss wrote" .
 
-<https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/admission/1> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/facebook> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/wy_dci_2025_001/facet/possession> .
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_001/event/possession> a ns6:CSAMIncident,
+        ns2:Event ;
+    ns6:producesArtifact <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/admission/1> ;
+    ns6:usesChannel <https://w3id.org/caselinker/resource/platform/facebook> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/facet/possession> .
 
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/wy_dci_2025_001/provenance> .

@@ -1,73 +1,90 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:02:43.738037" ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2019_003> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 06:14:12.780105" ;
     dcterms:identifier "ohio_ag_2019_003" ;
-    dcterms:modified "2026-09-10T20:02:43.738037" ;
+    dcterms:modified "2026-10-18 06:14:12.780105" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/provenance> ;
     dcterms:source <https://www.ohioattorneygeneral.gov/Media/News-Releases/April-2019/Monroe-County-Man-Sentenced-to-Life-in-Prison-as-S>,
         "OHIO AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/legal-step/sentenced> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ohio-attorney-generals-special-prosecution-section> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/monroe-county>,
+        <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/woodsfield> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/legal-step/sentenced> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/ohio-attorney-generals-special-prosecution-section> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/monroe-county>,
+        <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/woodsfield> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2019-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2019-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/ohio-attorney-generals-special-prosecution-section> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
+<https://w3id.org/caselinker/resource/agency/ohio-attorney-generals-special-prosecution-section> a ns4:OrganizationLikeEntity,
+        ns6:StateAgency ;
     rdfs:label "Ohio Attorney General's Special Prosecution Section" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/sentence/1>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/sentence/2> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasProceedingBeginPoint "2019-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:resultsSentence <https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/sentence/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/legal-step/sentenced> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2019-04-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:LifeImprisonmentSentence ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/sentence/1> a ns5:CriminalSentence,
+        ns5:LifeImprisonmentSentence ;
     rdfs:label "sentenced to life" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/sentence/2> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:LifeImprisonmentSentence ;
-    rdfs:label "life in prison" .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/phase/sentenced> a ns4:Phase,
+        ns5:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2019-04-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/monroe-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Monroe County" ;
+    ns3:name "Monroe County" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2019_003/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/location/ohio> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns3:name "Ohio" .
+
+<https://w3id.org/caselinker/resource/location/woodsfield> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Woodsfield" ;
+    ns3:name "Woodsfield" .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2019_003/event/hands-on> a ns2:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns2:severityLevel 3 .
 

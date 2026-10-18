@@ -1,0 +1,90 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2023_004> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 07:02:45.121688" ;
+    dcterms:identifier "sjpd_2023_004" ;
+    dcterms:modified "2026-10-18 07:02:45.121688" ;
+    dcterms:source <https://www.sjpd.org/Home/Components/News/News/1076/>,
+        "SJPD" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/san-josé> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/sjpd_2023_004/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/sjpd_2023_004/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/sjpd_2023_004/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/sjpd_2023_004/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/sjpd_2023_004/offense-event/charge-1> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/ced-task-force>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/san-josé> .
+
+<https://w3id.org/caselinker/resource/agency/ced-task-force> a ns7:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "CED Task Force" .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2023_004/charge/1> a ns4:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/sjpd_2023_004/offense-event/charge-1> ;
+    ns5:chargeCluster "child_exploitation" ;
+    ns5:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/sjpd_2023_004/offense-event/charge-1> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2023_004/event/trust-violation> a ns2:CustodialAbuse,
+        ns2:TrustViolation ;
+    ns2:violatesRelationship <https://w3id.org/caselinker/resource/case/sjpd_2023_004/relationship/mother> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2023_004/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Santa Clara County Main Jail" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/sjpd_2023_004/charge/1> ;
+    ns4:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2023_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2023_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2023_004/relationship/mother> a ns2:CustodialRelationship,
+        ns2:FamilialRelationship ;
+    ns2:involvesChild <https://w3id.org/caselinker/resource/case/sjpd_2023_004/role/victim/1> ;
+    ns2:involvesCustodian <https://w3id.org/caselinker/resource/case/sjpd_2023_004/role/offender/1> ;
+    ns2:relationshipType "mother" .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2023_004/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/sjpd_2023_004/offense-event/charge-1> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/sjpd_2023_004/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2023_004/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/sjpd_2023_004/offense-event/charge-1> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/sjpd_2023_004/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2023_004/phase/booked> a ns1:InitialPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/san-josé> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "San José" ;
+    ns6:name "San José" .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2023_004/offense-event/charge-1> a ns1:ChildSexualAbuseEvent,
+        ns7:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/sjpd_2023_004> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/sjpd_2023_004/provenance> .

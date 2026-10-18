@@ -1,114 +1,103 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.573121" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435> a ns5:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:29.872769" ;
     dcterms:identifier "ncmec_2024_435" ;
-    dcterms:modified "2026-09-15T21:08:10.573121" ;
-    dcterms:source <https://fox59.com/news/indycrime/columbus-man-arrested-charged-with-distributing-child-porn/>,
+    dcterms:modified "2026-10-17 23:04:29.872769" ;
+    dcterms:source <https://fox59.com/news/indycrime/isp-undercover-operation-leads-to-child-pornography-related-arrest-of-union-city-man/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/bartholomew-county>,
-        <https://caselinker.up.railway.app/resource/location/columbus>,
-        <https://caselinker.up.railway.app/resource/location/evansville>,
-        <https://caselinker.up.railway.app/resource/location/ind> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/indiana-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/us-secret-service> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/bartholomew-county>,
-        <https://caselinker.up.railway.app/resource/location/columbus>,
-        <https://caselinker.up.railway.app/resource/location/evansville>,
-        <https://caselinker.up.railway.app/resource/location/ind> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ind>,
+        <https://w3id.org/caselinker/resource/location/pendleton>,
+        <https://w3id.org/caselinker/resource/location/union-city> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_435/phase/charged> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_435/phase/charged> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_435/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_435/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_435/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_435/operation> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/indiana-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/ind>,
+        <https://w3id.org/caselinker/resource/location/pendleton>,
+        <https://w3id.org/caselinker/resource/location/union-city> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-12-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2024-02-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_435/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_435/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-12-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2024-02-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_435/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_435/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/indiana-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/indiana-state-police-department> a ns3:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/us-secret-service> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "as Level 5 Felonies" ;
-    cacontology-legal-outcomes:indictmentCounts 10 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+    ns1:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-12-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_435/charge/1> ;
+    ns1:hasProceedingBeginPoint "2024-02-19T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 56 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435/operation> a ns4:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 64 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$5,000.00\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-12-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435/phase/charged> a ns5:LegalProcessPhase,
+        ns4:Phase ;
+    ns5:hasPhaseBeginPoint "2024-02-19T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/bartholomew-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/ind> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ind." ;
+    ns2:name "Ind." .
 
-<https://caselinker.up.railway.app/resource/location/columbus> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/pendleton> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pendleton" ;
+    ns2:name "Pendleton" .
 
-<https://caselinker.up.railway.app/resource/location/evansville> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/union-city> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Union City" ;
+    ns2:name "Union City" .
 
-<https://caselinker.up.railway.app/resource/location/ind> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435/event/possession> a ns5:CSAMIncident,
+        ns4:Event ;
+    ns5:severityLevel 2 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_435/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_435/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_435/facet/possession> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_435> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_435/provenance> .

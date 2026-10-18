@@ -1,110 +1,95 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_766> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/agency/oregon-department-of-justice> a cacontology-multi:StateAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.962169" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_766> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:23.729271" ;
     dcterms:identifier "ncmec_2025_766" ;
-    dcterms:modified "2026-09-15T21:27:13.962169" ;
-    dcterms:source <https://www.doj.state.or.us/media-home/news-media-releases/coos-county-man-sentenced-to-162-years-in-prison-for-child-sex-abuse-following-odoj-cyber-tip-investigation/>,
+    dcterms:modified "2026-10-18 00:01:23.729271" ;
+    dcterms:source <https://www.newsleader.com/story/news/local/2025/07/29/pennsylvania-man-facing-37-felonies-in-staunton/85413706007/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/coos-county>,
-        <https://caselinker.up.railway.app/resource/location/oregon> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/oregon-department-of-justice> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/coos-county>,
-        <https://caselinker.up.railway.app/resource/location/oregon> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/pennsylvania>,
+        <https://w3id.org/caselinker/resource/location/staunton>,
+        <https://w3id.org/caselinker/resource/location/verona>,
+        <https://w3id.org/caselinker/resource/location/williamsport> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_766/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_766/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_766/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_766/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/staunton-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/pennsylvania>,
+        <https://w3id.org/caselinker/resource/location/staunton>,
+        <https://w3id.org/caselinker/resource/location/verona>,
+        <https://w3id.org/caselinker/resource/location/williamsport> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_766/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-07-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_766/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_766/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_766/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-07-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_766/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_766/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/agency/staunton-police-department> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_766/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_766/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_766/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held without bond at Middle River Regional Jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_766/charge/1> ;
+    ns2:hasProceedingBeginPoint "2025-07-29T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"162 years\", \"955 months\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_766/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 18 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_766/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/coos-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Coos County" ;
-    uco-core:name "Coos County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_766/phase/charged> a ns3:LegalProcessPhase,
+        ns5:Phase ;
+    ns3:hasPhaseBeginPoint "2025-07-29T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/oregon> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Oregon" ;
-    uco-core:name "Oregon" .
+<https://w3id.org/caselinker/resource/location/pennsylvania> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pennsylvania" ;
+    ns1:name "Pennsylvania" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "ODOJ special agents that he had been previously investigated numerous times for child sex abuse since the 1990s in Co..." ;
-    dcterms:source <https://www.doj.state.or.us/media-home/news-media-releases/coos-county-man-sentenced-to-162-years-in-prison-for-child-sex-abuse-following-odoj-cyber-tip-investigation/> ;
-    ns1:admissionContext "storage account connected to a cellular telephone number registered under Forrest’s name. After executing a search warrant, Forrest admit..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "ODOJ special agents that he had been previously investigated numerous times for child sex abuse since the 1990s in Coos County but had never been charged" .
+<https://w3id.org/caselinker/resource/location/staunton> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Staunton" ;
+    ns1:name "Staunton" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_766/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_766/admission/1> ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/location/verona> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Verona" ;
+    ns1:name "Verona" .
 
+<https://w3id.org/caselinker/resource/location/williamsport> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Williamsport" ;
+    ns1:name "Williamsport" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_766/event/possession> a ns3:CSAMIncident,
+        ns5:Event ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_766/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_766> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_766/provenance> .

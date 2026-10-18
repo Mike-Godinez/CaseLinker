@@ -1,91 +1,135 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:11.210761" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_1165> ;
+    ns4:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-09-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/racine-county-district-attorneys-office> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/racine-county-sheriffs-office> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/wisconsin-department-of-justice-division-of-criminal-investigations> a ns4:OrganizationLikeEntity,
+        ns6:StateAgency ;
+    rdfs:label "Wisconsin Department of Justice Division of Criminal Investigations" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:39.108921" ;
     dcterms:identifier "ncmec_2024_1165" ;
-    dcterms:modified "2026-09-15T21:08:11.210761" ;
-    dcterms:source <https://www.13newsnow.com/article/news/crime/yorktown-man-arrested-child-porn-charges/291-6813f74d-4360-4fba-8b32-0516a42f43ab>,
+    dcterms:modified "2026-10-17 23:04:39.108921" ;
+    dcterms:source <https://www.wearegreenbay.com/news/local-news/wisconsin-man-arrested-after-authorities-find-images-of-child-pornography-on-google-account/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/va>,
-        <https://caselinker.up.railway.app/resource/location/yorktown> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/york-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/va>,
-        <https://caselinker.up.railway.app/resource/location/yorktown> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/racine>,
+        <https://w3id.org/caselinker/resource/location/racine-county>,
+        <https://w3id.org/caselinker/resource/location/wis>,
+        <https://w3id.org/caselinker/resource/location/wisconsin> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/racine-county-district-attorneys-office>,
+        <https://w3id.org/caselinker/resource/agency/racine-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/wisconsin-department-of-justice-division-of-criminal-investigations> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/racine>,
+        <https://w3id.org/caselinker/resource/location/racine-county>,
+        <https://w3id.org/caselinker/resource/location/wis>,
+        <https://w3id.org/caselinker/resource/location/wisconsin> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/york-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "York County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+    ns3:indictmentCounts 12 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/charge/2> a cacontology-legal-outcomes:CSAM_Distribution,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "distribution of child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165/cybertip> a ns5:NCMECCybertipReport ;
+    ns5:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns3:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Racine County Jail" ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/charge/1> ;
+    ns3:hasProceedingBeginPoint "2024-09-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 49 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-09-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165/phase/charged> a ns2:LegalProcessPhase,
+        ns4:Phase ;
+    ns2:hasPhaseBeginPoint "2024-09-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/va> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/racine> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Racine" ;
+    ns8:name "Racine" .
 
-<https://caselinker.up.railway.app/resource/location/yorktown> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/racine-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Racine County" ;
+    ns8:name "Racine County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_1165/facet/possession> .
+<https://w3id.org/caselinker/resource/location/wis> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wis." ;
+    ns8:name "Wis." .
 
+<https://w3id.org/caselinker/resource/location/wisconsin> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wisconsin" ;
+    ns8:name "Wisconsin" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "owning the Google account containing child pornography" ;
+    dcterms:source <https://www.wearegreenbay.com/news/local-news/wisconsin-man-arrested-after-authorities-find-images-of-child-pornography-on-google-account/> ;
+    ns1:admissionContext "itial forensic examination of the devices uncovered numerous images of child pornography. Authorities interviewed Marzette, who allegedly..." ;
+    ns1:admissionFrame "admitted_to" ;
+    ns1:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns8:description "owning the Google account containing child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165/event/possession> a ns2:CSAMIncident,
+        ns4:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/admission/1> ;
+    ns2:severityLevel 3 ;
+    ns8:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1165> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_1165/provenance> .

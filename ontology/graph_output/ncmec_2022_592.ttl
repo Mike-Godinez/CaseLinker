@@ -1,116 +1,95 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.507376" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:27.062022" ;
     dcterms:identifier "ncmec_2022_592" ;
-    dcterms:modified "2026-09-15T20:45:06.507376" ;
-    dcterms:source <https://dailyvoice.com/new-jersey/burlington/news/south-jersey-men-arrested-on-child-pornography-charges-prosecutor/825553/>,
+    dcterms:modified "2026-10-17 21:51:27.062022" ;
+    dcterms:source <https://www.villages-news.com/2022/07/01/sex-offender-in-summerfield-arrested-after-tip-leads-to-child-pornography-activity/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/burlington-county>,
-        <https://caselinker.up.railway.app/resource/location/florence-township>,
-        <https://caselinker.up.railway.app/resource/location/mount-holly>,
-        <https://caselinker.up.railway.app/resource/location/south-jersey> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/pemberton-township-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/burlington-county>,
-        <https://caselinker.up.railway.app/resource/location/florence-township>,
-        <https://caselinker.up.railway.app/resource/location/mount-holly>,
-        <https://caselinker.up.railway.app/resource/location/south-jersey> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/marion-county>,
+        <https://w3id.org/caselinker/resource/location/summerfield> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_592/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_592/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_592/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_592/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_592/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_592/legal-step/sentenced> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/marion-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/marion-county>,
+        <https://w3id.org/caselinker/resource/location/summerfield> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_592/event/csam> ;
+    ns1:perpetratorRegisteredSexOffender true ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_592/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_592/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_592/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/pemberton-township-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Pemberton Township Police Department" .
+<https://w3id.org/caselinker/resource/agency/marion-county-sheriffs-office> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592/cybertip> a ns3:NCMECCybertipReport ;
+    ns3:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked without bond at the Marion County Jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_592/charge/1> ;
+    ns2:hasProceedingBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 58 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592/phase/sentenced> a ns5:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/marion-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Marion County" ;
+    ns7:name "Marion County" .
 
-<https://caselinker.up.railway.app/resource/location/burlington-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Burlington County" ;
-    uco-core:name "Burlington County" .
+<https://w3id.org/caselinker/resource/location/summerfield> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Summerfield" ;
+    ns7:name "Summerfield" .
 
-<https://caselinker.up.railway.app/resource/location/florence-township> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Florence Township" ;
-    uco-core:name "Florence Township" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592/event/csam> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns1:severityLevel 3 ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_592/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/location/mount-holly> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Mount Holly" ;
-    uco-core:name "Mount Holly" .
 
-<https://caselinker.up.railway.app/resource/location/south-jersey> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "South Jersey" ;
-    uco-core:name "South Jersey" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_592/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_592/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2022_592> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_592/provenance> .

@@ -1,75 +1,96 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/svicac_2021_008> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:14:05.982420" ;
+<https://w3id.org/caselinker/resource/case/svicac_2021_008> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 07:08:07.192019" ;
     dcterms:identifier "svicac_2021_008" ;
-    dcterms:modified "2026-09-10T20:14:05.982420" ;
+    dcterms:modified "2026-10-18 07:08:07.192019" ;
     dcterms:source <https://kion546.com/news/2021/02/11/sheriffs-office-big-sur-man-arrested-for-possession-of-child-pornography/>,
         "SVICAC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/svicac_2021_008/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/svicac_2021_008/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/svicac_2021_008/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/svicac_2021_008/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/monterey-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/san-luis-obispo-county-sheriffs-office> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/big-sur>,
+        <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/salinas> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/svicac_2021_008/phase/booked> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/svicac_2021_008/phase/booked> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/svicac_2021_008/event/possession>,
+        <https://w3id.org/caselinker/resource/case/svicac_2021_008/legal-proceeding> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/monterey-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/san-luis-obispo-county-sheriffs-office> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/big-sur>,
+        <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/salinas> .
 
-<https://caselinker.up.railway.app/resource/case/svicac_2021_008/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/svicac_2021_008/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/svicac_2021_008/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/svicac_2021_008/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/svicac_2021_008/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/svicac_2021_008/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/svicac_2021_008/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/svicac_2021_008/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/svicac_2021_008/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/svicac_2021_008/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/svicac_2021_008/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/svicac_2021_008/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/monterey-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/monterey-county-sheriffs-office> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/san-luis-obispo-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/san-luis-obispo-county-sheriffs-office> a ns5:OrganizationLikeEntity,
+        ns4:LocalAgency ;
     rdfs:label "San Luis Obispo County Sheriff's Office" .
 
-<https://caselinker.up.railway.app/resource/case/svicac_2021_008/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/svicac_2021_008/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns3:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/svicac_2021_008/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/svicac_2021_008/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/svicac_2021_008/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    rdfs:comment "Pretrial detention facility (not a sentence): Monterey County Jail" ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/svicac_2021_008/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/svicac_2021_008/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns3:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Monterey County Jail" ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/svicac_2021_008/charge/1> ;
+    ns3:hasProceedingBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/svicac_2021_008/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 53 .
+<https://w3id.org/caselinker/resource/case/svicac_2021_008/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 53 .
 
-<https://caselinker.up.railway.app/resource/case/svicac_2021_008/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/svicac_2021_008/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/svicac_2021_008/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/svicac_2021_008/phase/booked> a ns2:InitialPhase,
+        ns5:Phase ;
+    ns2:hasPhaseBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/svicac_2021_008/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/svicac_2021_008/facet/possession> .
+<https://w3id.org/caselinker/resource/location/big-sur> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Big Sur" ;
+    ns1:name "Big Sur" .
 
+<https://w3id.org/caselinker/resource/location/calif> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Calif." ;
+    ns1:name "Calif." .
+
+<https://w3id.org/caselinker/resource/location/salinas> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Salinas" ;
+    ns1:name "Salinas" .
+
+<https://w3id.org/caselinker/resource/case/svicac_2021_008/event/possession> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/svicac_2021_008/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/svicac_2021_008> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/svicac_2021_008/provenance> .

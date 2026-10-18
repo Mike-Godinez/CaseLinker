@@ -1,0 +1,175 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/admission/1/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/admission/1> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/admission/2/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/admission/2> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/agency/cobb-county-police-department> a ns6:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "Cobb County Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/us-secret-service> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/charge/2> a ns5:CSAM_Production,
+        ns5:CriminalCharge ;
+    rdfs:label "production of child pornography" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/event/trust-violation> a ns7:CustodialAbuse,
+        ns7:TrustViolation ;
+    ns7:violatesRelationship <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/relationship/mother> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/charge/1>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/charge/2> ;
+    ns5:hasProceedingBeginPoint "2010-03-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/legal-step/pleaded-guilty> a ns6:Event,
+        ns6:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:PleaBargaining ;
+    ns5:hasProceedingBeginPoint "2010-03-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 38 .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/relationship/mother> a ns7:CustodialRelationship,
+        ns7:FamilialRelationship ;
+    ns7:involvesChild <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/role/victim/1> ;
+    ns7:involvesCustodian <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/role/offender/1> ;
+    ns7:relationshipType "mother" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2010-03-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/event/production> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 01:29:54.020232" ;
+    dcterms:identifier "doj_ceos_2010_001" ;
+    dcterms:modified "2026-10-18 01:29:54.020232" ;
+    dcterms:source <https://www.justice.gov/archives/opa/pr/georgia-man-pleads-guilty-production-child-pornography-using-hidden-videos-store-bathrooms>,
+        "DOJ CEOS" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/atlanta>,
+        <https://w3id.org/caselinker/resource/location/cobb-county>,
+        <https://w3id.org/caselinker/resource/location/ga>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/kennesaw> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/phase/pleaded-guilty> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/phase/pleaded-guilty> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/admission/1>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/admission/2>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/event/production>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/legal-step/pleaded-guilty> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/cobb-county-police-department>,
+        <https://w3id.org/caselinker/resource/agency/us-secret-service> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/atlanta>,
+        <https://w3id.org/caselinker/resource/location/cobb-county>,
+        <https://w3id.org/caselinker/resource/location/ga>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/kennesaw> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "would also enter and secretly videotape the boys" ;
+    dcterms:source <https://www.justice.gov/archives/opa/pr/georgia-man-pleads-guilty-production-child-pornography-using-hidden-videos-store-bathrooms> ;
+    ns4:admissionContext "tractions. When Wasley observed young boys entering a restroom unaccompanied by an adult, he admitted he would also enter and secretly vi..." ;
+    ns4:admissionFrame "he_admitted_paraphrase" ;
+    ns4:admissionTheme "other" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns3:description "would also enter and secretly videotape the boys" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/phase/pleaded-guilty> a ns6:Phase,
+        ns5:PreTrialPhase ;
+    ns1:hasPhaseBeginPoint "2010-03-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/atlanta> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Atlanta" ;
+    ns3:name "Atlanta" .
+
+<https://w3id.org/caselinker/resource/location/cobb-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cobb County" ;
+    ns3:name "Cobb County" .
+
+<https://w3id.org/caselinker/resource/location/ga> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ga." ;
+    ns3:name "Ga." .
+
+<https://w3id.org/caselinker/resource/location/georgia> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Georgia" ;
+    ns3:name "Georgia" .
+
+<https://w3id.org/caselinker/resource/location/kennesaw> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kennesaw" ;
+    ns3:name "Kennesaw" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/event/csam> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/admission/1> ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/event/production> a ns6:Event,
+        <https://cacontology.projectvic.org/production#ProductionOffense> ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/admission/1> ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/facet/production> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2010-03-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/event/production> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "produced of boys in public restrooms, along with thousands of additional images of child pornography that Wasley had ..." ;
+    dcterms:source <https://www.justice.gov/archives/opa/pr/georgia-man-pleads-guilty-production-child-pornography-using-hidden-videos-store-bathrooms> ;
+    ns4:admissionContext "linked to Wasley. A subsequent search of Wasley’s home yielded a computer containing six videos Wasley admitted he produced of boys in pu..." ;
+    ns4:admissionFrame "admitted_he_she" ;
+    ns4:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns3:description "produced of boys in public restrooms, along with thousands of additional images of child pornography that Wasley had downloaded from the Internet" .
+
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2010_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/doj_ceos_2010_001/provenance> .

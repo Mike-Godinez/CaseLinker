@@ -1,146 +1,141 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_738> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_738/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_738> ;
+    ns4:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_738> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-06-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_738/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_738/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_738/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/person/victim/1> .
+<https://w3id.org/caselinker/resource/agency/lawton-police-department> a ns4:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Lawton Police Department" .
 
-<https://caselinker.up.railway.app/resource/agency/north-dakota-bureau-of-criminal-investigation> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/person/offender/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.929495" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:23.366630" ;
     dcterms:identifier "ncmec_2025_738" ;
-    dcterms:modified "2026-09-15T21:27:13.929495" ;
-    dcterms:source <https://www.valleynewslive.com/2025/02/19/harvey-man-faces-several-child-pornography-charges/>,
+    dcterms:modified "2026-10-18 00:01:23.366630" ;
+    dcterms:source <https://www.swoknews.com/news/violent-child-porn-horde-nets-lawton-man-charges/article_777a1cda-7287-577a-847c-33a0c1b2bf18.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/nd>,
-        <https://caselinker.up.railway.app/resource/location/north-dakota> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/north-dakota-bureau-of-criminal-investigation> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/nd>,
-        <https://caselinker.up.railway.app/resource/location/north-dakota> .
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_738/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_738/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_738/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_738/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_738/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_738/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_738/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_738/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_738/operation> ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_738/tech/cybertipline> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/lawton-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "investigators that he made the post in an effort to gain access to a child" ;
-    dcterms:source <https://www.valleynewslive.com/2025/02/19/harvey-man-faces-several-child-pornography-charges/> ;
-    ns1:admissionContext "r the weekends as a babysitter. If you know anyone who needs a babysitter, let me know.” According to court papers, Miller admitted to in..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "investigators that he made the post in an effort to gain access to a child" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child sexual abuse material" ;
+    ns6:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/event/distribution> a ns4:Event,
+        ns6:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/location/nd> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/location/north-dakota> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_738/charge/1> ;
+    ns6:hasProceedingBeginPoint "2025-06-23T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/platform/facebook> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Facebook" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/operation> a ns4:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 25 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-06-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_738/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_738/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_738/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/tech/cybertipline> a ns7:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/phase/charged> a ns1:LegalProcessPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2025-06-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
+
+<https://w3id.org/caselinker/resource/platform/discord> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Discord" .
+
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
+
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/admission/2> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_738/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/discord>,
+        <https://w3id.org/caselinker/resource/platform/kik>,
+        <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/admission/2> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/event/possession> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_738/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/discord>,
+        <https://w3id.org/caselinker/resource/platform/kik>,
+        <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_738/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_738/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "had viewed and sent child pornography on social media platforms" ;
-    dcterms:source <https://www.valleynewslive.com/2025/02/19/harvey-man-faces-several-child-pornography-charges/> ;
-    ns1:admissionContext "r admitted to investigators that he made the post in an effort to gain access to a child. Miller said he had viewed and sent child pornog..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_738/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "had viewed and sent child pornography on social media platforms" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "chatting with an underage boy and of sending and receiving videos through various media platforms; he said numerous t..." ;
+    dcterms:source <https://www.swoknews.com/news/violent-child-porn-horde-nets-lawton-man-charges/article_777a1cda-7287-577a-847c-33a0c1b2bf18.html> ;
+    ns2:admissionContext "uthrie’s home and the only electronic device recovered was his cell phone, Murrow stated. Guthrie admitted to chatting with an underage b..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "tech_use" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_738/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns5:description "chatting with an underage boy and of sending and receiving videos through various media platforms; he said numerous times his accounts were closed by providers for “violations against guidelines” and" .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_738> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_738/provenance> .

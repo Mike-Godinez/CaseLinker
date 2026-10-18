@@ -1,83 +1,92 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_466> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.594348" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:30.181439" ;
     dcterms:identifier "ncmec_2024_466" ;
-    dcterms:modified "2026-09-15T21:08:10.594348" ;
-    dcterms:source <https://www.wlwt.com/article/kentucky-man-arrested-distribution-child-sex-abuse-material/60731629#:~:text=OWEN%20COUNTY%2C%20Ky.%20%E2%80%94&text=over%20the%20Internet.-,Alex%20Nathan%20Dietz%2C%2026%2C%20is%20charged%20with%20ten%20counts%20of,in%20prison%20for%20each%20count>,
+    dcterms:modified "2026-10-17 23:04:30.181439" ;
+    dcterms:source <https://www.14news.com/2024/11/21/owensboro-man-arrested-child-sex-crimes/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/kentucky>,
-        <https://caselinker.up.railway.app/resource/location/ky>,
-        <https://caselinker.up.railway.app/resource/location/owen-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_466/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_466/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_466/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_466/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/kentucky-state-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/kentucky>,
-        <https://caselinker.up.railway.app/resource/location/ky>,
-        <https://caselinker.up.railway.app/resource/location/owen-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/owensboro> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_466/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_466/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_466/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_466/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_466/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/owensboro-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/owensboro> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_466/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_466/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_466/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_466/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_466/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_466/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-11-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_466/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_466/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/kentucky-state-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Kentucky State Police Department" .
+<https://w3id.org/caselinker/resource/agency/owensboro-police-department> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_466/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466/charge/1> a ns2:CriminalCharge ;
+    rdfs:label "CHILD SEX CRIME CHARGES" ;
+    ns2:indictmentCounts 100 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_466/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_466/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466/charge/2> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_466/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 26 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466/event/distribution> a ns6:Event,
+        ns2:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_466/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_466/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Daviess County Detention Center" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_466/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_466/charge/2> ;
+    ns2:hasProceedingBeginPoint "2024-11-21T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_466/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 34 .
 
-<https://caselinker.up.railway.app/resource/location/kentucky> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/ky> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466/phase/charged> a ns1:LegalProcessPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2024-11-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/ky> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Ky." ;
-    uco-core:name "Ky." .
+    ns3:name "Ky." .
 
-<https://caselinker.up.railway.app/resource/location/owen-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Owen County" ;
-    uco-core:name "Owen County" .
+<https://w3id.org/caselinker/resource/location/owensboro> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Owensboro" ;
+    ns3:name "Owensboro" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_466/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_466> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_466/provenance> .

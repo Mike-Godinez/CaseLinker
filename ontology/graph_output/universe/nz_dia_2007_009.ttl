@@ -1,0 +1,103 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 14:04:15.582839" ;
+    dcterms:identifier "nz_dia_2007_009" ;
+    dcterms:modified "2026-10-18 14:04:15.582839" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/provenance> ;
+    dcterms:source <https://www.dia.govt.nz/press.nsf/d77da9b523f12931cc256ac5000d19b6/2b4eaacbae9d08e3cc25734a0083d50d!OpenDocument>,
+        "NZ DIA" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/porirua>,
+        <https://w3id.org/caselinker/resource/location/titahi-bay> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/event/possession>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/legal-step/sentenced> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-internal-affairs> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/porirua>,
+        <https://w3id.org/caselinker/resource/location/titahi-bay> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2007-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2007-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/department-of-internal-affairs> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/event/distribution> a ns6:Event,
+        ns2:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasProceedingBeginPoint "2007-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/sentence/2> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/legal-step/sentenced> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2007-08-31T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 35 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/sentence/1> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "two years" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/sentence/2> a ns2:CriminalSentence,
+        ns2:MonetaryPenalty ;
+    rdfs:label "$4000" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/phase/sentenced> a ns6:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2007-08-31T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/porirua> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Porirua" ;
+    ns5:name "Porirua" .
+
+<https://w3id.org/caselinker/resource/location/titahi-bay> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Titahi Bay" ;
+    ns5:name "Titahi Bay" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2007_009/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/nz_dia_2007_009/facet/possession> .
+

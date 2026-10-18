@@ -1,92 +1,193 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_436> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.557911" ;
-    dcterms:identifier "ncmec_2025_436" ;
-    dcterms:modified "2026-09-15T21:27:13.557911" ;
-    dcterms:source <https://www.themainewire.com/2025/01/transient-man-arrested-in-lewiston-for-possession-of-child-pornography/>,
-        "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/lewiston> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_436/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_436/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_436/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_436/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_436/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/lewiston-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/maine-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/lewiston> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/admission/1/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_436/admission/1> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_436> ;
+    ns1:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_436/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_436/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_436/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/admission/2/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_436/admission/2> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_436> ;
+    ns1:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_436/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_436/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_436/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_436/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/lewiston-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/baltimore-police-department> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/maine-state-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Maine State Police Department" .
+<https://w3id.org/caselinker/resource/agency/howard-county-police-department> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_436/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/agency/hsi> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/maryland-state-police-department> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns3:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_436/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/distribution> a ns1:Event,
+        ns3:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_436/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/multi-jurisdiction> a ns1:Event,
+        ns5:MultiJurisdictionalInvestigation .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_436/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_436/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_436/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/project-safe-childhood> a ns1:Event,
+        ns5:ProjectSafeChildhoodOperation .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_436/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 24 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_436/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_436/charge/1> ;
+    ns3:hasProceedingBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_436/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$5,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/operation> a ns1:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 67 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_436/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/lewiston> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_436/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_436/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436> a ns4:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:20.095035" ;
+    dcterms:identifier "ncmec_2025_436" ;
+    dcterms:modified "2026-10-18 00:01:20.095035" ;
+    dcterms:source <https://smnewsnet.com/archives/543439/callaway-man-charged-with-possession-of-child-pornography-and-firearms-violations-in-st-marys-county/>,
+        "NCMEC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/callaway>,
+        <https://w3id.org/caselinker/resource/location/jackson>,
+        <https://w3id.org/caselinker/resource/location/memphis>,
+        <https://w3id.org/caselinker/resource/location/mississippi>,
+        <https://w3id.org/caselinker/resource/location/st-marys-county>,
+        <https://w3id.org/caselinker/resource/location/tennessee>,
+        <https://w3id.org/caselinker/resource/location/virginia> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_436/phase/charged> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_436/phase/charged> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_436/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_436/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_436/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_436/operation> ;
+    ns4:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_436/tech/cybertipline> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/baltimore-police-department>,
+        <https://w3id.org/caselinker/resource/agency/howard-county-police-department>,
+        <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/maryland-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/callaway>,
+        <https://w3id.org/caselinker/resource/location/jackson>,
+        <https://w3id.org/caselinker/resource/location/memphis>,
+        <https://w3id.org/caselinker/resource/location/mississippi>,
+        <https://w3id.org/caselinker/resource/location/st-marys-county>,
+        <https://w3id.org/caselinker/resource/location/tennessee>,
+        <https://w3id.org/caselinker/resource/location/virginia> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "accessing explicit content on previous devices, explaining that when he replaced his phone, the files transferred to ..." ;
+    dcterms:source <https://smnewsnet.com/archives/543439/callaway-man-charged-with-possession-of-child-pornography-and-firearms-violations-in-st-marys-county/> ;
+    ns2:admissionContext "s of child pornography from a foreign country that keep coming back after I delete them.” Cornett also admitted to accessing explicit con..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "other" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_436/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns6:description "accessing explicit content on previous devices, explaining that when he replaced his phone, the files transferred to the new device" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/phase/charged> a ns4:LegalProcessPhase,
+        ns1:Phase ;
+    ns4:hasPhaseBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_436/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/location/callaway> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Callaway" ;
+    ns6:name "Callaway" .
+
+<https://w3id.org/caselinker/resource/location/jackson> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Jackson" ;
+    ns6:name "Jackson" .
+
+<https://w3id.org/caselinker/resource/location/memphis> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Memphis" ;
+    ns6:name "Memphis" .
+
+<https://w3id.org/caselinker/resource/location/mississippi> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mississippi" ;
+    ns6:name "Mississippi" .
+
+<https://w3id.org/caselinker/resource/location/st-marys-county> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "St. Mary’s County" ;
+    ns6:name "St. Mary’s County" .
+
+<https://w3id.org/caselinker/resource/location/tennessee> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tennessee" ;
+    ns6:name "Tennessee" .
+
+<https://w3id.org/caselinker/resource/location/virginia> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Virginia" ;
+    ns6:name "Virginia" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/online-only> a ns4:ChildSexualAbuseEvent,
+        ns1:Event ;
+    ns4:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_436/admission/2> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/event/possession> a ns4:CSAMIncident,
+        ns1:Event ;
+    ns4:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_436/admission/2> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_436/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "to downloading explicit materials, explaining that he initially encountered child pornography on websites he thought ..." ;
+    dcterms:source <https://smnewsnet.com/archives/543439/callaway-man-charged-with-possession-of-child-pornography-and-firearms-violations-in-st-marys-county/> ;
+    ns2:admissionContext "you are talking about and have wiped them out because someone has entered into my phone.” He admitted to downloading explicit materials,..." ;
+    ns2:admissionFrame "he_admitted_paraphrase" ;
+    ns2:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_436/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns6:description "to downloading explicit materials, explaining that he initially encountered child pornography on websites he thought were for adult content" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_436> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_436/provenance> .

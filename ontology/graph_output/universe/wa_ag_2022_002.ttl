@@ -1,0 +1,164 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 07:46:56.537539" ;
+    dcterms:identifier "wa_ag_2022_002" ;
+    dcterms:modified "2026-10-18 07:46:56.537539" ;
+    dcterms:source <https://www.atg.wa.gov/news/news-releases/ellensburg-defendant-sentenced-nearly-six-years-prison-first-child-rape>,
+        "WA AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ellensburg>,
+        <https://w3id.org/caselinker/resource/location/hawaii>,
+        <https://w3id.org/caselinker/resource/location/idaho>,
+        <https://w3id.org/caselinker/resource/location/nampa>,
+        <https://w3id.org/caselinker/resource/location/washington>,
+        <https://w3id.org/caselinker/resource/location/washingtons>,
+        <https://w3id.org/caselinker/resource/location/yakima>,
+        <https://w3id.org/caselinker/resource/location/yakima-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/operation> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/washington-state-patrol-missing-and-exploited-children-task-force> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/ellensburg>,
+        <https://w3id.org/caselinker/resource/location/hawaii>,
+        <https://w3id.org/caselinker/resource/location/idaho>,
+        <https://w3id.org/caselinker/resource/location/nampa>,
+        <https://w3id.org/caselinker/resource/location/washington>,
+        <https://w3id.org/caselinker/resource/location/washingtons>,
+        <https://w3id.org/caselinker/resource/location/yakima>,
+        <https://w3id.org/caselinker/resource/location/yakima-county> .
+
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns7:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/washington-state-patrol-missing-and-exploited-children-task-force> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/charge/1> a ns4:CriminalCharge,
+        ns4:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/charge/2> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns5:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/event/distribution> a ns2:Event,
+        ns4:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/event/trust-violation> a ns3:CustodialAbuse,
+        ns3:TrustViolation ;
+    ns3:violatesRelationship <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/relationship/mother> .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/charge/1>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/charge/2> ;
+    ns4:hasProceedingBeginPoint "2022-06-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:resultsSentence <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/legal-step/sentenced> a ns2:Event,
+        ns2:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2022-06-10T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/operation> a ns2:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 32 .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/relationship/mother> a ns3:CustodialRelationship,
+        ns3:FamilialRelationship ;
+    ns3:involvesChild <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/role/victim/1> ;
+    ns3:involvesCustodian <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/role/offender/1> ;
+    ns3:relationshipType "mother" .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-06-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/event/hands-on> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-06-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/event/hands-on> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/sentence/1> a ns4:CriminalSentence,
+        ns4:PrisonSentence ;
+    rdfs:label "nearly six years" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/phase/sentenced> a ns2:Phase,
+        ns4:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2022-06-10T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/ellensburg> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ellensburg" ;
+    ns6:name "Ellensburg" .
+
+<https://w3id.org/caselinker/resource/location/hawaii> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hawaii" ;
+    ns6:name "Hawaii" .
+
+<https://w3id.org/caselinker/resource/location/idaho> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Idaho" ;
+    ns6:name "Idaho" .
+
+<https://w3id.org/caselinker/resource/location/nampa> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nampa" ;
+    ns6:name "Nampa" .
+
+<https://w3id.org/caselinker/resource/location/washington> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington" ;
+    ns6:name "Washington" .
+
+<https://w3id.org/caselinker/resource/location/washingtons> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington's" ;
+    ns6:name "Washington's" .
+
+<https://w3id.org/caselinker/resource/location/yakima> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Yakima" ;
+    ns6:name "Yakima" .
+
+<https://w3id.org/caselinker/resource/location/yakima-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Yakima County" ;
+    ns6:name "Yakima County" .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> .
+
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2022_002> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/wa_ag_2022_002/provenance> .

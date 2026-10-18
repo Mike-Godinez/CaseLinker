@@ -1,92 +1,77 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_868> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.903321" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_868> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:34.893172" ;
     dcterms:identifier "ncmec_2024_868" ;
-    dcterms:modified "2026-09-15T21:08:10.903321" ;
-    dcterms:source <https://www.kvrr.com/2024/07/10/fargo-man-accused-of-sending-receiving-child-pornography/>,
+    dcterms:modified "2026-10-17 23:04:34.893172" ;
+    dcterms:source <https://www.wlwt.com/article/warren-county-ohio-man-indcited-child-sex-crimes-grand-jury/60454272>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/cass-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/fargo-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/cass-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/warren-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_868/phase/indicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_868/phase/indicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_868/legal-proceeding> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/warren-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_868/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_868/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-04-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_868/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_868/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_868/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-04-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_868/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/fargo-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Fargo Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_868/charge/1> a ns3:CriminalCharge ;
+    rdfs:label "CHILD SEX CRIMES" ;
+    ns3:indictmentCounts 60 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_868/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_868/charge/2> a ns3:CriminalCharge ;
+    rdfs:label "illegal use of minor" ;
+    ns3:indictmentCounts 24 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_868/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_868/charge/3> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "pandering sexually-oriented matter involving a minor or impaired person" ;
+    ns3:indictmentCounts 40 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_868/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_868/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_868/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_868/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_868/charge/3> ;
+    ns3:hasProceedingBeginPoint "2024-04-10T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_868/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_868/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 54 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_868/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 6 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_868/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_868/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_868/phase/indicted> a ns1:LegalProcessPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2024-04-10T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_868/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/ohio> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns5:name "Ohio" .
 
-<https://caselinker.up.railway.app/resource/location/cass-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/warren-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Warren County" ;
+    ns5:name "Warren County" .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_868/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_868/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_868/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2024_868> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_868/provenance> .

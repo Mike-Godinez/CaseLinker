@@ -1,0 +1,106 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:50:59.426795" ;
+    dcterms:identifier "brazil_pf_2026_102" ;
+    dcterms:modified "2026-10-18 00:50:59.426795" ;
+    dcterms:source <https://www.gov.br/pf/pt-br/assuntos/noticias/2026/07/pf-investiga-crimes-de-exploracao-sexual-de-criancas-e-adolescentes-no-tocantins>,
+        "BRAZIL PF" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/tocantins> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/event/possession>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/event/production>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/federal-police-department>,
+        <https://w3id.org/caselinker/resource/agency/social-communication-of-the-federal-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/tocantins> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/event/possession>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/event/production> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/event/possession>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/event/production> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/federal-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/social-communication-of-the-federal-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
+    rdfs:label "sexual exploitation of children" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/charge/2> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns5:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/event/distribution> a ns4:Event,
+        ns2:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/event/multi-jurisdiction> a ns4:Event,
+        ns6:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 ;
+    ns6:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/charge/1>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/charge/2> ;
+    ns2:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/phase/arrested> a ns1:InitialPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/tocantins> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tocantins" ;
+    ns3:name "Tocantins" .
+
+<https://w3id.org/caselinker/resource/platform/whatsapp> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "WhatsApp" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/event/possession> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/whatsapp> ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/event/production> a ns4:Event,
+        <https://cacontology.projectvic.org/production#ProductionOffense> ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/whatsapp> ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/facet/production> .
+
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_102> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/brazil_pf_2026_102/provenance> .

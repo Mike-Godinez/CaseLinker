@@ -1,157 +1,80 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_970> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_970> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/attorney-generals-office> a cacontology-multi:StateAgency .
-
-<https://caselinker.up.railway.app/resource/agency/latrobe-city-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Latrobe City Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/western-regional-office-of-the-pennsylvania-office-of-the-attorney-general> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Western Regional Office of the Pennsylvania Office of the Attorney General" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 30 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.991214" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_970> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:36.481885" ;
     dcterms:identifier "ncmec_2024_970" ;
-    dcterms:modified "2026-09-15T21:08:10.991214" ;
-    dcterms:source <https://www.latrobebulletinnews.com/news/local/latrobe-man-arrested-for-possessing-child-pornography/article_10318721-e6fb-5116-ac6a-cf7242869eaf.html>,
+    dcterms:modified "2026-10-17 23:04:36.481885" ;
+    dcterms:source <https://www.lewistownsentinel.com/news/local-news/2024/07/mifflin-man-arraigned-on-child-porn-charges/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/latrobe> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/attorney-generals-office>,
-        <https://caselinker.up.railway.app/resource/agency/latrobe-city-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/western-regional-office-of-the-pennsylvania-office-of-the-attorney-general> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/latrobe> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/mifflin>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_970/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_970/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2024_970/tech/cybertipline> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/office-of-the-attorney-general> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/mifflin>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_970/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-07-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_970/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_970/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_970/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-07-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_970/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_970/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/location/latrobe> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Latrobe" ;
-    uco-core:name "Latrobe" .
+<https://w3id.org/caselinker/resource/agency/office-of-the-attorney-general> a ns5:StateAgency .
 
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_970/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child pornography and one count of criminal use of a communication facility" ;
+    ns6:indictmentCounts 13 .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_970/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/platform/twitter-x> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Twitter / X" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_970/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in Mifflin County Correctional Facility" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_970/charge/1> ;
+    ns6:hasProceedingBeginPoint "2024-07-10T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/admission/2> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat>,
-        <https://caselinker.up.railway.app/resource/platform/social-media>,
-        <https://caselinker.up.railway.app/resource/platform/twitter-x> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_970/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 32 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/admission/2> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat>,
-        <https://caselinker.up.railway.app/resource/platform/social-media>,
-        <https://caselinker.up.railway.app/resource/platform/twitter-x> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_970/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "having child pornography on his phone" ;
-    dcterms:source <https://www.latrobebulletinnews.com/news/local/latrobe-man-arrested-for-possessing-child-pornography/article_10318721-e6fb-5116-ac6a-cf7242869eaf.html> ;
-    ns1:admissionContext "interview between Brasile and Child Predator Section Special Agent Brian Frycklund in the affidavit, Brasile said he knew why they were a..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "having child pornography on his phone" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_970/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_970/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "knew why they were at his home and admitted to having child pornography on his phone" ;
-    dcterms:source <https://www.latrobebulletinnews.com/news/local/latrobe-man-arrested-for-possessing-child-pornography/article_10318721-e6fb-5116-ac6a-cf7242869eaf.html> ;
-    ns1:admissionContext "etween Brasile and Child Predator Section Special Agent Brian Frycklund in the affidavit, Brasile said he knew why they were at his home..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_970/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "knew why they were at his home and admitted to having child pornography on his phone" .
+<https://w3id.org/caselinker/resource/location/mifflin> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mifflin" ;
+    ns2:name "Mifflin" .
 
+<https://w3id.org/caselinker/resource/location/pennsylvania> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pennsylvania" ;
+    ns2:name "Pennsylvania" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_970/event/possession> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_970/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_970> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_970/provenance> .

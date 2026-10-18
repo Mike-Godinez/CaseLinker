@@ -1,90 +1,168 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_213> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.933104" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/admission/1/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_213/admission/1> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_213> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/admission/2/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_213/admission/2> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_213> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/agency/cumberland-county-health-department> a ns6:OrganizationLikeEntity,
+        ns7:LocalAgency ;
+    rdfs:label "Cumberland County Health Department" .
+
+<https://w3id.org/caselinker/resource/agency/cumberland-county-prosecutor> a ns6:OrganizationLikeEntity,
+        ns7:LocalAgency ;
+    rdfs:label "Cumberland County Prosecutor" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns5:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/charge/2> a ns5:CSAM_Distribution,
+        ns5:CriminalCharge ;
+    rdfs:label "distribution of child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/event/distribution> a ns6:Event,
+        ns5:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/event/trust-violation> a ns3:CustodialAbuse,
+        ns3:TrustViolation ;
+    ns3:violatesRelationship <https://w3id.org/caselinker/resource/case/ncmec_2023_213/relationship/mother> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_213/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_213/charge/2> ;
+    ns5:hasProceedingBeginPoint "2023-11-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 25 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/relationship/mother> a ns3:CustodialRelationship,
+        ns3:FamilialRelationship ;
+    ns3:involvesChild <https://w3id.org/caselinker/resource/case/ncmec_2023_213/role/victim/1> ;
+    ns3:involvesCustodian <https://w3id.org/caselinker/resource/case/ncmec_2023_213/role/offender/1> ;
+    ns3:relationshipType "mother" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_213/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_213/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/platform/telegram> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Telegram" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213> a ns2:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:30.386829" ;
     dcterms:identifier "ncmec_2023_213" ;
-    dcterms:modified "2026-09-15T20:55:00.933104" ;
-    dcterms:source <https://www.wesh.com/article/sumter-county-child-pornography-arrest/43413821>,
+    dcterms:modified "2026-10-17 22:21:30.386829" ;
+    dcterms:source <https://6abc.com/giovanni-impellizzeri-nj-school-janitor-elizabeth-moore-new-jersey-bodily-fluids-in-food/14033914/#:~:text=Giovanni%20Impellizzeri%2C%2025%2C%20of%20Vineland,and%20Possession%20of%20Child%20Pornography>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/fla>,
-        <https://caselinker.up.railway.app/resource/location/sumter-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_213/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_213/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_213/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_213/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_213/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/sumter-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/fla>,
-        <https://caselinker.up.railway.app/resource/location/sumter-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cumberland-county>,
+        <https://w3id.org/caselinker/resource/location/deerfield-twp>,
+        <https://w3id.org/caselinker/resource/location/new-jersey>,
+        <https://w3id.org/caselinker/resource/location/upper-deerfield>,
+        <https://w3id.org/caselinker/resource/location/vineland> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_213/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_213/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_213/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_213/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_213/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_213/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_213/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_213/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/cumberland-county-health-department>,
+        <https://w3id.org/caselinker/resource/agency/cumberland-county-prosecutor> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/cumberland-county>,
+        <https://w3id.org/caselinker/resource/location/deerfield-twp>,
+        <https://w3id.org/caselinker/resource/location/new-jersey>,
+        <https://w3id.org/caselinker/resource/location/upper-deerfield>,
+        <https://w3id.org/caselinker/resource/location/vineland> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_213/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_213/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_213/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "was doing \"the devil's work,\" prosecutors said" ;
+    dcterms:source <https://6abc.com/giovanni-impellizzeri-nj-school-janitor-elizabeth-moore-new-jersey-bodily-fluids-in-food/14033914/#:~:text=Giovanni%20Impellizzeri%2C%2025%2C%20of%20Vineland,and%20Possession%20of%20Child%20Pornography> ;
+    ns1:admissionContext "troom, Impellizzeri wrote that he did these sort of things as \"a sexual fetish.\" He also allegedly said he was doing \"the devil's work,\"..." ;
+    ns1:admissionFrame "said_paraphrase" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_213/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "was doing \"the devil's work,\" prosecutors said" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_213/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_213/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_213/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "has a long history of mental health issues and has been treated for a long period of time" ;
+    dcterms:source <https://6abc.com/giovanni-impellizzeri-nj-school-janitor-elizabeth-moore-new-jersey-bodily-fluids-in-food/14033914/#:~:text=Giovanni%20Impellizzeri%2C%2025%2C%20of%20Vineland,and%20Possession%20of%20Child%20Pornography> ;
+    ns1:admissionContext "al risk to the community at large,\" said Judge Cristen P. D'Arrigo. Impellizzeri's public defender Emily Bell said he has a long history..." ;
+    ns1:admissionFrame "said_paraphrase" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_213/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "has a long history of mental health issues and has been treated for a long period of time" .
 
-<https://caselinker.up.railway.app/resource/agency/sumter-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Sumter County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/phase/charged> a ns2:LegalProcessPhase,
+        ns6:Phase ;
+    ns2:hasPhaseBeginPoint "2023-11-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_213/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/location/cumberland-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cumberland County" ;
+    ns4:name "Cumberland County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_213/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 2 .
+<https://w3id.org/caselinker/resource/location/deerfield-twp> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Deerfield Twp." ;
+    ns4:name "Deerfield Twp." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_213/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/location/new-jersey> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Jersey" ;
+    ns4:name "New Jersey" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_213/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_213/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_213/sentence/1> .
+<https://w3id.org/caselinker/resource/location/upper-deerfield> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Upper Deerfield" ;
+    ns4:name "Upper Deerfield" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_213/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/vineland> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Vineland" ;
+    ns4:name "Vineland" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_213/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 10 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/event/possession> a ns2:CSAMIncident,
+        ns6:Event ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/telegram> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_213/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_213/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_213/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_213/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_213/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/fla> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/sumter-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_213/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 2 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_213/facet/csam> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2023_213> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_213/provenance> .

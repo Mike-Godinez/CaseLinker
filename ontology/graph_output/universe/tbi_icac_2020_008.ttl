@@ -1,0 +1,111 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008> a ns2:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 07:19:08.930360" ;
+    dcterms:identifier "tbi_icac_2020_008" ;
+    dcterms:modified "2026-10-18 07:19:08.930360" ;
+    dcterms:source <https://tbinewsroom.com/2020/08/25/washington-county-man-charged-with-sexual-exploitation-of-a-minor/>,
+        "TBI ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/johnson-city>,
+        <https://w3id.org/caselinker/resource/location/washington-county> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/cybertip>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/event/csam>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/federal-probation-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/washington-county-sheriffs-office> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/johnson-city>,
+        <https://w3id.org/caselinker/resource/location/washington-county> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2020-08-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/event/csam> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2020-08-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/event/csam> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/federal-probation-office> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> a ns3:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/washington-county-sheriffs-office> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/charge/1> a ns1:CriminalCharge,
+        ns1:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/charge/2> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/charge/3> a ns1:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns5:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/cybertip> a ns4:NCMECCybertipReport ;
+    ns4:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/event/distribution> a ns6:Event,
+        ns1:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/event/multi-jurisdiction> a ns6:Event,
+        ns3:MultiJurisdictionalInvestigation .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns1:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Washington County Jail" ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/charge/1>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/charge/2>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/charge/3> ;
+    ns1:hasProceedingBeginPoint "2020-08-25T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/phase/charged> a ns2:LegalProcessPhase,
+        ns6:Phase ;
+    ns2:hasPhaseBeginPoint "2020-08-25T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/johnson-city> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Johnson City" ;
+    ns7:name "Johnson City" .
+
+<https://w3id.org/caselinker/resource/location/washington-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington County" ;
+    ns7:name "Washington County" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/event/csam> a ns2:CSAMIncident,
+        ns6:Event ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_008> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/tbi_icac_2020_008/provenance> .

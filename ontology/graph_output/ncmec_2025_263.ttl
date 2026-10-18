@@ -1,106 +1,160 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_263> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.391650" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/admission/1/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_263/admission/1> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_263> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/admission/2/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_263/admission/2> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_263> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_263/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_263/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_263/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/fbi> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/office-of-the-federal-public-defender> a ns2:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "Office of the Federal Public Defender" .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns1:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/charge/2> a ns1:CSAM_Distribution,
+        ns1:CriminalCharge ;
+    rdfs:label "distribution of child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/event/distribution> a ns2:Event,
+        ns1:CSAM_Distribution ;
+    ns3:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_263/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_263/charge/2> ;
+    ns1:hasProceedingBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/operation> a ns2:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 29 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263> a ns3:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:18.255565" ;
     dcterms:identifier "ncmec_2025_263" ;
-    dcterms:modified "2026-09-15T21:27:13.391650" ;
-    dcterms:source <https://nowhabersham.com/former-metro-atlanta-police-officer-faces-child-exploitation-charges-in-north-georgia/>,
+    dcterms:modified "2026-10-18 00:01:18.255565" ;
+    dcterms:source <https://www.yahoo.com/news/articles/ocean-view-man-facing-federal-213100428.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/atlanta>,
-        <https://caselinker.up.railway.app/resource/location/gilmer-county>,
-        <https://caselinker.up.railway.app/resource/location/habersham>,
-        <https://caselinker.up.railway.app/resource/location/north-georgia> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_263/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_263/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_263/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_263/offense-event/charge-1> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/gilmer-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/icac> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/atlanta>,
-        <https://caselinker.up.railway.app/resource/location/gilmer-county>,
-        <https://caselinker.up.railway.app/resource/location/habersham>,
-        <https://caselinker.up.railway.app/resource/location/north-georgia> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/hawaii>,
+        <https://w3id.org/caselinker/resource/location/honolulu> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_263/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_263/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_263/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_263/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_263/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_263/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_263/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_263/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_263/operation> ;
+    ns3:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_263/tech/cybertipline> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/office-of-the-federal-public-defender>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/hawaii>,
+        <https://w3id.org/caselinker/resource/location/honolulu> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_263/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_263/offense-event/charge-1> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_263/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "his “papi ” that he raped a young girl until she “started crying" ;
+    dcterms:source <https://www.yahoo.com/news/articles/ocean-view-man-facing-federal-213100428.html> ;
+    ns4:admissionContext "ranscripts of a conversation between Forcum and another male pedophile on Hawaii island. During the graphic sexual messaging between the..." ;
+    ns4:admissionFrame "admitted_to" ;
+    ns4:admissionTheme "other" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_263/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns6:description "his “papi ” that he raped a young girl until she “started crying" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_263/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_263/offense-event/charge-1> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_263/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/phase/charged> a ns3:LegalProcessPhase,
+        ns2:Phase ;
+    ns3:hasPhaseBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/gilmer-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Gilmer County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_263/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_263/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_263/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/location/hawaii> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hawaii" ;
+    ns6:name "Hawaii" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_263/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2025_263/offense-event/charge-1> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_263/offense-event/charge-1> .
+<https://w3id.org/caselinker/resource/location/honolulu> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Honolulu" ;
+    ns6:name "Honolulu" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_263/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_263/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_263/sentence/1> .
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_263/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 30 .
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_263/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/event/hands-on> a ns3:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_263/admission/2> ;
+    ns3:severityLevel 3 ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/kik> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_263/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/event/possession> a ns3:CSAMIncident,
+        ns2:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_263/admission/2> ;
+    ns3:severityLevel 3 ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_263/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_263/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "feeling bad while sexually assaulting the girl" ;
+    dcterms:source <https://www.yahoo.com/news/articles/ocean-view-man-facing-federal-213100428.html> ;
+    ns4:admissionContext "um allegedly admits to his “papi ” that he raped a young girl until she “started crying.” Forcum allegedly admitted to feeling bad while..." ;
+    ns4:admissionFrame "admitted_to" ;
+    ns4:admissionTheme "harm_conduct" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_263/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns6:description "feeling bad while sexually assaulting the girl" .
 
-<https://caselinker.up.railway.app/resource/location/atlanta> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
 
-<https://caselinker.up.railway.app/resource/location/gilmer-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Gilmer County" ;
-    uco-core:name "Gilmer County" .
-
-<https://caselinker.up.railway.app/resource/location/habersham> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Habersham" ;
-    uco-core:name "Habersham" .
-
-<https://caselinker.up.railway.app/resource/location/north-georgia> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "North Georgia" ;
-    uco-core:name "North Georgia" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_263/offense-event/charge-1> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child exploitation" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_263> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_263/provenance> .

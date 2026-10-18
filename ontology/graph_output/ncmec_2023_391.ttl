@@ -1,93 +1,132 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns8: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.087000" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_391/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_391> ;
+    ns5:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_391/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_391/offense-event/charge-1> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_391/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:32.585819" ;
     dcterms:identifier "ncmec_2023_391" ;
-    dcterms:modified "2026-09-15T20:55:01.087000" ;
-    dcterms:source <https://www.yahoo.com/lifestyle/convicted-sex-offender-jacksonville-federally-201129462.html>,
+    dcterms:modified "2026-10-17 22:21:32.585819" ;
+    dcterms:source <https://www.wallowa.com/news/local/enterprise-woman-arrested-on-child-porn-charges/article_6de4074e-e90c-11ed-9e85-db35d0f6fb48.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/jacksonville> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/event/project-safe-childhood>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/legal-step/convicted> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/fbi> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/jacksonville> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/pendleton>,
+        <https://w3id.org/caselinker/resource/location/wallowa-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_391/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_391/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_391/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_391/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_391/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_391/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_391/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_391/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_391/offense-event/charge-1> ;
+    ns8:involvesAgency <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/pendleton>,
+        <https://w3id.org/caselinker/resource/location/wallowa-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/event/possession> ;
-    cacontology:perpetratorRegisteredSexOffender true ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/charge/1> a ns4:CriminalCharge ;
+    rdfs:label "encouraging child sexual abuse in the first degree and taken to the" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2023_391/offense-event/charge-1> ;
+    ns4:indictmentCounts 10 ;
+    ns3:chargeCluster "encouraging_child_sexual_abuse" ;
+    ns3:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_391/offense-event/charge-1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/charge/2> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/event/distribution> a ns5:Event,
+        ns4:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/event/project-safe-childhood> a cac-core:Event,
-        cacontology-multi:ProjectSafeChildhoodOperation ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Umatilla County Jail" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_391/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_391/charge/2> ;
+    ns4:hasProceedingBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 37 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_391/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_391/offense-event/charge-1> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_391/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns8:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"110 years\", \"25 years\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "was asked if she wanted to prosecute the case or if she would prefer that Michalowski do it and she turned it over to..." ;
+    dcterms:source <https://www.wallowa.com/news/local/enterprise-woman-arrested-on-child-porn-charges/article_6de4074e-e90c-11ed-9e85-db35d0f6fb48.html> ;
+    ns3:admissionContext "enior assistant attorney general and special deputy district attorney for Wallowa County. Frolander said she was asked if she wanted to p..." ;
+    ns3:admissionFrame "said_paraphrase" ;
+    ns3:admissionTheme "other" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_391/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns7:description "was asked if she wanted to prosecute the case or if she would prefer that Michalowski do it and she turned it over to Michalowski" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/phase/sentenced> a ns5:Phase,
+        ns4:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/jacksonville> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/pendleton> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pendleton" ;
+    ns7:name "Pendleton" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_391/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_391/facet/possession> .
+<https://w3id.org/caselinker/resource/location/wallowa-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wallowa County" ;
+    ns7:name "Wallowa County" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/event/csam> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns1:severityLevel 3 ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_391/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391/offense-event/charge-1> a ns1:ChildSexualAbuseEvent,
+        ns5:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: encouraging child sexual abuse in the first degree and taken to the" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_391> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_391/provenance> .

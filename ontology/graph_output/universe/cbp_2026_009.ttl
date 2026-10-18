@@ -1,0 +1,95 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/cbp_2026_009> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 00:55:13.455630" ;
+    dcterms:identifier "cbp_2026_009" ;
+    dcterms:modified "2026-10-18 00:55:13.455630" ;
+    dcterms:source <https://www.cbp.gov/newsroom/local-media-release/cbp-officers-capture-man-sought-child-sexual-assault-charges>,
+        "CBP" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/el-paso>,
+        <https://w3id.org/caselinker/resource/location/el-paso-county>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/ysleta> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/cbp_2026_009/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/cbp_2026_009/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/cbp_2026_009/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/cbp_2026_009/legal-proceeding> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/el-paso-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/el-paso>,
+        <https://w3id.org/caselinker/resource/location/el-paso-county>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/ysleta> .
+
+<https://w3id.org/caselinker/resource/case/cbp_2026_009/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/cbp_2026_009/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/cbp_2026_009/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/cbp_2026_009/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/el-paso-police-department> a ns2:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "El Paso Police Department" .
+
+<https://w3id.org/caselinker/resource/case/cbp_2026_009/event/multi-jurisdiction> a ns2:Event,
+        ns5:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 ;
+    ns5:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/cbp_2026_009/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns7:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the El Paso County Jail" ;
+    ns7:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/cbp_2026_009/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 21 .
+
+<https://w3id.org/caselinker/resource/case/cbp_2026_009/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/cbp_2026_009/phase/booked> a ns1:InitialPhase,
+        ns2:Phase ;
+    ns1:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/el-paso> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "El Paso" ;
+    ns4:name "El Paso" .
+
+<https://w3id.org/caselinker/resource/location/el-paso-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "El Paso County" ;
+    ns4:name "El Paso County" .
+
+<https://w3id.org/caselinker/resource/location/texas> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns4:name "Texas" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns4:name "United States" .
+
+<https://w3id.org/caselinker/resource/location/ysleta> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ysleta" ;
+    ns4:name "Ysleta" .
+
+
+<https://w3id.org/caselinker/resource/case/cbp_2026_009> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/cbp_2026_009/provenance> .

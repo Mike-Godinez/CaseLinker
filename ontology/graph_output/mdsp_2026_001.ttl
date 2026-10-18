@@ -1,0 +1,142 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 14:15:57.804559" ;
+    dcterms:identifier "mdsp_2026_001" ;
+    dcterms:modified "2026-10-18 14:15:57.804559" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/mdsp_2026_001/provenance> ;
+    dcterms:source <https://mdsp.maryland.gov/about-us/newsroom/maryland-state-police-arrest-man-child-pornography-charges-prince-georges-county>,
+        "MDSP" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/bladensburg>,
+        <https://w3id.org/caselinker/resource/location/college-park>,
+        <https://w3id.org/caselinker/resource/location/georges-county>,
+        <https://w3id.org/caselinker/resource/location/maryland> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/mdsp_2026_001/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/mdsp_2026_001/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/mdsp_2026_001/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2026_001/event/possession>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2026_001/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2026_001/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2026_001/offense-event/charge-3> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/maryland-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/prince-georges-county-department-of-corrections>,
+        <https://w3id.org/caselinker/resource/agency/prince-georges-county-police-department> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/bladensburg>,
+        <https://w3id.org/caselinker/resource/location/college-park>,
+        <https://w3id.org/caselinker/resource/location/georges-county>,
+        <https://w3id.org/caselinker/resource/location/maryland> .
+
+<https://w3id.org/caselinker/resource/agency/hsi> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/maryland-state-police-department> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/prince-georges-county-department-of-corrections> a ns7:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "Prince George's County Department of Corrections" .
+
+<https://w3id.org/caselinker/resource/agency/prince-georges-county-police-department> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns4:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/charge/2> a ns4:CSAM_Distribution,
+        ns4:CriminalCharge ;
+    rdfs:label "distribution of child pornography" .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/charge/3> a ns4:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/mdsp_2026_001/offense-event/charge-3> ;
+    ns6:chargeCluster "child_exploitation" ;
+    ns6:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/mdsp_2026_001/offense-event/charge-3> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/event/distribution> a ns7:Event,
+        ns4:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/event/trust-violation> a ns3:AuthorityAbuse,
+        ns3:TrustViolation ;
+    ns3:violatesRelationship <https://w3id.org/caselinker/resource/case/mdsp_2026_001/relationship/teacher> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/mdsp_2026_001/charge/1>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2026_001/charge/2>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2026_001/charge/3> ;
+    ns4:hasProceedingBeginPoint "2026-09-15T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/relationship/teacher> a ns3:CustodialRelationship,
+        ns3:Teacher ;
+    ns3:involvesChild <https://w3id.org/caselinker/resource/case/mdsp_2026_001/role/victim/1> ;
+    ns3:involvesCustodian <https://w3id.org/caselinker/resource/case/mdsp_2026_001/role/offender/1> ;
+    ns3:relationshipType "teacher" .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-09-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/mdsp_2026_001/event/possession>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2026_001/offense-event/charge-3> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/mdsp_2026_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-09-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/mdsp_2026_001/event/possession>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2026_001/offense-event/charge-3> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/mdsp_2026_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/phase/charged> a ns1:LegalProcessPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2026-09-15T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/bladensburg> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Bladensburg" ;
+    ns2:name "Bladensburg" .
+
+<https://w3id.org/caselinker/resource/location/college-park> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "College Park" ;
+    ns2:name "College Park" .
+
+<https://w3id.org/caselinker/resource/location/georges-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "George's County" ;
+    ns2:name "George's County" .
+
+<https://w3id.org/caselinker/resource/location/maryland> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Maryland" ;
+    ns2:name "Maryland" .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/event/possession> a ns1:CSAMIncident,
+        ns7:Event ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/mdsp_2026_001/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2026_001/offense-event/charge-3> a ns1:ChildSexualAbuseEvent,
+        ns7:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+

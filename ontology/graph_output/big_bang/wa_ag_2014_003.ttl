@@ -1,68 +1,91 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2014_003> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:25:17.071150" ;
+<https://w3id.org/caselinker/resource/case/wa_ag_2014_003> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 07:46:57.001827" ;
     dcterms:identifier "wa_ag_2014_003" ;
-    dcterms:modified "2026-09-10T20:25:17.071150" ;
+    dcterms:modified "2026-10-18 07:46:57.001827" ;
     dcterms:source <https://www.atg.wa.gov/news/news-releases/ag-prosecutors-win-conviction-spokane-man-first-degree-rape>,
         "WA AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/legal-step/convicted> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/attorney-generals-office>,
-        <https://caselinker.up.railway.app/resource/agency/attorney-generals-sexually-violent-predator-unit>,
-        <https://caselinker.up.railway.app/resource/agency/office-of-the-attorney-general>,
-        <https://caselinker.up.railway.app/resource/agency/spokane-county-prosecutor> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/spokane>,
+        <https://w3id.org/caselinker/resource/location/spokane-county>,
+        <https://w3id.org/caselinker/resource/location/washington> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/wa_ag_2014_003/phase/convicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/wa_ag_2014_003/phase/convicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/wa_ag_2014_003/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2014_003/legal-step/convicted> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/attorney-generals-sexually-violent-predator-unit>,
+        <https://w3id.org/caselinker/resource/agency/office-of-the-attorney-general>,
+        <https://w3id.org/caselinker/resource/agency/spokane-county-prosecutor> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/spokane>,
+        <https://w3id.org/caselinker/resource/location/spokane-county>,
+        <https://w3id.org/caselinker/resource/location/washington> .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/wa_ag_2014_003/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2014-12-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/wa_ag_2014_003/event/hands-on> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/wa_ag_2014_003/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/wa_ag_2014_003/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2014-12-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/wa_ag_2014_003/event/hands-on> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/wa_ag_2014_003/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/attorney-generals-office> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns4:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/attorney-generals-sexually-violent-predator-unit> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
+<https://w3id.org/caselinker/resource/agency/attorney-generals-sexually-violent-predator-unit> a ns2:OrganizationLikeEntity,
+        ns4:StateAgency ;
     rdfs:label "Attorney General's Sexually Violent Predator Unit" .
 
-<https://caselinker.up.railway.app/resource/agency/office-of-the-attorney-general> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/office-of-the-attorney-general> a ns4:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/spokane-county-prosecutor> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/spokane-county-prosecutor> a ns2:OrganizationLikeEntity,
+        ns4:LocalAgency ;
     rdfs:label "Spokane County Prosecutor" .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/wa_ag_2014_003/legal-step/convicted> a ns2:Event,
+        ns2:LegalEvent,
+        ns6:LegalProceeding,
+        ns6:SentencingHearing ;
+    ns6:hasProceedingBeginPoint "2014-12-19T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/wa_ag_2014_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/wa_ag_2014_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/wa_ag_2014_003/phase/convicted> a ns2:Phase,
+        ns6:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2014-12-19T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2014_003/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/location/spokane> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Spokane" ;
+    ns3:name "Spokane" .
 
+<https://w3id.org/caselinker/resource/location/spokane-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Spokane County" ;
+    ns3:name "Spokane County" .
+
+<https://w3id.org/caselinker/resource/location/washington> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington" ;
+    ns3:name "Washington" .
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2014_003/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns1:severityLevel 3 .
+
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2014_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/wa_ag_2014_003/provenance> .

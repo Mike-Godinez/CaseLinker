@@ -1,112 +1,125 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-usa-federal: <https://cacontology.projectvic.org/usa-federal-law#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:02:36.411469" ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 06:14:12.428465" ;
     dcterms:identifier "ohio_ag_2020_001" ;
-    dcterms:modified "2026-09-10T20:02:36.411469" ;
+    dcterms:modified "2026-10-18 06:14:12.428465" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/provenance> ;
     dcterms:source <https://www.ohioattorneygeneral.gov/Media/News-Releases/December-2020/Ashtabula-Woman-Sentenced-to-Life-in-Prison>,
         "OHIO AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/offense-event/charge-1> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ashtabula-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/conneaut-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ohio-attorney-generals-office> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ashtabula-county>,
+        <https://w3id.org/caselinker/resource/location/jefferson>,
+        <https://w3id.org/caselinker/resource/location/ohio> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/offense-event/charge-1> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/ashtabula-police-department>,
+        <https://w3id.org/caselinker/resource/agency/conneaut-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ohio-attorney-generals-office> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/ashtabula-county>,
+        <https://w3id.org/caselinker/resource/location/jefferson>,
+        <https://w3id.org/caselinker/resource/location/ohio> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2020-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/offense-event/charge-1> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2020-12-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/offense-event/charge-1> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2020-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/offense-event/charge-1> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2020-12-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/offense-event/charge-1> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/ashtabula-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/ashtabula-police-department> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/conneaut-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/conneaut-police-department> a ns5:OrganizationLikeEntity,
+        ns3:LocalAgency ;
     rdfs:label "Conneaut Police Department" .
 
-<https://caselinker.up.railway.app/resource/agency/ohio-attorney-generals-office> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/ohio-attorney-generals-office> a ns3:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/charge/1> a ns4:CriminalCharge ;
     rdfs:label "rape" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/offense-event/charge-1> ;
-    cacontology-legal-outcomes:indictmentCounts 12 ;
-    ns1:chargeCluster "rape" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/offense-event/charge-1> .
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/offense-event/charge-1> ;
+    ns4:indictmentCounts 12 ;
+    ns2:chargeCluster "rape" ;
+    ns2:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/offense-event/charge-1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2020-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/sentence/1>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/sentence/2>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/sentence/3> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/charge/1> ;
+    ns4:hasProceedingBeginPoint "2020-12-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:resultsSentence <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/sentence/2> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2020-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2020-12-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 41 .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 41 .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:LifeImprisonmentSentence ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/sentence/1> a ns4:CriminalSentence,
+        ns4:LifeImprisonmentSentence ;
     rdfs:label "sentenced to life" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/sentence/2> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "10 years" .
-
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/sentence/3> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/sentence/2> a ns4:CriminalSentence,
+        ns4:PrisonSentence ;
     rdfs:label "25 years" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2020-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/phase/sentenced> a ns5:Phase,
+        ns4:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2020-12-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/platform/twitter-x> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/location/ashtabula-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ashtabula County" ;
+    ns6:name "Ashtabula County" .
+
+<https://w3id.org/caselinker/resource/location/jefferson> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Jefferson" ;
+    ns6:name "Jefferson" .
+
+<https://w3id.org/caselinker/resource/location/ohio> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns6:name "Ohio" .
+
+<https://w3id.org/caselinker/resource/platform/twitter-x> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "Twitter / X" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/twitter-x> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns5:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/twitter-x> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2020_001/offense-event/charge-1> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        cacontology-usa-federal:AggravatedSexualAbuse,
-        uco-action:Crime ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2020_001/offense-event/charge-1> a ns1:ChildSexualAbuseEvent,
+        ns5:Event,
+        <https://cacontology.projectvic.org/usa-federal-law#AggravatedSexualAbuse>,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
     rdfs:label "Inferred offense from charge: rape" ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/twitter-x> .
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/twitter-x> .
 

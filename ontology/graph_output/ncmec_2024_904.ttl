@@ -1,126 +1,88 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_904> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/ashland-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Ashland County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.926581" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:35.652704" ;
     dcterms:identifier "ncmec_2024_904" ;
-    dcterms:modified "2026-09-15T21:08:10.926581" ;
-    dcterms:source <https://www.ashlandcountypictures.com/post/an-ashland-resident-entered-a-plea-of-not-guilty-during-his-arraignment-on-16-felony-counts-related/>,
+    dcterms:modified "2026-10-17 23:04:35.652704" ;
+    dcterms:source <https://www.limaohio.com/top-stories/2024/04/03/delphos-man-sentenced-in-van-wert-courtroom/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ashland>,
-        <https://caselinker.up.railway.app/resource/location/ashland-county>,
-        <https://caselinker.up.railway.app/resource/location/jordan>,
-        <https://caselinker.up.railway.app/resource/location/ohio> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ashland-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ashland>,
-        <https://caselinker.up.railway.app/resource/location/ashland-county>,
-        <https://caselinker.up.railway.app/resource/location/jordan>,
-        <https://caselinker.up.railway.app/resource/location/ohio> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/delphos>,
+        <https://w3id.org/caselinker/resource/location/van-wert-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_904/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_904/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_904/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_904/legal-step/sentenced> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/delphos>,
+        <https://w3id.org/caselinker/resource/location/van-wert-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "illegal use of a" ;
-    cacontology-legal-outcomes:indictmentCounts 11 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-04-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_904/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 7 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-04-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_904/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "pandering" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_904/charge/1> ;
+    ns2:hasProceedingBeginPoint "2024-04-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2024_904/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_904/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_904/sentence/3> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904/legal-step/sentenced> a ns3:Event,
+        ns3:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2024-04-03T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 27 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904/sentence/1> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "six months" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$15,000.00\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904/sentence/2> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "30 days" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904/sentence/3> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "three years" .
 
-<https://caselinker.up.railway.app/resource/location/ashland> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904/phase/sentenced> a ns3:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2024-04-03T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/ashland-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Ashland County" ;
-    uco-core:name "Ashland County" .
+<https://w3id.org/caselinker/resource/location/delphos> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Delphos" ;
+    ns6:name "Delphos" .
 
-<https://caselinker.up.railway.app/resource/location/jordan> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Jordan" ;
-    uco-core:name "Jordan" .
+<https://w3id.org/caselinker/resource/location/van-wert-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Van Wert County" ;
+    ns6:name "Van Wert County" .
 
-<https://caselinker.up.railway.app/resource/location/ohio> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "viewing pornography but denied knowingly accessing child pornography" ;
-    dcterms:source <https://www.ashlandcountypictures.com/post/an-ashland-resident-entered-a-plea-of-not-guilty-during-his-arraignment-on-16-felony-counts-related/> ;
-    ns1:admissionContext "court documents, Lieutenant Detective Jason Martin of the Ashland County Sheriff’s Office questioned Jordan Bicker about his phone usage,..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct",
-        "minimization" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "viewing pornography but denied knowingly accessing child pornography" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_904/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/admission/1> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_904/facet/csam> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2024_904> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_904/provenance> .

@@ -1,93 +1,99 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_602> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:19:21.183911" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602> a ns4:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:31.573461" ;
     dcterms:identifier "ncmec_2024_602" ;
-    dcterms:modified "2026-09-10T19:19:21.183911" ;
-    dcterms:source <https://www.yahoo.com/news/eldon-man-arrested-charged-possession-150947575.html>,
+    dcterms:modified "2026-10-17 23:04:31.573461" ;
+    dcterms:source <https://krcgtv.com/news/local/boonville-man-charged-with-child-sex-abuse-material-possession-in-callaway-county>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/legal-proceeding> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/boonville>,
+        <https://w3id.org/caselinker/resource/location/callaway-county> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_602/phase/charged> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_602/phase/charged> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_602/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_602/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_602/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_602/legal-proceeding> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/boone-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/cyber-crimes-task-force> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/boonville>,
+        <https://w3id.org/caselinker/resource/location/callaway-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2024-06-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_602/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_602/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_602/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2024-06-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_602/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_602/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_602/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/boone-county-sheriffs-office> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/cyber-crimes-task-force> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns1:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602/event/distribution> a ns5:Event,
+        ns1:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    rdfs:comment "Pretrial detention facility (not a sentence): Miller County Jail" ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns1:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held without bond" ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_602/charge/1> ;
+    ns1:hasProceedingBeginPoint "2024-06-14T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 32 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602/phase/charged> a ns4:LegalProcessPhase,
+        ns5:Phase ;
+    ns4:hasPhaseBeginPoint "2024-06-14T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
-    rdfs:label "Kik" .
+<https://w3id.org/caselinker/resource/location/boonville> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Boonville" ;
+    ns6:name "Boonville" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/admission/1> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> .
+<https://w3id.org/caselinker/resource/location/callaway-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Callaway County" ;
+    ns6:name "Callaway County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/admission/1> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/facet/possession> .
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Facebook" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_602/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "using the Kik platform to upload the images and share them with other Kik users" ;
-    dcterms:source <https://www.yahoo.com/news/eldon-man-arrested-charged-possession-150947575.html> ;
-    ns1:admissionContext "that contained over 200 explicit images and videos. On Oct. 22, when deputies executed a search warrant at an Eldon residence, they arres..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_602/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "using the Kik platform to upload the images and share them with other Kik users" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602/event/online-only> a ns4:ChildSexualAbuseEvent,
+        ns5:Event ;
+    ns4:usesChannel <https://w3id.org/caselinker/resource/platform/facebook> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602/event/possession> a ns4:CSAMIncident,
+        ns5:Event ;
+    ns4:usesChannel <https://w3id.org/caselinker/resource/platform/facebook> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_602/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_602> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_602/provenance> .

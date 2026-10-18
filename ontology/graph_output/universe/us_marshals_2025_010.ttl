@@ -1,0 +1,118 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns8: <https://cacontology.projectvic.org/production#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_010> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 07:26:56.966306" ;
+    dcterms:identifier "us_marshals_2025_010" ;
+    dcterms:modified "2026-10-18 07:26:56.966306" ;
+    dcterms:source <https://www.usmarshals.gov/news/press-release/us-marshals-fl-arrest-man-wanted-tn-32-counts-of-abuse-of-minors>,
+        "US MARSHALS" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/blount-county>,
+        <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/tampa>,
+        <https://w3id.org/caselinker/resource/location/tennessee> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/us_marshals_2025_010/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/us_marshals_2025_010/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/us_marshals_2025_010/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2025_010/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/bcso-investigation>,
+        <https://w3id.org/caselinker/resource/agency/blount-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/florida-caribbean-regional-fugitive-task-force>,
+        <https://w3id.org/caselinker/resource/agency/usms> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/blount-county>,
+        <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/tampa>,
+        <https://w3id.org/caselinker/resource/location/tennessee> .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_010/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-06-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2025_010/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_010/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-06-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2025_010/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
+
+<https://w3id.org/caselinker/resource/agency/bcso-investigation> a ns6:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "BCSO Investigation" .
+
+<https://w3id.org/caselinker/resource/agency/blount-county-sheriffs-office> a ns6:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "Blount County Sheriff's Office" .
+
+<https://w3id.org/caselinker/resource/agency/florida-caribbean-regional-fugitive-task-force> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/usms> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_010/charge/1> a ns5:CriminalCharge ;
+    rdfs:label "Abuse of" ;
+    ns5:indictmentCounts 32 .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_010/charge/2> a ns5:CriminalCharge,
+        ns5:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_010/charge/3> a ns5:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns7:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_010/event/multi-jurisdiction> a ns6:Event,
+        ns4:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_010/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/us_marshals_2025_010/charge/1>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2025_010/charge/2>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2025_010/charge/3> ;
+    ns5:hasProceedingBeginPoint "2025-06-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_010/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 30 .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_010/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:victimAge 14 .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_010/phase/arrested> a ns1:InitialPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2025-06-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/blount-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Blount County" ;
+    ns3:name "Blount County" .
+
+<https://w3id.org/caselinker/resource/location/florida> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Florida" ;
+    ns3:name "Florida" .
+
+<https://w3id.org/caselinker/resource/location/tampa> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tampa" ;
+    ns3:name "Tampa" .
+
+<https://w3id.org/caselinker/resource/location/tennessee> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tennessee" ;
+    ns3:name "Tennessee" .
+
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_010> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/us_marshals_2025_010/provenance> .

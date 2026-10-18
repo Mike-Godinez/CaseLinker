@@ -1,162 +1,166 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558> ;
+    ns4:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/offense-event/charge-4> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2022-01-06T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/offense-event/charge-4> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/doj> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/doj> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/fbi> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/north-las-vegas-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/north-las-vegas-police-department> a ns4:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "North Las Vegas Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T22:12:29.212160" ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 02:38:38.872821" ;
     dcterms:identifier "doj_safe_childhood_2022_558" ;
-    dcterms:modified "2026-09-15T22:12:29.212160" ;
+    dcterms:modified "2026-10-18 12:58:18.015449" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/provenance> ;
     dcterms:source <https://www.justice.gov/usao-nv/pr/las-vegas-man-sentenced-over-15-years-prison-child-sexual-exploitation-and-possession>,
         "DOJ SAFE CHILDHOOD" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/las-vegas>,
-        <https://caselinker.up.railway.app/resource/location/the-district-of-nevada> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/event/project-safe-childhood>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/offense-event/charge-4> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/doj>,
-        <https://caselinker.up.railway.app/resource/agency/fbi>,
-        <https://caselinker.up.railway.app/resource/agency/north-las-vegas-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/las-vegas>,
-        <https://caselinker.up.railway.app/resource/location/the-district-of-nevada> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/las-vegas>,
+        <https://w3id.org/caselinker/resource/location/the-district-of-nevada> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/admission/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/offense-event/charge-4> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/doj>,
+        <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/north-las-vegas-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/las-vegas>,
+        <https://w3id.org/caselinker/resource/location/the-district-of-nevada> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/charge/1> a ns1:CriminalCharge,
+        ns1:StateCharge ;
     rdfs:label "sexual exploitation of children" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/charge/2> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns1:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/charge/3> a ns1:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/charge/4> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/charge/4> a ns1:CriminalCharge ;
     rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/offense-event/charge-4> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/offense-event/charge-4> .
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/offense-event/charge-4> ;
+    ns3:chargeCluster "child_exploitation" ;
+    ns3:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/offense-event/charge-4> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/event/distribution> a ns4:Event,
+        ns1:CSAM_Distribution ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/event/multi-jurisdiction> a ns4:Event,
+        ns6:MultiJurisdictionalInvestigation ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/event/project-safe-childhood> a cac-core:Event,
-        cacontology-multi:ProjectSafeChildhoodOperation ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/event/project-safe-childhood> a ns4:Event,
+        ns6:ProjectSafeChildhoodOperation ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/charge/3>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/charge/4> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/sentence/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/charge/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/charge/2>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/charge/3>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/charge/4> ;
+    ns1:hasProceedingBeginPoint "2022-01-06T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:resultsSentence <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/sentence/2> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/legal-step/sentenced> a ns4:Event,
+        ns4:LegalEvent,
+        ns1:LegalProceeding,
+        ns1:SentencingHearing ;
+    ns1:hasProceedingBeginPoint "2022-01-06T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 12 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/offense-event/charge-4> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2022-01-06T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/offense-event/charge-4> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:SupervisedRelease ;
-    rdfs:label "[\"15 Years\", \"10 months\", \"supervised release\"]" .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/sentence/1> a ns1:CriminalSentence,
+        ns1:PrisonSentence ;
+    rdfs:label "15 years and 10 months" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/sentence/2> a ns1:CriminalSentence,
+        ns1:LifeImprisonmentSentence ;
+    rdfs:label "lifetime term supervised release" .
 
-<https://caselinker.up.railway.app/resource/location/las-vegas> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/phase/sentenced> a ns4:Phase,
+        ns1:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2022-01-06T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/the-district-of-nevada> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/las-vegas> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Las Vegas" ;
+    ns5:name "Las Vegas" .
 
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
+<https://w3id.org/caselinker/resource/location/the-district-of-nevada> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the District of Nevada" ;
+    ns5:name "the District of Nevada" .
+
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
     rdfs:label "Kik" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "sexually exploiting a child and possessing child sexual abuse material was sentenced today to 15 years and 10 months ..." ;
     dcterms:source <https://www.justice.gov/usao-nv/pr/las-vegas-man-sentenced-over-15-years-prison-child-sexual-exploitation-and-possession> ;
-    ns1:admissionContext "Prison For Child Sexual Exploitation And Possession Of Child Pornography January 06, 2022 Publication date: 2022-01-06 Source: LAS VEGAS..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "sexually exploiting a child and possessing child sexual abuse material was sentenced today to 15 years and 10 months in prison" .
+    ns5:description "sexually exploiting a child and possessing child sexual abuse material was sentenced today to 15 years and 10 months in prison" ;
+    ns3:admissionContext "Prison For Child Sexual Exploitation And Possession Of Child Pornography January 06, 2022 Publication date: 2022-01-06 Source: LAS VEGAS..." ;
+    ns3:admissionFrame "admitted_to" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/admission/1> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/facet/possession> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/event/possession> a ns2:CSAMIncident,
+        ns4:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/admission/1> ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_558/offense-event/charge-4> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_558/offense-event/charge-4> a ns2:ChildSexualAbuseEvent,
+        ns4:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
     rdfs:label "Inferred offense from charge: child exploitation" ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> .
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/kik> .
 

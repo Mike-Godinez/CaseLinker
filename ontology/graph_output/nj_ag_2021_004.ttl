@@ -1,185 +1,187 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns9: <https://cacontology.projectvic.org/production#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/admission/1/extraction-confidence> a ns7:AssessmentResult ;
+    ns7:assesses <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/admission/1> ;
+    ns7:generatedBy <https://w3id.org/caselinker/resource/case/nj_ag_2021_004> ;
+    ns7:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2021-05-24T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/dcj-financial-cyber-crimes-bureau> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/dcj-financial-cyber-crimes-bureau> a ns7:OrganizationLikeEntity,
+        ns3:LocalAgency ;
     rdfs:label "DCJ Financial & Cyber Crimes Bureau" .
 
-<https://caselinker.up.railway.app/resource/agency/division-of-criminal-justice-financial-cyber-crimes-bureau> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/division-of-criminal-justice-financial-cyber-crimes-bureau> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/financial-cyber-crimes-bureau> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/financial-cyber-crimes-bureau> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/hsi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/hsi> a ns3:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/new-jersey-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/new-jersey-state-police-department> a ns3:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:03:12.031987" ;
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004> a ns4:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 05:52:12.372058" ;
     dcterms:identifier "nj_ag_2021_004" ;
-    dcterms:modified "2026-09-15T20:03:12.031987" ;
+    dcterms:modified "2026-10-18 05:52:12.372058" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/provenance> ;
     dcterms:source <https://www.njoag.gov/ag-grewal-announces-indictment-of-oklahoma-man-charged-with-traveling-to-new-jersey-to-sexually-assault-two-young-girls>,
         "NJ AG" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/atlantic-city>,
-        <https://caselinker.up.railway.app/resource/location/new-jersey>,
-        <https://caselinker.up.railway.app/resource/location/newark>,
-        <https://caselinker.up.railway.app/resource/location/okla>,
-        <https://caselinker.up.railway.app/resource/location/oklahoma>,
-        <https://caselinker.up.railway.app/resource/location/oklahoma-city>,
-        <https://caselinker.up.railway.app/resource/location/trenton>,
-        <https://caselinker.up.railway.app/resource/location/united-states> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/event/trafficking>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/dcj-financial-cyber-crimes-bureau>,
-        <https://caselinker.up.railway.app/resource/agency/division-of-criminal-justice-financial-cyber-crimes-bureau>,
-        <https://caselinker.up.railway.app/resource/agency/financial-cyber-crimes-bureau>,
-        <https://caselinker.up.railway.app/resource/agency/hsi>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/new-jersey-state-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/atlantic-city>,
-        <https://caselinker.up.railway.app/resource/location/new-jersey>,
-        <https://caselinker.up.railway.app/resource/location/newark>,
-        <https://caselinker.up.railway.app/resource/location/okla>,
-        <https://caselinker.up.railway.app/resource/location/oklahoma>,
-        <https://caselinker.up.railway.app/resource/location/oklahoma-city>,
-        <https://caselinker.up.railway.app/resource/location/trenton>,
-        <https://caselinker.up.railway.app/resource/location/united-states> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/atlantic-city>,
+        <https://w3id.org/caselinker/resource/location/new-jersey>,
+        <https://w3id.org/caselinker/resource/location/newark>,
+        <https://w3id.org/caselinker/resource/location/okla>,
+        <https://w3id.org/caselinker/resource/location/oklahoma>,
+        <https://w3id.org/caselinker/resource/location/oklahoma-city>,
+        <https://w3id.org/caselinker/resource/location/trenton>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/phase/charged> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/phase/charged> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/admission/1>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/cybertip>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/event/possession>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/operation> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/dcj-financial-cyber-crimes-bureau>,
+        <https://w3id.org/caselinker/resource/agency/division-of-criminal-justice-financial-cyber-crimes-bureau>,
+        <https://w3id.org/caselinker/resource/agency/financial-cyber-crimes-bureau>,
+        <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/new-jersey-state-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/atlantic-city>,
+        <https://w3id.org/caselinker/resource/location/new-jersey>,
+        <https://w3id.org/caselinker/resource/location/newark>,
+        <https://w3id.org/caselinker/resource/location/okla>,
+        <https://w3id.org/caselinker/resource/location/oklahoma>,
+        <https://w3id.org/caselinker/resource/location/oklahoma-city>,
+        <https://w3id.org/caselinker/resource/location/trenton>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/charge/1> a ns8:CSAM_Possession,
+        ns8:CriminalCharge ;
     rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/cybertip> a ns2:NCMECCybertipReport ;
+    ns2:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/event/distribution> a ns7:Event,
+        ns8:CSAM_Distribution ;
+    ns4:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/event/trafficking> a cac-core:Event,
-        cacontology-legal-outcomes:SexTrafficking ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/event/trafficking> a ns7:Event,
+        ns8:SexTrafficking ;
+    ns4:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/sentence/1> .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns8:LegalProceeding ;
+    ns8:hasCharge <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/charge/1> ;
+    ns8:hasProceedingBeginPoint "2021-05-24T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/operation> a cac-core:Event,
-        cacontology-taskforce:UndercoverUnit .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/operation> a ns7:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 34 .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 34 .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 11 .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns9:victimAge 11 .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2021-05-24T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$200,000\", \"10 years\", \"$150,000,\", \"$15,000\"]" .
-
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
     rdfs:label "chat" .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "wanted to smoke with the girls" ;
     dcterms:source <https://www.njoag.gov/ag-grewal-announces-indictment-of-oklahoma-man-charged-with-traveling-to-new-jersey-to-sexually-assault-two-young-girls> ;
+    ns5:description "wanted to smoke with the girls" ;
     ns1:admissionContext "daughter. Craiger had condoms with him, as well as a small amount of marijuana, which he allegedly said he wanted to smoke with the girls" ;
     ns1:admissionFrame "said_paraphrase" ;
     ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/role/offender/1> ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/role/offender/1> ;
     ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "wanted to smoke with the girls" .
+    ns1:quoteType "paraphrase" .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/phase/charged> a ns4:LegalProcessPhase,
+        ns7:Phase ;
+    ns4:hasPhaseBeginPoint "2021-05-24T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/atlantic-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/atlantic-city> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Atlantic City" ;
+    ns5:name "Atlantic City" .
 
-<https://caselinker.up.railway.app/resource/location/new-jersey> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/new-jersey> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Jersey" ;
+    ns5:name "New Jersey" .
 
-<https://caselinker.up.railway.app/resource/location/newark> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/newark> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Newark" ;
+    ns5:name "Newark" .
 
-<https://caselinker.up.railway.app/resource/location/okla> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/okla> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Okla." ;
-    uco-core:name "Okla." .
+    ns5:name "Okla." .
 
-<https://caselinker.up.railway.app/resource/location/oklahoma> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/oklahoma> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Oklahoma" ;
+    ns5:name "Oklahoma" .
 
-<https://caselinker.up.railway.app/resource/location/oklahoma-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/oklahoma-city> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Oklahoma City" ;
-    uco-core:name "Oklahoma City" .
+    ns5:name "Oklahoma City" .
 
-<https://caselinker.up.railway.app/resource/location/trenton> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/trenton> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Trenton" ;
+    ns5:name "Trenton" .
 
-<https://caselinker.up.railway.app/resource/location/united-states> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/united-states> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns5:name "United States" .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/nj_ag_2021_004/facet/possession> .
+<https://w3id.org/caselinker/resource/case/nj_ag_2021_004/event/possession> a ns4:CSAMIncident,
+        ns7:Event ;
+    ns4:severityLevel 3 ;
+    ns4:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/nj_ag_2021_004/facet/possession> .
 

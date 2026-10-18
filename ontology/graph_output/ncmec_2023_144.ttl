@@ -1,107 +1,656 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.873022" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/admission/1/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_144/admission/1> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_144> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/georgia-bureau-of-investigation> a ns7:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:29.619339" ;
     dcterms:identifier "ncmec_2023_144" ;
-    dcterms:modified "2026-09-15T20:55:00.873022" ;
-    dcterms:source <https://fox56.com/news/local/waymart-man-arrested-for-child-pornography-following-snapchat-report>,
+    dcterms:modified "2026-10-17 22:21:29.619339" ;
+    dcterms:source <https://www.wtvm.com/2023/08/31/31-individuals-arrested-georgia-child-sex-crimes/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/wayne-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/district-attorneys>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/pennsylvania-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/wayne-county-detectives> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/wayne-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/acworth>,
+        <https://w3id.org/caselinker/resource/location/americus>,
+        <https://w3id.org/caselinker/resource/location/athens>,
+        <https://w3id.org/caselinker/resource/location/auburn>,
+        <https://w3id.org/caselinker/resource/location/baldwin-county>,
+        <https://w3id.org/caselinker/resource/location/barrow-county>,
+        <https://w3id.org/caselinker/resource/location/bartow-county>,
+        <https://w3id.org/caselinker/resource/location/canton>,
+        <https://w3id.org/caselinker/resource/location/cartersville>,
+        <https://w3id.org/caselinker/resource/location/chatham-county>,
+        <https://w3id.org/caselinker/resource/location/cherokee-county>,
+        <https://w3id.org/caselinker/resource/location/clarke-county>,
+        <https://w3id.org/caselinker/resource/location/clayton-county>,
+        <https://w3id.org/caselinker/resource/location/cleveland>,
+        <https://w3id.org/caselinker/resource/location/danielsville>,
+        <https://w3id.org/caselinker/resource/location/decatur>,
+        <https://w3id.org/caselinker/resource/location/dekalb-county>,
+        <https://w3id.org/caselinker/resource/location/east-ellijay>,
+        <https://w3id.org/caselinker/resource/location/fayette-county>,
+        <https://w3id.org/caselinker/resource/location/fayetteville>,
+        <https://w3id.org/caselinker/resource/location/forest-park>,
+        <https://w3id.org/caselinker/resource/location/ga>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/gilmer-county>,
+        <https://w3id.org/caselinker/resource/location/glynn-county>,
+        <https://w3id.org/caselinker/resource/location/gwinnett-county>,
+        <https://w3id.org/caselinker/resource/location/hart-county>,
+        <https://w3id.org/caselinker/resource/location/hartwell>,
+        <https://w3id.org/caselinker/resource/location/heard-county>,
+        <https://w3id.org/caselinker/resource/location/hinesville>,
+        <https://w3id.org/caselinker/resource/location/jones-county>,
+        <https://w3id.org/caselinker/resource/location/lawrenceville>,
+        <https://w3id.org/caselinker/resource/location/liberty-county>,
+        <https://w3id.org/caselinker/resource/location/macon>,
+        <https://w3id.org/caselinker/resource/location/madison-county>,
+        <https://w3id.org/caselinker/resource/location/milledgeville>,
+        <https://w3id.org/caselinker/resource/location/pickens-county>,
+        <https://w3id.org/caselinker/resource/location/roopville>,
+        <https://w3id.org/caselinker/resource/location/rossville>,
+        <https://w3id.org/caselinker/resource/location/savannah>,
+        <https://w3id.org/caselinker/resource/location/st-simons-island>,
+        <https://w3id.org/caselinker/resource/location/sumter-county>,
+        <https://w3id.org/caselinker/resource/location/talking-rock>,
+        <https://w3id.org/caselinker/resource/location/the-chattahoochee-valley>,
+        <https://w3id.org/caselinker/resource/location/walker-county>,
+        <https://w3id.org/caselinker/resource/location/ware-county>,
+        <https://w3id.org/caselinker/resource/location/waycross>,
+        <https://w3id.org/caselinker/resource/location/white-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_144/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_144/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_144/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/operation> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/georgia-bureau-of-investigation> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/acworth>,
+        <https://w3id.org/caselinker/resource/location/americus>,
+        <https://w3id.org/caselinker/resource/location/athens>,
+        <https://w3id.org/caselinker/resource/location/auburn>,
+        <https://w3id.org/caselinker/resource/location/baldwin-county>,
+        <https://w3id.org/caselinker/resource/location/barrow-county>,
+        <https://w3id.org/caselinker/resource/location/bartow-county>,
+        <https://w3id.org/caselinker/resource/location/canton>,
+        <https://w3id.org/caselinker/resource/location/cartersville>,
+        <https://w3id.org/caselinker/resource/location/chatham-county>,
+        <https://w3id.org/caselinker/resource/location/cherokee-county>,
+        <https://w3id.org/caselinker/resource/location/clarke-county>,
+        <https://w3id.org/caselinker/resource/location/clayton-county>,
+        <https://w3id.org/caselinker/resource/location/cleveland>,
+        <https://w3id.org/caselinker/resource/location/danielsville>,
+        <https://w3id.org/caselinker/resource/location/decatur>,
+        <https://w3id.org/caselinker/resource/location/dekalb-county>,
+        <https://w3id.org/caselinker/resource/location/east-ellijay>,
+        <https://w3id.org/caselinker/resource/location/fayette-county>,
+        <https://w3id.org/caselinker/resource/location/fayetteville>,
+        <https://w3id.org/caselinker/resource/location/forest-park>,
+        <https://w3id.org/caselinker/resource/location/ga>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/gilmer-county>,
+        <https://w3id.org/caselinker/resource/location/glynn-county>,
+        <https://w3id.org/caselinker/resource/location/gwinnett-county>,
+        <https://w3id.org/caselinker/resource/location/hart-county>,
+        <https://w3id.org/caselinker/resource/location/hartwell>,
+        <https://w3id.org/caselinker/resource/location/heard-county>,
+        <https://w3id.org/caselinker/resource/location/hinesville>,
+        <https://w3id.org/caselinker/resource/location/jones-county>,
+        <https://w3id.org/caselinker/resource/location/lawrenceville>,
+        <https://w3id.org/caselinker/resource/location/liberty-county>,
+        <https://w3id.org/caselinker/resource/location/macon>,
+        <https://w3id.org/caselinker/resource/location/madison-county>,
+        <https://w3id.org/caselinker/resource/location/milledgeville>,
+        <https://w3id.org/caselinker/resource/location/pickens-county>,
+        <https://w3id.org/caselinker/resource/location/roopville>,
+        <https://w3id.org/caselinker/resource/location/rossville>,
+        <https://w3id.org/caselinker/resource/location/savannah>,
+        <https://w3id.org/caselinker/resource/location/st-simons-island>,
+        <https://w3id.org/caselinker/resource/location/sumter-county>,
+        <https://w3id.org/caselinker/resource/location/talking-rock>,
+        <https://w3id.org/caselinker/resource/location/the-chattahoochee-valley>,
+        <https://w3id.org/caselinker/resource/location/walker-county>,
+        <https://w3id.org/caselinker/resource/location/ware-county>,
+        <https://w3id.org/caselinker/resource/location/waycross>,
+        <https://w3id.org/caselinker/resource/location/white-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/charge/1> a ns5:CriminalCharge,
+        ns5:StateCharge ;
+    rdfs:label "sexual exploitation of children" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/charge/2> a ns5:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/agency/district-attorneys> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "District Attorney's" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/distribution> a ns6:Event,
+        ns5:CSAM_Distribution ;
+    ns1:severityLevel 1 .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/pennsylvania-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked in the Sumter County Jail; booked into the county jail" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_144/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/charge/2> ;
+    ns5:hasProceedingBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/wayne-county-detectives> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Wayne County Detectives" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/operation> a ns6:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 18 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/10> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 40 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/11> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 42 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/12> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 48 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/13> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 51 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/14> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 52 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/15> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 58 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$25,000.00\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/16> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 64 .
 
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/17> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 65 .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/18> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 70 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 22 .
 
-<https://caselinker.up.railway.app/resource/location/wayne-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/3> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 31 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_144/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_144/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/4> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 33 .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/5> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 34 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/6> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 35 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/7> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 37 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/8> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 38 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/9> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 39 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/10> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/10> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/11> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/11> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/12> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/12> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/13> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/13> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/14> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/14> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/15> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/15> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/16> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/16> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/17> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/17> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/18> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/18> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/2> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/2> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/3> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/3> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/4> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/4> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/5> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/5> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/6> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/6> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/7> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/7> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/8> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/8> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/9> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/9> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/phase/charged> a ns1:LegalProcessPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/location/acworth> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Acworth" ;
+    ns4:name "Acworth" .
+
+<https://w3id.org/caselinker/resource/location/americus> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Americus" ;
+    ns4:name "Americus" .
+
+<https://w3id.org/caselinker/resource/location/athens> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Athens" ;
+    ns4:name "Athens" .
+
+<https://w3id.org/caselinker/resource/location/auburn> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Auburn" ;
+    ns4:name "Auburn" .
+
+<https://w3id.org/caselinker/resource/location/baldwin-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Baldwin County" ;
+    ns4:name "Baldwin County" .
+
+<https://w3id.org/caselinker/resource/location/barrow-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Barrow County" ;
+    ns4:name "Barrow County" .
+
+<https://w3id.org/caselinker/resource/location/bartow-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Bartow County" ;
+    ns4:name "Bartow County" .
+
+<https://w3id.org/caselinker/resource/location/canton> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Canton" ;
+    ns4:name "Canton" .
+
+<https://w3id.org/caselinker/resource/location/cartersville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cartersville" ;
+    ns4:name "Cartersville" .
+
+<https://w3id.org/caselinker/resource/location/chatham-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Chatham County" ;
+    ns4:name "Chatham County" .
+
+<https://w3id.org/caselinker/resource/location/cherokee-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cherokee County" ;
+    ns4:name "Cherokee County" .
+
+<https://w3id.org/caselinker/resource/location/clarke-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Clarke County" ;
+    ns4:name "Clarke County" .
+
+<https://w3id.org/caselinker/resource/location/clayton-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Clayton County" ;
+    ns4:name "Clayton County" .
+
+<https://w3id.org/caselinker/resource/location/cleveland> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cleveland" ;
+    ns4:name "Cleveland" .
+
+<https://w3id.org/caselinker/resource/location/danielsville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Danielsville" ;
+    ns4:name "Danielsville" .
+
+<https://w3id.org/caselinker/resource/location/decatur> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Decatur" ;
+    ns4:name "Decatur" .
+
+<https://w3id.org/caselinker/resource/location/dekalb-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Dekalb County" ;
+    ns4:name "Dekalb County" .
+
+<https://w3id.org/caselinker/resource/location/east-ellijay> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "East Ellijay" ;
+    ns4:name "East Ellijay" .
+
+<https://w3id.org/caselinker/resource/location/fayette-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fayette County" ;
+    ns4:name "Fayette County" .
+
+<https://w3id.org/caselinker/resource/location/fayetteville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fayetteville" ;
+    ns4:name "Fayetteville" .
+
+<https://w3id.org/caselinker/resource/location/forest-park> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Forest Park" ;
+    ns4:name "Forest Park" .
+
+<https://w3id.org/caselinker/resource/location/ga> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ga." ;
+    ns4:name "Ga." .
+
+<https://w3id.org/caselinker/resource/location/georgia> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Georgia" ;
+    ns4:name "Georgia" .
+
+<https://w3id.org/caselinker/resource/location/gilmer-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Gilmer County" ;
+    ns4:name "Gilmer County" .
+
+<https://w3id.org/caselinker/resource/location/glynn-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Glynn County" ;
+    ns4:name "Glynn County" .
+
+<https://w3id.org/caselinker/resource/location/gwinnett-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Gwinnett County" ;
+    ns4:name "Gwinnett County" .
+
+<https://w3id.org/caselinker/resource/location/hart-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hart County" ;
+    ns4:name "Hart County" .
+
+<https://w3id.org/caselinker/resource/location/hartwell> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hartwell" ;
+    ns4:name "Hartwell" .
+
+<https://w3id.org/caselinker/resource/location/heard-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Heard County" ;
+    ns4:name "Heard County" .
+
+<https://w3id.org/caselinker/resource/location/hinesville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hinesville" ;
+    ns4:name "Hinesville" .
+
+<https://w3id.org/caselinker/resource/location/jones-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Jones County" ;
+    ns4:name "Jones County" .
+
+<https://w3id.org/caselinker/resource/location/lawrenceville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lawrenceville" ;
+    ns4:name "Lawrenceville" .
+
+<https://w3id.org/caselinker/resource/location/liberty-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Liberty County" ;
+    ns4:name "Liberty County" .
+
+<https://w3id.org/caselinker/resource/location/macon> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Macon" ;
+    ns4:name "Macon" .
+
+<https://w3id.org/caselinker/resource/location/madison-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Madison County" ;
+    ns4:name "Madison County" .
+
+<https://w3id.org/caselinker/resource/location/milledgeville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Milledgeville" ;
+    ns4:name "Milledgeville" .
+
+<https://w3id.org/caselinker/resource/location/pickens-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pickens County" ;
+    ns4:name "Pickens County" .
+
+<https://w3id.org/caselinker/resource/location/roopville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Roopville" ;
+    ns4:name "Roopville" .
+
+<https://w3id.org/caselinker/resource/location/rossville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Rossville" ;
+    ns4:name "Rossville" .
+
+<https://w3id.org/caselinker/resource/location/savannah> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Savannah" ;
+    ns4:name "Savannah" .
+
+<https://w3id.org/caselinker/resource/location/st-simons-island> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "St. Simons Island" ;
+    ns4:name "St. Simons Island" .
+
+<https://w3id.org/caselinker/resource/location/sumter-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sumter County" ;
+    ns4:name "Sumter County" .
+
+<https://w3id.org/caselinker/resource/location/talking-rock> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Talking Rock" ;
+    ns4:name "Talking Rock" .
+
+<https://w3id.org/caselinker/resource/location/the-chattahoochee-valley> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the Chattahoochee Valley" ;
+    ns4:name "the Chattahoochee Valley" .
+
+<https://w3id.org/caselinker/resource/location/walker-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Walker County" ;
+    ns4:name "Walker County" .
+
+<https://w3id.org/caselinker/resource/location/ware-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ware County" ;
+    ns4:name "Ware County" .
+
+<https://w3id.org/caselinker/resource/location/waycross> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Waycross" ;
+    ns4:name "Waycross" .
+
+<https://w3id.org/caselinker/resource/location/white-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "White County" ;
+    ns4:name "White County" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "current or prior hands-on sexual offenses against a child" ;
+    dcterms:source <https://www.wtvm.com/2023/08/31/31-individuals-arrested-georgia-child-sex-crimes/> ;
+    ns3:admissionContext "re 30 children identified in the operation living in households where online child sexual exploitations was occurring, and according to G..." ;
+    ns3:admissionFrame "admitted_to" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns4:description "current or prior hands-on sexual offenses against a child" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/conspiracy> a ns1:ConspiracyToCommitCSA,
+        ns6:Event ;
+    ns1:conspiracyMemberCount 18 ;
+    ns1:participatesInConspiracy <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/10>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/11>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/12>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/13>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/14>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/15>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/16>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/17>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/18>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/4>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/5>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/6>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/7>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/8>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_144/role/offender/9> ;
+    ns1:severityLevel 1 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_144/admission/1> ;
+    ns1:severityLevel 1 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_144/admission/1> ;
+    ns1:severityLevel 1 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_144/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_144> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_144/provenance> .

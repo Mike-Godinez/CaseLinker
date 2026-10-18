@@ -1,0 +1,123 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012> a ns3:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 07:19:08.907610" ;
+    dcterms:identifier "tbi_icac_2019_012" ;
+    dcterms:modified "2026-10-18 07:19:08.907610" ;
+    dcterms:source <https://tbinewsroom.com/2019/12/18/sumner-county-man-indicted-on-multiple-counts-of-sexual-exploitation-of-a-minor/>,
+        "TBI ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cleveland>,
+        <https://w3id.org/caselinker/resource/location/goodlettsville>,
+        <https://w3id.org/caselinker/resource/location/sumner-county> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/phase/indicted> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/phase/indicted> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/cybertip>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/event/csam>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/operation> ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/millersville-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigations-technical-services-unit> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/cleveland>,
+        <https://w3id.org/caselinker/resource/location/goodlettsville>,
+        <https://w3id.org/caselinker/resource/location/sumner-county> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2019-12-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/event/csam>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/event/online-only> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2019-12-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/event/csam>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/event/online-only> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/millersville-police-department> a ns4:OrganizationLikeEntity,
+        ns1:LocalAgency ;
+    rdfs:label "Millersville Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigations-technical-services-unit> a ns1:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
+    rdfs:label "Sexual Exploitation of a Minor and three counts of Aggravated Sexual" ;
+    ns2:indictmentCounts 15 .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/charge/2> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/charge/3> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns6:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/event/distribution> a ns4:Event,
+        ns2:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Sumner County Jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/charge/1>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/charge/2>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/charge/3> ;
+    ns2:hasProceedingBeginPoint "2019-12-18T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/operation> a ns4:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns1:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/phase/indicted> a ns3:LegalProcessPhase,
+        ns4:Phase ;
+    ns3:hasPhaseBeginPoint "2019-12-18T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/cleveland> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cleveland" ;
+    ns5:name "Cleveland" .
+
+<https://w3id.org/caselinker/resource/location/goodlettsville> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Goodlettsville" ;
+    ns5:name "Goodlettsville" .
+
+<https://w3id.org/caselinker/resource/location/sumner-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sumner County" ;
+    ns5:name "Sumner County" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/event/csam> a ns3:CSAMIncident,
+        ns4:Event ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/event/online-only> a ns3:ChildSexualAbuseEvent,
+        ns4:Event .
+
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2019_012> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/tbi_icac_2019_012/provenance> .

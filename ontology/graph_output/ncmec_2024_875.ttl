@@ -1,120 +1,82 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_875> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/agency/mahoning-valley-human-trafficking-task-force> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Mahoning Valley Human Trafficking Task Force" .
-
-<https://caselinker.up.railway.app/resource/agency/warren-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Warren Police Department" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.907925" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_875> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:35.014507" ;
     dcterms:identifier "ncmec_2024_875" ;
-    dcterms:modified "2026-09-15T21:08:10.907925" ;
-    dcterms:source <https://www.tribtoday.com/news/local-news/2024/03/warren-man-pleads-guilty-to-child-porn-charges/>,
+    dcterms:modified "2026-10-17 23:04:35.014507" ;
+    dcterms:source <https://www.salemnews.net/news/local-news/2024/04/plea-hearing-change-set-in-alleged-child-pornography-case/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/trumbull-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/legal-step/sentenced> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/mahoning-valley-human-trafficking-task-force>,
-        <https://caselinker.up.railway.app/resource/agency/warren-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/trumbull-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/east-liverpool>,
+        <https://w3id.org/caselinker/resource/location/jennings-avenue>,
+        <https://w3id.org/caselinker/resource/location/lisbon>,
+        <https://w3id.org/caselinker/resource/location/ohio> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_875/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_875/legal-proceeding> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/east-liverpool>,
+        <https://w3id.org/caselinker/resource/location/jennings-avenue>,
+        <https://w3id.org/caselinker/resource/location/lisbon>,
+        <https://w3id.org/caselinker/resource/location/ohio> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_875/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-04-05T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_875/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_875/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_875/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-04-05T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_875/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_875/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_875/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns5:indictmentCounts 38 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_875/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_875/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_875/charge/1> ;
+    ns5:hasProceedingBeginPoint "2024-04-05T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_875/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_875/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/person/offender/1> .
+<https://w3id.org/caselinker/resource/location/east-liverpool> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "East Liverpool" ;
+    ns4:name "East Liverpool" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/jennings-avenue> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Jennings Avenue" ;
+    ns4:name "Jennings Avenue" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/lisbon> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lisbon" ;
+    ns4:name "Lisbon" .
 
-<https://caselinker.up.railway.app/resource/location/trumbull-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Trumbull County" ;
-    uco-core:name "Trumbull County" .
+<https://w3id.org/caselinker/resource/location/ohio> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns4:name "Ohio" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "downloading hundreds of images of child porn to his cellphone" ;
-    dcterms:source <https://www.tribtoday.com/news/local-news/2024/03/warren-man-pleads-guilty-to-child-porn-charges/> ;
-    ns1:admissionContext "identified usernames and IP addresses linked to McCormick and his Blair Avenue residence. Police searched McCormick’s home and he later a..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct",
-        "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "downloading hundreds of images of child porn to his cellphone" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_875/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_875/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_875/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/admission/1> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_875/facet/possession> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_875> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_875/provenance> .

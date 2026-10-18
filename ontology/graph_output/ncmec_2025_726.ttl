@@ -1,86 +1,114 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_726> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.921486" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:23.270709" ;
     dcterms:identifier "ncmec_2025_726" ;
-    dcterms:modified "2026-09-15T21:27:13.921486" ;
-    dcterms:source <https://www.valleynewslive.com/2025/08/18/man-facing-child-porn-charges-was-volunteer-american-gold-gymnastics-gym-responds/>,
+    dcterms:modified "2026-10-18 00:01:23.270709" ;
+    dcterms:source <https://www.vindy.com/news/local-news/2025/02/second-conviction-of-pandering-gets-man-10-years-in-prison/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/fargo>,
-        <https://caselinker.up.railway.app/resource/location/nd> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_726/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_726/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_726/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_726/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/fargo>,
-        <https://caselinker.up.railway.app/resource/location/nd> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/mahoning-county>,
+        <https://w3id.org/caselinker/resource/location/newton-falls>,
+        <https://w3id.org/caselinker/resource/location/parkcliffe-avenue>,
+        <https://w3id.org/caselinker/resource/location/trumbull-county>,
+        <https://w3id.org/caselinker/resource/location/youngstown> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_726/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_726/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_726/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_726/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_726/legal-step/sentenced> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/mahoning-county>,
+        <https://w3id.org/caselinker/resource/location/newton-falls>,
+        <https://w3id.org/caselinker/resource/location/parkcliffe-avenue>,
+        <https://w3id.org/caselinker/resource/location/trumbull-county>,
+        <https://w3id.org/caselinker/resource/location/youngstown> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_726/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_726/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_726/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-02-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_726/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_726/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_726/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_726/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-02-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_726/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_726/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child sexual abuse material" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "pandering sexually oriented matter involving a minor or impaired person" ;
+    ns2:indictmentCounts 11 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_726/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726/charge/2> a ns2:CriminalCharge ;
+    rdfs:label "was a third-degree felony" ;
+    ns2:indictmentCounts 10 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_726/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_726/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_726/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726/event/distribution> a ns5:Event,
+        ns2:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_726/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_726/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_726/charge/2> ;
+    ns2:hasProceedingBeginPoint "2025-02-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2025_726/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_726/sentence/2> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_726/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2025-02-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_726/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 51 .
 
-<https://caselinker.up.railway.app/resource/platform/facebook> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Facebook" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_726/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726/sentence/1> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "10 years" .
 
-<https://caselinker.up.railway.app/resource/location/fargo> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Fargo" ;
-    uco-core:name "Fargo" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726/sentence/2> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "one year" .
 
-<https://caselinker.up.railway.app/resource/location/nd> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726/phase/sentenced> a ns5:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2025-02-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_726/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/facebook> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_726/facet/possession> .
+<https://w3id.org/caselinker/resource/location/mahoning-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mahoning County" ;
+    ns4:name "Mahoning County" .
 
+<https://w3id.org/caselinker/resource/location/newton-falls> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Newton Falls" ;
+    ns4:name "Newton Falls" .
+
+<https://w3id.org/caselinker/resource/location/parkcliffe-avenue> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Parkcliffe Avenue" ;
+    ns4:name "Parkcliffe Avenue" .
+
+<https://w3id.org/caselinker/resource/location/trumbull-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Trumbull County" ;
+    ns4:name "Trumbull County" .
+
+<https://w3id.org/caselinker/resource/location/youngstown> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Youngstown" ;
+    ns4:name "Youngstown" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_726> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_726/provenance> .

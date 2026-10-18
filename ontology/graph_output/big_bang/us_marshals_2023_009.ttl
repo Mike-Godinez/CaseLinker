@@ -1,77 +1,103 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_009> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:19:27.333980" ;
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_009> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 07:26:57.596586" ;
     dcterms:identifier "us_marshals_2023_009" ;
-    dcterms:modified "2026-09-10T20:19:27.333980" ;
+    dcterms:modified "2026-10-18 07:26:57.596586" ;
     dcterms:source <https://www.usmarshals.gov/news/press-release/us-marshals-wv-state-police-announce-results-of-operation-blue-gold-shield>,
         "US MARSHALS" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/usms>,
-        <https://caselinker.up.railway.app/resource/agency/west-virginia-department-of-corrections-rehabilitation>,
-        <https://caselinker.up.railway.app/resource/agency/west-virginia-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/wv-state-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/charleston>,
+        <https://w3id.org/caselinker/resource/location/kanawha>,
+        <https://w3id.org/caselinker/resource/location/mineral-wells>,
+        <https://w3id.org/caselinker/resource/location/southern-district>,
+        <https://w3id.org/caselinker/resource/location/west-virginia> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/us_marshals_2023_009/phase/indicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/us_marshals_2023_009/phase/indicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/us_marshals_2023_009/event/possession> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/usms>,
+        <https://w3id.org/caselinker/resource/agency/west-virginia-department-of-corrections-rehabilitation>,
+        <https://w3id.org/caselinker/resource/agency/west-virginia-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/wv-state-police-department> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/charleston>,
+        <https://w3id.org/caselinker/resource/location/kanawha>,
+        <https://w3id.org/caselinker/resource/location/mineral-wells>,
+        <https://w3id.org/caselinker/resource/location/southern-district>,
+        <https://w3id.org/caselinker/resource/location/west-virginia> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_009/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/us_marshals_2023_009/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2023_009/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_009/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-08-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/us_marshals_2023_009/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2023_009/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/usms> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/usms> a ns3:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/west-virginia-department-of-corrections-rehabilitation> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/west-virginia-department-of-corrections-rehabilitation> a ns5:OrganizationLikeEntity,
+        ns3:LocalAgency ;
     rdfs:label "West Virginia Department of Corrections & Rehabilitation" .
 
-<https://caselinker.up.railway.app/resource/agency/west-virginia-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/west-virginia-state-police-department> a ns3:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/wv-state-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
+<https://w3id.org/caselinker/resource/agency/wv-state-police-department> a ns5:OrganizationLikeEntity,
+        ns3:StateAgency ;
     rdfs:label "WV State Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_009/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/sentence/1> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_009/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 46 .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_009/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_009/phase/indicted> a ns1:LegalProcessPhase,
+        ns5:Phase ;
+    ns1:hasPhaseBeginPoint "2023-08-17T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:SupervisedRelease ;
-    rdfs:label "supervised release" .
+<https://w3id.org/caselinker/resource/location/charleston> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Charleston" ;
+    ns4:name "Charleston" .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/kanawha> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kanawha" ;
+    ns4:name "Kanawha" .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/us_marshals_2023_009/facet/possession> .
+<https://w3id.org/caselinker/resource/location/mineral-wells> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mineral Wells" ;
+    ns4:name "Mineral Wells" .
 
+<https://w3id.org/caselinker/resource/location/southern-district> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Southern District" ;
+    ns4:name "Southern District" .
+
+<https://w3id.org/caselinker/resource/location/west-virginia> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "West Virginia" ;
+    ns4:name "West Virginia" .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_009/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns1:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/us_marshals_2023_009/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_009> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/us_marshals_2023_009/provenance> .

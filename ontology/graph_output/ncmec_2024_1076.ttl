@@ -1,95 +1,180 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1076> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:11.090555" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/admission/1/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/admission/1> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_1076> ;
+    ns1:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/admission/2/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/admission/2> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_1076> ;
+    ns1:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-01-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/bureau-of-alcohol-tobacco-firearms-and-explosives> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/department-of-homeland-security> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/hsi> a ns7:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/ice> a ns7:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns7:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns5:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/event/multi-jurisdiction> a ns1:Event,
+        ns7:MultiJurisdictionalInvestigation ;
+    ns3:severityLevel 3 ;
+    ns7:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/charge/1> ;
+    ns5:hasProceedingBeginPoint "2024-01-19T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/legal-step/pleaded-guilty> a ns1:Event,
+        ns1:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:PleaBargaining ;
+    ns5:hasProceedingBeginPoint "2024-01-19T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/operation> a ns1:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 36 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076> a ns3:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:37.832110" ;
     dcterms:identifier "ncmec_2024_1076" ;
-    dcterms:modified "2026-09-15T21:08:11.090555" ;
-    dcterms:source <https://www.fox19.com/2024/02/21/woman-arrested-after-social-media-post-shows-5-year-old-daughter-waxing-older-clients-police-say/>,
+    dcterms:modified "2026-10-17 23:04:37.832110" ;
+    dcterms:source <https://www.ice.gov/news/releases/south-texas-man-pleads-guilty-attempting-transport-weapons-and-possession-child>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/bartlett>,
-        <https://caselinker.up.railway.app/resource/location/tenn>,
-        <https://caselinker.up.railway.app/resource/location/tennessee> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/memphis-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/bartlett>,
-        <https://caselinker.up.railway.app/resource/location/tenn>,
-        <https://caselinker.up.railway.app/resource/location/tennessee> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/mcallen>,
+        <https://w3id.org/caselinker/resource/location/mexico>,
+        <https://w3id.org/caselinker/resource/location/south-texas>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/the-southern-district>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/weslaco> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/phase/pleaded-guilty> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/phase/pleaded-guilty> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/legal-step/pleaded-guilty>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/operation> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/bureau-of-alcohol-tobacco-firearms-and-explosives>,
+        <https://w3id.org/caselinker/resource/agency/department-of-homeland-security>,
+        <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/ice>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/mcallen>,
+        <https://w3id.org/caselinker/resource/location/mexico>,
+        <https://w3id.org/caselinker/resource/location/south-texas>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/the-southern-district>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/weslaco> .
 
-<https://caselinker.up.railway.app/resource/platform/instagram> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Instagram" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "attempting to smuggle more than 40 firearms" ;
+    dcterms:source <https://www.ice.gov/news/releases/south-texas-man-pleads-guilty-attempting-transport-weapons-and-possession-child> ;
+    ns2:admissionContext "o, pleaded guilty Jan. 19 before U.S. District Judge John D. Rainey. As part of his plea, Hinojosa admitted to attempting to smuggle more..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "other" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns4:description "attempting to smuggle more than 40 firearms" .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/phase/pleaded-guilty> a ns1:Phase,
+        ns5:PreTrialPhase ;
+    ns3:hasPhaseBeginPoint "2024-01-19T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/memphis-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Memphis Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-01-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/relationship/mother> .
+<https://w3id.org/caselinker/resource/location/mcallen> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mcallen" ;
+    ns4:name "Mcallen" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/sentence/1> .
+<https://w3id.org/caselinker/resource/location/mexico> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mexico" ;
+    ns4:name "Mexico" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/south-texas> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Texas" ;
+    ns4:name "South Texas" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 5 .
+<https://w3id.org/caselinker/resource/location/texas> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns4:name "Texas" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/relationship/mother> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/role/offender/1> ;
-    cacontology-custodial:relationshipType "mother" .
+<https://w3id.org/caselinker/resource/location/the-southern-district> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the Southern District" ;
+    ns4:name "the Southern District" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/person/offender/1> .
+<https://w3id.org/caselinker/resource/location/united-states> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns4:name "United States" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/person/victim/1> .
+<https://w3id.org/caselinker/resource/location/weslaco> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Weslaco" ;
+    ns4:name "Weslaco" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "receiving child sexual abuse material on his cellphone from various third parties" ;
+    dcterms:source <https://www.ice.gov/news/releases/south-texas-man-pleads-guilty-attempting-transport-weapons-and-possession-child> ;
+    ns2:admissionContext "warrants and found several videos on his phone showing minors engaging in sexual conduct. Hinojosa admitted to receiving child sexual abu..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns4:description "receiving child sexual abuse material on his cellphone from various third parties" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1076/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076/event/possession> a ns3:CSAMIncident,
+        ns1:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/admission/2> ;
+    ns3:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/location/bartlett> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Bartlett" ;
-    uco-core:name "Bartlett" .
 
-<https://caselinker.up.railway.app/resource/location/tenn> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/tennessee> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1076> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_1076/provenance> .

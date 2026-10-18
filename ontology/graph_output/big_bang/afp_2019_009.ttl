@@ -1,0 +1,109 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 00:36:29.753544" ;
+    dcterms:identifier "afp_2019_009" ;
+    dcterms:modified "2026-10-18 00:36:29.753544" ;
+    dcterms:source <https://www.afp.gov.au/news-centre/media-release/adelaide-man-faces-court-child-exploitation-charges>,
+        "AFP" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/adelaide>,
+        <https://w3id.org/caselinker/resource/location/kilkenny> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/afp_2019_009/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/afp_2019_009/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/afp_2019_009/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/afp_2019_009/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/afp_2019_009/event/possession>,
+        <https://w3id.org/caselinker/resource/case/afp_2019_009/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/afp_2019_009/offense-event/charge-2> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/australian-federal-police-department>,
+        <https://w3id.org/caselinker/resource/agency/south-australian-police-department> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/adelaide>,
+        <https://w3id.org/caselinker/resource/location/kilkenny> .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2019-08-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/afp_2019_009/event/possession>,
+        <https://w3id.org/caselinker/resource/case/afp_2019_009/offense-event/charge-2> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/afp_2019_009/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2019-08-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/afp_2019_009/event/possession>,
+        <https://w3id.org/caselinker/resource/case/afp_2019_009/offense-event/charge-2> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/afp_2019_009/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/australian-federal-police-department> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/south-australian-police-department> a ns6:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "South Australian Police Department" .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/charge/2> a ns3:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/afp_2019_009/offense-event/charge-2> ;
+    ns2:chargeCluster "child_exploitation" ;
+    ns2:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/afp_2019_009/offense-event/charge-2> .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/event/distribution> a ns6:Event,
+        ns3:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/event/multi-jurisdiction> a ns6:Event,
+        ns5:MultiJurisdictionalInvestigation ;
+    ns5:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/afp_2019_009/charge/1>,
+        <https://w3id.org/caselinker/resource/case/afp_2019_009/charge/2> ;
+    ns3:hasProceedingBeginPoint "2019-08-22T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 30 .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/phase/arrested> a ns1:InitialPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2019-08-22T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/adelaide> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Adelaide" ;
+    ns4:name "Adelaide" .
+
+<https://w3id.org/caselinker/resource/location/kilkenny> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kilkenny" ;
+    ns4:name "Kilkenny" .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/afp_2019_009/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009/offense-event/charge-2> a ns1:ChildSexualAbuseEvent,
+        ns6:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/afp_2019_009> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/afp_2019_009/provenance> .

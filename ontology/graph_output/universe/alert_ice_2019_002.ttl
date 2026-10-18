@@ -1,0 +1,130 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns8: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002> a ns1:CACInvestigation,
+        ns8:EnduringEntity ;
+    dcterms:created "2026-10-18 14:12:35.537715" ;
+    dcterms:identifier "alert_ice_2019_002" ;
+    dcterms:modified "2026-10-18 14:12:35.537715" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/provenance> ;
+    dcterms:source <https://alert-ab.ca/spruce-grove-teacher-arrested-for-child-pornography/>,
+        "ALERT ICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/edmonton>,
+        <https://w3id.org/caselinker/resource/location/parkland-county>,
+        <https://w3id.org/caselinker/resource/location/spruce-grove>,
+        <https://w3id.org/caselinker/resource/location/stony-plain> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/event/possession>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/offense-event/charge-2> ;
+    ns1:investigationStatus "unknown" ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/tech/cybertipline> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/ice> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/edmonton>,
+        <https://w3id.org/caselinker/resource/location/parkland-county>,
+        <https://w3id.org/caselinker/resource/location/spruce-grove>,
+        <https://w3id.org/caselinker/resource/location/stony-plain> .
+
+<https://w3id.org/caselinker/resource/agency/ice> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/charge/2> a ns7:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/offense-event/charge-2> ;
+    ns6:chargeCluster "child_exploitation" ;
+    ns6:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/offense-event/charge-2> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/event/distribution> a ns8:Event,
+        ns7:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/event/trust-violation> a ns2:AuthorityAbuse,
+        ns2:TrustViolation ;
+    ns2:violatesRelationship <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/relationship/teacher> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/legal-proceeding> a ns8:Event,
+        ns8:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/charge/1>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/charge/2> ;
+    ns7:hasProceedingBeginPoint "2019-10-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 31 .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/relationship/teacher> a ns2:CustodialRelationship,
+        ns2:Teacher ;
+    ns2:involvesChild <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/role/victim/1> ;
+    ns2:involvesCustodian <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/role/offender/1> ;
+    ns2:relationshipType "teacher" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2019-10-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/event/possession>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/offense-event/charge-2> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2019-10-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/event/possession>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/offense-event/charge-2> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/phase/charged> a ns1:LegalProcessPhase,
+        ns8:Phase ;
+    ns1:hasPhaseBeginPoint "2019-10-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/edmonton> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Edmonton" ;
+    ns3:name "Edmonton" .
+
+<https://w3id.org/caselinker/resource/location/parkland-county> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Parkland County" ;
+    ns3:name "Parkland County" .
+
+<https://w3id.org/caselinker/resource/location/spruce-grove> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Spruce Grove" ;
+    ns3:name "Spruce Grove" .
+
+<https://w3id.org/caselinker/resource/location/stony-plain> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Stony Plain" ;
+    ns3:name "Stony Plain" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/event/possession> a ns1:CSAMIncident,
+        ns8:Event ;
+    ns1:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/alert_ice_2019_002/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2019_002/offense-event/charge-2> a ns1:ChildSexualAbuseEvent,
+        ns8:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+

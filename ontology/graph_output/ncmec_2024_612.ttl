@@ -1,127 +1,103 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_612> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_612> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 12 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/person/offender/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.701383" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:31.676419" ;
     dcterms:identifier "ncmec_2024_612" ;
-    dcterms:modified "2026-09-15T21:08:10.701383" ;
-    dcterms:source <https://www.ky3.com/2024/03/30/linn-creek-mo-man-charged-with-several-counts-possessing-child-porn/>,
+    dcterms:modified "2026-10-17 23:04:31.676419" ;
+    dcterms:source <https://nbcmontana.com/newsletter-daily/butte-man-faces-19-counts-of-child-sexual-abuse>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/camden-county>,
-        <https://caselinker.up.railway.app/resource/location/linn-creek>,
-        <https://caselinker.up.railway.app/resource/location/mo>,
-        <https://caselinker.up.railway.app/resource/location/springfield> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/camden-county>,
-        <https://caselinker.up.railway.app/resource/location/linn-creek>,
-        <https://caselinker.up.railway.app/resource/location/mo>,
-        <https://caselinker.up.railway.app/resource/location/springfield> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/butte>,
+        <https://w3id.org/caselinker/resource/location/clark-county>,
+        <https://w3id.org/caselinker/resource/location/mont> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_612/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_612/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_612/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_612/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_612/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_612/operation> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/butte>,
+        <https://w3id.org/caselinker/resource/location/clark-county>,
+        <https://w3id.org/caselinker/resource/location/mont> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-07-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_612/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_612/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_612/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-07-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_612/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_612/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_612/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/location/camden-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Camden County" ;
-    uco-core:name "Camden County" .
+<https://w3id.org/caselinker/resource/agency/fbi> a ns4:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/location/linn-creek> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Linn Creek" ;
-    uco-core:name "Linn Creek" .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/location/mo> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns5:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/location/springfield> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "downloading and watching child pron on his phone" ;
-    dcterms:source <https://www.ky3.com/2024/03/30/linn-creek-mo-man-charged-with-several-counts-possessing-child-porn/> ;
-    ns1:admissionContext "ly showing porn. Investigators say Clark was also smoking meth moments before the arrest. During his interview with authorities, Clark ad..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "downloading and watching child pron on his phone" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Butte-Silver Bow Detention Center; remains in custody" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_612/charge/1> ;
+    ns5:hasProceedingBeginPoint "2024-07-17T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "had last viewed child pornography six months ago and had since deleted it from his phone" ;
-    dcterms:source <https://www.ky3.com/2024/03/30/linn-creek-mo-man-charged-with-several-counts-possessing-child-porn/> ;
-    ns1:admissionContext "iew with authorities, Clark admitted to downloading and watching child pron on his phone. He also said he had last viewed child pornograp..." ;
-    ns1:admissionFrame "he_said_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "had last viewed child pornography six months ago and had since deleted it from his phone" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612/operation> a ns3:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_612/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/admission/2> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_612/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 47 .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612/phase/booked> a ns1:InitialPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2024-07-17T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/butte> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Butte" ;
+    ns2:name "Butte" .
+
+<https://w3id.org/caselinker/resource/location/clark-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Clark County" ;
+    ns2:name "Clark County" .
+
+<https://w3id.org/caselinker/resource/location/mont> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mont." ;
+    ns2:name "Mont." .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns3:Event ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_612/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_612> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_612/provenance> .

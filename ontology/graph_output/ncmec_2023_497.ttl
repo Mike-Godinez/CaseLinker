@@ -1,112 +1,148 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.176142" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_497> ;
+    ns4:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/2/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/2> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_497> ;
+    ns4:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/3/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/3> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_497> ;
+    ns4:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-11-06T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_497/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_497/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/hanford-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/event/distribution> a ns4:Event,
+        ns5:CSAM_Distribution ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_497/charge/1> ;
+    ns5:hasProceedingBeginPoint "2023-11-06T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/phase/booked> a ns2:InitialPhase,
+        ns4:Phase ;
+    ns2:hasPhaseBeginPoint "2023-11-06T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/calif> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Calif." ;
+    ns1:name "Calif." .
+
+<https://w3id.org/caselinker/resource/location/hanford> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hanford" ;
+    ns1:name "Hanford" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:33.990760" ;
     dcterms:identifier "ncmec_2023_497" ;
-    dcterms:modified "2026-09-15T20:55:01.176142" ;
-    dcterms:source <https://www.wmdt.com/2023/04/talbot-co-man-arrested-for-possession-of-child-pornography/>,
+    dcterms:modified "2026-10-17 22:21:33.990760" ;
+    dcterms:source <https://www.yourcentralvalley.com/news/crime/man-arrested-after-admitting-to-possession-of-child-porn-police-say/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/md>,
-        <https://caselinker.up.railway.app/resource/location/talbot-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/howard-county-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/talbot-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/md>,
-        <https://caselinker.up.railway.app/resource/location/talbot-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/hanford> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_497/phase/booked> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_497/phase/booked> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_497/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_497/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_497/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_497/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/hanford-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/hanford> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "possession of child porn, Hanford Police say by: John Houghton Posted: Nov 6, 2023 / 10:41 AM PST Updated: Nov 6, 202..." ;
+    dcterms:source <https://www.yourcentralvalley.com/news/crime/man-arrested-after-admitting-to-possession-of-child-porn-police-say/> ;
+    ns3:admissionContext "Man arrested after admitting to possession of child porn, Hanford Police say by: John Houghton Posted: Nov 6, 2023 / 10:41 AM PST Updated..." ;
+    ns3:admissionFrame "admitted_to" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_497/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns1:description "possession of child porn, Hanford Police say by: John Houghton Posted: Nov 6, 2023 / 10:41 AM PST Updated: Nov 6, 2023 / 04:46 PM PST HANFORD, Calif" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "downloading child sexual abuse material and was subsequently arrested" ;
+    dcterms:source <https://www.yourcentralvalley.com/news/crime/man-arrested-after-admitting-to-possession-of-child-porn-police-say/> ;
+    ns3:admissionContext "Ramos. Investigators say on Nov. 2, police executed a search warrant and contacted Ramos. Ramos was interviewed and police say he admitte..." ;
+    ns3:admissionFrame "admitted_to" ;
+    ns3:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_497/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns1:description "downloading child sexual abuse material and was subsequently arrested" .
 
-<https://caselinker.up.railway.app/resource/agency/howard-county-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Howard County Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/3> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "to downloading child sexual abuse material and was subsequently arrested" ;
+    dcterms:source <https://www.yourcentralvalley.com/news/crime/man-arrested-after-admitting-to-possession-of-child-porn-police-say/> ;
+    ns3:admissionContext "olice executed a search warrant and contacted Ramos. Ramos was interviewed and police say he admitted to downloading child sexual abuse m..." ;
+    ns3:admissionFrame "he_admitted_paraphrase" ;
+    ns3:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_497/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns1:description "to downloading child sexual abuse material and was subsequently arrested" .
 
-<https://caselinker.up.railway.app/resource/agency/talbot-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Talbot County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/event/possession> a ns2:CSAMIncident,
+        ns4:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_497/admission/3> ;
+    ns2:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_497/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-11-06T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_497/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_497/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/charge/2> a cacontology-legal-outcomes:CSAM_Distribution,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "distribution of child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/person/offender/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-04-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/md> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/talbot-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Talbot County" ;
-    uco-core:name "Talbot County" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_497/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_497/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2023_497> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_497/provenance> .

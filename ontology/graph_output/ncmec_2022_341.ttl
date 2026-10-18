@@ -1,90 +1,107 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.300258" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341> a ns3:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:23.655315" ;
     dcterms:identifier "ncmec_2022_341" ;
-    dcterms:modified "2026-09-15T20:45:06.300258" ;
-    dcterms:source <https://fox56.com/news/local/wilkes-barre-man-arrested-without-bail-child-sex-charges>,
+    dcterms:modified "2026-10-17 21:51:23.655315" ;
+    dcterms:source <https://www.citizen-times.com/story/news/2022/08/25/buncombe-county-crime-charged-joseph-ostler-sexual-exploitation-north-carolina/7897004001/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/luzerne-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/luzerne-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/asheville>,
+        <https://w3id.org/caselinker/resource/location/buncombe-county> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_341/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_341/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_341/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_341/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_341/offense-event/charge-4> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/asheville-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/asheville>,
+        <https://w3id.org/caselinker/resource/location/buncombe-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2022-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_341/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_341/offense-event/charge-4> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_341/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2022-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_341/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_341/offense-event/charge-4> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_341/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 201 .
+<https://w3id.org/caselinker/resource/agency/asheville-police-department> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341/charge/2> a cacontology-legal-outcomes:CSAM_Distribution,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "dissemination of" ;
-    cacontology-legal-outcomes:indictmentCounts 48 .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341/charge/1> a ns1:CriminalCharge ;
+    rdfs:label "sexual exploitation of a" ;
+    ns1:indictmentCounts 41 ;
+    ns5:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341/charge/2> a ns1:CriminalCharge,
+        ns1:StateCharge ;
+    rdfs:label "third-degree sexual exploitation of a minor" ;
+    ns1:indictmentCounts 79 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341/charge/3> a ns1:CriminalCharge,
+        ns1:OnlineEnticement ;
+    rdfs:label "online enticement" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 25 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341/charge/4> a ns1:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2022_341/offense-event/charge-4> ;
+    ns5:chargeCluster "child_exploitation" ;
+    ns5:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_341/offense-event/charge-4> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_341/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_341/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_341/charge/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_341/charge/4> ;
+    ns1:hasProceedingBeginPoint "2022-08-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 31 .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341/phase/charged> a ns3:LegalProcessPhase,
+        ns6:Phase ;
+    ns3:hasPhaseBeginPoint "2022-08-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/luzerne-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/asheville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Asheville" ;
+    ns2:name "Asheville" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_341/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_341/facet/possession> .
+<https://w3id.org/caselinker/resource/location/buncombe-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Buncombe County" ;
+    ns2:name "Buncombe County" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341/event/online-only> a ns3:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns3:severityLevel 1 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341/offense-event/charge-4> a ns3:ChildSexualAbuseEvent,
+        ns6:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_341> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_341/provenance> .

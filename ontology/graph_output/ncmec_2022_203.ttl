@@ -1,135 +1,208 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2022_203> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/boone-county-cyber-crime-taskforce> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Boone County Cyber Crime Taskforce" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.139188" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:21.715415" ;
     dcterms:identifier "ncmec_2022_203" ;
-    dcterms:modified "2026-09-15T20:45:06.139188" ;
-    dcterms:source <https://abc17news.com/news/crime/court-and-trials/2022/04/12/us-attorneys-office-recommends-jefferson-city-man-get-10-years-in-prison-for-child-porn-possession-as-part-of-a-plea-agreement/>,
+    dcterms:modified "2026-10-17 21:51:21.715415" ;
+    dcterms:source <https://thecitizen.com/2022/05/02/man-jailed-in-florida-to-be-extradited-back-to-fayette-on-child-porn-charges/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/applegate>,
-        <https://caselinker.up.railway.app/resource/location/cole-county>,
-        <https://caselinker.up.railway.app/resource/location/jefferson-city>,
-        <https://caselinker.up.railway.app/resource/location/mo> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/boone-county-cyber-crime-taskforce>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/applegate>,
-        <https://caselinker.up.railway.app/resource/location/cole-county>,
-        <https://caselinker.up.railway.app/resource/location/jefferson-city>,
-        <https://caselinker.up.railway.app/resource/location/mo> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/enfield>,
+        <https://w3id.org/caselinker/resource/location/fayette>,
+        <https://w3id.org/caselinker/resource/location/fayette-county>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/ga>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/green-manorville>,
+        <https://w3id.org/caselinker/resource/location/orlando> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_203/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_203/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_203/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/offense-event/charge-4>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/operation> ;
+    ns2:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2022_203/tech/cybertipline> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/florida-department-of-law-enforcement>,
+        <https://w3id.org/caselinker/resource/agency/georgia-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/enfield>,
+        <https://w3id.org/caselinker/resource/location/fayette>,
+        <https://w3id.org/caselinker/resource/location/fayette-county>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/ga>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/green-manorville>,
+        <https://w3id.org/caselinker/resource/location/orlando> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2022-05-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/offense-event/charge-4> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_203/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/agency/florida-department-of-law-enforcement> a ns7:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/agency/georgia-bureau-of-investigation> a ns7:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/charge/1> a ns4:CriminalCharge,
+        ns4:StateCharge ;
+    rdfs:label "sexual exploitation of children" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/charge/2> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/charge/3> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns1:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/charge/4> a ns4:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2022_203/offense-event/charge-4> ;
+    ns1:chargeCluster "child_exploitation" ;
+    ns1:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_203/offense-event/charge-4> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"10 years\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/distribution> a ns3:Event,
+        ns4:CSAM_Distribution ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/location/applegate> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Applegate" ;
-    uco-core:name "Applegate" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/multi-jurisdiction> a ns3:Event,
+        ns7:MultiJurisdictionalInvestigation ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/location/cole-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Cole County" ;
-    uco-core:name "Cole County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/location/jefferson-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_203/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/charge/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/charge/4> ;
+    ns4:hasProceedingBeginPoint "2022-05-02T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/mo> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/operation> a ns3:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
 
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 27 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/admission/1> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 30 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/admission/1> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_203/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "downloading and uploading child porn to the internet" ;
-    dcterms:source <https://abc17news.com/news/crime/court-and-trials/2022/04/12/us-attorneys-office-recommends-jefferson-city-man-get-10-years-in-prison-for-child-porn-possession-as-part-of-a-plea-agreement/> ;
-    ns1:admissionContext "warrant at Applegate’s Jefferson City apartment and seized numerous electronic devices. During a post-Miranda interview, Applegate admitt..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct",
-        "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_203/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "downloading and uploading child porn to the internet" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2022-05-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/offense-event/charge-4> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_203/person/offender/1> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/role/offender/2> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2022-05-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/offense-event/charge-4> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_203/person/offender/2> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/tech/cybertipline> a ns6:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns7:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/phase/charged> a ns2:LegalProcessPhase,
+        ns3:Phase ;
+    ns2:hasPhaseBeginPoint "2022-05-02T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/enfield> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Enfield" ;
+    ns5:name "Enfield" .
+
+<https://w3id.org/caselinker/resource/location/fayette> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fayette" ;
+    ns5:name "Fayette" .
+
+<https://w3id.org/caselinker/resource/location/fayette-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fayette County" ;
+    ns5:name "Fayette County" .
+
+<https://w3id.org/caselinker/resource/location/fla> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla" ;
+    ns5:name "Fla" .
+
+<https://w3id.org/caselinker/resource/location/florida> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Florida" ;
+    ns5:name "Florida" .
+
+<https://w3id.org/caselinker/resource/location/ga> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ga." ;
+    ns5:name "Ga." .
+
+<https://w3id.org/caselinker/resource/location/georgia> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Georgia" ;
+    ns5:name "Georgia" .
+
+<https://w3id.org/caselinker/resource/location/green-manorville> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Green Manorville" ;
+    ns5:name "Green Manorville" .
+
+<https://w3id.org/caselinker/resource/location/orlando> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Orlando" ;
+    ns5:name "Orlando" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/conspiracy> a ns2:ConspiracyToCommitCSA,
+        ns3:Event ;
+    ns2:conspiracyMemberCount 2 ;
+    ns2:participatesInConspiracy <https://w3id.org/caselinker/resource/case/ncmec_2022_203/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_203/role/offender/2> ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/event/possession> a ns2:CSAMIncident,
+        ns3:Event ;
+    ns2:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_203/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203/offense-event/charge-4> a ns2:ChildSexualAbuseEvent,
+        ns3:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_203> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_203/provenance> .

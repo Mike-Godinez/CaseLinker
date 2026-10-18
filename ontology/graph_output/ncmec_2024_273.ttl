@@ -1,107 +1,93 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_273> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/hillsborough-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Hillsborough County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.406822" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:27.896417" ;
     dcterms:identifier "ncmec_2024_273" ;
-    dcterms:modified "2026-09-15T21:08:10.406822" ;
-    dcterms:source <https://www.teamhcso.com/News/PressRelease/0696c4cf-4ff8-4cd2-8c4d-2902ba80c1ef/en-US>,
+    dcterms:modified "2026-10-17 23:04:27.896417" ;
+    dcterms:source <https://nowhabersham.com/search-warrant-leads-to-arrest-of-toccoa-resident-for-sexual-exploitation-of-children/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/hillsborough-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/hillsborough-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/hillsborough-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/toccoa> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_273/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_273/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_273/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_273/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_273/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/toccoa-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/toccoa> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-07-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_273/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_273/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-07-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_273/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_273/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/sentence/1> .
+<https://w3id.org/caselinker/resource/agency/toccoa-police-department> a ns5:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "Toccoa Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 56 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273/charge/1> a ns7:CriminalCharge,
+        ns7:StateCharge ;
+    rdfs:label "sexual exploitation of children" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273/charge/2> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
+    rdfs:label "child porn" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273/charge/3> a ns7:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273/event/distribution> a ns5:Event,
+        ns7:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/location/hillsborough-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Hillsborough County" ;
-    uco-core:name "Hillsborough County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns7:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held at the Stephens County Jail" ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_273/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_273/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_273/charge/3> ;
+    ns7:hasProceedingBeginPoint "2024-07-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "receiving Child Sexual Abuse Material" ;
-    dcterms:source <https://www.teamhcso.com/News/PressRelease/0696c4cf-4ff8-4cd2-8c4d-2902ba80c1ef/en-US> ;
-    ns1:admissionContext "received a tip that William Lee Long, 56, was uploading child pornography from his home. During the investigation, Long admitted to recei..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "receiving Child Sexual Abuse Material" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 51 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_273/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/admission/1> ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_273/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273/phase/charged> a ns1:LegalProcessPhase,
+        ns5:Phase ;
+    ns1:hasPhaseBeginPoint "2024-07-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/toccoa> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Toccoa" ;
+    ns6:name "Toccoa" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_273/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_273> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_273/provenance> .

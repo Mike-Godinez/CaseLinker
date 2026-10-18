@@ -1,82 +1,112 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2025_023> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:51:10.152179" ;
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 05:15:31.096285" ;
     dcterms:identifier "ky_sp_2025_023" ;
-    dcterms:modified "2026-09-10T19:51:10.152179" ;
+    dcterms:modified "2026-10-18 05:15:31.096285" ;
     dcterms:source <https://www.kentuckystatepolice.ky.gov/news/ecb-4-9-2025/>,
         "KY SP" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/kentucky-state-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/elliott-county>,
+        <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/morehead> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/operation> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/kentucky-state-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/elliott-county>,
+        <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/morehead> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/kentucky-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/kentucky-state-police-department> a ns5:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
     rdfs:label "possessing matter portraying a minor under the age of 12 in a" ;
-    cacontology-legal-outcomes:indictmentCounts 21 .
+    ns3:indictmentCounts 21 .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023/event/distribution> a ns6:Event,
+        ns3:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): lodged in the Rowan County Detention Center" ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/charge/1> ;
+    ns3:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/operation> a cac-core:Event,
-        cacontology-taskforce:UndercoverUnit .
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023/operation> a ns6:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 25 .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023/phase/charged> a ns1:LegalProcessPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ky_sp_2025_023/facet/possession> .
+<https://w3id.org/caselinker/resource/location/elliott-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Elliott County" ;
+    ns2:name "Elliott County" .
 
+<https://w3id.org/caselinker/resource/location/kentucky> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kentucky" ;
+    ns2:name "Kentucky" .
+
+<https://w3id.org/caselinker/resource/location/ky> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ky." ;
+    ns2:name "Ky." .
+
+<https://w3id.org/caselinker/resource/location/morehead> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Morehead" ;
+    ns2:name "Morehead" .
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2025_023> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ky_sp_2025_023/provenance> .

@@ -1,91 +1,80 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/production#> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2014_001> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T19:34:18.980535" ;
+<https://w3id.org/caselinker/resource/case/hi_ag_2014_001> a ns5:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 04:40:03.639301" ;
     dcterms:identifier "hi_ag_2014_001" ;
-    dcterms:modified "2026-09-15T19:34:18.980535" ;
+    dcterms:modified "2026-10-18 04:40:03.639301" ;
     dcterms:source <https://ag.hawaii.gov/wp-content/uploads/2014/01/News-Release-2014-16-v2.pdf>,
         "HI AG" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/honolulu>,
-        <https://caselinker.up.railway.app/resource/location/pearl-city> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/legal-step/convicted> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/department-of-the-attorney-generals-criminal-justice-division>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/ice> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/honolulu>,
-        <https://caselinker.up.railway.app/resource/location/pearl-city> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/honolulu>,
+        <https://w3id.org/caselinker/resource/location/pearl-city> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/hi_ag_2014_001/phase/convicted> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/hi_ag_2014_001/phase/convicted> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/hi_ag_2014_001/legal-step/convicted> ;
+    ns5:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-the-attorney-generals-criminal-justice-division>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ice> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/honolulu>,
+        <https://w3id.org/caselinker/resource/location/pearl-city> .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/hi_ag_2014_001/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2014-05-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/hi_ag_2014_001/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/hi_ag_2014_001/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2014-05-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/hi_ag_2014_001/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/platform/facebook> a cac-core:DigitalSystemEntity,
-        cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "Facebook" .
 
-<https://caselinker.up.railway.app/resource/agency/department-of-the-attorney-generals-criminal-justice-division> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
+<https://w3id.org/caselinker/resource/agency/department-of-the-attorney-generals-criminal-justice-division> a ns1:OrganizationLikeEntity,
+        ns6:StateAgency ;
     rdfs:label "Department of the Attorney General's Criminal Justice Division" .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/ice> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/ice> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/sentence/1> .
+<https://w3id.org/caselinker/resource/case/hi_ag_2014_001/legal-step/convicted> a ns1:Event,
+        ns1:LegalEvent,
+        ns8:LegalProceeding,
+        ns8:SentencingHearing ;
+    ns8:hasProceedingBeginPoint "2014-05-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/hi_ag_2014_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 25 .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/hi_ag_2014_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:victimAge 11 .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/hi_ag_2014_001/phase/convicted> a ns1:Phase,
+        ns8:SentencingPhase ;
+    ns5:hasPhaseBeginPoint "2014-05-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"10 years\"]" .
-
-<https://caselinker.up.railway.app/resource/case/hi_ag_2014_001/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/honolulu> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/honolulu> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Honolulu" ;
-    uco-core:name "Honolulu" .
+    ns3:name "Honolulu" .
 
-<https://caselinker.up.railway.app/resource/location/pearl-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/pearl-city> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Pearl City" ;
-    uco-core:name "Pearl City" .
+    ns3:name "Pearl City" .
 
+
+<https://w3id.org/caselinker/resource/case/hi_ag_2014_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/hi_ag_2014_001/provenance> .

@@ -1,127 +1,92 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2022_555> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2022_555> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/largo-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "LARGO — Police Department" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 51 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$70,000\"]" .
-
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.476491" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_555> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:26.266113" ;
     dcterms:identifier "ncmec_2022_555" ;
-    dcterms:modified "2026-09-15T20:45:06.476491" ;
-    dcterms:source <https://www.tbnweekly.com/pinellas_county/crime_crashes_fire/article_24a19e4c-b1be-11ec-97bf-ab351a06b8a9.html>,
+    dcterms:modified "2026-10-17 21:51:26.266113" ;
+    dcterms:source <https://www.waow.com/news/marshfield-man-pleads-not-guilty-to-child-porn-charges/article_f12e3a50-d799-11ec-823d-7754bcb50149.html#:~:text=MARSHFIELD%2C%20Wis.,in%20a%20Walmart%20parking%20lot>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/largo> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/largo-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/largo> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/marshfield>,
+        <https://w3id.org/caselinker/resource/location/wis> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_555/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_555/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_555/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_555/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_555/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/marshfield-police-department>,
+        <https://w3id.org/caselinker/resource/agency/united-kingdom-national-crime-agency> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/marshfield>,
+        <https://w3id.org/caselinker/resource/location/wis> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "sharing these images with other users on the social media platform" ;
-    dcterms:source <https://www.tbnweekly.com/pinellas_county/crime_crashes_fire/article_24a19e4c-b1be-11ec-97bf-ab351a06b8a9.html> ;
-    ns1:admissionContext "ple user accounts within the past two-three years to receive images of child pornography. Police say Tincher also admitted to sharing the..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "sharing these images with other users on the social media platform" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_555/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-05-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_555/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_555/event/online-only> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_555/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_555/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-05-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_555/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_555/event/online-only> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_555/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/person/offender/1> .
+<https://w3id.org/caselinker/resource/agency/marshfield-police-department> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/location/largo> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Largo" ;
-    uco-core:name "Largo" .
+<https://w3id.org/caselinker/resource/agency/united-kingdom-national-crime-agency> a ns3:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "United Kingdom National Crime Agency" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "using multiple user accounts within the past two-three years to receive images of child pornography" ;
-    dcterms:source <https://www.tbnweekly.com/pinellas_county/crime_crashes_fire/article_24a19e4c-b1be-11ec-97bf-ab351a06b8a9.html> ;
-    ns1:admissionContext "f the search, four adults were inside the residence and cooperated with law enforcement. Tincher was interviewed and reportedly admitted..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "using multiple user accounts within the past two-three years to receive images of child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_555/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_555/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/admission/1> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_555/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_555/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2022_555/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_555/charge/1> ;
+    ns4:hasProceedingBeginPoint "2022-05-19T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_555/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 28 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_555/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_555/phase/arrested> a ns1:InitialPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2022-05-19T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/marshfield> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Marshfield" ;
+    ns6:name "Marshfield" .
+
+<https://w3id.org/caselinker/resource/location/wis> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wis." ;
+    ns6:name "Wis." .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_555/event/csam> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_555/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_555/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns3:Event .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_555> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_555/provenance> .

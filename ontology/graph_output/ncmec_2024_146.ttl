@@ -1,96 +1,119 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_146> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.243126" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:26.107263" ;
     dcterms:identifier "ncmec_2024_146" ;
-    dcterms:modified "2026-09-15T21:08:10.243126" ;
-    dcterms:source <https://www.wpbf.com/article/florida-sebastian-police-volunteer-arrested-possession-child-sexual-abuse-material/60513553#:~:text=SEBASTIAN%2C%20Fla.%20%E2%80%94&text=is%20under%20arrest.-,According%20to%20the%20Sebastian%20Police%20Department%2C%20Arnold%20Flannery%20was%20arrested,of%20child%20sexual%20abuse%20material.&text=County%20Sheriff's%20Office-,Flannery%20was%20a%20member%20of%20the%20Sebastian,volunteer%20program%20since%20January%202022>,
+    dcterms:modified "2026-10-17 23:04:26.107263" ;
+    dcterms:source <https://sa14.fl.gov/2024/07/26/bonifay-man-sentenced-to-20-years-in-prison-for-child-porn-possession/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/fla>,
-        <https://caselinker.up.railway.app/resource/location/sebastian>,
-        <https://caselinker.up.railway.app/resource/location/south-florida> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_146/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_146/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_146/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_146/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/indian-river-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/sebastian-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/fla>,
-        <https://caselinker.up.railway.app/resource/location/sebastian>,
-        <https://caselinker.up.railway.app/resource/location/south-florida> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/bonifay>,
+        <https://w3id.org/caselinker/resource/location/holmes-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_146/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_146/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_146/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_146/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_146/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_146/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_146/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/admin-sa-office-of-state-attorney-13-judicial-circuit>,
+        <https://w3id.org/caselinker/resource/agency/florida-department-of-law-enforcement>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/bonifay>,
+        <https://w3id.org/caselinker/resource/location/holmes-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_146/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_146/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_146/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-07-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_146/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_146/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_146/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_146/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_146/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_146/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-07-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_146/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_146/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_146/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/indian-river-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Indian River County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/agency/admin-sa-office-of-state-attorney-13-judicial-circuit> a ns4:OrganizationLikeEntity,
+        ns2:StateAgency ;
+    rdfs:label "Admin SA Office of State Attorney 13 Judicial Circuit" .
 
-<https://caselinker.up.railway.app/resource/agency/sebastian-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Sebastian Police Department" .
+<https://w3id.org/caselinker/resource/agency/florida-department-of-law-enforcement> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_146/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child sexual abuse material" ;
-    cacontology-legal-outcomes:indictmentCounts 51 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns6:indictmentCounts 12 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_146/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/cybertip> a ns5:NCMECCybertipReport ;
+    ns5:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_146/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_146/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_146/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_146/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_146/charge/1> ;
+    ns6:hasProceedingBeginPoint "2024-07-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2024_146/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_146/sentence/2> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_146/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/legal-step/sentenced> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding,
+        ns6:SentencingHearing ;
+    ns6:hasProceedingBeginPoint "2024-07-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_146/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 49 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_146/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/fla> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/sentence/1> a ns6:CriminalSentence,
+        ns6:PrisonSentence ;
+    rdfs:label "20 YEARS" .
 
-<https://caselinker.up.railway.app/resource/location/sebastian> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Sebastian" ;
-    uco-core:name "Sebastian" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/sentence/2> a ns6:CriminalSentence,
+        ns6:ProbationSentence ;
+    rdfs:label "15 years probation" .
 
-<https://caselinker.up.railway.app/resource/location/south-florida> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns2:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_146/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_146/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/phase/sentenced> a ns4:Phase,
+        ns6:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2024-07-26T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/location/bonifay> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Bonifay" ;
+    ns8:name "Bonifay" .
+
+<https://w3id.org/caselinker/resource/location/holmes-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Holmes County" ;
+    ns8:name "Holmes County" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146/event/possession> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:severityLevel 3 ;
+    ns8:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_146/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_146> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_146/provenance> .

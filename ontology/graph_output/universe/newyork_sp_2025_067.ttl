@@ -1,58 +1,77 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:00:55.919108" ;
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_067> a ns3:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 06:04:25.229182" ;
     dcterms:identifier "newyork_sp_2025_067" ;
-    dcterms:modified "2026-09-10T20:00:55.919108" ;
+    dcterms:modified "2026-10-18 06:04:25.229182" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/newyork_sp_2025_067/provenance> ;
     dcterms:source <https://troopers.ny.gov/news/state-police-arrest-glens-falls-man-following-child-sexual-assault-investigation>,
         "NEWYORK SP" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/glens-falls-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/state-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/glens-falls>,
+        <https://w3id.org/caselinker/resource/location/moreau>,
+        <https://w3id.org/caselinker/resource/location/new-york>,
+        <https://w3id.org/caselinker/resource/location/sp-wilton> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2025_067/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2025_067/phase/arrested> ;
+    ns3:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/glens-falls-police-department>,
+        <https://w3id.org/caselinker/resource/agency/state-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/glens-falls>,
+        <https://w3id.org/caselinker/resource/location/moreau>,
+        <https://w3id.org/caselinker/resource/location/new-york>,
+        <https://w3id.org/caselinker/resource/location/sp-wilton> .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_067/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2025_067/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_067/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2025_067/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/glens-falls-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/glens-falls-police-department> a ns4:OrganizationLikeEntity,
+        ns1:LocalAgency ;
     rdfs:label "Glens Falls Police Department" .
 
-<https://caselinker.up.railway.app/resource/agency/state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/state-police-department> a ns1:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/sentence/1> .
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_067/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 30 .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_067/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_067/phase/arrested> a ns3:InitialPhase,
+        ns4:Phase ;
+    ns3:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:ProbationSentence ;
-    rdfs:label "Probation" .
+<https://w3id.org/caselinker/resource/location/glens-falls> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Glens Falls" ;
+    ns2:name "Glens Falls" .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_067/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/moreau> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Moreau" ;
+    ns2:name "Moreau" .
+
+<https://w3id.org/caselinker/resource/location/new-york> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New York" ;
+    ns2:name "New York" .
+
+<https://w3id.org/caselinker/resource/location/sp-wilton> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sp Wilton" ;
+    ns2:name "Sp Wilton" .
 

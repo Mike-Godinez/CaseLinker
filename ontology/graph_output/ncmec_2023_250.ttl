@@ -1,98 +1,189 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.969159" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_250/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_250> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_250/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_250/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/fbi> a ns7:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/metropolitan-police-department> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns7:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:30.895898" ;
     dcterms:identifier "ncmec_2023_250" ;
-    dcterms:modified "2026-09-15T20:55:00.969159" ;
-    dcterms:source <https://www.news-gazette.com/news/local/courts-police-fire/tolono-man-charged-with-creating-possessing-child-pornography/article_af823848-4532-5c19-a30b-57aa56f73c3e.html>,
+    dcterms:modified "2026-10-17 22:21:30.895898" ;
+    dcterms:source <https://www.justice.gov/usao-nv/pr/las-vegas-resident-sentenced-10-years-prison-child-sex-trafficking#:~:text=James%20Allen%20Wynhoff%20(41)%20pleaded,register%20as%20a%20sex%20offender>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/event/production>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/illinois-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/las-vegas>,
+        <https://w3id.org/caselinker/resource/location/nevada>,
+        <https://w3id.org/caselinker/resource/location/the-district-of-nevada>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/utah> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_250/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_250/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_250/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_250/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_250/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_250/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_250/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_250/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_250/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_250/legal-step/sentenced> ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2023_250/tech/cybertipline> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/metropolitan-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/las-vegas>,
+        <https://w3id.org/caselinker/resource/location/nevada>,
+        <https://w3id.org/caselinker/resource/location/the-district-of-nevada>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/utah> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns2:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/charge/2> a ns2:CriminalCharge,
+        ns2:SexTrafficking ;
+    rdfs:label "sex trafficking" .
 
-<https://caselinker.up.railway.app/resource/agency/illinois-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/charge/3> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns5:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/event/multi-jurisdiction> a ns3:Event,
+        ns7:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/event/project-safe-childhood> a ns3:Event,
+        ns7:ProjectSafeChildhoodOperation ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/event/trafficking> a ns3:Event,
+        ns2:SexTrafficking ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_250/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_250/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_250/charge/3> ;
+    ns2:hasProceedingBeginPoint "2023-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2023_250/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_250/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_250/sentence/3> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 41 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/legal-step/sentenced> a ns3:Event,
+        ns3:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2023-08-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 41 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:ProbationSentence ;
-    rdfs:label "[\"30 years\", \"probation\", \"$500,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_250/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_250/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-06-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/sentence/1> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "10 Years" .
 
-<https://caselinker.up.railway.app/resource/platform/dropbox> a cacontology-platforms:FileHostingService ;
-    rdfs:label "Dropbox" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/sentence/2> a ns2:CriminalSentence,
+        ns2:SupervisedRelease ;
+    rdfs:label "20 years supervised release" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/dropbox> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/sentence/3> a ns2:CriminalSentence,
+        ns2:MonetaryPenalty ;
+    rdfs:label "$100" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_250/event/production> a cac-core:Event,
-        cacontology-production:ProductionOffense ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/dropbox> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_250/facet/production> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/tech/cybertipline> a ns8:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
 
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns7:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/phase/sentenced> a ns3:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2023-08-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/las-vegas> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Las Vegas" ;
+    ns6:name "Las Vegas" .
+
+<https://w3id.org/caselinker/resource/location/nevada> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nevada" ;
+    ns6:name "Nevada" .
+
+<https://w3id.org/caselinker/resource/location/the-district-of-nevada> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the District of Nevada" ;
+    ns6:name "the District of Nevada" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns6:name "United States" .
+
+<https://w3id.org/caselinker/resource/location/utah> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Utah" ;
+    ns6:name "Utah" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "possessing 11 videos of child sexual abuse material depicting children as young as toddlers" ;
+    dcterms:source <https://www.justice.gov/usao-nv/pr/las-vegas-resident-sentenced-10-years-prison-child-sex-trafficking#:~:text=James%20Allen%20Wynhoff%20(41)%20pleaded,register%20as%20a%20sex%20offender> ;
+    ns5:admissionContext "ough Kik messages, he solicited and agreed to pay $100 to the child to have sex with him. Furthermore, Wynhoff admitted to possessing 11..." ;
+    ns5:admissionFrame "admitted_to" ;
+    ns5:admissionTheme "harm_conduct" ;
+    ns5:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_250/role/offender/1> ;
+    ns5:evidenceTier "press_release_stated" ;
+    ns5:quoteType "paraphrase" ;
+    ns6:description "possessing 11 videos of child sexual abuse material depicting children as young as toddlers" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_250/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_250/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_250> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_250/provenance> .

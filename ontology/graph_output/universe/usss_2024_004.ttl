@@ -1,0 +1,124 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 07:32:40.285805" ;
+    dcterms:identifier "usss_2024_004" ;
+    dcterms:modified "2026-10-18 07:32:40.285805" ;
+    dcterms:source <https://www.secretservice.gov/newsroom/releases/2024/01/man-sentenced-17-years-prison-child-pornography>,
+        "USSS" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/dallas>,
+        <https://w3id.org/caselinker/resource/location/mansfield>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/the-northern-district> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/usss_2024_004/phase/sentenced> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/usss_2024_004/phase/sentenced> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/usss_2024_004/event/csam>,
+        <https://w3id.org/caselinker/resource/case/usss_2024_004/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/usss_2024_004/legal-step/sentenced> ;
+    ns3:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/mansfield-police-department>,
+        <https://w3id.org/caselinker/resource/agency/secret-service>,
+        <https://w3id.org/caselinker/resource/agency/tarrant-co-district-attorneys-office-digital-forensics-and-technical-services>,
+        <https://w3id.org/caselinker/resource/agency/us-secret-services-dallas-field-office>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/dallas>,
+        <https://w3id.org/caselinker/resource/location/mansfield>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/the-northern-district> .
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-01-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/usss_2024_004/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/usss_2024_004/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-01-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/usss_2024_004/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/usss_2024_004/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/mansfield-police-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/secret-service> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/tarrant-co-district-attorneys-office-digital-forensics-and-technical-services> a ns5:OrganizationLikeEntity,
+        ns4:StateAgency ;
+    rdfs:label "Tarrant Co. District Attorney's Office Digital Forensics and Technical Services" .
+
+<https://w3id.org/caselinker/resource/agency/us-secret-services-dallas-field-office> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/usss_2024_004/charge/1> ;
+    ns2:hasProceedingBeginPoint "2024-01-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/usss_2024_004/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2024-01-30T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 33 .
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004/sentence/1> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "210 months" .
+
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004/phase/sentenced> a ns5:Phase,
+        ns2:SentencingPhase ;
+    ns3:hasPhaseBeginPoint "2024-01-30T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/dallas> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Dallas" ;
+    ns1:name "Dallas" .
+
+<https://w3id.org/caselinker/resource/location/mansfield> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mansfield" ;
+    ns1:name "Mansfield" .
+
+<https://w3id.org/caselinker/resource/location/texas> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns1:name "Texas" .
+
+<https://w3id.org/caselinker/resource/location/the-northern-district> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the Northern District" ;
+    ns1:name "the Northern District" .
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004/event/csam> a ns3:CSAMIncident,
+        ns5:Event ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat> ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/usss_2024_004/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/usss_2024_004> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/usss_2024_004/provenance> .

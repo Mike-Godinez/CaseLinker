@@ -1,78 +1,97 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://cacontology.projectvic.org/production#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:03:22.514782" ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_007> a ns5:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 06:14:13.898321" ;
     dcterms:identifier "ohio_ag_2013_007" ;
-    dcterms:modified "2026-09-10T20:03:22.514782" ;
+    dcterms:modified "2026-10-18 06:14:13.898321" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/provenance> ;
     dcterms:source <https://www.ohioattorneygeneral.gov/Media/News-Releases/July-2013/Attorney-General-DeWine-Announces-12-Count-Indictm>,
         "OHIO AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/attorney-generals-crimes-against-children>,
-        <https://caselinker.up.railway.app/resource/agency/attorney-generals-special-prosecutions-section>,
-        <https://caselinker.up.railway.app/resource/agency/austintown-township-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/fbi>,
-        <https://caselinker.up.railway.app/resource/agency/mahoning-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/niles-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ohio-bureau-of-criminal-investigation>,
-        <https://caselinker.up.railway.app/resource/agency/youngstown-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/mahoning-county>,
+        <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/youngstown> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/phase/indicted> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/phase/indicted> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/legal-proceeding> ;
+    ns5:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-crimes-against-children>,
+        <https://w3id.org/caselinker/resource/agency/attorney-generals-special-prosecutions-section>,
+        <https://w3id.org/caselinker/resource/agency/mahoning-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/ohio-bureau-of-criminal-investigation>,
+        <https://w3id.org/caselinker/resource/agency/youngstown-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/mahoning-county>,
+        <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/youngstown> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2013-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2013-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/attorney-generals-crimes-against-children> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
+<https://w3id.org/caselinker/resource/agency/attorney-generals-crimes-against-children> a ns7:OrganizationLikeEntity,
+        ns3:StateAgency ;
     rdfs:label "Attorney General's Crimes Against Children" .
 
-<https://caselinker.up.railway.app/resource/agency/attorney-generals-special-prosecutions-section> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
+<https://w3id.org/caselinker/resource/agency/attorney-generals-special-prosecutions-section> a ns7:OrganizationLikeEntity,
+        ns3:StateAgency ;
     rdfs:label "Attorney General's Special Prosecutions Section" .
 
-<https://caselinker.up.railway.app/resource/agency/austintown-township-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/mahoning-county-sheriffs-office> a ns7:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Mahoning County Sheriff's Office" .
 
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/ohio-bureau-of-criminal-investigation> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/mahoning-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/youngstown-police-department> a ns7:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Youngstown Police Department" .
 
-<https://caselinker.up.railway.app/resource/agency/niles-police-department> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/ohio-bureau-of-criminal-investigation> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/youngstown-police-department> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
     rdfs:label "pandering" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/charge/1> ;
+    ns2:hasProceedingBeginPoint "2013-07-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:victimAge 14 .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_007/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_007/phase/indicted> a ns5:LegalProcessPhase,
+        ns7:Phase ;
+    ns5:hasPhaseBeginPoint "2013-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/mahoning-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mahoning County" ;
+    ns4:name "Mahoning County" .
+
+<https://w3id.org/caselinker/resource/location/ohio> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns4:name "Ohio" .
+
+<https://w3id.org/caselinker/resource/location/youngstown> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Youngstown" ;
+    ns4:name "Youngstown" .
 

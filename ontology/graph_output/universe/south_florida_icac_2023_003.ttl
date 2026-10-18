@@ -1,0 +1,95 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003> a ns3:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 07:13:24.839153" ;
+    dcterms:identifier "south_florida_icac_2023_003" ;
+    dcterms:modified "2026-10-18 07:13:24.839153" ;
+    dcterms:source <https://wsvn.com/news/local/broward/bcps-and-bso-launch-campaign-warning-teenagers-of-sextortion-crimes/%E2%80%9D>,
+        "SOUTH FLORIDA ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/broward-county>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/lauderhill> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/event/sextortion>,
+        <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/legal-proceeding> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/broward-county>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/lauderhill> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2023-12-08T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/event/sextortion> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2023-12-08T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/event/sextortion> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/charge/1> a ns5:CriminalCharge,
+        ns5:SextortionCharge ;
+    rdfs:label "sextortion" .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/event/distribution> a ns4:Event,
+        ns5:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/event/multi-jurisdiction> a ns4:Event,
+        ns2:MultiJurisdictionalInvestigation ;
+    ns2:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/charge/1> ;
+    ns5:hasProceedingBeginPoint "2023-12-08T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/location/broward-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Broward County" ;
+    ns1:name "Broward County" .
+
+<https://w3id.org/caselinker/resource/location/fla> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns1:name "Fla." .
+
+<https://w3id.org/caselinker/resource/location/lauderhill> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lauderhill" ;
+    ns1:name "Lauderhill" .
+
+<https://w3id.org/caselinker/resource/platform/instagram> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Instagram" .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/event/online-only> a ns3:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/instagram> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/event/sextortion> a ns4:Event,
+        <https://cacontology.projectvic.org/sextortion#SextortionIncident> ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/instagram> .
+
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/south_florida_icac_2023_003/provenance> .

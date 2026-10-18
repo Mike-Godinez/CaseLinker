@@ -1,90 +1,103 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_921> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:14.152275" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_921/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_921> ;
+    ns4:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_921/event/csam> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_921/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/north-park-police-department> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:25.882594" ;
     dcterms:identifier "ncmec_2025_921" ;
-    dcterms:modified "2026-09-15T21:27:14.152275" ;
-    dcterms:source <https://www.keloland.com/news/local-news/sturgis-man-facing-state-federal-child-porn-charges/>,
+    dcterms:modified "2026-10-18 00:01:25.882594" ;
+    dcterms:source <https://www.cachevalleydaily.com/news/smithfield-man-arrested-for-allegedly-using-google-account-to-download-child-pornography/article_01deb693-9bea-4b61-bfe2-8eddd493459b.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/meade-county>,
-        <https://caselinker.up.railway.app/resource/location/pennington-county>,
-        <https://caselinker.up.railway.app/resource/location/sd>,
-        <https://caselinker.up.railway.app/resource/location/sioux-falls> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_921/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_921/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_921/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_921/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/meade-county>,
-        <https://caselinker.up.railway.app/resource/location/pennington-county>,
-        <https://caselinker.up.railway.app/resource/location/sd>,
-        <https://caselinker.up.railway.app/resource/location/sioux-falls> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/smithfield> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_921/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_921/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_921/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_921/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_921/legal-proceeding> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/north-park-police-department> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/smithfield> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_921/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_921/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_921/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/charge/1> a ns3:CriminalCharge,
+        ns3:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_921/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_921/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_921/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_921/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/charge/2> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
     rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns3:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_921/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/charge/3> a ns3:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_921/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_921/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_921/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_921/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns3:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held without bail in the Cache County Jail; booked Thursday into the Cache County Jail; held without bail" ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_921/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_921/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_921/charge/3> ;
+    ns3:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_921/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 44 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_921/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_921/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_921/event/csam> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_921/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/location/meade-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Meade County" ;
-    uco-core:name "Meade County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/phase/charged> a ns1:LegalProcessPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/pennington-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Pennington County" ;
-    uco-core:name "Pennington County" .
+<https://w3id.org/caselinker/resource/location/smithfield> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Smithfield" ;
+    ns5:name "Smithfield" .
 
-<https://caselinker.up.railway.app/resource/location/sd> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "using the Google account, but claimed that when he realized the images sent to him in an email were of juveniles, he ..." ;
+    dcterms:source <https://www.cachevalleydaily.com/news/smithfield-man-arrested-for-allegedly-using-google-account-to-download-child-pornography/article_01deb693-9bea-4b61-bfe2-8eddd493459b.html> ;
+    ns2:admissionContext "nt to McConkie’s residence. He was transported to the police department for questioning. McConkie admitted to using the Google account, b..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "tech_use" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_921/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns5:description "using the Google account, but claimed that when he realized the images sent to him in an email were of juveniles, he got rid of them" .
 
-<https://caselinker.up.railway.app/resource/location/sioux-falls> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921/event/csam> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_921/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_921/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_921/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_921/facet/possession> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_921> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_921/provenance> .

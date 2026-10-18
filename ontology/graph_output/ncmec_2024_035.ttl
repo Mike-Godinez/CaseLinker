@@ -1,111 +1,222 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_035> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/arkansas-state-police-department> a cacontology-multi:StateAgency .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.052009" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:24.530059" ;
     dcterms:identifier "ncmec_2024_035" ;
-    dcterms:modified "2026-09-15T21:08:10.052009" ;
-    dcterms:source <https://www.whitecountycitizen.com/news/warrants-issued-for-two-in-beebe-on-child-porn-charges/article_93cfba56-a6cb-5df9-b7ca-9608cdc392ec.html>,
+    dcterms:modified "2026-10-17 23:04:24.530059" ;
+    dcterms:source <https://www.nwaonline.com/news/2024/oct/29/15-people-arrested-in-connection-with-various/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/colorado> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/arkansas-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/colorado> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/arkansas>,
+        <https://w3id.org/caselinker/resource/location/bella-vista>,
+        <https://w3id.org/caselinker/resource/location/carlsbad-terrace>,
+        <https://w3id.org/caselinker/resource/location/conway>,
+        <https://w3id.org/caselinker/resource/location/fayetteville>,
+        <https://w3id.org/caselinker/resource/location/leighton-lane>,
+        <https://w3id.org/caselinker/resource/location/northwest>,
+        <https://w3id.org/caselinker/resource/location/prairie-grove>,
+        <https://w3id.org/caselinker/resource/location/south-curtis-avenue>,
+        <https://w3id.org/caselinker/resource/location/third-avenue> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_035/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_035/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_035/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/operation> ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2024_035/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/arkansas-department-of-correction>,
+        <https://w3id.org/caselinker/resource/agency/arkansas-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/white-county-sheriffs-office> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/arkansas>,
+        <https://w3id.org/caselinker/resource/location/bella-vista>,
+        <https://w3id.org/caselinker/resource/location/carlsbad-terrace>,
+        <https://w3id.org/caselinker/resource/location/conway>,
+        <https://w3id.org/caselinker/resource/location/fayetteville>,
+        <https://w3id.org/caselinker/resource/location/leighton-lane>,
+        <https://w3id.org/caselinker/resource/location/northwest>,
+        <https://w3id.org/caselinker/resource/location/prairie-grove>,
+        <https://w3id.org/caselinker/resource/location/south-curtis-avenue>,
+        <https://w3id.org/caselinker/resource/location/third-avenue> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 32 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_035/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/agency/arkansas-department-of-correction> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/agency/arkansas-state-police-department> a ns6:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/agency/white-county-sheriffs-office> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/charge/1> a ns8:CSAM_Possession,
+        ns8:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/operation> a cac-core:Event,
-        cacontology-taskforce:ReactiveOperation .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/distribution> a ns4:Event,
+        ns8:CSAM_Distribution ;
+    ns1:severityLevel 1 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns8:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the county jail; remained at the Washington County Detention Center; held Monday in the Benton County Jail" ;
+    ns8:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_035/charge/1> ;
+    ns8:hasProceedingBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$250,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/operation> a ns4:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 25 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 29 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/person/offender/3> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 30 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/person/offender/4> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 38 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/person/offender/5> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 46 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_035/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/role/offender/2> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_035/person/offender/2> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/role/offender/3> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_035/person/offender/3> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/role/offender/4> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_035/person/offender/4> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/role/offender/5> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_035/person/offender/5> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/tech/cybertipline> a ns7:NCMECCybertipReport ;
     rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "“wished to speak to a lawyer" ;
-    dcterms:source <https://www.whitecountycitizen.com/news/warrants-issued-for-two-in-beebe-on-child-porn-charges/article_93cfba56-a6cb-5df9-b7ca-9608cdc392ec.html> ;
-    ns1:admissionContext "internet was password protected and he had not had visitors in quite some time.” He also reportedly then said he “wished to speak to a la..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "“wished to speak to a lawyer" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/phase/booked> a ns1:InitialPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/colorado> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/arkansas> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Arkansas" ;
+    ns5:name "Arkansas" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_035/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_035/facet/possession> .
+<https://w3id.org/caselinker/resource/location/bella-vista> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Bella Vista" ;
+    ns5:name "Bella Vista" .
 
+<https://w3id.org/caselinker/resource/location/carlsbad-terrace> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Carlsbad Terrace" ;
+    ns5:name "Carlsbad Terrace" .
+
+<https://w3id.org/caselinker/resource/location/conway> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Conway" ;
+    ns5:name "Conway" .
+
+<https://w3id.org/caselinker/resource/location/fayetteville> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fayetteville" ;
+    ns5:name "Fayetteville" .
+
+<https://w3id.org/caselinker/resource/location/leighton-lane> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Leighton Lane" ;
+    ns5:name "Leighton Lane" .
+
+<https://w3id.org/caselinker/resource/location/northwest> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Northwest" ;
+    ns5:name "Northwest" .
+
+<https://w3id.org/caselinker/resource/location/prairie-grove> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Prairie Grove" ;
+    ns5:name "Prairie Grove" .
+
+<https://w3id.org/caselinker/resource/location/south-curtis-avenue> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Curtis Avenue" ;
+    ns5:name "South Curtis Avenue" .
+
+<https://w3id.org/caselinker/resource/location/third-avenue> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Third Avenue" ;
+    ns5:name "Third Avenue" .
+
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/conspiracy> a ns1:ConspiracyToCommitCSA,
+        ns4:Event ;
+    ns1:conspiracyMemberCount 5 ;
+    ns1:participatesInConspiracy <https://w3id.org/caselinker/resource/case/ncmec_2024_035/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/role/offender/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/role/offender/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/role/offender/4>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_035/role/offender/5> ;
+    ns1:severityLevel 1 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035/event/possession> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:severityLevel 1 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_035/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_035> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_035/provenance> .

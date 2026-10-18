@@ -1,82 +1,90 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_335> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.040274" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_335> a ns2:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:31.910478" ;
     dcterms:identifier "ncmec_2023_335" ;
-    dcterms:modified "2026-09-15T20:55:01.040274" ;
-    dcterms:source <https://www.beloitdailynews.com/news/crime/man-accused-of-possession-of-child-pornography/article_d261a530-5290-11ee-8651-bb8a8f4806c9.html>,
+    dcterms:modified "2026-10-17 22:21:31.910478" ;
+    dcterms:source <https://www.dupagecounty.gov/news_detail_T2_R759.php>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/turtle-township> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_335/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_335/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/detective-bureau>,
-        <https://caselinker.up.railway.app/resource/agency/rock-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/wisconsin-department-of-justice> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/turtle-township> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/berlin>,
+        <https://w3id.org/caselinker/resource/location/dupage-county>,
+        <https://w3id.org/caselinker/resource/location/lisle> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_335/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_335/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_335/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_335/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_335/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/lisle-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/berlin>,
+        <https://w3id.org/caselinker/resource/location/dupage-county>,
+        <https://w3id.org/caselinker/resource/location/lisle> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_335/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_335/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_335/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_335/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-03-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_335/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_335/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_335/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_335/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_335/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_335/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-03-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_335/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_335/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/detective-bureau> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Detective Bureau" .
+<https://w3id.org/caselinker/resource/agency/lisle-police-department> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/rock-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Rock County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/agency/wisconsin-department-of-justice> a cacontology-multi:StateAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_335/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_335/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns3:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_335/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_335/event/distribution> a ns6:Event,
+        ns3:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_335/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_335/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_335/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_335/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_335/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_335/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_335/charge/1> ;
+    ns3:hasProceedingBeginPoint "2023-03-16T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_335/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_335/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_335/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_335/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/turtle-township> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Turtle Township" ;
-    uco-core:name "Turtle Township" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_335/phase/charged> a ns2:LegalProcessPhase,
+        ns6:Phase ;
+    ns2:hasPhaseBeginPoint "2023-03-16T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_335/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_335/facet/possession> .
+<https://w3id.org/caselinker/resource/location/berlin> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Berlin" ;
+    ns4:name "Berlin" .
 
+<https://w3id.org/caselinker/resource/location/dupage-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Dupage County" ;
+    ns4:name "Dupage County" .
+
+<https://w3id.org/caselinker/resource/location/lisle> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lisle" ;
+    ns4:name "Lisle" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_335/event/possession> a ns2:CSAMIncident,
+        ns6:Event ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_335/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_335> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_335/provenance> .

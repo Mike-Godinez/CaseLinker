@@ -1,100 +1,163 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_140> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.868936" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/admission/1/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_140/admission/1> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_140> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-10-24T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_140/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_140/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_140/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/effingham-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/monmouth-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:29.505138" ;
     dcterms:identifier "ncmec_2023_140" ;
-    dcterms:modified "2026-09-15T20:55:00.868936" ;
-    dcterms:source <https://www.wivb.com/news/local-news/erie-county/grand-island/grand-island-man-arrested-for-child-sex-crimes-weapons-charges/#:~:text=An%20internet%20crimes%20against%20children,with%20New%20York%20State%20law>,
+    dcterms:modified "2026-10-17 22:21:29.505138" ;
+    dcterms:source <https://www.wandtv.com/news/effingham-man-charged-with-possessing-disseminating-child-pornography/article_a7964e12-72a9-11ee-8fb0-c3c0e663f3bf.html#:~:text=Raoul's%20office%20charged%20Dallas%20R,to%20seven%20years%20in%20prison>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/buffalo>,
-        <https://caselinker.up.railway.app/resource/location/grand-island>,
-        <https://caselinker.up.railway.app/resource/location/new-york-state>,
-        <https://caselinker.up.railway.app/resource/location/ny> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_140/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_140/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_140/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_140/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/new-york-state-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/buffalo>,
-        <https://caselinker.up.railway.app/resource/location/grand-island>,
-        <https://caselinker.up.railway.app/resource/location/new-york-state>,
-        <https://caselinker.up.railway.app/resource/location/ny> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/augusta>,
+        <https://w3id.org/caselinker/resource/location/effingham>,
+        <https://w3id.org/caselinker/resource/location/ill>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/kennebec-county>,
+        <https://w3id.org/caselinker/resource/location/maine>,
+        <https://w3id.org/caselinker/resource/location/monmouth> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_140/phase/indicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_140/phase/indicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_140/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_140/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_140/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_140/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_140/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2023_140/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/effingham-police-department>,
+        <https://w3id.org/caselinker/resource/agency/monmouth-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/augusta>,
+        <https://w3id.org/caselinker/resource/location/effingham>,
+        <https://w3id.org/caselinker/resource/location/ill>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/kennebec-county>,
+        <https://w3id.org/caselinker/resource/location/maine>,
+        <https://w3id.org/caselinker/resource/location/monmouth> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_140/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_140/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_140/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns5:indictmentCounts 25 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_140/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_140/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_140/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/charge/2> a ns5:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/agency/new-york-state-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "New York State Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/event/distribution> a ns2:Event,
+        ns5:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_140/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_140/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): detained at the Effingham County Jail" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_140/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_140/charge/2> ;
+    ns5:hasProceedingBeginPoint "2023-10-24T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_140/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_140/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_140/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 46 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_140/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 63 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_140/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-10-24T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_140/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_140/event/possession> ;
+    ns1:perpetratorRegisteredSexOffender true ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_140/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_140/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_140/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "did, then she did it and was guilty and would take responsibility" ;
+    dcterms:source <https://www.wandtv.com/news/effingham-man-charged-with-possessing-disseminating-child-pornography/article_a7964e12-72a9-11ee-8fb0-c3c0e663f3bf.html#:~:text=Raoul's%20office%20charged%20Dallas%20R,to%20seven%20years%20in%20prison> ;
+    ns3:admissionContext "bout the allegations, Venable claimed to not remember committing the acts but said if the accuser said she did, then she did it and was g..." ;
+    ns3:admissionFrame "said_paraphrase" ;
+    ns3:admissionTheme "other" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_140/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns4:description "did, then she did it and was guilty and would take responsibility" .
 
-<https://caselinker.up.railway.app/resource/location/buffalo> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Buffalo" ;
-    uco-core:name "Buffalo" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/phase/indicted> a ns1:LegalProcessPhase,
+        ns2:Phase ;
+    ns1:hasPhaseBeginPoint "2023-10-24T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/grand-island> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Grand Island" ;
-    uco-core:name "Grand Island" .
+<https://w3id.org/caselinker/resource/location/augusta> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Augusta" ;
+    ns4:name "Augusta" .
 
-<https://caselinker.up.railway.app/resource/location/new-york-state> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "New York State" ;
-    uco-core:name "New York State" .
+<https://w3id.org/caselinker/resource/location/effingham> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Effingham" ;
+    ns4:name "Effingham" .
 
-<https://caselinker.up.railway.app/resource/location/ny> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/ill> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ill." ;
+    ns4:name "Ill." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_140/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_140/facet/possession> .
+<https://w3id.org/caselinker/resource/location/illinois> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Illinois" ;
+    ns4:name "Illinois" .
 
+<https://w3id.org/caselinker/resource/location/kennebec-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kennebec County" ;
+    ns4:name "Kennebec County" .
+
+<https://w3id.org/caselinker/resource/location/maine> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Maine" ;
+    ns4:name "Maine" .
+
+<https://w3id.org/caselinker/resource/location/monmouth> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Monmouth" ;
+    ns4:name "Monmouth" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns1:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_140/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_140> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_140/provenance> .

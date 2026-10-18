@@ -1,105 +1,106 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_425> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.115120" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_425/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_425> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-12-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_425/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_425/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/brazos-county-sheriffs-office> a ns3:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "Brazos County Sheriff's Office" .
+
+<https://w3id.org/caselinker/resource/agency/pflugerville-police-department> a ns3:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "Pflugerville Police Department" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:33.085508" ;
     dcterms:identifier "ncmec_2023_425" ;
-    dcterms:modified "2026-09-15T20:55:01.115120" ;
-    dcterms:source <https://fox59.com/news/indycrime/docs-bloomington-man-arrested-after-downloading-child-pornography/#:~:text=%E2%80%94%20A%20Bloomington%20man%20has%20been,pornography%2C%20a%20Level%205%20felony>,
+    dcterms:modified "2026-10-17 22:21:33.085508" ;
+    dcterms:source <https://theeagle.com/news/local/crime-courts/college-station-man-charged-with-possession-of-child-pornography/article_8ae45a58-984b-11ee-af0e-33170c677121.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/bloomington>,
-        <https://caselinker.up.railway.app/resource/location/clayton>,
-        <https://caselinker.up.railway.app/resource/location/ind>,
-        <https://caselinker.up.railway.app/resource/location/monroe-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_425/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_425/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_425/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_425/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_425/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/indianapolis-metropolitan-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/bloomington>,
-        <https://caselinker.up.railway.app/resource/location/clayton>,
-        <https://caselinker.up.railway.app/resource/location/ind>,
-        <https://caselinker.up.railway.app/resource/location/monroe-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/brazos-county>,
+        <https://w3id.org/caselinker/resource/location/pflugerville> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_425/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_425/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_425/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_425/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_425/legal-proceeding> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/brazos-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/pflugerville-police-department> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/brazos-county>,
+        <https://w3id.org/caselinker/resource/location/pflugerville> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_425/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_425/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_425/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns7:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_425/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_425/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_425/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns7:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Brazos County Jail" ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_425/charge/1> ;
+    ns7:hasProceedingBeginPoint "2023-12-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/indianapolis-metropolitan-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Indianapolis Metropolitan Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 33 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_425/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_425/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-12-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_425/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_425/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_425/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425/phase/charged> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2023-12-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_425/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_425/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_425/sentence/1> .
+<https://w3id.org/caselinker/resource/location/brazos-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Brazos County" ;
+    ns4:name "Brazos County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_425/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/pflugerville> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pflugerville" ;
+    ns4:name "Pflugerville" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_425/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "having child pornography on a secret phone that was in a black backpack inside his residence" ;
+    dcterms:source <https://theeagle.com/news/local/crime-courts/college-station-man-charged-with-possession-of-child-pornography/article_8ae45a58-984b-11ee-af0e-33170c677121.html> ;
+    ns2:admissionContext "County Sheriff’s Office arrested Dawson on behalf of the Pflugerville Police Department. After being taken into custody, officers said Da..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_425/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns4:description "having child pornography on a secret phone that was in a black backpack inside his residence" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_425/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_425/admission/1> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_425/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_425/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/bloomington> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Bloomington" ;
-    uco-core:name "Bloomington" .
-
-<https://caselinker.up.railway.app/resource/location/clayton> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Clayton" ;
-    uco-core:name "Clayton" .
-
-<https://caselinker.up.railway.app/resource/location/ind> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/monroe-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Monroe County" ;
-    uco-core:name "Monroe County" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_425/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_425/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2023_425> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_425/provenance> .

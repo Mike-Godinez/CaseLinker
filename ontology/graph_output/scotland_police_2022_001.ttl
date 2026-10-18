@@ -1,0 +1,81 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_001> a ns6:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 14:18:19.385742" ;
+    dcterms:identifier "scotland_police_2022_001" ;
+    dcterms:modified "2026-10-18 14:18:19.385742" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scotland_police_2022_001/provenance> ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2022/february/man-convicted-of-serious-sexual-offences-in-the-forth-valley-area/>,
+        "SCOTLAND POLICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/forth-valley>,
+        <https://w3id.org/caselinker/resource/location/glasgow>,
+        <https://w3id.org/caselinker/resource/location/scotland> ;
+    ns6:currentPhase <https://w3id.org/caselinker/resource/case/scotland_police_2022_001/phase/sentenced> ;
+    ns6:hasPhase <https://w3id.org/caselinker/resource/case/scotland_police_2022_001/phase/sentenced> ;
+    ns6:hasStep <https://w3id.org/caselinker/resource/case/scotland_police_2022_001/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2022_001/legal-step/sentenced> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/police-scotland> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/forth-valley>,
+        <https://w3id.org/caselinker/resource/location/glasgow>,
+        <https://w3id.org/caselinker/resource/location/scotland> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_001/role/offender/1> a ns6:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns6:hasRoleBeginPoint "2022-02-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2022_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_001/role/victim/1> a ns6:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns6:hasRoleBeginPoint "2022-02-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2022_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/police-scotland> a ns1:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Police Scotland" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_001/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remanded in custody" ;
+    ns5:hasProceedingBeginPoint "2022-02-02T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_001/legal-step/sentenced> a ns1:Event,
+        ns1:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2022-02-02T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 35 .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_001/phase/sentenced> a ns1:Phase,
+        ns5:SentencingPhase ;
+    ns6:hasPhaseBeginPoint "2022-02-02T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/forth-valley> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Forth Valley" ;
+    ns4:name "Forth Valley" .
+
+<https://w3id.org/caselinker/resource/location/glasgow> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Glasgow" ;
+    ns4:name "Glasgow" .
+
+<https://w3id.org/caselinker/resource/location/scotland> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Scotland" ;
+    ns4:name "Scotland" .
+

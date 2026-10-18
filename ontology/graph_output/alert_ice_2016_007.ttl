@@ -1,0 +1,116 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/production#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007> a ns2:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 14:12:36.032854" ;
+    dcterms:identifier "alert_ice_2016_007" ;
+    dcterms:modified "2026-10-18 14:12:36.032854" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/provenance> ;
+    dcterms:source <https://alert-ab.ca/church-pastor-charged-with-child-luring/>,
+        "ALERT ICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/duffield>,
+        <https://w3id.org/caselinker/resource/location/edmonton>,
+        <https://w3id.org/caselinker/resource/location/stony-plain> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/event/csam>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/offense-event/charge-2> ;
+    ns2:investigationStatus "unknown" ;
+    ns2:usesMethod <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/tech/cybertipline> ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/edmonton-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ice> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/duffield>,
+        <https://w3id.org/caselinker/resource/location/edmonton>,
+        <https://w3id.org/caselinker/resource/location/stony-plain> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2016-03-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/event/csam>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/offense-event/charge-2> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2016-03-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/event/csam>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/offense-event/charge-2> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/edmonton-police-department> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/ice> a ns1:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/charge/2> a ns6:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/offense-event/charge-2> ;
+    ns5:chargeCluster "child_exploitation" ;
+    ns5:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/offense-event/charge-2> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/event/distribution> a ns7:Event,
+        ns6:CSAM_Distribution ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/charge/1>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/charge/2> ;
+    ns6:hasProceedingBeginPoint "2016-03-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 59 .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:victimAge 15 .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/phase/charged> a ns2:LegalProcessPhase,
+        ns7:Phase ;
+    ns2:hasPhaseBeginPoint "2016-03-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/duffield> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Duffield" ;
+    ns3:name "Duffield" .
+
+<https://w3id.org/caselinker/resource/location/edmonton> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Edmonton" ;
+    ns3:name "Edmonton" .
+
+<https://w3id.org/caselinker/resource/location/stony-plain> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Stony Plain" ;
+    ns3:name "Stony Plain" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/event/csam> a ns2:CSAMIncident,
+        ns7:Event ;
+    ns2:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/alert_ice_2016_007/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2016_007/offense-event/charge-2> a ns2:ChildSexualAbuseEvent,
+        ns7:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+

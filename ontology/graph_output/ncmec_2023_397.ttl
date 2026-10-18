@@ -1,137 +1,105 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_397> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/offense-event/charge-1> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.092093" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_397> a ns2:CACInvestigation,
+        ns8:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:32.639145" ;
     dcterms:identifier "ncmec_2023_397" ;
-    dcterms:modified "2026-09-15T20:55:01.092093" ;
-    dcterms:source <https://www.wallowa.com/news/local/enterprise-woman-arrested-on-child-porn-charges/article_6de4074e-e90c-11ed-9e85-db35d0f6fb48.html>,
+    dcterms:modified "2026-10-17 22:21:32.639145" ;
+    dcterms:source <https://www.stcloudlive.com/news/local/hanover-man-faces-charges-related-to-possession-of-child-pornography>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/pendleton>,
-        <https://caselinker.up.railway.app/resource/location/wallowa-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/offense-event/charge-1> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/pendleton>,
-        <https://caselinker.up.railway.app/resource/location/wallowa-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/buffalo>,
+        <https://w3id.org/caselinker/resource/location/hanover>,
+        <https://w3id.org/caselinker/resource/location/minnesota>,
+        <https://w3id.org/caselinker/resource/location/wright-county> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_397/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_397/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_397/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_397/operation> ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/minnesota-bureau-of-criminal-apprehension>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/wright-county-sheriffs-office> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/buffalo>,
+        <https://w3id.org/caselinker/resource/location/hanover>,
+        <https://w3id.org/caselinker/resource/location/minnesota>,
+        <https://w3id.org/caselinker/resource/location/wright-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "encouraging child sexual abuse in the first degree and taken to the" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/offense-event/charge-1> ;
-    cacontology-legal-outcomes:indictmentCounts 10 ;
-    ns1:chargeCluster "encouraging_child_sexual_abuse" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/offense-event/charge-1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_397/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_397/event/possession> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_397/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_397/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_397/event/possession> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_397/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/agency/minnesota-bureau-of-criminal-apprehension> a ns1:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/agency/wright-county-sheriffs-office> a ns8:OrganizationLikeEntity,
+        ns1:LocalAgency ;
+    rdfs:label "Wright County Sheriff's Office" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_397/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_397/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_397/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 37 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_397/legal-proceeding> a ns8:Event,
+        ns8:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_397/charge/1> ;
+    ns3:hasProceedingBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_397/operation> a ns8:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/offense-event/charge-1> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_397/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 68 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$100,000\", \"10 years\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_397/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns1:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "was asked if she wanted to prosecute the case or if she would prefer that Michalowski do it and she turned it over to..." ;
-    dcterms:source <https://www.wallowa.com/news/local/enterprise-woman-arrested-on-child-porn-charges/article_6de4074e-e90c-11ed-9e85-db35d0f6fb48.html> ;
-    ns1:admissionContext "enior assistant attorney general and special deputy district attorney for Wallowa County. Frolander said she was asked if she wanted to p..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "was asked if she wanted to prosecute the case or if she would prefer that Michalowski do it and she turned it over to Michalowski" .
+<https://w3id.org/caselinker/resource/location/buffalo> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Buffalo" ;
+    ns6:name "Buffalo" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/hanover> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hanover" ;
+    ns6:name "Hanover" .
 
-<https://caselinker.up.railway.app/resource/location/pendleton> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/minnesota> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Minnesota" ;
+    ns6:name "Minnesota" .
 
-<https://caselinker.up.railway.app/resource/location/wallowa-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Wallowa County" ;
-    uco-core:name "Wallowa County" .
+<https://w3id.org/caselinker/resource/location/wright-county> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wright County" ;
+    ns6:name "Wright County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_397/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_397/event/possession> a ns2:CSAMIncident,
+        ns8:Event ;
+    ns2:severityLevel 3 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_397/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_397/offense-event/charge-1> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: encouraging child sexual abuse in the first degree and taken to the" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2023_397> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_397/provenance> .

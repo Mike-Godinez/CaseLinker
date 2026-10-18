@@ -1,0 +1,76 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_019> a ns3:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 14:24:47.467640" ;
+    dcterms:identifier "nbi_2025_019" ;
+    dcterms:modified "2026-10-18 14:24:47.467640" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nbi_2025_019/provenance> ;
+    dcterms:source <https://nbi.gov.ph/press_releases/2025/01212025/7542/>,
+        "NBI" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/bagumbayan-naga-city>,
+        <https://w3id.org/caselinker/resource/location/naga-city> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/nbi_2025_019/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/nbi_2025_019/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/nbi_2025_019/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/nbi_2025_019/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/nbi_2025_019/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/bagumbayan-naga-city>,
+        <https://w3id.org/caselinker/resource/location/naga-city> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_019/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-01-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/nbi_2025_019/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_019/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-01-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/nbi_2025_019/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation> a ns2:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_019/charge/1> a ns5:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns1:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_019/event/distribution> a ns6:Event,
+        ns5:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_019/event/trafficking> a ns6:Event,
+        ns5:SexTrafficking .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_019/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/nbi_2025_019/charge/1> ;
+    ns5:hasProceedingBeginPoint "2025-01-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_019/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_019/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_019/phase/arrested> a ns3:InitialPhase,
+        ns6:Phase ;
+    ns3:hasPhaseBeginPoint "2025-01-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/bagumbayan-naga-city> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Bagumbayan, Naga City" ;
+    ns4:name "Bagumbayan, Naga City" .
+
+<https://w3id.org/caselinker/resource/location/naga-city> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Naga City" ;
+    ns4:name "Naga City" .
+

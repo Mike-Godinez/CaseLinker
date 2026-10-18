@@ -1,97 +1,68 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:06:35.755535" ;
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_044> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 06:04:24.952606" ;
     dcterms:identifier "newyork_sp_2025_044" ;
-    dcterms:modified "2026-09-15T20:06:35.755535" ;
+    dcterms:modified "2026-10-18 06:04:24.952606" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/newyork_sp_2025_044/provenance> ;
     dcterms:source <https://troopers.ny.gov/news/purling-man-accused-sexual-abuse-1st-degree>,
         "NEWYORK SP" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/catskill>,
-        <https://caselinker.up.railway.app/resource/location/new-york>,
-        <https://caselinker.up.railway.app/resource/location/round-top> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/new-york-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/troop-f-bureau-of-criminal-investigation> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/catskill>,
-        <https://caselinker.up.railway.app/resource/location/new-york>,
-        <https://caselinker.up.railway.app/resource/location/round-top> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/catskill>,
+        <https://w3id.org/caselinker/resource/location/new-york>,
+        <https://w3id.org/caselinker/resource/location/round-top> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2025_044/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2025_044/phase/charged> ;
+    ns2:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/new-york-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/troop-f-bureau-of-criminal-investigation> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/catskill>,
+        <https://w3id.org/caselinker/resource/location/new-york>,
+        <https://w3id.org/caselinker/resource/location/round-top> .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/event/conspiracy> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_044/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2025_044/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/new-york-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_044/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2025_044/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/troop-f-bureau-of-criminal-investigation> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/new-york-state-police-department> a ns1:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/sentence/1> .
+<https://w3id.org/caselinker/resource/agency/troop-f-bureau-of-criminal-investigation> a ns1:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 21 .
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_044/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 57 .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/person/offender/2> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 57 .
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_044/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_044/phase/charged> a ns2:LegalProcessPhase,
+        ns4:Phase ;
+    ns2:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/event/conspiracy> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/person/offender/1> .
+<https://w3id.org/caselinker/resource/location/catskill> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Catskill" ;
+    ns5:name "Catskill" .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/role/offender/2> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/event/conspiracy> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/person/offender/2> .
+<https://w3id.org/caselinker/resource/location/new-york> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New York" ;
+    ns5:name "New York" .
 
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/catskill> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/new-york> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/round-top> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/round-top> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Round Top" ;
-    uco-core:name "Round Top" .
-
-<https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/event/conspiracy> a cacontology:ConspiracyToCommitCSA,
-        cac-core:Event ;
-    cacontology:conspiracyMemberCount 2 ;
-    cacontology:participatesInConspiracy <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/role/offender/1>,
-        <https://caselinker.up.railway.app/resource/case/newyork_sp_2025_044/role/offender/2> ;
-    cacontology:severityLevel 3 .
+    ns5:name "Round Top" .
 

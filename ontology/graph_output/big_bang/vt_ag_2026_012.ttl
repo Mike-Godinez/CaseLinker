@@ -1,48 +1,64 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/vt_ag_2026_012> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:24:34.327241" ;
+<https://w3id.org/caselinker/resource/case/vt_ag_2026_012> a ns2:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 07:41:07.394014" ;
     dcterms:identifier "vt_ag_2026_012" ;
-    dcterms:modified "2026-09-10T20:24:34.327241" ;
+    dcterms:modified "2026-10-18 07:41:07.394014" ;
     dcterms:source <https://ago.vermont.gov/blog/2026/01/05/middlebury-resident-charged-sexual-assault-child>,
         "VT AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/vt_ag_2026_012/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/vt_ag_2026_012/phase/charged> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/attorney-generals-office>,
-        <https://caselinker.up.railway.app/resource/agency/middlebury-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/middlebury>,
+        <https://w3id.org/caselinker/resource/location/vermont> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/vt_ag_2026_012/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/vt_ag_2026_012/phase/charged> ;
+    ns2:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/middlebury-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/middlebury>,
+        <https://w3id.org/caselinker/resource/location/vermont> .
 
-<https://caselinker.up.railway.app/resource/case/vt_ag_2026_012/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/vt_ag_2026_012/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/vt_ag_2026_012/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2026-01-05T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/vt_ag_2026_012/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/vt_ag_2026_012/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/vt_ag_2026_012/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/vt_ag_2026_012/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2026-01-05T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/vt_ag_2026_012/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/attorney-generals-office> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns6:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/middlebury-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/middlebury-police-department> a ns1:OrganizationLikeEntity,
+        ns6:LocalAgency ;
     rdfs:label "Middlebury Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/vt_ag_2026_012/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 55 .
+<https://w3id.org/caselinker/resource/case/vt_ag_2026_012/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 55 .
 
-<https://caselinker.up.railway.app/resource/case/vt_ag_2026_012/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/vt_ag_2026_012/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/vt_ag_2026_012/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/vt_ag_2026_012/phase/charged> a ns2:LegalProcessPhase,
+        ns1:Phase ;
+    ns2:hasPhaseBeginPoint "2026-01-05T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/location/middlebury> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Middlebury" ;
+    ns4:name "Middlebury" .
+
+<https://w3id.org/caselinker/resource/location/vermont> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Vermont" ;
+    ns4:name "Vermont" .
+
+
+<https://w3id.org/caselinker/resource/case/vt_ag_2026_012> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/vt_ag_2026_012/provenance> .

@@ -1,70 +1,84 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_436> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.368357" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_436> a ns3:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:24.643449" ;
     dcterms:identifier "ncmec_2022_436" ;
-    dcterms:modified "2026-09-15T20:45:06.368357" ;
-    dcterms:source <https://lebanon-express.com/corvallis/news/local/crime-and-courts/sweet-home-man-arrested-on-suspicion-of-child-pornography/article_82c0d030-24cc-599d-b904-813300c0eadd.html>,
+    dcterms:modified "2026-10-17 21:51:24.643449" ;
+    dcterms:source <https://www.wcpo.com/news/local-news/hamilton-county/loveland/loveland-high-school-employee-facing-multiple-child-pornography-charges>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_436/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_436/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_436/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_436/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/albany-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cincinnati>,
+        <https://w3id.org/caselinker/resource/location/loveland-city-school-district> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_436/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_436/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_436/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_436/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/hamilton-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/cincinnati>,
+        <https://w3id.org/caselinker/resource/location/loveland-city-school-district> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_436/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_436/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_436/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_436/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2022-10-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_436/event/csam> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_436/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_436/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_436/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_436/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_436/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2022-10-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_436/event/csam> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_436/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/albany-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Albany Police Department" .
+<https://w3id.org/caselinker/resource/agency/hamilton-county-sheriffs-office> a ns1:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_436/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_436/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_436/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_436/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_436/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_436/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_436/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_436/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_436/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_436/charge/1> ;
+    ns4:hasProceedingBeginPoint "2022-10-07T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_436/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_436/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 39 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_436/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$250,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_436/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_436/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_436/phase/charged> a ns3:LegalProcessPhase,
+        ns7:Phase ;
+    ns3:hasPhaseBeginPoint "2022-10-07T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_436/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_436/facet/possession> .
+<https://w3id.org/caselinker/resource/location/cincinnati> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cincinnati" ;
+    ns5:name "Cincinnati" .
 
+<https://w3id.org/caselinker/resource/location/loveland-city-school-district> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Loveland City School District" ;
+    ns5:name "Loveland City School District" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_436/event/csam> a ns3:CSAMIncident,
+        ns7:Event ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_436/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_436> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_436/provenance> .

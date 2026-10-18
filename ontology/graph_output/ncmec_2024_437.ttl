@@ -1,189 +1,104 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-usa-federal: <https://cacontology.projectvic.org/usa-federal-law#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_437> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_437> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/offense-event/charge-3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/offense-event/charge-4> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/boone-county-child-abuse-and-sexual-exploitation-task-force> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child molestation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/offense-event/charge-3> ;
-    ns1:chargeCluster "child_molestation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/offense-event/charge-3> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/charge/4> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/offense-event/charge-4> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/offense-event/charge-4> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/charge/3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/charge/4> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 28 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"12 years\"]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.574358" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:29.894755" ;
     dcterms:identifier "ncmec_2024_437" ;
-    dcterms:modified "2026-09-15T21:08:10.574358" ;
-    dcterms:source <https://fox59.com/news/indycrime/court-docs-snapchat-reveals-lebanon-man-was-molesting-child/>,
+    dcterms:modified "2026-10-17 23:04:29.894755" ;
+    dcterms:source <https://www.ourquadcities.com/news/state-news/iowa-news/iowa-man-arrested-on-sexual-exploitation-charges-involving-kids-as-young-as-8/?nxsparam=5>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ind>,
-        <https://caselinker.up.railway.app/resource/location/lebanon> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/legal-step/convicted>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/offense-event/charge-3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/offense-event/charge-4> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/boone-county-child-abuse-and-sexual-exploitation-task-force> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ind>,
-        <https://caselinker.up.railway.app/resource/location/lebanon> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/des-moines>,
+        <https://w3id.org/caselinker/resource/location/iowa> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_437/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_437/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_437/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_437/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_437/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/des-moines-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/des-moines>,
+        <https://w3id.org/caselinker/resource/location/iowa> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-02-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_437/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_437/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/offense-event/charge-3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/offense-event/charge-4> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-02-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_437/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_437/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/location/ind> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/agency/des-moines-police-department> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/location/lebanon> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Lebanon" ;
-    uco-core:name "Lebanon" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/admission/2> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/charge/2> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "obscene material" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/admission/2> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/charge/3> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns5:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "“touching and fondling” the victim and recording said acts" ;
-    dcterms:source <https://fox59.com/news/indycrime/court-docs-snapchat-reveals-lebanon-man-was-molesting-child/> ;
-    ns1:admissionContext "cording to the court documents, police interviewed McDonald after his arrest on March 22. Investigators stated that McDonald allegedly ad..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "“touching and fondling” the victim and recording said acts" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/event/distribution> a ns7:Event,
+        ns2:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "viewing, receiving and sharing child pornography" ;
-    dcterms:source <https://fox59.com/news/indycrime/court-docs-snapchat-reveals-lebanon-man-was-molesting-child/> ;
-    ns1:admissionContext "cDonald allegedly admitted to “touching and fondling” the victim and recording said acts. McDonald also reportedly admitted to viewing, r..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_437/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "viewing, receiving and sharing child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility: booked into the Polk County Jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_437/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_437/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_437/charge/3> ;
+    ns2:hasProceedingBeginPoint "2024-02-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2024_437/sentence/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/offense-event/charge-3> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        cacontology-usa-federal:SexualAbuseOfMinor,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child molestation" ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 30 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_437/offense-event/charge-4> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child exploitation" ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/sentence/1> a ns2:CriminalSentence,
+        ns2:MonetaryPenalty ;
+    rdfs:label "$500" .
+
+<https://w3id.org/caselinker/resource/platform/whisper> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "Whisper" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/phase/booked> a ns1:InitialPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2024-02-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/des-moines> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Des Moines" ;
+    ns4:name "Des Moines" .
+
+<https://w3id.org/caselinker/resource/location/iowa> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Iowa" ;
+    ns4:name "Iowa" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437/event/possession> a ns1:CSAMIncident,
+        ns7:Event ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/whisper> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_437/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_437> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_437/provenance> .

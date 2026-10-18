@@ -1,76 +1,105 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:04:58.229375" ;
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 06:39:35.643567" ;
     dcterms:identifier "scag_icac_2026_045" ;
-    dcterms:modified "2026-09-10T20:04:58.229375" ;
+    dcterms:modified "2026-10-18 06:39:35.643567" ;
     dcterms:source <https://www.scag.gov/about-the-office/news/attorney-general-alan-wilson-supports-protecting-private-spaces/>,
         "SCAG ICAC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/legal-proceeding> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/greenville-county>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/event/csam>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/legal-proceeding> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/greenville-county>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
     rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045/event/distribution> a ns4:Event,
+        ns6:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/relationship/father> .
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045/event/trust-violation> a ns5:CustodialAbuse,
+        ns5:TrustViolation ;
+    ns5:violatesRelationship <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/relationship/father> .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/charge/1> ;
+    ns6:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/relationship/father> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/role/offender/1> ;
-    cacontology-custodial:relationshipType "father" .
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045/relationship/father> a ns5:CustodialRelationship,
+        ns5:FamilialRelationship ;
+    ns5:involvesChild <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/role/victim/1> ;
+    ns5:involvesCustodian <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/role/offender/1> ;
+    ns5:relationshipType "father" .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/event/csam> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/event/csam> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045/phase/arrested> a ns1:InitialPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/scag_icac_2026_045/facet/csam> .
+<https://w3id.org/caselinker/resource/location/columbia> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Columbia" ;
+    ns3:name "Columbia" .
 
+<https://w3id.org/caselinker/resource/location/greenville-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Greenville County" ;
+    ns3:name "Greenville County" .
+
+<https://w3id.org/caselinker/resource/location/sc> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "S.c." ;
+    ns3:name "S.c." .
+
+<https://w3id.org/caselinker/resource/location/south-carolina> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Carolina" ;
+    ns3:name "South Carolina" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045/event/csam> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2026_045> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/scag_icac_2026_045/provenance> .

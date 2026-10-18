@@ -1,161 +1,177 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2022-05-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/fbi> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T22:12:28.950529" ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 02:38:35.938488" ;
     dcterms:identifier "doj_safe_childhood_2022_358" ;
-    dcterms:modified "2026-09-15T22:12:28.950529" ;
+    dcterms:modified "2026-10-18 12:49:49.429076" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/provenance> ;
     dcterms:source <https://www.justice.gov/usao-sdga/pr/augusta-man-sentenced-prison-after-admitting-possession-child-pornography>,
         "DOJ SAFE CHILDHOOD" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/atlanta>,
-        <https://caselinker.up.railway.app/resource/location/augusta>,
-        <https://caselinker.up.railway.app/resource/location/georgia>,
-        <https://caselinker.up.railway.app/resource/location/richmond-county>,
-        <https://caselinker.up.railway.app/resource/location/southern-district-of-georgia>,
-        <https://caselinker.up.railway.app/resource/location/the-southern-district>,
-        <https://caselinker.up.railway.app/resource/location/united-states> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/event/project-safe-childhood>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/legal-step/sentenced> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/fbi>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/atlanta>,
-        <https://caselinker.up.railway.app/resource/location/augusta>,
-        <https://caselinker.up.railway.app/resource/location/georgia>,
-        <https://caselinker.up.railway.app/resource/location/richmond-county>,
-        <https://caselinker.up.railway.app/resource/location/southern-district-of-georgia>,
-        <https://caselinker.up.railway.app/resource/location/the-southern-district>,
-        <https://caselinker.up.railway.app/resource/location/united-states> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/atlanta>,
+        <https://w3id.org/caselinker/resource/location/augusta>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/richmond-county>,
+        <https://w3id.org/caselinker/resource/location/southern-district-of-georgia>,
+        <https://w3id.org/caselinker/resource/location/the-southern-district>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/phase/sentenced> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/phase/sentenced> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/admission/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/cybertip>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/operation> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/atlanta>,
+        <https://w3id.org/caselinker/resource/location/augusta>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/richmond-county>,
+        <https://w3id.org/caselinker/resource/location/southern-district-of-georgia>,
+        <https://w3id.org/caselinker/resource/location/the-southern-district>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns7:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/charge/2> a ns7:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/cybertip> a ns4:NCMECCybertipReport ;
+    ns4:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/event/project-safe-childhood> a cac-core:Event,
-        cacontology-multi:ProjectSafeChildhoodOperation .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/event/project-safe-childhood> a ns5:Event,
+        ns6:ProjectSafeChildhoodOperation .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/sentence/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/charge/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/charge/2> ;
+    ns7:hasProceedingBeginPoint "2022-05-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:resultsSentence <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/sentence/2> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns7:LegalProceeding,
+        ns7:SentencingHearing ;
+    ns7:hasProceedingBeginPoint "2022-05-02T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 23 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/operation> a ns5:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 23 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:SupervisedRelease ;
-    rdfs:label "[\"42 months\", \"$1,000\", \"20 years of supervised release\"]" .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2022-05-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/sentence/1> a ns7:CriminalSentence,
+        ns7:PrisonSentence ;
+    rdfs:label "42 months" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/sentence/2> a ns7:CriminalSentence,
+        ns7:MonetaryPenalty ;
+    rdfs:label "$1,000" .
 
-<https://caselinker.up.railway.app/resource/location/atlanta> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/location/augusta> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/phase/sentenced> a ns5:Phase,
+        ns7:SentencingPhase ;
+    ns3:hasPhaseBeginPoint "2022-05-02T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/georgia> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/atlanta> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Atlanta" ;
+    ns1:name "Atlanta" .
 
-<https://caselinker.up.railway.app/resource/location/richmond-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/augusta> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Augusta" ;
+    ns1:name "Augusta" .
+
+<https://w3id.org/caselinker/resource/location/georgia> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Georgia" ;
+    ns1:name "Georgia" .
+
+<https://w3id.org/caselinker/resource/location/richmond-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Richmond County" ;
-    uco-core:name "Richmond County" .
+    ns1:name "Richmond County" .
 
-<https://caselinker.up.railway.app/resource/location/southern-district-of-georgia> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/southern-district-of-georgia> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Southern District of Georgia" ;
-    uco-core:name "Southern District of Georgia" .
+    ns1:name "Southern District of Georgia" .
 
-<https://caselinker.up.railway.app/resource/location/the-southern-district> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/the-southern-district> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the Southern District" ;
+    ns1:name "the Southern District" .
 
-<https://caselinker.up.railway.app/resource/location/united-states> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/united-states> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns1:name "United States" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/admission/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/event/online-only> a ns3:ChildSexualAbuseEvent,
+        ns5:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/admission/1> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/admission/1> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/facet/possession> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/event/possession> a ns3:CSAMIncident,
+        ns5:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/admission/1> ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "possession of child pornography May 02, 2022 Publication date: 2022-05-02 Source: AUGUSTA, GA: A Richmond County man ..." ;
     dcterms:source <https://www.justice.gov/usao-sdga/pr/augusta-man-sentenced-prison-after-admitting-possession-child-pornography> ;
-    ns1:admissionContext "Augusta man sentenced to prison after admitting to possession of child pornography May 02, 2022 Publication date: 2022-05-02 Source: AUGU..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2022_358/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "possession of child pornography May 02, 2022 Publication date: 2022-05-02 Source: AUGUSTA, GA: A Richmond County man has been sentenced to federal prison after admitting to possession of child pornogr" .
+    ns1:description "possession of child pornography May 02, 2022 Publication date: 2022-05-02 Source: AUGUSTA, GA: A Richmond County man has been sentenced to federal prison after admitting to possession of child pornogr" ;
+    ns2:admissionContext "Augusta man sentenced to prison after admitting to possession of child pornography May 02, 2022 Publication date: 2022-05-02 Source: AUGU..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_358/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" .
 

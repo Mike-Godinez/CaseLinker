@@ -1,725 +1,119 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_082> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/athens-clarke-county-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Athens-Clarke County Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/georgia-bureau-of-investigation> a cacontology-multi:StateAgency .
-
-<https://caselinker.up.railway.app/resource/agency/georgia-bureau-of-investigation-child-exploitation-unit> a cacontology-multi:StateAgency .
-
-<https://caselinker.up.railway.app/resource/agency/gwinnett-county-police-department> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/hall-county-sheriffs-office> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/hsi> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/agency/polk-county-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Polk County Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/rincon-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Rincon Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/st-marys-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "St. Mary's Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/us-secret-service> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.814040" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:28.670934" ;
     dcterms:identifier "ncmec_2023_082" ;
-    dcterms:modified "2026-09-15T20:55:00.814040" ;
-    dcterms:source <https://gbi.georgia.gov/submit-tips-online>,
+    dcterms:modified "2026-10-17 22:21:28.670934" ;
+    dcterms:source <https://bouldercounty.gov/news/60-year-old-male-arrested-for-sexual-exploitation-of-a-child/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/acworth>,
-        <https://caselinker.up.railway.app/resource/location/americus>,
-        <https://caselinker.up.railway.app/resource/location/athens>,
-        <https://caselinker.up.railway.app/resource/location/auburn>,
-        <https://caselinker.up.railway.app/resource/location/baldwin-county>,
-        <https://caselinker.up.railway.app/resource/location/barrow-county>,
-        <https://caselinker.up.railway.app/resource/location/bartow-county>,
-        <https://caselinker.up.railway.app/resource/location/bryan-county>,
-        <https://caselinker.up.railway.app/resource/location/camden-county>,
-        <https://caselinker.up.railway.app/resource/location/candler-county>,
-        <https://caselinker.up.railway.app/resource/location/canton>,
-        <https://caselinker.up.railway.app/resource/location/cartersville>,
-        <https://caselinker.up.railway.app/resource/location/chatham-county>,
-        <https://caselinker.up.railway.app/resource/location/cherokee-county>,
-        <https://caselinker.up.railway.app/resource/location/clarke-county>,
-        <https://caselinker.up.railway.app/resource/location/clayton-county>,
-        <https://caselinker.up.railway.app/resource/location/cleveland>,
-        <https://caselinker.up.railway.app/resource/location/danielsville>,
-        <https://caselinker.up.railway.app/resource/location/decatur>,
-        <https://caselinker.up.railway.app/resource/location/dekalb-county>,
-        <https://caselinker.up.railway.app/resource/location/east-ellijay>,
-        <https://caselinker.up.railway.app/resource/location/fayette-county>,
-        <https://caselinker.up.railway.app/resource/location/fayetteville>,
-        <https://caselinker.up.railway.app/resource/location/forest-park>,
-        <https://caselinker.up.railway.app/resource/location/georgia>,
-        <https://caselinker.up.railway.app/resource/location/gilmer-county>,
-        <https://caselinker.up.railway.app/resource/location/glynn-county>,
-        <https://caselinker.up.railway.app/resource/location/gwinnett-county>,
-        <https://caselinker.up.railway.app/resource/location/hart-county>,
-        <https://caselinker.up.railway.app/resource/location/hartwell>,
-        <https://caselinker.up.railway.app/resource/location/heard-county>,
-        <https://caselinker.up.railway.app/resource/location/hinesville>,
-        <https://caselinker.up.railway.app/resource/location/jones-county>,
-        <https://caselinker.up.railway.app/resource/location/lawrenceville>,
-        <https://caselinker.up.railway.app/resource/location/liberty-county>,
-        <https://caselinker.up.railway.app/resource/location/macon>,
-        <https://caselinker.up.railway.app/resource/location/madison-county>,
-        <https://caselinker.up.railway.app/resource/location/milledgeville>,
-        <https://caselinker.up.railway.app/resource/location/pickens-county>,
-        <https://caselinker.up.railway.app/resource/location/richmond-county>,
-        <https://caselinker.up.railway.app/resource/location/roopville>,
-        <https://caselinker.up.railway.app/resource/location/rossville>,
-        <https://caselinker.up.railway.app/resource/location/savannah>,
-        <https://caselinker.up.railway.app/resource/location/st-simons-island>,
-        <https://caselinker.up.railway.app/resource/location/sumter-county>,
-        <https://caselinker.up.railway.app/resource/location/walker-county>,
-        <https://caselinker.up.railway.app/resource/location/ware-county>,
-        <https://caselinker.up.railway.app/resource/location/waycross>,
-        <https://caselinker.up.railway.app/resource/location/white-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/athens-clarke-county-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/fbi>,
-        <https://caselinker.up.railway.app/resource/agency/georgia-bureau-of-investigation>,
-        <https://caselinker.up.railway.app/resource/agency/georgia-bureau-of-investigation-child-exploitation-unit>,
-        <https://caselinker.up.railway.app/resource/agency/gwinnett-county-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/hall-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/hsi>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/polk-county-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/rincon-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/st-marys-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/us-secret-service> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/acworth>,
-        <https://caselinker.up.railway.app/resource/location/americus>,
-        <https://caselinker.up.railway.app/resource/location/athens>,
-        <https://caselinker.up.railway.app/resource/location/auburn>,
-        <https://caselinker.up.railway.app/resource/location/baldwin-county>,
-        <https://caselinker.up.railway.app/resource/location/barrow-county>,
-        <https://caselinker.up.railway.app/resource/location/bartow-county>,
-        <https://caselinker.up.railway.app/resource/location/bryan-county>,
-        <https://caselinker.up.railway.app/resource/location/camden-county>,
-        <https://caselinker.up.railway.app/resource/location/candler-county>,
-        <https://caselinker.up.railway.app/resource/location/canton>,
-        <https://caselinker.up.railway.app/resource/location/cartersville>,
-        <https://caselinker.up.railway.app/resource/location/chatham-county>,
-        <https://caselinker.up.railway.app/resource/location/cherokee-county>,
-        <https://caselinker.up.railway.app/resource/location/clarke-county>,
-        <https://caselinker.up.railway.app/resource/location/clayton-county>,
-        <https://caselinker.up.railway.app/resource/location/cleveland>,
-        <https://caselinker.up.railway.app/resource/location/danielsville>,
-        <https://caselinker.up.railway.app/resource/location/decatur>,
-        <https://caselinker.up.railway.app/resource/location/dekalb-county>,
-        <https://caselinker.up.railway.app/resource/location/east-ellijay>,
-        <https://caselinker.up.railway.app/resource/location/fayette-county>,
-        <https://caselinker.up.railway.app/resource/location/fayetteville>,
-        <https://caselinker.up.railway.app/resource/location/forest-park>,
-        <https://caselinker.up.railway.app/resource/location/georgia>,
-        <https://caselinker.up.railway.app/resource/location/gilmer-county>,
-        <https://caselinker.up.railway.app/resource/location/glynn-county>,
-        <https://caselinker.up.railway.app/resource/location/gwinnett-county>,
-        <https://caselinker.up.railway.app/resource/location/hart-county>,
-        <https://caselinker.up.railway.app/resource/location/hartwell>,
-        <https://caselinker.up.railway.app/resource/location/heard-county>,
-        <https://caselinker.up.railway.app/resource/location/hinesville>,
-        <https://caselinker.up.railway.app/resource/location/jones-county>,
-        <https://caselinker.up.railway.app/resource/location/lawrenceville>,
-        <https://caselinker.up.railway.app/resource/location/liberty-county>,
-        <https://caselinker.up.railway.app/resource/location/macon>,
-        <https://caselinker.up.railway.app/resource/location/madison-county>,
-        <https://caselinker.up.railway.app/resource/location/milledgeville>,
-        <https://caselinker.up.railway.app/resource/location/pickens-county>,
-        <https://caselinker.up.railway.app/resource/location/richmond-county>,
-        <https://caselinker.up.railway.app/resource/location/roopville>,
-        <https://caselinker.up.railway.app/resource/location/rossville>,
-        <https://caselinker.up.railway.app/resource/location/savannah>,
-        <https://caselinker.up.railway.app/resource/location/st-simons-island>,
-        <https://caselinker.up.railway.app/resource/location/sumter-county>,
-        <https://caselinker.up.railway.app/resource/location/walker-county>,
-        <https://caselinker.up.railway.app/resource/location/ware-county>,
-        <https://caselinker.up.railway.app/resource/location/waycross>,
-        <https://caselinker.up.railway.app/resource/location/white-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/boulder-county>,
+        <https://w3id.org/caselinker/resource/location/colo>,
+        <https://w3id.org/caselinker/resource/location/colorado> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_082/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_082/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_082/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_082/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_082/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/boulder-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/boulder-police-department>,
+        <https://w3id.org/caselinker/resource/agency/district-attorneys-office>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/longmont-department-of-public-safety>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns8:mentionsLocation <https://w3id.org/caselinker/resource/location/boulder-county>,
+        <https://w3id.org/caselinker/resource/location/colo>,
+        <https://w3id.org/caselinker/resource/location/colorado> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_082/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_082/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_082/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_082/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/boulder-county-sheriffs-office> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/boulder-police-department> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/district-attorneys-office> a ns7:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/longmont-department-of-public-safety> a ns7:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
+    rdfs:label "sexual exploitation of a child" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082/charge/2> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082/charge/3> a ns2:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns8:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Boulder County Jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_082/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_082/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_082/charge/3> ;
+    ns2:hasProceedingBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 60 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/operation> a cac-core:Event,
-        cacontology-taskforce:UndercoverUnit .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns7:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 18 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082/phase/booked> a ns1:InitialPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/10> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 40 .
+<https://w3id.org/caselinker/resource/location/boulder-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Boulder County" ;
+    ns4:name "Boulder County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/11> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 42 .
+<https://w3id.org/caselinker/resource/location/colo> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Colo." ;
+    ns4:name "Colo." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/12> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 48 .
+<https://w3id.org/caselinker/resource/location/colorado> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Colorado" ;
+    ns4:name "Colorado" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/13> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 51 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_082/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/14> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 52 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/15> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 58 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/16> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 64 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/17> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/18> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 70 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/2> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 22 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/3> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 31 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/4> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 33 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/5> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 34 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/6> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 35 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/7> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 37 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/8> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 38 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/9> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 39 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/10> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/10> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/11> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/11> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/12> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/12> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/13> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/13> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/14> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/14> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/15> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/15> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/16> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/16> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/17> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/17> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/18> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/18> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/2> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/2> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/3> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/3> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/4> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/4> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/5> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/5> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/6> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/6> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/7> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/7> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/8> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/8> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/9> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/9> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/location/acworth> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Acworth" ;
-    uco-core:name "Acworth" .
-
-<https://caselinker.up.railway.app/resource/location/americus> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Americus" ;
-    uco-core:name "Americus" .
-
-<https://caselinker.up.railway.app/resource/location/athens> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Athens" ;
-    uco-core:name "Athens" .
-
-<https://caselinker.up.railway.app/resource/location/auburn> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Auburn" ;
-    uco-core:name "Auburn" .
-
-<https://caselinker.up.railway.app/resource/location/baldwin-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/barrow-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Barrow County" ;
-    uco-core:name "Barrow County" .
-
-<https://caselinker.up.railway.app/resource/location/bartow-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Bartow County" ;
-    uco-core:name "Bartow County" .
-
-<https://caselinker.up.railway.app/resource/location/bryan-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Bryan County" ;
-    uco-core:name "Bryan County" .
-
-<https://caselinker.up.railway.app/resource/location/camden-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Camden County" ;
-    uco-core:name "Camden County" .
-
-<https://caselinker.up.railway.app/resource/location/candler-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Candler County" ;
-    uco-core:name "Candler County" .
-
-<https://caselinker.up.railway.app/resource/location/canton> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Canton" ;
-    uco-core:name "Canton" .
-
-<https://caselinker.up.railway.app/resource/location/cartersville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Cartersville" ;
-    uco-core:name "Cartersville" .
-
-<https://caselinker.up.railway.app/resource/location/chatham-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Chatham County" ;
-    uco-core:name "Chatham County" .
-
-<https://caselinker.up.railway.app/resource/location/cherokee-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Cherokee County" ;
-    uco-core:name "Cherokee County" .
-
-<https://caselinker.up.railway.app/resource/location/clarke-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Clarke County" ;
-    uco-core:name "Clarke County" .
-
-<https://caselinker.up.railway.app/resource/location/clayton-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/cleveland> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Cleveland" ;
-    uco-core:name "Cleveland" .
-
-<https://caselinker.up.railway.app/resource/location/danielsville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Danielsville" ;
-    uco-core:name "Danielsville" .
-
-<https://caselinker.up.railway.app/resource/location/decatur> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/dekalb-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/east-ellijay> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "East Ellijay" ;
-    uco-core:name "East Ellijay" .
-
-<https://caselinker.up.railway.app/resource/location/fayette-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Fayette County" ;
-    uco-core:name "Fayette County" .
-
-<https://caselinker.up.railway.app/resource/location/fayetteville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Fayetteville" ;
-    uco-core:name "Fayetteville" .
-
-<https://caselinker.up.railway.app/resource/location/forest-park> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Forest Park" ;
-    uco-core:name "Forest Park" .
-
-<https://caselinker.up.railway.app/resource/location/georgia> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/gilmer-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Gilmer County" ;
-    uco-core:name "Gilmer County" .
-
-<https://caselinker.up.railway.app/resource/location/glynn-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Glynn County" ;
-    uco-core:name "Glynn County" .
-
-<https://caselinker.up.railway.app/resource/location/gwinnett-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/hart-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Hart County" ;
-    uco-core:name "Hart County" .
-
-<https://caselinker.up.railway.app/resource/location/hartwell> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Hartwell" ;
-    uco-core:name "Hartwell" .
-
-<https://caselinker.up.railway.app/resource/location/heard-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Heard County" ;
-    uco-core:name "Heard County" .
-
-<https://caselinker.up.railway.app/resource/location/hinesville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Hinesville" ;
-    uco-core:name "Hinesville" .
-
-<https://caselinker.up.railway.app/resource/location/jones-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Jones County" ;
-    uco-core:name "Jones County" .
-
-<https://caselinker.up.railway.app/resource/location/lawrenceville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Lawrenceville" ;
-    uco-core:name "Lawrenceville" .
-
-<https://caselinker.up.railway.app/resource/location/liberty-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Liberty County" ;
-    uco-core:name "Liberty County" .
-
-<https://caselinker.up.railway.app/resource/location/macon> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Macon" ;
-    uco-core:name "Macon" .
-
-<https://caselinker.up.railway.app/resource/location/madison-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Madison County" ;
-    uco-core:name "Madison County" .
-
-<https://caselinker.up.railway.app/resource/location/milledgeville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Milledgeville" ;
-    uco-core:name "Milledgeville" .
-
-<https://caselinker.up.railway.app/resource/location/pickens-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Pickens County" ;
-    uco-core:name "Pickens County" .
-
-<https://caselinker.up.railway.app/resource/location/richmond-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Richmond County" ;
-    uco-core:name "Richmond County" .
-
-<https://caselinker.up.railway.app/resource/location/roopville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Roopville" ;
-    uco-core:name "Roopville" .
-
-<https://caselinker.up.railway.app/resource/location/rossville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Rossville" ;
-    uco-core:name "Rossville" .
-
-<https://caselinker.up.railway.app/resource/location/savannah> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/st-simons-island> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "St. Simons Island" ;
-    uco-core:name "St. Simons Island" .
-
-<https://caselinker.up.railway.app/resource/location/sumter-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Sumter County" ;
-    uco-core:name "Sumter County" .
-
-<https://caselinker.up.railway.app/resource/location/walker-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Walker County" ;
-    uco-core:name "Walker County" .
-
-<https://caselinker.up.railway.app/resource/location/ware-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Ware County" ;
-    uco-core:name "Ware County" .
-
-<https://caselinker.up.railway.app/resource/location/waycross> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Waycross" ;
-    uco-core:name "Waycross" .
-
-<https://caselinker.up.railway.app/resource/location/white-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "White County" ;
-    uco-core:name "White County" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "current or prior hands-on sexual offenses against a child" ;
-    dcterms:source <https://gbi.georgia.gov/submit-tips-online> ;
-    ns1:admissionContext "ldren who were living in homes where online child sexual exploitation was occurring. Four arrested also admitted to current or prior hand..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "current or prior hands-on sexual offenses against a child" .
-
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
-    rdfs:label "chat" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/conspiracy> a cacontology:ConspiracyToCommitCSA,
-        cac-core:Event ;
-    cacontology:conspiracyMemberCount 18 ;
-    cacontology:participatesInConspiracy <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/10>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/11>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/12>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/13>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/14>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/15>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/16>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/17>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/18>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/4>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/5>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/6>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/7>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/8>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/role/offender/9> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/admission/1> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_082/facet/possession> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_082/offense-event/charge-3> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child exploitation" ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2023_082> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_082/provenance> .

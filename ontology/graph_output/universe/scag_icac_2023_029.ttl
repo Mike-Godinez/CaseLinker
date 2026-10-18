@@ -1,0 +1,129 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029> a ns3:CACInvestigation,
+        ns8:EnduringEntity ;
+    dcterms:created "2026-10-18 06:39:39.544720" ;
+    dcterms:identifier "scag_icac_2023_029" ;
+    dcterms:modified "2026-10-18 06:39:39.544720" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/provenance> ;
+    dcterms:source <https://www.scag.gov/about-the-office/news/greenville-county-man-arrested-on-child-sexual-abuse-material-charges-3/>,
+        "SCAG ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/greenville-county>,
+        <https://w3id.org/caselinker/resource/location/piedmont>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/cybertip>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/event/possession>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns3:usesMethod <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/greenville-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/greenville-county>,
+        <https://w3id.org/caselinker/resource/location/piedmont>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2023-08-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/event/possession> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2023-08-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/event/possession> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/greenville-county-sheriffs-office> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/charge/2> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/charge/3> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/cybertip> a ns5:NCMECCybertipReport ;
+    ns5:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/legal-proceeding> a ns8:Event,
+        ns8:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/charge/1>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/charge/2>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/charge/3> ;
+    ns2:hasProceedingBeginPoint "2023-08-02T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 34 .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/tech/cybertipline> a ns5:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/phase/charged> a ns3:LegalProcessPhase,
+        ns8:Phase ;
+    ns3:hasPhaseBeginPoint "2023-08-02T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/columbia> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Columbia" ;
+    ns1:name "Columbia" .
+
+<https://w3id.org/caselinker/resource/location/greenville-county> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Greenville County" ;
+    ns1:name "Greenville County" .
+
+<https://w3id.org/caselinker/resource/location/piedmont> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Piedmont" ;
+    ns1:name "Piedmont" .
+
+<https://w3id.org/caselinker/resource/location/sc> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "S.c." ;
+    ns1:name "S.c." .
+
+<https://w3id.org/caselinker/resource/location/south-carolina> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Carolina" ;
+    ns1:name "South Carolina" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_029/event/possession> a ns3:CSAMIncident,
+        ns8:Event ;
+    ns3:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/scag_icac_2023_029/facet/possession> .
+

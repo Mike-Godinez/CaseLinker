@@ -1,86 +1,117 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_435> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.367987" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:24.636890" ;
     dcterms:identifier "ncmec_2022_435" ;
-    dcterms:modified "2026-09-15T20:45:06.367987" ;
-    dcterms:source <https://www.wspynews.com/news/wcsjnews/minooka-man-accused-of-possessing-child-pornography/article_b9efde29-8a6f-5154-a24e-53677f39af88.html>,
+    dcterms:modified "2026-10-17 21:51:24.636890" ;
+    dcterms:source <https://wgxa.tv/news/local/gbi-peach-county-man-arrested-for-child-pornography-03-22-2022>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/grundy-county>,
-        <https://caselinker.up.railway.app/resource/location/will-county> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_435/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_435/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_435/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/minooka-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/grundy-county>,
-        <https://caselinker.up.railway.app/resource/location/will-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ga>,
+        <https://w3id.org/caselinker/resource/location/peach-county> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_435/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_435/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_435/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_435/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_435/offense-event/charge-4> ;
+    ns2:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/gbis-middle-georgia-gang-task-force>,
+        <https://w3id.org/caselinker/resource/agency/georgia-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/peach-county-sheriffs-office> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/ga>,
+        <https://w3id.org/caselinker/resource/location/peach-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_435/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_435/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_435/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2022-03-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_435/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_435/offense-event/charge-4> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_435/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_435/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_435/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_435/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2022-03-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_435/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_435/offense-event/charge-4> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_435/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/minooka-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Minooka Police Department" .
+<https://w3id.org/caselinker/resource/agency/gbis-middle-georgia-gang-task-force> a ns5:OrganizationLikeEntity,
+        ns4:StateAgency ;
+    rdfs:label "GBI's Middle Georgia Gang Task Force" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_435/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/agency/georgia-bureau-of-investigation> a ns4:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_435/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/agency/peach-county-sheriffs-office> a ns5:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "Peach County Sheriff's Office" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_435/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/charge/1> a ns1:CriminalCharge,
+        ns1:StateCharge ;
+    rdfs:label "sexual exploitation of children" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_435/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_435/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_435/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/charge/2> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns1:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_435/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/charge/3> a ns1:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_435/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/charge/4> a ns1:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2022_435/offense-event/charge-4> ;
+    ns3:chargeCluster "child_exploitation" ;
+    ns3:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_435/offense-event/charge-4> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_435/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns1:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Peach County Jail" ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_435/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_435/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_435/charge/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_435/charge/4> ;
+    ns1:hasProceedingBeginPoint "2022-03-22T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/grundy-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Grundy County" ;
-    uco-core:name "Grundy County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 64 .
 
-<https://caselinker.up.railway.app/resource/location/will-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_435/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_435/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/phase/charged> a ns2:LegalProcessPhase,
+        ns5:Phase ;
+    ns2:hasPhaseBeginPoint "2022-03-22T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/location/ga> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ga." ;
+    ns6:name "Ga." .
+
+<https://w3id.org/caselinker/resource/location/peach-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Peach County" ;
+    ns6:name "Peach County" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/event/possession> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_435/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435/offense-event/charge-4> a ns2:ChildSexualAbuseEvent,
+        ns5:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_435> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_435/provenance> .

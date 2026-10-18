@@ -1,48 +1,90 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_471> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.394210" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:25.130668" ;
     dcterms:identifier "ncmec_2022_471" ;
-    dcterms:modified "2026-09-15T20:45:06.394210" ;
-    dcterms:source <https://www.fontanaheraldnews.com/news/man-who-allegedly-exposed-himself-to-victims-while-sitting-in-his-vehicle-is-arrested-by/article_e0b630e6-30a0-11ed-9331-0b8a75d0e3f1.html>,
+    dcterms:modified "2026-10-17 21:51:25.130668" ;
+    dcterms:source <https://goldcountrymedia.com/news/226946/auburn-area-man-arrested-on-child-pornography-charges/>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_471/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_471/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_471/legal-proceeding> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/auburn> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_471/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_471/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_471/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_471/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_471/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_471/operation> ;
+    ns2:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2022_471/tech/cybertipline> ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/auburn-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/auburn> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_471/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_471/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2022-05-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_471/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_471/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_471/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_471/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2022-05-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_471/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_471/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_471/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_471/sentence/1> .
+<https://w3id.org/caselinker/resource/agency/auburn-police-department> a ns1:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_471/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns3:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_471/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_471/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_471/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns3:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Placer County Jail; remain in custody; remained in custody" ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_471/charge/1> ;
+    ns3:hasProceedingBeginPoint "2022-05-28T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471/operation> a ns5:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 25 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471/tech/cybertipline> a ns8:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns1:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471/phase/charged> a ns2:LegalProcessPhase,
+        ns5:Phase ;
+    ns2:hasPhaseBeginPoint "2022-05-28T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/auburn> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Auburn" ;
+    ns7:name "Auburn" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471/event/possession> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_471/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_471> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_471/provenance> .

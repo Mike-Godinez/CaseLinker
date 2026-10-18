@@ -1,0 +1,111 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 14:12:35.486311" ;
+    dcterms:identifier "alert_ice_2020_001" ;
+    dcterms:modified "2026-10-18 14:12:35.486311" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/provenance> ;
+    dcterms:source <https://alert-ab.ca/brooks-man-sentenced-for-child-sexual-exploitation-offences/>,
+        "ALERT ICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/brooks>,
+        <https://w3id.org/caselinker/resource/location/edmonton> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/event/csam>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/offense-event/charge-3> ;
+    ns1:investigationStatus "unknown" ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/tech/cybertipline> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/ice> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/brooks>,
+        <https://w3id.org/caselinker/resource/location/edmonton> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2020-10-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/event/csam>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/offense-event/charge-3> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2020-10-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/event/csam>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/offense-event/charge-3> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/ice> a ns7:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/charge/2> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns5:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/charge/3> a ns2:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/offense-event/charge-3> ;
+    ns5:chargeCluster "child_exploitation" ;
+    ns5:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/offense-event/charge-3> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/charge/1>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/charge/2>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/charge/3> ;
+    ns2:hasProceedingBeginPoint "2020-10-30T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/legal-step/sentenced> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2020-10-30T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 25 .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/phase/sentenced> a ns6:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2020-10-30T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/brooks> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Brooks" ;
+    ns4:name "Brooks" .
+
+<https://w3id.org/caselinker/resource/location/edmonton> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Edmonton" ;
+    ns4:name "Edmonton" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/event/csam> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/alert_ice_2020_001/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2020_001/offense-event/charge-3> a ns1:ChildSexualAbuseEvent,
+        ns6:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+

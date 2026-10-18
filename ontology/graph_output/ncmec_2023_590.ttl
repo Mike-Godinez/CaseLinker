@@ -1,60 +1,103 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_590> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.266265" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590> a ns3:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:35.322758" ;
     dcterms:identifier "ncmec_2023_590" ;
-    dcterms:modified "2026-09-15T20:55:01.266265" ;
-    dcterms:source <https://www.lakecountyexam.com/townnews/crime/lake-county-oregon-grand-jury-indictments/article_417283fe-1510-11ee-9539-3f57bfbcb876.html>,
+    dcterms:modified "2026-10-17 22:21:35.322758" ;
+    dcterms:source <https://www.lexingtonchronicle.com/stories/west-columbia-man-charged-with-four-counts-of-sexual-exploitation-of-a-minor,45631>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/lake-county>,
-        <https://caselinker.up.railway.app/resource/location/oregon>,
-        <https://caselinker.up.railway.app/resource/location/the-county-of-lake> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_590/event/distribution> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/lake-county>,
-        <https://caselinker.up.railway.app/resource/location/oregon>,
-        <https://caselinker.up.railway.app/resource/location/the-county-of-lake> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/west-columbia> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_590/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_590/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_590/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_590/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_590/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns3:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2023_590/tech/cybertipline> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/lexington-county-sheriffs-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/west-columbia> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_590/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_590/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2023-02-20T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_590/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_590/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_590/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_590/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2023-02-20T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_590/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_590/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_590/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns2:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_590/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_590/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/lexington-county-sheriffs-department> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/location/lake-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Lake County" ;
-    uco-core:name "Lake County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/charge/1> a ns5:CriminalCharge,
+        ns5:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
 
-<https://caselinker.up.railway.app/resource/location/oregon> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Oregon" ;
-    uco-core:name "Oregon" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/charge/2> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns5:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/location/the-county-of-lake> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "the County of Lake" ;
-    uco-core:name "the County of Lake" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/charge/3> a ns5:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_590/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_590/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_590/charge/3> ;
+    ns5:hasProceedingBeginPoint "2023-02-20T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 29 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/tech/cybertipline> a ns7:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/phase/charged> a ns3:LegalProcessPhase,
+        ns6:Phase ;
+    ns3:hasPhaseBeginPoint "2023-02-20T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/west-columbia> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "West Columbia" ;
+    ns1:name "West Columbia" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590/event/possession> a ns3:CSAMIncident,
+        ns6:Event ;
+    ns3:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_590/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_590> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_590/provenance> .

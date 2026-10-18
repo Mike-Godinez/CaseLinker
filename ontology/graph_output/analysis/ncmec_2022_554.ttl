@@ -1,134 +1,80 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2022_554> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/angola-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Angola Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/hsi> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/pinellas-county-sheriffs-office> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:08:39.232605" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_554> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:26.257534" ;
     dcterms:identifier "ncmec_2022_554" ;
-    dcterms:modified "2026-09-10T19:08:39.232605" ;
-    dcterms:source <https://www.abcactionnews.com/news/region-pinellas/saint-leo-university-employee-arrested-charged-for-intentional-viewing-of-child-pornography>,
+    dcterms:modified "2026-10-17 21:51:26.257534" ;
+    dcterms:source <https://www.nyspnews.com/man-arrested-for-possessing-child-pornography.htm>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/offense-event/charge-2> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/angola-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/hsi>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/pinellas-county-sheriffs-office> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/new-york>,
+        <https://w3id.org/caselinker/resource/location/west-seneca> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_554/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_554/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_554/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_554/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/bureau-of-criminal-investigation> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/new-york>,
+        <https://w3id.org/caselinker/resource/location/west-seneca> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 12 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_554/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_554/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_554/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/offense-event/charge-2> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/offense-event/charge-2> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_554/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_554/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_554/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/agency/bureau-of-criminal-investigation> a ns7:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_554/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_554/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_554/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_554/charge/1> ;
+    ns3:hasProceedingBeginPoint "2022-09-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 55 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_554/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 39 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_554/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_554/phase/arrested> a ns1:InitialPhase,
+        ns5:Phase ;
+    ns1:hasPhaseBeginPoint "2022-09-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/location/new-york> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New York" ;
+    ns4:name "New York" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/west-seneca> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "West Seneca" ;
+    ns4:name "West Seneca" .
 
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
-    rdfs:label "Kik" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_554/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_554/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "during an interview that he owned a Kik account and did in fact receive and send child pornography files" ;
-    dcterms:source <https://www.abcactionnews.com/news/region-pinellas/saint-leo-university-employee-arrested-charged-for-intentional-viewing-of-child-pornography> ;
-    ns1:admissionContext "owing a forensic analysis, PCSO said 10 images of child pornography were found. PCSO said Kistulentz confessed during an interview that h..." ;
-    ns1:admissionFrame "confessed_paraphrase" ;
-    ns1:admissionTheme "harm_conduct",
-        "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "during an interview that he owned a Kik account and did in fact receive and send child pornography files" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/admission/1> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_554/facet/possession> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_554/offense-event/charge-2> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child exploitation" ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2022_554> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_554/provenance> .

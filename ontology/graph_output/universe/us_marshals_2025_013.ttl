@@ -1,95 +1,116 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2025_013> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:19:02.742185" ;
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 07:26:57.215030" ;
     dcterms:identifier "us_marshals_2025_013" ;
-    dcterms:modified "2026-09-10T20:19:02.742185" ;
+    dcterms:modified "2026-10-18 07:26:57.215030" ;
     dcterms:source <https://www.usmarshals.gov/news/press-release/compliance-not-optional-memphis-safe-task-force-targets-sex-offender-registry>,
         "US MARSHALS" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/legal-step/convicted>,
-        <https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/kentucky-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/mason-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/memphis-safe-task-force>,
-        <https://caselinker.up.railway.app/resource/agency/parkersburg-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/saint-albans-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/south-charleston-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/usms>,
-        <https://caselinker.up.railway.app/resource/agency/west-virginia-state-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/memphis>,
+        <https://w3id.org/caselinker/resource/location/tennessee>,
+        <https://w3id.org/caselinker/resource/location/the-western-district>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/phase/convicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/phase/convicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/legal-step/convicted>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/operation> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/memphis-safe-task-force>,
+        <https://w3id.org/caselinker/resource/agency/usms> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/memphis>,
+        <https://w3id.org/caselinker/resource/location/tennessee>,
+        <https://w3id.org/caselinker/resource/location/the-western-district>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/event/hands-on> ;
-    cacontology:perpetratorRegisteredSexOffender true ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-11-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/kentucky-state-police-department> a cacontology-multi:StateAgency .
-
-<https://caselinker.up.railway.app/resource/agency/mason-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Mason County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/agency/memphis-safe-task-force> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/memphis-safe-task-force> a ns4:OrganizationLikeEntity,
+        ns2:LocalAgency ;
     rdfs:label "Memphis Safe Task Force" .
 
-<https://caselinker.up.railway.app/resource/agency/parkersburg-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/usms> a ns2:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/saint-albans-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Saint Albans Police Department" .
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013/legal-step/convicted> a ns4:Event,
+        ns4:LegalEvent,
+        ns7:LegalProceeding,
+        ns7:SentencingHearing ;
+    ns7:hasProceedingBeginPoint "2025-11-12T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/south-charleston-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "South Charleston Police Department" .
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013/operation> a ns4:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
 
-<https://caselinker.up.railway.app/resource/agency/usms> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 53 .
 
-<https://caselinker.up.railway.app/resource/agency/west-virginia-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 56 .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-11-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013/role/offender/2> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-11-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/person/offender/2> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013/phase/convicted> a ns4:Phase,
+        ns7:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2025-11-12T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/memphis> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Memphis" ;
+    ns5:name "Memphis" .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/tennessee> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tennessee" ;
+    ns5:name "Tennessee" .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2025_013/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/location/the-western-district> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the Western District" ;
+    ns5:name "the Western District" .
 
+<https://w3id.org/caselinker/resource/location/united-states> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns5:name "United States" .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013/event/conspiracy> a ns1:ConspiracyToCommitCSA,
+        ns4:Event ;
+    ns1:conspiracyMemberCount 2 ;
+    ns1:participatesInConspiracy <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/role/offender/2> ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns1:severityLevel 3 .
+
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2025_013> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/us_marshals_2025_013/provenance> .

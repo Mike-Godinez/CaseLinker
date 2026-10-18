@@ -1,0 +1,94 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2024_020> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 06:04:24.710519" ;
+    dcterms:identifier "newyork_sp_2024_020" ;
+    dcterms:modified "2026-10-18 06:04:24.710519" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/provenance> ;
+    dcterms:source <https://troopers.ny.gov/news/state-police-arrest-rensselaer-man-attempting-meet-child-sex>,
+        "NEWYORK SP" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/colonie>,
+        <https://w3id.org/caselinker/resource/location/latham>,
+        <https://w3id.org/caselinker/resource/location/new-york>,
+        <https://w3id.org/caselinker/resource/location/rensselaer> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/state-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/colonie>,
+        <https://w3id.org/caselinker/resource/location/latham>,
+        <https://w3id.org/caselinker/resource/location/new-york>,
+        <https://w3id.org/caselinker/resource/location/rensselaer> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-01-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/event/hands-on> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-01-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/event/hands-on> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/state-police-department> a ns2:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/charge/1> a ns7:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns1:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/charge/1> ;
+    ns7:hasProceedingBeginPoint "2024-01-11T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 40 .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/phase/arrested> a ns3:InitialPhase,
+        ns5:Phase ;
+    ns3:hasPhaseBeginPoint "2024-01-11T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/colonie> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Colonie" ;
+    ns6:name "Colonie" .
+
+<https://w3id.org/caselinker/resource/location/latham> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Latham" ;
+    ns6:name "Latham" .
+
+<https://w3id.org/caselinker/resource/location/new-york> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New York" ;
+    ns6:name "New York" .
+
+<https://w3id.org/caselinker/resource/location/rensselaer> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Rensselaer" ;
+    ns6:name "Rensselaer" .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2024_020/event/hands-on> a ns3:ChildSexualAbuseEvent,
+        ns5:Event ;
+    ns3:severityLevel 3 .
+

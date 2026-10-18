@@ -1,82 +1,82 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_263> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.396829" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_263> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:27.785784" ;
     dcterms:identifier "ncmec_2024_263" ;
-    dcterms:modified "2026-09-15T21:08:10.396829" ;
-    dcterms:source <https://www.nbc-2.com/article/north-port-man-arrested-child-pornography-charges/61570729>,
+    dcterms:modified "2026-10-17 23:04:27.785784" ;
+    dcterms:source <https://www.pcsoweb.com/-24-071-detectives-arrest-tarpon-springs-man-for-possession-of-child-pornography#:~:text=According%20to%20detectives%2C%20the%20images,to%20the%20Pinellas%20County%20Jail>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/fla>,
-        <https://caselinker.up.railway.app/resource/location/north-port> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_263/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_263/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_263/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_263/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/fla>,
-        <https://caselinker.up.railway.app/resource/location/north-port> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/pinellas-county>,
+        <https://w3id.org/caselinker/resource/location/tarpon-springs> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_263/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_263/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_263/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_263/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/sheriffs-office-investigative-operations-bureau> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/pinellas-county>,
+        <https://w3id.org/caselinker/resource/location/tarpon-springs> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_263/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_263/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_263/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_263/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-05-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_263/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_263/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_263/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_263/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_263/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_263/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-05-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_263/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_263/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_263/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/agency/sheriffs-office-investigative-operations-bureau> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_263/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 44 .
+    ns5:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_263/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_263/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_263/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_263/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_263/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_263/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Pinellas County Jail" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_263/charge/1> ;
+    ns5:hasProceedingBeginPoint "2024-05-23T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_263/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 79 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_263/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 25 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_263/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_263/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_263/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_263/phase/charged> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2024-05-23T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_263/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/pinellas-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pinellas County" ;
+    ns2:name "Pinellas County" .
 
-<https://caselinker.up.railway.app/resource/location/fla> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/tarpon-springs> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tarpon Springs" ;
+    ns2:name "Tarpon Springs" .
 
-<https://caselinker.up.railway.app/resource/location/north-port> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "North Port" ;
-    uco-core:name "North Port" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_263/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_263/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_263/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 2 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_263/facet/possession> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_263> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_263/provenance> .

@@ -1,0 +1,144 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136> a ns2:CACInvestigation,
+        ns8:EnduringEntity ;
+    dcterms:created "2026-10-18 01:29:56.670395" ;
+    dcterms:identifier "doj_ceos_2013_136" ;
+    dcterms:modified "2026-10-18 01:29:56.670395" ;
+    dcterms:source <https://www.justice.gov/usao-wdny/pr/pennsylvania-man-pleads-guilty-production-child-pornography>,
+        "DOJ CEOS" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/buffalo>,
+        <https://w3id.org/caselinker/resource/location/howard>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania>,
+        <https://w3id.org/caselinker/resource/location/western-new-york> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/phase/pleaded-guilty> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/phase/pleaded-guilty> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/event/production>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/legal-step/pleaded-guilty> ;
+    ns2:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/city-of-tonawanda-police-department>,
+        <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/buffalo>,
+        <https://w3id.org/caselinker/resource/location/howard>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania>,
+        <https://w3id.org/caselinker/resource/location/western-new-york> .
+
+<https://w3id.org/caselinker/resource/agency/city-of-tonawanda-police-department> a ns8:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "City of Tonawanda Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/fbi> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/charge/2> a ns5:CSAM_Production,
+        ns5:CriminalCharge ;
+    rdfs:label "production of child pornography" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/event/multi-jurisdiction> a ns8:Event,
+        ns6:MultiJurisdictionalInvestigation .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/event/trust-violation> a ns4:CustodialAbuse,
+        ns4:TrustViolation ;
+    ns4:violatesRelationship <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/relationship/parent> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/legal-proceeding> a ns8:Event,
+        ns8:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/charge/1>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/charge/2> ;
+    ns5:hasProceedingBeginPoint "2013-08-30T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/legal-step/pleaded-guilty> a ns8:Event,
+        ns8:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:PleaBargaining ;
+    ns5:hasProceedingBeginPoint "2013-08-30T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 36 .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/relationship/parent> a ns4:CaregiverRelationship,
+        ns4:CustodialRelationship ;
+    ns4:involvesChild <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/role/victim/1> ;
+    ns4:involvesCustodian <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/role/offender/1> ;
+    ns4:relationshipType "parent" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2013-08-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/event/production> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2013-08-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/event/production> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/phase/pleaded-guilty> a ns8:Phase,
+        ns5:PreTrialPhase ;
+    ns2:hasPhaseBeginPoint "2013-08-30T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/buffalo> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Buffalo" ;
+    ns1:name "Buffalo" .
+
+<https://w3id.org/caselinker/resource/location/howard> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Howard" ;
+    ns1:name "Howard" .
+
+<https://w3id.org/caselinker/resource/location/pennsylvania> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pennsylvania" ;
+    ns1:name "Pennsylvania" .
+
+<https://w3id.org/caselinker/resource/location/western-new-york> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Western New York" ;
+    ns1:name "Western New York" .
+
+<https://w3id.org/caselinker/resource/platform/skype> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Skype" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/event/csam> a ns2:CSAMIncident,
+        ns8:Event ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/skype> ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/event/production> a ns8:Event,
+        <https://cacontology.projectvic.org/production#ProductionOffense> ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/skype> ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/facet/production> .
+
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_136> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/doj_ceos_2013_136/provenance> .

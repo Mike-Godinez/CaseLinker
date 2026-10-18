@@ -1,129 +1,142 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_126> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.276637" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/admission/1/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_126/admission/1> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_126> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/admission/2/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_126/admission/2> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_126> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_126/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_126/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_126/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Pueblo County Jail" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_126/charge/1> ;
+    ns6:hasProceedingBeginPoint "2025-09-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/operation> a ns2:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 43 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/tech/cybertipline> a ns8:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:16.887143" ;
     dcterms:identifier "ncmec_2025_126" ;
-    dcterms:modified "2026-09-15T21:27:13.276637" ;
-    dcterms:source <https://gazette.com/pikespeakcourier/teller-county-news-in-brief/article_0c4a680f-aa1c-4f39-bb7d-55e5e4ef003c.html>,
+    dcterms:modified "2026-10-18 00:01:16.887143" ;
+    dcterms:source <https://www.pueblosheriff.com/DocumentCenter/View/3529/Man-arrested-for-child-exploitation?bidId=>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/carroll-county>,
-        <https://caselinker.up.railway.app/resource/location/el-paso-county>,
-        <https://caselinker.up.railway.app/resource/location/gallup>,
-        <https://caselinker.up.railway.app/resource/location/lubbock>,
-        <https://caselinker.up.railway.app/resource/location/manitou-springs>,
-        <https://caselinker.up.railway.app/resource/location/nh>,
-        <https://caselinker.up.railway.app/resource/location/nm>,
-        <https://caselinker.up.railway.app/resource/location/texas> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_126/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_126/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_126/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_126/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_126/legal-step/convicted> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/carroll-county>,
-        <https://caselinker.up.railway.app/resource/location/el-paso-county>,
-        <https://caselinker.up.railway.app/resource/location/gallup>,
-        <https://caselinker.up.railway.app/resource/location/lubbock>,
-        <https://caselinker.up.railway.app/resource/location/manitou-springs>,
-        <https://caselinker.up.railway.app/resource/location/nh>,
-        <https://caselinker.up.railway.app/resource/location/nm>,
-        <https://caselinker.up.railway.app/resource/location/texas> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/pueblo>,
+        <https://w3id.org/caselinker/resource/location/pueblo-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_126/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_126/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_126/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_126/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_126/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_126/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_126/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_126/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_126/operation> ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_126/tech/cybertipline> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/pueblo>,
+        <https://w3id.org/caselinker/resource/location/pueblo-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_126/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_126/event/possession> ;
-    cacontology:perpetratorRegisteredSexOffender true ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_126/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/phase/booked> a ns1:InitialPhase,
+        ns2:Phase ;
+    ns1:hasPhaseBeginPoint "2025-09-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_126/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_126/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_126/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_126/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_126/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_126/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_126/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography in 2004 in" ;
-    cacontology-legal-outcomes:indictmentCounts 12 .
+<https://w3id.org/caselinker/resource/location/pueblo> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pueblo" ;
+    ns5:name "Pueblo" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_126/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/location/pueblo-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pueblo County" ;
+    ns5:name "Pueblo County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_126/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_126/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_126/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_126/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_126/admission/2> ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_126/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_126/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_126/admission/2> ;
+    ns1:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_126/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_126/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "having viewed pornography in the past" ;
+    dcterms:source <https://www.pueblosheriff.com/DocumentCenter/View/3529/Man-arrested-for-child-exploitation?bidId=> ;
+    ns4:admissionContext "nic devices found in the home and discovered the more than a thousand images and videos. Detectives questioned Phelps and he admitted to..." ;
+    ns4:admissionFrame "admitted_to" ;
+    ns4:admissionTheme "harm_conduct" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_126/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns5:description "having viewed pornography in the past" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_126/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "to having viewed pornography in the past" ;
+    dcterms:source <https://www.pueblosheriff.com/DocumentCenter/View/3529/Man-arrested-for-child-exploitation?bidId=> ;
+    ns4:admissionContext "discovered the more than a thousand images and videos. Detectives questioned Phelps and he admitted to having viewed pornography in the past" ;
+    ns4:admissionFrame "he_admitted_paraphrase" ;
+    ns4:admissionTheme "harm_conduct" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_126/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns5:description "to having viewed pornography in the past" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_126/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:ProbationSentence ;
-    rdfs:label "[\"probation\"]" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_126/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/carroll-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Carroll County" ;
-    uco-core:name "Carroll County" .
-
-<https://caselinker.up.railway.app/resource/location/el-paso-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "El Paso County" ;
-    uco-core:name "El Paso County" .
-
-<https://caselinker.up.railway.app/resource/location/gallup> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Gallup" ;
-    uco-core:name "Gallup" .
-
-<https://caselinker.up.railway.app/resource/location/lubbock> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Lubbock" ;
-    uco-core:name "Lubbock" .
-
-<https://caselinker.up.railway.app/resource/location/manitou-springs> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Manitou Springs" ;
-    uco-core:name "Manitou Springs" .
-
-<https://caselinker.up.railway.app/resource/location/nh> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "N.h." ;
-    uco-core:name "N.h." .
-
-<https://caselinker.up.railway.app/resource/location/nm> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "N.m" ;
-    uco-core:name "N.m" .
-
-<https://caselinker.up.railway.app/resource/location/texas> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_126/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_126/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_126> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_126/provenance> .

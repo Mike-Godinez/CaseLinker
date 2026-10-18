@@ -1,123 +1,128 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns8: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_517> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/rogers-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Rogers County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.189635" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:34.338860" ;
     dcterms:identifier "ncmec_2023_517" ;
-    dcterms:modified "2026-09-15T20:55:01.189635" ;
-    dcterms:source <https://www.newson6.com/story/64012f6dce346008e4fa802f/rogers-county-man-arrested-suspected-of-sharing-child-porn->,
+    dcterms:modified "2026-10-17 22:21:34.338860" ;
+    dcterms:source <https://www.mainstreetdailynews.com/crime/2-gainesville-men-charged-child-porn>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/claremore>,
-        <https://caselinker.up.railway.app/resource/location/okla>,
-        <https://caselinker.up.railway.app/resource/location/rogers-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/rogers-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/claremore>,
-        <https://caselinker.up.railway.app/resource/location/okla>,
-        <https://caselinker.up.railway.app/resource/location/rogers-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/gainesville> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_517/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_517/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_517/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/offense-event/charge-2> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/gainesville-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns8:mentionsLocation <https://w3id.org/caselinker/resource/location/gainesville> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_517/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/offense-event/charge-2> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_517/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/agency/gainesville-police-department> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "possession of child" ;
+    ns5:indictmentCounts 22 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/charge/2> a ns5:CriminalCharge ;
+    rdfs:label "distribution of child exploitation material" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2023_517/offense-event/charge-2> ;
+    ns5:indictmentCounts 2 ;
+    ns8:chargeCluster "child_exploitation" ;
+    ns8:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_517/offense-event/charge-2> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/cybertip> a ns2:NCMECCybertipReport ;
+    ns2:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/event/distribution> a ns4:Event,
+        ns5:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_517/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/charge/2> ;
+    ns5:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 20 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "watching and sending videos of children having sex" ;
-    dcterms:source <https://www.newson6.com/story/64012f6dce346008e4fa802f/rogers-county-man-arrested-suspected-of-sharing-child-porn-> ;
-    ns1:admissionContext "om the National Center for Missing and Exploited Children led them to an RV in Claremore. Investigators say their suspect s admitted to w..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "watching and sending videos of children having sex" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 56 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/claremore> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Claremore" ;
-    uco-core:name "Claremore" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_517/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/offense-event/charge-2> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_517/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/location/okla> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/role/offender/2> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_517/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/offense-event/charge-2> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_517/person/offender/2> .
 
-<https://caselinker.up.railway.app/resource/location/rogers-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Rogers County" ;
-    uco-core:name "Rogers County" .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_517/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_517/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/phase/charged> a ns1:LegalProcessPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/location/gainesville> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Gainesville" ;
+    ns7:name "Gainesville" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/event/conspiracy> a ns1:ConspiracyToCommitCSA,
+        ns4:Event ;
+    ns1:conspiracyMemberCount 2 ;
+    ns1:participatesInConspiracy <https://w3id.org/caselinker/resource/case/ncmec_2023_517/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_517/role/offender/2> ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/event/possession> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:severityLevel 3 ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_517/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517/offense-event/charge-2> a ns1:ChildSexualAbuseEvent,
+        ns4:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: distribution of child exploitation material" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_517> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_517/provenance> .

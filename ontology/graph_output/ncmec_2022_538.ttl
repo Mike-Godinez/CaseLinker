@@ -1,103 +1,113 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/detection#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.458056" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_538/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_538> ;
+    ns5:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2022-06-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_538/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_538/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/logan-city-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:26.034451" ;
     dcterms:identifier "ncmec_2022_538" ;
-    dcterms:modified "2026-09-15T20:45:06.458056" ;
-    dcterms:source <https://goodwordnews.com/lecompte-man-arrested-on-203-counts-of-distributing-child-pornography/#:~:text=According%20to%20the%20Rapides%20Parish,200%20counts%20of%20child%20pornography>,
+    dcterms:modified "2026-10-17 21:51:26.034451" ;
+    dcterms:source <https://cachevalleydaily.com/news/archive/2022/06/17/alleged-fugitive-arrested-in-lewiston-on-possible-drug-and-child-porn-charges/#.YrXLuHbMKUk>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/lecompte>,
-        <https://caselinker.up.railway.app/resource/location/louisiana>,
-        <https://caselinker.up.railway.app/resource/location/rapids-parish> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/lecompte>,
-        <https://caselinker.up.railway.app/resource/location/louisiana>,
-        <https://caselinker.up.railway.app/resource/location/rapids-parish> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/lewiston> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_538/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_538/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_538/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_538/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_538/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_538/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_538/operation> ;
+    ns3:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2022_538/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/logan-city-police-department> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/lewiston> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/charge/1> a ns4:CriminalCharge,
+        ns4:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "distributing child" ;
-    cacontology-legal-outcomes:indictmentCounts 203 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/charge/2> a cacontology-legal-outcomes:CSAM_Distribution,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "distributing pornography involving minors – victim under 13" ;
-    cacontology-legal-outcomes:indictmentCounts 203 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/charge/3> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/charge/2> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
     rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 201 .
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/charge/3> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/event/distribution> a ns5:Event,
+        ns4:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked Tuesday into the Cache County Jail" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_538/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_538/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_538/charge/3> ;
+    ns4:hasProceedingBeginPoint "2022-06-17T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/operation> a ns5:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$10,150,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns1:ageEstimate 29 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/lecompte> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Lecompte" ;
-    uco-core:name "Lecompte" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2022-06-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_538/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_538/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/location/louisiana> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Louisiana" ;
-    uco-core:name "Louisiana" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/location/rapids-parish> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Rapids Parish" ;
-    uco-core:name "Rapids Parish" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "smoking it the day before" ;
+    dcterms:source <https://cachevalleydaily.com/news/archive/2022/06/17/alleged-fugitive-arrested-in-lewiston-on-possible-drug-and-child-porn-charges/#.YrXLuHbMKUk> ;
+    ns2:admissionContext "hs stated it was his marijuana, even though he doesn’t have a valid medical card. He also allegedly admitted to smoking it the day before" ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "other" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_538/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns7:description "smoking it the day before" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_538/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_538/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/phase/charged> a ns3:LegalProcessPhase,
+        ns5:Phase ;
+    ns3:hasPhaseBeginPoint "2022-06-17T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/location/lewiston> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lewiston" ;
+    ns7:name "Lewiston" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538/event/possession> a ns3:CSAMIncident,
+        ns5:Event ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_538/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_538> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_538/provenance> .

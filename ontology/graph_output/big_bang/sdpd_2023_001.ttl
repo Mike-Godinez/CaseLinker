@@ -1,0 +1,87 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2023_001> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 07:00:44.508758" ;
+    dcterms:identifier "sdpd_2023_001" ;
+    dcterms:modified "2026-10-18 07:00:44.508758" ;
+    dcterms:source <https://www.sandiego.gov/sites/default/files/20230223_former_sdsu_football_player_arrested_on_child_pornography_charges.pdf>,
+        "SDPD" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/san-diego>,
+        <https://w3id.org/caselinker/resource/location/san-diego-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/sdpd_2023_001/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/sdpd_2023_001/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/sdpd_2023_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/sdpd_2023_001/event/possession>,
+        <https://w3id.org/caselinker/resource/case/sdpd_2023_001/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/san-diego>,
+        <https://w3id.org/caselinker/resource/location/san-diego-county> .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2023_001/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-02-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/sdpd_2023_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/sdpd_2023_001/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/sdpd_2023_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2023_001/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-02-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/sdpd_2023_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/sdpd_2023_001/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/sdpd_2023_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2023_001/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2023_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2023_001/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into San Diego County Jail" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/sdpd_2023_001/charge/1> ;
+    ns6:hasProceedingBeginPoint "2023-02-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2023_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2023_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2023_001/phase/booked> a ns1:InitialPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2023-02-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/san-diego> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "San Diego" ;
+    ns2:name "San Diego" .
+
+<https://w3id.org/caselinker/resource/location/san-diego-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "San Diego County" ;
+    ns2:name "San Diego County" .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2023_001/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2023_001/event/possession> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/sdpd_2023_001/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/sdpd_2023_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/sdpd_2023_001/provenance> .

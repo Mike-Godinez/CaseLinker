@@ -1,139 +1,399 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/production#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_164> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_164> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/agency/orlando-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Orlando Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/osceola-county-sheriffs-office> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/relationship/mother> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/person/offender/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 12 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/relationship/mother> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/role/offender/1> ;
-    cacontology-custodial:relationshipType "mother" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.268380" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:26.404525" ;
     dcterms:identifier "ncmec_2024_164" ;
-    dcterms:modified "2026-09-15T21:08:10.268380" ;
-    dcterms:source <https://wflaorlando.iheart.com/featured/florida-news/content/2024-05-21-man-arrested-for-alleged-video-voyeurism-at-target-store/#:~:text=Authorities%20say%20Daniel%20Mora%20has,flash%20and%20informed%20her%20mother>,
+    dcterms:modified "2026-10-17 23:04:26.404525" ;
+    dcterms:source <https://www.local10.com/news/local/2024/11/20/miami-dade-man-accused-of-planning-to-sexually-abuse-a-child-in-broward-records-show/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/florida>,
-        <https://caselinker.up.railway.app/resource/location/kissimmee>,
-        <https://caselinker.up.railway.app/resource/location/orlando>,
-        <https://caselinker.up.railway.app/resource/location/osceola-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/orlando-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/osceola-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/florida>,
-        <https://caselinker.up.railway.app/resource/location/kissimmee>,
-        <https://caselinker.up.railway.app/resource/location/orlando>,
-        <https://caselinker.up.railway.app/resource/location/osceola-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/arkansas>,
+        <https://w3id.org/caselinker/resource/location/atlanta>,
+        <https://w3id.org/caselinker/resource/location/broward>,
+        <https://w3id.org/caselinker/resource/location/broward-county>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/fort-lauderdale>,
+        <https://w3id.org/caselinker/resource/location/franklin>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/lynn-haven>,
+        <https://w3id.org/caselinker/resource/location/memphis>,
+        <https://w3id.org/caselinker/resource/location/miami>,
+        <https://w3id.org/caselinker/resource/location/miami-dade>,
+        <https://w3id.org/caselinker/resource/location/minnesota>,
+        <https://w3id.org/caselinker/resource/location/north-carolina>,
+        <https://w3id.org/caselinker/resource/location/panama-city>,
+        <https://w3id.org/caselinker/resource/location/panama-city-beach>,
+        <https://w3id.org/caselinker/resource/location/pembroke-pines>,
+        <https://w3id.org/caselinker/resource/location/southport>,
+        <https://w3id.org/caselinker/resource/location/springfield>,
+        <https://w3id.org/caselinker/resource/location/tennessee>,
+        <https://w3id.org/caselinker/resource/location/westchester> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_164/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_164/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/legal-proceeding> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/arkansas>,
+        <https://w3id.org/caselinker/resource/location/atlanta>,
+        <https://w3id.org/caselinker/resource/location/broward>,
+        <https://w3id.org/caselinker/resource/location/broward-county>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/fort-lauderdale>,
+        <https://w3id.org/caselinker/resource/location/franklin>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/lynn-haven>,
+        <https://w3id.org/caselinker/resource/location/memphis>,
+        <https://w3id.org/caselinker/resource/location/miami>,
+        <https://w3id.org/caselinker/resource/location/miami-dade>,
+        <https://w3id.org/caselinker/resource/location/minnesota>,
+        <https://w3id.org/caselinker/resource/location/north-carolina>,
+        <https://w3id.org/caselinker/resource/location/panama-city>,
+        <https://w3id.org/caselinker/resource/location/panama-city-beach>,
+        <https://w3id.org/caselinker/resource/location/pembroke-pines>,
+        <https://w3id.org/caselinker/resource/location/southport>,
+        <https://w3id.org/caselinker/resource/location/springfield>,
+        <https://w3id.org/caselinker/resource/location/tennessee>,
+        <https://w3id.org/caselinker/resource/location/westchester> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "taking the photograph for pleasure and expressed embarrassment" ;
-    dcterms:source <https://wflaorlando.iheart.com/featured/florida-news/content/2024-05-21-man-arrested-for-alleged-video-voyeurism-at-target-store/#:~:text=Authorities%20say%20Daniel%20Mora%20has,flash%20and%20informed%20her%20mother> ;
-    ns1:admissionContext "er mother. Mora is charged with video voyeurism and is currently being held without bond. During questioning, he admitted to taking the p..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "taking the photograph for pleasure and expressed embarrassment" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "to taking the photograph for pleasure and expressed embarrassment" ;
-    dcterms:source <https://wflaorlando.iheart.com/featured/florida-news/content/2024-05-21-man-arrested-for-alleged-video-voyeurism-at-target-store/#:~:text=Authorities%20say%20Daniel%20Mora%20has,flash%20and%20informed%20her%20mother> ;
-    ns1:admissionContext "harged with video voyeurism and is currently being held without bond. During questioning, he admitted to taking the photograph for pleasu..." ;
-    ns1:admissionFrame "he_admitted_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "to taking the photograph for pleasure and expressed embarrassment" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "Obscene Material/Possession and View Depiction of Child" ;
+    ns6:indictmentCounts 38 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/charge/2> a ns6:CriminalCharge,
+        ns6:TravelingToMeetAfterComputerLure ;
+    rdfs:label "Obscene Communications/Travel to Meet After Use of" ;
+    ns6:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/location/florida> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/distribution> a ns3:Event,
+        ns6:CSAM_Distribution ;
+    ns1:severityLevel 1 .
 
-<https://caselinker.up.railway.app/resource/location/kissimmee> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/multi-jurisdiction> a ns3:Event,
+        <https://cacontology.projectvic.org/multi-jurisdiction#MultiJurisdictionalInvestigation> ;
+    ns1:severityLevel 1 .
 
-<https://caselinker.up.railway.app/resource/location/orlando> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/location/osceola-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked him at the main jail" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_164/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/charge/2> ;
+    ns6:hasProceedingBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 18 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_164/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_164/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/10> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 41 .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/11> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 43 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/12> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 44 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/13> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 47 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/14> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 51 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/15> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 70 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 22 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/3> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 24 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/4> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 27 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/5> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 28 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/6> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 29 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/7> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 33 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/8> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 34 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/9> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 39 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:victimAge 23 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/10> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/10> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/11> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/11> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/12> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/12> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/13> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/13> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/14> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/14> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/15> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/15> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/2> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/2> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/3> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/3> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/4> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/4> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/5> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/5> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/6> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/6> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/7> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/7> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/8> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/8> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/9> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_164/person/offender/9> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/phase/booked> a ns1:InitialPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/arkansas> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Arkansas" ;
+    ns4:name "Arkansas" .
+
+<https://w3id.org/caselinker/resource/location/atlanta> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Atlanta" ;
+    ns4:name "Atlanta" .
+
+<https://w3id.org/caselinker/resource/location/broward> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Broward" ;
+    ns4:name "Broward" .
+
+<https://w3id.org/caselinker/resource/location/broward-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Broward County" ;
+    ns4:name "Broward County" .
+
+<https://w3id.org/caselinker/resource/location/fla> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns4:name "Fla." .
+
+<https://w3id.org/caselinker/resource/location/florida> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Florida" ;
+    ns4:name "Florida" .
+
+<https://w3id.org/caselinker/resource/location/fort-lauderdale> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fort Lauderdale" ;
+    ns4:name "Fort Lauderdale" .
+
+<https://w3id.org/caselinker/resource/location/franklin> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Franklin" ;
+    ns4:name "Franklin" .
+
+<https://w3id.org/caselinker/resource/location/georgia> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Georgia" ;
+    ns4:name "Georgia" .
+
+<https://w3id.org/caselinker/resource/location/lynn-haven> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lynn Haven" ;
+    ns4:name "Lynn Haven" .
+
+<https://w3id.org/caselinker/resource/location/memphis> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Memphis" ;
+    ns4:name "Memphis" .
+
+<https://w3id.org/caselinker/resource/location/miami> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Miami" ;
+    ns4:name "Miami" .
+
+<https://w3id.org/caselinker/resource/location/miami-dade> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Miami-dade" ;
+    ns4:name "Miami-dade" .
+
+<https://w3id.org/caselinker/resource/location/minnesota> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Minnesota" ;
+    ns4:name "Minnesota" .
+
+<https://w3id.org/caselinker/resource/location/north-carolina> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "North Carolina" ;
+    ns4:name "North Carolina" .
+
+<https://w3id.org/caselinker/resource/location/panama-city> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Panama City" ;
+    ns4:name "Panama City" .
+
+<https://w3id.org/caselinker/resource/location/panama-city-beach> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Panama City Beach" ;
+    ns4:name "Panama City Beach" .
+
+<https://w3id.org/caselinker/resource/location/pembroke-pines> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pembroke Pines" ;
+    ns4:name "Pembroke Pines" .
+
+<https://w3id.org/caselinker/resource/location/southport> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Southport" ;
+    ns4:name "Southport" .
+
+<https://w3id.org/caselinker/resource/location/springfield> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Springfield" ;
+    ns4:name "Springfield" .
+
+<https://w3id.org/caselinker/resource/location/tennessee> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tennessee" ;
+    ns4:name "Tennessee" .
+
+<https://w3id.org/caselinker/resource/location/westchester> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Westchester" ;
+    ns4:name "Westchester" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/conspiracy> a ns1:ConspiracyToCommitCSA,
+        ns3:Event ;
+    ns1:conspiracyMemberCount 15 ;
+    ns1:participatesInConspiracy <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/10>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/11>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/12>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/13>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/14>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/15>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/4>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/5>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/6>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/7>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/8>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_164/role/offender/9> ;
+    ns1:severityLevel 1 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:severityLevel 1 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_164/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_164> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_164/provenance> .

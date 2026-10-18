@@ -1,80 +1,105 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-grooming: <https://cacontology.projectvic.org/grooming#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/production#> .
+@prefix ns4: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns8: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns9: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:03:07.986442" ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2015_009> a ns1:CACInvestigation,
+        ns9:EnduringEntity ;
+    dcterms:created "2026-10-18 06:14:13.538274" ;
     dcterms:identifier "ohio_ag_2015_009" ;
-    dcterms:modified "2026-09-10T20:03:07.986442" ;
+    dcterms:modified "2026-10-18 06:14:13.538274" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/provenance> ;
     dcterms:source <https://www.ohioattorneygeneral.gov/Media/News-Releases/April-2015/Columbus-Man-Sentenced-to-32-Years-in-Prison-for-R>,
         "OHIO AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/legal-step/sentenced> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/columbus-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ohio-bureau-of-criminal-investigation> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/columbus>,
+        <https://w3id.org/caselinker/resource/location/franklin-county>,
+        <https://w3id.org/caselinker/resource/location/ohio> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/columbus-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ohio-bureau-of-criminal-investigation> ;
+    ns8:mentionsLocation <https://w3id.org/caselinker/resource/location/columbus>,
+        <https://w3id.org/caselinker/resource/location/franklin-county>,
+        <https://w3id.org/caselinker/resource/location/ohio> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/relationship/stranger> a cacontology-custodial:CustodialRelationship,
-        cacontology-grooming:OnlinePredator ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/role/offender/1> ;
-    cacontology-custodial:relationshipType "stranger" .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/relationship/stranger> a ns4:CustodialRelationship,
+        <https://cacontology.projectvic.org/grooming#OnlinePredator> ;
+    ns4:involvesChild <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/role/victim/1> ;
+    ns4:involvesCustodian <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/role/offender/1> ;
+    ns4:relationshipType "stranger" .
 
-<https://caselinker.up.railway.app/resource/agency/columbus-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/columbus-police-department> a ns9:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "Columbus Police Department" .
 
-<https://caselinker.up.railway.app/resource/agency/ohio-bureau-of-criminal-investigation> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/ohio-bureau-of-criminal-investigation> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2015-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/legal-proceeding> a ns9:Event,
+        ns9:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasProceedingBeginPoint "2015-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/sentence/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2015-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/legal-step/sentenced> a ns9:Event,
+        ns9:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2015-04-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 37 .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 13 .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:victimAge 13 .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2015-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2015-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/event/hands-on> ;
+    ns9:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2015-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2015-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/event/hands-on> ;
+    ns9:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/sentence/1> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
     rdfs:label "32 years" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2015-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/phase/sentenced> a ns9:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2015-04-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2015_009/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/location/columbus> a ns9:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Columbus" ;
+    ns7:name "Columbus" .
+
+<https://w3id.org/caselinker/resource/location/franklin-county> a ns9:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Franklin County" ;
+    ns7:name "Franklin County" .
+
+<https://w3id.org/caselinker/resource/location/ohio> a ns9:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns7:name "Ohio" .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2015_009/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns9:Event ;
+    ns1:severityLevel 3 .
 

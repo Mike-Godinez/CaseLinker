@@ -1,133 +1,156 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_789> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.992758" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_789/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_789> ;
+    ns5:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_789/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_789/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/district-attorneys-office> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/fbi> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/pennsylvania-state-police-department> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:24.022773" ;
     dcterms:identifier "ncmec_2025_789" ;
-    dcterms:modified "2026-09-15T21:27:13.992758" ;
-    dcterms:source <https://westmoreland.crimewatchpa.com/da/177666/cases/philadelphia-man-charged-kidnapping-trafficking-young-greensburg-girl>,
+    dcterms:modified "2026-10-18 00:01:24.022773" ;
+    dcterms:source <https://www.wfmj.com/story/52721344/child-pornography-case-against-lawrence-county-man-sent-to-common-pleas-court>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/greensburg>,
-        <https://caselinker.up.railway.app/resource/location/pennsylvania>,
-        <https://caselinker.up.railway.app/resource/location/philadelphia>,
-        <https://caselinker.up.railway.app/resource/location/westmoreland-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_789/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_789/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_789/event/trafficking>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_789/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_789/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/district-attorneys-office>,
-        <https://caselinker.up.railway.app/resource/agency/greensburg-city-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/greensburg-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/pennsylvania-attorney-generals-child-predator-unit>,
-        <https://caselinker.up.railway.app/resource/agency/pennsylvania-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/philadelphia-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/greensburg>,
-        <https://caselinker.up.railway.app/resource/location/pennsylvania>,
-        <https://caselinker.up.railway.app/resource/location/philadelphia>,
-        <https://caselinker.up.railway.app/resource/location/westmoreland-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/lawrence-county>,
+        <https://w3id.org/caselinker/resource/location/monroe-county>,
+        <https://w3id.org/caselinker/resource/location/new-castle>,
+        <https://w3id.org/caselinker/resource/location/pa>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania>,
+        <https://w3id.org/caselinker/resource/location/shenango-township> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_789/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_789/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_789/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_789/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_789/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_789/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_789/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_789/operation> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/district-attorneys-office>,
+        <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/pennsylvania-state-police-department> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/lawrence-county>,
+        <https://w3id.org/caselinker/resource/location/monroe-county>,
+        <https://w3id.org/caselinker/resource/location/new-castle>,
+        <https://w3id.org/caselinker/resource/location/pa>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania>,
+        <https://w3id.org/caselinker/resource/location/shenango-township> .
 
-<https://caselinker.up.railway.app/resource/platform/tiktok> a cac-core:DigitalSystemEntity,
-        cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "TikTok" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns1:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/agency/district-attorneys-office> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/charge/2> a ns1:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/agency/greensburg-city-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Greensburg City Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/event/distribution> a ns5:Event,
+        ns1:CSAM_Distribution ;
+    ns3:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/agency/greensburg-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Greensburg Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/event/trafficking> a ns5:Event,
+        ns1:SexTrafficking ;
+    ns3:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/agency/pennsylvania-attorney-generals-child-predator-unit> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Pennsylvania Attorney General's Child Predator Unit" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/pennsylvania-state-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Pennsylvania State Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_789/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_789/charge/2> ;
+    ns1:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/philadelphia-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Philadelphia Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/operation> a ns5:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_789/event/trafficking> a cac-core:Event,
-        cacontology-legal-outcomes:SexTrafficking ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 69 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_789/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ncmec_2025_789/relationship/parent> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_789/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_789/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_789/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_789/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_789/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 19 .
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_789/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 13 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/phase/arrested> a ns3:InitialPhase,
+        ns5:Phase ;
+    ns3:hasPhaseBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_789/relationship/parent> a cacontology-custodial:CaregiverRelationship,
-        cacontology-custodial:CustodialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ncmec_2025_789/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ncmec_2025_789/role/offender/1> ;
-    cacontology-custodial:relationshipType "parent" .
+<https://w3id.org/caselinker/resource/location/lawrence-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lawrence County" ;
+    ns4:name "Lawrence County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_789/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_789/person/offender/1> .
+<https://w3id.org/caselinker/resource/location/monroe-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Monroe County" ;
+    ns4:name "Monroe County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_789/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_789/person/victim/1> .
+<https://w3id.org/caselinker/resource/location/new-castle> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Castle" ;
+    ns4:name "New Castle" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_789/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/pa> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pa." ;
+    ns4:name "Pa." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_789/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/pennsylvania> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pennsylvania" ;
+    ns4:name "Pennsylvania" .
 
-<https://caselinker.up.railway.app/resource/location/greensburg> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Greensburg" ;
-    uco-core:name "Greensburg" .
+<https://w3id.org/caselinker/resource/location/shenango-township> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Shenango Township" ;
+    ns4:name "Shenango Township" .
 
-<https://caselinker.up.railway.app/resource/location/pennsylvania> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "viewing child pornography, claiming some instances were \"pop ups" ;
+    dcterms:source <https://www.wfmj.com/story/52721344/child-pornography-case-against-lawrence-county-man-sent-to-common-pleas-court> ;
+    ns2:admissionContext "hat Burns, who lives alone, told them the laptop in his living room belonged to him. The complaint stated that Burns admitted to viewing..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_789/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns4:description "viewing child pornography, claiming some instances were \"pop ups" .
 
-<https://caselinker.up.railway.app/resource/location/philadelphia> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Philadelphia" ;
-    uco-core:name "Philadelphia" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789/event/csam> a ns3:CSAMIncident,
+        ns5:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_789/admission/1> ;
+    ns3:severityLevel 3 ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_789/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/location/westmoreland-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Westmoreland County" ;
-    uco-core:name "Westmoreland County" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_789> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_789/provenance> .

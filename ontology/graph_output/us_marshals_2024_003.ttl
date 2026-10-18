@@ -1,59 +1,56 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2024_003> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:35:06.168465" ;
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_003> a ns3:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 07:26:56.464958" ;
     dcterms:identifier "us_marshals_2024_003" ;
-    dcterms:modified "2026-09-15T20:35:06.168465" ;
+    dcterms:modified "2026-10-18 07:26:56.464958" ;
     dcterms:source <https://www.usmarshals.gov/news/press-release/us-marshals-seek-information-2021-sexual-assault-of-child-suspect>,
         "US MARSHALS" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/dallas> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/north-texas-fugitive-task-force>,
-        <https://caselinker.up.railway.app/resource/agency/tarrant-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/united-states-marshals-service-for-unlawful-flight-to-avoid-prosecution>,
-        <https://caselinker.up.railway.app/resource/agency/usms> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/dallas> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/dallas> ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/north-texas-fugitive-task-force>,
+        <https://w3id.org/caselinker/resource/agency/tarrant-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/united-states-marshals-service-for-unlawful-flight-to-avoid-prosecution>,
+        <https://w3id.org/caselinker/resource/agency/usms> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/dallas> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2024_003/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/us_marshals_2024_003/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_003/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-11-04T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2024_003/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2024_003/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/us_marshals_2024_003/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_003/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-11-04T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2024_003/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/north-texas-fugitive-task-force> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/north-texas-fugitive-task-force> a ns2:OrganizationLikeEntity,
+        ns1:LocalAgency ;
     rdfs:label "North Texas Fugitive Task Force" .
 
-<https://caselinker.up.railway.app/resource/agency/tarrant-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Tarrant County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/agency/tarrant-county-sheriffs-office> a ns1:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/united-states-marshals-service-for-unlawful-flight-to-avoid-prosecution> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/united-states-marshals-service-for-unlawful-flight-to-avoid-prosecution> a ns2:OrganizationLikeEntity,
+        ns1:LocalAgency ;
     rdfs:label "United States Marshals Service for Unlawful Flight to Avoid Prosecution" .
 
-<https://caselinker.up.railway.app/resource/agency/usms> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/usms> a ns1:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2024_003/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2024_003/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/dallas> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/dallas> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Dallas" ;
-    uco-core:name "Dallas" .
+    ns4:name "Dallas" .
 
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/us_marshals_2024_003/provenance> .

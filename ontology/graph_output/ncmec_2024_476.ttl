@@ -1,110 +1,138 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns8: <https://cacontology.projectvic.org/production#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.601784" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:30.300724" ;
     dcterms:identifier "ncmec_2024_476" ;
-    dcterms:modified "2026-09-15T21:08:10.601784" ;
-    dcterms:source <https://www.lex18.com/news/covering-kentucky/london-police-make-arrest-in-child-pornography-investigation>,
+    dcterms:modified "2026-10-17 23:04:30.300724" ;
+    dcterms:source <https://www.wafb.com/2024/09/16/lpso-sex-offender-facing-additional-child-pornography-charges/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ky>,
-        <https://caselinker.up.railway.app/resource/location/london> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/london-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ky>,
-        <https://caselinker.up.railway.app/resource/location/london> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/denham-springs>,
+        <https://w3id.org/caselinker/resource/location/la>,
+        <https://w3id.org/caselinker/resource/location/livingston-parish>,
+        <https://w3id.org/caselinker/resource/location/missouri> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_476/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_476/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_476/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_476/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_476/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_476/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/louisiana-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/denham-springs>,
+        <https://w3id.org/caselinker/resource/location/la>,
+        <https://w3id.org/caselinker/resource/location/livingston-parish>,
+        <https://w3id.org/caselinker/resource/location/missouri> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-09-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_476/event/possession> ;
+    ns1:perpetratorRegisteredSexOffender true ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_476/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-09-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_476/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_476/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/london-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "London Police Department" .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/charge/1> a cacontology-legal-outcomes:CSAM_Distribution,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "distribution of matter portraying" ;
-    cacontology-legal-outcomes:indictmentCounts 41 .
+<https://w3id.org/caselinker/resource/agency/louisiana-bureau-of-investigation> a ns2:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "pornography involving juveniles under the age of 13" ;
+    ns5:indictmentCounts 19 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/charge/2> a ns5:CriminalCharge ;
+    rdfs:label "failure to register and notify as a sex offender or child predator" ;
+    ns5:indictmentCounts 7 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/charge/3> a ns5:CriminalCharge ;
+    rdfs:label "unlawful contact sex offender victim (felony)" ;
+    ns5:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/charge/4> a ns5:CriminalCharge ;
+    rdfs:label "unlawful contact sex offender (misdemeanor)" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/charge/5> a ns5:CriminalCharge ;
+    rdfs:label "indecent behavior with a juvenile" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 24 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/charge/6> a ns5:CriminalCharge ;
+    rdfs:label "computer-aided solicitation of a minor" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/event/distribution> a ns3:Event,
+        ns5:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/location/ky> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Livingston Parish Detention Center" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_476/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_476/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_476/charge/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_476/charge/4>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_476/charge/5>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_476/charge/6> ;
+    ns5:hasProceedingBeginPoint "2024-09-16T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/london> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "London" ;
-    uco-core:name "London" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 2 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_476/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:victimAge 14 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_476/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 2 .
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
 
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/phase/booked> a ns1:InitialPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2024-09-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/denham-springs> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Denham Springs" ;
+    ns4:name "Denham Springs" .
+
+<https://w3id.org/caselinker/resource/location/la> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "La." ;
+    ns4:name "La." .
+
+<https://w3id.org/caselinker/resource/location/livingston-parish> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Livingston Parish" ;
+    ns4:name "Livingston Parish" .
+
+<https://w3id.org/caselinker/resource/location/missouri> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Missouri" ;
+    ns4:name "Missouri" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_476/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_476> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_476/provenance> .

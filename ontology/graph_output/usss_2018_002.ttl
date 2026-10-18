@@ -1,164 +1,158 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/usss_2018_002/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/usss_2018_002> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/usss_2018_002/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/usss_2018_002> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2018-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/usss_2018_002/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/usss_2018_002/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/usss_2018_002/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2018-12-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/usss_2018_002/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/usss_2018_002/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/usss_2018_002/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/fbi> a ns2:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/secret-service> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/secret-service> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/st-joseph-county-sheriffs-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/st-joseph-county-sheriffs-department> a ns5:OrganizationLikeEntity,
+        ns2:LocalAgency ;
     rdfs:label "St. Joseph County Sheriff's Department" .
 
-<https://caselinker.up.railway.app/resource/agency/usao> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/usao> a ns2:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:36:46.019677" ;
+<https://w3id.org/caselinker/resource/case/usss_2018_002> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 07:32:39.550044" ;
     dcterms:identifier "usss_2018_002" ;
-    dcterms:modified "2026-09-15T20:36:46.019677" ;
+    dcterms:modified "2026-10-18 07:32:39.550044" ;
     dcterms:source <https://www.secretservice.gov/press/releases/2018/12/elkhart-man-indicted-possession-and-transportation-child-pornography>,
         "USSS" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/elkhart>,
-        <https://caselinker.up.railway.app/resource/location/indiana>,
-        <https://caselinker.up.railway.app/resource/location/northern-district>,
-        <https://caselinker.up.railway.app/resource/location/south-bend>,
-        <https://caselinker.up.railway.app/resource/location/united-states> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/usss_2018_002/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/usss_2018_002/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/usss_2018_002/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/usss_2018_002/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/usss_2018_002/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/usss_2018_002/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/usss_2018_002/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/usss_2018_002/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/usss_2018_002/legal-step/convicted>,
-        <https://caselinker.up.railway.app/resource/case/usss_2018_002/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/usss_2018_002/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/fbi>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/secret-service>,
-        <https://caselinker.up.railway.app/resource/agency/st-joseph-county-sheriffs-department>,
-        <https://caselinker.up.railway.app/resource/agency/usao> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/elkhart>,
-        <https://caselinker.up.railway.app/resource/location/indiana>,
-        <https://caselinker.up.railway.app/resource/location/northern-district>,
-        <https://caselinker.up.railway.app/resource/location/south-bend>,
-        <https://caselinker.up.railway.app/resource/location/united-states> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/elkhart>,
+        <https://w3id.org/caselinker/resource/location/indiana>,
+        <https://w3id.org/caselinker/resource/location/northern-district>,
+        <https://w3id.org/caselinker/resource/location/south-bend>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/usss_2018_002/phase/convicted> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/usss_2018_002/phase/convicted> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/usss_2018_002/admission/1>,
+        <https://w3id.org/caselinker/resource/case/usss_2018_002/cybertip>,
+        <https://w3id.org/caselinker/resource/case/usss_2018_002/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/usss_2018_002/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/usss_2018_002/event/possession>,
+        <https://w3id.org/caselinker/resource/case/usss_2018_002/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/usss_2018_002/legal-step/convicted> ;
+    ns3:usesMethod <https://w3id.org/caselinker/resource/case/usss_2018_002/tech/cybertipline> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/secret-service>,
+        <https://w3id.org/caselinker/resource/agency/st-joseph-county-sheriffs-department>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/elkhart>,
+        <https://w3id.org/caselinker/resource/location/indiana>,
+        <https://w3id.org/caselinker/resource/location/northern-district>,
+        <https://w3id.org/caselinker/resource/location/south-bend>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/usss_2018_002/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/event/distribution> a ns5:Event,
+        ns4:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/usss_2018_002/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2018-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/usss_2018_002/sentence/1> .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/usss_2018_002/charge/1> ;
+    ns4:hasProceedingBeginPoint "2018-12-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2018-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/legal-step/convicted> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2018-12-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/operation> a cac-core:Event,
-        cacontology-taskforce:ReactiveOperation .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2018-12-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/usss_2018_002/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/usss_2018_002/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/usss_2018_002/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2018-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/usss_2018_002/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/usss_2018_002/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/usss_2018_002/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
+<https://w3id.org/caselinker/resource/case/usss_2018_002/tech/cybertipline> a ns7:NCMECCybertipReport ;
     rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns2:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2018-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/phase/convicted> a ns5:Phase,
+        ns4:SentencingPhase ;
+    ns3:hasPhaseBeginPoint "2018-12-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/elkhart> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/elkhart> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Elkhart" ;
-    uco-core:name "Elkhart" .
+    ns6:name "Elkhart" .
 
-<https://caselinker.up.railway.app/resource/location/indiana> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/indiana> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Indiana" ;
+    ns6:name "Indiana" .
 
-<https://caselinker.up.railway.app/resource/location/northern-district> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/northern-district> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Northern District" ;
+    ns6:name "Northern District" .
 
-<https://caselinker.up.railway.app/resource/location/south-bend> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/south-bend> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "South Bend" ;
-    uco-core:name "South Bend" .
+    ns6:name "South Bend" .
 
-<https://caselinker.up.railway.app/resource/location/united-states> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/united-states> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns6:name "United States" .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/usss_2018_002/admission/1> .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/event/online-only> a ns3:ChildSexualAbuseEvent,
+        ns5:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/usss_2018_002/admission/1> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/usss_2018_002/admission/1> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/usss_2018_002/facet/possession> .
+<https://w3id.org/caselinker/resource/case/usss_2018_002/event/possession> a ns3:CSAMIncident,
+        ns5:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/usss_2018_002/admission/1> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/usss_2018_002/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2018_002/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/usss_2018_002/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "had uploaded images to the online service and was taken into custody" ;
     dcterms:source <https://www.secretservice.gov/press/releases/2018/12/elkhart-man-indicted-possession-and-transportation-child-pornography> ;
     ns1:admissionContext "end. A search warrant was conducted on December 5, 2018 at Perry’s Elkhart residence. Mr. Perry admitted that he had uploaded images to t..." ;
     ns1:admissionFrame "admitted_paraphrase" ;
     ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/usss_2018_002/role/offender/1> ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/usss_2018_002/role/offender/1> ;
     ns1:evidenceTier "press_release_stated" ;
     ns1:quoteType "paraphrase" ;
-    uco-core:description "had uploaded images to the online service and was taken into custody" .
+    ns6:description "had uploaded images to the online service and was taken into custody" .
 
+
+<https://w3id.org/caselinker/resource/case/usss_2018_002> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/usss_2018_002/provenance> .

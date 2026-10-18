@@ -1,72 +1,70 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2016_003> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:38:01.210304" ;
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_003> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 07:37:09.236069" ;
     dcterms:identifier "ut_ag_2016_003" ;
-    dcterms:modified "2026-09-15T20:38:01.210304" ;
+    dcterms:modified "2026-10-18 07:37:09.236069" ;
     dcterms:source <https://attorneygeneral.utah.gov/attorney-generals-office-announces-human-trafficking-and-child-sex-exploitation-arrests/>,
         "UT AG" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/salt-lake-city>,
-        <https://caselinker.up.railway.app/resource/location/utah> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/event/trafficking>,
-        <https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/utah-attorney-generals-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/salt-lake-city>,
-        <https://caselinker.up.railway.app/resource/location/utah> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/salt-lake-city>,
+        <https://w3id.org/caselinker/resource/location/utah> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ut_ag_2016_003/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2016_003/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/utah-attorney-generals-office> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/salt-lake-city>,
+        <https://w3id.org/caselinker/resource/location/utah> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_003/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ut_ag_2016_003/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_003/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ut_ag_2016_003/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/utah-attorney-generals-office> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/utah-attorney-generals-office> a ns2:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_003/charge/1> a ns4:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns6:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/event/trafficking> a cac-core:Event,
-        cacontology-legal-outcomes:SexTrafficking .
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_003/event/trafficking> a ns5:Event,
+        ns4:SexTrafficking .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_003/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ut_ag_2016_003/charge/1> ;
+    ns4:hasProceedingBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2016_003/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/salt-lake-city> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Salt Lake City" ;
+    ns3:name "Salt Lake City" .
 
-<https://caselinker.up.railway.app/resource/location/salt-lake-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/utah> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Utah" ;
+    ns3:name "Utah" .
 
-<https://caselinker.up.railway.app/resource/location/utah> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
 
+<https://w3id.org/caselinker/resource/case/ut_ag_2016_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ut_ag_2016_003/provenance> .

@@ -1,161 +1,94 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_638> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_638> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/douglas-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Douglas County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/agency/eastern-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Eastern Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/hsi> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/price-city-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Price City Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/usu-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "USU Police Department" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of a minor" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/person/offender/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
-
-<https://caselinker.up.railway.app/resource/platform/meganz> a cacontology-platforms:FileHostingService ;
-    rdfs:label "Mega.nz" .
-
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.727664" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_638> a ns3:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:31.963333" ;
     dcterms:identifier "ncmec_2024_638" ;
-    dcterms:modified "2026-09-15T21:08:10.727664" ;
-    dcterms:source <https://www.castlecountryradio.com/2024/09/27/authorities-arrest-usue-student-charged-with-sexual-exploitation-of-a-minor/>,
+    dcterms:modified "2026-10-17 23:04:31.963333" ;
+    dcterms:source <https://www.boston25news.com/news/local/new-hampshire-man-prison-assaulting-women-park-charged-with-bestiality-child-porn/CNTE7UAJ5JGQNAL6TISX35AGL4/>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/douglas-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/eastern-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/hsi>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/price-city-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/usu-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/nashua>,
+        <https://w3id.org/caselinker/resource/location/new-hampshire>,
+        <https://w3id.org/caselinker/resource/location/nh> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_638/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_638/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_638/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_638/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/hillsborough-county-department-of-corrections>,
+        <https://w3id.org/caselinker/resource/agency/nashua-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/nashua>,
+        <https://w3id.org/caselinker/resource/location/new-hampshire>,
+        <https://w3id.org/caselinker/resource/location/nh> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-09-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_638/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-11-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_638/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_638/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_638/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-11-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_638/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_638/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "had used his Amazon Photos account to upload CSAM" ;
-    dcterms:source <https://www.castlecountryradio.com/2024/09/27/authorities-arrest-usue-student-charged-with-sexual-exploitation-of-a-minor/> ;
-    ns1:admissionContext "sibly yes.” After explaining how we were made aware of Isaiah possessing CSAM when asked, Isaiah admitted he had used his Amazon Photos a..." ;
-    ns1:admissionFrame "admitted_he_she" ;
-    ns1:admissionTheme "harm_conduct",
-        "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "had used his Amazon Photos account to upload CSAM" .
+<https://w3id.org/caselinker/resource/agency/hillsborough-county-department-of-corrections> a ns6:OrganizationLikeEntity,
+        ns7:LocalAgency ;
+    rdfs:label "Hillsborough County Department of Corrections" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "intentionally searching for pornographic material but claimed he was not searching for CSAM, but claimed to have been..." ;
-    dcterms:source <https://www.castlecountryradio.com/2024/09/27/authorities-arrest-usue-student-charged-with-sexual-exploitation-of-a-minor/> ;
-    ns1:admissionContext "as end-to-end encryption, a built-in VPN and the ability to access files from anywhere. “Isaiah admitted to intentionally searching for p..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "intentionally searching for pornographic material but claimed he was not searching for CSAM, but claimed to have been searching for age-appropriate material" .
+<https://w3id.org/caselinker/resource/agency/nashua-police-department> a ns7:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_638/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/admission/2> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/meganz>,
-        <https://caselinker.up.railway.app/resource/platform/snapchat> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_638/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_638/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child porn" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_638/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_638/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remains in prison" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_638/charge/1> ;
+    ns2:hasProceedingBeginPoint "2024-11-15T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_638/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 30 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_638/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_638/phase/charged> a ns3:LegalProcessPhase,
+        ns6:Phase ;
+    ns3:hasPhaseBeginPoint "2024-11-15T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/nashua> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nashua" ;
+    ns1:name "Nashua" .
+
+<https://w3id.org/caselinker/resource/location/new-hampshire> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Hampshire" ;
+    ns1:name "New Hampshire" .
+
+<https://w3id.org/caselinker/resource/location/nh> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "N.h." ;
+    ns1:name "N.h." .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_638/event/possession> a ns3:CSAMIncident,
+        ns6:Event ;
+    ns3:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_638/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_638> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_638/provenance> .

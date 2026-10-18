@@ -1,0 +1,109 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2021_056> a ns3:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 06:39:40.465451" ;
+    dcterms:identifier "scag_icac_2021_056" ;
+    dcterms:modified "2026-10-18 06:39:40.465451" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scag_icac_2021_056/provenance> ;
+    dcterms:source <https://www.scag.gov/about-the-office/news/summerville-man-arrested-on-child-sexual-abuse-material-and-related-charges/>,
+        "SCAG ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina>,
+        <https://w3id.org/caselinker/resource/location/summerville> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/scag_icac_2021_056/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/scag_icac_2021_056/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/scag_icac_2021_056/event/csam>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2021_056/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2021_056/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/charleston-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/mount-pleasant-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina>,
+        <https://w3id.org/caselinker/resource/location/summerville> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2021_056/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2021-05-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/scag_icac_2021_056/event/csam> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/scag_icac_2021_056/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2021_056/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2021-05-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/scag_icac_2021_056/event/csam> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/scag_icac_2021_056/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/charleston-county-sheriffs-office> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/mount-pleasant-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2021_056/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child sexual abuse material" ;
+    ns2:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2021_056/event/distribution> a ns4:Event,
+        ns2:CSAM_Distribution ;
+    ns3:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2021_056/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2021_056/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/scag_icac_2021_056/charge/1> ;
+    ns2:hasProceedingBeginPoint "2021-05-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2021_056/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 28 .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2021_056/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2021_056/phase/charged> a ns3:LegalProcessPhase,
+        ns4:Phase ;
+    ns3:hasPhaseBeginPoint "2021-05-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/columbia> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Columbia" ;
+    ns1:name "Columbia" .
+
+<https://w3id.org/caselinker/resource/location/sc> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "S.c." ;
+    ns1:name "S.c." .
+
+<https://w3id.org/caselinker/resource/location/south-carolina> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Carolina" ;
+    ns1:name "South Carolina" .
+
+<https://w3id.org/caselinker/resource/location/summerville> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Summerville" ;
+    ns1:name "Summerville" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2021_056/event/csam> a ns3:CSAMIncident,
+        ns4:Event ;
+    ns3:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/scag_icac_2021_056/facet/csam> .
+

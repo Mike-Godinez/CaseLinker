@@ -1,88 +1,102 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_624> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.710225" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_624> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:31.822790" ;
     dcterms:identifier "ncmec_2024_624" ;
-    dcterms:modified "2026-09-15T21:08:10.710225" ;
-    dcterms:source <https://www.kctv5.com/2024/12/04/lees-summit-man-charged-with-possessing-child-pornography/>,
+    dcterms:modified "2026-10-17 23:04:31.822790" ;
+    dcterms:source <https://www.cbsnews.com/boston/news/author-brendan-dubois-new-hampshire-arrest/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/missouri>,
-        <https://caselinker.up.railway.app/resource/location/mo> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_624/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_624/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_624/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_624/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/lees-summit-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/missouri>,
-        <https://caselinker.up.railway.app/resource/location/mo> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/boston>,
+        <https://w3id.org/caselinker/resource/location/exeter>,
+        <https://w3id.org/caselinker/resource/location/new-hampshire>,
+        <https://w3id.org/caselinker/resource/location/nh> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_624/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_624/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_624/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_624/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_624/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/exeter-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/boston>,
+        <https://w3id.org/caselinker/resource/location/exeter>,
+        <https://w3id.org/caselinker/resource/location/new-hampshire>,
+        <https://w3id.org/caselinker/resource/location/nh> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_624/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-12-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_624/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_624/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_624/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-07-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_624/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_624/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_624/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-12-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_624/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_624/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_624/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-07-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_624/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_624/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/lees-summit-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Lee's Summit Police Department" .
+<https://w3id.org/caselinker/resource/agency/exeter-police-department> a ns5:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "Exeter Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_624/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_624/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_624/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_624/event/multi-jurisdiction> a ns5:Event,
+        ns6:MultiJurisdictionalInvestigation .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_624/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_624/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-12-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_624/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_624/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_624/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_624/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_624/charge/1> ;
+    ns4:hasProceedingBeginPoint "2024-07-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_624/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_624/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_624/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_624/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/platform/xbox-live> a cac-core:DigitalSystemEntity,
-        cacontology-platforms:GamePlatform ;
-    rdfs:label "Xbox Live" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_624/phase/charged> a ns3:LegalProcessPhase,
+        ns5:Phase ;
+    ns3:hasPhaseBeginPoint "2024-07-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_624/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-12-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/boston> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Boston" ;
+    ns1:name "Boston" .
 
-<https://caselinker.up.railway.app/resource/location/missouri> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/exeter> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Exeter" ;
+    ns1:name "Exeter" .
 
-<https://caselinker.up.railway.app/resource/location/mo> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/new-hampshire> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Hampshire" ;
+    ns1:name "New Hampshire" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_624/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/xbox-live> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_624/facet/possession> .
+<https://w3id.org/caselinker/resource/location/nh> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "N.h." ;
+    ns1:name "N.h." .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_624/event/possession> a ns3:CSAMIncident,
+        ns5:Event ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_624/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_624> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_624/provenance> .

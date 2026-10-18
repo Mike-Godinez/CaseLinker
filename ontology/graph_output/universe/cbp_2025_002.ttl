@@ -1,0 +1,100 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/cbp_2025_002> a ns4:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 00:55:14.393240" ;
+    dcterms:identifier "cbp_2025_002" ;
+    dcterms:modified "2026-10-18 00:55:14.393240" ;
+    dcterms:source <https://www.cbp.gov/newsroom/local-media-release/progreso-cbp-officers-apprehend-man-wanted-aggravated-sexual-assault>,
+        "CBP" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/corpus-christi>,
+        <https://w3id.org/caselinker/resource/location/hidalgo-county-jail>,
+        <https://w3id.org/caselinker/resource/location/progreso>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/cbp_2025_002/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/cbp_2025_002/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/cbp_2025_002/legal-proceeding> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/hidalgo-county-sheriffs-department>,
+        <https://w3id.org/caselinker/resource/agency/nueces-county-sheriffs-office> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/corpus-christi>,
+        <https://w3id.org/caselinker/resource/location/hidalgo-county-jail>,
+        <https://w3id.org/caselinker/resource/location/progreso>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
+
+<https://w3id.org/caselinker/resource/case/cbp_2025_002/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/cbp_2025_002/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/cbp_2025_002/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/cbp_2025_002/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/platform/instagram> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Instagram" .
+
+<https://w3id.org/caselinker/resource/agency/hidalgo-county-sheriffs-department> a ns3:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "Hidalgo County Sheriff's Department" .
+
+<https://w3id.org/caselinker/resource/agency/nueces-county-sheriffs-office> a ns3:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "Nueces County Sheriff's Office" .
+
+<https://w3id.org/caselinker/resource/case/cbp_2025_002/event/distribution> a ns3:Event,
+        ns5:CSAM_Distribution ;
+    ns4:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/cbp_2025_002/event/multi-jurisdiction> a ns3:Event,
+        ns2:MultiJurisdictionalInvestigation ;
+    ns4:severityLevel 3 ;
+    ns2:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/cbp_2025_002/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Hidalgo County Jail" ;
+    ns5:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/cbp_2025_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/cbp_2025_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/location/corpus-christi> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Corpus Christi" ;
+    ns6:name "Corpus Christi" .
+
+<https://w3id.org/caselinker/resource/location/hidalgo-county-jail> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hidalgo County Jail" ;
+    ns6:name "Hidalgo County Jail" .
+
+<https://w3id.org/caselinker/resource/location/progreso> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Progreso" ;
+    ns6:name "Progreso" .
+
+<https://w3id.org/caselinker/resource/location/texas> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns6:name "Texas" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns6:name "United States" .
+
+
+<https://w3id.org/caselinker/resource/case/cbp_2025_002> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/cbp_2025_002/provenance> .

@@ -1,111 +1,124 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_278> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.410606" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/admission/1/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_278/admission/1> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_278> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-06-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_278/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_278/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/rexburg-police-department> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:18.441902" ;
     dcterms:identifier "ncmec_2025_278" ;
-    dcterms:modified "2026-09-15T21:27:13.410606" ;
-    dcterms:source <https://www.kmvt.com/2025/07/08/twin-falls-man-faces-child-sexually-exploitative-material-charges/>,
+    dcterms:modified "2026-10-18 00:01:18.441902" ;
+    dcterms:source <https://www.eastidahonews.com/2025/06/local-man-charged-after-allegedly-downloading-and-sharing-pornographic-images-of-children/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/dietrich>,
-        <https://caselinker.up.railway.app/resource/location/idaho>,
-        <https://caselinker.up.railway.app/resource/location/twin-falls> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_278/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_278/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_278/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_278/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_278/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/twin-falls-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/dietrich>,
-        <https://caselinker.up.railway.app/resource/location/idaho>,
-        <https://caselinker.up.railway.app/resource/location/twin-falls> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/east-idaho>,
+        <https://w3id.org/caselinker/resource/location/rexburg> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_278/phase/convicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_278/phase/convicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_278/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_278/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_278/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_278/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_278/legal-step/convicted>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_278/operation> ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_278/tech/cybertipline> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/rexburg-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/east-idaho>,
+        <https://w3id.org/caselinker/resource/location/rexburg> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_278/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_278/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_278/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_278/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_278/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_278/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/event/distribution> a ns6:Event,
+        ns4:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/twin-falls-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Twin Falls Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_278/charge/1> ;
+    ns4:hasProceedingBeginPoint "2025-06-12T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_278/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child sexual abuse material" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/legal-step/convicted> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2025-06-12T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_278/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/operation> a ns6:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_278/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 23 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_278/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_278/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_278/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_278/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 21 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-06-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_278/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_278/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_278/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_278/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$1\"]" .
-
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
-    rdfs:label "chat" .
-
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
     rdfs:label "Kik" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_278/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/phase/convicted> a ns6:Phase,
+        ns4:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2025-06-12T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/dietrich> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Dietrich" ;
-    uco-core:name "Dietrich" .
+<https://w3id.org/caselinker/resource/location/east-idaho> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "East Idaho" ;
+    ns7:name "East Idaho" .
 
-<https://caselinker.up.railway.app/resource/location/idaho> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/rexburg> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Rexburg" ;
+    ns7:name "Rexburg" .
 
-<https://caselinker.up.railway.app/resource/location/twin-falls> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Twin Falls" ;
-    uco-core:name "Twin Falls" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "downloading and sharing the explicit content with other users on Kik" ;
+    dcterms:source <https://www.eastidahonews.com/2025/06/local-man-charged-after-allegedly-downloading-and-sharing-pornographic-images-of-children/> ;
+    ns3:admissionContext "arious sexual acts. Johansson was taken in and interviewed at the police department. The document states that after reading the man’s Mir..." ;
+    ns3:admissionFrame "admitted_to" ;
+    ns3:admissionTheme "tech_use" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_278/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns7:description "downloading and sharing the explicit content with other users on Kik" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_278/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/kik> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_278/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_278/admission/1> ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_278/facet/possession> .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_278> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_278/provenance> .

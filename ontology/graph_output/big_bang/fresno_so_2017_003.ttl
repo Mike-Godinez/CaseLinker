@@ -1,0 +1,87 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns4: <https://cacontology.projectvic.org/production#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2017_003> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 04:30:18.636675" ;
+    dcterms:identifier "fresno_so_2017_003" ;
+    dcterms:modified "2026-10-18 04:30:18.636675" ;
+    dcterms:source <https://www.fresnosheriff.org/media-relations/detectives-arrest-man-on-multiple-charges-of-child-sex-abuse.html>,
+        "FRESNO SO" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fresno>,
+        <https://w3id.org/caselinker/resource/location/fresno-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/fresno>,
+        <https://w3id.org/caselinker/resource/location/fresno-county> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2017_003/event/trust-violation> a ns3:CustodialAbuse,
+        ns3:TrustViolation ;
+    ns3:violatesRelationship <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/relationship/mother> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2017_003/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns7:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remains in the Fresno County Jail" ;
+    ns7:hasProceedingBeginPoint "2017-08-11T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2017_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 40 .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2017_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:victimAge 5 .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2017_003/relationship/mother> a ns3:CustodialRelationship,
+        ns3:FamilialRelationship ;
+    ns3:involvesChild <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/role/victim/1> ;
+    ns3:involvesCustodian <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/role/offender/1> ;
+    ns3:relationshipType "mother" .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2017_003/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2017-08-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/event/online-only> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2017_003/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2017-08-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/event/online-only> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2017_003/phase/arrested> a ns1:InitialPhase,
+        ns2:Phase ;
+    ns1:hasPhaseBeginPoint "2017-08-11T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/fresno> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fresno" ;
+    ns5:name "Fresno" .
+
+<https://w3id.org/caselinker/resource/location/fresno-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fresno County" ;
+    ns5:name "Fresno County" .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2017_003/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/chat> .
+
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2017_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/fresno_so_2017_003/provenance> .

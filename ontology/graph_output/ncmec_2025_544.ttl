@@ -1,0 +1,94 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_544> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:21.306331" ;
+    dcterms:identifier "ncmec_2025_544" ;
+    dcterms:modified "2026-10-18 00:01:21.306331" ;
+    dcterms:source <https://www.ksnblocal4.com/2025/05/21/suspect-grand-island-enticement-investigation-scheduled-trial/>,
+        "NCMEC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/grand-island>,
+        <https://w3id.org/caselinker/resource/location/hall-county>,
+        <https://w3id.org/caselinker/resource/location/neb>,
+        <https://w3id.org/caselinker/resource/location/nebraska> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_544/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_544/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_544/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_544/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_544/operation> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/grand-island-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/grand-island>,
+        <https://w3id.org/caselinker/resource/location/hall-county>,
+        <https://w3id.org/caselinker/resource/location/neb>,
+        <https://w3id.org/caselinker/resource/location/nebraska> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_544/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-05-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_544/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_544/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-05-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_544/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/grand-island-police-department> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_544/charge/1> a ns6:CriminalCharge,
+        ns6:SexTrafficking ;
+    rdfs:label "sex trafficking" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_544/event/trafficking> a ns4:Event,
+        ns6:SexTrafficking ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_544/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in the Hall County jail" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_544/charge/1> ;
+    ns6:hasProceedingBeginPoint "2025-05-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_544/operation> a ns4:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_544/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 24 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_544/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_544/phase/arrested> a ns1:InitialPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2025-05-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/grand-island> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Grand Island" ;
+    ns2:name "Grand Island" .
+
+<https://w3id.org/caselinker/resource/location/hall-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hall County" ;
+    ns2:name "Hall County" .
+
+<https://w3id.org/caselinker/resource/location/neb> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Neb." ;
+    ns2:name "Neb." .
+
+<https://w3id.org/caselinker/resource/location/nebraska> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nebraska" ;
+    ns2:name "Nebraska" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_544> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_544/provenance> .

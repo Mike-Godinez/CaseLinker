@@ -1,141 +1,101 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_226> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_226> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 2 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/person/offender/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 10 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
-    rdfs:label "chat" .
-
-<https://caselinker.up.railway.app/resource/platform/instagram> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Instagram" .
-
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
-
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.365886" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_226> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:17.921157" ;
     dcterms:identifier "ncmec_2025_226" ;
-    dcterms:modified "2026-09-15T21:27:13.365886" ;
-    dcterms:source <https://www.dreamindemon.com/community/threads/florida-man-said-on-snapchat-%E2%80%9Ci-love-little-girls-under-10-years-old-do-you-%E2%80%9D.147407/>,
+    dcterms:modified "2026-10-18 00:01:17.921157" ;
+    dcterms:source <https://www.fox13news.com/news/pasco-county-firefighter-accused-having-child-porn>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/florida>,
-        <https://caselinker.up.railway.app/resource/location/fort-lauderdale> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/florida>,
-        <https://caselinker.up.railway.app/resource/location/fort-lauderdale> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/hernando-county>,
+        <https://w3id.org/caselinker/resource/location/pasco-county>,
+        <https://w3id.org/caselinker/resource/location/spring-hill>,
+        <https://w3id.org/caselinker/resource/location/tampa> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_226/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_226/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_226/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_226/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/hernando-county-sheriffs-office> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/hernando-county>,
+        <https://w3id.org/caselinker/resource/location/pasco-county>,
+        <https://w3id.org/caselinker/resource/location/spring-hill>,
+        <https://w3id.org/caselinker/resource/location/tampa> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_226/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-03-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_226/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_226/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_226/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-03-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_226/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_226/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/location/florida> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/agency/hernando-county-sheriffs-office> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/location/fort-lauderdale> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_226/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns6:indictmentCounts 4 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "sharing photos and videos on an app called “Sexy chat” and admitted to the Snapchat message but claimed he was “no lo..." ;
-    dcterms:source <https://www.dreamindemon.com/community/threads/florida-man-said-on-snapchat-%E2%80%9Ci-love-little-girls-under-10-years-old-do-you-%E2%80%9D.147407/> ;
-    ns1:admissionContext "n Kwoka’s iPad, the arrest report states; the victims depicted were girls as young as 3. Police said he admitted to sharing photos and vi..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "sexual_interest",
-        "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "sharing photos and videos on an app called “Sexy chat” and admitted to the Snapchat message but claimed he was “no longer” attracted to girls that young" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_226/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "admitted to sharing photos and videos on an app called “Sexy chat” and admitted to the Snapchat message but claimed h..." ;
-    dcterms:source <https://www.dreamindemon.com/community/threads/florida-man-said-on-snapchat-%E2%80%9Ci-love-little-girls-under-10-years-old-do-you-%E2%80%9D.147407/> ;
-    ns1:admissionContext "n Kwoka’s iPad, the arrest report states; the victims depicted were girls as young as 3. Police said he admitted to sharing photos and vi..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "sexual_interest",
-        "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "admitted to sharing photos and videos on an app called “Sexy chat” and admitted to the Snapchat message but claimed he was “no longer” attracted to girls that young" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_226/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_226/charge/1> ;
+    ns6:hasProceedingBeginPoint "2025-03-07T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_226/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_226/admission/2> ;
-    cacontology:severityLevel 2 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/instagram>,
-        <https://caselinker.up.railway.app/resource/platform/snapchat>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_226/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_226/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_226/phase/charged> a ns2:LegalProcessPhase,
+        ns4:Phase ;
+    ns2:hasPhaseBeginPoint "2025-03-07T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/fla> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns3:name "Fla." .
+
+<https://w3id.org/caselinker/resource/location/hernando-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hernando County" ;
+    ns3:name "Hernando County" .
+
+<https://w3id.org/caselinker/resource/location/pasco-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pasco County" ;
+    ns3:name "Pasco County" .
+
+<https://w3id.org/caselinker/resource/location/spring-hill> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Spring Hill" ;
+    ns3:name "Spring Hill" .
+
+<https://w3id.org/caselinker/resource/location/tampa> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tampa" ;
+    ns3:name "Tampa" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_226/event/possession> a ns2:CSAMIncident,
+        ns4:Event ;
+    ns2:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_226/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_226> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_226/provenance> .

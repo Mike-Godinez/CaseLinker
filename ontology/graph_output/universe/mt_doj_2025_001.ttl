@@ -1,0 +1,127 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns5: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 05:35:36.713682" ;
+    dcterms:identifier "mt_doj_2025_001" ;
+    dcterms:modified "2026-10-18 05:35:36.713682" ;
+    dcterms:source <https://dojmt.gov/attorney-generals-office-files-sexual-abuse-of-children-charges-against-carter-county-man/>,
+        "MT DOJ" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/alzada>,
+        <https://w3id.org/caselinker/resource/location/carter-county>,
+        <https://w3id.org/caselinker/resource/location/helena>,
+        <https://w3id.org/caselinker/resource/location/montana> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/cybertip>,
+        <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/event/possession>,
+        <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/event/trust-violation> ;
+    ns2:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/carter-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/division-of-criminal-investigation>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/alzada>,
+        <https://w3id.org/caselinker/resource/location/carter-county>,
+        <https://w3id.org/caselinker/resource/location/helena>,
+        <https://w3id.org/caselinker/resource/location/montana> .
+
+<https://w3id.org/caselinker/resource/agency/carter-county-sheriffs-office> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/division-of-criminal-investigation> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001/cybertip> a ns5:NCMECCybertipReport ;
+    ns5:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001/event/trust-violation> a ns4:CustodialAbuse,
+        ns4:TrustViolation ;
+    ns4:violatesRelationship <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/relationship/parent> .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 31 .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001/relationship/parent> a ns4:CaregiverRelationship,
+        ns4:CustodialRelationship ;
+    ns4:involvesChild <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/role/victim/1> ;
+    ns4:involvesCustodian <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/role/offender/1> ;
+    ns4:relationshipType "parent" .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-08-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-08-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001/phase/charged> a ns2:LegalProcessPhase,
+        ns3:Phase ;
+    ns2:hasPhaseBeginPoint "2025-08-26T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/alzada> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Alzada" ;
+    ns7:name "Alzada" .
+
+<https://w3id.org/caselinker/resource/location/carter-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Carter County" ;
+    ns7:name "Carter County" .
+
+<https://w3id.org/caselinker/resource/location/helena> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Helena" ;
+    ns7:name "Helena" .
+
+<https://w3id.org/caselinker/resource/location/montana> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Montana" ;
+    ns7:name "Montana" .
+
+<https://w3id.org/caselinker/resource/platform/gen-ai> a <https://cacontology.projectvic.org/platforms#FileHostingService> ;
+    rdfs:label "Gen AI" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001/event/ai-csam> a ns2:DigitallyGeneratedCSAMIncident,
+        <https://cacontology.projectvic.org/ai-csam#AIGeneratedCSAM>,
+        ns3:Event ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/gen-ai>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001/event/possession> a ns2:CSAMIncident,
+        ns3:Event ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/gen-ai>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2025_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/mt_doj_2025_001/provenance> .

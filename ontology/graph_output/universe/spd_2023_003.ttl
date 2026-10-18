@@ -1,0 +1,101 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/spd_2023_003> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 07:04:45.763650" ;
+    dcterms:identifier "spd_2023_003" ;
+    dcterms:modified "2026-10-18 07:04:45.763650" ;
+    dcterms:source <https://spdblotter.seattle.gov/2023/06/08/man-arrested-for-delivery-and-possession-of-sexually-explicit-material-of-a-minor/>,
+        "SPD" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/puget-sound>,
+        <https://w3id.org/caselinker/resource/location/seattle> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/spd_2023_003/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/spd_2023_003/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/spd_2023_003/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/spd_2023_003/event/possession>,
+        <https://w3id.org/caselinker/resource/case/spd_2023_003/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/king-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/puyallup-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/puget-sound>,
+        <https://w3id.org/caselinker/resource/location/seattle> .
+
+<https://w3id.org/caselinker/resource/case/spd_2023_003/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-06-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/spd_2023_003/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/spd_2023_003/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/spd_2023_003/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-06-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/spd_2023_003/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/spd_2023_003/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/fbi> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/hsi> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/king-county-sheriffs-office> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/puyallup-police-department> a ns7:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "Puyallup Police Department" .
+
+<https://w3id.org/caselinker/resource/case/spd_2023_003/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/spd_2023_003/event/distribution> a ns7:Event,
+        ns3:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/spd_2023_003/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/spd_2023_003/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns3:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into King County Jail" ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/spd_2023_003/charge/1> ;
+    ns3:hasProceedingBeginPoint "2023-06-09T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/spd_2023_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 42 .
+
+<https://w3id.org/caselinker/resource/case/spd_2023_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/spd_2023_003/phase/booked> a ns1:InitialPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2023-06-09T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/puget-sound> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Puget Sound" ;
+    ns2:name "Puget Sound" .
+
+<https://w3id.org/caselinker/resource/location/seattle> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Seattle" ;
+    ns2:name "Seattle" .
+
+<https://w3id.org/caselinker/resource/case/spd_2023_003/event/possession> a ns1:CSAMIncident,
+        ns7:Event ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/spd_2023_003/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/spd_2023_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/spd_2023_003/provenance> .

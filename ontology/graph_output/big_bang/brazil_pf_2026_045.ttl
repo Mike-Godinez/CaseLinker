@@ -1,0 +1,81 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_045> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 00:50:59.085418" ;
+    dcterms:identifier "brazil_pf_2026_045" ;
+    dcterms:modified "2026-10-18 00:50:59.085418" ;
+    dcterms:source <https://www.gov.br/pf/pt-br/assuntos/noticias/2026/08/pf-cumpre-mandado-de-prisao-contra-condenado-por-estupro-de-vulneravel>,
+        "BRAZIL PF" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/benevides-metropolitan-region-of-belém>,
+        <https://w3id.org/caselinker/resource/location/rio-de-janeiro> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/phase/convicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/phase/convicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/legal-step/convicted> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/belémpa-federal-police-department>,
+        <https://w3id.org/caselinker/resource/agency/federal-police-department>,
+        <https://w3id.org/caselinker/resource/agency/military-police-department> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/benevides-metropolitan-region-of-belém>,
+        <https://w3id.org/caselinker/resource/location/rio-de-janeiro> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/event/hands-on> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/event/hands-on> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/belémpa-federal-police-department> a ns3:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "Belém/PA. Federal Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/federal-police-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/military-police-department> a ns3:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "Military Police Department" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/legal-step/convicted> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/phase/convicted> a ns3:Phase,
+        ns5:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/benevides-metropolitan-region-of-belém> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Benevides, Metropolitan Region of Belém" ;
+    ns6:name "Benevides, Metropolitan Region of Belém" .
+
+<https://w3id.org/caselinker/resource/location/rio-de-janeiro> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Rio de Janeiro" ;
+    ns6:name "Rio de Janeiro" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns3:Event ;
+    ns1:severityLevel 3 .
+
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_045> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/brazil_pf_2026_045/provenance> .

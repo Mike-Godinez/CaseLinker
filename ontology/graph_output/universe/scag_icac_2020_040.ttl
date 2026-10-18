@@ -1,0 +1,130 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040> a ns5:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 06:39:39.631365" ;
+    dcterms:identifier "scag_icac_2020_040" ;
+    dcterms:modified "2026-10-18 06:39:39.631365" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/provenance> ;
+    dcterms:source <https://www.scag.gov/about-the-office/news/ware-shoals-man-arrested-on-child-sexual-abuse-material-charge/>,
+        "SCAG ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina>,
+        <https://w3id.org/caselinker/resource/location/ware-shoals> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/phase/charged> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/phase/charged> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/cybertip>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/event/csam>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/legal-proceeding> ;
+    ns5:investigationStatus "unknown" ;
+    ns5:usesMethod <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/laurens-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina>,
+        <https://w3id.org/caselinker/resource/location/ware-shoals> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2020-08-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:participatesInEvent <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/event/csam> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2020-08-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:participatesInEvent <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/event/csam> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/hsi> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/laurens-county-sheriffs-office> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/charge/2> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/charge/3> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/cybertip> a ns4:NCMECCybertipReport ;
+    ns4:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/event/distribution> a ns7:Event,
+        ns2:CSAM_Distribution ;
+    ns5:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/charge/1>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/charge/2>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/charge/3> ;
+    ns2:hasProceedingBeginPoint "2020-08-12T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 33 .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/tech/cybertipline> a ns4:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/phase/charged> a ns5:LegalProcessPhase,
+        ns7:Phase ;
+    ns5:hasPhaseBeginPoint "2020-08-12T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/columbia> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Columbia" ;
+    ns1:name "Columbia" .
+
+<https://w3id.org/caselinker/resource/location/sc> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "S.c." ;
+    ns1:name "S.c." .
+
+<https://w3id.org/caselinker/resource/location/south-carolina> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Carolina" ;
+    ns1:name "South Carolina" .
+
+<https://w3id.org/caselinker/resource/location/ware-shoals> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ware Shoals" ;
+    ns1:name "Ware Shoals" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2020_040/event/csam> a ns5:CSAMIncident,
+        ns7:Event ;
+    ns5:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/scag_icac_2020_040/facet/csam> .
+

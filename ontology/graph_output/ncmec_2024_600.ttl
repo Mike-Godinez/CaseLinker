@@ -1,110 +1,102 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_600> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.695219" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:31.555102" ;
     dcterms:identifier "ncmec_2024_600" ;
-    dcterms:modified "2026-09-15T21:08:10.695219" ;
-    dcterms:source <https://www.yahoo.com/news/eldon-man-arrested-charged-possession-150947575.html>,
+    dcterms:modified "2026-10-17 23:04:31.555102" ;
+    dcterms:source <https://www.kjluradio.com/newsroom/lebanon-man-uses-german-email-address-to-elude-child-pornography-investigators/article_0c6aa534-c10d-11ee-b5ea-3712eee9f160.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/miller-county>,
-        <https://caselinker.up.railway.app/resource/location/mo> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/miller-county>,
-        <https://caselinker.up.railway.app/resource/location/mo> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/laclede-county>,
+        <https://w3id.org/caselinker/resource/location/lebanon>,
+        <https://w3id.org/caselinker/resource/location/minnesota> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_600/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_600/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_600/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_600/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_600/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_600/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/lebanon-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/laclede-county>,
+        <https://w3id.org/caselinker/resource/location/lebanon>,
+        <https://w3id.org/caselinker/resource/location/minnesota> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_600/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_600/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_600/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_600/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/lebanon-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns4:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600/event/distribution> a ns2:Event,
+        ns4:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600/event/multi-jurisdiction> a ns2:Event,
+        ns6:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held without bond" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_600/charge/1> ;
+    ns4:hasProceedingBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/miller-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Miller County" ;
-    uco-core:name "Miller County" .
-
-<https://caselinker.up.railway.app/resource/location/mo> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
     rdfs:label "Kik" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/admission/1> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600/phase/charged> a ns1:LegalProcessPhase,
+        ns2:Phase ;
+    ns1:hasPhaseBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/admission/1> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/facet/possession> .
+<https://w3id.org/caselinker/resource/location/laclede-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Laclede County" ;
+    ns5:name "Laclede County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_600/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "using the Kik platform to upload the images and share them with other Kik users" ;
-    dcterms:source <https://www.yahoo.com/news/eldon-man-arrested-charged-possession-150947575.html> ;
-    ns1:admissionContext "that contained over 200 explicit images and videos. On Oct. 22, when deputies executed a search warrant at an Eldon residence, they arres..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_600/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "using the Kik platform to upload the images and share them with other Kik users" .
+<https://w3id.org/caselinker/resource/location/lebanon> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lebanon" ;
+    ns5:name "Lebanon" .
 
+<https://w3id.org/caselinker/resource/location/minnesota> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Minnesota" ;
+    ns5:name "Minnesota" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_600/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_600> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_600/provenance> .

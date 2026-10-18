@@ -1,108 +1,169 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_972> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:14.194380" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_972> ;
+    ns5:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/2/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/2> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_972> ;
+    ns5:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/3/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/3> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_972> ;
+    ns5:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/4/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/4> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_972> ;
+    ns5:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_972/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_972/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/chelan-county-sheriffs-office> a ns5:OrganizationLikeEntity,
+        ns8:LocalAgency ;
+    rdfs:label "Chelan County Sheriff's Office" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/event/distribution> a ns5:Event,
+        ns6:CSAM_Distribution ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_972/charge/1> ;
+    ns6:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/legal-step/pleaded-guilty> a ns5:Event,
+        ns5:LegalEvent,
+        ns6:LegalProceeding,
+        ns6:PleaBargaining ;
+    ns6:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 55 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns8:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "was not allowed to have a “mirror image” of his hard drive that contained evidence against him" ;
+    dcterms:source <https://www.wenatcheeworld.com/news/local/former-leavenworth-nurse-pleads-guilty-to-dealing-child-pornography/article_7fb99c50-e58f-11ef-bde5-0b6e09ae4d09.html> ;
+    ns3:description "was not allowed to have a “mirror image” of his hard drive that contained evidence against him" ;
+    ns1:admissionContext "“I had to ask other inmates in my unit for legal advice,” he added. Neifert also said he was not allowed to have a “mirror image” of his..." ;
+    ns1:admissionFrame "said_paraphrase" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_972/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "had not been allowed to see the evidence against him" ;
+    dcterms:source <https://www.wenatcheeworld.com/news/local/former-leavenworth-nurse-pleads-guilty-to-dealing-child-pornography/article_7fb99c50-e58f-11ef-bde5-0b6e09ae4d09.html> ;
+    ns3:description "had not been allowed to see the evidence against him" ;
+    ns1:admissionContext "nd,” Herion said. Page | 1240 Repeating complaints he has made at previous proceedings, Neifert said he had not been allowed to see the e..." ;
+    ns1:admissionFrame "said_paraphrase" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_972/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/3> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "was worried about his life and what would happen to him" ;
+    dcterms:source <https://www.wenatcheeworld.com/news/local/former-leavenworth-nurse-pleads-guilty-to-dealing-child-pornography/article_7fb99c50-e58f-11ef-bde5-0b6e09ae4d09.html> ;
+    ns3:description "was worried about his life and what would happen to him" ;
+    ns1:admissionContext "e said. “They refuse to listen to me.” The specter of federal charges has been constant. Neifert said he was worried about his life and w..." ;
+    ns1:admissionFrame "said_paraphrase" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_972/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/4> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "was capable of continuing to serve as Neifert’s attorney" ;
+    dcterms:source <https://www.wenatcheeworld.com/news/local/former-leavenworth-nurse-pleads-guilty-to-dealing-child-pornography/article_7fb99c50-e58f-11ef-bde5-0b6e09ae4d09.html> ;
+    ns3:description "was capable of continuing to serve as Neifert’s attorney" ;
+    ns1:admissionContext "able of bringing if they want bring those cases,” Herion told the defendant. When asked, Alumbaugh said she was capable of continuing to..." ;
+    ns1:admissionFrame "said_paraphrase" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_972/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/phase/pleaded-guilty> a ns5:Phase,
+        ns6:PreTrialPhase ;
+    ns2:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/leavenworth> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Leavenworth" ;
+    ns3:name "Leavenworth" .
+
+<https://w3id.org/caselinker/resource/location/wenatchee> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wenatchee" ;
+    ns3:name "Wenatchee" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/event/csam> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns2:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_972/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:26.506801" ;
     dcterms:identifier "ncmec_2025_972" ;
-    dcterms:modified "2026-09-15T21:27:14.194380" ;
-    dcterms:source <https://www.click2houston.com/news/local/2025/01/27/former-boy-scout-leader-charged-with-possession-of-child-porn/>,
+    dcterms:modified "2026-10-18 00:01:26.506801" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ncmec_2025_972/provenance> ;
+    dcterms:source <https://www.wenatcheeworld.com/news/local/former-leavenworth-nurse-pleads-guilty-to-dealing-child-pornography/article_7fb99c50-e58f-11ef-bde5-0b6e09ae4d09.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/magnolia>,
-        <https://caselinker.up.railway.app/resource/location/texas>,
-        <https://caselinker.up.railway.app/resource/location/waller-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_972/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_972/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_972/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_972/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/department-of-public-safety>,
-        <https://caselinker.up.railway.app/resource/agency/dps>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/texas-department-of-public-safety>,
-        <https://caselinker.up.railway.app/resource/agency/texas-department-of-public-safety-criminal-investigations-division> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/magnolia>,
-        <https://caselinker.up.railway.app/resource/location/texas>,
-        <https://caselinker.up.railway.app/resource/location/waller-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/leavenworth>,
+        <https://w3id.org/caselinker/resource/location/wenatchee> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_972/phase/pleaded-guilty> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_972/phase/pleaded-guilty> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_972/admission/4>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_972/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_972/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_972/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_972/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_972/legal-step/pleaded-guilty> ;
+    ns8:involvesAgency <https://w3id.org/caselinker/resource/agency/chelan-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/leavenworth>,
+        <https://w3id.org/caselinker/resource/location/wenatchee> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_972/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_972/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_972/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_972/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_972/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_972/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/department-of-public-safety> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Department of Public Safety" .
-
-<https://caselinker.up.railway.app/resource/agency/dps> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/agency/texas-department-of-public-safety> a cacontology-multi:StateAgency .
-
-<https://caselinker.up.railway.app/resource/agency/texas-department-of-public-safety-criminal-investigations-division> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Texas Department of Public Safety Criminal Investigations Division" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_972/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child porn" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_972/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_972/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_972/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_972/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_972/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 56 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_972/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_972/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_972/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/magnolia> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Magnolia" ;
-    uco-core:name "Magnolia" .
-
-<https://caselinker.up.railway.app/resource/location/texas> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/waller-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Waller County" ;
-    uco-core:name "Waller County" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_972/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_972/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_972/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_972/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_972/person/offender/1> .
 

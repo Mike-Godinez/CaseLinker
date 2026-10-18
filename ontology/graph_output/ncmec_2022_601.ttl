@@ -1,155 +1,143 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2022_601> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/admission/1/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_601/admission/1> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_601> ;
+    ns2:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/admission/2/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_601/admission/2> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_601> ;
+    ns2:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/agency/department-of-homeland-security> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/admission/3/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_601/admission/3> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_601> ;
+    ns2:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/agency/garvin-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Garvin County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2022-05-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_601/event/csam> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_601/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.514658" ;
-    dcterms:identifier "ncmec_2022_601" ;
-    dcterms:modified "2026-09-15T20:45:06.514658" ;
-    dcterms:source <https://kfor.com/news/local/child-pornography-ring-exposed-by-investigation-in-pauls-valley/>,
-        "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/baltimore>,
-        <https://caselinker.up.railway.app/resource/location/garvin-county>,
-        <https://caselinker.up.railway.app/resource/location/maryland>,
-        <https://caselinker.up.railway.app/resource/location/okla>,
-        <https://caselinker.up.railway.app/resource/location/oklahoma>,
-        <https://caselinker.up.railway.app/resource/location/pauls-valley> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/department-of-homeland-security>,
-        <https://caselinker.up.railway.app/resource/agency/garvin-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/baltimore>,
-        <https://caselinker.up.railway.app/resource/location/garvin-county>,
-        <https://caselinker.up.railway.app/resource/location/maryland>,
-        <https://caselinker.up.railway.app/resource/location/okla>,
-        <https://caselinker.up.railway.app/resource/location/oklahoma>,
-        <https://caselinker.up.railway.app/resource/location/pauls-valley> .
+<https://w3id.org/caselinker/resource/agency/habersham-county-sheriffs-office> a ns2:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "Habersham County Sheriff's Office" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child porn" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/charge/2> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns1:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/event/distribution> a ns2:Event,
+        ns4:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_601/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_601/charge/2> ;
+    ns4:hasProceedingBeginPoint "2022-05-03T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 15 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "has a son that likes to ride his bike around the neighborhood" ;
-    dcterms:source <https://kfor.com/news/local/child-pornography-ring-exposed-by-investigation-in-pauls-valley/> ;
-    ns1:admissionContext "n a rental house with other people. She has three children with one being 3 months old. Youman said she has a son that likes to ride his..." ;
-    ns1:admissionFrame "said_paraphrase" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "having child pornographic videos" ;
+    dcterms:source <https://www.fox5atlanta.com/news/habersham-county-man-arrested-for-sharing-child-porn-on-social-media> ;
+    ns1:admissionContext "itation of a child after sharing videos on social media. Zach Bulman was arrested by the Habersham County Sheriff’s Office on Tuesday aft..." ;
+    ns1:admissionFrame "admitted_to" ;
     ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/role/offender/1> ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_601/role/offender/1> ;
     ns1:evidenceTier "press_release_stated" ;
     ns1:quoteType "paraphrase" ;
-    uco-core:description "has a son that likes to ride his bike around the neighborhood" .
+    ns5:description "having child pornographic videos" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "admitted to having child pornographic videos" ;
+    dcterms:source <https://www.fox5atlanta.com/news/habersham-county-man-arrested-for-sharing-child-porn-on-social-media> ;
+    ns1:admissionContext "edia. Zach Bulman was arrested by the Habersham County Sheriff’s Office on Tuesday after investigators said he admitted to having child p..." ;
+    ns1:admissionFrame "said_paraphrase" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_601/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns5:description "admitted to having child pornographic videos" .
 
-<https://caselinker.up.railway.app/resource/location/baltimore> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Baltimore" ;
-    uco-core:name "Baltimore" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/admission/3> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "to having child pornographic videos" ;
+    dcterms:source <https://www.fox5atlanta.com/news/habersham-county-man-arrested-for-sharing-child-porn-on-social-media> ;
+    ns1:admissionContext "was arrested by the Habersham County Sheriff’s Office on Tuesday after investigators said he admitted to having child pornographic videos" ;
+    ns1:admissionFrame "he_admitted_paraphrase" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_601/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns5:description "to having child pornographic videos" .
 
-<https://caselinker.up.railway.app/resource/location/garvin-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Garvin County" ;
-    uco-core:name "Garvin County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/phase/charged> a ns3:LegalProcessPhase,
+        ns2:Phase ;
+    ns3:hasPhaseBeginPoint "2022-05-03T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/maryland> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Maryland" ;
-    uco-core:name "Maryland" .
+<https://w3id.org/caselinker/resource/location/atlanta> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Atlanta" ;
+    ns5:name "Atlanta" .
 
-<https://caselinker.up.railway.app/resource/location/okla> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/habersham-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Habersham County" ;
+    ns5:name "Habersham County" .
 
-<https://caselinker.up.railway.app/resource/location/oklahoma> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Oklahoma" ;
-    uco-core:name "Oklahoma" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601> a ns3:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:27.192187" ;
+    dcterms:identifier "ncmec_2022_601" ;
+    dcterms:modified "2026-10-17 21:51:27.192187" ;
+    dcterms:source <https://www.fox5atlanta.com/news/habersham-county-man-arrested-for-sharing-child-porn-on-social-media>,
+        "NCMEC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/atlanta>,
+        <https://w3id.org/caselinker/resource/location/habersham-county> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_601/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_601/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_601/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_601/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_601/admission/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_601/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_601/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_601/legal-proceeding> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/habersham-county-sheriffs-office> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/atlanta>,
+        <https://w3id.org/caselinker/resource/location/habersham-county> .
 
-<https://caselinker.up.railway.app/resource/location/pauls-valley> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Pauls Valley" ;
-    uco-core:name "Pauls Valley" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/event/csam> a ns3:CSAMIncident,
+        ns2:Event ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_601/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_601/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2022-05-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_601/event/csam> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_601/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_601/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2022_601> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_601/provenance> .
