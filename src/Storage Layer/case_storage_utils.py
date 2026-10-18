@@ -35,6 +35,9 @@ _SLIM_EXCLUDED_KEYS = frozenset(
         "case_topics",
         "created_at",
         "updated_at",
+        # 3.0 per-method assertions and resolutions live in their own tables (assertion_store).
+        "assertions",
+        "resolutions",
     }
 )
 

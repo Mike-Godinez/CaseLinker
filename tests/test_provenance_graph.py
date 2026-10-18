@@ -1,0 +1,84 @@
+"""Provenance graphs sit beside the CAC case graph and do not invent case roles."""
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+import pytest
+from rdflib import RDF
+
+REPO = Path(__file__).resolve().parents[1]
+ONTOLOGY = REPO / "ontology"
+sys.path.insert(0, str(ONTOLOGY))
+
+from features_to_cac import AZICAC_2011_006_FIXTURE, CaseToCAC  # noqa: E402
+from provenance_export import (  # noqa: E402
+    CAC_CORE,
+    CL,
+    OA,
+    PROV,
+    build_provenance_graph,
+    graph_uses_case_roles,
+    validate_provenance,
+)
+
+pytest.importorskip("pyshacl")
+
+
+def _sample():
+    assertions = [
+        {
+            "field": "age", "method": "regex", "method_version": "regex_3.0.1",
+            "family": "surface_pattern", "value": 40, "role": "perpetrator",
+            "span_start": 10, "span_end": 12, "span_text": "40", "confidence": 0.9,
+        },
+        {
+            "field": "age", "method": "regex", "method_version": "regex_3.0.1",
+            "family": "surface_pattern", "value": 14, "role": "decoy",
+            "span_start": 40, "span_end": 42, "span_text": "14", "confidence": 0.9,
+        },
+    ]
+    resolutions = {
+        "age": {
+            "status": "partial",
+            "rule_set_version": "resolve_v3.0",
+            "final_value": {"victims": [], "perpetrators": [40], "contested": {}},
+        }
+    }
+    return assertions, resolutions
+
+
+def test_provenance_graph_validates_and_keeps_decoys_off_case_roles():
+    graph = build_provenance_graph("example_case", *_sample(), run_id="run_test")
+    conforms, report = validate_provenance(graph)
+    assert conforms, report
+    assert graph_uses_case_roles(graph) is False
+    labels = {str(o) for o in graph.objects(None, __import__("rdflib").RDFS.label)}
+    assert "decoy" in labels
+    assert "perpetrator" in labels
+    assert any(graph.triples((None, RDF.type, PROV.Activity)))
+    assert any(graph.triples((None, RDF.type, PROV.SoftwareAgent)))
+    assert any(graph.triples((None, RDF.type, OA.TextPositionSelector)))
+    assert any(graph.triples((None, RDF.type, OA.TextQuoteSelector)))
+    assert any(graph.triples((None, CAC_CORE.hasConfidence, None)))
+    assert any(graph.triples((None, CL.evidenceFamily, None)))
+    assert any(graph.triples((None, CL.resolutionStatus, None)))
+    assert any(graph.triples((None, CL.ruleSetVersion, None)))
+
+
+def test_existing_case_graph_still_validates_and_still_has_roles():
+    mapper = CaseToCAC()
+    graph, _warnings = mapper.map_case(AZICAC_2011_006_FIXTURE)
+    conforms, report = mapper.validate(graph)
+    assert conforms, report
+    types = set()
+    for ctx in graph.graphs():
+        for obj in ctx.objects(None, RDF.type):
+            types.add(obj)
+    assert mapper_has(types, "VictimRole")
+    assert mapper_has(types, "OffenderRole")
+
+
+def mapper_has(types, local: str) -> bool:
+    return any(str(t).endswith(local) or str(t).endswith("#" + local) for t in types)

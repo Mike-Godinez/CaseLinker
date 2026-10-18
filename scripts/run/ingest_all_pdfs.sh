@@ -59,6 +59,9 @@ export PYTHONPATH="$PATTERN_LAYER:$REPO_ROOT/src/Processing Layer:$REPO_ROOT/src
 filtered_sorted_pdf_paths() {
   for f in "$REPO_ROOT"/*.pdf; do
     [ -f "$f" ] || continue
+    case "$(basename "$f")" in
+      *.browser-print.bak|*.bak) continue ;;
+    esac
     if [ "$NO_AGGREGATE" -eq 1 ]; then
       bn=$(basename "$f" | tr '[:upper:]' '[:lower:]')
       case "$bn" in
@@ -85,8 +88,10 @@ if [ "$COUNT" -eq 0 ]; then
   exit 1
 fi
 
-# Default group-size 1 = one PDF at a time inside one long-lived process (models stay warm).
-GROUP_SIZE="${INGEST_GROUP_SIZE:-1}"
+# Default group-size 8: several PDFs per pipeline call, models stay warm, and
+# spaCy parses the group in one batch. One PDF at a time reloads nothing but
+# repeats Python startup around each file. Override with INGEST_GROUP_SIZE.
+GROUP_SIZE="${INGEST_GROUP_SIZE:-8}"
 echo "Found $COUNT PDF(s); SKIP_PRECOMPUTE_CLUSTERS=$SKIP_PRECOMPUTE_CLUSTERS group_size=$GROUP_SIZE" >&2
 echo "Ingesting via one long-lived process (models stay warm; store batches over Railway)..." >&2
 

@@ -1069,6 +1069,13 @@ class CaseToCAC:
 
         conforms, shacl_report = self.validate(graph)
         summary = self._graph_summary(graph)
+        provenance_path = None
+        try:
+            from provenance_export import export_stored_case
+
+            provenance_path = export_stored_case(case_id, output_dir)
+        except Exception as exc:
+            logger.warning("Provenance graph skipped for %s: %s", case_id, exc)
 
         return {
             "case_id": case_id,
@@ -1078,6 +1085,7 @@ class CaseToCAC:
             "shacl_report": shacl_report,
             "jsonld_path": str(jsonld_path),
             "ttl_path": str(ttl_path),
+            "provenance_ttl_path": str(provenance_path) if provenance_path else None,
         }
 
     # ------------------------------------------------------------------

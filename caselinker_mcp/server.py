@@ -584,6 +584,50 @@ async def get_case(case_id: str) -> dict[str, Any]:
 
 
 @mcp.tool()
+async def get_case_assertions(case_id: str, field: str = "") -> dict[str, Any]:
+    """Per-method evidence behind one case's extracted values, not just the collapsed finals.
+
+    Returns every field assertion (method, method_version, evidence family, role, value,
+    character span into the case text, confidence) plus the latest resolution per field
+    (status: agreed | resolved | partial | disagreement | needs_review | empty, final value,
+    winning assertion ids, contested mentions). field: age | sentence | investigation_type | date
+    (empty = all). Use it to see what regex vs spaCy vs Stanza vs the LLM said, and why a value
+    finalized or stayed contested. Same daily limit as get_case.
+    """
+    try:
+        params = {"field": field.strip()} if field and field.strip() else None
+        result = await api_get(f"/api/cases/{case_id.strip()}/assertions", params=params)
+        return result if isinstance(result, dict) else {"data": result}
+    except Exception as e:
+        logger.exception("get_case_assertions failed")
+        return {"error": str(e)}
+
+
+@mcp.tool()
+async def get_field_disagreements(
+    field: str = "", status: str = "", limit: int = 50, offset: int = 0
+) -> dict[str, Any]:
+    """List cases whose extraction methods disagree or left a field unresolved.
+
+    status: needs_review | disagreement | partial (empty = all three). field: age | sentence |
+    investigation_type | date (empty = all). Each item has the case_id, resolution status, the
+    settled part of the final value, and the contested mentions with which evidence families
+    asserted which role. status_counts gives corpus-wide totals per field. limit capped at 500.
+    """
+    try:
+        params: dict[str, Any] = {"limit": min(max(limit, 1), 500), "offset": max(offset, 0)}
+        if field and field.strip():
+            params["field"] = field.strip()
+        if status and status.strip():
+            params["status"] = status.strip()
+        result = await api_get("/api/assertions/disagreements", params=params)
+        return result if isinstance(result, dict) else {"data": result}
+    except Exception as e:
+        logger.exception("get_field_disagreements failed")
+        return {"error": str(e)}
+
+
+@mcp.tool()
 async def get_cases_page(limit: int = 50, offset: int = 0) -> dict[str, Any]:
     """Return a paginated page of case summaries (slim fields, no full narratives). limit capped at 500."""
     try:

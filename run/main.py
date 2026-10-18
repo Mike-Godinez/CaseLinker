@@ -2082,6 +2082,52 @@ def get_case(request: Request, case_id: str):
     return case
 
 
+_ASSERTION_FIELDS = ("age", "sentence", "investigation_type", "date")
+_REVIEW_STATUSES = ("needs_review", "disagreement", "partial")
+
+
+@app.get("/api/cases/{case_id}/assertions")
+def get_case_assertions(request: Request, case_id: str, field: Optional[str] = None):
+    """
+    Per-method field assertions (method, version, family, role, span) and the latest
+    resolutions for one case. Same daily limit as GET /api/cases/{case_id}; public
+    callers get offsets but not the narrative excerpts (span_text, LLM quotes).
+    """
+    _enforce_case_id_daily_limit(request)
+    field = (field or "").strip() or None
+    if field and field not in _ASSERTION_FIELDS:
+        raise HTTPException(status_code=400, detail=f"field must be one of {list(_ASSERTION_FIELDS)}")
+    out = storage.get_case_assertions(case_id, field=field)
+    if not out["assertions"] and not out["resolutions"] and storage.get_case(case_id) is None:
+        raise HTTPException(status_code=404, detail="Case not found")
+    if not _has_bulk_corpus_access(request):
+        for a in out["assertions"]:
+            a.pop("span_text", None)
+            (a.get("extras") or {}).pop("quote", None)
+    return out
+
+
+@app.get("/api/assertions/disagreements")
+@limiter.limit("60/minute")
+def get_field_disagreements(
+    request: Request,
+    field: Optional[str] = None,
+    status: Optional[str] = None,
+    limit: int = 50,
+    offset: int = 0,
+):
+    """Cases whose latest 3.0 resolution is needs_review, disagreement, or partial."""
+    field = (field or "").strip() or None
+    status = (status or "").strip() or None
+    if field and field not in _ASSERTION_FIELDS:
+        raise HTTPException(status_code=400, detail=f"field must be one of {list(_ASSERTION_FIELDS)}")
+    if status and status not in _REVIEW_STATUSES:
+        raise HTTPException(status_code=400, detail=f"status must be one of {list(_REVIEW_STATUSES)}")
+    return storage.get_field_disagreements(
+        field=field, status=status, limit=min(max(limit, 1), 500), offset=max(offset, 0)
+    )
+
+
 @app.get("/api/stats")
 @limiter.limit("60/minute")
 def get_stats(request: Request):

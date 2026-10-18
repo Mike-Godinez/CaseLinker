@@ -1,6 +1,6 @@
 # CaseLinker MCP tool registry
 
-**Local: 52 tools. Railway hosted: 42 tools** (eight collector WRITE tools and two local-disk duplicate tools omitted). Count `@mcp.tool()` decorators in `server.py` (WRITE tools register only when `collector_disk_write_enabled()` is true; `find_ingested_duplicates` and `verify_duplicate_pdf_pages` register only when not on Railway).
+**Local: 54 tools. Railway hosted: 44 tools** (eight collector WRITE tools and two local-disk duplicate tools omitted). Count `@mcp.tool()` decorators in `server.py` (WRITE tools register only when `collector_disk_write_enabled()` is true; `find_ingested_duplicates` and `verify_duplicate_pdf_pages` register only when not on Railway).
 
 Authoritative implementation: `caselinker_mcp/server.py`. This file is the human-readable catalog for docs and agent hosts.
 
@@ -8,16 +8,16 @@ Authoritative implementation: `caselinker_mcp/server.py`. This file is the human
 
 | Backend | Count | Notes |
 |---------|------:|-------|
-| REST API wrappers | **29** | Proxy to `GET`/`POST /api/*` |
+| REST API wrappers | **31** | Proxy to `GET`/`POST /api/*` |
 | MCP-only (corpus graphs) | **8** | `tree_traversal`, `list_sources`, `case2cac`, four graph tools, `export_case_graph_ttl` |
 | MCP-only (free public records) | **4** | DOJ press search + CourtListener/RECAP (`public_records.py`) |
 | MCP-only (press collector READ) | **1** | `probe_press_url` — all hosts |
 | MCP-only (press collector WRITE) | **8** | **Local MCP only** — not registered on Railway |
 | MCP-only (local duplicate audit) | **2** | `find_ingested_duplicates`, `verify_duplicate_pdf_pages` — local disk, read-only |
-| **Total (local)** | **52** | |
-| **Total (Railway)** | **42** | WRITE and local-disk duplicate tools absent |
+| **Total (local)** | **54** | |
+| **Total (Railway)** | **44** | WRITE and local-disk duplicate tools absent |
 
-There are **32** REST `/api/*` routes in `run/main.py`. **29** have MCP tools; four are intentionally excluded from MCP (admin/write/index): `POST /api/cache/clear`, `POST /api/case-studies/notes/{id}`, `POST /api/ontology/cache/warm`, `GET /api`.
+There are **34** REST `/api/*` routes in `run/main.py`. **31** have MCP tools; four are intentionally excluded from MCP (admin/write/index): `POST /api/cache/clear`, `POST /api/case-studies/notes/{id}`, `POST /api/ontology/cache/warm`, `GET /api`.
 
 `POST /api/llm/chat` exposes an internal `query_cases_database` function-calling tool to the LLM; that helper is **not** a separate MCP tool. MCP clients use `llm_chat` instead.
 
@@ -27,9 +27,9 @@ No MCP resources (`@mcp.resource`) or prompts (`@mcp.prompt`) are registered.
 
 | Category | Local | Railway | Meaning |
 |----------|------:|--------:|---------|
-| Public (trusted key irrelevant) | **47** | **37** | Same behavior with or without trusted key |
-| Trusted-key sensitive | **5** | **5** | Blocked or reduced without trusted key |
-| **Total** | **52** | **42** | |
+| Public (trusted key irrelevant) | **48** | **38** | Same behavior with or without trusted key |
+| Trusted-key sensitive | **6** | **6** | Blocked or reduced without trusted key |
+| **Total** | **54** | **44** | |
 
 Corpus REST tools do **not** mutate the CaseLinker database. Collector WRITE tools create files on disk (JSON, url-lists, PDFs) under `collector_output/` or `collector/sources/` **on the MCP host**. They do **not** auto-ingest into sqlite. On Railway they are not registered (ephemeral FS).
 
@@ -91,6 +91,7 @@ Trusted key does **not** change behavior (still subject to normal slowapi / publ
 | `get_corpus_stats` | `GET /api/stats` | Corpus-wide counts |
 | `get_cases_page` | `GET /api/cases-summaries-chunk` | Paginated summaries |
 | `get_cases_by_ids` | `POST /api/cases-summaries-by-ids` | Batch summaries |
+| `get_field_disagreements` | `GET /api/assertions/disagreements` | Cases whose latest field resolution is `needs_review` / `disagreement` / `partial`, with contested mentions and per-field status counts |
 | `filter_cases_by_tags` | `POST /api/return-tagged-cases` | Tag intersection |
 | `get_facet_tree` | `GET /api/facet-tree` or MCP-local | Facet tree; optional `case_ids` for subset |
 | `get_cohort_members` | `POST /api/facet-cohort-members` or MCP-local | Cohort case IDs; optional `case_ids` |
@@ -144,7 +145,7 @@ Trusted key does **not** change behavior (still subject to normal slowapi / publ
 
 Session graphs are stored in Redis when available (`caselinker:mcp:graph:{id}`, 2-hour TTL); otherwise in-process memory for local dev.
 
-## Trusted-key sensitive (5 tools)
+## Trusted-key sensitive (6 tools)
 
 Requires `CASELINKER_KEY` / `CaseLinker-Key` listed in server `CASELINKER_TRUSTED_KEYS` for full behavior.
 
@@ -154,6 +155,7 @@ Requires `CASELINKER_KEY` / `CaseLinker-Key` listed in server `CASELINKER_TRUSTE
 | `get_lifecycle_cases` | **403** from API (or MCP local error if no key configured) | Lifecycle swimlane / visualization payload |
 | `get_lifecycle_lstar` | **403** from API (or MCP local error if no key configured) | Full `lstar_all_cases.json` (transition matrix, global L*, per-case details) |
 | `get_case` | Works; **sanitized** (no `raw_data` / narrative blobs) | Works; **full** case payload including `raw_data` |
+| `get_case_assertions` | Works; per-method assertions with character offsets but **no** `span_text` / LLM quotes; same daily limit as `get_case` | Works; includes the span excerpts |
 | `llm_chat` | Works; **50 requests/IP/day** (+ slowapi 15/min) | Works; **daily cap exempt** (+ slowapi 15/min still applies) |
 
 `get_all_cases` and both lifecycle tools are blocked without trusted access. `get_case` and `llm_chat` are public tools with richer responses or limits when a trusted key is forwarded on REST calls. The public `/lifecycle` page embeds visualization data server-side and does not require a browser API key.

@@ -1,0 +1,73 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix cac-core: <https://cacontology.projectvic.org/core#> .
+@prefix caselinker: <https://caselinker.projectvic.org/ns/provenance#> .
+
+caselinker:ExtractionRunShape a sh:NodeShape ;
+    sh:targetClass prov:Activity ;
+    sh:property [
+        sh:path caselinker:ruleSetVersion ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string
+    ] .
+
+caselinker:MethodShape a sh:NodeShape ;
+    sh:targetClass prov:SoftwareAgent ;
+    sh:property [
+        sh:path caselinker:evidenceFamily ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string
+    ] .
+
+caselinker:AssertionShape a sh:NodeShape ;
+    sh:targetClass oa:Annotation ;
+    sh:property [ sh:path oa:hasTarget ; sh:minCount 1 ; sh:nodeKind sh:BlankNodeOrIRI ] ;
+    sh:property [
+        sh:path cac-core:hasConfidence ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:decimal
+    ] ;
+    sh:property [
+        sh:path cac-core:generatedBy ;
+        sh:minCount 1 ;
+        sh:class prov:Activity
+    ] ;
+    sh:property [
+        sh:path cac-core:usesMethod ;
+        sh:minCount 1 ;
+        sh:class prov:SoftwareAgent
+    ] .
+
+caselinker:PositionShape a sh:NodeShape ;
+    sh:targetClass oa:TextPositionSelector ;
+    sh:property [ sh:path oa:start ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:nonNegativeInteger ] ;
+    sh:property [ sh:path oa:end ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:nonNegativeInteger ] .
+
+caselinker:QuoteShape a sh:NodeShape ;
+    sh:targetClass oa:TextQuoteSelector ;
+    sh:property [ sh:path oa:exact ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+caselinker:FieldResolutionShape a sh:NodeShape ;
+    sh:targetSubjectsOf caselinker:resolutionStatus ;
+    sh:property [
+        sh:path caselinker:resolutionStatus ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string
+    ] ;
+    sh:property [
+        sh:path caselinker:ruleSetVersion ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string
+    ] ;
+    sh:property [
+        sh:path prov:wasGeneratedBy ;
+        sh:minCount 1 ;
+        sh:class prov:Activity
+    ] .

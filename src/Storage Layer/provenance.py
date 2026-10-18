@@ -522,12 +522,20 @@ def load_provenance_sidecar(path: str | Path) -> list[dict[str, Any]]:
 def git_code_revision(repo_root: str | Path | None = None) -> str:
     root = Path(repo_root) if repo_root is not None else Path(__file__).resolve().parents[2]
     try:
-        return subprocess.check_output(
+        head = subprocess.check_output(
             ["git", "rev-parse", "HEAD"],
             cwd=root,
             text=True,
             stderr=subprocess.DEVNULL,
         ).strip()
+        # Uncommitted code under src/ means the run did not execute HEAD as committed.
+        dirty = subprocess.check_output(
+            ["git", "status", "--porcelain", "--untracked-files=normal", "--", "src"],
+            cwd=root,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+        return f"{head}-dirty" if dirty else head
     except (OSError, subprocess.CalledProcessError):
         return "unknown"
 
@@ -786,6 +794,19 @@ def apply_postgres_provenance_schema(cursor: Any) -> None:
     )
 
 
+# CaseLinker 3.0 per-run pins (nullable; added to pre-existing tables in place).
+EXTRACTION_RUN_PIN_COLUMNS: Final = (
+    "spacy_model",
+    "stanza_version",
+    "rule_set_version",
+    "extraction_mode",
+    "llm_provider",
+    "llm_model",
+    "llm_model_digest",
+    "prompt_id",
+)
+
+
 def _create_extraction_runs(cursor: Any) -> None:
     cursor.execute(
         """
@@ -801,6 +822,15 @@ def _create_extraction_runs(cursor: Any) -> None:
         )
         """
     )
+    for column in EXTRACTION_RUN_PIN_COLUMNS:
+        try:
+            cursor.execute(f"ALTER TABLE extraction_runs ADD COLUMN IF NOT EXISTS {column} TEXT")
+        except Exception:
+            # SQLite has no ADD COLUMN IF NOT EXISTS; a duplicate column raises.
+            try:
+                cursor.execute(f"ALTER TABLE extraction_runs ADD COLUMN {column} TEXT")
+            except Exception:
+                pass
 
 
 def _add_case_provenance_columns_sqlite(cursor: Any) -> None:
@@ -944,14 +974,18 @@ def insert_extraction_run(
     victim_age_gate_version: str,
     source_files: Sequence[str],
     dialect: str = "sqlite",
+    pins: Optional[Mapping[str, Optional[str]]] = None,
 ) -> str:
     ph = _placeholder(dialect)
+    pin_values = [(pins or {}).get(column) for column in EXTRACTION_RUN_PIN_COLUMNS]
+    columns = ", ".join(EXTRACTION_RUN_PIN_COLUMNS)
     cursor.execute(
         f"""
         INSERT INTO extraction_runs (
             run_id, code_revision, started_at, pattern_layer_version,
-            ner_backend, semantic_model, victim_age_gate_version, source_files
-        ) VALUES ({ph}, {ph}, {ph}, {ph}, {ph}, {ph}, {ph}, {ph})
+            ner_backend, semantic_model, victim_age_gate_version, source_files,
+            {columns}
+        ) VALUES ({", ".join([ph] * (8 + len(EXTRACTION_RUN_PIN_COLUMNS)))})
         """,
         (
             run_id,
@@ -962,6 +996,7 @@ def insert_extraction_run(
             semantic_model,
             victim_age_gate_version,
             json.dumps(list(source_files)),
+            *pin_values,
         ),
     )
     return run_id
