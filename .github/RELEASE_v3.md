@@ -33,7 +33,7 @@ Votes count by family: two readers in one family are one vote, and a family that
 
 Resolution never edits assertions, so `scripts/run/reresolve_assertions.py` can re-vote the corpus under a new rule set without re-extracting. Every run records its code revision, models, and rule set.
 
-The columns the API and graphs read are represenative of the settled vote. Maximum penalties, prior-case terms, and CyberTip boilerplate no longer pass as case facts, and real publication days replace year-only dates.
+The columns the API and graphs read are representative of the settled vote. Maximum penalties, prior-case terms, and CyberTip boilerplate no longer pass as case facts, and real publication days replace year-only dates.
 
 Working doc: [`src/Processing Layer/README.md`](https://github.com/mrinaalr/CaseLinker/blob/main/src/Processing%20Layer/README.md).
 
@@ -94,16 +94,19 @@ The facet-search UI is redesigned, and a search cohort opens its matching graphs
 
 ## Results
 
-Measured on the full Phase 3 re-ingest (**10,711** cases). The judged rows are the 200 case ids in `scripts/verify/phase3_paired_sample_ids.txt` (seed 20261017; one seat from each of 63 sources that share an id, the rest by paired source size). A final is wrong only when the stored value does not match its source passage as that field.
-
+Measured on the full Phase 3 re-ingest (**10,711** cases), on two samples of 200 paired case ids. The development sample (seed 20261017) was used to find and fix errors; the holdout (seed 20261018, excluding the development sample) was judged after all fixes, with no changes made from it. Both give one seat to each of the 63 sources present in both versions and fill the rest by source size. A final is wrong when it does not match its source passage in context: the right role for an age, the right kind for a sentence. Frozen ids and per-case judgments for both samples are in `scripts/verify/`.
 
 | | 2.x stored | 2.x wrong | 2.x error rate | Phase 3 stored | Phase 3 wrong | Phase 3 error rate |
 |---|---|---|---|---|---|---|
-| Age finals (judged 200) | 177 | 0 | 0% | 179 | 0 | 0% |
-| Sentence finals (judged 200) | 249 | 33 | 13.3% | 95 | 0 | 0% |
-| Age finals with two-family agreement | — | — | 73.7% | — |
-| Age mentions left in review | — | — | 19.0% | — |
-| Cases with an open mention | — | — | 24.1% | — |
+| Development sample, age finals | 177 | 0 | 0% | 179 | 0 | 0% |
+| Development sample, sentence finals | 249 | 33 | 13.3% | 95 | 0 | 0% |
+| Holdout sample, age finals | 172 | 1 | 0.6% | 201 | 2 | 1.0% |
+| Holdout sample, sentence finals | 281 | 55 | 19.6% | 118 | 1 | 0.8% |
+| Age finals with two-family agreement | — | — | — | 73.7% | — | — |
+| Age mentions left in review | — | — | — | 19.0% | — | — |
+| Cases with an open mention | — | — | — | 24.1% | — | — |
+
+On the holdout, Phase 3 cuts the sentence error rate from 19.6% to 0.8% and stores 17% more ages at comparable accuracy (1.0% against 0.6%, a one-error difference).
 
 ## Scope
 
