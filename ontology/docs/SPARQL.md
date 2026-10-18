@@ -59,19 +59,19 @@ W3C SPARQL Results XML (`application/sparql-results+xml`) is valid if the store 
 Each case is one named graph:
 
 ```
-https://caselinker.up.railway.app/resource/case/{case_id}
+https://caselinker.projectvic.org/resource/case/{case_id}
 ```
 
 Oxigraph runs with `--union-default-graph`. Triple patterns **without** `GRAPH` see the union of all case graphs. Use `GRAPH` to pin a case (or bind `?g`).
 
-Instance IRIs use the same host:
+Instance IRIs are minted under `https://caselinker.projectvic.org/resource/`. The SPARQL endpoint stays on the app host.
 
 | Kind | IRI |
 |---|---|
-| Case / named graph | `https://caselinker.up.railway.app/resource/case/{case_id}` |
-| Platform | `https://caselinker.up.railway.app/resource/platform/{slug}` |
-| Agency | `https://caselinker.up.railway.app/resource/agency/{slug}` |
-| Location (NER) | `https://caselinker.up.railway.app/resource/location/{slug}` |
+| Case / named graph | `https://caselinker.projectvic.org/resource/case/{case_id}` |
+| Platform | `https://caselinker.projectvic.org/resource/platform/{slug}` |
+| Agency | `https://caselinker.projectvic.org/resource/agency/{slug}` |
+| Location (NER) | `https://caselinker.projectvic.org/resource/location/{slug}` |
 
 `dcterms:identifier` on a `cac:CACInvestigation` is the CaseLinker `case_id` (e.g. `nj_ag_2017_001`).
 
@@ -81,7 +81,7 @@ Press-release case graphs and PACER court-record graphs modeled by the CASE-UCO 
 
 | Family | Named graph | Source | Load |
 |---|---|---|---|
-| Case / `pacer_{slug}` | `https://caselinker.up.railway.app/resource/case/{case_id}` including `…/resource/case/pacer_{slug}` | Canonical Turtle under `ontology/graph_output/` (old one-file PACER bundles lived in `ontology/PACER/` and compiled to `graph_output/pacer/pacer_{slug}.ttl`) | Wholesale `python3 scripts/rebuild_oxigraph.py` (`PUT /store`) |
+| Case / `pacer_{slug}` | `https://caselinker.projectvic.org/resource/case/{case_id}` including `…/resource/case/pacer_{slug}` | Canonical Turtle under `ontology/graph_output/` (old one-file PACER bundles lived in `ontology/PACER/` and compiled to `graph_output/pacer/pacer_{slug}.ttl`) | Wholesale `python3 scripts/rebuild_oxigraph.py` (`PUT /store`) |
 | CASE-UCO SDK modeled PACER KG | `urn:pacer:kg:<relative/path.jsonld>` | `ontology/PACER/` family folders (`BULK_FOLDER/`, `ENTICEMENT/`, `ENTERPRISE/`, `PRODUCTION/`, `SEXTORTION/`, `TRAFFICKING/`; 128 documents, 41 investigations, 128 annotations; modeled by the CASE-UCO SDK MCP server) | Incremental `python3 scripts/load_pacer_jsonld.py --post` (`POST /store`) |
 
 `rebuild_oxigraph.py` only globs `ontology/graph_output/{pool}/*.ttl`. It does not read CASE-UCO SDK JSON-LD under `ontology/PACER/`.
@@ -130,7 +130,7 @@ LIMIT 50
 |---|---|
 | Relational case count | `GET https://caselinker.up.railway.app/api/case-count` (local sqlite **10,362**) |
 | Extracted features / agencies | `GET /api/stats` → `unique_features` **126,314**, `unique_organizations` **4,000+** distinct LE agencies after ingest normalize plus LE-only filter (`source_count` **61** = 59 non-DOJ + `DOJ CEOS` + `DOJ SAFE CHILDHOOD`; CEOS Archives → CEOS; AI-CSAM USAO harvest → Safe Childhood; international adds AFP, QPS, Brazil Federal Police, Europol, and the UK National Crime Agency) |
-| Graph case count | `SELECT (COUNT(DISTINCT ?s) AS ?n) WHERE { GRAPH ?g { ?s a cac:CACInvestigation } FILTER(STRSTARTS(STR(?g), "https://caselinker.up.railway.app/resource/case/")) }` (local set **10,362**; hosted SPARQL matches after Oxigraph load) |
+| Graph case count | `SELECT (COUNT(DISTINCT ?s) AS ?n) WHERE { GRAPH ?g { ?s a cac:CACInvestigation } FILTER(STRSTARTS(STR(?g), "https://caselinker.projectvic.org/resource/case/")) }` (local set **10,362**; hosted SPARQL matches after Oxigraph load) |
 | PACER KG graphs | `SELECT (COUNT(DISTINCT ?g) AS ?n) WHERE { GRAPH ?g { ?s ?p ?o } FILTER(STRSTARTS(STR(?g), "urn:pacer:kg:")) }` (expect **297**) |
 | Named graphs (press release) | one per case; **10,362** locally |
 | Graph generation time | `dcterms:created` / `dcterms:modified` on the investigation (remap time, not offense date) |
@@ -193,7 +193,7 @@ LIMIT 8
 ```sparql
 SELECT ?s ?p ?o
 WHERE {
-  GRAPH <https://caselinker.up.railway.app/resource/case/nj_ag_2017_001> {
+  GRAPH <https://caselinker.projectvic.org/resource/case/nj_ag_2017_001> {
     ?s ?p ?o
   }
 }
@@ -217,7 +217,7 @@ WHERE {
 
 ```sparql
 SELECT ?s WHERE { ?s ?p ?o }
-VALUES ?s { <https://caselinker.up.railway.app/resource/case/nj_ag_2017_001> }
+VALUES ?s { <https://caselinker.projectvic.org/resource/case/nj_ag_2017_001> }
 ```
 
 ### CONSTRUCT (ask for Turtle)

@@ -31,7 +31,7 @@ uco-identity: https://ontology.unifiedcyberontology.org/uco/identity/
 uco-role:     https://ontology.unifiedcyberontology.org/uco/role/
 ```
 
-Instance IRIs are `https://caselinker.up.railway.app/resource/{case|platform|agency}/…`. Each case is also a **named graph** at `…/resource/case/{case_id}`. `dcterms:identifier` on `cac:CACInvestigation` is the CaseLinker case id.
+Instance IRIs are `https://caselinker.projectvic.org/resource/{case|platform|agency}/…`. Each case is also a **named graph** at `…/resource/case/{case_id}`. `dcterms:identifier` on `cac:CACInvestigation` is the CaseLinker case id.
 
 ## What a case graph contains
 

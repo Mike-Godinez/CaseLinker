@@ -368,7 +368,7 @@ def strip_flat_node_metadata(node: Dict[str, Any]) -> Dict[str, Any]:
     return {k: v for k, v in node.items() if k not in _FLAT_NODE_META_KEYS}
 
 
-_GRAPH_BASE = "https://caselinker.up.railway.app/resource"
+_GRAPH_BASE = "https://caselinker.projectvic.org/resource"
 GRAPH_DETERMINISTIC_ID = f"{_GRAPH_BASE}/graphs/deterministic"
 GRAPH_NLP_ID = f"{_GRAPH_BASE}/graphs/nlp"
 

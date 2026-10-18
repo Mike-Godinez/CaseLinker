@@ -217,14 +217,14 @@ def predicted_bridges(case: Dict[str, Any]) -> Set[str]:
     for plat in parse_list(case.get("platforms_used")) or parse_list(ef.get("platforms_used")):
         slug = re.sub(r"[^a-z0-9]+", "-", plat.lower()).strip("-")
         if slug:
-            out.add(f"https://caselinker.up.railway.app/resource/platform/{slug}")
+            out.add(f"https://caselinker.projectvic.org/resource/platform/{slug}")
     agencies = ef.get("agencies_involved") or []
     if isinstance(agencies, list):
         for ag in agencies:
             if isinstance(ag, str):
                 slug = re.sub(r"[^a-z0-9]+", "-", ag.lower()).strip("-")
                 if slug:
-                    out.add(f"https://caselinker.up.railway.app/resource/agency/{slug}")
+                    out.add(f"https://caselinker.projectvic.org/resource/agency/{slug}")
     return out
 
 

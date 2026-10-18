@@ -3691,10 +3691,10 @@ Rules:
 - Output ONLY a single SPARQL query. No prose, no markdown fences, no comments outside SPARQL.
 - Query forms only: SELECT, ASK, CONSTRUCT, or DESCRIBE. Never Update, INSERT, DELETE, LOAD, CLEAR, DROP, or SERVICE.
 - Prefer SELECT with an outer LIMIT <= 50 unless the user asks for a count/ASK.
-- Use the union default graph (no GRAPH) unless the user asks about one case; then use GRAPH <https://caselinker.up.railway.app/resource/case/{case_id}>.
+- Use the union default graph (no GRAPH) unless the user asks about one case; then use GRAPH <https://caselinker.projectvic.org/resource/case/{case_id}>.
 - Case ids look like nj_ag_2017_001. dcterms:identifier on cac:CACInvestigation holds the case_id.
-- Platform IRIs: https://caselinker.up.railway.app/resource/platform/{slug}
-- Agency IRIs: https://caselinker.up.railway.app/resource/agency/{slug}
+- Platform IRIs: https://caselinker.projectvic.org/resource/platform/{slug}
+- Agency IRIs: https://caselinker.projectvic.org/resource/agency/{slug}
 
 Prefixes (use as needed):
 PREFIX cac: <https://cacontology.projectvic.org#>
@@ -3707,7 +3707,7 @@ Useful patterns:
 - Investigation: ?case a cac:CACInvestigation
 - Platform use: ?event cac:usesChannel ?platform . ?case cac:hasStep ?event . ?platform rdfs:label ?label
 - Agency: ?case cac-multi:involvesAgency ?agency . ?agency rdfs:label ?label
-- Press-release graphs only: FILTER(STRSTARTS(STR(?g), "https://caselinker.up.railway.app/resource/case/"))
+- Press-release graphs only: FILTER(STRSTARTS(STR(?g), "https://caselinker.projectvic.org/resource/case/"))
 """
 
 

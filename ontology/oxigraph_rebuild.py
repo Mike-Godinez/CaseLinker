@@ -4,7 +4,7 @@ Canonical source priority (first match wins):
   universe > staging (graph_output/*.ttl) > big_bang > analysis > pacer
 
 Each case is loaded into named graph
-  https://caselinker.up.railway.app/resource/case/{case_id}
+  https://caselinker.projectvic.org/resource/case/{case_id}
 
 PACER court-record graphs live in graph_output/pacer/pacer_{slug}.ttl and
 therefore become named graph …/resource/case/pacer_{slug}. The glob is
@@ -28,7 +28,7 @@ ONTOLOGY = REPO_ROOT / "ontology"
 GRAPH_ROOT = ONTOLOGY / "graph_output"
 DEFAULT_NQ = ONTOLOGY / "cache" / "caselinker.nq"
 
-CASE_GRAPH_BASE = "https://caselinker.up.railway.app/resource/case/"
+CASE_GRAPH_BASE = "https://caselinker.projectvic.org/resource/case/"
 
 # Directory name under graph_output/; None means the staging root.
 POOL_PRIORITY: Tuple[Optional[str], ...] = (

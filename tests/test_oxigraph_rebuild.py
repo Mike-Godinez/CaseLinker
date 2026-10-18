@@ -71,7 +71,7 @@ def test_build_nquads_uses_per_case_named_graph(tmp_path: Path):
     ttl = tmp_path / "universe" / "nj_ag_2017_001.ttl"
     _write_ttl(
         ttl,
-        "https://caselinker.up.railway.app/resource/case/nj_ag_2017_001",
+        "https://caselinker.projectvic.org/resource/case/nj_ag_2017_001",
         "fixture",
     )
     out = tmp_path / "out.nq"

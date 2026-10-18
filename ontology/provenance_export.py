@@ -25,7 +25,7 @@ PROV = Namespace("http://www.w3.org/ns/prov#")
 OA = Namespace("http://www.w3.org/ns/oa#")
 CAC_CORE = Namespace("https://cacontology.projectvic.org/core#")
 CL = Namespace("https://caselinker.projectvic.org/ns/provenance#")
-BASE = Namespace("https://caselinker.up.railway.app/resource/")
+BASE = Namespace("https://caselinker.projectvic.org/resource/")
 
 _ROLE_TYPE = {
     "victim": Namespace("https://cacontology.projectvic.org#").VictimRole,
@@ -56,6 +56,7 @@ def build_provenance_graph(
     resolutions: Dict[str, Dict[str, Any]],
     *,
     run_id: str = "unrecorded",
+    issued_at: Optional[str] = None,
 ) -> Graph:
     """One graph: an extraction activity, one agent per method, one annotation per assertion."""
     g = Graph()
@@ -112,6 +113,8 @@ def build_provenance_graph(
         g.add((node, DCTERMS.subject, Literal(field)))
         g.add((node, PROV.value, Literal(str(assertion.get("value")))))
         g.add((node, CAC_CORE.hasConfidence, _dec(assertion.get("confidence"))))
+        if issued_at:
+            g.add((node, CAC_CORE.issuedAtTime, Literal(issued_at, datatype=XSD.dateTimeStamp)))
         g.add((node, CAC_CORE.generatedBy, activity))
         g.add((node, CAC_CORE.usesMethod, agent_for(assertion)))
         g.add((node, CAC_CORE.assesses, narrative))
@@ -169,23 +172,37 @@ def graph_uses_case_roles(graph: Graph) -> bool:
     return False
 
 
-def export_stored_case(case_id: str, output_dir: Path) -> Optional[Path]:
+def export_stored_case(case_id: str, output_dir: Path, storage: Any = None) -> Optional[Path]:
     """
-    Write ``{case_id}.provenance.ttl`` beside a case export, from the local SQLite store.
+    Write ``{case_id}.provenance.ttl`` beside a case export.
+
+    ``storage`` is the SQLite or Postgres handle the case export already
+    opened. When it is omitted, the same lookup is used: local SQLite if
+    that file has the case, otherwise Postgres via DATABASE_URL.
     Returns None when that case has no stored assertions.
     """
-    if str(_STORAGE) not in sys.path:
-        sys.path.insert(0, str(_STORAGE))
-    from storage import CaseStorage  # type: ignore
+    if storage is None:
+        if str(_ONTOLOGY) not in sys.path:
+            sys.path.insert(0, str(_ONTOLOGY))
+        from features_to_cac import CaseToCAC  # type: ignore
 
-    storage = CaseStorage(str(_REPO / "caselinker.db"))
+        storage = CaseToCAC._storage_for_case(case_id)
+    if storage is None:
+        return None
     payload = storage.get_case_assertions(case_id)
     assertions = payload.get("assertions") or []
     resolutions = payload.get("resolutions") or {}
     if not assertions:
         return None
+    run_id = str(payload.get("run_id") or "unrecorded")
+    started = None
+    hook = getattr(storage, "extraction_run_started_at", None)
+    if callable(hook) and payload.get("run_id"):
+        started = hook(payload["run_id"])
+    if not started:
+        raise RuntimeError(f"no extraction-run timestamp for {case_id}")
     graph = build_provenance_graph(
-        case_id, assertions, resolutions, run_id=str(payload.get("run_id") or "unrecorded")
+        case_id, assertions, resolutions, run_id=run_id, issued_at=str(started)
     )
     conforms, report = validate_provenance(graph)
     if not conforms:

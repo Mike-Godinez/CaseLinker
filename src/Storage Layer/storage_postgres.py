@@ -646,6 +646,21 @@ class CaseStorage:
         finally:
             return_connection(conn)
     
+    def extraction_run_started_at(self, run_id: str) -> Optional[str]:
+        """UTC timestamp stored on extraction_runs.started_at, or None."""
+        if not run_id:
+            return None
+        conn = get_connection()
+        try:
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT started_at FROM extraction_runs WHERE run_id = %s", (run_id,)
+            )
+            row = cursor.fetchone()
+            return None if row is None else row[0]
+        finally:
+            return_connection(conn)
+
     def get_case_assertions(self, case_id: str, field: Optional[str] = None) -> Dict[str, Any]:
         """Per-method assertions and the latest resolutions for one case (3.0)."""
         conn = get_connection()
