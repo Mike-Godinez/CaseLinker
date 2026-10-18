@@ -65,7 +65,7 @@
     const API_PACER_URL = '/api/ontology/pacer';
 
     // ---------- Vocabulary constants ----------
-    const BASE_IRI           = 'https://caselinker.up.railway.app/resource/';
+    const BASE_IRI           = 'https://caselinker.projectvic.org/resource/';
     const RDFS_LABEL         = 'http://www.w3.org/2000/01/rdf-schema#label';
     const UCO_NAME           = 'https://ontology.unifiedcyberontology.org/uco/core/name';
     const CAC_HAS_CONFIDENCE = 'https://cacontology.projectvic.org/core#hasConfidence';
@@ -1524,7 +1524,7 @@
             '  GRAPH ?g {',
             '    ?inv a cac:CACInvestigation .',
             '  }',
-            '  FILTER(STRSTARTS(STR(?g), "https://caselinker.up.railway.app/resource/case/"))',
+            '  FILTER(STRSTARTS(STR(?g), "https://caselinker.projectvic.org/resource/case/"))',
             '}'
         ].join('\n'),
         agencies: SPARQL_PREFIX + [

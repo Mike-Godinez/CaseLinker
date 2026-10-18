@@ -1,0 +1,22 @@
+@prefix caselinker: <https://caselinker.projectvic.org/ns/provenance#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Terms the pinned CAC modules and PROV-O / Web Annotation do not already name.
+# Evidence family, resolution status, and the resolution rule-set version.
+
+caselinker:evidenceFamily a owl:DatatypeProperty ;
+    rdfs:label "evidence family"@en ;
+    rdfs:comment "The vote family of an extraction method: surface_pattern, dependency, ner, lookup, temporal, llm, or human. Two methods in one family are one vote."@en ;
+    rdfs:range xsd:string .
+
+caselinker:resolutionStatus a owl:DatatypeProperty ;
+    rdfs:label "resolution status"@en ;
+    rdfs:comment "How resolve_v3.0 left a field: agreed, resolved, partial, disagreement, needs_review, or empty."@en ;
+    rdfs:range xsd:string .
+
+caselinker:ruleSetVersion a owl:DatatypeProperty ;
+    rdfs:label "rule set version"@en ;
+    rdfs:comment "The resolution rule set that produced this activity or field resolution. CaseLinker 3.0 uses resolve_v3.0."@en ;
+    rdfs:range xsd:string .

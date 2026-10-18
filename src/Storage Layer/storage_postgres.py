@@ -36,6 +36,15 @@ try:
         persist_sidecar_rows,
         utcnow,
     )
+    from assertion_store import (
+        apply_assertion_schema,
+        latest_run_id,
+        load_assertions,
+        read_case_assertions,
+        read_disagreements,
+        write_case_assertions,
+        write_resolutions,
+    )
 except ImportError:
     from .provenance import (
         apply_postgres_provenance_schema,
@@ -45,6 +54,15 @@ except ImportError:
         persist_models,
         persist_sidecar_rows,
         utcnow,
+    )
+    from .assertion_store import (
+        apply_assertion_schema,
+        latest_run_id,
+        load_assertions,
+        read_case_assertions,
+        read_disagreements,
+        write_case_assertions,
+        write_resolutions,
     )
 
 # Connection pool (reuse connections for better performance)
@@ -160,6 +178,7 @@ class CaseStorage:
                 'CREATE INDEX IF NOT EXISTS idx_cases_source_url ON cases(source_url)'
             )
             apply_postgres_provenance_schema(cursor)
+            apply_assertion_schema(cursor, "postgres")
             
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS victim_demographics (
@@ -418,6 +437,16 @@ class CaseStorage:
                 json.dumps(sentences if isinstance(sentences, list) else []),
             ))
 
+        if case.get('resolutions'):
+            write_case_assertions(
+                cursor,
+                case_id=case_id,
+                run_id=extraction_run_id,
+                assertions=case.get('assertions') or [],
+                resolutions=case['resolutions'],
+                dialect="postgres",
+            )
+
         return True
 
     def store_case(self, case: Dict[str, Any]) -> bool:
@@ -589,8 +618,9 @@ class CaseStorage:
         semantic_model: str = "all-MiniLM-L6-v2",
         victim_age_gate_version: str = "v2",
         run_id: Optional[str] = None,
+        **pins: Optional[str],
     ) -> str:
-        """Append one slim extraction_runs row and return run_id."""
+        """Append one slim extraction_runs row (plus 3.0 pins: spaCy/Stanza/LLM/rule set) and return run_id."""
         from provenance import new_run_id
 
         run_id = run_id or new_run_id()
@@ -608,10 +638,76 @@ class CaseStorage:
                 victim_age_gate_version=victim_age_gate_version,
                 source_files=source_files or [],
                 dialect="postgres",
+                pins=pins,
             )
             conn.commit()
             cursor.close()
             return run_id
+        finally:
+            return_connection(conn)
+    
+    def extraction_run_started_at(self, run_id: str) -> Optional[str]:
+        """UTC timestamp stored on extraction_runs.started_at, or None."""
+        if not run_id:
+            return None
+        conn = get_connection()
+        try:
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT started_at FROM extraction_runs WHERE run_id = %s", (run_id,)
+            )
+            row = cursor.fetchone()
+            return None if row is None else row[0]
+        finally:
+            return_connection(conn)
+
+    def get_case_assertions(self, case_id: str, field: Optional[str] = None) -> Dict[str, Any]:
+        """Per-method assertions and the latest resolutions for one case (3.0)."""
+        conn = get_connection()
+        try:
+            return read_case_assertions(conn.cursor(), case_id, field=field, dialect="postgres")
+        finally:
+            return_connection(conn)
+
+    def get_field_disagreements(
+        self, field: Optional[str] = None, status: Optional[str] = None, limit: int = 50, offset: int = 0
+    ) -> Dict[str, Any]:
+        """Cases whose latest resolution is needs_review / disagreement / partial."""
+        conn = get_connection()
+        try:
+            return read_disagreements(
+                conn.cursor(), field=field, status=status, limit=limit, offset=offset, dialect="postgres"
+            )
+        finally:
+            return_connection(conn)
+
+    def load_case_assertions(self, case_id: str) -> Tuple[Optional[str], List[Dict[str, Any]]]:
+        """(current run_id, assertions) as resolution inputs."""
+        conn = get_connection()
+        try:
+            cursor = conn.cursor()
+            run_id = latest_run_id(cursor, case_id, "postgres")
+            return run_id, load_assertions(cursor, case_id, run_id=run_id, dialect="postgres")
+        finally:
+            return_connection(conn)
+
+    def append_resolutions(
+        self,
+        case_id: str,
+        run_id: str,
+        resolutions: Dict[str, Dict[str, Any]],
+        new_assertions: Optional[List[Dict[str, Any]]] = None,
+    ) -> None:
+        """Append re-resolution rows (and any new human assertions); never edits existing rows."""
+        conn = get_connection()
+        try:
+            cursor = conn.cursor()
+            if new_assertions:
+                write_case_assertions(cursor, case_id=case_id, run_id=run_id, assertions=new_assertions,
+                                      resolutions=resolutions, dialect="postgres")
+            else:
+                write_resolutions(cursor, case_id=case_id, run_id=run_id, resolutions=resolutions, dialect="postgres")
+            conn.commit()
         finally:
             return_connection(conn)
     

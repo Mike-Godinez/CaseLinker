@@ -235,12 +235,14 @@ def store_cases(
         cases_to_store = cases
 
     try:
+        import processing
         from provenance import attach_ingest_provenance
 
         attach_ingest_provenance(
             storage,
             cases_to_store,
             source_files=ingest_paths,
+            extractor_versions=processing.last_extraction_versions,
         )
     except Exception as exc:
         print(f"⚠️  Provenance attach skipped (ingest continues): {exc}")

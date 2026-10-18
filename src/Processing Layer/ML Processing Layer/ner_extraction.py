@@ -196,7 +196,7 @@ class NERExtractor:
         else:
             raise ValueError(f"Unknown backend: {backend}. Use 'stanza', 'transformers', or 'spacy'")
 
-        self._stanza_batch_size = int(os.environ.get("STANZA_NER_BATCH_SIZE", "16"))
+        self._stanza_batch_size = int(os.environ.get("STANZA_NER_BATCH_SIZE", "64"))
         # Bulk is the default. Set STANZA_NER_BATCH=0 to force serial.
         self._stanza_use_bulk = os.environ.get("STANZA_NER_BATCH", "1").lower() not in (
             "0",
@@ -304,10 +304,18 @@ class NERExtractor:
             'dates': [],
             'ages': []
         }
+        # Char offsets for 3.0 span-gated NER assertions (not persisted; see merge_processing).
+        number_spans: List[List[Any]] = []
+        person_spans: List[List[Any]] = []
 
         for ent in doc.ents:
             entity_text = ent.text.strip()
             entity_type = ent.type
+
+            if entity_type in ('DATE', 'CARDINAL', 'QUANTITY'):
+                number_spans.append([ent.start_char, ent.end_char, entity_type])
+            elif entity_type == 'PERSON':
+                person_spans.append([ent.start_char, ent.end_char, ent.text])
 
             if entity_type == 'ORG':
                 entities['organizations'].append(entity_text)
@@ -356,6 +364,8 @@ class NERExtractor:
             else:
                 entities[key] = list(dict.fromkeys(entities[key]))
 
+        entities['number_spans'] = number_spans
+        entities['person_spans'] = person_spans
         return entities
 
     def _extract_entities_stanza(self, text: str) -> Dict[str, List[str]]:

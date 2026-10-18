@@ -125,7 +125,7 @@ _CAC_ONTOLOGY_DIR = get_cac_ontology_dir()
 # CAC / UCO Namespaces
 # ---------------------------------------------------------------------------
 
-BASE = Namespace("https://caselinker.up.railway.app/resource/")
+BASE = Namespace("https://caselinker.projectvic.org/resource/")
 
 CAC = Namespace("https://cacontology.projectvic.org#")
 CAC_CORE = Namespace("https://cacontology.projectvic.org/core#")
@@ -1054,7 +1054,8 @@ class CaseToCAC:
         output_dir = output_dir or _OUTPUT_DIR
         output_dir.mkdir(parents=True, exist_ok=True)
 
-        case = self._load_from_db(case_id, db_url)
+        storage = self._storage_for_case(case_id, db_url)
+        case = storage.get_case(case_id) if storage is not None else None
         if case is None:
             raise ValueError(
                 f"Case '{case_id}' not found. Ensure DATABASE_URL is set and the case exists."
@@ -1069,6 +1070,13 @@ class CaseToCAC:
 
         conforms, shacl_report = self.validate(graph)
         summary = self._graph_summary(graph)
+        provenance_path = None
+        try:
+            from provenance_export import export_stored_case
+
+            provenance_path = export_stored_case(case_id, output_dir, storage)
+        except Exception as exc:
+            logger.warning("Provenance graph skipped for %s: %s", case_id, exc)
 
         return {
             "case_id": case_id,
@@ -1078,6 +1086,7 @@ class CaseToCAC:
             "shacl_report": shacl_report,
             "jsonld_path": str(jsonld_path),
             "ttl_path": str(ttl_path),
+            "provenance_ttl_path": str(provenance_path) if provenance_path else None,
         }
 
     # ------------------------------------------------------------------
@@ -2506,45 +2515,18 @@ class CaseToCAC:
         }
 
     @staticmethod
-    def _load_from_db(
-        case_id: str, db_url: Optional[str] = None
-    ) -> Optional[Dict[str, Any]]:
-        """
-        Load a case dict from a database.
-
-        Priority order:
-          1. Local SQLite (caselinker.db at repo root, configured via config.DATABASE_PATH)
-          2. PostgreSQL via DATABASE_URL (when running against the cloud DB)
-        Returns None if neither is available or the case is not found.
-        """
-        # ── 1. Local SQLite via storage.CaseStorage ──────────────────────────
-        case = CaseToCAC._load_from_local_sqlite(case_id)
-        if case is not None:
-            return case
-
-        # ── 2. PostgreSQL fallback ───────────────────────────────────────────
-        url = db_url or os.getenv("DATABASE_URL")
-        if not url:
-            return None
-        try:
-            storage_layer_dir = str(_REPO_ROOT / "src" / "Storage Layer")
-            if storage_layer_dir not in sys.path:
-                sys.path.insert(0, storage_layer_dir)
-            # Local import: storage_postgres is a sibling of storage.py
-            from storage_postgres import CaseStorage as PgCaseStorage  # type: ignore
-            return PgCaseStorage().get_case(case_id)
-        except Exception as exc:
-            logger.warning("PostgreSQL load failed for '%s': %s", case_id, exc)
-            return None
+    def _storage_layer_dir() -> str:
+        storage_layer_dir = str(_REPO_ROOT / "src" / "Storage Layer")
+        if storage_layer_dir not in sys.path:
+            sys.path.insert(0, storage_layer_dir)
+        return storage_layer_dir
 
     @staticmethod
-    def _load_from_local_sqlite(case_id: str) -> Optional[Dict[str, Any]]:
+    def _open_local_sqlite() -> Any:
         """
-        Load a case from the local SQLite DB (caselinker.db) using the
-        CaseLinker SQLite CaseStorage class. Returns None if the DB file is
-        absent, the module fails to import, or the case is not found.
+        Open the local SQLite file case export reads, or None when that file
+        is absent. Repo-root caselinker.db, then config.DATABASE_PATH.
         """
-        # Try repo-root caselinker.db first, then DATABASE_PATH from config
         db_path = _REPO_ROOT / "caselinker.db"
         if not db_path.is_file():
             try:
@@ -2561,21 +2543,84 @@ class CaseToCAC:
                             db_path = candidate
             except Exception as exc:
                 logger.debug("config.py lookup failed: %s", exc)
-
         if not db_path.is_file():
             return None
-
         try:
-            storage_layer_dir = str(_REPO_ROOT / "src" / "Storage Layer")
-            if storage_layer_dir not in sys.path:
-                sys.path.insert(0, storage_layer_dir)
-            # storage.py imports case_storage_utils via top-level name, so the
-            # "Storage Layer" dir must be on sys.path before the import.
+            CaseToCAC._storage_layer_dir()
             from storage import CaseStorage as SqliteCaseStorage  # type: ignore
-            return SqliteCaseStorage(db_path=str(db_path)).get_case(case_id)
+            return SqliteCaseStorage(db_path=str(db_path))
         except Exception as exc:
-            logger.warning("SQLite load failed for '%s' (db=%s): %s",
-                           case_id, db_path, exc)
+            logger.warning("SQLite open failed (db=%s): %s", db_path, exc)
+            return None
+
+    @staticmethod
+    def _open_postgres(db_url: Optional[str] = None) -> Any:
+        """Open Postgres when DATABASE_URL or db_url is set, else None."""
+        url = db_url or os.getenv("DATABASE_URL")
+        if not url:
+            return None
+        try:
+            CaseToCAC._storage_layer_dir()
+            from storage_postgres import CaseStorage as PgCaseStorage  # type: ignore
+            return PgCaseStorage()
+        except Exception as exc:
+            logger.warning("PostgreSQL open failed: %s", exc)
+            return None
+
+    @staticmethod
+    def _storage_for_case(case_id: str, db_url: Optional[str] = None) -> Any:
+        """
+        The storage object that holds this case: local SQLite if the case is
+        there, otherwise Postgres. None when neither has it.
+        """
+        sqlite = CaseToCAC._open_local_sqlite()
+        if sqlite is not None:
+            try:
+                if sqlite.get_case(case_id) is not None:
+                    return sqlite
+            except Exception as exc:
+                logger.warning("SQLite load failed for '%s': %s", case_id, exc)
+        postgres = CaseToCAC._open_postgres(db_url)
+        if postgres is None:
+            return None
+        try:
+            if postgres.get_case(case_id) is not None:
+                return postgres
+        except Exception as exc:
+            logger.warning("PostgreSQL load failed for '%s': %s", case_id, exc)
+        return None
+
+    @staticmethod
+    def _load_from_db(
+        case_id: str, db_url: Optional[str] = None
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Load a case dict from a database.
+
+        Priority order:
+          1. Local SQLite (caselinker.db at repo root, configured via config.DATABASE_PATH)
+          2. PostgreSQL via DATABASE_URL (when running against the cloud DB)
+        Returns None if neither is available or the case is not found.
+        """
+        storage = CaseToCAC._storage_for_case(case_id, db_url)
+        if storage is None:
+            return None
+        return storage.get_case(case_id)
+
+    @staticmethod
+    def _load_from_local_sqlite(case_id: str) -> Optional[Dict[str, Any]]:
+        """
+        Load a case from the local SQLite DB (caselinker.db) using the
+        CaseLinker SQLite CaseStorage class. Returns None if the DB file is
+        absent, the module fails to import, or the case is not found.
+        """
+        storage = CaseToCAC._open_local_sqlite()
+        if storage is None:
+            return None
+        try:
+            return storage.get_case(case_id)
+        except Exception as exc:
+            logger.warning("SQLite load failed for '%s': %s", case_id, exc)
             return None
 
 

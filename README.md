@@ -162,8 +162,8 @@ You can process additional PDFs to add more cases to the database.
    - Provides REST API endpoints for case data, analysis, and statistics
 
 3. **`caselinker_mcp/server.py`** - **MCP server for agents and operators**
-   - **Local stdio:** **52 tools** (corpus + free RECAP/DOJ search + full collector READ/WRITE + local duplicate audit). Collector WRITE writes JSON/PDFs under `collector_output/` on your machine
-   - **Railway hosted MCP:** **42 tools** — same corpus/READ surface; collector **WRITE tools** are not registered (no ephemeral-disk side effects). Use local MCP or the `collector/` CLI to harvest PDFs.
+   - **Local stdio:** **54 tools** (corpus + free RECAP/DOJ search + full collector READ/WRITE + local duplicate audit). Collector WRITE writes JSON/PDFs under `collector_output/` on your machine
+   - **Railway hosted MCP:** **44 tools** — same corpus/READ surface; collector **WRITE tools** are not registered (no ephemeral-disk side effects). Use local MCP or the `collector/` CLI to harvest PDFs.
    - Reach out for private mcp.json keys and review `caselinker_mcp/README.md` and `caselinker_mcp/tool_registry.md` for setup, auth, and the full catalog
 
 **Typical use case:**
@@ -329,7 +329,7 @@ The live store holds **10,362** press-release case graphs (`…/resource/case/{c
 
 
 ### **Public SPARQL** 
-(`GET|POST /sparql`) — SPARQL 1.1 Query only (`SELECT`, `CONSTRUCT`, `ASK`, `DESCRIBE`). No auth. Update and `SERVICE` are rejected. Rate limit is **30/minute** per IP. If a query has no outer `LIMIT`, the proxy injects **1000**; outer `LIMIT` above **10,000** is rejected. Each case is named graph `https://caselinker.up.railway.app/resource/case/{case_id}`; default-graph patterns see the union. Request formats, namespaces, errors, and more examples: **[ontology/docs/SPARQL.md](ontology/docs/SPARQL.md)**.
+(`GET|POST /sparql`) — SPARQL 1.1 Query only (`SELECT`, `CONSTRUCT`, `ASK`, `DESCRIBE`). No auth. Update and `SERVICE` are rejected. Rate limit is **30/minute** per IP. If a query has no outer `LIMIT`, the proxy injects **1000**; outer `LIMIT` above **10,000** is rejected. Each case is named graph `https://caselinker.projectvic.org/resource/case/{case_id}`; default-graph patterns see the union. Request formats, namespaces, errors, and more examples: **[ontology/docs/SPARQL.md](ontology/docs/SPARQL.md)**.
 
 ```bash
 curl -sS -X POST 'https://caselinker.up.railway.app/sparql' \
@@ -459,23 +459,28 @@ Each case includes structured features extracted from case narratives:
 ### **Regex extraction**
 
 - **Perpetrator**: Age(s), registered sex offender status, gender when stated; flags for multi-defendant operations
-- **Victim**: Age(s), age ranges, count when explicitly stated in victim-clause phrasing, gender after validation
+- **Victim**: Age ranges, count when explicitly stated in victim-clause phrasing, gender after validation
 - **Relationship**: Kin and role labels (father, mother, parent, sibling, teacher, coach, stranger, etc.); unknown when not stated
 - **Platforms**: Named apps and surfaces — social, messaging, gaming, file hosting, livestreaming, early-era chat, Gen AI tools when cited — plus generic online, chat, or social media when no product matches
 - **Technology signals** (stored separately from the platform list): investigation tooling (PhotoDNA, hash matching, CyberTipline language), anonymization (Tor, dark web, cryptocurrency), P2P clients
-- **Prosecution**: Charge phrases with counts, booking stage (arrest through sentenced), jail mentions, sentence durations
+- **Prosecution**: Charge phrases with counts, booking stage (arrest through sentenced), jail mentions
 - **Evidence volume**: Image, video, storage, and message counts when quantified in text
-- **Investigation**: Non-exclusive types — proactive, reactive, online, undercover, CyberTipline-origin, or unknown; agencies from pattern matching plus NER supplements
+- **Investigation**: Non-exclusive types — proactive, reactive, online, undercover, or unknown; agencies from pattern matching plus Stanza NER. CyberTipline-origin only when the tip is about this case
 - **Prior record**: Registered status and age at prior arrest when stated
 
 ### **Pattern-based classification**
 
-- **Case topics**: production, possession, distribution, trafficking, csam, ai_csam, sextortion, hands_on vs online_only, family vs stranger, international, multi_state
-- **Severity indicators**: infant, very_young, under_12, sexual_abuse; multiple_perpetrators when several offender ages are extracted
+- **Case topics**: production, possession, distribution, trafficking, csam, ai_csam, sextortion, hands_on vs online_only, family vs stranger, international, multi_state, project_safe_childhood
+- **Severity indicators**: infant, very_young, under_12, sexual_abuse; multiple_perpetrators when more than one offender age is stored
 - **Severity phrases**: dangerous, stated, told, continue, attacked, out_of_control, attracted — used in priority scoring
 
 ### **ML enrichment**
-When the ML stack is enabled, NER adds organizations, locations, dates, and ages, merged with regex output. A victim-age gate drops decoy and headline ages. Semantic sentence scoring stores concept scores on each case; grooming may add a severity tag, and strong possession or AI-generation language may reinforce case topics. Most concept scores are kept for analysis; only selected ones are merged in with main fields.
+Stanza NER adds organizations and locations, and supplies person and number spans for age resolution. A spaCy dependency parse records which noun an age hangs on. Semantic sentence scoring stores concept scores; grooming may add a severity tag, and a strong possession score may add the possession topic. Production, AI-CSAM, and sextortion stay regex-only. Most concept scores are kept for analysis.An optional local LLM (`CASELINKER_LLM=1`, Ollama `qwen3:8b`) sharpens what the rules leave open, adjudicating the mentions the deterministic layers could not settle.
+
+### **Field assertions and resolution**
+Regex, spaCy, Stanza, statute lookup, temporal tags, an optional LLM, and human overrides each write their own assertion. A span gate and `resolve_v3.0` decide what becomes a final; disagreements stay in review. MCP: `get_case_assertions`, `get_field_disagreements`.
+
+How the readers, the gate, and the resolver fit together is **[src/Processing Layer/README.md](<src/Processing Layer/README.md>)**.
 
 ### **Clustering & storage**
 - **Comparison values**: Normalized vectors (platforms, demographics, investigation, evidence, topics, severity, date) for similarity and pre-computed clusters

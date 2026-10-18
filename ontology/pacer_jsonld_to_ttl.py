@@ -3,7 +3,7 @@
 
 Each graph is written to ontology/graph_output/pacer/pacer_{slug}.ttl. The
 rebuild assigns named graph
-  https://caselinker.up.railway.app/resource/case/pacer_{slug}
+  https://caselinker.projectvic.org/resource/case/pacer_{slug}
 from the filename stem (same contract as press-release TTLs).
 
 Added triples (only):
