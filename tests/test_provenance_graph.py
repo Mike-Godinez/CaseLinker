@@ -130,6 +130,32 @@ def test_provenance_sidecar_reads_the_store_the_case_export_uses(tmp_path, monke
     assert graph_uses_case_roles(graph) is False
 
 
+def test_export_turtle_contains_the_named_graph_triples(tmp_path, monkeypatch):
+    """Serializing the Dataset writes an empty Turtle file. export_case must not."""
+    from rdflib import Graph
+
+    mapper = CaseToCAC()
+    dataset, _warnings = mapper.map_case(AZICAC_2011_006_FIXTURE)
+    empty = tmp_path / "dataset.ttl"
+    dataset.serialize(destination=str(empty), format="turtle")
+    assert empty.stat().st_size < 20
+
+    case = dict(AZICAC_2011_006_FIXTURE)
+
+    class _Store:
+        def get_case(self, case_id):
+            return case
+
+        def get_case_assertions(self, case_id, field=None):
+            return {"assertions": [], "resolutions": {}, "run_id": None}
+
+    monkeypatch.setattr(CaseToCAC, "_storage_for_case", staticmethod(lambda *a, **k: _Store()))
+    result = mapper.export_case("azicac_2011_006", output_dir=tmp_path)
+    parsed = Graph()
+    parsed.parse(result["ttl_path"], format="turtle")
+    assert len(parsed) > 0
+
+
 def test_existing_case_graph_still_validates_and_still_has_roles():
     mapper = CaseToCAC()
     graph, _warnings = mapper.map_case(AZICAC_2011_006_FIXTURE)

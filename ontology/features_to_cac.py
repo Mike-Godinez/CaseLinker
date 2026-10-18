@@ -1065,8 +1065,11 @@ class CaseToCAC:
 
         jsonld_path = output_dir / f"{case_id}.jsonld"
         ttl_path = output_dir / f"{case_id}.ttl"
-        graph.serialize(destination=str(jsonld_path), format="json-ld", indent=2)
-        graph.serialize(destination=str(ttl_path), format="turtle")
+        # Turtle serialization of a Dataset writes only the default graph.
+        # map_case puts every triple in named graphs, so that file is empty.
+        flat = flatten_dataset(graph)
+        _write_serialized(flat, jsonld_path, "json-ld")
+        _write_serialized(flat, ttl_path, "turtle")
 
         conforms, shacl_report = self.validate(graph)
         summary = self._graph_summary(graph)
@@ -2734,6 +2737,28 @@ _EXPECTED_NODE_TYPES = {
 # CLI / test runner
 # ===========================================================================
 
+def flatten_dataset(dataset: Any) -> Graph:
+    """Copy every triple in a Dataset's named graphs into one graph.
+
+    ``Dataset.serialize(format="turtle")`` emits only the default graph.
+    Case triples are not in that graph, so the Turtle file is empty.
+    """
+    flat = Graph()
+    contexts = dataset.graphs() if hasattr(dataset, "graphs") else [dataset]
+    for ctx in contexts:
+        for triple in ctx:
+            flat.add(triple)
+    return flat
+
+
+def _write_serialized(graph: Graph, path: Path, fmt: str) -> None:
+    data = graph.serialize(format=fmt)
+    if isinstance(data, bytes):
+        path.write_bytes(data)
+    else:
+        path.write_text(data)
+
+
 def run_test(case_dict: Dict[str, Any], output_dir: Path) -> None:
     """
     Map a case, validate, write output, and print a summary report.
@@ -2756,16 +2781,12 @@ def run_test(case_dict: Dict[str, Any], output_dir: Path) -> None:
     ttl_path = output_dir / f"{case_id}.ttl"
     graph.serialize(destination=str(jsonld_path), format="json-ld", indent=2)
 
-    # Turtle does not preserve named graphs — flatten the Dataset's named
-    # graphs into a single rdflib.Graph for the .ttl file so it is non-empty
-    # and usable for SPARQL / inspection.
-    flat = Graph()
-    for ctx in graph.graphs():
-        for triple in ctx:
-            flat.add(triple)
+    # Same flatten as export_case. Prefixes stay on this CLI path only;
+    # export_case leaves them unbound so the bytes match the Phase 3 export.
+    flat = flatten_dataset(graph)
     for prefix, ns in graph.namespaces():
         flat.bind(prefix, ns, replace=True)
-    flat.serialize(destination=str(ttl_path), format="turtle")
+    _write_serialized(flat, ttl_path, "turtle")
 
     print(f"Output files written:")
     print(f"  {jsonld_path}")
