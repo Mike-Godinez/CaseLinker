@@ -1,0 +1,30 @@
+# CaseLinker persistent identifiers for perma-id/w3id.org
+#
+# Submit this file as `caselinker/.htaccess` in
+# https://github.com/perma-id/w3id.org (PR against their main).
+# Rules match the path *after* `/caselinker/`, so
+#   https://w3id.org/caselinker/resource/case/{id}
+# becomes a 303 to
+#   https://caselinker.up.railway.app/resource/case/{id}
+#
+# 303 See Other keeps the path (httpRange-14): the w3id IRI names the
+# resource; the Railway URL returns a description. Do not use 302 — that
+# drops the path onto `/patterns` today.
+#
+# Targets the app must serve (already in run/main.py + run/deref.py):
+#   GET /resource/{path}     case, agency, platform, location, provenance graph
+#   GET /ns/provenance       provenance vocabulary (HTML or Turtle)
+#
+# Content negotiation on those routes: HTML for browsers; Accept
+# text/turtle or application/ld+json for clients. CORS is open for GET.
+#
+# After the host leaves Railway, change only the target host below.
+# Re-submit the same relative rules to perma-id.
+
+Header set Access-Control-Allow-Origin *
+Header set Access-Control-Allow-Headers "Accept, Authorization, Content-Type"
+Header set Access-Control-Allow-Methods "GET, HEAD, OPTIONS"
+
+RewriteEngine on
+RewriteRule ^$ https://caselinker.up.railway.app/ [R=303,L]
+RewriteRule ^(.*)$ https://caselinker.up.railway.app/$1 [R=303,L,QSA]

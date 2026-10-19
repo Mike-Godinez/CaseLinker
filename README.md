@@ -316,6 +316,10 @@ The live store holds **10,362** press-release case graphs (`…/resource/case/{c
 > **[Graph Interface](https://caselinker.up.railway.app/patterns)**: browse and compare case graphs, look up by CAC class / platform / agency, open PACER investigations, and explore CaseLinker data.
 
 
+### **Persistent IRIs (w3id)**
+
+Case, platform, agency, location, and provenance IRIs use `https://w3id.org/caselinker/…`. After the perma-id registration lands, those URLs **303** to the live app and keep the path (`/resource/…`, `/ns/provenance`). The app returns HTML for browsers, or Turtle / JSON-LD when `Accept` asks for them. The Apache rules to submit are [`ontology/w3id-caselinker.htaccess`](ontology/w3id-caselinker.htaccess) (details in [`ontology/README.md`](ontology/README.md#w3idorg)).
+
 ### **Public SPARQL** 
 (`GET|POST /sparql`) — SPARQL 1.1 Query only (`SELECT`, `CONSTRUCT`, `ASK`, `DESCRIBE`). No auth. Update and `SERVICE` are rejected. Rate limit is **30/minute** per IP. If a query has no outer `LIMIT`, the proxy injects **1000**; outer `LIMIT` above **10,000** is rejected. Each case is named graph `https://w3id.org/caselinker/resource/case/{case_id}`. Its provenance graph is `https://w3id.org/caselinker/resource/case/{case_id}/provenance`. Default-graph patterns see the union. Request formats, namespaces, errors, and more examples: **[ontology/docs/SPARQL.md](ontology/docs/SPARQL.md)**.
 
@@ -374,7 +378,8 @@ CaseLinker/
 │   ├── Visualization Layer/          # Server-side viz helpers
 │   └── main.py                       # CLI: ingest PDFs → process → store
 ├── run/
-│   ├── main.py                       # FastAPI app: pages + REST API + /sparql
+│   ├── main.py                       # FastAPI app: pages + REST API + /sparql + /resource
+│   ├── deref.py                      # w3id resource / provenance content negotiation
 │   ├── sparql_proxy.py               # SPARQL parser policy (LIMIT / Update / SERVICE)
 │   ├── redis_cache.py                # Optional Redis caching (production)
 │   └── auth.py                       # Access gates / keys for sensitive views
@@ -407,8 +412,10 @@ CaseLinker/
 │   ├── under-the-hood.html           # /under-the-hood
 │   └── crash-course.html             # /crash-course
 ├── ontology/
-│   ├── README.md                     # Ontology docs (vocabulary, pipeline, pools)
+│   ├── README.md                     # Ontology docs (vocabulary, pipeline, pools, w3id)
 │   ├── docs/SPARQL.md                # Public SPARQL 1.1 API guide
+│   ├── w3id-caselinker.htaccess      # Submit to perma-id as caselinker/.htaccess
+│   ├── caselinker-provenance.ttl     # Provenance vocabulary (w3id ns)
 │   ├── features_to_cac.py            # Case features → CAC RDF
 │   ├── graph_generate.py             # Batch TTL / JSON-LD
 │   ├── oxigraph_rebuild.py           # Canonical TTL → named-graph N-Quads

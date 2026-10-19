@@ -214,8 +214,19 @@ def export_stored_case(case_id: str, output_dir: Path, storage: Any = None) -> O
     hook = getattr(storage, "extraction_run_started_at", None)
     if callable(hook) and run_id != "unrecorded":
         started = hook(run_id)
+    # A run row can be missing after a manual re-resolve. SHACL still requires
+    # cac-core:issuedAtTime on each assertion, so fall back to the resolution
+    # timestamp the store already returned.
+    if not started:
+        for res in resolutions.values():
+            stamp = res.get("resolved_at") or res.get("created_at")
+            if stamp:
+                started = stamp
+                break
     if assertions and not started:
-        raise RuntimeError(f"no extraction-run timestamp for {case_id}")
+        raise RuntimeError(
+            f"no extraction-run or resolution timestamp for {case_id} (run_id={run_id})"
+        )
     graph = build_provenance_graph(
         case_id,
         assertions,

@@ -5567,6 +5567,61 @@ async def api_oxigraph_warm(request: Request):
     return JSONResponse(body, headers=headers)
 
 
+def _oxigraph_base() -> str:
+    return os.environ.get("OXIGRAPH_URL", "").strip().rstrip("/")
+
+
+@app.get("/ns/provenance", tags=["Dereference"])
+async def provenance_vocabulary(request: Request):
+    """The provenance vocabulary. Browsers get HTML; ``Accept: text/turtle`` gets the ontology."""
+    import deref
+
+    media = deref.preferred_media(request.headers.get("accept"), vocabulary=True)
+    graph = deref.provenance_graph()
+    if media == "text/turtle":
+        body = deref.PROVENANCE_TTL.read_text()
+        return Response(body, media_type="text/turtle; charset=utf-8")
+    return HTMLResponse(deref.render_html(graph, focus=deref.PROVENANCE_IRI))
+
+
+@app.get("/resource/{path:path}", tags=["Dereference"])
+async def dereference_resource(path: str, request: Request):
+    """Describe one w3id resource from Oxigraph.
+
+    A case IRI and ``{case}/provenance`` are named graphs. An agency, platform,
+    or location IRI is a node that lives inside those case graphs. HTML links
+    every CAC class to its cacontology.projectvic.org IRI.
+    """
+    import deref
+
+    try:
+        iri = deref.resource_iri(path)
+    except ValueError:
+        raise HTTPException(status_code=404, detail="Unknown resource.")
+    base = _oxigraph_base()
+    if not base:
+        raise HTTPException(status_code=503, detail="SPARQL store is not configured (set OXIGRAPH_URL).")
+    query = deref.construct_query(iri)
+    try:
+        async with httpx.AsyncClient(timeout=httpx.Timeout(30.0, connect=5.0)) as client:
+            upstream = await client.post(
+                f"{base}/query",
+                content=query.encode("utf-8"),
+                headers={"Content-Type": "application/sparql-query", "Accept": "text/turtle"},
+            )
+    except httpx.HTTPError as exc:
+        raise HTTPException(status_code=502, detail="SPARQL store did not answer.") from exc
+    if upstream.status_code >= 400:
+        raise HTTPException(status_code=502, detail="SPARQL store rejected the description query.")
+    graph = deref.parse_turtle(upstream.text)
+    if len(graph) == 0:
+        raise HTTPException(status_code=404, detail="No description is stored for this IRI.")
+    media = deref.preferred_media(request.headers.get("accept"))
+    if media == "text/html":
+        return HTMLResponse(deref.render_html(graph, focus=iri))
+    return Response(deref.serialize_graph(graph, media), media_type=f"{media}; charset=utf-8")
+
+
 # MCP mounts: legacy SSE at /mcp/sse + Streamable HTTP at /mcp-http
 try:
     if str(_REPO_ROOT) not in sys.path:

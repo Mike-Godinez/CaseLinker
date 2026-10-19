@@ -1,22 +1,25 @@
-@prefix caselinker: <https://w3id.org/caselinker/ns/provenance#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix caselinker: <https://w3id.org/caselinker/ns/provenance#> .
 
-# Terms the pinned CAC modules and PROV-O / Web Annotation do not already name.
-# Evidence family, resolution status, and the resolution rule-set version.
+<https://w3id.org/caselinker/ns/provenance> a owl:Ontology ;
+    owl:versionInfo "3.1" ;
+    owl:versionIRI <https://w3id.org/caselinker/ns/provenance/3.1> ;
+    rdfs:label "CaseLinker provenance vocabulary"@en ;
+    rdfs:comment "Terms CaseLinker writes on extraction runs, assertions, and field resolutions."@en .
 
 caselinker:evidenceFamily a owl:DatatypeProperty ;
     rdfs:label "evidence family"@en ;
-    rdfs:comment "The vote family of an extraction method: surface_pattern, dependency, ner, lookup, temporal, llm, or human. Two methods in one family are one vote."@en ;
+    rdfs:comment "The family of the extractor that wrote an assertion: surface_pattern, dependency, ner, lookup, temporal, llm, or human. Resolution counts one vote per family."@en ;
     rdfs:range xsd:string .
 
 caselinker:resolutionStatus a owl:DatatypeProperty ;
     rdfs:label "resolution status"@en ;
-    rdfs:comment "How resolve_v3.0 left a field: agreed, resolved, partial, disagreement, needs_review, or empty."@en ;
+    rdfs:comment "How resolve_v3.0 left a field: empty, resolved, agreed, partial, needs_review, or a disagreement state. It is the status stored on the field resolution, not a second opinion."@en ;
     rdfs:range xsd:string .
 
 caselinker:ruleSetVersion a owl:DatatypeProperty ;
     rdfs:label "rule set version"@en ;
-    rdfs:comment "The resolution rule set that produced this activity or field resolution. CaseLinker 3.0 uses resolve_v3.0."@en ;
+    rdfs:comment "The resolution rule set that produced the result. Current graphs use resolve_v3.0. A resolution without this term fails the provenance shape."@en ;
     rdfs:range xsd:string .

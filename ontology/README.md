@@ -31,7 +31,11 @@ uco-identity: https://ontology.unifiedcyberontology.org/uco/identity/
 uco-role:     https://ontology.unifiedcyberontology.org/uco/role/
 ```
 
-Instance IRIs are `https://w3id.org/caselinker/resource/{case|platform|agency}/…`. Each case is a **named graph** at `https://w3id.org/caselinker/resource/case/{case_id}`. Its provenance graph is `https://w3id.org/caselinker/resource/case/{case_id}/provenance`. `dcterms:identifier` on `cac:CACInvestigation` is the CaseLinker case id. The public application, including SPARQL, stays at `https://caselinker.up.railway.app/`. CAC, CASE, and UCO namespaces are unchanged. Provenance terms are `https://w3id.org/caselinker/ns/provenance#`.
+Instance IRIs are `https://w3id.org/caselinker/resource/{case|platform|agency}/…`. Each case is a **named graph** at `https://w3id.org/caselinker/resource/case/{case_id}`. Its provenance graph is `https://w3id.org/caselinker/resource/case/{case_id}/provenance`. `dcterms:identifier` on `cac:CACInvestigation` is the CaseLinker case id. The public application, including SPARQL, stays at `https://caselinker.up.railway.app/`. CAC, CASE, and UCO namespaces are unchanged. Provenance terms are `https://w3id.org/caselinker/ns/provenance#` (vocabulary document: [`caselinker-provenance.ttl`](caselinker-provenance.ttl), version 3.1).
+
+### w3id.org
+
+Persistent IRIs under `https://w3id.org/caselinker/` are registered with [perma-id/w3id.org](https://github.com/perma-id/w3id.org). The file to submit is [`w3id-caselinker.htaccess`](w3id-caselinker.htaccess) → `caselinker/.htaccess` in that repo. It answers **303 See Other** and keeps the path, so a case IRI redirects to `GET /resource/…` on the live app (HTML, Turtle, or JSON-LD). The vocabulary IRI `…/ns/provenance` redirects to `GET /ns/provenance`. Until that PR lands, some w3id paths still 302 to `/patterns` and drop the rest of the path.
 
 ## What a case graph contains
 
@@ -127,6 +131,8 @@ Static files are public: `/ontology/graph_output/{pool}/{case_id}.ttl|.jsonld`.
 | [`q1/`](q1/) [`q2/`](q2/) [`q3/`](q3/) | Research evidence (see below) |
 | [`PACER/`](PACER/) | PACER docket → lifecycle facts (feeds `/lifecycle`) |
 | [`docs/SPARQL.md`](docs/SPARQL.md) | Public SPARQL 1.1 API |
+| [`caselinker-provenance.ttl`](caselinker-provenance.ttl) | Provenance vocabulary (`w3id.org/caselinker/ns/provenance`) |
+| [`w3id-caselinker.htaccess`](w3id-caselinker.htaccess) | Submit as `caselinker/.htaccess` to perma-id/w3id.org |
 | [`MAPPING_PLAN.md`](MAPPING_PLAN.md) | Class-by-class mapping spec |
 
 ## Research questions (Q1–Q3)

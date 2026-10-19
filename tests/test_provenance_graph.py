@@ -112,6 +112,65 @@ def test_export_writes_sidecar_for_resolution_only_case(tmp_path):
     assert not any(graph.triples((None, RDF.type, OA.Annotation)))
 
 
+def test_export_falls_back_to_resolution_timestamp_when_run_row_is_missing(tmp_path):
+    """Assertions without an extraction_runs row still export via resolution time."""
+    assertions, resolutions = _sample()
+    resolutions = {
+        field: {**res, "resolved_at": "2026-10-18T12:00:00.000000Z"}
+        for field, res in resolutions.items()
+    }
+
+    class _Store:
+        def get_case_assertions(self, case_id, field=None):
+            return {
+                "case_id": case_id,
+                "run_id": "phase3-decoy-reread-20261018",
+                "assertions": assertions,
+                "resolutions": resolutions,
+            }
+
+        def extraction_run_started_at(self, run_id):
+            return None
+
+    path = __import__("provenance_export").export_stored_case(
+        "doj_safe_childhood_2023_259", tmp_path, _Store()
+    )
+    assert path is not None
+    graph = __import__("rdflib").Graph()
+    graph.parse(path, format="turtle")
+    conforms, report = validate_provenance(graph)
+    assert conforms, report
+    stamps = {str(o) for o in graph.objects(None, CAC_CORE.issuedAtTime)}
+    assert "2026-10-18T12:00:00.000000Z" in stamps
+
+
+def test_old_provenance_namespace_does_not_count_as_an_extraction_run():
+    """A run stamped only in the retired projectvic namespace is not a current run."""
+    from rdflib import Literal, Namespace
+
+    graph = build_provenance_graph(
+        "shim_case", *_sample(), run_id="run_test", issued_at="2026-10-17T18:00:00.000000Z"
+    )
+    previous = Namespace("https://caselinker.projectvic.org/ns/provenance#")
+    activity = next(graph.subjects(RDF.type, PROV.Activity))
+    for value in list(graph.objects(activity, CL.ruleSetVersion)):
+        graph.remove((activity, CL.ruleSetVersion, value))
+        graph.add((activity, previous.ruleSetVersion, value))
+    conforms, report = validate_provenance(graph)
+    assert not conforms, report
+    assert "ruleSetVersion" in (report or "")
+
+
+def test_w3id_resolution_without_a_rule_set_fails():
+    graph = build_provenance_graph(
+        "shacl_canary", *_sample(), run_id="run_test", issued_at="2026-10-17T18:00:00.000000Z"
+    )
+    for triple in list(graph.triples((None, CL.ruleSetVersion, None))):
+        graph.remove(triple)
+    conforms, report = validate_provenance(graph)
+    assert not conforms, report
+
+
 def test_provenance_graph_validates_and_keeps_decoys_off_case_roles():
     graph = build_provenance_graph(
         "example_case", *_sample(), run_id="run_test", issued_at="2026-10-17T18:00:00.000000Z"
