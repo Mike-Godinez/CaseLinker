@@ -61,7 +61,8 @@ def _new_human(stored, text, case_id):
     return [a for a in fresh if (a["value"], a["role"], a["span_start"]) not in have]
 
 
-def _rederive_legacy(storage, case: dict, assertions: list, resolutions: dict) -> None:
+def _rederive_case(case: dict, assertions: list, resolutions: dict) -> dict:
+    """Legacy columns from a resolution. The returned dict does not carry assertion rows."""
     feats = case.get("extracted_features") if isinstance(case.get("extracted_features"), dict) else {}
     rebuilt = {**feats, **{k: case.get(k) for k in _COLUMNS if k in case}}
     merger = processing.MergeProcessing()
@@ -70,21 +71,33 @@ def _rederive_legacy(storage, case: dict, assertions: list, resolutions: dict) -
     merger._apply_resolved_ages(rebuilt, resolutions.get("age") or {})
     merger._apply_resolved_sentences(rebuilt, resolutions.get("sentence") or {})
     merger._apply_resolved_cybertip(rebuilt, resolutions.get("investigation_type") or {})
+    merger._apply_resolved_dates(rebuilt, resolutions.get("date") or {})
     rebuilt.pop("assertions", None)
     rebuilt.pop("resolutions", None)
-    storage.store_case(processing.assign_comparison_values(rebuilt))
+    return processing.assign_comparison_values(rebuilt)
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--case-ids", nargs="*", help="limit to these cases (default: all)")
     ap.add_argument("--resolutions-only", action="store_true", help="append resolutions; do not touch legacy columns")
+    ap.add_argument("--batch-size", type=int, default=100, help="cases per transaction (default 100)")
     args = ap.parse_args()
+    if args.batch_size < 1:
+        raise SystemExit("--batch-size must be at least 1")
 
     storage = _storage()
     amod = processing.assertions_module
     ids = args.case_ids or _case_ids(storage)
     changed = skipped = 0
+    pending: list = []
+
+    def flush() -> None:
+        nonlocal pending
+        if pending:
+            storage.apply_reresolve_batch(pending)
+            pending = []
+
     for cid in ids:
         run_id, stored = storage.load_case_assertions(cid)
         if not run_id:
@@ -93,11 +106,24 @@ def main() -> int:
         case = storage.get_case(cid) or {}
         text = case.get("case_text") or ""
         human = _new_human(stored, text, cid)
-        resolutions = amod.resolve(stored + human, batch_date=(case.get("date_range") or {}).get("start"))
-        storage.append_resolutions(cid, run_id, resolutions, human or None)
+        resolutions = amod.resolve(
+            stored + human,
+            batch_date=(case.get("date_range") or {}).get("start"),
+            text=text,
+        )
+        item = {
+            "case_id": cid,
+            "run_id": run_id,
+            "resolutions": resolutions,
+            "new_assertions": human or None,
+        }
         if not args.resolutions_only and case:
-            _rederive_legacy(storage, case, stored + human, resolutions)
+            item["case"] = _rederive_case(case, stored + human, resolutions)
+        pending.append(item)
         changed += 1
+        if len(pending) >= args.batch_size:
+            flush()
+    flush()
     print(f"re-resolved {changed} case(s) with rule set {amod.resolution.RULE_SET_VERSION}; "
           f"{skipped} without stored assertions")
     return 0

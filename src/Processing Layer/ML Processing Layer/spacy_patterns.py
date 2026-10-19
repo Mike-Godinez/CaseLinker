@@ -97,6 +97,113 @@ def spacy_status() -> Dict[str, Optional[str]]:
     return {"spacy_model": f"{meta.get('lang')}_{meta.get('name')}:{meta.get('version')}"}
 
 
+_SENTENCE_VERBS = frozenset("sentence receive order impose serve give".split())
+_GENERATION_SUFFIX = {"jr": "Jr", "sr": "Sr", "ii": "II", "iii": "III", "iv": "IV"}
+
+
+def _nameish(tok) -> bool:
+    piece = tok.text.strip(".,")
+    if not piece or not piece[:1].isalpha():
+        return False
+    return tok.pos_ == "PROPN" or piece.lower() in _GENERATION_SUFFIX
+
+
+def _canon_person(tokens) -> Optional[str]:
+    """Proper name in token order, with Jr/Sr/II/III/IV normalized. Not a bare suffix."""
+    parts: List[str] = []
+    for tok in tokens:
+        piece = tok.text.strip(".,")
+        if not piece:
+            continue
+        parts.append(_GENERATION_SUFFIX.get(piece.lower(), piece))
+    if not parts or all(p in _GENERATION_SUFFIX.values() for p in parts):
+        return None
+    if not any(p[:1].isupper() for p in parts):
+        return None
+    return " ".join(parts)
+
+
+def _name_tokens(head):
+    compounds = [c for c in head.children if c.dep_ == "compound" and _nameish(c)]
+    return sorted(compounds + [head], key=lambda t: t.i)
+
+
+def _person_from_subject(sub) -> Optional[str]:
+    """The defendant the subject names. A kinship noun yields its proper-name apposition."""
+    if sub.pos_ != "PROPN":
+        named = [c for c in sub.children if c.dep_ == "appos" and c.pos_ == "PROPN" and _nameish(c)]
+        if not named:
+            return None
+        return _canon_person(_name_tokens(named[0]))
+    if not _nameish(sub):
+        return None
+    return _canon_person(_name_tokens(sub))
+
+
+def _governing_sentence_verb(doc, start: int, end: int):
+    tok = _token_at(doc, start, end)
+    if tok is None:
+        return None
+    cur = tok
+    seen = set()
+    for _ in range(8):
+        if cur.i in seen:
+            break
+        seen.add(cur.i)
+        if cur.pos_ == "VERB" and cur.lemma_.lower() in _SENTENCE_VERBS:
+            return cur
+        if cur.head is cur:
+            break
+        cur = cur.head
+    root = tok.sent.root
+    if root.pos_ == "VERB" and root.lemma_.lower() in _SENTENCE_VERBS:
+        return root
+    return None
+
+
+def _named_dependent(children) -> Optional[str]:
+    for tok in sorted(children, key=lambda t: t.i):
+        name = _person_from_subject(tok)
+        if name:
+            return name
+    return None
+
+
+def defendant_for_span(doc, start: int, end: int) -> Optional[str]:
+    """Person the sentencing clause is about, from the dependency parse.
+
+    "Judge Bredar sentenced Jones" has the judge as subject and Jones as object.
+    "Blaes was sentenced" has Blaes as the passive subject. The sentenced person
+    wins over the sentencer.
+    """
+    verb = _governing_sentence_verb(doc, start, end)
+    if verb is None:
+        return None
+    objects = [c for c in verb.children if c.dep_ in ("dobj", "obj") and c.text.strip(".,")]
+    passive = [c for c in verb.children if c.dep_ == "nsubjpass" and c.text.strip(".,")]
+    subjects = [c for c in verb.children if c.dep_ == "nsubj" and c.text.strip(".,")]
+    return _named_dependent(objects) or _named_dependent(passive) or _named_dependent(subjects)
+
+
+def attach_imposed_defendants(doc, assertions: List[Dict]) -> None:
+    """Record which defendant an imposed sentence's subject names. Does not change the value."""
+    if doc is None:
+        return
+    for assertion in assertions:
+        if assertion.get("field") != "sentence" or assertion.get("role") != "imposed":
+            continue
+        start, end = assertion.get("span_start"), assertion.get("span_end")
+        if start is None or end is None:
+            continue
+        name = defendant_for_span(doc, start, end)
+        if not name:
+            continue
+        extras = dict(assertion.get("extras") or {})
+        extras["defendant_entity"] = name
+        extras["sentence_subject"] = name
+        assertion["extras"] = extras
+
+
 def _raw(method, version, value, role, s, e, confidence, **extras):
     return {
         "field": "age", "method": method, "method_version": version, "value": value, "role": role,

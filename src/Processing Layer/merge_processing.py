@@ -257,7 +257,9 @@ class MergeProcessing:
                 doc_kind=merged.get("document_kind") or "press_release",
             )
             resolutions = amod.resolve(
-                assertions, batch_date=(merged.get("date_range") or {}).get("start")
+                assertions,
+                batch_date=(merged.get("date_range") or {}).get("start"),
+                text=merged.get("case_text") or "",
             )
         merged['assertions'] = assertions or []
         merged['resolutions'] = resolutions

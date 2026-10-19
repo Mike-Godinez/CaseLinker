@@ -79,9 +79,11 @@ def test_compare_finals_counts_a_value_that_disappears():
               "sentence": {"final_value": {"imposed": ["10 years"]}, "disagreement": {}}}
     after = {"age": {"final_value": {"victims": [], "perpetrators": [40], "contested": {"14": {"value": 14}}}},
              "sentence": {"final_value": {"imposed": ["10 years"]}, "disagreement": {}}}
-    added, vetoed = residue.compare_finals(before, after)
+    added, vetoed, added_pairs, vetoed_pairs = residue.compare_finals(before, after)
     assert added == 0
     assert vetoed == 1
+    assert vetoed_pairs == [("victims", "14")]
+    assert added_pairs == []
 
 
 def test_lvmpd_repeated_23_is_accepted_inside_its_window(monkeypatch, tmp_path):

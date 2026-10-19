@@ -15,6 +15,7 @@ Usage (repo root):
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import sys
 from pathlib import Path
@@ -74,14 +75,15 @@ def _bucket(resolutions: Dict[str, Dict[str, Any]]) -> Dict[str, set]:
     }
 
 
-def compare_finals(before: Dict[str, Dict], after: Dict[str, Dict]) -> Tuple[int, int]:
-    """(finals the LLM added, finals the LLM vetoed)."""
+def compare_finals(before: Dict[str, Dict], after: Dict[str, Dict]) -> Tuple[int, int, List[Tuple[str, str]], List[Tuple[str, str]]]:
+    """(added count, veto count, added (bucket, value) pairs, vetoed pairs)."""
     old, new = _bucket(before), _bucket(after)
-    added = vetoed = 0
+    added_pairs: List[Tuple[str, str]] = []
+    vetoed_pairs: List[Tuple[str, str]] = []
     for key in ("victims", "perpetrators", "imposed"):
-        added += len(new[key] - old[key])
-        vetoed += len(old[key] - new[key])
-    return added, vetoed
+        added_pairs.extend((key, str(value)) for value in sorted(new[key] - old[key], key=str))
+        vetoed_pairs.extend((key, str(value)) for value in sorted(old[key] - new[key], key=str))
+    return len(added_pairs), len(vetoed_pairs), added_pairs, vetoed_pairs
 
 
 def _rederive_legacy(storage, case: dict, assertions: list, resolutions: dict) -> None:
@@ -92,6 +94,7 @@ def _rederive_legacy(storage, case: dict, assertions: list, resolutions: dict) -
     merger._apply_resolved_ages(rebuilt, resolutions.get("age") or {})
     merger._apply_resolved_sentences(rebuilt, resolutions.get("sentence") or {})
     merger._apply_resolved_cybertip(rebuilt, resolutions.get("investigation_type") or {})
+    merger._apply_resolved_dates(rebuilt, resolutions.get("date") or {})
     storage.store_case(processing.assign_comparison_values(rebuilt))
 
 
@@ -105,7 +108,8 @@ def pass_case(storage, case_id: str, *, cfg: dict, cache, digest: str) -> Dict[s
         return {"status": "skipped_done"}
     case = storage.get_case(case_id) or {}
     text = case.get("case_text") or ""
-    before = amod.resolve(list(stored), batch_date=(case.get("date_range") or {}).get("start"))
+    batch_date = (case.get("date_range") or {}).get("start")
+    before = amod.resolve(list(stored), batch_date=batch_date, text=text)
     if not LLM.targets_from(before, stored):
         return {"status": "skipped_closed"}
     fresh, meta = LLM.run_llm(
@@ -115,17 +119,21 @@ def pass_case(storage, case_id: str, *, cfg: dict, cache, digest: str) -> Dict[s
     rejected = len(fresh) - len(grounded)
     if not grounded:
         return {"status": "called_empty", "meta": meta, "added": 0, "vetoed": 0, "rejected": rejected}
-    after = amod.resolve(list(stored) + grounded, batch_date=(case.get("date_range") or {}).get("start"))
-    added, vetoed = compare_finals(before, after)
+    after = amod.resolve(list(stored) + grounded, batch_date=batch_date, text=text)
+    added, vetoed, added_pairs, vetoed_pairs = compare_finals(before, after)
     storage.append_resolutions(case_id, run_id, after, grounded)
     if case:
         _rederive_legacy(storage, case, list(stored) + grounded, after)
-    return {"status": "called", "meta": meta, "added": added, "vetoed": vetoed, "rejected": rejected}
+    return {
+        "status": "called", "meta": meta, "added": added, "vetoed": vetoed, "rejected": rejected,
+        "added_pairs": added_pairs, "vetoed_pairs": vetoed_pairs,
+    }
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--case-ids", nargs="*", help="limit to these cases (default: all)")
+    parser.add_argument("--detail-out", type=Path, help="write one JSON object per case that added or vetoed a final")
     args = parser.parse_args()
     if not LLM.llm_enabled():
         print("CASELINKER_LLM is not set. Refusing to call the model.", file=sys.stderr)
@@ -140,12 +148,24 @@ def main() -> int:
     ids = args.case_ids or [c["id"] for c in storage.get_all_cases(include_raw_data=False)]
     counts = {"skipped_done": 0, "skipped_closed": 0, "called": 0, "called_empty": 0, "no_assertions": 0}
     added = vetoed = rejected = 0
+    details = []
     for case_id in ids:
         result = pass_case(storage, case_id, cfg=cfg, cache=cache, digest=digest)
         counts[result["status"]] = counts.get(result["status"], 0) + 1
         added += result.get("added") or 0
         vetoed += result.get("vetoed") or 0
         rejected += result.get("rejected") or 0
+        if result.get("added_pairs") or result.get("vetoed_pairs"):
+            details.append({
+                "case_id": case_id,
+                "added": result.get("added_pairs") or [],
+                "vetoed": result.get("vetoed_pairs") or [],
+            })
+    if args.detail_out:
+        args.detail_out.write_text(
+            "\n".join(json.dumps(row, ensure_ascii=False) for row in details) + ("\n" if details else ""),
+            encoding="utf-8",
+        )
     print(
         f"llm residue pass digest={digest} cases={len(ids)} "
         f"skipped_done={counts['skipped_done']} skipped_closed={counts['skipped_closed']} "

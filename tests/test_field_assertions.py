@@ -230,6 +230,144 @@ def test_325_defendant_age_27_is_not_a_victim():
     assert case["case_demographics"]["ages"] == [12]
 
 
+# A father "Ingram Sr." and his son "Ingram" are two defendants. The suffix is
+# part of who they are. Stripping it and matching the surname collapses the son
+# into the father and drops 24 from the perpetrator ages.
+SR_AND_SON = (
+    "PHOENIX – John Ingram Sr., 52, of Phoenix, was sentenced to 10 years in prison. "
+    "His son, John Ingram, 24, of Phoenix, was sentenced to 5 years in prison."
+)
+# Two different people, neither named, same age. Value equality is not identity.
+TWO_UNNAMED = (
+    "Police arrested a 40-year-old man in Tulsa and a 40-year-old man in Omaha. "
+    "Both men were charged with sexual exploitation of a minor."
+)
+
+
+def test_a_judges_suffix_does_not_become_the_defendants_name():
+    text = (
+        "Judge D.P. Marshall, Jr. Blair Michael Williams, 34, of Little Rock, "
+        "was sentenced to 10 years in prison."
+    )
+    _, res = run(text, "judge_suffix_leak")
+    entity = age_final(res)["perpetrator_entities"][0]["entity"] or ""
+    assert "Williams" in entity
+    assert "Jr" not in entity.split()
+
+
+def test_suffix_keeps_father_and_son_as_two_defendants():
+    _, res = run(SR_AND_SON, "suffix_father_son")
+    final = age_final(res)
+    assert final["perpetrators"] == [24, 52]
+    entities = final["perpetrator_entities"]
+    assert len(entities) == 2
+    by_age = {e["age"]: e["entity"] for e in entities}
+    assert "Sr" in (by_age[52] or "")
+    assert "Sr" not in (by_age[24] or "")
+
+
+def test_unnamed_defendants_of_the_same_age_stay_separate():
+    _, res = run(TWO_UNNAMED, "two_unnamed_40")
+    entities = age_final(res)["perpetrator_entities"]
+    assert len(entities) == 2
+    assert [e["age"] for e in entities] == [40, 40]
+
+
+def test_resolve_without_case_text_does_not_collapse_same_age_defendants():
+    """Forgetting text= must not invent that two mentions are one person."""
+    assertions = A.collect_assertions(TWO_UNNAMED, case_id="two_unnamed_no_text")
+    without = age_final(A.resolve(assertions))
+    with_text = age_final(A.resolve(assertions, text=TWO_UNNAMED))
+    assert len(without["perpetrator_entities"]) == 2
+    assert len(with_text["perpetrator_entities"]) == 2
+    assert without["perpetrators"] == with_text["perpetrators"] == [40]
+
+
+def test_a_repeated_nameless_age_is_one_defendant_unless_the_text_says_two():
+    text = (
+        "A 24-year-old Waterford man appeared in court charged with online child sexual exploitation. "
+        "The 24-year-old was arrested and charged with one count of producing child pornography."
+    )
+    _, res = run(text, "repeated_nameless_24")
+    entities = [e for e in age_final(res)["perpetrator_entities"] if e["age"] == 24]
+    assert len(entities) == 1
+
+
+def test_nameless_age_joins_the_only_named_defendant_of_that_age():
+    text = (
+        "A Celina man has been sentenced to four years. "
+        "The 35-year-old man was indicted on 88 charges. "
+        "Brian Evers, 35, of Celina, was sentenced to four years in prison."
+    )
+    _, res = run(text, "headline_and_name")
+    entities = age_final(res)["perpetrator_entities"]
+    named = [e for e in entities if e.get("entity") and "Evers" in e["entity"]]
+    assert len(named) == 1 and named[0]["age"] == 35
+    assert not any(e.get("entity") is None and e["age"] == 35 for e in entities)
+
+
+def test_nameless_age_stays_apart_when_the_wording_is_plural():
+    text = (
+        "Investigators arrested two 40-year-old men in Tulsa. "
+        "John Smith, 40, of Tulsa, was charged with sexual exploitation of a minor."
+    )
+    _, res = run(text, "two_men_40")
+    entities = age_final(res)["perpetrator_entities"]
+    assert any(e.get("entity") and "Smith" in e["entity"] and e["age"] == 40 for e in entities)
+    assert any(e.get("entity") is None and e["age"] == 40 for e in entities)
+
+
+def test_nameless_age_stays_apart_when_the_place_is_different():
+    text = (
+        "Police arrested a 40-year-old man in Tulsa. "
+        "John Smith, 40, of Omaha, was arrested and charged with sexual exploitation of a minor."
+    )
+    _, res = run(text, "two_places_40")
+    entities = age_final(res)["perpetrator_entities"]
+    assert any(e.get("entity") and "Smith" in e["entity"] and e["age"] == 40 for e in entities)
+    assert any(e.get("entity") is None and e["age"] == 40 for e in entities)
+
+
+# Surface family asserts both a victim noun and a defendant cue on one mention.
+# That family abstains and the age stays in review. The hold is a self-contradiction,
+# not an unknown role.
+SELF_CONTRADICTION = "The jailing of a 22-year-old student followed his arrest on the charge."
+
+
+def test_self_contradiction_hold_is_not_labeled_unknown():
+    _, res = run(SELF_CONTRADICTION, "self_contradiction_student")
+    final = age_final(res)
+    assert 22 not in (final.get("victims") or [])
+    assert 22 not in (final.get("perpetrators") or [])
+    reasons = [item["reason"] for item in res["age"]["review"]]
+    assert reasons == ["self_contradiction"]
+
+
+def test_imposed_sentence_attaches_to_the_person_sentenced_not_the_judge():
+    text = (
+        "U.S. District Judge James K. Bredar sentenced Margaret Ellen Jones, 38, of Parkville, "
+        "to 15 years in prison. John Andrew Blaes was sentenced to 27 years in prison."
+    )
+    case, _ = run(text, "judge_sentenced_defendant")
+    imposed = [a for a in case["assertions"] if a["field"] == "sentence" and a.get("role") == "imposed"]
+    by_value = {a["value"]: (a.get("extras") or {}).get("defendant_entity") or "" for a in imposed}
+    assert "Jones" in by_value.get("15 years", "")
+    assert "Bredar" not in by_value.get("15 years", "")
+    assert "Blaes" in by_value.get("27 years", "")
+
+
+def test_imposed_sentences_attach_to_the_subject_defendant():
+    """Each imposed term keeps a defendant on the assertion. The legacy list stays strings."""
+    case, res = run(SR_AND_SON, "suffix_father_son")
+    assert sentence_final(res)["imposed"] == ["10 years", "5 years"]
+    assert case["prosecution_outcome"]["sentences"] == ["10 years", "5 years"]
+    imposed = [a for a in case["assertions"] if a["field"] == "sentence" and a.get("role") == "imposed"]
+    by_value = {a["value"]: (a.get("extras") or {}).get("defendant_entity") for a in imposed}
+    assert "Sr" in (by_value.get("10 years") or "")
+    son = by_value.get("5 years") or ""
+    assert "Ingram" in son and "Sr" not in son
+
+
 def test_131_twenty_years_is_a_duration_not_an_age():
     case, res = run(C131, "doj_safe_childhood_2025_131")
     assert not any(a["field"] == "age" and a["value"] == 20 for a in case["assertions"])

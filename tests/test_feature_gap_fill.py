@@ -315,6 +315,18 @@ class TestLocationNerMapping(unittest.TestCase):
         self.assertIn(loc, spatial)
         self.assertIn(loc, mentions)
 
+    def test_stored_district_slugs_without_rereading_the_article(self):
+        """NER already stored the state. The mapper only slugs that string."""
+        mapper = cac.CaseToCAC()
+        case = {
+            **cac.AZICAC_2011_006_FIXTURE,
+            "id": "dist_tx",
+            "locations": ["Southern District of Texas"],
+            "case_text": "No district is named in this text.",
+        }
+        mapper.map_case(case)
+        self.assertIn("southern-district-of-texas", mapper._location_registry)
+
     def test_shared_singleton_across_cases(self):
         mapper = cac.CaseToCAC()
         g1, _ = mapper.map_case(

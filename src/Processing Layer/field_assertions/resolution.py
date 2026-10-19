@@ -24,6 +24,7 @@ them. Rules, per mention (one span of the original text):
 from __future__ import annotations
 
 import json
+import re
 from collections import defaultdict
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
@@ -104,14 +105,15 @@ def _vote(items: List[Dict]) -> Dict[str, Any]:
         "victim" in sc["roles"] and "perpetrator" in sc["roles"]
         for sc in self_contradictions
     ):
-        out["state"] = "unknown"
+        # The family saw both a victim and a defendant. That hold is not an unknown role.
+        out["state"] = "self_contradiction"
         return out
     if len(distinct) > 1:
         out["state"] = "contested"
         out["roles"] = {r: sorted(f for f, v in votes.items() if v == r) for r in distinct}
         return out
     if not distinct:
-        out["state"] = "unknown"
+        out["state"] = "self_contradiction" if self_contradictions else "unknown"
         return out
     role = distinct[0]
     fams = sorted(f for f, v in votes.items() if v == role)
@@ -131,6 +133,13 @@ def _vote(items: List[Dict]) -> Dict[str, Any]:
     return out
 
 
+def _age_review_reason(item: Dict) -> str:
+    """Self-contradiction is its own hold. Other open ages keep the age_<state> reason."""
+    if item.get("state") == "self_contradiction":
+        return "self_contradiction"
+    return f"age_{item.get('state') or 'unknown'}"
+
+
 def _mentions(assertions: List[Dict], field: str) -> Dict[Tuple[int, int], List[Dict]]:
     groups: Dict[Tuple[int, int], List[Dict]] = defaultdict(list)
     for a in assertions:
@@ -143,38 +152,189 @@ def _mentions(assertions: List[Dict], field: str) -> Dict[Tuple[int, int], List[
 # Ages
 # ---------------------------------------------------------------------------
 
-def _entity_key(a: Dict) -> Optional[str]:
-    ent = ((a.get("extras") or {}).get("entity") or "").strip()
-    toks = [t.strip(".,") for t in ent.split() if t.strip(".,") and t.strip(".,").lower() not in ("jr", "sr", "ii", "iii")]
+# Generational suffixes are part of who someone is. "Ingram Sr." is not "Ingram".
+_NAME_SUFFIXES = {"jr": "Jr", "sr": "Sr", "ii": "II", "iii": "III", "iv": "IV"}
+
+
+def _parse_entity(ent: str) -> Optional[Tuple[List[str], Optional[str]]]:
+    """(name tokens, normalized suffix) for a person-like string, or None."""
+    toks = [t.strip(".,") for t in (ent or "").split() if t.strip(".,")]
+    if not toks:
+        return None
+    suffix = _NAME_SUFFIXES.get(toks[-1].lower())
+    if suffix:
+        toks = toks[:-1]
+    # A Jr/Sr earlier in the string is someone else's ("Judge Marshall, Jr. Blair Williams").
+    toks = [t for t in toks if t.lower() not in _NAME_SUFFIXES]
     if not toks or not toks[-1][:1].isupper():
         return None
-    return " ".join(toks)
+    return toks, suffix
 
 
-def _collapse_perpetrators(perp_mentions: List[Tuple[int, Dict]]) -> List[Dict]:
-    """One age per perpetrator entity; time-qualified ages ("then 27") are kept as other_ages."""
+def _entity_key(a: Dict) -> Optional[str]:
+    parsed = _parse_entity(((a.get("extras") or {}).get("entity") or "").strip())
+    if not parsed:
+        return None
+    toks, suffix = parsed
+    name = " ".join(toks)
+    return f"{name} {suffix}" if suffix else name
+
+
+def _same_named_person(a: str, b: str) -> bool:
+    """Same person when the surname and suffix agree. A missing suffix is not a match."""
+    pa, pb = _parse_entity(a), _parse_entity(b)
+    if not pa or not pb:
+        return False
+    at, asu = pa
+    bt, bsu = pb
+    if asu != bsu or at[-1] != bt[-1]:
+        return False
+    return len(at) == 1 or len(bt) == 1 or at[0] == bt[0]
+
+
+_PLACE_IN_WINDOW = re.compile(r"\b(?:in|of|from)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)")
+_PLACE_MAN = re.compile(r"\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+(?:man|woman|defendant)\b")
+_NEXT_AGE = re.compile(r"\b\d{1,3}-year-old\b")
+_PLACE_STOP = frozenset({
+    "prison", "federal", "court", "custody", "jail", "years", "months",
+    "aggravated", "distribution", "possession", "sexual", "child", "internet",
+})
+_TWO_PEOPLE = re.compile(
+    r"\b(?:two|three|four|both|several)\s+(?:\d{1,3}-year-old\s+)?(?:men|women|defendants|suspects|people)\b|"
+    r"\b(?:another|a\s+second|the\s+other)\b.{0,40}\b(?:man|men|defendant|suspect|arrested|charged)\b|"
+    r"\b(?:also arrested|arrested separately|a separate arrest)\b",
+    re.I,
+)
+
+
+def _mention_span(support: List[Dict]) -> Optional[Tuple[int, int]]:
+    starts = [a["span_start"] for a in support if a.get("span_start") is not None]
+    ends = [a["span_end"] for a in support if a.get("span_end") is not None]
+    if not starts or not ends:
+        return None
+    return min(starts), max(ends)
+
+
+def _window(text: str, span: Optional[Tuple[int, int]]) -> str:
+    """The sentence that holds the mention, so a later place is not borrowed."""
+    if not text or not span:
+        return ""
+    start, end = span
+    left = text.rfind(".", 0, start)
+    left = 0 if left < 0 else left + 1
+    right = text.find(".", end)
+    right = len(text) if right < 0 else right + 1
+    return re.sub(r"\s+", " ", text[left:right])
+
+
+def _nearest_place(text: str, span: Optional[Tuple[int, int]]) -> Optional[str]:
+    """The place attached to this mention, not a later defendant's place."""
+    if not text or not span:
+        return None
+    _start, end = span
+    forward = re.sub(r"\s+", " ", text[end:end + 160])
+    cut = _NEXT_AGE.search(forward)
+    if cut:
+        forward = forward[:cut.start()]
+    dot = forward.find(".")
+    if dot >= 0:
+        forward = forward[:dot]
+    for match in _PLACE_IN_WINDOW.finditer(forward):
+        place = match.group(1).casefold()
+        if place not in _PLACE_STOP:
+            return place
+    man = _PLACE_MAN.search(forward)
+    if man and man.group(1).casefold() not in _PLACE_STOP:
+        return man.group(1).casefold()
+    return None
+
+
+def _two_people(text: Optional[str], left: Optional[Tuple[int, int]], right: Optional[Tuple[int, int]]) -> bool:
+    """Two mentions are two people when the wording says so.
+
+    Without case text the merge must not invent identity. Treat the mentions as
+    separate people so a caller that forgot ``text=`` cannot collapse them.
+    """
+    if not text:
+        return True
+    if _TWO_PEOPLE.search(_window(text, left)) or _TWO_PEOPLE.search(_window(text, right)):
+        return True
+    left_place = _nearest_place(text, left)
+    right_place = _nearest_place(text, right)
+    return bool(left_place and right_place and left_place != right_place)
+
+
+def _merge_same_unnamed(entities: List[Dict], text: Optional[str]) -> List[Dict]:
+    """Repeated nameless mentions of one age are one person unless the text says two."""
+    named = [ent for ent in entities if ent["entity"]]
+    unnamed = [ent for ent in entities if not ent["entity"]]
+    used: Set[int] = set()
+    groups: List[Dict] = []
+    for i, ent in enumerate(unnamed):
+        if i in used:
+            continue
+        used.add(i)
+        for j in range(i + 1, len(unnamed)):
+            if j in used or set(ent["ages"]).isdisjoint(unnamed[j]["ages"]):
+                continue
+            left = ent["spans"][0] if ent["spans"] else None
+            right = unnamed[j]["spans"][0] if unnamed[j]["spans"] else None
+            if _two_people(text, left, right):
+                continue
+            ent["ages"].extend(unnamed[j]["ages"])
+            ent["qualified"].extend(unnamed[j]["qualified"])
+            ent["spans"].extend(unnamed[j]["spans"])
+            used.add(j)
+        groups.append(ent)
+    return named + groups
+
+
+def _collapse_perpetrators(perp_mentions: List[Tuple[int, Dict]], text: Optional[str] = None) -> List[Dict]:
+    """One age per perpetrator entity; time-qualified ages ("then 27") are kept as other_ages.
+
+    A suffix distinguishes people. A nameless mention joins the only named
+    defendant of that age, and repeated nameless mentions of one age join each
+    other. They stay separate when the text shows two people: a plural, a
+    different place, or a separate arrest.
+    """
     entities: List[Dict] = []
     for value, vote in perp_mentions:
         support = vote["support"]
         name = next((k for k in (_entity_key(a) for a in support) if k), None)
         qualified = any((a.get("extras") or {}).get("time_qualifier") for a in support)
+        span = _mention_span(support)
         target = None
-        for ent in entities:
-            if name and ent["entity"] and name.split()[-1] == ent["entity"].split()[-1]:
-                a, b = name.split(), ent["entity"].split()
-                if len(a) == 1 or len(b) == 1 or a[0] == b[0]:
+        if name:
+            for ent in entities:
+                if ent["entity"] and _same_named_person(name, ent["entity"]):
                     target = ent
                     break
-            if not name and value in ent["ages"]:
-                target = ent
-                break
         if target is None:
-            target = {"entity": name, "ages": [], "qualified": []}
+            target = {"entity": name, "ages": [], "qualified": [], "spans": []}
             entities.append(target)
         elif name and (not target["entity"] or len(name) > len(target["entity"])):
             target["entity"] = name
         target["ages"].append(value)
         target["qualified"].append(qualified)
+        if span:
+            target["spans"].append(span)
+    named = [ent for ent in entities if ent["entity"]]
+    kept: List[Dict] = []
+    for ent in entities:
+        if ent["entity"] or not ent["ages"]:
+            kept.append(ent)
+            continue
+        age = ent["ages"][0]
+        matches = [other for other in named if age in other["ages"]]
+        unnamed_span = ent["spans"][0] if ent["spans"] else None
+        named_span = matches[0]["spans"][0] if len(matches) == 1 and matches[0]["spans"] else None
+        if len(matches) == 1 and not _two_people(text, unnamed_span, named_span):
+            matches[0]["ages"].extend(ent["ages"])
+            matches[0]["qualified"].extend(ent["qualified"])
+            matches[0]["spans"].extend(ent["spans"])
+            continue
+        kept.append(ent)
+    entities = _merge_same_unnamed(kept, text)
     out = []
     for ent in entities:
         unqualified = [v for v, q in zip(ent["ages"], ent["qualified"]) if not q]
@@ -187,7 +347,7 @@ def _collapse_perpetrators(perp_mentions: List[Tuple[int, Dict]]) -> List[Dict]:
     return out
 
 
-def resolve_age(assertions: List[Dict]) -> Dict:
+def resolve_age(assertions: List[Dict], text: Optional[str] = None) -> Dict:
     mentions = _mentions(assertions, "age")
     if not mentions:
         return _result("age", "empty", None, "no_assertions")
@@ -271,7 +431,7 @@ def resolve_age(assertions: List[Dict]) -> Dict:
 
     settled_values = set(victims) | {v for v, _ in perp_mentions} | {v for v, _ in excluded}
     needs = [u for u in unresolved if u["value"] not in settled_values]
-    perp_entities = _collapse_perpetrators(perp_mentions)
+    perp_entities = _collapse_perpetrators(perp_mentions, text)
     final = {
         "victims": sorted(victims),
         "perpetrators": sorted({p["age"] for p in perp_entities}),
@@ -282,7 +442,7 @@ def resolve_age(assertions: List[Dict]) -> Dict:
     }
     disagreement = {"contested": contested, "self_contradictions": self_contradictions}
     review = [{"reason": "contested", **c} for c in contested.values()]
-    review += [{"reason": f"age_{u['state']}", **u} for u in needs]
+    review += [{"reason": _age_review_reason(u), **u} for u in needs]
     has_final = bool(final["victims"] or final["perpetrators"])
     if has_final and not contested and not needs:
         status, rule = ("agreed", "family_agreement") if all_multi_family else ("resolved", "single_family_resolved")
@@ -466,10 +626,9 @@ def resolve_case(
     batch_date: Optional[str] = None,
     text: Optional[str] = None,
 ) -> Dict[str, Dict]:
-    """Resolve every field. ``text`` is reserved for narrative-aware age collapse."""
-    _ = text
+    """Resolve every field. ``text`` drives narrative-aware age collapse."""
     return {
-        "age": resolve_age(assertions),
+        "age": resolve_age(assertions, text),
         "sentence": resolve_sentence(assertions),
         "investigation_type": resolve_investigation_type(assertions),
         "date": resolve_date(assertions, batch_date),

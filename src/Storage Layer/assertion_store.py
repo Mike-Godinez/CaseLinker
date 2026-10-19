@@ -165,6 +165,61 @@ def write_case_assertions(
     return seq_to_id
 
 
+def _review_mention_key(item: Dict[str, Any]) -> str:
+    """An open mention. A later pass of the same span and value is the same queue row."""
+    if isinstance(item, dict) and (item.get("span") is not None or "value" in item):
+        return _dumps({"span": item.get("span"), "value": item.get("value")})
+    return _dumps(item)
+
+
+def _open_review_mentions(cursor: Any, case_id: str, field: str, dialect: str) -> set:
+    ph = _ph(dialect)
+    cursor.execute(
+        f"SELECT detail_json FROM review_queue WHERE case_id = {ph} AND field = {ph} AND status = 'open'",
+        (case_id, field),
+    )
+    keys = set()
+    for row in cursor.fetchall():
+        raw = row["detail_json"] if isinstance(row, dict) else row[0]
+        try:
+            item = json.loads(raw or "{}")
+        except json.JSONDecodeError:
+            continue
+        if isinstance(item, dict):
+            keys.add(_review_mention_key(item))
+    return keys
+
+
+def _close_stale_review_mentions(
+    cursor: Any,
+    *,
+    case_id: str,
+    field: str,
+    keep_keys: set,
+    dialect: str,
+) -> None:
+    """Close open queue rows whose mention is no longer in this resolution's review list."""
+    ph = _ph(dialect)
+    cursor.execute(
+        f"SELECT id, detail_json FROM review_queue WHERE case_id = {ph} AND field = {ph} AND status = 'open'",
+        (case_id, field),
+    )
+    for row in cursor.fetchall():
+        row_id = row["id"] if isinstance(row, dict) else row[0]
+        raw = row["detail_json"] if isinstance(row, dict) else row[1]
+        try:
+            item = json.loads(raw or "{}")
+        except json.JSONDecodeError:
+            item = {}
+        key = _review_mention_key(item) if isinstance(item, dict) else _dumps(item)
+        if key in keep_keys:
+            continue
+        cursor.execute(
+            f"UPDATE review_queue SET status = 'closed' WHERE id = {ph}",
+            (row_id,),
+        )
+
+
 def write_resolutions(
     cursor: Any,
     *,
@@ -185,12 +240,22 @@ def write_resolutions(
                 _dumps(res.get("final_value")), _dumps(sorted(winning)), _dumps(res.get("disagreement") or {}),
             ),
         )
-        for item in res.get("review") or []:
+        review_items = res.get("review") or []
+        keep_keys = {_review_mention_key(item) for item in review_items}
+        open_mentions = _open_review_mentions(cursor, case_id, field, dialect)
+        for item in review_items:
+            key = _review_mention_key(item)
+            if key in open_mentions:
+                continue
             cursor.execute(
                 f"""INSERT INTO review_queue (run_id, case_id, field, rule_set_version, reason, detail_json)
                     VALUES ({", ".join([ph] * 6)})""",
                 (run_id, case_id, field, res["rule_set_version"], item.get("reason", "review"), _dumps(item)),
             )
+            open_mentions.add(key)
+        _close_stale_review_mentions(
+            cursor, case_id=case_id, field=field, keep_keys=keep_keys, dialect=dialect,
+        )
 
 
 def _rows(cursor: Any) -> List[Dict[str, Any]]:
