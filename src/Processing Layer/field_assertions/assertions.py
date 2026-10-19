@@ -212,6 +212,7 @@ def _press_spacy(ctx: detectors.DetectorContext) -> List[Dict]:
         if nlp is None:
             return []
         doc = nlp(ctx.text)
+        ctx.spacy_doc = doc
     return spacy_patterns.dependency_assertions(doc, ctx.mentions) + spacy_patterns.token_assertions(doc, ctx.mentions)
 
 
@@ -289,7 +290,11 @@ def collect_assertions(
     raw: List[Dict] = []
     for det in detectors.detectors_for(doc_kind):
         raw.extend(det.fn(ctx) or [])
-    return [g for g in (gate_assertion(text, a) for a in raw) if g["span_ok"] or g["method"] in ("llm", "human")]
+    gated = [g for g in (gate_assertion(text, a) for a in raw) if g["span_ok"] or g["method"] in ("llm", "human")]
+    # Imposed terms stay a flat list. The subject of the sentencing clause is an extra.
+    if ctx.spacy_doc is not None:
+        spacy_patterns.attach_imposed_defendants(ctx.spacy_doc, gated)
+    return gated
 
 
 def resolve(
@@ -300,8 +305,7 @@ def resolve(
 ) -> Dict[str, Dict]:
     """Resolve; unsaved assertions get a negative ``seq`` (never a row id) that storage maps to row ids.
 
-    ``text`` is accepted so ingest can pass case text. Callers that only mint
-    ids may ignore it; resolution that uses the narrative will read it.
+    ``text`` is the case narrative for age collapse and related rules.
     """
     for pos, a in enumerate(assertions):
         if a.get("id") is None:

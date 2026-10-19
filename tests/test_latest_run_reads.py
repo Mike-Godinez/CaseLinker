@@ -101,3 +101,80 @@ def test_readers_ignore_an_earlier_run_on_the_same_case_id(tmp_path: Path):
     listed = {item["case_id"] for item in disagreements["items"]}
     assert "doj_safe_childhood_2026_001" not in listed
     assert "doj_ceos_gone" not in listed
+
+
+def test_review_queue_does_not_append_a_second_open_copy_of_the_same_mention(tmp_path: Path):
+    """Re-resolving an open mention must not add another open review_queue row."""
+    storage = CaseStorage(str(tmp_path / "t.db"))
+    storage.store_case({
+        "id": "review_dup",
+        "source": "TEST",
+        "raw_data": {"source_file": "t.pdf", "case_text": "open mention", "case_id": "review_dup"},
+    })
+    review = [{"reason": "age_weak", "value": 14, "span": [10, 12], "state": "weak"}]
+    resolutions = _resolution("age", "needs_review", "weak-age")
+    resolutions["age"]["review"] = review
+    conn = sqlite3.connect(tmp_path / "t.db")
+    cur = conn.cursor()
+    write_case_assertions(
+        cur,
+        case_id="review_dup",
+        run_id="run-1",
+        assertions=[_assertion("fourteen")],
+        resolutions=resolutions,
+        dialect="sqlite",
+    )
+    conn.commit()
+    conn.close()
+
+    storage.append_resolutions("review_dup", "run-1", resolutions)
+    conn = sqlite3.connect(tmp_path / "t.db")
+    rows = conn.execute(
+        "SELECT reason, detail_json, status FROM review_queue WHERE case_id = ?",
+        ("review_dup",),
+    ).fetchall()
+    conn.close()
+    assert len(rows) == 1
+    assert rows[0][0] == "age_weak"
+    assert rows[0][2] == "open"
+    disagreements = storage.get_field_disagreements()
+    listed = [item["case_id"] for item in disagreements["items"]]
+    assert listed.count("review_dup") == 1
+
+
+def test_review_queue_closes_when_a_later_resolution_settles(tmp_path: Path):
+    """An open mention must not stay open after the field resolves cleanly."""
+    storage = CaseStorage(str(tmp_path / "t.db"))
+    storage.store_case({
+        "id": "review_settle",
+        "source": "TEST",
+        "raw_data": {"source_file": "t.pdf", "case_text": "settled", "case_id": "review_settle"},
+    })
+    open_res = _resolution("age", "needs_review", "weak-age")
+    open_res["age"]["review"] = [{"reason": "age_weak", "value": 14, "span": [10, 12], "state": "weak"}]
+    conn = sqlite3.connect(tmp_path / "t.db")
+    cur = conn.cursor()
+    write_case_assertions(
+        cur,
+        case_id="review_settle",
+        run_id="run-1",
+        assertions=[_assertion("fourteen")],
+        resolutions=open_res,
+        dialect="sqlite",
+    )
+    conn.commit()
+    conn.close()
+
+    settled = _resolution("age", "resolved", "family_agreement")
+    settled["age"]["final_value"] = {"victims": [], "perpetrators": [14]}
+    settled["age"]["review"] = []
+    storage.append_resolutions("review_settle", "run-1", settled)
+
+    conn = sqlite3.connect(tmp_path / "t.db")
+    rows = conn.execute(
+        "SELECT status FROM review_queue WHERE case_id = ?",
+        ("review_settle",),
+    ).fetchall()
+    conn.close()
+    assert rows == [("closed",)]
+    assert storage.get_field_disagreements()["items"] == []
