@@ -22,9 +22,18 @@ from datetime import datetime
 
 from case_storage_utils import (
     CaseIdCollision,
+    EXTRACTED_FEATURE_FIELDS,
     dumps_json_safe,
     hydrate_case_text_from_raw_data,
+    merge_extracted_feature_fields,
     slim_extracted_features_for_storage,
+)
+from fingerprint_store import (
+    apply_fingerprint_schema,
+    backfill_fingerprints,
+    fingerprint_rows,
+    load_fingerprint_index,
+    write_case_fingerprint,
 )
 
 try:
@@ -97,47 +106,6 @@ def return_connection(conn):
     """Return connection to pool"""
     pool = get_pool()
     pool.putconn(conn)
-
-
-# Fields stored inside extracted_features and copied onto the case dict.
-# Every loader must use this list. get_all_cases once omitted perpetrator_gender,
-# so /api/stats skipped 309 stored values that get_case already returned.
-EXTRACTED_FEATURE_FIELDS = (
-    "perpetrator_age",
-    "perpetrator_gender",
-    "perpetrator_registered_sex_offender",
-    "press_digest_pollution",
-    "multi_defendant_operation",
-    "agencies_involved",
-    "organizations",
-    "locations",
-    "investigation_type",
-    "investigation_types",
-    "evidence_volume",
-    "prosecution_outcome",
-    "case_demographics",
-    "victim_demographics",
-    "relationship_to_victim",
-    "severity_phrases",
-    "perpetrator_admissions",
-    "perpetrator_admission_themes",
-    "case_text",
-    "comparison_values",
-    "investigation_technology",
-    "anonymization_network",
-    "p2p_clients",
-    "offense_technology",
-)
-
-
-def merge_extracted_feature_fields(case_dict: Dict[str, Any]) -> None:
-    """Copy stored feature fields onto the case dict. Missing keys stay absent."""
-    extracted = case_dict.get("extracted_features") or {}
-    if not isinstance(extracted, dict):
-        return
-    for key in EXTRACTED_FEATURE_FIELDS:
-        if key in extracted:
-            case_dict[key] = extracted[key]
 
 
 class CaseStorage:
@@ -221,6 +189,7 @@ class CaseStorage:
             )
             apply_postgres_provenance_schema(cursor)
             apply_assertion_schema(cursor, "postgres")
+            apply_fingerprint_schema(cursor, "postgres")
             
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS victim_demographics (
@@ -487,31 +456,36 @@ class CaseStorage:
                 resolutions=case['resolutions'],
                 dialect="postgres",
             )
+        write_case_fingerprint(cursor, case, "postgres")
 
         return True
 
-    def store_case(self, case: Dict[str, Any]) -> bool:
+    def store_case(self, case: Dict[str, Any], *, _conn=None) -> bool:
         """
         Store a single case in the database.
         Preserves raw data while storing normalized fields.
-        
+
+        ``_conn`` keeps the write inside a caller's transaction. The caller commits.
+
         Args:
             case: Case dictionary from processing layer
-            
+
         Returns:
             True if successful, False otherwise
         """
-        conn = None
+        own = _conn is None
+        conn = _conn
         cursor = None
         try:
-            conn = get_connection()
+            if conn is None:
+                conn = get_connection()
             cursor = conn.cursor()
             ok = self._store_case_on_cursor(cursor, case)
-            if ok:
+            if ok and own:
                 conn.commit()
             return ok
         except CaseIdCollision:
-            if conn is not None:
+            if own and conn is not None:
                 try:
                     conn.rollback()
                 except Exception:
@@ -521,7 +495,7 @@ class CaseStorage:
             print(f"Error storing case: {e}")
             import traceback
             traceback.print_exc()
-            if conn is not None:
+            if own and conn is not None:
                 try:
                     conn.rollback()
                 except Exception:
@@ -533,7 +507,7 @@ class CaseStorage:
                     cursor.close()
                 except Exception:
                     pass
-            if conn is not None:
+            if own and conn is not None:
                 return_connection(conn)
 
     def _commit_case_batch(self, conn, cursor, batch: List[Dict[str, Any]]) -> int:
@@ -576,6 +550,37 @@ class CaseStorage:
                     except Exception:
                         pass
             return stored
+
+    def load_fingerprint_index(self):
+        """Every stored id, and the fingerprint map. Read-only aside from the caller's connection."""
+        conn = get_connection()
+        cursor = conn.cursor()
+        try:
+            return load_fingerprint_index(cursor, "postgres")
+        finally:
+            cursor.close()
+            return_connection(conn)
+
+    def fingerprint_rows(self) -> List[Dict[str, str]]:
+        conn = get_connection()
+        cursor = conn.cursor()
+        try:
+            return fingerprint_rows(cursor)
+        finally:
+            cursor.close()
+            return_connection(conn)
+
+    def backfill_fingerprints(self) -> Dict[str, Any]:
+        """Map every current id. Does not change any case id."""
+        conn = get_connection()
+        cursor = conn.cursor()
+        try:
+            report = backfill_fingerprints(cursor, "postgres")
+            conn.commit()
+            return report
+        finally:
+            cursor.close()
+            return_connection(conn)
 
     def store_cases(self, cases: List[Dict[str, Any]]) -> int:
         """
@@ -764,9 +769,15 @@ class CaseStorage:
         run_id: str,
         resolutions: Dict[str, Dict[str, Any]],
         new_assertions: Optional[List[Dict[str, Any]]] = None,
+        *,
+        _conn=None,
     ) -> None:
-        """Append re-resolution rows (and any new human assertions); never edits existing rows."""
-        conn = get_connection()
+        """Append re-resolution rows (and any new human assertions); never edits existing rows.
+
+        ``_conn`` keeps the write inside a caller's transaction. The caller commits.
+        """
+        own = _conn is None
+        conn = _conn if _conn is not None else get_connection()
         try:
             cursor = conn.cursor()
             if new_assertions:
@@ -774,7 +785,39 @@ class CaseStorage:
                                       resolutions=resolutions, dialect="postgres")
             else:
                 write_resolutions(cursor, case_id=case_id, run_id=run_id, resolutions=resolutions, dialect="postgres")
+            if own:
+                conn.commit()
+        finally:
+            if own:
+                return_connection(conn)
+
+    def apply_reresolve_batch(self, items: List[Dict[str, Any]]) -> int:
+        """Write re-resolution rows for many cases in one transaction.
+
+        Each item has case_id, run_id, resolutions, and optionally new_assertions and case.
+        The case dict is the legacy re-derive and must not itself carry resolutions.
+        """
+        conn = get_connection()
+        try:
+            for item in items:
+                self.append_resolutions(
+                    item["case_id"],
+                    item["run_id"],
+                    item["resolutions"],
+                    item.get("new_assertions"),
+                    _conn=conn,
+                )
+                if item.get("case") is not None:
+                    if not self.store_case(item["case"], _conn=conn):
+                        raise RuntimeError(f"store_case failed for {item['case_id']}")
             conn.commit()
+            return len(items)
+        except Exception:
+            try:
+                conn.rollback()
+            except Exception:
+                pass
+            raise
         finally:
             return_connection(conn)
     

@@ -460,7 +460,14 @@ def resolve_date(assertions: List[Dict], batch_date: Optional[str] = None) -> Di
     return _result("date", "resolved", final, "temporal_roles", pub)
 
 
-def resolve_case(assertions: List[Dict], *, batch_date: Optional[str] = None) -> Dict[str, Dict]:
+def resolve_case(
+    assertions: List[Dict],
+    *,
+    batch_date: Optional[str] = None,
+    text: Optional[str] = None,
+) -> Dict[str, Dict]:
+    """Resolve every field. ``text`` is reserved for narrative-aware age collapse."""
+    _ = text
     return {
         "age": resolve_age(assertions),
         "sentence": resolve_sentence(assertions),

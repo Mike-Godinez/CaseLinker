@@ -169,7 +169,7 @@ def _extract_source_url(case_text: str) -> str:
     return ""
 
 
-def process_cases(df):
+def process_cases(df, fingerprint_index=None):
     """
     Process cases: batch → pattern extract → NER extract → merge → comparison values.
     
@@ -250,7 +250,13 @@ def process_cases(df):
             if org_match:
                 org_name = org_match.group(1).lower()
         
-        case_batches = case_batching(extracted_text, org_name=org_name, source=source, source_file=source_file)
+        case_batches = case_batching(
+            extracted_text,
+            org_name=org_name,
+            source=source,
+            source_file=source_file,
+            fingerprint_index=fingerprint_index,
+        )
         
         # Store batches with metadata for processing
         for case_batch in case_batches:
@@ -407,7 +413,7 @@ def process_cases(df):
         stages["assertions"] += time.perf_counter() - t_assert
         batch_date = (pattern_features.get('date_range') or {}).get('start')
         t_resolve = time.perf_counter()
-        resolutions = assertions_module.resolve(assertions, batch_date=batch_date)
+        resolutions = assertions_module.resolve(assertions, batch_date=batch_date, text=case_text)
         stages["resolve"] += time.perf_counter() - t_resolve
         if llm_cfg:
             llm_assertions, _meta = llm_module.run_llm(
@@ -416,7 +422,7 @@ def process_cases(df):
             )
             if llm_assertions:
                 assertions = assertions + llm_assertions
-                resolutions = assertions_module.resolve(assertions, batch_date=batch_date)
+                resolutions = assertions_module.resolve(assertions, batch_date=batch_date, text=case_text)
 
         t_merge = time.perf_counter()
         merged_features = merger.merge_features(

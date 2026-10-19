@@ -292,9 +292,18 @@ def collect_assertions(
     return [g for g in (gate_assertion(text, a) for a in raw) if g["span_ok"] or g["method"] in ("llm", "human")]
 
 
-def resolve(assertions: List[Dict], *, batch_date: Optional[str] = None) -> Dict[str, Dict]:
-    """Resolve; unsaved assertions get a negative ``seq`` (never a row id) that storage maps to row ids."""
+def resolve(
+    assertions: List[Dict],
+    *,
+    batch_date: Optional[str] = None,
+    text: Optional[str] = None,
+) -> Dict[str, Dict]:
+    """Resolve; unsaved assertions get a negative ``seq`` (never a row id) that storage maps to row ids.
+
+    ``text`` is accepted so ingest can pass case text. Callers that only mint
+    ids may ignore it; resolution that uses the narrative will read it.
+    """
     for pos, a in enumerate(assertions):
         if a.get("id") is None:
             a["seq"] = -(pos + 1)
-    return resolution.resolve_case(assertions, batch_date=batch_date)
+    return resolution.resolve_case(assertions, batch_date=batch_date, text=text)
