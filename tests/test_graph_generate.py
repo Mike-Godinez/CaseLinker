@@ -118,3 +118,31 @@ def test_railway_resource_iri_is_not_marked_done(tmp_path, monkeypatch):
     assert result["generated"] == []
     assert "railway resource IRI" in result["failed"][0]["reason"]
     assert not (out / "done.txt").exists()
+
+
+def test_flat_case_jsonld_and_dataset_jsonld_both_yield_nodes():
+    """Patterns reads the flat Phase 3 files and the older named-graph files."""
+    import json
+
+    from merge_graph_cache import flatten_named_graphs
+
+    flat_path = ONTOLOGY / "graph_output" / "doj_ceos_2025_007.jsonld"
+    flat = json.loads(flat_path.read_text())
+    nodes = flatten_named_graphs(flat)
+    assert len(nodes) == len(flat) == 42
+    assert any(n["@id"].endswith("/case/doj_ceos_2025_007") for n in nodes)
+
+    dataset = [
+        {
+            "@id": "https://w3id.org/caselinker/resource/graphs/deterministic",
+            "@graph": [{"@id": "https://w3id.org/caselinker/resource/case/aa"}],
+        },
+        {
+            "@id": "https://w3id.org/caselinker/resource/graphs/nlp",
+            "@graph": [{"@id": "https://w3id.org/caselinker/resource/case/aa/nlp/score"}],
+        },
+    ]
+    parsed = flatten_named_graphs(dataset)
+    by_id = {n["@id"]: n for n in parsed}
+    assert by_id["https://w3id.org/caselinker/resource/case/aa"].get("_isNlp") is not True
+    assert by_id["https://w3id.org/caselinker/resource/case/aa/nlp/score"]["_isNlp"] is True

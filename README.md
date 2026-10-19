@@ -240,16 +240,17 @@ Each case runs through the four-layer extractor. Every layer writes its own asse
 
 ```mermaid
 flowchart LR
-  T["Case text"] --> SP["Surface patterns"]
-  T --> DP["Dependency parse"]
-  T --> NER["Stanza NER"]
-  T --> X["Statute lookup · temporal tags<br/>human overrides"]
-  SP & DP & NER & X --> G["Span gate"]
-  G --> RES["resolve_v3.0"]
-  RES -- "open mentions" --> LLM["Local LLM<br/>(optional)"]
-  LLM --> G
-  RES --> C["Case fields"]
-  RES --> PR["Assertions + provenance graph"]
+  T["Case text<br/>press release"] --> SP["Surface patterns<br/>regex · token patterns"]
+  T --> DP["Dependency parse<br/>spaCy grammar"]
+  T --> NER["Stanza NER<br/>entities"]
+  SP & DP & NER --> G["Span gate<br/>needs a passage"]
+  G --> RES["Resolver<br/>evidence-family vote"]
+  RES -- "open mentions" --> LLM["Local LLM<br/>optional fourth witness"]
+  LLM -- "quoted evidence" --> G
+  RES -.->|"proposed rules, human-approved"| SP
+  RES --> CF["Case features<br/>settled values"]
+  RES --> RQ["Review queue<br/>disputed values"]
+  RES --> PG["Provenance graph<br/>attribution for every value"]
 ```
 
 ## Using the Visualizations

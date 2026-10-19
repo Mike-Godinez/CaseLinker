@@ -49,6 +49,69 @@ def _sample():
     return assertions, resolutions
 
 
+def test_resolution_only_graph_has_the_case_hop_and_no_annotations():
+    """An extraction that stored empty resolutions and no assertions still exports."""
+    graph = build_provenance_graph(
+        "brazil_pf_2026_001",
+        [],
+        {
+            "age": {
+                "status": "empty",
+                "rule_id": "no_assertions",
+                "rule_set_version": "resolve_v3.0",
+                "run_id": "run_empty",
+            },
+            "sentence": {
+                "status": "empty",
+                "rule_id": "no_assertions",
+                "rule_set_version": "resolve_v3.0",
+                "run_id": "run_empty",
+            },
+        },
+        run_id="run_empty",
+    )
+    conforms, report = validate_provenance(graph)
+    assert conforms, report
+    assert graph_uses_case_roles(graph) is False
+    assert not any(graph.triples((None, RDF.type, OA.Annotation)))
+    case = URIRef("https://w3id.org/caselinker/resource/case/brazil_pf_2026_001")
+    activity = next(graph.subjects(RDF.type, PROV.Activity))
+    assert (case, PROV.wasGeneratedBy, activity) in graph
+    statuses = {str(o) for o in graph.objects(None, CL.resolutionStatus)}
+    assert statuses == {"empty"}
+
+
+def test_export_writes_sidecar_for_resolution_only_case(tmp_path):
+    class _Store:
+        def get_case_assertions(self, case_id, field=None):
+            return {
+                "case_id": case_id,
+                "run_id": "run_empty",
+                "assertions": [],
+                "resolutions": {
+                    "age": {
+                        "status": "empty",
+                        "rule_id": "no_assertions",
+                        "rule_set_version": "resolve_v3.0",
+                        "run_id": "run_empty",
+                    }
+                },
+            }
+
+        def extraction_run_started_at(self, run_id):
+            return "2026-10-18T04:51:27.469384Z"
+
+    path = __import__("provenance_export").export_stored_case(
+        "brazil_pf_2026_001", tmp_path, _Store()
+    )
+    assert path is not None
+    graph = __import__("rdflib").Graph()
+    graph.parse(path, format="turtle")
+    conforms, report = validate_provenance(graph)
+    assert conforms, report
+    assert not any(graph.triples((None, RDF.type, OA.Annotation)))
+
+
 def test_provenance_graph_validates_and_keeps_decoys_off_case_roles():
     graph = build_provenance_graph(
         "example_case", *_sample(), run_id="run_test", issued_at="2026-10-17T18:00:00.000000Z"

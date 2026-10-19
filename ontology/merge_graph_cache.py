@@ -44,6 +44,9 @@ ANALYSIS_IDS_FILE = ONTOLOGY / "analysis_ids.txt"
 CACHE_DIR = ONTOLOGY / "cache"
 COMPARE_IDS_FILE = ONTOLOGY / "selected_200_ids.txt"
 NLP_GRAPH_RE = re.compile(r"/graphs/nlp$")
+# Bumps the merged-graph cache when the JSON-LD reader changes. A cache built
+# by the old reader stored empty node lists for Phase 3's flat files.
+MERGE_READER = "phase3-flat-v1"
 
 _POOL_CACHE_FILES = {
     "compare": CACHE_DIR / "merged_compare.json",
@@ -91,25 +94,36 @@ def graph_manifest(graph_dir: Optional[Path] = None) -> str:
     return hashlib.sha256("\n".join(parts).encode()).hexdigest()[:16]
 
 
-def flatten_named_graphs(json_ld: Any) -> List[Dict[str, Any]]:
-    nodes: List[Dict[str, Any]] = []
-    if isinstance(json_ld, dict):
-        graphs = [json_ld]
-    elif isinstance(json_ld, list):
-        graphs = json_ld
-    else:
-        return nodes
+def _is_named_graph_doc(obj: Any) -> bool:
+    return isinstance(obj, dict) and isinstance(obj.get("@graph"), list)
 
-    for named in graphs:
-        is_nlp = bool(
-            isinstance(named, dict)
-            and NLP_GRAPH_RE.search(str(named.get("@id") or ""))
-        )
-        for node in named.get("@graph") or []:
-            if not isinstance(node, dict) or not node.get("@id"):
+
+def flatten_named_graphs(json_ld: Any) -> List[Dict[str, Any]]:
+    """Nodes from a Dataset (``{@id, @graph}``) or a flat JSON-LD node list.
+
+    Phase 3 case files are a flat list. Older files and PACER documents wrap
+    the nodes in named graphs. NLP nodes stay marked either way.
+    """
+    if isinstance(json_ld, dict):
+        docs: List[Any] = [json_ld]
+    elif isinstance(json_ld, list):
+        docs = json_ld
+    else:
+        return []
+    if docs and not any(_is_named_graph_doc(item) for item in docs):
+        docs = [{"@graph": docs}]
+
+    nodes: List[Dict[str, Any]] = []
+    for named in docs:
+        if not isinstance(named, dict):
+            continue
+        is_nlp = bool(NLP_GRAPH_RE.search(str(named.get("@id") or "")))
+        body = named.get("@graph") if _is_named_graph_doc(named) else [named]
+        for node in body or []:
+            if not isinstance(node, dict) or not node.get("@id") or _is_named_graph_doc(node):
                 continue
             copy = dict(node)
-            if is_nlp:
+            if is_nlp or "/nlp/" in str(node.get("@id")):
                 copy["_isNlp"] = True
             nodes.append(copy)
     return nodes
@@ -213,7 +227,11 @@ def load_merged_payload(pool: str) -> Optional[Dict[str, Any]]:
         else:
             raw = path.read_text()
         payload = json.loads(raw)
-        if payload.get("manifest") == manifest and payload.get("pool") == pool:
+        if (
+            payload.get("manifest") == manifest
+            and payload.get("pool") == pool
+            and payload.get("reader") == MERGE_READER
+        ):
             return payload
     except (json.JSONDecodeError, OSError):
         pass
@@ -226,6 +244,7 @@ def save_merged_payload(pool: str, flat: List[Dict[str, Any]], case_ids: List[st
     manifest = graph_manifest(d)
     payload = {
         "pool": pool,
+        "reader": MERGE_READER,
         "manifest": manifest,
         "n_cases": len(case_ids),
         "n_nodes": len(flat),
@@ -251,7 +270,7 @@ def get_or_build_merged(pool: str, redis_get=None, redis_set=None) -> Dict[str, 
 
     d = graph_dir_for_pool(pool)
     manifest = graph_manifest(d)
-    redis_key = f"caselinker:ontology:merged:{pool}:{manifest}"
+    redis_key = f"caselinker:ontology:merged:{pool}:{manifest}:{MERGE_READER}"
 
     if redis_get:
         hit = redis_get(redis_key)

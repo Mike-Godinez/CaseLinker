@@ -199,13 +199,23 @@ def _rows(cursor: Any) -> List[Dict[str, Any]]:
 
 
 def latest_run_id(cursor: Any, case_id: str, dialect: str = "sqlite") -> Optional[str]:
-    """Run whose (non-human) assertions are current for the case."""
+    """Current extraction run for a case.
+
+    Non-human assertions win when they exist. A run that stored resolutions
+    and no assertions (``rule_id`` ``no_assertions``) is still the current run.
+    """
     ph = _ph(dialect)
     cursor.execute(
         f"SELECT run_id FROM field_assertions WHERE case_id = {ph} AND method <> 'human' ORDER BY id DESC LIMIT 1",
         (case_id,),
     )
     row = cursor.fetchone()
+    if not row:
+        cursor.execute(
+            f"SELECT run_id FROM field_resolutions WHERE case_id = {ph} ORDER BY id DESC LIMIT 1",
+            (case_id,),
+        )
+        row = cursor.fetchone()
     if not row:
         return None
     return row[0] if not isinstance(row, dict) else row["run_id"]
@@ -267,13 +277,20 @@ def latest_resolutions(cursor: Any, case_id: str, *, field: Optional[str] = None
 def read_case_assertions(cursor: Any, case_id: str, *, field: Optional[str] = None,
                          dialect: str = "sqlite") -> Dict[str, Any]:
     assertions = load_assertions(cursor, case_id, field=field, dialect=dialect)
+    resolutions = latest_resolutions(cursor, case_id, field=field, dialect=dialect)
     keep = ("id", "run_id", "field", "method", "method_version", "family", "value", "role",
             "span_start", "span_end", "span_text", "span_ok", "confidence", "extras")
+    run_id = assertions[0]["run_id"] if assertions else None
+    if not run_id:
+        for res in resolutions.values():
+            if res.get("run_id"):
+                run_id = res["run_id"]
+                break
     return {
         "case_id": case_id,
-        "run_id": assertions[0]["run_id"] if assertions else None,
+        "run_id": run_id,
         "assertions": [{k: a.get(k) for k in keep} for a in assertions],
-        "resolutions": latest_resolutions(cursor, case_id, field=field, dialect=dialect),
+        "resolutions": resolutions,
     }
 
 

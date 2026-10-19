@@ -576,6 +576,32 @@ def test_llm_cache_key_pins_digest_and_skips_truncated(monkeypatch, tmp_path):
 
 # --- storage: append-only assertions, resolutions, run pins, re-resolution -----------------
 
+def test_resolution_only_run_is_still_the_current_run():
+    """Empty extractions store resolutions and no assertion rows. That run is current."""
+    import sqlite3
+
+    from assertion_store import apply_assertion_schema, latest_run_id, read_case_assertions
+
+    conn = sqlite3.connect(":memory:")
+    conn.row_factory = sqlite3.Row
+    apply_assertion_schema(conn, "sqlite")
+    cur = conn.cursor()
+    cur.execute(
+        """INSERT INTO field_resolutions
+           (run_id, case_id, field, rule_set_version, status, rule_id, final_json,
+            winning_assertion_ids, disagreement_json)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+        ("run_empty", "brazil_pf_2026_001", "age", "resolve_v3.0", "empty", "no_assertions", "null", "[]", "{}"),
+    )
+    conn.commit()
+    assert latest_run_id(cur, "brazil_pf_2026_001", "sqlite") == "run_empty"
+    payload = read_case_assertions(cur, "brazil_pf_2026_001", dialect="sqlite")
+    assert payload["assertions"] == []
+    assert payload["run_id"] == "run_empty"
+    assert payload["resolutions"]["age"]["status"] == "empty"
+    assert payload["resolutions"]["age"]["rule_id"] == "no_assertions"
+
+
 def test_postgres_assertion_ddl_casts_the_timestamp_default():
     """Postgres rejects DEFAULT CURRENT_TIMESTAMP on a TEXT column. SQLite accepts it."""
     from assertion_store import apply_assertion_schema

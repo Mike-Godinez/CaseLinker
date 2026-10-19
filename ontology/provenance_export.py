@@ -185,7 +185,9 @@ def export_stored_case(case_id: str, output_dir: Path, storage: Any = None) -> O
     ``storage`` is the SQLite or Postgres handle the case export already
     opened. When it is omitted, the same lookup is used: local SQLite if
     that file has the case, otherwise Postgres via DATABASE_URL.
-    Returns None when that case has no stored assertions.
+    Returns None when that case has neither assertions nor resolutions.
+    A resolution-only run (no assertion rows) still gets a graph: the
+    extraction activity, the case hop, and one resolution entity per field.
     """
     if storage is None:
         if str(_ONTOLOGY) not in sys.path:
@@ -198,17 +200,28 @@ def export_stored_case(case_id: str, output_dir: Path, storage: Any = None) -> O
     payload = storage.get_case_assertions(case_id)
     assertions = payload.get("assertions") or []
     resolutions = payload.get("resolutions") or {}
-    if not assertions:
+    if not assertions and not resolutions:
         return None
-    run_id = str(payload.get("run_id") or "unrecorded")
+    run_id = str(payload.get("run_id") or "")
+    if not run_id:
+        for res in resolutions.values():
+            if res.get("run_id"):
+                run_id = str(res["run_id"])
+                break
+    if not run_id:
+        run_id = "unrecorded"
     started = None
     hook = getattr(storage, "extraction_run_started_at", None)
-    if callable(hook) and payload.get("run_id"):
-        started = hook(payload["run_id"])
-    if not started:
+    if callable(hook) and run_id != "unrecorded":
+        started = hook(run_id)
+    if assertions and not started:
         raise RuntimeError(f"no extraction-run timestamp for {case_id}")
     graph = build_provenance_graph(
-        case_id, assertions, resolutions, run_id=run_id, issued_at=str(started)
+        case_id,
+        assertions,
+        resolutions,
+        run_id=run_id,
+        issued_at=str(started) if started else None,
     )
     conforms, report = validate_provenance(graph)
     if not conforms:
@@ -230,7 +243,7 @@ def main() -> int:
     args = parser.parse_args()
     path = export_stored_case(args.case_id, args.out)
     if path is None:
-        print(f"{args.case_id}: no stored assertions")
+        print(f"{args.case_id}: no stored assertions or resolutions")
         return 1
     print(path)
     return 0

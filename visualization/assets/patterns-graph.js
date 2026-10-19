@@ -119,20 +119,34 @@
         return (v != null && typeof v !== 'object') ? v : null;
     }
 
-    // ---------- Flatten rdflib Dataset (array of named graphs) ----------
+    // ---------- Flatten a case JSON-LD file ----------
+    // Current files are a flat node list. Older files are a Dataset: an array
+    // of { "@id": namedGraph, "@graph": [ nodes ] }. Both draw the same canvas.
+    function isNamedGraphDoc(obj) {
+        return !!(obj && Array.isArray(obj['@graph']));
+    }
+
     function mergeNamedGraphs(jsonLd) {
-        if (!Array.isArray(jsonLd)) {
-            return jsonLd['@graph'] ? jsonLd['@graph'] : [];
+        let docs;
+        if (Array.isArray(jsonLd)) {
+            docs = jsonLd.some(isNamedGraphDoc) ? jsonLd : [{ '@graph': jsonLd }];
+        } else if (isNamedGraphDoc(jsonLd)) {
+            docs = [jsonLd];
+        } else {
+            return [];
         }
         const nodeMap = {};
-        jsonLd.forEach(namedGraph => {
+        docs.forEach(namedGraph => {
+            if (!namedGraph) return;
             const isNlpGraph = NLP_GRAPH_REGEX.test(namedGraph['@id'] || '');
-            (namedGraph['@graph'] || []).forEach(node => {
-                if (!node['@id']) return;
+            const nodes = isNamedGraphDoc(namedGraph) ? namedGraph['@graph'] : [namedGraph];
+            nodes.forEach(node => {
+                if (!node || !node['@id'] || isNamedGraphDoc(node)) return;
+                const nlp = isNlpGraph || String(node['@id']).indexOf('/nlp/') !== -1;
                 const id = node['@id'];
                 if (!nodeMap[id]) {
                     nodeMap[id] = Object.assign({}, node);
-                    nodeMap[id]._isNlp = isNlpGraph;
+                    nodeMap[id]._isNlp = nlp;
                     return;
                 }
                 const ex = nodeMap[id];
@@ -148,7 +162,7 @@
                         ex[k] = [...ex[k], ...node[k]];
                     }
                 });
-                if (isNlpGraph) ex._isNlp = true;
+                if (nlp) ex._isNlp = true;
             });
         });
         return Object.values(nodeMap);
