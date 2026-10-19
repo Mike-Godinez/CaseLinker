@@ -35,7 +35,7 @@ Instance IRIs are `https://w3id.org/caselinker/resource/{case|platform|agency}/�
 
 ### w3id.org
 
-Persistent IRIs under `https://w3id.org/caselinker/` are registered with [perma-id/w3id.org](https://github.com/perma-id/w3id.org). The file to submit is [`w3id-caselinker.htaccess`](w3id-caselinker.htaccess) → `caselinker/.htaccess` in that repo. It answers **303 See Other** and keeps the path, so a case IRI redirects to `GET /resource/…` on the live app (HTML, Turtle, or JSON-LD). The vocabulary IRI `…/ns/provenance` redirects to `GET /ns/provenance`. Until that PR lands, some w3id paths still 302 to `/patterns` and drop the rest of the path.
+Persistent IRIs under `https://w3id.org/caselinker/` are registered with [perma-id/w3id.org](https://github.com/perma-id/w3id.org). The file to submit is [`w3id-caselinker.htaccess`](w3id-caselinker.htaccess) → `ids/caselinker/.htaccess` in that repo (their docroot is `ids/`). It answers **303 See Other** and keeps the path, so a case IRI redirects to `GET /resource/…` on the live app (HTML, Turtle, or JSON-LD). The vocabulary IRI `…/ns/provenance` redirects to `GET /ns/provenance`. Until that PR lands, some w3id paths still 302 to `/patterns` and drop the rest of the path.
 
 ## What a case graph contains
 
@@ -102,7 +102,7 @@ How to query the live store, including GET vs POST, `VALUES` + `LIMIT` ordering,
 
 ## Graph pools
 
-The repo still holds the previous **10,362** press-release case graphs (`cac:CACInvestigation`, one named graph per case). The live corpus is **10,711 case reports** and **131,332 extracted features**. Live SPARQL on Railway updates when those graphs are loaded. Separately, **297** PACER CASE-UCO graphs live under `urn:pacer:kg:…` (see [docs/SPARQL.md](docs/SPARQL.md#two-pacer-named-graph-families)). Ontology & Graphs **Find/load/compare** uses the full staging set (`pool=full`, max **2000** graphs merged at once). Big Bang / Universe / Analysis remain secret merge modes over locked subsets (`*_ids.txt`).
+The live Oxigraph store holds **10,711** press-release case graphs (`cac:CACInvestigation`, one named graph per case) plus matching provenance graphs. The live corpus is **10,711 case reports** and **131,332 extracted features**. Separately, **297** PACER CASE-UCO graphs live under `urn:pacer:kg:…` (see [docs/SPARQL.md](docs/SPARQL.md#two-pacer-named-graph-families)). Ontology & Graphs **Find/load/compare** uses the full staging set (`pool=full`, max **2000** graphs merged at once). Big Bang / Universe / Analysis remain secret merge modes over locked subsets (`*_ids.txt`).
 
 | Pool | ID list | Folder | Used by |
 |---|---|---|---|
@@ -132,7 +132,7 @@ Static files are public: `/ontology/graph_output/{pool}/{case_id}.ttl|.jsonld`.
 | [`PACER/`](PACER/) | PACER docket → lifecycle facts (feeds `/lifecycle`) |
 | [`docs/SPARQL.md`](docs/SPARQL.md) | Public SPARQL 1.1 API |
 | [`caselinker-provenance.ttl`](caselinker-provenance.ttl) | Provenance vocabulary (`w3id.org/caselinker/ns/provenance`) |
-| [`w3id-caselinker.htaccess`](w3id-caselinker.htaccess) | Submit as `caselinker/.htaccess` to perma-id/w3id.org |
+| [`w3id-caselinker.htaccess`](w3id-caselinker.htaccess) | Submit as `ids/caselinker/.htaccess` to perma-id/w3id.org |
 | [`MAPPING_PLAN.md`](MAPPING_PLAN.md) | Class-by-class mapping spec |
 
 ## Research questions (Q1–Q3)
@@ -149,7 +149,7 @@ Rebuild tables: `python3 ontology/q1/q1_evidence.py` (same pattern for q2/q3). N
 
 ## PACER and lifecycle
 
-[`PACER/`](PACER/) holds public federal docket material modeled by the CASE-UCO SDK (41 investigations, 128 documents, annotations across enterprise / enticement / production / sextortion / trafficking). Loaded into Oxigraph as **297** named graphs `urn:pacer:kg:…` via [`scripts/load_pacer_jsonld.py`](../scripts/load_pacer_jsonld.py). Those graphs also feed CAC state machines under `state_machines/` and the `/lifecycle` UI. They are a **court-record overlay**, not a substitute for the 10,362 press-release case graphs.
+[`PACER/`](PACER/) holds public federal docket material modeled by the CASE-UCO SDK (41 investigations, 128 documents, annotations across enterprise / enticement / production / sextortion / trafficking). Loaded into Oxigraph as **297** named graphs `urn:pacer:kg:…` via [`scripts/load_pacer_jsonld.py`](../scripts/load_pacer_jsonld.py). Those graphs also feed CAC state machines under `state_machines/` and the `/lifecycle` UI. They are a **court-record overlay**, not a substitute for the 10,711 press-release case graphs.
 
 ## MCP (on-demand cohorts)
 

@@ -5602,6 +5602,7 @@ async def dereference_resource(path: str, request: Request):
     if not base:
         raise HTTPException(status_code=503, detail="SPARQL store is not configured (set OXIGRAPH_URL).")
     query = deref.construct_query(iri)
+    hub = deref.is_hub_resource(iri)
     try:
         async with httpx.AsyncClient(timeout=httpx.Timeout(30.0, connect=5.0)) as client:
             upstream = await client.post(
@@ -5609,6 +5610,18 @@ async def dereference_resource(path: str, request: Request):
                 content=query.encode("utf-8"),
                 headers={"Content-Type": "application/sparql-query", "Accept": "text/turtle"},
             )
+            refs_payload = None
+            if hub and upstream.status_code < 400:
+                refs = await client.post(
+                    f"{base}/query",
+                    content=deref.referencing_cases_query(iri).encode("utf-8"),
+                    headers={
+                        "Content-Type": "application/sparql-query",
+                        "Accept": "application/sparql-results+json",
+                    },
+                )
+                if refs.status_code < 400:
+                    refs_payload = refs.text
     except httpx.HTTPError as exc:
         raise HTTPException(status_code=502, detail="SPARQL store did not answer.") from exc
     if upstream.status_code >= 400:
@@ -5618,7 +5631,10 @@ async def dereference_resource(path: str, request: Request):
         raise HTTPException(status_code=404, detail="No description is stored for this IRI.")
     media = deref.preferred_media(request.headers.get("accept"))
     if media == "text/html":
-        return HTMLResponse(deref.render_html(graph, focus=iri))
+        cases = deref.parse_sparql_json_bindings(refs_payload) if hub else None
+        return HTMLResponse(
+            deref.render_html(graph, focus=iri, referencing_cases=cases)
+        )
     return Response(deref.serialize_graph(graph, media), media_type=f"{media}; charset=utf-8")
 
 

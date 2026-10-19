@@ -50,6 +50,25 @@ def quote_part(value: str) -> str:
     return "".join(ch if ch.isalnum() or ch in "-_." else "_" for ch in str(value))
 
 
+def _clean_role(role: Any) -> str:
+    text = str(role or "").strip()
+    if not text or text.lower() == "unknown":
+        return ""
+    return text
+
+
+def assertion_label(assertion: Dict[str, Any]) -> str:
+    """Human title for an assertion: field + value, then role when present."""
+    field = str(assertion.get("field") or "").strip() or "assertion"
+    value = assertion.get("value")
+    value_text = "" if value is None else str(value).strip()
+    base = f"{field} {value_text}".strip() if value_text else field
+    role = _clean_role(assertion.get("role"))
+    if role:
+        return f"{base} · {role}"
+    return base
+
+
 def build_provenance_graph(
     case_id: str,
     assertions: List[Dict[str, Any]],
@@ -83,6 +102,7 @@ def build_provenance_graph(
     # The case IRI is the same node as cac:CACInvestigation. Sharing the
     # extraction activity with the annotations is the hop from case to evidence.
     case = BASE[f"case/{quote_part(case_id)}"]
+    g.add((case, RDFS.label, Literal(f"case · {case_id}")))
     g.add((case, PROV.wasGeneratedBy, activity))
     g.add((case, PROV.wasDerivedFrom, narrative))
 
@@ -95,6 +115,7 @@ def build_provenance_graph(
             return agents[method]
         node = BASE[f"extractor/{quote_part(method)}"]
         g.add((node, RDF.type, PROV.SoftwareAgent))
+        g.add((node, RDFS.label, Literal(method)))
         g.add((node, DCTERMS.identifier, Literal(method)))
         g.add((node, CL.evidenceFamily, Literal(family)))
         if assertion.get("method_version"):
@@ -102,6 +123,9 @@ def build_provenance_graph(
         g.add((activity, PROV.wasAssociatedWith, node))
         agents[method] = node
         return node
+
+    g.add((activity, RDFS.label, Literal(f"extraction · {run_id}")))
+    g.add((narrative, RDFS.label, Literal(f"narrative · {case_id}")))
 
     by_field: Dict[str, List[URIRef]] = {}
     ordered = sorted(
@@ -111,12 +135,14 @@ def build_provenance_graph(
     for index, assertion in enumerate(ordered, start=1):
         node = _iri(case_id, "assertion", str(index))
         field = str(assertion.get("field") or "")
-        role = str(assertion.get("role") or "unknown")
+        role = _clean_role(assertion.get("role"))
         by_field.setdefault(field, []).append(node)
         g.add((node, RDF.type, OA.Annotation))
         g.add((node, RDF.type, CAC_CORE.AssessmentResult))
-        g.add((node, RDFS.label, Literal(role)))
+        g.add((node, RDFS.label, Literal(assertion_label(assertion))))
         g.add((node, DCTERMS.subject, Literal(field)))
+        if role:
+            g.add((node, CL.assertionRole, Literal(role)))
         g.add((node, PROV.value, Literal(str(assertion.get("value")))))
         g.add((node, CAC_CORE.hasConfidence, _dec(assertion.get("confidence"))))
         if issued_at:
@@ -129,23 +155,31 @@ def build_provenance_graph(
         target = _iri(case_id, "assertion", str(index), "target")
         position = _iri(case_id, "assertion", str(index), "position")
         quote = _iri(case_id, "assertion", str(index), "quote")
+        start = int(assertion["span_start"])
+        end = int(assertion["span_end"])
+        exact = assertion.get("span_text") or str(assertion.get("value") or "")
         g.add((node, OA.hasTarget, target))
         g.add((target, RDF.type, OA.SpecificResource))
+        g.add((target, RDFS.label, Literal(f"passage · {assertion_label(assertion)}")))
         g.add((target, OA.hasSource, narrative))
         g.add((target, OA.hasSelector, position))
         g.add((target, OA.hasSelector, quote))
         g.add((position, RDF.type, OA.TextPositionSelector))
-        g.add((position, OA.start, Literal(int(assertion["span_start"]), datatype=XSD.nonNegativeInteger)))
-        g.add((position, OA.end, Literal(int(assertion["span_end"]), datatype=XSD.nonNegativeInteger)))
+        g.add((position, RDFS.label, Literal(f"position {start}–{end}")))
+        g.add((position, OA.start, Literal(start, datatype=XSD.nonNegativeInteger)))
+        g.add((position, OA.end, Literal(end, datatype=XSD.nonNegativeInteger)))
         g.add((quote, RDF.type, OA.TextQuoteSelector))
-        exact = assertion.get("span_text") or str(assertion.get("value") or "")
+        quote_label = exact if len(str(exact)) <= 48 else f"{str(exact)[:45]}…"
+        g.add((quote, RDFS.label, Literal(f"quote · {quote_label}")))
         g.add((quote, OA.exact, Literal(exact)))
 
     for field, res in sorted((resolutions or {}).items()):
         node = _iri(case_id, "resolution", quote_part(field))
+        status = str(res.get("status") or "empty")
         g.add((node, RDF.type, PROV.Entity))
+        g.add((node, RDFS.label, Literal(f"resolution · {field} ({status})")))
         g.add((node, DCTERMS.subject, Literal(field)))
-        g.add((node, CL.resolutionStatus, Literal(str(res.get("status") or "empty"))))
+        g.add((node, CL.resolutionStatus, Literal(status)))
         g.add((node, CL.ruleSetVersion, Literal(str(res.get("rule_set_version") or rule_set or "resolve_v3.0"))))
         g.add((node, PROV.wasGeneratedBy, activity))
         for source in by_field.get(field, []):

@@ -43,6 +43,48 @@ def construct_query(iri: str) -> str:
     )
 
 
+def is_hub_resource(iri: str) -> bool:
+    """Agency, platform, and location IRIs are hubs — cases link out to them."""
+    return bool(
+        re.match(
+            rf"^{re.escape(RESOURCE_BASE)}(agency|platform|location)/[^/]+$",
+            iri.rstrip("/"),
+        )
+    )
+
+
+def referencing_cases_query(iri: str, *, limit: int = 500) -> str:
+    """Named graphs (press-release cases) that mention this hub IRI."""
+    lim = max(1, min(int(limit), 2000))
+    return (
+        "SELECT DISTINCT ?g WHERE {\n"
+        f"  GRAPH ?g {{ ?s ?p <{iri}> }}\n"
+        "  FILTER(STRSTARTS(STR(?g), "
+        f'"{RESOURCE_BASE}case/") && !STRENDS(STR(?g), "/provenance"))\n'
+        "}\n"
+        "ORDER BY ?g\n"
+        f"LIMIT {lim}"
+    )
+
+
+def parse_sparql_json_bindings(payload: str) -> list:
+    """Pull ?g / ?case URI values from a SPARQL JSON results document."""
+    import json
+
+    try:
+        data = json.loads(payload or "{}")
+    except json.JSONDecodeError:
+        return []
+    out = []
+    for row in data.get("results", {}).get("bindings", []):
+        for key in ("g", "case", "s"):
+            cell = row.get(key) or {}
+            if cell.get("type") == "uri" and cell.get("value"):
+                out.append(str(cell["value"]))
+                break
+    return out
+
+
 def preferred_media(accept: Optional[str], *, vocabulary: bool = False) -> str:
     """HTML for a browser. Turtle or JSON-LD when the client asks for them."""
     header = accept or "text/html"
@@ -94,7 +136,12 @@ def serialize_graph(graph: Graph, media: str) -> str:
     return render_html(graph, focus=None)
 
 
-def render_html(graph: Graph, focus: Optional[str] = None) -> str:
+def render_html(
+    graph: Graph,
+    focus: Optional[str] = None,
+    *,
+    referencing_cases: Optional[list] = None,
+) -> str:
     """A page of labels and links. Every CAC class links to its own IRI."""
     subjects = []
     focus_ref = URIRef(focus) if focus else None
@@ -103,10 +150,10 @@ def render_html(graph: Graph, focus: Optional[str] = None) -> str:
     for subject in graph.subjects():
         if isinstance(subject, URIRef) and subject not in subjects:
             subjects.append(subject)
+    if focus and "/provenance" in focus:
+        subjects = sorted(subjects, key=_provenance_section_key)
     blocks = []
-    title = "CaseLinker"
-    if subjects:
-        title = _label(graph, subjects[0]) or _short(subjects[0])
+    title = _page_title(graph, focus)
     for subject in subjects:
         rows = []
         for pred, obj in graph.predicate_objects(subject):
@@ -123,14 +170,38 @@ def render_html(graph: Graph, focus: Optional[str] = None) -> str:
             f"<p><a href=\"{html.escape(str(subject))}\">{html.escape(str(subject))}</a></p>"
             f"<table>{''.join(rows)}</table></section>"
         )
+    if referencing_cases is not None and focus and is_hub_resource(focus):
+        blocks.append(_render_referencing_cases(referencing_cases))
     body = "".join(blocks) or "<p>No description is stored for this IRI.</p>"
     return (
         "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\">"
         f"<title>{html.escape(title)}</title>"
         "<style>body{font:16px/1.45 Georgia,serif;max-width:46rem;margin:2rem auto;padding:0 1rem;color:#1c1917}"
         "a{color:#1d4e89}table{border-collapse:collapse;width:100%}th,td{text-align:left;vertical-align:top;"
-        "border-top:1px solid #e7e5e4;padding:.4rem .6rem}th{width:12rem;font-weight:600}</style>"
+        "border-top:1px solid #e7e5e4;padding:.4rem .6rem}th{width:12rem;font-weight:600}"
+        "ul.refs{padding-left:1.2rem}ul.refs li{margin:.25rem 0}</style>"
         f"</head><body><h1>{html.escape(title)}</h1>{body}</body></html>"
+    )
+
+
+def _render_referencing_cases(case_iris: list) -> str:
+    """HTML section listing case graphs that mention the hub."""
+    if not case_iris:
+        return (
+            "<section><h2>Cases referencing this</h2>"
+            "<p>No press-release case graphs mention this resource.</p></section>"
+        )
+    items = []
+    for iri in case_iris:
+        case_id = iri.rstrip("/").rsplit("/", 1)[-1]
+        local = "/resource/" + iri[len(RESOURCE_BASE) :] if iri.startswith(RESOURCE_BASE) else iri
+        items.append(
+            f'<li><a href="{html.escape(local)}">{html.escape(case_id)}</a></li>'
+        )
+    return (
+        "<section><h2>Cases referencing this</h2>"
+        f"<p>{len(case_iris)} case{'s' if len(case_iris) != 1 else ''}</p>"
+        f'<ul class="refs">{"".join(items)}</ul></section>'
     )
 
 
@@ -138,6 +209,38 @@ def provenance_graph() -> Graph:
     graph = Graph()
     graph.parse(PROVENANCE_TTL, format="turtle")
     return graph
+
+
+def _page_title(graph: Graph, focus: Optional[str]) -> str:
+    """Stable page titles: case id, or Provenance · case_id — not the first labeled node."""
+    if not focus:
+        return "CaseLinker"
+    focus = focus.rstrip("/")
+    if focus.endswith("/provenance") and "/resource/case/" in focus:
+        case_id = focus.rsplit("/provenance", 1)[0].rsplit("/", 1)[-1]
+        return f"Provenance · {case_id}"
+    if re.fullmatch(rf"{re.escape(RESOURCE_BASE)}case/[^/]+", focus):
+        return focus.rsplit("/", 1)[-1]
+    focus_ref = URIRef(focus)
+    return _label(graph, focus_ref) or _short(focus_ref)
+
+
+def _provenance_section_key(subject: URIRef):
+    """Assertion, then its passage + selectors; other nodes after the assertion blocks."""
+    text = str(subject)
+    marker = "/assertion/"
+    if marker not in text:
+        return (1, text)
+    rest = text.split(marker, 1)[1]
+    parts = rest.split("/")
+    try:
+        index = int(parts[0])
+    except ValueError:
+        return (1, text)
+    kind = parts[1] if len(parts) > 1 else ""
+    # assertion → passage (target IRI) → position → quote
+    order = {"": 0, "target": 1, "position": 2, "quote": 3}
+    return (0, index, order.get(kind, 9), text)
 
 
 def _label(graph: Graph, subject) -> str:

@@ -20,6 +20,7 @@ CORPUS_TABLES = (
     "source_document_versions",
     "extraction_runs",
     "cases",
+    "case_fingerprints",
     "victim_demographics",
     "perpetrator_demographics",
     "prosecution_outcomes",

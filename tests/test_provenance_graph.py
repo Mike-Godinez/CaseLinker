@@ -171,16 +171,74 @@ def test_w3id_resolution_without_a_rule_set_fails():
     assert not conforms, report
 
 
+def test_assertion_without_role_is_labeled_field_value_not_unknown():
+    from rdflib import RDFS
+
+    from provenance_export import assertion_label
+
+    assert assertion_label({"field": "age", "value": 42}) == "age 42"
+    assert assertion_label({"field": "age", "value": 42, "role": "perpetrator"}) == "age 42 · perpetrator"
+    assert assertion_label({"field": "age", "value": 42, "role": "unknown"}) == "age 42"
+    assert assertion_label({"field": "age", "value": 42, "role": ""}) == "age 42"
+
+    assertions = [
+        {
+            "field": "age",
+            "method": "regex",
+            "method_version": "regex_3.0.1",
+            "family": "surface_pattern",
+            "value": 42,
+            "span_start": 10,
+            "span_end": 12,
+            "span_text": "42",
+            "confidence": 0.5,
+        },
+        {
+            "field": "age",
+            "method": "regex",
+            "method_version": "regex_3.0.1",
+            "family": "surface_pattern",
+            "value": 40,
+            "role": "perpetrator",
+            "span_start": 20,
+            "span_end": 22,
+            "span_text": "40",
+            "confidence": 0.9,
+        },
+    ]
+    graph = build_provenance_graph(
+        "label_case",
+        assertions,
+        {"age": {"status": "partial", "rule_set_version": "resolve_v3.0"}},
+        run_id="run_label",
+        issued_at="2026-10-17T18:00:00.000000Z",
+    )
+    labels = {str(o) for o in graph.objects(None, RDFS.label)}
+    assert "age 42" in labels
+    assert "age 40 · perpetrator" in labels
+    assert "passage · age 42" in labels
+    assert "passage · age 40 · perpetrator" in labels
+    assert not any(lab.startswith("target ·") for lab in labels)
+    assert "unknown" not in labels
+    assert not any(graph.triples((None, CL.assertionRole, __import__("rdflib").Literal("unknown"))))
+    # oa:hasTarget still points at the SpecificResource (IRI path unchanged).
+    assert any(graph.triples((None, OA.hasTarget, None)))
+    assert any(graph.triples((None, RDF.type, OA.SpecificResource)))
+
+
 def test_provenance_graph_validates_and_keeps_decoys_off_case_roles():
+    from rdflib import RDFS
+
     graph = build_provenance_graph(
         "example_case", *_sample(), run_id="run_test", issued_at="2026-10-17T18:00:00.000000Z"
     )
     conforms, report = validate_provenance(graph)
     assert conforms, report
     assert graph_uses_case_roles(graph) is False
-    labels = {str(o) for o in graph.objects(None, __import__("rdflib").RDFS.label)}
-    assert "decoy" in labels
-    assert "perpetrator" in labels
+    labels = {str(o) for o in graph.objects(None, RDFS.label)}
+    assert "age 14 · decoy" in labels
+    assert "age 40 · perpetrator" in labels
+    assert "unknown" not in labels
     assert any(graph.triples((None, RDF.type, PROV.Activity)))
     assert any(graph.triples((None, RDF.type, PROV.SoftwareAgent)))
     assert any(graph.triples((None, RDF.type, OA.TextPositionSelector)))

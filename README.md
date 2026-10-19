@@ -311,7 +311,7 @@ A deterministic mapping layer translates each case's extracted features into CAC
 4. **SHACL validation** — only conformant graphs enter the merged corpus.
 5. **SPARQL-queryable corpus** — canonical per-case graphs are loaded into Oxigraph (named graph per case; union default graph) and served at `GET|POST /sparql`.
 
-The live store holds **10,362** press-release case graphs (`…/resource/case/{case_id}`) plus **297** PACER court-record graphs (`urn:pacer:kg:…`). Agents can also build cohort graphs on demand via MCP (`case2cac` → `graph_summarize` → `export_case_graph_ttl`), or query the live store with the [CASE/UCO SDK](https://github.com/vulnmaster/CASE-UCO-SDK) `execute_sparql_query` tool.
+The live store holds **10,711** press-release case graphs (`…/resource/case/{case_id}`) plus **297** PACER court-record graphs (`urn:pacer:kg:…`). Agents can also build cohort graphs on demand via MCP (`case2cac` → `graph_summarize` → `export_case_graph_ttl`), or query the live store with the [CASE/UCO SDK](https://github.com/vulnmaster/CASE-UCO-SDK) `execute_sparql_query` tool.
 
 > **[Graph Interface](https://caselinker.up.railway.app/patterns)**: browse and compare case graphs, look up by CAC class / platform / agency, open PACER investigations, and explore CaseLinker data.
 
@@ -414,7 +414,7 @@ CaseLinker/
 ├── ontology/
 │   ├── README.md                     # Ontology docs (vocabulary, pipeline, pools, w3id)
 │   ├── docs/SPARQL.md                # Public SPARQL 1.1 API guide
-│   ├── w3id-caselinker.htaccess      # Submit to perma-id as caselinker/.htaccess
+│   ├── w3id-caselinker.htaccess      # Submit to perma-id as ids/caselinker/.htaccess
 │   ├── caselinker-provenance.ttl     # Provenance vocabulary (w3id ns)
 │   ├── features_to_cac.py            # Case features → CAC RDF
 │   ├── graph_generate.py             # Batch TTL / JSON-LD
