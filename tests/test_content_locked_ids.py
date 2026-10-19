@@ -251,3 +251,10 @@ def test_sqlite_stores_the_fingerprint_without_changing_the_case_id(tmp_path):
         "normalization_version": NORMALIZATION_VERSION,
     }]
     assert storage.get_case("ice_2024_004")["id"] == "ice_2024_004"
+
+
+def test_resolve_accepts_case_text_so_process_cases_can_pass_it():
+    """Ingest calls resolve(..., text=case_text). That kwarg must exist on this branch."""
+    import processing
+
+    processing.assertions_module.resolve([], batch_date=None, text="a 40-year-old man")
