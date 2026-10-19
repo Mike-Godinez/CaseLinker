@@ -1,0 +1,123 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007> a ns3:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 07:13:25.184190" ;
+    dcterms:identifier "south_florida_icac_2024_007" ;
+    dcterms:modified "2026-10-18 07:13:25.184190" ;
+    dcterms:source <https://www.local10.com/news/local/2024/01/23/north-bay-village-man-accused-of-sharing-child-sexual-abuse-material-on-kik/>,
+        "SOUTH FLORIDA ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/hallandale-beach>,
+        <https://w3id.org/caselinker/resource/location/north-bay-village> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/event/possession>,
+        <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/florida-department-of-law-enforcement>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/hallandale-beach>,
+        <https://w3id.org/caselinker/resource/location/north-bay-village> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-01-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-01-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/florida-department-of-law-enforcement> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child sexual abuse material" ;
+    ns2:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/charge/2> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/event/distribution> a ns1:Event,
+        ns2:CSAM_Distribution ;
+    ns3:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in Miami-Dade County's Turner Guilford Knight Correctional Center" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/charge/1>,
+        <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/charge/2> ;
+    ns2:hasProceedingBeginPoint "2024-01-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/phase/arrested> a ns3:InitialPhase,
+        ns1:Phase ;
+    ns3:hasPhaseBeginPoint "2024-01-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/fla> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns6:name "Fla." .
+
+<https://w3id.org/caselinker/resource/location/hallandale-beach> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hallandale Beach" ;
+    ns6:name "Hallandale Beach" .
+
+<https://w3id.org/caselinker/resource/location/north-bay-village> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "North Bay Village" ;
+    ns6:name "North Bay Village" .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
+
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
+
+<https://w3id.org/caselinker/resource/platform/telegram> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Telegram" .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/event/hands-on> a ns3:ChildSexualAbuseEvent,
+        ns1:Event ;
+    ns3:severityLevel 3 ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/kik>,
+        <https://w3id.org/caselinker/resource/platform/telegram> .
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/event/possession> a ns3:CSAMIncident,
+        ns1:Event ;
+    ns3:severityLevel 3 ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/kik>,
+        <https://w3id.org/caselinker/resource/platform/telegram> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/south_florida_icac_2024_007/provenance> .

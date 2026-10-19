@@ -154,7 +154,7 @@ def main():
     cur = conn.cursor()
 
     cur.execute("""
-        SELECT cases.id, j.value AS platform, cases.raw_data
+        SELECT cases.id, j.value AS platform
         FROM cases, json_each(cases.platforms_used) AS j
         WHERE cases.platforms_used IS NOT NULL
     """)
@@ -162,16 +162,32 @@ def main():
     platform_to_cases = defaultdict(set)
     skipped_platforms = defaultdict(int)
     skipped_gen_ai_embed: list[str] = []
+    gen_ai_ids: list[str] = []
+    rows = cur.fetchall()
+    for row in rows:
+        if row["platform"] == "Gen AI":
+            gen_ai_ids.append(row["id"])
 
-    for row in cur.fetchall():
+    gen_ai_text: dict[str, str] = {}
+    if gen_ai_ids:
+        # Case text is only needed for the Gen AI embed check. Pulling raw_data
+        # for every platform row re-reads the full release once per platform.
+        for start in range(0, len(gen_ai_ids), 500):
+            chunk = gen_ai_ids[start : start + 500]
+            placeholders = ",".join("?" * len(chunk))
+            for cid, raw in cur.execute(
+                f"SELECT id, json_extract(raw_data, '$.case_text') FROM cases WHERE id IN ({placeholders})",
+                chunk,
+            ):
+                gen_ai_text[cid] = raw or ""
+
+    for row in rows:
         p = row["platform"]
         if p.lower() in GENERICS or p.lower().startswith("unknown"):
             skipped_platforms[p] += 1
             continue
         if p == "Gen AI":
-            raw = json.loads(row["raw_data"]) if row["raw_data"] else {}
-            text = raw.get("case_text", "") or ""
-            if not gen_ai_candidate_valid(row["id"], text):
+            if not gen_ai_candidate_valid(row["id"], gen_ai_text.get(row["id"], "")):
                 skipped_gen_ai_embed.append(row["id"])
                 continue
         if p not in PLATFORM_TYPE:

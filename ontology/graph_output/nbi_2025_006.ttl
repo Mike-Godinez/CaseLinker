@@ -1,0 +1,102 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/production#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_006> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 14:24:47.152505" ;
+    dcterms:identifier "nbi_2025_006" ;
+    dcterms:modified "2026-10-18 14:24:47.152505" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nbi_2025_006/provenance> ;
+    dcterms:source <https://nbi.gov.ph/press_releases/2025/09222025/8917/>,
+        "NBI" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/quezon-city> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/nbi_2025_006/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/nbi_2025_006/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/nbi_2025_006/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/nbi_2025_006/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/nbi_2025_006/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/nbi_2025_006/operation> ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/nbi_2025_006/tech/cybertipline> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/doj-iacat>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/new-westminster-police-department>,
+        <https://w3id.org/caselinker/resource/agency/royal-canadian-mountain-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/quezon-city> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_006/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-09-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/nbi_2025_006/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_006/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-09-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/nbi_2025_006/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/platform/skype> a ns4:DigitalSystemEntity,
+        <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Skype" .
+
+<https://w3id.org/caselinker/resource/agency/doj-iacat> a ns4:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "DOJ IACAT" .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation> a ns2:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/new-westminster-police-department> a ns4:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "New Westminster Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/royal-canadian-mountain-police-department> a ns4:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "Royal Canadian Mountain Police Department" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_006/charge/1> a ns6:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns5:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_006/event/distribution> a ns4:Event,
+        ns6:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_006/event/trafficking> a ns4:Event,
+        ns6:SexTrafficking ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_006/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/nbi_2025_006/charge/1> ;
+    ns6:hasProceedingBeginPoint "2025-09-22T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_006/operation> a ns4:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_006/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_006/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:victimAge 12 .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_006/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_006/phase/arrested> a ns1:InitialPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2025-09-22T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/quezon-city> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Quezon City" ;
+    ns7:name "Quezon City" .
+

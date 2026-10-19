@@ -125,7 +125,7 @@ _CAC_ONTOLOGY_DIR = get_cac_ontology_dir()
 # CAC / UCO Namespaces
 # ---------------------------------------------------------------------------
 
-BASE = Namespace("https://caselinker.projectvic.org/resource/")
+BASE = Namespace("https://w3id.org/caselinker/resource/")
 
 CAC = Namespace("https://cacontology.projectvic.org#")
 CAC_CORE = Namespace("https://cacontology.projectvic.org/core#")
@@ -1109,6 +1109,9 @@ class CaseToCAC:
         g.add((inv_uri, RDF.type, CAC.CACInvestigation))
         g.add((inv_uri, RDF.type, CAC_CORE.EnduringEntity))
         g.add((inv_uri, DCTERMS.identifier, Literal(case_id)))
+        # One hop from this case to its evidence graph. The assertions stay
+        # in that graph; this triple is only the pointer.
+        g.add((inv_uri, DCTERMS.provenance, URIRef(str(inv_uri) + "/provenance")))
 
         if case.get("source"):
             g.add((inv_uri, DCTERMS.source, Literal(case["source"])))

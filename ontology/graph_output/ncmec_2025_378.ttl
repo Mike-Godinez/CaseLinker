@@ -1,159 +1,116 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_378> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378> a ns2:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:19.590361" ;
+    dcterms:identifier "ncmec_2025_378" ;
+    dcterms:modified "2026-10-18 00:01:19.590361" ;
+    dcterms:source <https://owensboro.org/news_detail_T3_R188.php>,
+        "NCMEC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/owensboro>,
+        <https://w3id.org/caselinker/resource/location/west-virginia>,
+        <https://w3id.org/caselinker/resource/location/yewells-landing-west> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_378/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_378/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_378/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_378/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_378/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_378/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_378/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/owensboro-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/owensboro>,
+        <https://w3id.org/caselinker/resource/location/west-virginia>,
+        <https://w3id.org/caselinker/resource/location/yewells-landing-west> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_378> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-06-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_378/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_378/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-06-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_378/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_378/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/kentucky-attorney-generals-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Kentucky Attorney General's Office" .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/agency/owensboro-police-department> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
     rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378/event/distribution> a ns1:Event,
+        ns6:CSAM_Distribution ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378/event/trafficking> a ns1:Event,
+        ns6:SexTrafficking ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 25 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_378/charge/1> ;
+    ns6:hasProceedingBeginPoint "2025-06-27T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 43 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$150,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.513453" ;
-    dcterms:identifier "ncmec_2025_378" ;
-    dcterms:modified "2026-09-15T21:27:13.513453" ;
-    dcterms:source <https://www.wbko.com/2025/08/25/man-jailed-hart-county-sex-crimes-against-child/>,
-        "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/hardyville>,
-        <https://caselinker.up.railway.app/resource/location/hart-county>,
-        <https://caselinker.up.railway.app/resource/location/ky>,
-        <https://caselinker.up.railway.app/resource/location/munfordville> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/kentucky-attorney-generals-office>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/hardyville>,
-        <https://caselinker.up.railway.app/resource/location/hart-county>,
-        <https://caselinker.up.railway.app/resource/location/ky>,
-        <https://caselinker.up.railway.app/resource/location/munfordville> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378/phase/charged> a ns2:LegalProcessPhase,
+        ns1:Phase ;
+    ns2:hasPhaseBeginPoint "2025-06-27T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/kentucky> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kentucky" ;
+    ns3:name "Kentucky" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/person/offender/1> .
+<https://w3id.org/caselinker/resource/location/owensboro> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Owensboro" ;
+    ns3:name "Owensboro" .
 
-<https://caselinker.up.railway.app/resource/location/hardyville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Hardyville" ;
-    uco-core:name "Hardyville" .
+<https://w3id.org/caselinker/resource/location/west-virginia> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "West Virginia" ;
+    ns3:name "West Virginia" .
 
-<https://caselinker.up.railway.app/resource/location/hart-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Hart County" ;
-    uco-core:name "Hart County" .
+<https://w3id.org/caselinker/resource/location/yewells-landing-west> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Yewells Landing West" ;
+    ns3:name "Yewells Landing West" .
 
-<https://caselinker.up.railway.app/resource/location/ky> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378/event/possession> a ns2:CSAMIncident,
+        ns1:Event ;
+    ns2:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_378/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/location/munfordville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Munfordville" ;
-    uco-core:name "Munfordville" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/admission/2> ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/facet/csam> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/admission/2> ;
-    cacontology:severityLevel 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "recording a video of the child and told them how to perform sexual acts" ;
-    dcterms:source <https://www.wbko.com/2025/08/25/man-jailed-hart-county-sex-crimes-against-child/> ;
-    ns1:admissionContext "om the app company indicated the account used to upload the video was linked to Hawkins. According to a citation, he admitted to recordin..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "recording a video of the child and told them how to perform sexual acts" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_378/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "to recording a video of the child and told them how to perform sexual acts" ;
-    dcterms:source <https://www.wbko.com/2025/08/25/man-jailed-hart-county-sex-crimes-against-child/> ;
-    ns1:admissionContext "ted the account used to upload the video was linked to Hawkins. According to a citation, he admitted to recording a video of the child an..." ;
-    ns1:admissionFrame "he_admitted_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_378/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "to recording a video of the child and told them how to perform sexual acts" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_378> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_378/provenance> .

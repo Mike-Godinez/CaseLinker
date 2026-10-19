@@ -1,0 +1,76 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_014> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 14:18:21.261453" ;
+    dcterms:identifier "scotland_police_2024_014" ;
+    dcterms:modified "2026-10-18 14:18:21.261453" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scotland_police_2024_014/provenance> ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2024/august/peter-mccormick-jailed-for-historic-sexual-offences/>,
+        "SCOTLAND POLICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/glasgow>,
+        <https://w3id.org/caselinker/resource/location/stirling> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/scotland_police_2024_014/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/scotland_police_2024_014/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/scotland_police_2024_014/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2024_014/legal-step/sentenced> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/police-scotland> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/glasgow>,
+        <https://w3id.org/caselinker/resource/location/stirling> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_014/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-08-05T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2024_014/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_014/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-08-05T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2024_014/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/police-scotland> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_014/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasProceedingBeginPoint "2024-08-05T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/scotland_police_2024_014/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_014/legal-step/sentenced> a ns3:Event,
+        ns3:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2024-08-05T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_014/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 66 .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_014/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_014/sentence/1> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "five years" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_014/phase/sentenced> a ns3:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2024-08-05T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/glasgow> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Glasgow" ;
+    ns6:name "Glasgow" .
+
+<https://w3id.org/caselinker/resource/location/stirling> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Stirling" ;
+    ns6:name "Stirling" .
+

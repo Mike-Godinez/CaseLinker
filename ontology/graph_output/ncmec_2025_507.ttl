@@ -1,146 +1,116 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.616424" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_507/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_507> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-01-24T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_507/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_507/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_507/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/johnson-county-sheriffs-office> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:20.918116" ;
     dcterms:identifier "ncmec_2025_507" ;
-    dcterms:modified "2026-09-15T21:27:13.616424" ;
-    dcterms:source <https://www.yahoo.com/news/mexican-national-charged-child-pornography-035900201.html>,
+    dcterms:modified "2026-10-18 00:01:20.918116" ;
+    dcterms:source <https://www.kmzu.com/news/holden-makes-initial-court-appearance-in-johnson-county-child-pornography-case/article_b662563e-da6d-11ef-bd29-9b405e1d46a0.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/clay-county>,
-        <https://caselinker.up.railway.app/resource/location/mexico>,
-        <https://caselinker.up.railway.app/resource/location/mississippi>,
-        <https://caselinker.up.railway.app/resource/location/starkville>,
-        <https://caselinker.up.railway.app/resource/location/tabasco>,
-        <https://caselinker.up.railway.app/resource/location/tupelo> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/clay-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/gulf-coast-regional-fugitive-task-force>,
-        <https://caselinker.up.railway.app/resource/agency/mississippi-bureau-of-narcotics>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/starkville-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/usms> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/clay-county>,
-        <https://caselinker.up.railway.app/resource/location/mexico>,
-        <https://caselinker.up.railway.app/resource/location/mississippi>,
-        <https://caselinker.up.railway.app/resource/location/starkville>,
-        <https://caselinker.up.railway.app/resource/location/tabasco>,
-        <https://caselinker.up.railway.app/resource/location/tupelo> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/johnson-county>,
+        <https://w3id.org/caselinker/resource/location/missouri> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_507/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_507/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_507/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_507/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_507/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_507/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_507/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/johnson-county-sheriffs-office> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/johnson-county>,
+        <https://w3id.org/caselinker/resource/location/missouri> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/clay-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Clay County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in the Johnson County Jail" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_507/charge/1> ;
+    ns4:hasProceedingBeginPoint "2025-01-24T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/gulf-coast-regional-fugitive-task-force> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Gulf Coast Regional Fugitive Task Force" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 62 .
 
-<https://caselinker.up.railway.app/resource/agency/mississippi-bureau-of-narcotics> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Mississippi Bureau of Narcotics" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/agency/starkville-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Starkville Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-01-24T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_507/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_507/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_507/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/usms> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/phase/arrested> a ns1:InitialPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2025-01-24T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/location/johnson-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Johnson County" ;
+    ns5:name "Johnson County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/location/missouri> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Missouri" ;
+    ns5:name "Missouri" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns3:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_507/admission/1> ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 30 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_507/admission/1> ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_507/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "possessing approximately 50 videos and photos depicting child pornography" ;
+    dcterms:source <https://www.kmzu.com/news/holden-makes-initial-court-appearance-in-johnson-county-child-pornography-case/article_b662563e-da6d-11ef-bd29-9b405e1d46a0.html> ;
+    ns2:admissionContext "aphy. Johnson County Deputies executed a search warrant yesterday on Gilkey's residence. Gilkey admitted to possessing approximately 50 v..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_507/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns5:description "possessing approximately 50 videos and photos depicting child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/clay-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Clay County" ;
-    uco-core:name "Clay County" .
-
-<https://caselinker.up.railway.app/resource/location/mexico> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Mexico" ;
-    uco-core:name "Mexico" .
-
-<https://caselinker.up.railway.app/resource/location/mississippi> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/starkville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Starkville" ;
-    uco-core:name "Starkville" .
-
-<https://caselinker.up.railway.app/resource/location/tabasco> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Tabasco" ;
-    uco-core:name "Tabasco" .
-
-<https://caselinker.up.railway.app/resource/location/tupelo> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Tupelo" ;
-    uco-core:name "Tupelo" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_507/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_507/facet/csam> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_507> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_507/provenance> .

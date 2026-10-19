@@ -1,165 +1,155 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/lapd_2010_001/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/lapd_2010_001> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/lapd_2010_001/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/lapd_2010_001> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/lapd_2010_001/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/lapd_2010_001> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/admission/2/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/lapd_2010_001/admission/2> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/lapd_2010_001> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/agency/district-attorneys-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "District Attorney's Office" .
+<https://w3id.org/caselinker/resource/agency/district-attorneys-office> a ns6:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/los-angeles-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Los Angeles Police Department" .
+<https://w3id.org/caselinker/resource/agency/los-angeles-police-department> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns7:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/event/distribution> a ns5:Event,
+        ns7:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/event/trust-violation> a cacontology-custodial:AuthorityAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/lapd_2010_001/relationship/teacher> .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/event/trust-violation> a ns4:AuthorityAbuse,
+        ns4:TrustViolation ;
+    ns4:violatesRelationship <https://w3id.org/caselinker/resource/case/lapd_2010_001/relationship/teacher> .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/lapd_2010_001/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2010-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/lapd_2010_001/sentence/1> .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/lapd_2010_001/charge/1> ;
+    ns7:hasProceedingBeginPoint "2010-12-08T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/relationship/teacher> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:Teacher ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/lapd_2010_001/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/lapd_2010_001/role/offender/1> ;
-    cacontology-custodial:relationshipType "teacher" .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/relationship/teacher> a ns4:CustodialRelationship,
+        ns4:Teacher ;
+    ns4:involvesChild <https://w3id.org/caselinker/resource/case/lapd_2010_001/role/victim/1> ;
+    ns4:involvesCustodian <https://w3id.org/caselinker/resource/case/lapd_2010_001/role/offender/1> ;
+    ns4:relationshipType "teacher" .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2010-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/lapd_2010_001/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/lapd_2010_001/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2010-12-08T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/lapd_2010_001/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/lapd_2010_001/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T19:58:40.485978" ;
+<https://w3id.org/caselinker/resource/case/lapd_2010_001> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 05:32:21.852597" ;
     dcterms:identifier "lapd_2010_001" ;
-    dcterms:modified "2026-09-15T19:58:40.485978" ;
+    dcterms:modified "2026-10-18 05:32:21.852597" ;
     dcterms:source <https://www.lapdonline.org/newsroom/lausd-teacher-arrested-for-possession-of-child-pornography-detectives-seek-possible-additional-victims-nr10570rf/>,
         "LAPD" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/calif>,
-        <https://caselinker.up.railway.app/resource/location/carson>,
-        <https://caselinker.up.railway.app/resource/location/los-angeles>,
-        <https://caselinker.up.railway.app/resource/location/los-angeles-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/lapd_2010_001/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/lapd_2010_001/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/lapd_2010_001/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/lapd_2010_001/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/lapd_2010_001/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/lapd_2010_001/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/lapd_2010_001/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/lapd_2010_001/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/district-attorneys-office>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/los-angeles-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/calif>,
-        <https://caselinker.up.railway.app/resource/location/carson>,
-        <https://caselinker.up.railway.app/resource/location/los-angeles>,
-        <https://caselinker.up.railway.app/resource/location/los-angeles-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/carson>,
+        <https://w3id.org/caselinker/resource/location/los-angeles>,
+        <https://w3id.org/caselinker/resource/location/los-angeles-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/lapd_2010_001/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/lapd_2010_001/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/lapd_2010_001/admission/1>,
+        <https://w3id.org/caselinker/resource/case/lapd_2010_001/admission/2>,
+        <https://w3id.org/caselinker/resource/case/lapd_2010_001/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/lapd_2010_001/event/possession>,
+        <https://w3id.org/caselinker/resource/case/lapd_2010_001/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/lapd_2010_001/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/district-attorneys-office>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/los-angeles-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/carson>,
+        <https://w3id.org/caselinker/resource/location/los-angeles>,
+        <https://w3id.org/caselinker/resource/location/los-angeles-county> .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2010-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/phase/arrested> a ns1:InitialPhase,
+        ns5:Phase ;
+    ns1:hasPhaseBeginPoint "2010-12-08T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/calif> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/calif> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Calif" ;
-    uco-core:name "Calif" .
+    ns2:name "Calif" .
 
-<https://caselinker.up.railway.app/resource/location/carson> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/carson> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Carson" ;
-    uco-core:name "Carson" .
+    ns2:name "Carson" .
 
-<https://caselinker.up.railway.app/resource/location/los-angeles> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/los-angeles> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Los Angeles" ;
+    ns2:name "Los Angeles" .
 
-<https://caselinker.up.railway.app/resource/location/los-angeles-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/los-angeles-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Los Angeles County" ;
-    uco-core:name "Los Angeles County" .
+    ns2:name "Los Angeles County" .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "viewing and downloading images of child pornography" ;
     dcterms:source <https://www.lapdonline.org/newsroom/lausd-teacher-arrested-for-possession-of-child-pornography-detectives-seek-possible-additional-victims-nr10570rf/> ;
-    ns1:admissionContext "the 1100 block of Dimondale Street in Carson, Calif. Fifty-three-year-old Ela was at the location when the warrant was served, and he adm..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct",
+    ns3:admissionContext "the 1100 block of Dimondale Street in Carson, Calif. Fifty-three-year-old Ela was at the location when the warrant was served, and he adm..." ;
+    ns3:admissionFrame "admitted_to" ;
+    ns3:admissionTheme "harm_conduct",
         "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/lapd_2010_001/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "viewing and downloading images of child pornography" .
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/lapd_2010_001/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns2:description "viewing and downloading images of child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/admission/2> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "to viewing and downloading images of child pornography" ;
     dcterms:source <https://www.lapdonline.org/newsroom/lausd-teacher-arrested-for-possession-of-child-pornography-detectives-seek-possible-additional-victims-nr10570rf/> ;
-    ns1:admissionContext "son, Calif. Fifty-three-year-old Ela was at the location when the warrant was served, and he admitted to viewing and downloading images o..." ;
-    ns1:admissionFrame "he_admitted_paraphrase" ;
-    ns1:admissionTheme "harm_conduct",
+    ns3:admissionContext "son, Calif. Fifty-three-year-old Ela was at the location when the warrant was served, and he admitted to viewing and downloading images o..." ;
+    ns3:admissionFrame "he_admitted_paraphrase" ;
+    ns3:admissionTheme "harm_conduct",
         "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/lapd_2010_001/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "to viewing and downloading images of child pornography" .
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/lapd_2010_001/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns2:description "to viewing and downloading images of child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/lapd_2010_001/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/lapd_2010_001/admission/2> ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/lapd_2010_001/facet/possession> .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/lapd_2010_001/admission/1>,
+        <https://w3id.org/caselinker/resource/case/lapd_2010_001/admission/2> ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/lapd_2010_001/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/lapd_2010_001/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2010-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/lapd_2010_001/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/lapd_2010_001/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/lapd_2010_001/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2010-12-08T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/lapd_2010_001/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/lapd_2010_001/person/offender/1> .
 
+
+<https://w3id.org/caselinker/resource/case/lapd_2010_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/lapd_2010_001/provenance> .

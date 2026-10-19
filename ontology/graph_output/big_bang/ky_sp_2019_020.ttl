@@ -1,57 +1,74 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2019_020> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:53:28.815415" ;
+<https://w3id.org/caselinker/resource/case/ky_sp_2019_020> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 05:15:33.884240" ;
     dcterms:identifier "ky_sp_2019_020" ;
-    dcterms:modified "2026-09-10T19:53:28.815415" ;
+    dcterms:modified "2026-10-18 05:15:33.884240" ;
     dcterms:source <https://www.kentuckystatepolice.ky.gov/news/p15-8-3-19/>,
         "KY SP" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/legal-step/sentenced> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/kentucky-state-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/ky> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ky_sp_2019_020/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ky_sp_2019_020/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ky_sp_2019_020/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ky_sp_2019_020/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/kentucky-state-police-department> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/ky> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ky_sp_2019_020/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2019-08-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ky_sp_2019_020/event/hands-on> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ky_sp_2019_020/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ky_sp_2019_020/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2019-08-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ky_sp_2019_020/event/hands-on> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ky_sp_2019_020/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/kentucky-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/kentucky-state-police-department> a ns7:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ky_sp_2019_020/legal-step/sentenced> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2019-08-03T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 36 .
+<https://w3id.org/caselinker/resource/case/ky_sp_2019_020/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 36 .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ky_sp_2019_020/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ky_sp_2019_020/phase/sentenced> a ns2:Phase,
+        ns5:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2019-08-03T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2019_020/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/location/columbia> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Columbia" ;
+    ns3:name "Columbia" .
 
+<https://w3id.org/caselinker/resource/location/ky> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ky." ;
+    ns3:name "Ky." .
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2019_020/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns1:severityLevel 3 .
+
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2019_020> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ky_sp_2019_020/provenance> .

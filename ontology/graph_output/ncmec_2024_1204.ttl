@@ -1,80 +1,143 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1204> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:11.252592" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/admission/1/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/admission/1> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_1204> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204> a ns3:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:39.599862" ;
     dcterms:identifier "ncmec_2024_1204" ;
-    dcterms:modified "2026-09-15T21:08:11.252592" ;
-    dcterms:source <https://rivernewsonline.com/news/2024/jul/19/rhinelander-man-accused-of-possessing-child-pornography/>,
+    dcterms:modified "2026-10-17 23:04:39.599862" ;
+    dcterms:source <https://www.stevenspointjournal.com/story/news/crime/2024/09/30/stevens-point-martial-arts-teacher-stephen-decker-charged-with-child-pornography-possession/75452069007/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/oneida-county>,
-        <https://caselinker.up.railway.app/resource/location/rhinelander> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/oneida-county>,
-        <https://caselinker.up.railway.app/resource/location/rhinelander> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/amherst>,
+        <https://w3id.org/caselinker/resource/location/portage-county>,
+        <https://w3id.org/caselinker/resource/location/stevens-point> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/phase/convicted> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/phase/convicted> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/legal-step/convicted>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/operation> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/amherst>,
+        <https://w3id.org/caselinker/resource/location/portage-county>,
+        <https://w3id.org/caselinker/resource/location/stevens-point> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/event/trust-violation> a ns2:AuthorityAbuse,
+        ns2:TrustViolation ;
+    ns2:violatesRelationship <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/relationship/teacher> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/charge/1> ;
+    ns4:hasProceedingBeginPoint "2024-09-30T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/legal-step/convicted> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2024-09-30T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/operation> a ns6:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 45 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MandatoryMinimumSentencing ;
-    rdfs:label "[\"$3,000\", \"25 years\", \"mandatory minimum\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/relationship/teacher> a ns2:CustodialRelationship,
+        ns2:Teacher ;
+    ns2:involvesChild <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/role/victim/1> ;
+    ns2:involvesCustodian <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/role/offender/1> ;
+    ns2:relationshipType "teacher" .
 
-<https://caselinker.up.railway.app/resource/location/oneida-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Oneida County" ;
-    uco-core:name "Oneida County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-09-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/location/rhinelander> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Rhinelander" ;
-    uco-core:name "Rhinelander" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/phase/convicted> a ns6:Phase,
+        ns4:SentencingPhase ;
+    ns3:hasPhaseBeginPoint "2024-09-30T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_1204/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-09-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/person/offender/1> .
 
+<https://w3id.org/caselinker/resource/location/amherst> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Amherst" ;
+    ns5:name "Amherst" .
+
+<https://w3id.org/caselinker/resource/location/portage-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Portage County" ;
+    ns5:name "Portage County" .
+
+<https://w3id.org/caselinker/resource/location/stevens-point> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Stevens Point" ;
+    ns5:name "Stevens Point" .
+
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Facebook" .
+
+<https://w3id.org/caselinker/resource/platform/gen-ai> a <https://cacontology.projectvic.org/platforms#FileHostingService> ;
+    rdfs:label "Gen AI" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/event/ai-csam> a ns3:DigitallyGeneratedCSAMIncident,
+        <https://cacontology.projectvic.org/ai-csam#AIGeneratedCSAM>,
+        ns6:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/admission/1> ;
+    ns3:severityLevel 3 ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/gen-ai> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/event/possession> a ns3:CSAMIncident,
+        ns6:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/admission/1> ;
+    ns3:severityLevel 3 ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/gen-ai> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "watching child pornography, but he said it was in 2019 or 2020, when he was going through a divorce" ;
+    dcterms:source <https://www.stevenspointjournal.com/story/news/crime/2024/09/30/stevens-point-martial-arts-teacher-stephen-decker-charged-with-child-pornography-possession/75452069007/> ;
+    ns1:admissionContext "it was chaos online and he had no way of knowing what he might have had on his computer. During his conversation with the detective, Deck..." ;
+    ns1:admissionFrame "admitted_to" ;
+    ns1:admissionTheme "harm_conduct" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns5:description "watching child pornography, but he said it was in 2019 or 2020, when he was going through a divorce" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1204> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_1204/provenance> .

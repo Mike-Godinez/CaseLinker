@@ -1,97 +1,125 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.213286" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_067/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_067> ;
+    ns5:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-05-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_067/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_067/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:16.106695" ;
     dcterms:identifier "ncmec_2025_067" ;
-    dcterms:modified "2026-09-15T21:27:13.213286" ;
-    dcterms:source <https://arkansasag.gov/news-release/attorney-general-griffin-announces-conviction-of-north-little-rock-man-arrested-in-december-for-child-pornography/>,
+    dcterms:modified "2026-10-18 00:01:16.106695" ;
+    dcterms:source <https://www.kait8.com/2025/05/15/man-accused-uploading-child-sexual-abuse-material-google-account/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/arkansas>,
-        <https://caselinker.up.railway.app/resource/location/north-little-rock> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/phase/pleaded-guilty> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/phase/pleaded-guilty> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/legal-step/pleaded-guilty> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/arkansas>,
-        <https://caselinker.up.railway.app/resource/location/north-little-rock> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ark>,
+        <https://w3id.org/caselinker/resource/location/craighead-county>,
+        <https://w3id.org/caselinker/resource/location/jonesboro> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_067/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_067/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_067/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_067/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_067/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_067/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_067/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_067/operation> ;
+    ns2:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_067/tech/cybertipline> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/ark>,
+        <https://w3id.org/caselinker/resource/location/craighead-county>,
+        <https://w3id.org/caselinker/resource/location/jonesboro> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/event/distribution> a ns5:Event,
+        ns7:CSAM_Distribution ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_067/charge/1> ;
+    ns7:hasProceedingBeginPoint "2025-05-14T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/operation> a ns5:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/legal-step/pleaded-guilty> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:PleaBargaining ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 68 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-05-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_067/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_067/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/tech/cybertipline> a ns6:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/phase/arrested> a ns2:InitialPhase,
+        ns5:Phase ;
+    ns2:hasPhaseBeginPoint "2025-05-14T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/phase/pleaded-guilty> a cac-core:Phase,
-        cacontology-legal-outcomes:PreTrialPhase ;
-    cacontology:hasPhaseBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/ark> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ark." ;
+    ns4:name "Ark." .
 
-<https://caselinker.up.railway.app/resource/location/arkansas> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/craighead-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Craighead County" ;
+    ns4:name "Craighead County" .
 
-<https://caselinker.up.railway.app/resource/location/north-little-rock> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/jonesboro> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Jonesboro" ;
+    ns4:name "Jonesboro" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_067/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_067/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "uploaded child sexual abuse material to a Google account registered under his name" ;
+    dcterms:source <https://www.kait8.com/2025/05/15/man-accused-uploading-child-sexual-abuse-material-google-account/> ;
+    ns1:admissionContext "abuse-material-google- account/ JONESBORO, Ark. (KAIT) - Police arrested a Jonesboro man after they said he uploaded child sexual abuse m..." ;
+    ns1:admissionFrame "said_paraphrase" ;
+    ns1:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_067/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "uploaded child sexual abuse material to a Google account registered under his name" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067/event/possession> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_067/admission/1> ;
+    ns2:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_067/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_067> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_067/provenance> .

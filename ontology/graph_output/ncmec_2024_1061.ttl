@@ -1,126 +1,135 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/pierre-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Pierre Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/south-dakota-division-of-criminal-investigation> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "South Dakota Division of Criminal Investigation" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:11.078257" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:37.571518" ;
     dcterms:identifier "ncmec_2024_1061" ;
-    dcterms:modified "2026-09-15T21:08:11.078257" ;
-    dcterms:source <https://dakotabroadcasting.com/pierre-man-arrested-on-child-pornography-charges/>,
+    dcterms:modified "2026-10-17 23:04:37.571518" ;
+    dcterms:source <https://www.fox4news.com/news/operation-janus-child-predator-arrests>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/dakota>,
-        <https://caselinker.up.railway.app/resource/location/hughes-county>,
-        <https://caselinker.up.railway.app/resource/location/south-dakota> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/pierre-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/south-dakota-division-of-criminal-investigation> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/dakota>,
-        <https://caselinker.up.railway.app/resource/location/hughes-county>,
-        <https://caselinker.up.railway.app/resource/location/south-dakota> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/amarillo>,
+        <https://w3id.org/caselinker/resource/location/dallas>,
+        <https://w3id.org/caselinker/resource/location/las-vegas>,
+        <https://w3id.org/caselinker/resource/location/lone-mountain>,
+        <https://w3id.org/caselinker/resource/location/montgomery-county>,
+        <https://w3id.org/caselinker/resource/location/nevada>,
+        <https://w3id.org/caselinker/resource/location/north-texas>,
+        <https://w3id.org/caselinker/resource/location/texas> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/operation> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/amarillo>,
+        <https://w3id.org/caselinker/resource/location/dallas>,
+        <https://w3id.org/caselinker/resource/location/las-vegas>,
+        <https://w3id.org/caselinker/resource/location/lone-mountain>,
+        <https://w3id.org/caselinker/resource/location/montgomery-county>,
+        <https://w3id.org/caselinker/resource/location/nevada>,
+        <https://w3id.org/caselinker/resource/location/north-texas>,
+        <https://w3id.org/caselinker/resource/location/texas> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns2:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061/charge/2> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061/event/multi-jurisdiction> a ns3:Event,
+        ns6:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/charge/2> ;
+    ns2:hasProceedingBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061/operation> a ns3:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"10 years\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061/phase/charged> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-09-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/amarillo> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Amarillo" ;
+    ns5:name "Amarillo" .
 
-<https://caselinker.up.railway.app/resource/location/dakota> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Dakota" ;
-    uco-core:name "Dakota" .
+<https://w3id.org/caselinker/resource/location/dallas> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Dallas" ;
+    ns5:name "Dallas" .
 
-<https://caselinker.up.railway.app/resource/location/hughes-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Hughes County" ;
-    uco-core:name "Hughes County" .
+<https://w3id.org/caselinker/resource/location/las-vegas> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Las Vegas" ;
+    ns5:name "Las Vegas" .
 
-<https://caselinker.up.railway.app/resource/location/south-dakota> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/lone-mountain> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lone Mountain" ;
+    ns5:name "Lone Mountain" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "uploading three such videos and admitted to having 20 to 30 child pornography files on various digital devices" ;
-    dcterms:source <https://dakotabroadcasting.com/pierre-man-arrested-on-child-pornography-charges/> ;
-    ns1:admissionContext "County, a video depicted a juvenile female engaged in various prohibited sexual acts. The documents further note that Dickinson admitted..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct",
-        "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "uploading three such videos and admitted to having 20 to 30 child pornography files on various digital devices" .
+<https://w3id.org/caselinker/resource/location/montgomery-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Montgomery County" ;
+    ns5:name "Montgomery County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/admission/1> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_1061/facet/possession> .
+<https://w3id.org/caselinker/resource/location/nevada> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nevada" ;
+    ns5:name "Nevada" .
 
+<https://w3id.org/caselinker/resource/location/north-texas> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "North Texas" ;
+    ns5:name "North Texas" .
+
+<https://w3id.org/caselinker/resource/location/texas> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns5:name "Texas" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1061> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_1061/provenance> .

@@ -1,59 +1,104 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_010> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:19:28.251445" ;
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_010> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 07:26:57.604078" ;
     dcterms:identifier "us_marshals_2023_010" ;
-    dcterms:modified "2026-09-10T20:19:28.251445" ;
+    dcterms:modified "2026-10-18 07:26:57.604078" ;
     dcterms:source <https://www.usmarshals.gov/news/press-release/wv-man-wanted-numerous-sex-offenses-arrested-us-marshals-task-force-md>,
         "US MARSHALS" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/event/trust-violation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/berkeley-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/usms> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/berkeley-county>,
+        <https://w3id.org/caselinker/resource/location/clarksburg>,
+        <https://w3id.org/caselinker/resource/location/martinsburg>,
+        <https://w3id.org/caselinker/resource/location/maryland>,
+        <https://w3id.org/caselinker/resource/location/montgomery-county>,
+        <https://w3id.org/caselinker/resource/location/west-virginia> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/us_marshals_2023_010/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/us_marshals_2023_010/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/us_marshals_2023_010/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2023_010/event/trust-violation> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/berkeley-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/usms> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/berkeley-county>,
+        <https://w3id.org/caselinker/resource/location/clarksburg>,
+        <https://w3id.org/caselinker/resource/location/martinsburg>,
+        <https://w3id.org/caselinker/resource/location/maryland>,
+        <https://w3id.org/caselinker/resource/location/montgomery-county>,
+        <https://w3id.org/caselinker/resource/location/west-virginia> .
 
-<https://caselinker.up.railway.app/resource/agency/berkeley-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/berkeley-county-sheriffs-office> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/usms> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/usms> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_010/event/multi-jurisdiction> a ns6:Event,
+        ns5:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/relationship/parent> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_010/event/trust-violation> a ns3:CustodialAbuse,
+        ns3:TrustViolation ;
+    ns3:violatesRelationship <https://w3id.org/caselinker/resource/case/us_marshals_2023_010/relationship/parent> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_010/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_010/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/relationship/parent> a cacontology-custodial:CaregiverRelationship,
-        cacontology-custodial:CustodialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/role/offender/1> ;
-    cacontology-custodial:relationshipType "parent" .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_010/relationship/parent> a ns3:CaregiverRelationship,
+        ns3:CustodialRelationship ;
+    ns3:involvesChild <https://w3id.org/caselinker/resource/case/us_marshals_2023_010/role/victim/1> ;
+    ns3:involvesCustodian <https://w3id.org/caselinker/resource/case/us_marshals_2023_010/role/offender/1> ;
+    ns3:relationshipType "parent" .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_010/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-12-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2023_010/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_010/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-12-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2023_010/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2023_010/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_010/phase/charged> a ns1:LegalProcessPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2023-12-13T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/location/berkeley-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Berkeley County" ;
+    ns2:name "Berkeley County" .
+
+<https://w3id.org/caselinker/resource/location/clarksburg> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Clarksburg" ;
+    ns2:name "Clarksburg" .
+
+<https://w3id.org/caselinker/resource/location/martinsburg> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Martinsburg" ;
+    ns2:name "Martinsburg" .
+
+<https://w3id.org/caselinker/resource/location/maryland> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Maryland" ;
+    ns2:name "Maryland" .
+
+<https://w3id.org/caselinker/resource/location/montgomery-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Montgomery County" ;
+    ns2:name "Montgomery County" .
+
+<https://w3id.org/caselinker/resource/location/west-virginia> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "West Virginia" ;
+    ns2:name "West Virginia" .
+
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_010> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/us_marshals_2023_010/provenance> .

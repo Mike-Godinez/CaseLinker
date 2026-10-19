@@ -1,0 +1,94 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/mn_bca_2026_001> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 14:27:09.419404" ;
+    dcterms:identifier "mn_bca_2026_001" ;
+    dcterms:modified "2026-10-18 14:27:09.419404" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/mn_bca_2026_001/provenance> ;
+    dcterms:source <https://dps.mn.gov/news/bca/bca-agents-arrest-suspect-child-pornography-case>,
+        "MN BCA" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/hennepin-county>,
+        <https://w3id.org/caselinker/resource/location/ia-minneapolis>,
+        <https://w3id.org/caselinker/resource/location/minneapolis> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/mn_bca_2026_001/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/mn_bca_2026_001/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/mn_bca_2026_001/event/csam>,
+        <https://w3id.org/caselinker/resource/case/mn_bca_2026_001/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/minnesota-department-of-public-safety>,
+        <https://w3id.org/caselinker/resource/agency/minnesota-department-of-public-safety-bureau-of-criminal-apprehension> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/hennepin-county>,
+        <https://w3id.org/caselinker/resource/location/ia-minneapolis>,
+        <https://w3id.org/caselinker/resource/location/minneapolis> .
+
+<https://w3id.org/caselinker/resource/case/mn_bca_2026_001/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/mn_bca_2026_001/event/csam> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/mn_bca_2026_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/mn_bca_2026_001/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/mn_bca_2026_001/event/csam> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/mn_bca_2026_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/minnesota-department-of-public-safety> a ns7:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/minnesota-department-of-public-safety-bureau-of-criminal-apprehension> a ns2:OrganizationLikeEntity,
+        ns7:StateAgency ;
+    rdfs:label "Minnesota Department of Public Safety Bureau of Criminal Apprehension" .
+
+<https://w3id.org/caselinker/resource/case/mn_bca_2026_001/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns6:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/mn_bca_2026_001/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/mn_bca_2026_001/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Hennepin County Jail" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/mn_bca_2026_001/charge/1> ;
+    ns6:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/mn_bca_2026_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 39 .
+
+<https://w3id.org/caselinker/resource/case/mn_bca_2026_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/mn_bca_2026_001/phase/arrested> a ns1:InitialPhase,
+        ns2:Phase ;
+    ns1:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/hennepin-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hennepin County" ;
+    ns4:name "Hennepin County" .
+
+<https://w3id.org/caselinker/resource/location/ia-minneapolis> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ia Minneapolis" ;
+    ns4:name "Ia Minneapolis" .
+
+<https://w3id.org/caselinker/resource/location/minneapolis> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Minneapolis" ;
+    ns4:name "Minneapolis" .
+
+<https://w3id.org/caselinker/resource/case/mn_bca_2026_001/event/csam> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns1:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/mn_bca_2026_001/facet/csam> .
+

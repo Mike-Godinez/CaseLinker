@@ -1,120 +1,105 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.587381" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455> a ns2:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:30.091185" ;
     dcterms:identifier "ncmec_2024_455" ;
-    dcterms:modified "2026-09-15T21:08:10.587381" ;
-    dcterms:source <https://www.radiodubuque.com/2024/06/07/second-dubuque-man-arrested-in-sexual-abuse-of-a-child/>,
+    dcterms:modified "2026-10-17 23:04:30.091185" ;
+    dcterms:source <https://wbontv.com/gatson-nabs-another-with-arrest-in-madison-co-related-to-child-pornography/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/dubuque>,
-        <https://caselinker.up.railway.app/resource/location/peosta> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/dubuque-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/dubuque>,
-        <https://caselinker.up.railway.app/resource/location/peosta> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/madison-county>,
+        <https://w3id.org/caselinker/resource/location/richmond> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_455/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_455/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_455/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_455/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_455/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_455/operation> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/kentucky-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/madison-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/sheriffs-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/madison-county>,
+        <https://w3id.org/caselinker/resource/location/richmond> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-01-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_455/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_455/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_455/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/dubuque-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Dubuque Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-01-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_455/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_455/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_455/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "purchase or possession of a depiction of a minor in a sex act and one count" ;
-    cacontology-legal-outcomes:indictmentCounts 17 .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/charge/2> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of a minor" .
+<https://w3id.org/caselinker/resource/agency/kentucky-state-police-department> a ns3:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/agency/madison-county-sheriffs-office> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/sheriffs-department> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455/charge/2> a ns5:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
     ns1:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_455/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_455/charge/2> ;
+    ns5:hasProceedingBeginPoint "2024-01-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 34 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455/operation> a ns7:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/person/offender/2> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 40 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 42 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455/phase/arrested> a ns2:InitialPhase,
+        ns7:Phase ;
+    ns2:hasPhaseBeginPoint "2024-01-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/role/offender/2> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/person/offender/2> .
+<https://w3id.org/caselinker/resource/location/madison-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Madison County" ;
+    ns4:name "Madison County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/richmond> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Richmond" ;
+    ns4:name "Richmond" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-06-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455/event/online-only> a ns2:ChildSexualAbuseEvent,
+        ns7:Event ;
+    ns2:severityLevel 2 .
 
-<https://caselinker.up.railway.app/resource/location/dubuque> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Dubuque" ;
-    uco-core:name "Dubuque" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455/event/possession> a ns2:CSAMIncident,
+        ns7:Event ;
+    ns2:severityLevel 2 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_455/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/location/peosta> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Peosta" ;
-    uco-core:name "Peosta" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/event/conspiracy> a cacontology:ConspiracyToCommitCSA,
-        cac-core:Event ;
-    cacontology:conspiracyMemberCount 2 ;
-    cacontology:participatesInConspiracy <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/role/offender/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/role/offender/2> ;
-    cacontology:severityLevel 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_455/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_455/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2024_455> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_455/provenance> .

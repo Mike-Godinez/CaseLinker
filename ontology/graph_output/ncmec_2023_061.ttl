@@ -1,77 +1,86 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/detection#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_061> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.791563" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_061> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:28.308701" ;
     dcterms:identifier "ncmec_2023_061" ;
-    dcterms:modified "2026-09-15T20:55:00.791563" ;
-    dcterms:source <https://www.wkbn.com/news/local-news/warren-news/man-indicted-for-sexually-related-charges-with-minors/#:~:text=Blake%20McCormick%20was%20indicted%20on,nudity%2Doriented%20material%20or%20performance>,
+    dcterms:modified "2026-10-17 22:21:28.308701" ;
+    dcterms:source <https://www.bigcountrynewsconnection.com/idaho/icac-investigators-arrest-southern-idaho-man-for-the-alleged-possession-of-sexually-exploitative-material-of/article_4d2b3928-b860-11ed-80fb-2f3c302745d5.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/warren> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_061/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_061/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_061/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/mahoning-county-human-trafficking-task-force> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/warren> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/butte-county>,
+        <https://w3id.org/caselinker/resource/location/idaho> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_061/phase/booked> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_061/phase/booked> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_061/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_061/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_061/legal-proceeding> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/butte-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/butte-county>,
+        <https://w3id.org/caselinker/resource/location/idaho> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_061/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_061/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_061/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2023-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_061/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_061/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_061/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_061/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_061/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2023-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_061/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_061/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/butte-county-sheriffs-office> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/mahoning-county-human-trafficking-task-force> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Mahoning County Human Trafficking Task Force" .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_061/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "pandering sexually oriented" ;
-    cacontology-legal-outcomes:indictmentCounts 16 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_061/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_061/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_061/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_061/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_061/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_061/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_061/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns8:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Butte County Jail" ;
+    ns8:hasProceedingBeginPoint "2023-03-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_061/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_061/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns1:ageEstimate 64 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_061/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_061/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_061/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns2:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/location/ohio> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_061/phase/booked> a ns3:InitialPhase,
+        ns5:Phase ;
+    ns3:hasPhaseBeginPoint "2023-03-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/warren> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/butte-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Butte County" ;
+    ns4:name "Butte County" .
 
+<https://w3id.org/caselinker/resource/location/idaho> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Idaho" ;
+    ns4:name "Idaho" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_061/event/possession> a ns3:CSAMIncident,
+        ns5:Event ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_061/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_061> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_061/provenance> .

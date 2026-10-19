@@ -2190,6 +2190,8 @@ _SENTENCE_DURATION_RES: Tuple[re.Pattern, ...] = (
 _SENTENCING_CLAUSE_RE = re.compile(
     r'\bsentenced\s+to\b|'
     r'\bsentenced\b|'
+    r'\bjailed\s+for\b|'
+    r'\bimprisoned\s+for\b|'
     r'\bin\s+prison\b|'
     r'\bfederal\s+prison\b|'
     r'\bimprisonment\b|'

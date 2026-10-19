@@ -1,85 +1,153 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_971> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:14.193388" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/1/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/1> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_971> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/2/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/2> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_971> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/3/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/3> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_971> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-05-04T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_971/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_971/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_971/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/kittitas-county-sheriffs-office> a ns2:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "Kittitas County Sheriff's Office" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns5:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/cybertip> a ns4:NCMECCybertipReport ;
+    ns4:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/event/distribution> a ns2:Event,
+        ns5:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in Kittitas County Jail" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_971/charge/1> ;
+    ns5:hasProceedingBeginPoint "2025-05-04T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 49 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/tech/cybertipline> a ns4:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/3> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "had changed his mind" ;
+    dcterms:source <https://www.dailyrecordnews.com/crimes/cle-elum-man-accused-of-dealing-child-porn-asks-for-new-lawyer/article_6e375979-85d4-47cc-8371-14173dd2dfb6.html> ;
+    ns7:description "had changed his mind" ;
+    ns1:admissionContext "ept a plea deal on his felony charges in early April, but at his change-of- plea hearing, he said he had changed his mind" ;
+    ns1:admissionFrame "he_said_paraphrase" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_971/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/phase/arrested> a ns3:InitialPhase,
+        ns2:Phase ;
+    ns3:hasPhaseBeginPoint "2025-05-04T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/kittitas-county-jail> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kittitas County Jail" ;
+    ns7:name "Kittitas County Jail" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971> a ns3:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:26.481991" ;
     dcterms:identifier "ncmec_2025_971" ;
-    dcterms:modified "2026-09-15T21:27:14.193388" ;
-    dcterms:source <https://www.dailysentinel.com/news/local/child-porn-charge-added-in-sex-assault-case/article_d09707e9-a060-52a9-83b3-9de23a5584bd.html>,
+    dcterms:modified "2026-10-18 00:01:26.481991" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ncmec_2025_971/provenance> ;
+    dcterms:source <https://www.dailyrecordnews.com/crimes/cle-elum-man-accused-of-dealing-child-porn-asks-for-new-lawyer/article_6e375979-85d4-47cc-8371-14173dd2dfb6.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/nacogdoches> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_971/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_971/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_971/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_971/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_971/legal-step/convicted> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/nacogdoches> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/kittitas-county-jail> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_971/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_971/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_971/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_971/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_971/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_971/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_971/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns3:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_971/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/kittitas-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/kittitas-county-jail> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_971/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_971/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_971/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/event/online-only> a ns3:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/2> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_971/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_971/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_971/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/event/possession> a ns3:CSAMIncident,
+        ns2:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/2> ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_971/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_971/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-05-04T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_971/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_971/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_971/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_971/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "had been locked out of his Google account last fall and was notified it was due to downloading inappropriate pictures" ;
+    dcterms:source <https://www.dailyrecordnews.com/crimes/cle-elum-man-accused-of-dealing-child-porn-asks-for-new-lawyer/article_6e375979-85d4-47cc-8371-14173dd2dfb6.html> ;
+    ns7:description "had been locked out of his Google account last fall and was notified it was due to downloading inappropriate pictures" ;
+    ns1:admissionContext "he looked at a lot of adult pornography online and spent a lot of time on the internet. Neifert allegedly admitted he had been locked out..." ;
+    ns1:admissionFrame "admitted_he_she" ;
+    ns1:admissionTheme "tech_use" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_971/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_971/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_971/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_971/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_971/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_971/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 21 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_971/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 15 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_971/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"30 years\", \"$20,000\", \"$100,000\"]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_971/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/nacogdoches> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Nacogdoches" ;
-    uco-core:name "Nacogdoches" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_971/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_971/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_971/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "did not agree with his desire to claim “not guilty by reason of insanity,” he wrote in his memo" ;
+    dcterms:source <https://www.dailyrecordnews.com/crimes/cle-elum-man-accused-of-dealing-child-porn-asks-for-new-lawyer/article_6e375979-85d4-47cc-8371-14173dd2dfb6.html> ;
+    ns7:description "did not agree with his desire to claim “not guilty by reason of insanity,” he wrote in his memo" ;
+    ns1:admissionContext "itnesses, and actual witnesses who could prove my innocense [sic],” he wrote in the memo. Neifert said she did not agree with his desire..." ;
+    ns1:admissionFrame "said_paraphrase" ;
+    ns1:admissionTheme "minimization" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_971/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" .
 

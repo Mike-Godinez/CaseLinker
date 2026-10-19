@@ -1,173 +1,97 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_269> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_269> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/agency/margate-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Margate Police Department" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/event/trafficking> a cac-core:Event,
-        cacontology-legal-outcomes:SexTrafficking .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 41 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 12 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.984704" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_269> a ns5:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:31.163400" ;
     dcterms:identifier "ncmec_2023_269" ;
-    dcterms:modified "2026-09-15T20:55:00.984704" ;
-    dcterms:source <https://margatetalk.com/facebook-tip-man-arrested-child-pornography-43964>,
+    dcterms:modified "2026-10-17 22:21:31.163400" ;
+    dcterms:source <https://patch.com/new-jersey/morristown/1000-child-porn-images-found-morris-co-mans-home-prosecutor>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/margate>,
-        <https://caselinker.up.railway.app/resource/location/palermo>,
-        <https://caselinker.up.railway.app/resource/location/south-florida> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/event/trafficking>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/margate-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/margate>,
-        <https://caselinker.up.railway.app/resource/location/palermo>,
-        <https://caselinker.up.railway.app/resource/location/south-florida> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/boonton>,
+        <https://w3id.org/caselinker/resource/location/morris-county>,
+        <https://w3id.org/caselinker/resource/location/new-jersey> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_269/phase/charged> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_269/phase/charged> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_269/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_269/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_269/legal-proceeding> ;
+    ns5:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/boonton>,
+        <https://w3id.org/caselinker/resource/location/morris-county>,
+        <https://w3id.org/caselinker/resource/location/new-jersey> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "officers that he had sent the files" ;
-    dcterms:source <https://margatetalk.com/facebook-tip-man-arrested-child-pornography-43964> ;
-    ns1:admissionContext "Police Department and the South Florida ICAC executed a search warrant at Palermo’s home. According to the arrest report, Palermo admitte..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "officers that he had sent the files" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_269/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2023-08-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_269/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_269/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_269/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2023-08-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_269/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_269/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/person/offender/1> .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/location/margate> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Margate" ;
-    uco-core:name "Margate" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_269/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns1:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/location/palermo> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Palermo" ;
-    uco-core:name "Palermo" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_269/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/location/south-florida> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_269/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
-    rdfs:label "chat" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_269/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_269/charge/1> ;
+    ns1:hasProceedingBeginPoint "2023-08-18T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/platform/facebook> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Facebook" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_269/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 25 .
 
-<https://caselinker.up.railway.app/resource/platform/facebook-messenger> a cacontology-platforms:MessagingService ;
-    rdfs:label "Facebook Messenger" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_269/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/admission/2> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/facebook-messenger> .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/admission/2> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/facebook-messenger> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_269/phase/charged> a ns5:LegalProcessPhase,
+        ns6:Phase ;
+    ns5:hasPhaseBeginPoint "2023-08-18T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_269/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "sending photographs of his penis to the underage victim" ;
-    dcterms:source <https://margatetalk.com/facebook-tip-man-arrested-child-pornography-43964> ;
-    ns1:admissionContext "rrest report, Palermo admitted to officers that he had sent the files. In addition to his admission of trafficking in child pornography,..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_269/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "sending photographs of his penis to the underage victim" .
+<https://w3id.org/caselinker/resource/location/boonton> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Boonton" ;
+    ns4:name "Boonton" .
 
+<https://w3id.org/caselinker/resource/location/morris-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Morris County" ;
+    ns4:name "Morris County" .
+
+<https://w3id.org/caselinker/resource/location/new-jersey> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Jersey" ;
+    ns4:name "New Jersey" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_269/event/possession> a ns5:CSAMIncident,
+        ns6:Event ;
+    ns5:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_269/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_269> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_269/provenance> .

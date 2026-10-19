@@ -1,123 +1,86 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_098> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.247886" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_098> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:16.558597" ;
     dcterms:identifier "ncmec_2025_098" ;
-    dcterms:modified "2026-09-15T21:27:13.247886" ;
-    dcterms:source <https://www.mercurynews.com/2024/12/31/during-police-interview-in-child-porn-bust-berkeley-man-allegedly-confessed-having-a-crush-on-exs-prepubescent-sisters/>,
+    dcterms:modified "2026-10-18 00:01:16.558597" ;
+    dcterms:source <https://keyt.com/news/2025/07/15/santa-maria-man-arrested-tuesday-in-connection-with-possession-of-child-pornography-and-gun-charges-after-months-long-investigation/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/berkeley>,
-        <https://caselinker.up.railway.app/resource/location/oakland>,
-        <https://caselinker.up.railway.app/resource/location/temple> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/berkeley>,
-        <https://caselinker.up.railway.app/resource/location/oakland>,
-        <https://caselinker.up.railway.app/resource/location/temple> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/santa-maria> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_098/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_098/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_098/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_098/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_098/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/santa-maria-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/santa-maria> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_098/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_098/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_098/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_098/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_098/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_098/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/agency/santa-maria-police-department> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_098/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 26 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_098/event/distribution> a ns6:Event,
+        ns7:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 11 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_098/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_098/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_098/charge/1> ;
+    ns7:hasProceedingBeginPoint "2025-07-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$150,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_098/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 42 .
 
-<https://caselinker.up.railway.app/resource/platform/facebook> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Facebook" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_098/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_098/phase/booked> a ns1:InitialPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2025-07-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "HAVING A ‘CRUSH’ ON EX’S PREPUBESCENT SISTERS The Mercury News By Nate Gartrell January 2, 2025 https://www" ;
-    dcterms:source <https://www.mercurynews.com/2024/12/31/during-police-interview-in-child-porn-bust-berkeley-man-allegedly-confessed-having-a-crush-on-exs-prepubescent-sisters/> ;
-    ns1:admissionContext "DURING POLICE INTERVIEW IN CHILD PORN BUST, BERKELEY MAN ALLEGEDLY CONFESSED HAVING A ‘CRUSH’ ON EX’S PREPUBESCENT SISTERS The Mercury Ne..." ;
-    ns1:admissionFrame "confessed_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "HAVING A ‘CRUSH’ ON EX’S PREPUBESCENT SISTERS The Mercury News By Nate Gartrell January 2, 2025 https://www" .
+<https://w3id.org/caselinker/resource/location/calif> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Calif." ;
+    ns2:name "Calif." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/santa-maria> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Santa Maria" ;
+    ns2:name "Santa Maria" .
 
-<https://caselinker.up.railway.app/resource/location/berkeley> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Berkeley" ;
-    uco-core:name "Berkeley" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_098/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_098/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/location/oakland> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
 
-<https://caselinker.up.railway.app/resource/location/temple> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Temple" ;
-    uco-core:name "Temple" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_098/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_098/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_098> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_098/provenance> .

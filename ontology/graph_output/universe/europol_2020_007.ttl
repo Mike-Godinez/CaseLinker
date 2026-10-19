@@ -1,0 +1,120 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 04:25:58.517401" ;
+    dcterms:identifier "europol_2020_007" ;
+    dcterms:modified "2026-10-18 04:25:58.517401" ;
+    dcterms:source <https://www.europol.europa.eu/media-press/newsroom/news/massive-investigation-in-italy-combating-online-child-sexual-abuse>,
+        "EUROPOL" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/canada>,
+        <https://w3id.org/caselinker/resource/location/italy>,
+        <https://w3id.org/caselinker/resource/location/turin> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/europol_2020_007/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/europol_2020_007/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/europol_2020_007/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/europol_2020_007/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/europol_2020_007/event/possession>,
+        <https://w3id.org/caselinker/resource/case/europol_2020_007/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/europol_2020_007/offense-event/charge-2>,
+        <https://w3id.org/caselinker/resource/case/europol_2020_007/operation> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/italian-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/postal-and-communications-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/canada>,
+        <https://w3id.org/caselinker/resource/location/italy>,
+        <https://w3id.org/caselinker/resource/location/turin> .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2020-07-08T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/europol_2020_007/event/possession>,
+        <https://w3id.org/caselinker/resource/case/europol_2020_007/offense-event/charge-2> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/europol_2020_007/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2020-07-08T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/europol_2020_007/event/possession>,
+        <https://w3id.org/caselinker/resource/case/europol_2020_007/offense-event/charge-2> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/europol_2020_007/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/italian-state-police-department> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/postal-and-communications-police-department> a ns5:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "Postal and Communications Police Department" .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/charge/2> a ns2:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/europol_2020_007/offense-event/charge-2> ;
+    ns1:chargeCluster "child_exploitation" ;
+    ns1:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/europol_2020_007/offense-event/charge-2> .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/event/distribution> a ns5:Event,
+        ns2:CSAM_Distribution ;
+    ns3:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/event/multi-jurisdiction> a ns5:Event,
+        ns6:MultiJurisdictionalInvestigation ;
+    ns3:severityLevel 3 ;
+    ns6:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/europol_2020_007/charge/1>,
+        <https://w3id.org/caselinker/resource/case/europol_2020_007/charge/2> ;
+    ns2:hasProceedingBeginPoint "2020-07-08T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/operation> a ns5:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/phase/arrested> a ns3:InitialPhase,
+        ns5:Phase ;
+    ns3:hasPhaseBeginPoint "2020-07-08T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/canada> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Canada" ;
+    ns4:name "Canada" .
+
+<https://w3id.org/caselinker/resource/location/italy> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Italy" ;
+    ns4:name "Italy" .
+
+<https://w3id.org/caselinker/resource/location/turin> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Turin" ;
+    ns4:name "Turin" .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/event/possession> a ns3:CSAMIncident,
+        ns5:Event ;
+    ns3:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/europol_2020_007/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007/offense-event/charge-2> a ns3:ChildSexualAbuseEvent,
+        ns5:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/europol_2020_007> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/europol_2020_007/provenance> .

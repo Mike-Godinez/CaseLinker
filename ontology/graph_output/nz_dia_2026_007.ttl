@@ -1,0 +1,127 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 14:04:20.896855" ;
+    dcterms:identifier "nz_dia_2026_007" ;
+    dcterms:modified "2026-10-18 14:04:20.896855" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/provenance> ;
+    dcterms:source <https://www.dia.govt.nz/press.nsf/d77da9b523f12931cc256ac5000d19b6/0ae07c1060cb2e23cc258dd8001761f9!OpenDocument>,
+        "NZ DIA" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/new-zealand>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/cybertip>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/event/possession>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/offense-event/charge-3>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/operation> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-internal-affairs-digital-child-exploitation>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/new-zealand>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-04-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/event/possession>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/offense-event/charge-3> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-04-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/event/possession>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/offense-event/charge-3> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/department-of-internal-affairs-digital-child-exploitation> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns3:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/charge/2> a ns3:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/charge/3> a ns3:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/offense-event/charge-3> ;
+    ns4:chargeCluster "child_exploitation" ;
+    ns4:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/offense-event/charge-3> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/event/distribution> a ns7:Event,
+        ns3:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/charge/1>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/charge/2>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/charge/3> ;
+    ns3:hasProceedingBeginPoint "2026-04-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:resultsSentence <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/legal-step/sentenced> a ns7:Event,
+        ns7:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2026-04-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/operation> a ns7:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/sentence/1> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "four years and 11 months" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/phase/sentenced> a ns7:Phase,
+        ns3:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2026-04-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/new-zealand> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Zealand" ;
+    ns2:name "New Zealand" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns2:name "United States" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/event/possession> a ns1:CSAMIncident,
+        ns7:Event ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/nz_dia_2026_007/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2026_007/offense-event/charge-3> a ns1:ChildSexualAbuseEvent,
+        ns7:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+

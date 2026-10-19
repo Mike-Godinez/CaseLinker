@@ -1,0 +1,91 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_015> a ns4:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 06:23:11.662201" ;
+    dcterms:identifier "pa_ag_2025_015" ;
+    dcterms:modified "2026-10-18 06:23:11.662201" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/pa_ag_2025_015/provenance> ;
+    dcterms:source <https://www.attorneygeneral.gov/taking-action/tioga-county-man-jailed-for-sexual-assault-of-child/>,
+        "PA AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/blossburg>,
+        <https://w3id.org/caselinker/resource/location/harrisburg>,
+        <https://w3id.org/caselinker/resource/location/tioga-county> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/pa_ag_2025_015/phase/sentenced> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/pa_ag_2025_015/phase/sentenced> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/pa_ag_2025_015/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/pa_ag_2025_015/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/pa_ag_2025_015/legal-step/sentenced> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/blossburg>,
+        <https://w3id.org/caselinker/resource/location/harrisburg>,
+        <https://w3id.org/caselinker/resource/location/tioga-county> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_015/event/trust-violation> a ns3:CustodialAbuse,
+        ns3:TrustViolation ;
+    ns3:violatesRelationship <https://w3id.org/caselinker/resource/case/pa_ag_2025_015/relationship/mother> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_015/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasProceedingBeginPoint "2025-12-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:resultsSentence <https://w3id.org/caselinker/resource/case/pa_ag_2025_015/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_015/legal-step/sentenced> a ns6:Event,
+        ns6:LegalEvent,
+        ns1:LegalProceeding,
+        ns1:SentencingHearing ;
+    ns1:hasProceedingBeginPoint "2025-12-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_015/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 39 .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_015/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_015/relationship/mother> a ns3:CustodialRelationship,
+        ns3:FamilialRelationship ;
+    ns3:involvesChild <https://w3id.org/caselinker/resource/case/pa_ag_2025_015/role/victim/1> ;
+    ns3:involvesCustodian <https://w3id.org/caselinker/resource/case/pa_ag_2025_015/role/offender/1> ;
+    ns3:relationshipType "mother" .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_015/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2025-12-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/pa_ag_2025_015/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_015/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2025-12-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/pa_ag_2025_015/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_015/sentence/1> a ns1:CriminalSentence,
+        ns1:PrisonSentence ;
+    rdfs:label "eight to 20 years" .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_015/phase/sentenced> a ns6:Phase,
+        ns1:SentencingPhase ;
+    ns4:hasPhaseBeginPoint "2025-12-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/blossburg> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Blossburg" ;
+    ns2:name "Blossburg" .
+
+<https://w3id.org/caselinker/resource/location/harrisburg> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Harrisburg" ;
+    ns2:name "Harrisburg" .
+
+<https://w3id.org/caselinker/resource/location/tioga-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tioga County" ;
+    ns2:name "Tioga County" .
+

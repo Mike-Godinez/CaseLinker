@@ -1,0 +1,102 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_001> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 07:26:56.548761" ;
+    dcterms:identifier "us_marshals_2023_001" ;
+    dcterms:modified "2026-10-18 07:26:56.548761" ;
+    dcterms:source <https://www.usmarshals.gov/news/press-release/alleged-pa-child-rapist-arrested-us-marshals-manchester>,
+        "US MARSHALS" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/coatesville>,
+        <https://w3id.org/caselinker/resource/location/concord>,
+        <https://w3id.org/caselinker/resource/location/manchester>,
+        <https://w3id.org/caselinker/resource/location/new-hampshire>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/us_marshals_2023_001/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/us_marshals_2023_001/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/us_marshals_2023_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2023_001/event/multi-jurisdiction> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/hillsborough-county-department-of-corrections>,
+        <https://w3id.org/caselinker/resource/agency/marshals-service>,
+        <https://w3id.org/caselinker/resource/agency/nh-joint-fugitive-task-force>,
+        <https://w3id.org/caselinker/resource/agency/usms> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/coatesville>,
+        <https://w3id.org/caselinker/resource/location/concord>,
+        <https://w3id.org/caselinker/resource/location/manchester>,
+        <https://w3id.org/caselinker/resource/location/new-hampshire>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania> .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_001/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-10-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/us_marshals_2023_001/event/hands-on> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2023_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_001/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-10-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/us_marshals_2023_001/event/hands-on> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2023_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/hillsborough-county-department-of-corrections> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/marshals-service> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/nh-joint-fugitive-task-force> a ns5:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "NH Joint Fugitive Task Force" .
+
+<https://w3id.org/caselinker/resource/agency/usms> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_001/event/multi-jurisdiction> a ns5:Event,
+        ns4:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 37 .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_001/phase/charged> a ns1:LegalProcessPhase,
+        ns5:Phase ;
+    ns1:hasPhaseBeginPoint "2023-10-25T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/coatesville> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Coatesville" ;
+    ns2:name "Coatesville" .
+
+<https://w3id.org/caselinker/resource/location/concord> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Concord" ;
+    ns2:name "Concord" .
+
+<https://w3id.org/caselinker/resource/location/manchester> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Manchester" ;
+    ns2:name "Manchester" .
+
+<https://w3id.org/caselinker/resource/location/new-hampshire> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Hampshire" ;
+    ns2:name "New Hampshire" .
+
+<https://w3id.org/caselinker/resource/location/pennsylvania> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pennsylvania" ;
+    ns2:name "Pennsylvania" .
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_001/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns5:Event ;
+    ns1:severityLevel 3 .
+
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2023_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/us_marshals_2023_001/provenance> .

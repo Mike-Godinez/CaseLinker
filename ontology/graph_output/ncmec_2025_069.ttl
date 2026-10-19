@@ -1,111 +1,103 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_069> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_069/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_069> ;
+    ns3:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-10-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_069/event/sextortion> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_069/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/arkansas-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/crawford-county-sheriffs-office> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/clay-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Clay County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.214472" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:16.124918" ;
     dcterms:identifier "ncmec_2025_069" ;
-    dcterms:modified "2026-09-15T21:27:13.214472" ;
-    dcterms:source <https://www.kait8.com/2025/01/04/man-accused-possessing-child-pornography-clay-county/>,
+    dcterms:modified "2026-10-18 00:01:16.124918" ;
+    dcterms:source <https://www.4029tv.com/article/van-buren-man-arrested-for-sexually-extorting-a-17-year-old/68908061>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/clay-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/arkansas-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/clay-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/clay-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ark>,
+        <https://w3id.org/caselinker/resource/location/van-buren> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_069/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_069/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_069/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_069/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_069/event/sextortion>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_069/legal-proceeding> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/crawford-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/ark>,
+        <https://w3id.org/caselinker/resource/location/van-buren> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069/charge/1> a ns7:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_069/charge/1> ;
+    ns7:hasProceedingBeginPoint "2025-10-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 23 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-10-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_069/event/sextortion> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_069/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/person/offender/1> .
+<https://w3id.org/caselinker/resource/platform/instagram> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Instagram" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "would send the pictures and videos to her schoolmates if she did not send him more content" ;
+    dcterms:source <https://www.4029tv.com/article/van-buren-man-arrested-for-sexually-extorting-a-17-year-old/68908061> ;
+    ns4:admissionContext "res on \"a lesbian website if she did not send other content of herself touching herself.\" He also said he would send the pictures and vid..." ;
+    ns4:admissionFrame "he_said_paraphrase" ;
+    ns4:admissionTheme "other" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_069/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns2:description "would send the pictures and videos to her schoolmates if she did not send him more content" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069/phase/charged> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2025-10-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/clay-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Clay County" ;
-    uco-core:name "Clay County" .
+<https://w3id.org/caselinker/resource/location/ark> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ark." ;
+    ns2:name "Ark." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "viewed and sent sexually explicit material involving children" ;
-    dcterms:source <https://www.kait8.com/2025/01/04/man-accused-possessing-child-pornography-clay-county/> ;
-    ns1:admissionContext "possessing-child-pornography-clay-county/ PIGGOTT, Ark. (KAIT) – Agencies arrested a man after they said he viewed and sent sexually expl..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "viewed and sent sexually explicit material involving children" .
+<https://w3id.org/caselinker/resource/location/van-buren> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Van Buren" ;
+    ns2:name "Van Buren" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_069/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/admission/1> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_069/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069/event/sextortion> a ns3:Event,
+        <https://cacontology.projectvic.org/sextortion#SextortionIncident> ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/instagram> .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_069> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_069/provenance> .

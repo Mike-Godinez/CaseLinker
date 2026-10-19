@@ -1,119 +1,118 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_015> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_015/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_015> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-07-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_015/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_015/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/horry-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/horry-county-sheriffs-office> a ns7:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.750736" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:27.815289" ;
     dcterms:identifier "ncmec_2023_015" ;
-    dcterms:modified "2026-09-15T20:55:00.750736" ;
+    dcterms:modified "2026-10-17 22:21:27.815289" ;
     dcterms:source <https://www.wmbfnews.com/2023/07/13/79-year-old-conway-man-charged-with-sexual-exploitation-minor/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/conway>,
-        <https://caselinker.up.railway.app/resource/location/sc>,
-        <https://caselinker.up.railway.app/resource/location/south-carolina> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/horry-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/conway>,
-        <https://caselinker.up.railway.app/resource/location/sc>,
-        <https://caselinker.up.railway.app/resource/location/south-carolina> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/conway>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_015/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_015/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_015/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_015/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_015/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_015/legal-proceeding> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/horry-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/conway>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
     rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/charge/2> a ns4:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
     ns1:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_015/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_015/charge/2> ;
+    ns4:hasProceedingBeginPoint "2023-07-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 79 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 79 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-07-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_015/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_015/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns7:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/phase/charged> a ns2:LegalProcessPhase,
+        ns5:Phase ;
+    ns2:hasPhaseBeginPoint "2023-07-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/conway> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Conway" ;
+    ns3:name "Conway" .
 
-<https://caselinker.up.railway.app/resource/location/conway> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/sc> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "S.c." ;
+    ns3:name "S.c." .
 
-<https://caselinker.up.railway.app/resource/location/sc> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/south-carolina> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Carolina" ;
+    ns3:name "South Carolina" .
 
-<https://caselinker.up.railway.app/resource/location/south-carolina> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "possessed files of child sexual abuse material" ;
     dcterms:source <https://www.wmbfnews.com/2023/07/13/79-year-old-conway-man-charged-with-sexual-exploitation-minor/> ;
     ns1:admissionContext "ke’s arrest came after a tip from the National Center for Missing and Exploited Children. Investigators also said he possessed files of c..." ;
     ns1:admissionFrame "said_paraphrase" ;
     ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/role/offender/1> ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_015/role/offender/1> ;
     ns1:evidenceTier "press_release_stated" ;
     ns1:quoteType "paraphrase" ;
-    uco-core:description "possessed files of child sexual abuse material" .
+    ns3:description "possessed files of child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_015/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/admission/1> ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_015/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015/event/possession> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_015/admission/1> ;
+    ns2:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_015/facet/possession> .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_015> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_015/provenance> .

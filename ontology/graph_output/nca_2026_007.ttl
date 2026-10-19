@@ -1,157 +1,152 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/production#> .
+@prefix ns8: <https://cacontology.projectvic.org/core#> .
+@prefix ns9: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/nca_2026_007/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/nca_2026_007> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/nca_2026_007/admission/1/extraction-confidence> a ns8:AssessmentResult ;
+    ns8:assesses <https://w3id.org/caselinker/resource/case/nca_2026_007/admission/1> ;
+    ns8:generatedBy <https://w3id.org/caselinker/resource/case/nca_2026_007> ;
+    ns8:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
     rdfs:label "chat" .
 
-<https://caselinker.up.railway.app/resource/platform/skype> a cacontology-platforms:MessagingService ;
+<https://w3id.org/caselinker/resource/platform/skype> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
     rdfs:label "Skype" .
 
-<https://caselinker.up.railway.app/resource/platform/whatsapp> a cac-core:DigitalSystemEntity,
-        cacontology-platforms:MessagingService ;
-    rdfs:label "WhatsApp" ;
-    cacontology-platforms:encryptionLevel "end-to-end" .
+<https://w3id.org/caselinker/resource/platform/whatsapp> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "WhatsApp" .
 
-<https://caselinker.up.railway.app/resource/agency/national-crime-agency> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/national-crime-agency> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-23T18:25:04.911142" ;
+<https://w3id.org/caselinker/resource/case/nca_2026_007> a ns3:CACInvestigation,
+        ns8:EnduringEntity ;
+    dcterms:created "2026-10-18 05:40:02.063100" ;
     dcterms:identifier "nca_2026_007" ;
-    dcterms:modified "2026-09-23T18:25:04.911142" ;
+    dcterms:modified "2026-10-18 05:40:02.063100" ;
     dcterms:source <https://www.nationalcrimeagency.gov.uk/news/five-years-in-jail-and-worldwide-travel-ban-for-british-teacher-who-wanted-to-abuse-young-filipino-children>,
         "NCA" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/bangkok-thailand>,
-        <https://caselinker.up.railway.app/resource/location/beeston-leeds>,
-        <https://caselinker.up.railway.app/resource/location/illigan-city>,
-        <https://caselinker.up.railway.app/resource/location/leeds>,
-        <https://caselinker.up.railway.app/resource/location/malaysia>,
-        <https://caselinker.up.railway.app/resource/location/philippines>,
-        <https://caselinker.up.railway.app/resource/location/thailand> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/nca_2026_007/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/nca_2026_007/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/nca_2026_007/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/nca_2026_007/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/nca_2026_007/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/nca_2026_007/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/national-crime-agency> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/bangkok-thailand>,
-        <https://caselinker.up.railway.app/resource/location/beeston-leeds>,
-        <https://caselinker.up.railway.app/resource/location/illigan-city>,
-        <https://caselinker.up.railway.app/resource/location/leeds>,
-        <https://caselinker.up.railway.app/resource/location/malaysia>,
-        <https://caselinker.up.railway.app/resource/location/philippines>,
-        <https://caselinker.up.railway.app/resource/location/thailand> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/bangkok-thailand>,
+        <https://w3id.org/caselinker/resource/location/beeston-leeds>,
+        <https://w3id.org/caselinker/resource/location/illigan-city>,
+        <https://w3id.org/caselinker/resource/location/leeds>,
+        <https://w3id.org/caselinker/resource/location/malaysia>,
+        <https://w3id.org/caselinker/resource/location/philippines>,
+        <https://w3id.org/caselinker/resource/location/thailand> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/nca_2026_007/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/nca_2026_007/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/nca_2026_007/admission/1>,
+        <https://w3id.org/caselinker/resource/case/nca_2026_007/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/nca_2026_007/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/nca_2026_007/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/national-crime-agency> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/bangkok-thailand>,
+        <https://w3id.org/caselinker/resource/location/beeston-leeds>,
+        <https://w3id.org/caselinker/resource/location/illigan-city>,
+        <https://w3id.org/caselinker/resource/location/leeds>,
+        <https://w3id.org/caselinker/resource/location/malaysia>,
+        <https://w3id.org/caselinker/resource/location/philippines>,
+        <https://w3id.org/caselinker/resource/location/thailand> .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 3 ;
-    cacontology-multi:crossesBorders true .
+<https://w3id.org/caselinker/resource/case/nca_2026_007/event/multi-jurisdiction> a ns8:Event,
+        ns5:MultiJurisdictionalInvestigation ;
+    ns3:severityLevel 3 ;
+    ns5:crossesBorders true .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/nca_2026_007/relationship/mother> .
+<https://w3id.org/caselinker/resource/case/nca_2026_007/event/trust-violation> a ns2:CustodialAbuse,
+        ns2:TrustViolation ;
+    ns2:violatesRelationship <https://w3id.org/caselinker/resource/case/nca_2026_007/relationship/mother> .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/nca_2026_007/sentence/1> .
+<https://w3id.org/caselinker/resource/case/nca_2026_007/legal-proceeding> a ns8:Event,
+        ns8:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:resultsSentence <https://w3id.org/caselinker/resource/case/nca_2026_007/sentence/1> .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 42 .
+<https://w3id.org/caselinker/resource/case/nca_2026_007/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns9:ageEstimate 42 .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 11 .
+<https://w3id.org/caselinker/resource/case/nca_2026_007/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:victimAge 11 .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007/relationship/mother> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/nca_2026_007/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/nca_2026_007/role/offender/1> ;
-    cacontology-custodial:relationshipType "mother" .
+<https://w3id.org/caselinker/resource/case/nca_2026_007/relationship/mother> a ns2:CustodialRelationship,
+        ns2:FamilialRelationship ;
+    ns2:involvesChild <https://w3id.org/caselinker/resource/case/nca_2026_007/role/victim/1> ;
+    ns2:involvesCustodian <https://w3id.org/caselinker/resource/case/nca_2026_007/role/offender/1> ;
+    ns2:relationshipType "mother" .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/nca_2026_007/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/nca_2026_007/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/nca_2026_007/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/nca_2026_007/sentence/1> a ns6:CriminalSentence,
+        ns6:PrisonSentence ;
+    rdfs:label "five years" .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/nca_2026_007/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "one count of arranging/facilitating the commission of a child sex offence; three counts of attempting to cause/incite..." ;
     dcterms:source <https://www.nationalcrimeagency.gov.uk/news/five-years-in-jail-and-worldwide-travel-ban-for-british-teacher-who-wanted-to-abuse-young-filipino-children> ;
     ns1:admissionContext "no evidence of Alexander offending there. Alexander’s phone contained child abuse images. He admitted one count of arranging/facilitating..." ;
     ns1:admissionFrame "he_admitted_paraphrase" ;
     ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/nca_2026_007/role/offender/1> ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/nca_2026_007/role/offender/1> ;
     ns1:evidenceTier "press_release_stated" ;
     ns1:quoteType "paraphrase" ;
-    uco-core:description "one count of arranging/facilitating the commission of a child sex offence; three counts of attempting to cause/incite a girl under 13 to engage in sexual activity, and one count of making an indecent" .
+    ns4:description "one count of arranging/facilitating the commission of a child sex offence; three counts of attempting to cause/incite a girl under 13 to engage in sexual activity, and one count of making an indecent" .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/nca_2026_007/phase/arrested> a ns3:InitialPhase,
+        ns8:Phase ;
+    ns3:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/nca_2026_007/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/nca_2026_007/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/nca_2026_007/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/nca_2026_007/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/location/bangkok-thailand> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/bangkok-thailand> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Bangkok, Thailand" ;
-    uco-core:name "Bangkok, Thailand" .
+    ns4:name "Bangkok, Thailand" .
 
-<https://caselinker.up.railway.app/resource/location/beeston-leeds> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/beeston-leeds> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Beeston, Leeds" ;
-    uco-core:name "Beeston, Leeds" .
+    ns4:name "Beeston, Leeds" .
 
-<https://caselinker.up.railway.app/resource/location/illigan-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/illigan-city> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Illigan City" ;
-    uco-core:name "Illigan City" .
+    ns4:name "Illigan City" .
 
-<https://caselinker.up.railway.app/resource/location/leeds> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/leeds> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Leeds" ;
-    uco-core:name "Leeds" .
+    ns4:name "Leeds" .
 
-<https://caselinker.up.railway.app/resource/location/malaysia> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/malaysia> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Malaysia" ;
-    uco-core:name "Malaysia" .
+    ns4:name "Malaysia" .
 
-<https://caselinker.up.railway.app/resource/location/philippines> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/philippines> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Philippines" ;
-    uco-core:name "Philippines" .
+    ns4:name "Philippines" .
 
-<https://caselinker.up.railway.app/resource/location/thailand> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/thailand> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Thailand" ;
-    uco-core:name "Thailand" .
+    ns4:name "Thailand" .
 
+
+<https://w3id.org/caselinker/resource/case/nca_2026_007> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/nca_2026_007/provenance> .

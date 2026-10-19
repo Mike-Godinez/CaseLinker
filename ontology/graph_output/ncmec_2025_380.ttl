@@ -1,86 +1,82 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_380> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.514627" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_380> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:19.612586" ;
     dcterms:identifier "ncmec_2025_380" ;
-    dcterms:modified "2026-09-15T21:27:13.514627" ;
-    dcterms:source <https://www.harrodsburgherald.com/2025/11/06/harrodsburg-couple-indicted-for-criminal-abuse/>,
+    dcterms:modified "2026-10-18 00:01:19.612586" ;
+    dcterms:source <https://www.wcluradio.com/2025/09/02/woodcock-detention-review-denied-remains-in-custody/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/harrodsburg> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/department-for-community-based-services>,
-        <https://caselinker.up.railway.app/resource/agency/harrodsburg-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/harrodsburg> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/glasgow>,
+        <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/the-western-district> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_380/phase/indicted> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_380/phase/indicted> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_380/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_380/legal-proceeding> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/glasgow>,
+        <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/the-western-district> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_380/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_380/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-09-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_380/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_380/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_380/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_380/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-09-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_380/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_380/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/department-for-community-based-services> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Department for Community Based Services" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_380/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns3:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/agency/harrodsburg-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Harrodsburg Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_380/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_380/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_380/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns3:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): REMAINS IN CUSTODY; remain in custody; remain in U.S. Marshal custody" ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_380/charge/1> ;
+    ns3:hasProceedingBeginPoint "2025-09-02T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_380/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_380/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_380/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_380/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_380/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_380/phase/indicted> a ns2:LegalProcessPhase,
+        ns4:Phase ;
+    ns2:hasPhaseBeginPoint "2025-09-02T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_380/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$250,000\", \"$50,000\"]" .
+<https://w3id.org/caselinker/resource/location/glasgow> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Glasgow" ;
+    ns5:name "Glasgow" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_380/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-11-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/kentucky> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kentucky" ;
+    ns5:name "Kentucky" .
 
-<https://caselinker.up.railway.app/resource/location/harrodsburg> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Harrodsburg" ;
-    uco-core:name "Harrodsburg" .
+<https://w3id.org/caselinker/resource/location/the-western-district> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the Western District" ;
+    ns5:name "the Western District" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_380/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_380/event/possession> a ns2:CSAMIncident,
+        ns4:Event ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_380/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_380/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_380/facet/possession> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_380> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_380/provenance> .

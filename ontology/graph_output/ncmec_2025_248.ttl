@@ -1,119 +1,102 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_248> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/glynn-county-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Glynn County Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.382205" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:18.131613" ;
     dcterms:identifier "ncmec_2025_248" ;
-    dcterms:modified "2026-09-15T21:27:13.382205" ;
-    dcterms:source <https://www.wsav.com/crime-safety/saint-simons-island-man-arrested-for-10-counts-of-sexual-exploitation-of-children/>,
+    dcterms:modified "2026-10-18 00:01:18.131613" ;
+    dcterms:source <https://www.mdjonline.com/news/police_fire/powder-springs-man-indicted-on-child-sexual-exploitation-charges/article_6061593a-f942-11ef-acf4-d3a31930449b.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ga>,
-        <https://caselinker.up.railway.app/resource/location/glynn-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/glynn-county-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/icac> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ga>,
-        <https://caselinker.up.railway.app/resource/location/glynn-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/powder-springs> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_248/phase/indicted> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_248/phase/indicted> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_248/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_248/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_248/legal-proceeding> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/cobb-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/powder-springs> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "SEXUAL EXPLOITATION OF" ;
-    cacontology-legal-outcomes:indictmentCounts 11 ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-03-06T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_248/event/online-only> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_248/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-03-06T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_248/event/online-only> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_248/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/agency/cobb-police-department> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248/charge/1> a ns3:CriminalCharge,
+        ns3:StateCharge ;
+    rdfs:label "sexual exploitation of children" ;
+    ns3:indictmentCounts 13 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248/charge/2> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "electronically furnishing obscene material to minors" ;
+    ns3:indictmentCounts 15 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 39 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248/charge/3> a ns3:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248/event/distribution> a ns5:Event,
+        ns3:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns3:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held at the Cobb County Jail" ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_248/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_248/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_248/charge/3> ;
+    ns3:hasProceedingBeginPoint "2025-03-06T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 30 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/ga> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/platform/discord> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Discord" .
 
-<https://caselinker.up.railway.app/resource/location/glynn-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Glynn County" ;
-    uco-core:name "Glynn County" .
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "to possessing and distributing child pornography, a police spokesperson said" ;
-    dcterms:source <https://www.wsav.com/crime-safety/saint-simons-island-man-arrested-for-10-counts-of-sexual-exploitation-of-children/> ;
-    ns1:admissionContext "e Drive Wednesday. James Waller, 39, was arrested and interviewed by detectives where he reportedly confessed to possessing and distribut..." ;
-    ns1:admissionFrame "confessed_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "to possessing and distributing child pornography, a police spokesperson said" .
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_248/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/admission/1> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_248/facet/possession> .
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248/phase/indicted> a ns2:LegalProcessPhase,
+        ns5:Phase ;
+    ns2:hasPhaseBeginPoint "2025-03-06T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/powder-springs> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Powder Springs" ;
+    ns1:name "Powder Springs" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248/event/online-only> a ns2:ChildSexualAbuseEvent,
+        ns5:Event ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/discord>,
+        <https://w3id.org/caselinker/resource/platform/kik>,
+        <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_248> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_248/provenance> .

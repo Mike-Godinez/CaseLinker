@@ -1,282 +1,320 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/admission/1/extraction-confidence> a ns8:AssessmentResult ;
+    ns8:assesses <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/admission/1> ;
+    ns8:generatedBy <https://w3id.org/caselinker/resource/case/doj_archives_2006_009> ;
+    ns8:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2006-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2006-08-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/offense-event/charge-2> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/ceos> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/ceos> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/department-of-homeland-security> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/department-of-homeland-security> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/doj> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/doj> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/ice> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/ice> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/irs-criminal-investigation-division> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/irs-criminal-investigation-division> a ns8:OrganizationLikeEntity,
+        ns5:LocalAgency ;
     rdfs:label "IRS Criminal Investigation Division" .
 
-<https://caselinker.up.railway.app/resource/agency/justice-departments-office-of-international-affairs> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/justice-departments-office-of-international-affairs> a ns8:OrganizationLikeEntity,
+        ns5:LocalAgency ;
     rdfs:label "Justice Department's Office of International Affairs" .
 
-<https://caselinker.up.railway.app/resource/agency/usao> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/usao> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:42:39.765794" ;
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009> a ns1:CACInvestigation,
+        ns8:EnduringEntity ;
+    dcterms:created "2026-10-18 13:16:59.844954" ;
     dcterms:identifier "doj_archives_2006_009" ;
-    dcterms:modified "2026-09-15T21:42:39.765794" ;
+    dcterms:modified "2026-10-18 13:16:59.844954" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/provenance> ;
     dcterms:source <https://www.justice.gov/archive/criminal/ceos/pressreleases/downloads/ICE%20Regpay%20PR_080906.pdf>,
-        "DOJ CEOS" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/belarus>,
-        <https://caselinker.up.railway.app/resource/location/broward-county>,
-        <https://caselinker.up.railway.app/resource/location/england>,
-        <https://caselinker.up.railway.app/resource/location/fla>,
-        <https://caselinker.up.railway.app/resource/location/france>,
-        <https://caselinker.up.railway.app/resource/location/ft-lauderdale>,
-        <https://caselinker.up.railway.app/resource/location/germany>,
-        <https://caselinker.up.railway.app/resource/location/london>,
-        <https://caselinker.up.railway.app/resource/location/minsk>,
-        <https://caselinker.up.railway.app/resource/location/minsk-belarus>,
-        <https://caselinker.up.railway.app/resource/location/new-jersey>,
-        <https://caselinker.up.railway.app/resource/location/newark>,
-        <https://caselinker.up.railway.app/resource/location/nj>,
-        <https://caselinker.up.railway.app/resource/location/paris>,
-        <https://caselinker.up.railway.app/resource/location/redlagoon>,
-        <https://caselinker.up.railway.app/resource/location/spain>,
-        <https://caselinker.up.railway.app/resource/location/tarragona-spain>,
-        <https://caselinker.up.railway.app/resource/location/united-states> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/offense-event/charge-2> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ceos>,
-        <https://caselinker.up.railway.app/resource/agency/department-of-homeland-security>,
-        <https://caselinker.up.railway.app/resource/agency/doj>,
-        <https://caselinker.up.railway.app/resource/agency/ice>,
-        <https://caselinker.up.railway.app/resource/agency/irs-criminal-investigation-division>,
-        <https://caselinker.up.railway.app/resource/agency/justice-departments-office-of-international-affairs>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/usao> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/belarus>,
-        <https://caselinker.up.railway.app/resource/location/broward-county>,
-        <https://caselinker.up.railway.app/resource/location/england>,
-        <https://caselinker.up.railway.app/resource/location/fla>,
-        <https://caselinker.up.railway.app/resource/location/france>,
-        <https://caselinker.up.railway.app/resource/location/ft-lauderdale>,
-        <https://caselinker.up.railway.app/resource/location/germany>,
-        <https://caselinker.up.railway.app/resource/location/london>,
-        <https://caselinker.up.railway.app/resource/location/minsk>,
-        <https://caselinker.up.railway.app/resource/location/minsk-belarus>,
-        <https://caselinker.up.railway.app/resource/location/new-jersey>,
-        <https://caselinker.up.railway.app/resource/location/newark>,
-        <https://caselinker.up.railway.app/resource/location/nj>,
-        <https://caselinker.up.railway.app/resource/location/paris>,
-        <https://caselinker.up.railway.app/resource/location/redlagoon>,
-        <https://caselinker.up.railway.app/resource/location/spain>,
-        <https://caselinker.up.railway.app/resource/location/tarragona-spain>,
-        <https://caselinker.up.railway.app/resource/location/united-states> .
+        "DOJ ARCHIVES" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/belarus>,
+        <https://w3id.org/caselinker/resource/location/broward-county>,
+        <https://w3id.org/caselinker/resource/location/england>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/france>,
+        <https://w3id.org/caselinker/resource/location/ft-lauderdale>,
+        <https://w3id.org/caselinker/resource/location/germany>,
+        <https://w3id.org/caselinker/resource/location/london>,
+        <https://w3id.org/caselinker/resource/location/minsk>,
+        <https://w3id.org/caselinker/resource/location/minsk-belarus>,
+        <https://w3id.org/caselinker/resource/location/new-jersey>,
+        <https://w3id.org/caselinker/resource/location/newark>,
+        <https://w3id.org/caselinker/resource/location/nj>,
+        <https://w3id.org/caselinker/resource/location/paris>,
+        <https://w3id.org/caselinker/resource/location/redlagoon>,
+        <https://w3id.org/caselinker/resource/location/spain>,
+        <https://w3id.org/caselinker/resource/location/tarragona-spain>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/admission/1>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/cybertip>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/offense-event/charge-2> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/ceos>,
+        <https://w3id.org/caselinker/resource/agency/department-of-homeland-security>,
+        <https://w3id.org/caselinker/resource/agency/doj>,
+        <https://w3id.org/caselinker/resource/agency/ice>,
+        <https://w3id.org/caselinker/resource/agency/irs-criminal-investigation-division>,
+        <https://w3id.org/caselinker/resource/agency/justice-departments-office-of-international-affairs>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/belarus>,
+        <https://w3id.org/caselinker/resource/location/broward-county>,
+        <https://w3id.org/caselinker/resource/location/england>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/france>,
+        <https://w3id.org/caselinker/resource/location/ft-lauderdale>,
+        <https://w3id.org/caselinker/resource/location/germany>,
+        <https://w3id.org/caselinker/resource/location/london>,
+        <https://w3id.org/caselinker/resource/location/minsk>,
+        <https://w3id.org/caselinker/resource/location/minsk-belarus>,
+        <https://w3id.org/caselinker/resource/location/new-jersey>,
+        <https://w3id.org/caselinker/resource/location/newark>,
+        <https://w3id.org/caselinker/resource/location/nj>,
+        <https://w3id.org/caselinker/resource/location/paris>,
+        <https://w3id.org/caselinker/resource/location/redlagoon>,
+        <https://w3id.org/caselinker/resource/location/spain>,
+        <https://w3id.org/caselinker/resource/location/tarragona-spain>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
     rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns2:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/charge/2> a ns2:CriminalCharge ;
     rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/offense-event/charge-2> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/offense-event/charge-2> .
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/offense-event/charge-2> ;
+    ns3:chargeCluster "child_exploitation" ;
+    ns3:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/offense-event/charge-2> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 1 .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/distribution> a ns8:Event,
+        ns2:CSAM_Distribution ;
+    ns1:severityLevel 1 .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 1 ;
-    cacontology-multi:crossesBorders true .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/multi-jurisdiction> a ns8:Event,
+        ns5:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 1 ;
+    ns5:crossesBorders true .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2006-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/sentence/1> .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/legal-proceeding> a ns8:Event,
+        ns8:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/charge/1>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/charge/2> ;
+    ns2:hasProceedingBeginPoint "2006-08-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/sentence/3>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/sentence/4>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/sentence/5> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2006-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/legal-step/sentenced> a ns8:Event,
+        ns8:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2006-08-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 27 .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 27 .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/person/offender/2> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 30 .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 30 .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/role/offender/2> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2006-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/person/offender/2> .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/role/offender/2> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2006-08-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/offense-event/charge-2> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/person/offender/2> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:SupervisedRelease ;
-    rdfs:label "[\"25 Years\", \"$25,000\", \"supervised release\", \"$1.15\", \"40 months\", \"$2\", \"$7\"]" .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/sentence/1> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "25 Years" .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/sentence/2> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "40 months" .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2006-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/sentence/3> a ns2:CriminalSentence,
+        ns2:SupervisedRelease ;
+    rdfs:label "five years supervised release" .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2006-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/sentence/4> a ns2:CriminalSentence,
+        ns2:MonetaryPenalty ;
+    rdfs:label "$25,000" .
 
-<https://caselinker.up.railway.app/resource/location/belarus> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/sentence/5> a ns2:CriminalSentence,
+        ns2:MonetaryPenalty ;
+    rdfs:label "$1.15 million" .
 
-<https://caselinker.up.railway.app/resource/location/broward-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/phase/sentenced> a ns8:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2006-08-09T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2006-08-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/offense-event/charge-2> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/location/belarus> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Belarus" ;
+    ns4:name "Belarus" .
+
+<https://w3id.org/caselinker/resource/location/broward-county> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Broward County" ;
-    uco-core:name "Broward County" .
+    ns4:name "Broward County" .
 
-<https://caselinker.up.railway.app/resource/location/england> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/england> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "England" ;
+    ns4:name "England" .
 
-<https://caselinker.up.railway.app/resource/location/fla> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/fla> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns4:name "Fla." .
 
-<https://caselinker.up.railway.app/resource/location/france> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/france> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "France" ;
+    ns4:name "France" .
 
-<https://caselinker.up.railway.app/resource/location/ft-lauderdale> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/ft-lauderdale> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ft. Lauderdale" ;
+    ns4:name "Ft. Lauderdale" .
 
-<https://caselinker.up.railway.app/resource/location/germany> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/germany> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Germany" ;
+    ns4:name "Germany" .
 
-<https://caselinker.up.railway.app/resource/location/london> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/london> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "London" ;
+    ns4:name "London" .
 
-<https://caselinker.up.railway.app/resource/location/minsk> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/minsk> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Minsk" ;
-    uco-core:name "Minsk" .
+    ns4:name "Minsk" .
 
-<https://caselinker.up.railway.app/resource/location/minsk-belarus> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/minsk-belarus> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Minsk, Belarus" ;
-    uco-core:name "Minsk, Belarus" .
+    ns4:name "Minsk, Belarus" .
 
-<https://caselinker.up.railway.app/resource/location/new-jersey> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/new-jersey> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Jersey" ;
+    ns4:name "New Jersey" .
 
-<https://caselinker.up.railway.app/resource/location/newark> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/newark> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Newark" ;
+    ns4:name "Newark" .
 
-<https://caselinker.up.railway.app/resource/location/nj> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/nj> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "N.j." ;
-    uco-core:name "N.j." .
+    ns4:name "N.j." .
 
-<https://caselinker.up.railway.app/resource/location/paris> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/paris> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Paris" ;
-    uco-core:name "Paris" .
+    ns4:name "Paris" .
 
-<https://caselinker.up.railway.app/resource/location/redlagoon> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/redlagoon> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Redlagoon" ;
-    uco-core:name "Redlagoon" .
+    ns4:name "Redlagoon" .
 
-<https://caselinker.up.railway.app/resource/location/spain> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/spain> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Spain" ;
+    ns4:name "Spain" .
 
-<https://caselinker.up.railway.app/resource/location/tarragona-spain> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/tarragona-spain> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Tarragona, Spain" ;
-    uco-core:name "Tarragona, Spain" .
+    ns4:name "Tarragona, Spain" .
 
-<https://caselinker.up.railway.app/resource/location/united-states> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/united-states> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns4:name "United States" .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "was involved in the illegal sale of memberships to websites containing child pornography" ;
     dcterms:source <https://www.justice.gov/archive/criminal/ceos/pressreleases/downloads/ICE%20Regpay%20PR_080906.pdf> ;
-    ns1:admissionContext "specifically lascivious exhibition of the genitals or pubic area. During his guilty plea, Boika also admitted that he was involved in the..." ;
-    ns1:admissionFrame "admitted_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "was involved in the illegal sale of memberships to websites containing child pornography" .
+    ns4:description "was involved in the illegal sale of memberships to websites containing child pornography" ;
+    ns3:admissionContext "specifically lascivious exhibition of the genitals or pubic area. During his guilty plea, Boika also admitted that he was involved in the..." ;
+    ns3:admissionFrame "admitted_paraphrase" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/conspiracy> a cacontology:ConspiracyToCommitCSA,
-        cac-core:Event ;
-    cacontology:conspiracyMemberCount 2 ;
-    cacontology:participatesInConspiracy <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/role/offender/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/role/offender/2> ;
-    cacontology:severityLevel 1 .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/conspiracy> a ns1:ConspiracyToCommitCSA,
+        ns8:Event ;
+    ns1:conspiracyMemberCount 2 ;
+    ns1:participatesInConspiracy <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/role/offender/2> ;
+    ns1:severityLevel 1 .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/admission/1> ;
-    cacontology:severityLevel 1 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/facet/csam> .
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/event/csam> a ns1:CSAMIncident,
+        ns8:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/admission/1> ;
+    ns1:severityLevel 1 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/doj_archives_2006_009/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2006_009/offense-event/charge-2> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
+<https://w3id.org/caselinker/resource/case/doj_archives_2006_009/offense-event/charge-2> a ns1:ChildSexualAbuseEvent,
+        ns8:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
     rdfs:label "Inferred offense from charge: child exploitation" .
 

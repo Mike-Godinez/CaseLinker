@@ -1,128 +1,124 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/production#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ut_ag_2019_001> ;
+    ns3:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
     rdfs:label "Snapchat" .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:38:01.187626" ;
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 07:37:09.057335" ;
     dcterms:identifier "ut_ag_2019_001" ;
-    dcterms:modified "2026-09-15T20:38:01.187626" ;
+    dcterms:modified "2026-10-18 07:37:09.057335" ;
     dcterms:source <https://attorneygeneral.utah.gov/charges-filed-against-heber-city-man/>,
         "UT AG" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/arizona>,
-        <https://caselinker.up.railway.app/resource/location/heber-city>,
-        <https://caselinker.up.railway.app/resource/location/utah> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/arizona>,
-        <https://caselinker.up.railway.app/resource/location/heber-city>,
-        <https://caselinker.up.railway.app/resource/location/utah> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/arizona>,
+        <https://w3id.org/caselinker/resource/location/heber-city>,
+        <https://w3id.org/caselinker/resource/location/utah> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/operation> ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/arizona>,
+        <https://w3id.org/caselinker/resource/location/heber-city>,
+        <https://w3id.org/caselinker/resource/location/utah> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/charge/1> a ns5:CriminalCharge,
+        ns5:StateCharge ;
     rdfs:label "sexual exploitation of a minor" ;
-    cacontology-legal-outcomes:indictmentCounts 16 .
+    ns5:indictmentCounts 16 .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/charge/2> a ns5:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation .
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/event/multi-jurisdiction> a ns3:Event,
+        ns6:MultiJurisdictionalInvestigation .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held without bail" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/charge/2> ;
+    ns5:hasProceedingBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/operation> a cac-core:Event,
-        cacontology-taskforce:ReactiveOperation .
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/operation> a ns3:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 16 .
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:victimAge 16 .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/tech/cybertipline> a ns8:NCMECCybertipReport ;
     rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "knowing the girl was underage, engaging in sexual conversations, and receiving at least 15 explicit images and videos..." ;
     dcterms:source <https://attorneygeneral.utah.gov/charges-filed-against-heber-city-man/> ;
-    ns1:admissionContext "s of herself during these communications despite his knowledge that she was 15 years old. During an interview with ICAC agents, Lawrence..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "knowing the girl was underage, engaging in sexual conversations, and receiving at least 15 explicit images and videos from her" .
+    ns2:admissionContext "s of herself during these communications despite his knowledge that she was 15 years old. During an interview with ICAC agents, Lawrence..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns4:description "knowing the girl was underage, engaging in sexual conversations, and receiving at least 15 explicit images and videos from her" .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2019_001/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001/phase/charged> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2019-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/arizona> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/arizona> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Arizona" ;
+    ns4:name "Arizona" .
 
-<https://caselinker.up.railway.app/resource/location/heber-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/heber-city> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Heber City" ;
-    uco-core:name "Heber City" .
+    ns4:name "Heber City" .
 
-<https://caselinker.up.railway.app/resource/location/utah> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/utah> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Utah" ;
+    ns4:name "Utah" .
 
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2019_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ut_ag_2019_001/provenance> .

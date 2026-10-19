@@ -64,6 +64,11 @@ _LE_RE = re.compile(
     r"law\s+enforcement|sheriff'?s?|troopers?|FBI|HSI|ICAC|decoys?)\b",
     re.IGNORECASE,
 )
+# "whom he believed was the father of a nine-year-old" — the age is not a confirmed victim.
+_BELIEVED_PARENT_LEFT = re.compile(
+    r"\bbeliev(?:ed|es|ing)\s+was\s+the\s+(?:father|mother|parent|dad|mom|guardian)\s+of\s+(?:a|an|the)\s+$",
+    re.IGNORECASE,
+)
 
 _nlp = None
 _nlp_error: Optional[str] = None
@@ -279,6 +284,8 @@ def dependency_assertions(doc, mentions: Iterable[Tuple[int, int, int, str]]) ->
                 role, conf, pattern = "decoy", 0.85, "fictitious_host"
             elif persona_head:
                 role, conf, pattern = "decoy", 0.85, "persona_noun_host"
+            elif _BELIEVED_PARENT_LEFT.search(doc.text[max(0, s - 90):s]):
+                role, conf, pattern = "decoy", 0.85, "believed_parent_of"
             elif lemma in _VICTIM_LEMMAS and any(a.lemma_.lower() in _BELIEF_LEMMAS for a in _ancestors(host, 6)) \
                     and _LE_RE.search(sent_text):
                 # "he believed he was communicating … with a thirteen-year-old girl" in an undercover sting
@@ -366,7 +373,10 @@ def token_assertions(doc, mentions: Iterable[Tuple[int, int, int, str]]) -> List
             if sg.is_closed_age_range(doc.text, key[0], key[1]):
                 continue
             noun = span[-1].lemma_.lower()
-            role = "victim" if noun in _VICTIM_LEMMAS else "perpetrator" if noun in _ADULT_LEMMAS else None
+            if _BELIEVED_PARENT_LEFT.search(doc.text[max(0, key[0] - 90):key[0]]):
+                role = "decoy"
+            else:
+                role = "victim" if noun in _VICTIM_LEMMAS else "perpetrator" if noun in _ADULT_LEMMAS else None
             if role is None:
                 continue
             if role == "victim" and sg.is_depicted_material(doc.text, key[0], key[1]):

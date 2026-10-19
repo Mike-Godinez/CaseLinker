@@ -1,0 +1,108 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 07:19:09.160466" ;
+    dcterms:identifier "tbi_icac_2025_019" ;
+    dcterms:modified "2026-10-18 07:19:09.160466" ;
+    dcterms:source <https://tbinewsroom.com/2025/06/19/two-people-arrested-charged-in-trousdale-county-child-rape-investigation/>,
+        "TBI ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/scottsville>,
+        <https://w3id.org/caselinker/resource/location/tennessee>,
+        <https://w3id.org/caselinker/resource/location/trousdale-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/phase/convicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/phase/convicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/legal-step/convicted> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/scottsville>,
+        <https://w3id.org/caselinker/resource/location/tennessee>,
+        <https://w3id.org/caselinker/resource/location/trousdale-county> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-06-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/event/hands-on> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-06-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/event/hands-on> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/charge/2> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/event/distribution> a ns6:Event,
+        ns2:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Trousdale County jail; booked into jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/charge/1>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/charge/2> ;
+    ns2:hasProceedingBeginPoint "2025-06-19T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/legal-step/convicted> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2025-06-19T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/phase/convicted> a ns6:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2025-06-19T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/kentucky> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kentucky" ;
+    ns4:name "Kentucky" .
+
+<https://w3id.org/caselinker/resource/location/scottsville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Scottsville" ;
+    ns4:name "Scottsville" .
+
+<https://w3id.org/caselinker/resource/location/tennessee> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tennessee" ;
+    ns4:name "Tennessee" .
+
+<https://w3id.org/caselinker/resource/location/trousdale-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Trousdale County" ;
+    ns4:name "Trousdale County" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns1:severityLevel 3 .
+
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2025_019> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/tbi_icac_2025_019/provenance> .

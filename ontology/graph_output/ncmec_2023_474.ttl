@@ -1,76 +1,91 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_474> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.159579" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_474> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:33.755021" ;
     dcterms:identifier "ncmec_2023_474" ;
-    dcterms:modified "2026-09-15T20:55:01.159579" ;
-    dcterms:source <https://www.nashuatelegraph.com/news/local-news/2023/02/27/wilton-man-facing-numerous-charges-alleging-child-pornography-possession-distribution/>,
+    dcterms:modified "2026-10-17 22:21:33.755021" ;
+    dcterms:source <https://weartv.com/news/local/33-year-old-fort-walton-beach-arrested-on-child-porn-charges>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_474/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_474/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_474/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_474/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_474/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/londonderry-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/beach>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/fort-walton>,
+        <https://w3id.org/caselinker/resource/location/okaloosa-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_474/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_474/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_474/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_474/legal-proceeding> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/beach>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/fort-walton>,
+        <https://w3id.org/caselinker/resource/location/okaloosa-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_474/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_474/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_474/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_474/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_474/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_474/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_474/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_474/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_474/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_474/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_474/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_474/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/londonderry-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "LONDONDERRY — Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_474/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child porn possession" ;
+    ns4:indictmentCounts 4 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_474/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "each of" ;
-    cacontology-legal-outcomes:indictmentCounts 7 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_474/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_474/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_474/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in Escambia County Jail" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_474/charge/1> ;
+    ns4:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_474/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_474/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 33 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_474/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_474/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_474/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_474/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_474/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_474/phase/charged> a ns1:LegalProcessPhase,
+        ns5:Phase ;
+    ns1:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_474/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/beach> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Beach" ;
+    ns2:name "Beach" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_474/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/fla> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns2:name "Fla." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_474/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/fort-walton> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fort Walton" ;
+    ns2:name "Fort Walton" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_474/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_474/facet/possession> .
+<https://w3id.org/caselinker/resource/location/okaloosa-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Okaloosa County" ;
+    ns2:name "Okaloosa County" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2023_474/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_474/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_474> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_474/provenance> .

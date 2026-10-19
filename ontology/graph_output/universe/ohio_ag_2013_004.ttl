@@ -1,0 +1,87 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/detection#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_004> a ns2:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 06:14:13.851375" ;
+    dcterms:identifier "ohio_ag_2013_004" ;
+    dcterms:modified "2026-10-18 06:14:13.851375" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/provenance> ;
+    dcterms:source <https://www.ohioattorneygeneral.gov/Media/News-Releases/September-2013/Former-Deputy-Babysitter-Found-Guilty-of-Rape>,
+        "OHIO AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/delaware-county>,
+        <https://w3id.org/caselinker/resource/location/marion>,
+        <https://w3id.org/caselinker/resource/location/marion-county>,
+        <https://w3id.org/caselinker/resource/location/ohio> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/legal-step/sentenced> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/delaware-county>,
+        <https://w3id.org/caselinker/resource/location/marion>,
+        <https://w3id.org/caselinker/resource/location/marion-county>,
+        <https://w3id.org/caselinker/resource/location/ohio> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2013-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/event/hands-on> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2013-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/event/hands-on> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/event/multi-jurisdiction> a ns6:Event,
+        <https://cacontology.projectvic.org/multi-jurisdiction#MultiJurisdictionalInvestigation> ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/legal-step/sentenced> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2013-09-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns1:ageEstimate 28 .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/phase/sentenced> a ns6:Phase,
+        ns3:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2013-09-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/delaware-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Delaware County" ;
+    ns5:name "Delaware County" .
+
+<https://w3id.org/caselinker/resource/location/marion> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Marion" ;
+    ns5:name "Marion" .
+
+<https://w3id.org/caselinker/resource/location/marion-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Marion County" ;
+    ns5:name "Marion County" .
+
+<https://w3id.org/caselinker/resource/location/ohio> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns5:name "Ohio" .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_004/event/hands-on> a ns2:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns2:severityLevel 3 .
+

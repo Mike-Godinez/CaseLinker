@@ -1,106 +1,99 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_006/admission/1/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/admission/1> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/mt_doj_2023_006> ;
+    ns1:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_006/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-05-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/event/hands-on> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/billings-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/billings-police-department> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/miles-city-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/miles-city-police-department> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T19:59:52.366222" ;
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_006> a ns2:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 05:35:36.781036" ;
     dcterms:identifier "mt_doj_2023_006" ;
-    dcterms:modified "2026-09-15T19:59:52.366222" ;
+    dcterms:modified "2026-10-18 05:35:36.781036" ;
     dcterms:source <https://dojmt.gov/attorney-generals-office-secures-guilty-plea-in-miles-city-child-sexual-abuse-case/>,
         "MT DOJ" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/custer-county>,
-        <https://caselinker.up.railway.app/resource/location/miles-city> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/phase/pleaded-guilty> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/phase/pleaded-guilty> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/legal-step/pleaded-guilty> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/billings-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/miles-city-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/custer-county>,
-        <https://caselinker.up.railway.app/resource/location/miles-city> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/custer-county>,
+        <https://w3id.org/caselinker/resource/location/miles-city> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/phase/pleaded-guilty> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/phase/pleaded-guilty> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/admission/1>,
+        <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/legal-step/pleaded-guilty> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/billings-police-department>,
+        <https://w3id.org/caselinker/resource/agency/miles-city-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/custer-county>,
+        <https://w3id.org/caselinker/resource/location/miles-city> .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_006/event/distribution> a ns1:Event,
+        ns7:CSAM_Distribution ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/sentence/1> .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_006/legal-step/pleaded-guilty> a ns1:Event,
+        ns1:LegalEvent,
+        ns7:LegalProceeding,
+        ns7:PleaBargaining ;
+    ns7:hasProceedingBeginPoint "2023-05-31T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/legal-step/pleaded-guilty> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:PleaBargaining ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_006/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 45 .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_006/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_006/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-05-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/event/hands-on> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_006/phase/pleaded-guilty> a ns1:Phase,
+        ns7:PreTrialPhase ;
+    ns2:hasPhaseBeginPoint "2023-05-31T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/custer-county> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Custer County" ;
+    ns3:name "Custer County" .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/phase/pleaded-guilty> a cac-core:Phase,
-        cacontology-legal-outcomes:PreTrialPhase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/miles-city> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Miles City" ;
+    ns3:name "Miles City" .
 
-<https://caselinker.up.railway.app/resource/location/custer-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/miles-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_006/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "sexually assaulting a young girl multiple times between 2017 and 2019" ;
     dcterms:source <https://dojmt.gov/attorney-generals-office-secures-guilty-plea-in-miles-city-child-sexual-abuse-case/> ;
-    ns1:admissionContext "y plea, the state is asking for a sentence of 50 years in Montana State Prison. Nathan P. Kraft, 45, admitted to sexually assaulting a yo..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "sexually assaulting a young girl multiple times between 2017 and 2019" .
+    ns4:admissionContext "y plea, the state is asking for a sentence of 50 years in Montana State Prison. Nathan P. Kraft, 45, admitted to sexually assaulting a yo..." ;
+    ns4:admissionFrame "admitted_to" ;
+    ns4:admissionTheme "harm_conduct" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns3:description "sexually assaulting a young girl multiple times between 2017 and 2019" .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/mt_doj_2023_006/admission/1> ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_006/event/hands-on> a ns2:ChildSexualAbuseEvent,
+        ns1:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/admission/1> ;
+    ns2:severityLevel 3 .
 
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_006> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/mt_doj_2023_006/provenance> .

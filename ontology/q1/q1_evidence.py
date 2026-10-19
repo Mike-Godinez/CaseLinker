@@ -924,14 +924,19 @@ def main() -> None:
 
     print("Loading case texts from DB...", flush=True)
     conn = sqlite3.connect(DB)
-    placeholders = ",".join("?" * len(all_case_ids))
-    rows = conn.execute(
-        f"SELECT id, json_extract(raw_data, '$.case_text') "
-        f"FROM cases WHERE id IN ({placeholders})",
-        all_case_ids,
-    ).fetchall()
+    db_rows: Dict[str, str] = {}
+    # SQLite's default variable limit is 32766. Chunk so a doubled corpus still fits.
+    for start in range(0, len(all_case_ids), 5000):
+        chunk = all_case_ids[start : start + 5000]
+        placeholders = ",".join("?" * len(chunk))
+        rows = conn.execute(
+            f"SELECT id, json_extract(raw_data, '$.case_text') "
+            f"FROM cases WHERE id IN ({placeholders})",
+            chunk,
+        ).fetchall()
+        for row in rows:
+            db_rows[row[0]] = row[1] or ""
     conn.close()
-    db_rows = {row[0]: row[1] or "" for row in rows}
     print(f"Loaded {len(db_rows)} case texts.", flush=True)
 
     all_records: List[Dict[str, Any]] = []

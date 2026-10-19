@@ -1,176 +1,188 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/platforms#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/doj_archives_2008_045> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2008-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2008-06-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/offense-event/charge-2> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/fbi> a ns4:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/usao> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/usao> a ns4:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:42:39.966111" ;
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 13:17:02.399626" ;
     dcterms:identifier "doj_archives_2008_045" ;
-    dcterms:modified "2026-09-15T21:42:39.966111" ;
+    dcterms:modified "2026-10-18 13:17:02.399626" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/provenance> ;
     dcterms:source <https://www.justice.gov/archive/criminal/ceos/pressreleases/downloads/DMD_CARPENTER-SENTENCED_06-26-08.pdf>,
-        "DOJ CEOS" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/baltimore>,
-        <https://caselinker.up.railway.app/resource/location/dundalk>,
-        <https://caselinker.up.railway.app/resource/location/maryland>,
-        <https://caselinker.up.railway.app/resource/location/md>,
-        <https://caselinker.up.railway.app/resource/location/the-district-of-maryland>,
-        <https://caselinker.up.railway.app/resource/location/washington> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/event/project-safe-childhood>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/offense-event/charge-2>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/fbi>,
-        <https://caselinker.up.railway.app/resource/agency/usao> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/baltimore>,
-        <https://caselinker.up.railway.app/resource/location/dundalk>,
-        <https://caselinker.up.railway.app/resource/location/maryland>,
-        <https://caselinker.up.railway.app/resource/location/md>,
-        <https://caselinker.up.railway.app/resource/location/the-district-of-maryland>,
-        <https://caselinker.up.railway.app/resource/location/washington> .
+        "DOJ ARCHIVES" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/baltimore>,
+        <https://w3id.org/caselinker/resource/location/dundalk>,
+        <https://w3id.org/caselinker/resource/location/maryland>,
+        <https://w3id.org/caselinker/resource/location/md>,
+        <https://w3id.org/caselinker/resource/location/the-district-of-maryland>,
+        <https://w3id.org/caselinker/resource/location/washington> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/admission/1>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/offense-event/charge-2>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/operation> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/baltimore>,
+        <https://w3id.org/caselinker/resource/location/dundalk>,
+        <https://w3id.org/caselinker/resource/location/maryland>,
+        <https://w3id.org/caselinker/resource/location/md>,
+        <https://w3id.org/caselinker/resource/location/the-district-of-maryland>,
+        <https://w3id.org/caselinker/resource/location/washington> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns3:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/charge/2> a ns3:CriminalCharge ;
     rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/offense-event/charge-2> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/offense-event/charge-2> .
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/offense-event/charge-2> ;
+    ns2:chargeCluster "child_exploitation" ;
+    ns2:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/offense-event/charge-2> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/event/distribution> a ns5:Event,
+        ns3:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/event/multi-jurisdiction> a ns5:Event,
+        ns4:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/event/project-safe-childhood> a cac-core:Event,
-        cacontology-multi:ProjectSafeChildhoodOperation ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/event/project-safe-childhood> a ns5:Event,
+        ns4:ProjectSafeChildhoodOperation ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2008-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/sentence/1> .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/charge/1>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/charge/2> ;
+    ns3:hasProceedingBeginPoint "2008-06-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:resultsSentence <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/sentence/2> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2008-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2008-06-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/operation> a cac-core:Event,
-        cacontology-taskforce:UndercoverUnit .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/operation> a ns5:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 44 .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 44 .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2008-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2008-06-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/offense-event/charge-2> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:SupervisedRelease ;
-    rdfs:label "[\"supervised release\"]" .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/sentence/1> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "FIVE YEARS" .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2008-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/sentence/2> a ns3:CriminalSentence,
+        ns3:LifeImprisonmentSentence ;
+    rdfs:label "life sentence supervised release" .
 
-<https://caselinker.up.railway.app/resource/location/baltimore> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/phase/sentenced> a ns5:Phase,
+        ns3:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2008-06-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/dundalk> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/baltimore> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Baltimore" ;
+    ns6:name "Baltimore" .
 
-<https://caselinker.up.railway.app/resource/location/maryland> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/dundalk> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Dundalk" ;
+    ns6:name "Dundalk" .
 
-<https://caselinker.up.railway.app/resource/location/md> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/maryland> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Maryland" ;
+    ns6:name "Maryland" .
 
-<https://caselinker.up.railway.app/resource/location/the-district-of-maryland> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/md> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Md." ;
+    ns6:name "Md." .
 
-<https://caselinker.up.railway.app/resource/location/washington> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/the-district-of-maryland> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the District of Maryland" ;
+    ns6:name "the District of Maryland" .
 
-<https://caselinker.up.railway.app/resource/platform/limewire> a cac-core:DigitalSystemEntity,
-        cacontology-platforms:FileHostingService ;
+<https://w3id.org/caselinker/resource/location/washington> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington" ;
+    ns6:name "Washington" .
+
+<https://w3id.org/caselinker/resource/platform/limewire> a ns5:DigitalSystemEntity,
+        ns7:FileHostingService ;
     rdfs:label "LimeWire" ;
-    cacontology-platforms:platformType "p2p" .
+    ns7:platformType "p2p" .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "using a file share program to receive child pornography, including a child sexual abuse image on Feb" ;
     dcterms:source <https://www.justice.gov/archive/criminal/ceos/pressreleases/downloads/DMD_CARPENTER-SENTENCED_06-26-08.pdf> ;
-    ns1:admissionContext "hich contained more than 100 images and videos of children engaged in sexual acts. In his guilty plea, Carpenter admitted to using a file..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "using a file share program to receive child pornography, including a child sexual abuse image on Feb" .
+    ns6:description "using a file share program to receive child pornography, including a child sexual abuse image on Feb" ;
+    ns2:admissionContext "hich contained more than 100 images and videos of children engaged in sexual acts. In his guilty plea, Carpenter admitted to using a file..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/admission/1> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/limewire> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/facet/possession> .
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/limewire> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/doj_archives_2008_045/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/doj_archives_2008_045/offense-event/charge-2> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
+<https://w3id.org/caselinker/resource/case/doj_archives_2008_045/offense-event/charge-2> a ns1:ChildSexualAbuseEvent,
+        ns5:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
     rdfs:label "Inferred offense from charge: child exploitation" ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/limewire> .
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/limewire> .
 

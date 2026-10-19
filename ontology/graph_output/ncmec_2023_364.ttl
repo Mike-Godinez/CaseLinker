@@ -1,119 +1,128 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_364> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_364> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/relationship/cousin> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/person/offender/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 13 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/relationship/cousin> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/role/offender/1> ;
-    cacontology-custodial:relationshipType "cousin" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.062030" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364> a ns4:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:32.265783" ;
     dcterms:identifier "ncmec_2023_364" ;
-    dcterms:modified "2026-09-15T20:55:01.062030" ;
-    dcterms:source <https://www.wisn.com/article/milwaukee-man-accused-trying-to-meet-up-have-sex-with-13-year-old-girl/43420870>,
+    dcterms:modified "2026-10-17 22:21:32.265783" ;
+    dcterms:source <https://www.wyff4.com/article/ti>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/milwaukee>,
-        <https://caselinker.up.railway.app/resource/location/texas> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/milwaukee>,
-        <https://caselinker.up.railway.app/resource/location/texas> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/anderson>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_364/phase/charged> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_364/phase/charged> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_364/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_364/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_364/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_364/operation> ;
+    ns4:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2023_364/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/anderson-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/anderson>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "planned to meet and have sex with the fake 13-year-old girl" ;
-    dcterms:source <https://www.wisn.com/article/milwaukee-man-accused-trying-to-meet-up-have-sex-with-13-year-old-girl/43420870> ;
-    ns1:admissionContext "or Poachers\" showed up and called the police. Swift was eventually arrested. The criminal complaint says Swift admitted he planned to mee..." ;
-    ns1:admissionFrame "admitted_he_she" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "planned to meet and have sex with the fake 13-year-old girl" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2023-08-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_364/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_364/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "has sent 20 to 30 other children messages on apps that begin with the question \"Do you like pedophiles?\" Swift also a..." ;
-    dcterms:source <https://www.wisn.com/article/milwaukee-man-accused-trying-to-meet-up-have-sex-with-13-year-old-girl/43420870> ;
-    ns1:admissionContext "laint says Swift admitted he planned to meet and have sex with the fake 13-year-old girl. He also said he has sent 20 to 30 other childre..." ;
-    ns1:admissionFrame "he_said_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "has sent 20 to 30 other children messages on apps that begin with the question \"Do you like pedophiles?\" Swift also admitted he had molested two other people, including his cousin who was 10 or 11 yea" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2023-08-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_364/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_364/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/agency/anderson-county-sheriffs-office> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/location/milwaukee> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Milwaukee" ;
-    uco-core:name "Milwaukee" .
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns6:StateAgency .
 
-<https://caselinker.up.railway.app/resource/location/texas> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/charge/1> a ns2:CriminalCharge ;
+    rdfs:label "child sex crimes" ;
+    ns2:indictmentCounts 10 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_364/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_364/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/charge/2> a ns2:CriminalCharge ;
+    rdfs:label "third-" ;
+    ns2:indictmentCounts 10 .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/charge/3> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/charge/4> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/cybertip> a ns1:NCMECCybertipReport ;
+    ns1:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_364/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_364/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_364/charge/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_364/charge/4> ;
+    ns2:hasProceedingBeginPoint "2023-08-28T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/operation> a ns7:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 19 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/tech/cybertipline> a ns1:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/phase/charged> a ns4:LegalProcessPhase,
+        ns7:Phase ;
+    ns4:hasPhaseBeginPoint "2023-08-28T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/anderson> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Anderson" ;
+    ns5:name "Anderson" .
+
+<https://w3id.org/caselinker/resource/location/sc> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "S.c." ;
+    ns5:name "S.c." .
+
+<https://w3id.org/caselinker/resource/location/south-carolina> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Carolina" ;
+    ns5:name "South Carolina" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364/event/possession> a ns4:CSAMIncident,
+        ns7:Event ;
+    ns4:severityLevel 3 ;
+    ns4:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_364/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_364> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_364/provenance> .

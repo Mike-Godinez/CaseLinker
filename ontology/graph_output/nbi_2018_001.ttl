@@ -1,0 +1,106 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/production#> .
+@prefix ns8: <https://cacontology.projectvic.org/core#> .
+@prefix ns9: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2018_001> a ns4:CACInvestigation,
+        ns8:EnduringEntity ;
+    dcterms:created "2026-10-18 14:24:47.282625" ;
+    dcterms:identifier "nbi_2018_001" ;
+    dcterms:modified "2026-10-18 14:24:47.282625" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nbi_2018_001/provenance> ;
+    dcterms:source <https://nbi.gov.ph/press_releases/2018/02122018/2236/>,
+        "NBI" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/antipolo-city>,
+        <https://w3id.org/caselinker/resource/location/iloilo>,
+        <https://w3id.org/caselinker/resource/location/iloilo-city>,
+        <https://w3id.org/caselinker/resource/location/sta-barbara> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/nbi_2018_001/phase/arrested> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/nbi_2018_001/phase/arrested> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/nbi_2018_001/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nbi_2018_001/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/nbi_2018_001/legal-proceeding> ;
+    ns4:investigationStatus "unknown" ;
+    ns9:involvesAgency <https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/nbi-death-investigation-division> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/antipolo-city>,
+        <https://w3id.org/caselinker/resource/location/iloilo>,
+        <https://w3id.org/caselinker/resource/location/iloilo-city>,
+        <https://w3id.org/caselinker/resource/location/sta-barbara> .
+
+<https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation> a ns9:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/nbi-death-investigation-division> a ns8:OrganizationLikeEntity,
+        ns9:LocalAgency ;
+    rdfs:label "NBI-Death Investigation Division" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2018_001/event/trust-violation> a ns1:CustodialAbuse,
+        ns1:TrustViolation ;
+    ns1:violatesRelationship <https://w3id.org/caselinker/resource/case/nbi_2018_001/relationship/mother> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2018_001/legal-proceeding> a ns8:Event,
+        ns8:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): detained at the NBI Jail" ;
+    ns2:hasProceedingBeginPoint "2018-02-08T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nbi_2018_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 48 .
+
+<https://w3id.org/caselinker/resource/case/nbi_2018_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:victimAge 10 .
+
+<https://w3id.org/caselinker/resource/case/nbi_2018_001/relationship/mother> a ns1:CustodialRelationship,
+        ns1:FamilialRelationship ;
+    ns1:involvesChild <https://w3id.org/caselinker/resource/case/nbi_2018_001/role/victim/1> ;
+    ns1:involvesCustodian <https://w3id.org/caselinker/resource/case/nbi_2018_001/role/offender/1> ;
+    ns1:relationshipType "mother" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2018_001/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2018-02-08T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/nbi_2018_001/event/hands-on> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/nbi_2018_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2018_001/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2018-02-08T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/nbi_2018_001/event/hands-on> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/nbi_2018_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2018_001/phase/arrested> a ns4:InitialPhase,
+        ns8:Phase ;
+    ns4:hasPhaseBeginPoint "2018-02-08T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/antipolo-city> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Antipolo City" ;
+    ns5:name "Antipolo City" .
+
+<https://w3id.org/caselinker/resource/location/iloilo> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Iloilo" ;
+    ns5:name "Iloilo" .
+
+<https://w3id.org/caselinker/resource/location/iloilo-city> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Iloilo City" ;
+    ns5:name "Iloilo City" .
+
+<https://w3id.org/caselinker/resource/location/sta-barbara> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sta. Barbara" ;
+    ns5:name "Sta. Barbara" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2018_001/event/hands-on> a ns4:ChildSexualAbuseEvent,
+        ns8:Event ;
+    ns4:severityLevel 3 .
+

@@ -1,0 +1,113 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 14:12:35.762042" ;
+    dcterms:identifier "alert_ice_2017_002" ;
+    dcterms:modified "2026-10-18 14:12:35.762042" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/provenance> ;
+    dcterms:source <https://alert-ab.ca/blood-tribe-man-arrested-for-child-pornography-offences/>,
+        "ALERT ICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/lethbridge> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/event/possession>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/offense-event/charge-2> ;
+    ns2:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/blood-tribe-police-department>,
+        <https://w3id.org/caselinker/resource/agency/calgary-police-department>,
+        <https://w3id.org/caselinker/resource/agency/edmonton-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ice>,
+        <https://w3id.org/caselinker/resource/agency/lethbridge-police-department>,
+        <https://w3id.org/caselinker/resource/agency/medicine-hat-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/lethbridge> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2017-11-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/event/possession>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/offense-event/charge-2> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2017-11-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/event/possession>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/offense-event/charge-2> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/blood-tribe-police-department> a ns3:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "Blood Tribe Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/calgary-police-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/edmonton-police-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/ice> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/lethbridge-police-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/medicine-hat-police-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002/charge/2> a ns5:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/offense-event/charge-2> ;
+    ns1:chargeCluster "child_exploitation" ;
+    ns1:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/offense-event/charge-2> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002/event/distribution> a ns3:Event,
+        ns5:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/charge/1>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/charge/2> ;
+    ns5:hasProceedingBeginPoint "2017-11-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 24 .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002/phase/charged> a ns2:LegalProcessPhase,
+        ns3:Phase ;
+    ns2:hasPhaseBeginPoint "2017-11-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/lethbridge> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lethbridge" ;
+    ns6:name "Lethbridge" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002/event/possession> a ns2:CSAMIncident,
+        ns3:Event ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/alert_ice_2017_002/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2017_002/offense-event/charge-2> a ns2:ChildSexualAbuseEvent,
+        ns3:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> .
+

@@ -1,93 +1,89 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.053109" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_350> a ns2:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:32.048607" ;
     dcterms:identifier "ncmec_2023_350" ;
-    dcterms:modified "2026-09-15T20:55:01.053109" ;
-    dcterms:source <https://www.wsfa.com/story/35191301/opelika-man-arrested-on-child-pornography-charges/>,
+    dcterms:modified "2026-10-17 22:21:32.048607" ;
+    dcterms:source <https://www.wmix94.com/2023/05/12/mt-vernon-man-again-arrested-on-child-porn-charges/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/lee-county>,
-        <https://caselinker.up.railway.app/resource/location/opelika> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/event/production>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/lee-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/lee-county>,
-        <https://caselinker.up.railway.app/resource/location/opelika> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/jefferson-county>,
+        <https://w3id.org/caselinker/resource/location/mt-vernon> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_350/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_350/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_350/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_350/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_350/operation> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/jefferson-county>,
+        <https://w3id.org/caselinker/resource/location/mt-vernon> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_350/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-05-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_350/event/csam> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_350/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_350/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-05-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_350/event/csam> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_350/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/lee-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Lee County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_350/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_350/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_350/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Jefferson County Jail" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_350/charge/1> ;
+    ns4:hasProceedingBeginPoint "2023-05-12T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_350/operation> a ns6:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_350/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 34 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_350/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_350/phase/arrested> a ns2:InitialPhase,
+        ns6:Phase ;
+    ns2:hasPhaseBeginPoint "2023-05-12T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/lee-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/jefferson-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Jefferson County" ;
+    ns3:name "Jefferson County" .
 
-<https://caselinker.up.railway.app/resource/location/opelika> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Opelika" ;
-    uco-core:name "Opelika" .
+<https://w3id.org/caselinker/resource/location/mt-vernon> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mt. Vernon" ;
+    ns3:name "Mt. Vernon" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_350/event/csam> a ns2:CSAMIncident,
+        ns6:Event ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_350/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_350/event/production> a cac-core:Event,
-        cacontology-production:ProductionOffense ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_350/facet/production> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2023_350> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_350/provenance> .

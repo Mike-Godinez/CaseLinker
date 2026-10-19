@@ -63,15 +63,26 @@ except ImportError:
 DEFAULT_DELAY = 1.2
 DEFAULT_TIMEOUT = 30
 
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Referer": "https://www.google.com/",
-}
+try:
+    from http_policy import BlockedHost, HostPolicy, RobotsDenied
+except ImportError:
+    from collector.http_policy import BlockedHost, HostPolicy, RobotsDenied
+
+def _policy_get(url: str, headers: dict[str, str]):
+    return requests.get(
+        url, headers=headers, timeout=DEFAULT_TIMEOUT, allow_redirects=True
+    )
+
+
+POLICY = HostPolicy(session_get=_policy_get)
+
+
+def _headers(url: str, *, accept: str | None = None) -> dict[str, str]:
+    return POLICY.headers(url, accept=accept)
+
+
+# Back-compat alias. Prefer ``_headers(url)`` so Referer is the request origin.
+HEADERS = _headers("https://example.gov/")
 
 
 def _read_patterns(path: str | None) -> list[str]:
@@ -89,22 +100,27 @@ def _read_patterns(path: str | None) -> list[str]:
 def fetch(
     url: str, timeout: int, *, verify: bool = True, retries: int = 4
 ) -> tuple[str | None, int]:
+    POLICY.acquire(url)
     last_status = 0
     for attempt in range(retries):
         try:
             r = requests.get(
                 url,
-                headers=HEADERS,
+                headers=_headers(url),
                 timeout=timeout,
                 allow_redirects=True,
                 verify=verify,
             )
+            if r.status_code == 403:
+                POLICY.note_status(url, 403)
             if r.status_code == 429 and attempt + 1 < retries:
                 wait = min(60, 5 * (2**attempt))
                 print(f"  [429] waiting {wait}s …", file=sys.stderr)
                 time.sleep(wait)
                 continue
             return r.text, r.status_code
+        except (BlockedHost, RobotsDenied):
+            raise
         except Exception as e:
             if attempt + 1 < retries:
                 time.sleep(min(30, 2 * (attempt + 1)))
@@ -170,6 +186,117 @@ def collect_from_html(
         if abs_url not in seen:
             seen.add(abs_url)
             out.append(abs_url)
+    return out
+
+
+_SHAREPOINT_ROW_RE = re.compile(
+    r'"ID": "(?P<id>\d+)".*?'
+    r'"Title": "(?P<title>(?:\\.|[^"\\])*)".*?'
+    r'"Link": "(?P<link>(?:\\.|[^"\\])*)".*?'
+    r'"Date": "(?P<date>(?:\\.|[^"\\])*)".*?'
+    r'"Year": "(?P<year>[^"]*)".*?'
+    r'"Topic": "(?P<topic>(?:\\.|[^"\\])*)"',
+    re.S,
+)
+
+
+def _json_string_unescape(raw: str) -> str:
+    return json.loads('"' + raw + '"')
+
+
+def parse_sharepoint_list_rows(html: str) -> list[dict[str, str]]:
+    """Rows from a SharePoint ``WPQ*ListData`` blob embedded in a list-view page.
+
+    Link and date values are JSON with ``\\u002f`` escapes, not ``<a href>`` anchors.
+    """
+    rows: list[dict[str, str]] = []
+    for match in _SHAREPOINT_ROW_RE.finditer(html or ""):
+        row = {
+            key: _json_string_unescape(match.group(key))
+            for key in match.groupdict()
+        }
+        rows.append(row)
+    return rows
+
+
+def sharepoint_list_urls(html: str, page_url: str) -> list[str]:
+    """Absolute ``Link`` values from a SharePoint list page, in list order."""
+    out: list[str] = []
+    seen: set[str] = set()
+    for row in parse_sharepoint_list_rows(html):
+        link = (row.get("link") or "").strip()
+        if not link:
+            continue
+        abs_url = urljoin(page_url, link).split("#", 1)[0]
+        if abs_url not in seen:
+            seen.add(abs_url)
+            out.append(abs_url)
+    return out
+
+
+def _press_listing_url_allowed(url: str, *, allow_http: bool) -> str | None:
+    """Keep an HTML press-release URL. Drop PDFs and search pages (robots)."""
+    parsed = urlparse(url)
+    path = (parsed.path or "").lower()
+    if path.endswith(".pdf") or "/search" in path:
+        return None
+    if "opendocument" not in url.lower():
+        return None
+    scheme = parsed.scheme.lower()
+    if scheme == "http":
+        if not allow_http:
+            return None
+        # dia.govt.nz http OpenDocument responses are a Domino login form.
+        if parsed.netloc.lower().endswith("dia.govt.nz"):
+            parsed = parsed._replace(scheme="https")
+            url = urlunparse(parsed)
+    elif scheme != "https":
+        return None
+    return url.split("#", 1)[0]
+
+
+def collect_domino_openview_urls(
+    start_url: str,
+    *,
+    fetch_html,
+    delay: float = 0.0,
+    max_pages: int = 80,
+    allow_http: bool = False,
+) -> list[str]:
+    """Page a Domino ``OpenView`` by following the Next ``Start=`` link.
+
+    ``fetch_html(url)`` returns response text or None. PDF and ``/search`` links
+    are dropped. ``http`` OpenDocument links are kept only when ``allow_http``.
+    """
+    out: list[str] = []
+    seen: set[str] = set()
+    url = start_url
+    pages = 0
+    while url and pages < max_pages:
+        pages += 1
+        html = fetch_html(url)
+        if not html:
+            break
+        soup = BeautifulSoup(html, "html.parser")
+        new = 0
+        for anchor in soup.find_all("a", href=True):
+            abs_url = urljoin(url, anchor["href"].strip())
+            kept = _press_listing_url_allowed(abs_url, allow_http=allow_http)
+            if not kept or kept in seen:
+                continue
+            seen.add(kept)
+            out.append(kept)
+            new += 1
+        next_href = None
+        for anchor in soup.find_all("a", href=True):
+            if anchor.get_text(strip=True) == "Next":
+                next_href = urljoin(url, anchor["href"])
+                break
+        if new == 0 or not next_href or next_href == url:
+            break
+        url = next_href
+        if delay:
+            time.sleep(delay)
     return out
 
 
@@ -1047,6 +1174,7 @@ def collect_wordpress_rest_urls(
     path_filter: str | None = None,
     exclude_substrings: list[str] | None = None,
     require_any_substrings: list[str] | None = None,
+    category: str = "",
 ) -> list[str]:
     """Page a WP REST ``/wp/v2/posts`` (or similar) endpoint into public article URLs."""
     exclude_substrings = exclude_substrings or []
@@ -1056,14 +1184,24 @@ def collect_wordpress_rest_urls(
     page = 1
     while True:
         try:
+            POLICY.acquire(api_url)
+            params: dict[str, object] = {"per_page": per_page, "page": page}
+            if search:
+                params["search"] = search
+            if category:
+                params["categories"] = category
             r = requests.get(
                 api_url,
-                params={"search": search, "per_page": per_page, "page": page},
-                headers={**HEADERS, "Accept": "application/json"},
+                params=params,
+                headers=_headers(api_url, accept="application/json"),
                 timeout=timeout,
                 verify=verify,
             )
+            if r.status_code == 403:
+                POLICY.note_status(api_url, 403)
             r.raise_for_status()
+        except (BlockedHost, RobotsDenied):
+            raise
         except Exception as e:
             print(f"  [wp-rest error] page {page}: {e}", file=sys.stderr)
             break
@@ -1261,6 +1399,11 @@ def main() -> None:
         help="Search term for --wordpress-rest (WP ``search`` query param).",
     )
     ap.add_argument(
+        "--wp-category",
+        default="",
+        help="WordPress category id for --wordpress-rest (WP ``categories`` query param).",
+    )
+    ap.add_argument(
         "--wp-public-host",
         default="",
         help="Public hostname for rewritten article URLs (required with --wordpress-rest).",
@@ -1282,10 +1425,29 @@ def main() -> None:
         help="Fetch listing pages through https://r.jina.ai/ (bot walls / JS shells). "
         "Applies to --url / --url-template HTML harvest only.",
     )
+    ap.add_argument(
+        "--sharepoint-list-page",
+        metavar="URL",
+        help="SharePoint list view whose rows are embedded as WPQ*ListData JSON "
+        "(Link values use \\u002f escapes, not anchors). Writes those Link URLs.",
+    )
+    ap.add_argument(
+        "--domino-view",
+        metavar="URL",
+        help="Domino OpenView listing. Follows the Next Start= link and keeps "
+        "OpenDocument HTML pages. Drops *.pdf and /search (robots). "
+        "Use --allow-http for legacy http links.",
+    )
     args = ap.parse_args()
 
     if args.url_template and args.page_range is None:
         ap.error("--url-template requires --page-range START:END")
+
+    if args.sharepoint_list_page or args.domino_view:
+        if args.url or args.url_template or args.wordpress_rest or args.squarespace_search_page or args.google_cse_search_page or args.usa_search:
+            ap.error("--sharepoint-list-page / --domino-view cannot be combined with other listing modes")
+        if args.sharepoint_list_page and args.domino_view:
+            ap.error("pass only one of --sharepoint-list-page or --domino-view")
 
     if args.wordpress_rest:
         if not args.wp_public_host.strip():
@@ -1335,6 +1497,39 @@ def main() -> None:
         except Exception:
             pass
 
+    if args.sharepoint_list_page:
+        html, status = fetch(args.sharepoint_list_page, args.timeout, verify=verify_tls)
+        if not html or status != 200:
+            sys.exit(f"sharepoint list page failed: HTTP {status}")
+        all_urls = sharepoint_list_urls(html, args.sharepoint_list_page)
+        with open(args.out, "w", encoding="utf-8") as f:
+            for u in all_urls:
+                f.write(u + "\n")
+        print(f"\nTotal URLs: {len(all_urls)}", file=sys.stderr)
+        print(f"Saved -> {args.out}", file=sys.stderr)
+        return
+
+    if args.domino_view:
+        def _fetch_domino(page_url: str) -> str | None:
+            body, status = fetch(page_url, args.timeout, verify=verify_tls)
+            if not body or status != 200:
+                print(f"  [stop] HTTP {status} {page_url}", file=sys.stderr)
+                return None
+            return body
+
+        all_urls = collect_domino_openview_urls(
+            args.domino_view,
+            fetch_html=_fetch_domino,
+            delay=args.delay,
+            allow_http=args.allow_http,
+        )
+        with open(args.out, "w", encoding="utf-8") as f:
+            for u in all_urls:
+                f.write(u + "\n")
+        print(f"\nTotal URLs: {len(all_urls)}", file=sys.stderr)
+        print(f"Saved -> {args.out}", file=sys.stderr)
+        return
+
     if args.wordpress_rest:
         all_urls = collect_wordpress_rest_urls(
             args.wordpress_rest,
@@ -1348,6 +1543,7 @@ def main() -> None:
             path_filter=args.path_prefix,
             exclude_substrings=exclude,
             require_any_substrings=require_any,
+            category=args.wp_category,
         )
         with open(args.out, "w", encoding="utf-8") as f:
             for u in all_urls:

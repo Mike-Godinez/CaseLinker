@@ -1,92 +1,87 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:47:03.920889" ;
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002> a ns3:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 01:29:54.440248" ;
     dcterms:identifier "doj_ceos_2013_002" ;
-    dcterms:modified "2026-09-15T21:47:03.920889" ;
+    dcterms:modified "2026-10-18 01:29:54.440248" ;
     dcterms:source <https://www.justice.gov/usao-sdia/pr/eldridge-man-arrested-production-child-pornography>,
         "DOJ CEOS" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/davenport-iowa>,
-        <https://caselinker.up.railway.app/resource/location/united-states> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/event/production>,
-        <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/davenport-iowa>,
-        <https://caselinker.up.railway.app/resource/location/united-states> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/davenport-iowa>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/event/production>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/legal-proceeding> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/davenport-iowa>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2013-01-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/event/production> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2013-01-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/event/production> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
     rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/charge/2> a cacontology-legal-outcomes:CSAM_Production,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/charge/2> a ns2:CSAM_Production,
+        ns2:CriminalCharge ;
     rdfs:label "production of child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/sentence/1> .
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/charge/1>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/charge/2> ;
+    ns2:hasProceedingBeginPoint "2013-01-03T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:SupervisedRelease ;
-    rdfs:label "[\"15 years\", \"30 years\", \"$250,000\", \"5 years\", \"supervised release\", \"$100\"]" .
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/phase/arrested> a ns3:InitialPhase,
+        ns4:Phase ;
+    ns3:hasPhaseBeginPoint "2013-01-03T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/davenport-iowa> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/davenport-iowa> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Davenport, Iowa" ;
-    uco-core:name "Davenport, Iowa" .
+    ns5:name "Davenport, Iowa" .
 
-<https://caselinker.up.railway.app/resource/location/united-states> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/united-states> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns5:name "United States" .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/facet/csam> .
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/event/csam> a ns3:CSAMIncident,
+        ns4:Event ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/event/production> a cac-core:Event,
-        cacontology-production:ProductionOffense ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/doj_ceos_2013_002/facet/production> .
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/event/production> a ns4:Event,
+        <https://cacontology.projectvic.org/production#ProductionOffense> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/facet/production> .
 
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_002> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/doj_ceos_2013_002/provenance> .

@@ -151,7 +151,7 @@ Requires `CASELINKER_KEY` / `CaseLinker-Key` listed in server `CASELINKER_TRUSTE
 
 | Tool | Without trusted key | With trusted key |
 |------|---------------------|------------------|
-| `get_all_cases` | **403** from API (or MCP local error if no key configured) | Full bulk export; optional `include_raw_data` |
+| `get_all_cases` | **403** from API (or MCP local error if no key configured) | Full corpus via `GET /api/corpus` (every column) |
 | `get_lifecycle_cases` | **403** from API (or MCP local error if no key configured) | Lifecycle swimlane / visualization payload |
 | `get_lifecycle_lstar` | **403** from API (or MCP local error if no key configured) | Full `lstar_all_cases.json` (transition matrix, global L*, per-case details) |
 | `get_case` | Works; **sanitized** (no `raw_data` / narrative blobs) | Works; **full** case payload including `raw_data` |

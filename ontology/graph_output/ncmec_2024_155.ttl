@@ -1,102 +1,94 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_155> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.251408" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_155> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:26.208413" ;
     dcterms:identifier "ncmec_2024_155" ;
-    dcterms:modified "2026-09-15T21:08:10.251408" ;
-    dcterms:source <https://www.hernandosheriff.org/applications/pressreleases/pressreleases/20240206_UPDATE_%E2%80%93_ADDITIONAL_CHARGES_ADDED_-_Carl_Hatfield_%E2%80%93_2023-20622.docx.pdf>,
+    dcterms:modified "2026-10-17 23:04:26.208413" ;
+    dcterms:source <https://mynews13.com/fl/orlando/news/2024/05/01/sheriff--former-lake-alfred-commissioner-faces-thousands-of-child-porn-charges>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/brooksville>,
-        <https://caselinker.up.railway.app/resource/location/hernando-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/brooksville>,
-        <https://caselinker.up.railway.app/resource/location/hernando-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/lake-alfred>,
+        <https://w3id.org/caselinker/resource/location/polk-county> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_155/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_155/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_155/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_155/legal-proceeding> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/polk-county-sheriffs-office> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/lake-alfred>,
+        <https://w3id.org/caselinker/resource/location/polk-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_155/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_155/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_155/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_155/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_155/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_155/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_155/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_155/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/polk-county-sheriffs-office> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_155/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 79 .
+    ns4:indictmentCounts 899 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_155/event/distribution> a ns3:Event,
+        ns4:CSAM_Distribution ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_155/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_155/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_155/charge/1> ;
+    ns4:hasProceedingBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_155/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 90 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_155/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/fla> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns5:name "Fla." .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/location/lake-alfred> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lake Alfred" ;
+    ns5:name "Lake Alfred" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/polk-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Polk County" ;
+    ns5:name "Polk County" .
 
-<https://caselinker.up.railway.app/resource/location/brooksville> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_155/event/hands-on> a ns2:ChildSexualAbuseEvent,
+        ns3:Event ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/location/hernando-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_155/event/possession> a ns2:CSAMIncident,
+        ns3:Event ;
+    ns2:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_155/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "uploading the files" ;
-    dcterms:source <https://www.hernandosheriff.org/applications/pressreleases/pressreleases/20240206_UPDATE_%E2%80%93_ADDITIONAL_CHARGES_ADDED_-_Carl_Hatfield_%E2%80%93_2023-20622.docx.pdf> ;
-    ns1:admissionContext "een hacked, stating he did not upload the child pornography into his account. After being confronted with certain facts of the case, whic..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "uploading the files" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_155/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/admission/1> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_155/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2024_155> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_155/provenance> .

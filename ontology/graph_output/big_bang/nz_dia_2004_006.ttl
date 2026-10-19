@@ -1,0 +1,111 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006> a ns3:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 14:04:14.772836" ;
+    dcterms:identifier "nz_dia_2004_006" ;
+    dcterms:modified "2026-10-18 14:04:14.772836" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/provenance> ;
+    dcterms:source <https://www.dia.govt.nz/press.nsf/d77da9b523f12931cc256ac5000d19b6/4d3f21dca1a34fa1cc256e2f000763f6!OpenDocument>,
+        "NZ DIA" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/new-zealand>,
+        <https://w3id.org/caselinker/resource/location/paihia> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/phase/sentenced> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/phase/sentenced> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/possession>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/production>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/legal-step/sentenced> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-internal-affairs-gaming-and-censorship-regulation-group>,
+        <https://w3id.org/caselinker/resource/agency/police-and-customs> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/new-zealand>,
+        <https://w3id.org/caselinker/resource/location/paihia> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2004-02-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/possession>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/production> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2004-02-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/possession>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/production> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/department-of-internal-affairs-gaming-and-censorship-regulation-group> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/police-and-customs> a ns2:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "Police and Customs" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/distribution> a ns2:Event,
+        ns5:CSAM_Distribution ;
+    ns3:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasProceedingBeginPoint "2004-02-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:resultsSentence <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/legal-step/sentenced> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2004-02-03T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/sentence/1> a ns5:CriminalSentence,
+        ns5:MonetaryPenalty ;
+    rdfs:label "$9,000" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/phase/sentenced> a ns2:Phase,
+        ns5:SentencingPhase ;
+    ns3:hasPhaseBeginPoint "2004-02-03T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/new-zealand> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Zealand" ;
+    ns1:name "New Zealand" .
+
+<https://w3id.org/caselinker/resource/location/paihia> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Paihia" ;
+    ns1:name "Paihia" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/hands-on> a ns3:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns3:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/possession> a ns3:CSAMIncident,
+        ns2:Event ;
+    ns3:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_006/event/production> a ns2:Event,
+        <https://cacontology.projectvic.org/production#ProductionOffense> ;
+    ns3:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/nz_dia_2004_006/facet/production> .
+

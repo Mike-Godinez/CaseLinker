@@ -1,0 +1,102 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns4: <https://cacontology.projectvic.org/production#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix ns9: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2021_010> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 04:30:18.341593" ;
+    dcterms:identifier "fresno_so_2021_010" ;
+    dcterms:modified "2026-10-18 04:30:18.341593" ;
+    dcterms:source <https://www.fresnosheriff.org/media-relations/detectives-arrest-local-high-school-teacher-for-having-sex-with-a-student.html>,
+        "FRESNO SO" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fresno-county>,
+        <https://w3id.org/caselinker/resource/location/kingsburg>,
+        <https://w3id.org/caselinker/resource/location/reedley>,
+        <https://w3id.org/caselinker/resource/location/tulare-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns9:involvesAgency <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/fresno-county>,
+        <https://w3id.org/caselinker/resource/location/kingsburg>,
+        <https://w3id.org/caselinker/resource/location/reedley>,
+        <https://w3id.org/caselinker/resource/location/tulare-county> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2021_010/event/trust-violation> a ns3:AuthorityAbuse,
+        ns3:TrustViolation ;
+    ns3:violatesRelationship <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/relationship/teacher> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2021_010/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Fresno County Jail" ;
+    ns5:hasProceedingBeginPoint "2021-09-03T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2021_010/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 39 .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2021_010/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:victimAge 14 .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2021_010/relationship/teacher> a ns3:CustodialRelationship,
+        ns3:Teacher ;
+    ns3:involvesChild <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/role/victim/1> ;
+    ns3:involvesCustodian <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/role/offender/1> ;
+    ns3:relationshipType "teacher" .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2021_010/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2021-09-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/event/hands-on> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2021_010/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2021-09-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/event/hands-on> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2021_010/phase/booked> a ns1:InitialPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2021-09-03T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/fresno-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fresno County" ;
+    ns2:name "Fresno County" .
+
+<https://w3id.org/caselinker/resource/location/kingsburg> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kingsburg" ;
+    ns2:name "Kingsburg" .
+
+<https://w3id.org/caselinker/resource/location/reedley> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Reedley" ;
+    ns2:name "Reedley" .
+
+<https://w3id.org/caselinker/resource/location/tulare-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tulare County" ;
+    ns2:name "Tulare County" .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2021_010/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns7:Event ;
+    ns1:severityLevel 3 .
+
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2021_010> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/fresno_so_2021_010/provenance> .

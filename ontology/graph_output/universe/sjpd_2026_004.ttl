@@ -1,0 +1,102 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2026_004> a ns3:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 07:02:44.905425" ;
+    dcterms:identifier "sjpd_2026_004" ;
+    dcterms:modified "2026-10-18 07:02:44.905425" ;
+    dcterms:source <https://www.sjpd.org/Home/Components/News/News/957/>,
+        "SJPD" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/sunnyvale>,
+        <https://w3id.org/caselinker/resource/location/the-city-of-cupertino>,
+        <https://w3id.org/caselinker/resource/location/the-city-of-sunnyvale> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/sjpd_2026_004/phase/booked> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/sjpd_2026_004/phase/booked> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/sjpd_2026_004/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/sjpd_2026_004/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/sjpd_2026_004/offense-event/charge-1> ;
+    ns3:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/san-josé-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/sunnyvale>,
+        <https://w3id.org/caselinker/resource/location/the-city-of-cupertino>,
+        <https://w3id.org/caselinker/resource/location/the-city-of-sunnyvale> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/san-josé-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2026_004/charge/1> a ns5:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/sjpd_2026_004/offense-event/charge-1> ;
+    ns1:chargeCluster "child_exploitation" ;
+    ns1:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/sjpd_2026_004/offense-event/charge-1> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2026_004/event/trust-violation> a ns4:CustodialAbuse,
+        ns4:TrustViolation ;
+    ns4:violatesRelationship <https://w3id.org/caselinker/resource/case/sjpd_2026_004/relationship/parent> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2026_004/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into Santa Clara County Main Jail" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/sjpd_2026_004/charge/1> ;
+    ns5:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2026_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2026_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2026_004/relationship/parent> a ns4:CaregiverRelationship,
+        ns4:CustodialRelationship ;
+    ns4:involvesChild <https://w3id.org/caselinker/resource/case/sjpd_2026_004/role/victim/1> ;
+    ns4:involvesCustodian <https://w3id.org/caselinker/resource/case/sjpd_2026_004/role/offender/1> ;
+    ns4:relationshipType "parent" .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2026_004/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/sjpd_2026_004/offense-event/charge-1> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/sjpd_2026_004/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2026_004/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/sjpd_2026_004/offense-event/charge-1> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/sjpd_2026_004/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2026_004/phase/booked> a ns3:InitialPhase,
+        ns7:Phase ;
+    ns3:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/sunnyvale> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sunnyvale" ;
+    ns2:name "Sunnyvale" .
+
+<https://w3id.org/caselinker/resource/location/the-city-of-cupertino> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the City of Cupertino" ;
+    ns2:name "the City of Cupertino" .
+
+<https://w3id.org/caselinker/resource/location/the-city-of-sunnyvale> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the City of Sunnyvale" ;
+    ns2:name "the City of Sunnyvale" .
+
+<https://w3id.org/caselinker/resource/case/sjpd_2026_004/offense-event/charge-1> a ns3:ChildSexualAbuseEvent,
+        ns7:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/sjpd_2026_004> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/sjpd_2026_004/provenance> .

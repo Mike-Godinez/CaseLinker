@@ -24,6 +24,7 @@ import json
 import re
 import sys
 import time
+import unicodedata
 from dataclasses import dataclass
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -230,19 +231,48 @@ def _parse_dateline_match(mon: str, day_s: str, year_s: str) -> date | None:
         return None
 
 
+_DATELINE_DMY_RE = re.compile(
+    r"\b(\d{1,2})\s+"
+    r"((?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|"
+    r"Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)),?\s+"
+    r"((?:19|20)\d{2})\b",
+    re.I,
+)
+# Day/month/year used on dia.govt.nz datelines (7/04/2009). Not applied to US hosts.
+_DATELINE_NUMERIC_DMY_RE = re.compile(r"\b(\d{1,2})/(\d{1,2})/((?:19|20)\d{2})\b")
+
+
 def _first_dateline_date_in_text(blob: str) -> date | None:
-    """First Month D, YYYY in blob that is not near a DOB hint."""
+    """First Month D, YYYY or D Month YYYY in blob that is not near a DOB hint."""
     if not blob:
         return None
     head = blob[:12000]
-    for m in _DATELINE_MDY_RE.finditer(head):
-        pre = head[max(0, m.start() - 120) : m.start()]
-        if _DOB_LINE_HINT_RE.search(pre):
-            continue
-        d = _parse_dateline_match(m.group(1), m.group(2), m.group(3))
-        if d:
-            return d
+    for pattern, groups in (
+        (_DATELINE_MDY_RE, lambda m: (m.group(1), m.group(2), m.group(3))),
+        (_DATELINE_DMY_RE, lambda m: (m.group(2), m.group(1), m.group(3))),
+    ):
+        for m in pattern.finditer(head):
+            pre = head[max(0, m.start() - 120) : m.start()]
+            if _DOB_LINE_HINT_RE.search(pre):
+                continue
+            mon, day_s, year_s = groups(m)
+            d = _parse_dateline_match(mon, day_s, year_s)
+            if d:
+                return d
     return None
+
+
+def _first_numeric_dmy_date_in_text(blob: str) -> date | None:
+    """First D/M/YYYY. For New Zealand press datelines, not US month/day dates."""
+    if not blob:
+        return None
+    m = _DATELINE_NUMERIC_DMY_RE.search(blob[:4000])
+    if not m:
+        return None
+    try:
+        return date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+    except ValueError:
+        return None
 
 
 def _publication_date_from_meta(soup: BeautifulSoup) -> date | None:
@@ -296,17 +326,35 @@ def _publication_date_from_visible_markup(soup: BeautifulSoup) -> date | None:
     return None
 
 
+def _dia_lead_date(body: str) -> date | None:
+    """Dateline in the first lines of a DIA release, before older dates in the story."""
+    head = (body or "")[:500]
+    m = _DATELINE_NUMERIC_DMY_RE.search(head)
+    if m:
+        try:
+            return date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+        except ValueError:
+            pass
+    m = _DATELINE_DMY_RE.search(head)
+    if m:
+        return _parse_dateline_match(m.group(2), m.group(1), m.group(3))
+    return None
+
+
 def resolve_publication_date(soup: BeautifulSoup, url: str, body: str) -> date | None:
     """
     Best-effort calendar date for the article. Used for ``Publication date: YYYY-MM-DD``
     before ``Source:`` so merged-PDF batching can assign case_id years.
     """
+    dia = urlparse(url).netloc.lower().endswith("dia.govt.nz")
     for fn in (
+        lambda: _dia_lead_date(body) if dia else None,
         lambda: _publication_date_from_meta(soup),
         lambda: _publication_date_from_url_path(url),
         lambda: _publication_date_from_visible_markup(soup),
         lambda: _first_dateline_date_in_text(body),
         lambda: _first_dateline_date_in_text(soup.get_text(" ", strip=True)[:8000]),
+        lambda: _first_numeric_dmy_date_in_text(body) if dia else None,
     ):
         d = fn()
         if d:
@@ -314,18 +362,30 @@ def resolve_publication_date(soup: BeautifulSoup, url: str, body: str) -> date |
     return None
 
 
+try:
+    from http_policy import COLLECTOR_UA, BlockedHost, HostPolicy, RobotsDenied
+except ImportError:
+    from collector.http_policy import COLLECTOR_UA, BlockedHost, HostPolicy, RobotsDenied
+
+
+def _policy_get(url: str, headers: dict[str, str]):
+    return requests.get(
+        url, headers=headers, timeout=REQUEST_TIMEOUT, allow_redirects=True
+    )
+
+
+POLICY = HostPolicy(session_get=_policy_get)
+
+
 def _default_headers(referer: str | None) -> dict[str, str]:
-    ref = referer or "https://www.google.com/"
-    return {
-        "User-Agent": (
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
-        ),
+    hdrs = {
+        "User-Agent": COLLECTOR_UA,
         "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.9",
-        "Referer": ref,
-        "DNT": "1",
     }
+    if referer:
+        hdrs["Referer"] = referer
+    return hdrs
 
 
 def _build_styles():
@@ -381,6 +441,27 @@ def esc(s: str) -> str:
     )
 
 
+def _fit_builtin_pdf_font(text: str) -> str:
+    """Drop only glyphs Times and Helvetica cannot draw.
+
+    Those fonts use WinAnsi. A macron letter such as Ō would otherwise be
+    painted as a black square. Quotes, dashes, and bullets that WinAnsi
+    already contains are left as they are, so other press PDFs keep their
+    punctuation.
+    """
+    if not text:
+        return text
+    parts: list[str] = []
+    for ch in text:
+        try:
+            ch.encode("winansi")
+        except UnicodeEncodeError:
+            base = unicodedata.normalize("NFKD", ch)
+            ch = "".join(c for c in base if ord(c) < 128)
+        parts.append(ch)
+    return "".join(parts)
+
+
 def load_urls(path: Path) -> list[str]:
     urls: list[str] = []
     seen: set[str] = set()
@@ -409,6 +490,84 @@ class HttpFetch:
     via_jina: bool = False
 
 
+_META_CHARSET_RE = re.compile(
+    rb"<meta\b[^>]*charset\s*=\s*[\"']?\s*([A-Za-z0-9._-]+)",
+    re.I,
+)
+_HEADER_CHARSET_RE = re.compile(
+    r"charset\s*=\s*[\"']?\s*([A-Za-z0-9._-]+)",
+    re.I,
+)
+_LATIN1_NAMES = {"iso-8859-1", "latin-1", "latin1", "ascii"}
+# UTF-8 bytes E2 80 xx (punctuation) read as Latin-1: â plus a C1 control.
+_UTF8_READ_AS_LATIN1_RE = re.compile(r"\u00e2[\u0080-\u00bf]")
+
+
+def _explicit_content_type_charset(content_type: str | None) -> str | None:
+    if not content_type:
+        return None
+    match = _HEADER_CHARSET_RE.search(content_type)
+    return match.group(1) if match else None
+
+
+def _html_meta_charset(content: bytes) -> str | None:
+    match = _META_CHARSET_RE.search(content[:12000])
+    if not match:
+        return None
+    try:
+        return match.group(1).decode("ascii")
+    except UnicodeDecodeError:
+        return None
+
+
+def _decode_http_text(
+    content: bytes, *, content_type: str | None, encoding: str | None
+) -> str:
+    """Decode an HTTP body without turning UTF-8 punctuation into mojibake.
+
+    ``requests`` reports ISO-8859-1 when a text response omits a charset. An
+    explicit Content-Type charset still wins, except when that charset is the
+    Latin-1 default and the bytes are valid UTF-8 that Latin-1 reads as
+    ``â`` plus a control character. When the header has no charset, an HTML
+    ``<meta>`` charset is used. Built-in PDF fonts are unchanged; this only
+    picks the correct Unicode string.
+    """
+    explicit = _explicit_content_type_charset(content_type)
+    if explicit and explicit.lower() not in _LATIN1_NAMES:
+        try:
+            return content.decode(explicit, errors="replace")
+        except LookupError:
+            return content.decode("utf-8", errors="replace")
+
+    if not explicit:
+        meta = _html_meta_charset(content)
+        if meta and meta.lower() not in _LATIN1_NAMES:
+            try:
+                return content.decode(meta)
+            except (LookupError, UnicodeDecodeError):
+                pass
+
+    try:
+        as_utf8 = content.decode("utf-8")
+    except UnicodeDecodeError:
+        as_utf8 = None
+    fallback = explicit or encoding or "utf-8"
+    if as_utf8 is not None and fallback.lower() in _LATIN1_NAMES:
+        if explicit:
+            try:
+                as_latin1 = content.decode(explicit)
+            except (LookupError, UnicodeDecodeError):
+                as_latin1 = ""
+            if _UTF8_READ_AS_LATIN1_RE.search(as_latin1):
+                return as_utf8
+        else:
+            return as_utf8
+    try:
+        return content.decode(fallback, errors="replace")
+    except LookupError:
+        return content.decode("utf-8", errors="replace")
+
+
 def _http_fetch_from_response(r, *, fallback_mime: str, via_jina: bool = False) -> HttpFetch:
     mime = fallback_mime
     etag = None
@@ -421,11 +580,11 @@ def _http_fetch_from_response(r, *, fallback_mime: str, via_jina: bool = False) 
         retrieved = utcnow()
     else:
         retrieved = datetime.now(timezone.utc)
-    encoding = r.encoding or "utf-8"
-    try:
-        text = r.content.decode(encoding, errors="replace")
-    except LookupError:
-        text = r.content.decode("utf-8", errors="replace")
+    text = _decode_http_text(
+        r.content,
+        content_type=r.headers.get("Content-Type"),
+        encoding=r.encoding,
+    )
     return HttpFetch(
         content=r.content,
         text=text,
@@ -445,8 +604,10 @@ def fetch_http(
     verify: bool = True,
     accept: str | None = None,
 ) -> HttpFetch | None:
+    POLICY.acquire(url)
     try:
         request_headers = dict(headers)
+        request_headers["User-Agent"] = COLLECTOR_UA
         if accept:
             request_headers["Accept"] = accept
         r = requests.get(
@@ -456,9 +617,13 @@ def fetch_http(
             allow_redirects=True,
             verify=verify,
         )
+        if r.status_code == 403:
+            POLICY.note_status(url, 403)
         r.raise_for_status()
         fallback = "application/pdf" if (accept or "").startswith("application/pdf") else "text/html"
         return _http_fetch_from_response(r, fallback_mime=fallback)
+    except (BlockedHost, RobotsDenied):
+        raise
     except Exception as e:
         print(f"    [fetch error] {e}", file=sys.stderr)
         return None
@@ -554,6 +719,43 @@ def _extract_text_from_pdf_bytes(pdf_bytes: bytes) -> str:
     return body.strip()
 
 
+_WI_DOJ_HEADLINE_RE = re.compile(
+    r"FOR IMMEDIATE\s+RELEASE\s+"
+    r"(?:January|February|March|April|May|June|July|August|September|"
+    r"October|November|December)\s+"
+    r"\d{1,2},?\s+\d{4}\s+"
+    r"(.+?)"
+    r"\s+[A-Z][A-Z]+(?:\s+[A-Z][A-Z]+){0,5},\s+Wis\.",
+    re.S,
+)
+
+
+def _headline_from_wi_doj_body(body: str) -> str | None:
+    """Real release headline, between the dateline and the ``CITY, Wis.`` line.
+
+    Wisconsin DOJ files are named like ``5.27.21_Eagle_River_CSAM_0.pdf``.
+    Title-casing that slug is not the headline. Other native PDFs keep the
+    filename title; this only matches the Wisconsin release shape.
+    """
+    flat = re.sub(r"\s+", " ", body or "").strip()
+    match = _WI_DOJ_HEADLINE_RE.search(flat)
+    if not match:
+        return None
+    title = match.group(1).strip(" -–—")
+    if len(title) < 12:
+        return None
+    return title
+
+
+def _title_for_native_pdf(url: str, body: str) -> str:
+    host = urlparse(url).netloc.lower()
+    if host.endswith("wisdoj.gov") or host.endswith("doj.state.wi.us"):
+        headline = _headline_from_wi_doj_body(body)
+        if headline:
+            return headline
+    return _title_from_url(url)
+
+
 def extract_from_native_pdf(pdf_bytes: bytes, url: str) -> tuple[str, str, str, date | None] | None:
     """Downloaded city PDF → title, byline, body, publication date."""
     if not pdfplumber:
@@ -563,7 +765,7 @@ def extract_from_native_pdf(pdf_bytes: bytes, url: str) -> tuple[str, str, str, 
     body = _extract_text_from_pdf_bytes(pdf_bytes)
     if len(body) < MIN_BODY_CHARS:
         return None
-    title = _title_from_url(url)
+    title = _title_for_native_pdf(url, body)
     pub_date = _first_dateline_date_in_text(body) or _publication_date_from_filename(url)
     byline = format_display_byline(pub_date, None)
     return title, byline, body.strip(), pub_date
@@ -2208,6 +2410,27 @@ def _trim_ncsbi_news_body(raw: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
+def _extract_garda(soup: BeautifulSoup, url: str) -> tuple[str, str, str, date | None] | None:
+    """An Garda Síochána press releases. The article sits inside a site-wide form."""
+    node = soup.select_one("article#content") or soup.select_one("article.content")
+    if not node:
+        return None
+    body = node.get_text("\n", strip=True)
+    if len(body) < MIN_BODY_CHARS:
+        return None
+    title = ""
+    heading = soup.select_one("#ctl00_ctl00_ContentPlaceHolder_Main_title")
+    if heading:
+        title = heading.get_text(" ", strip=True)
+    if not title and soup.title:
+        title = re.sub(r"\s+-\s+Garda\s*$", "", soup.title.get_text(" ", strip=True), flags=re.I)
+    pub_date = _first_dateline_date_in_text(body)
+    byline = format_display_byline(pub_date, soup)
+    if not title:
+        title = _title_from_url(url)
+    return title.strip(), byline.strip(), body.strip(), pub_date
+
+
 def _extract_ncsbi_gov(soup: BeautifulSoup, url: str) -> tuple[str, str, str, date | None] | None:
     """North Carolina SBI news releases (``.NewsBody`` / ``.newsItemDetail``)."""
     title = ""
@@ -2349,7 +2572,11 @@ def extract(html: str, url: str) -> tuple[str, str, str, date | None] | None:
     if nca:
         return nca
 
-    # ncsbi.gov puts release text inside a <form>; extract before form decompose below.
+    # garda.ie and ncsbi.gov put the release inside a <form>; extract before form decompose.
+    if netloc.endswith("garda.ie"):
+        garda = _extract_garda(BeautifulSoup(html, "html.parser"), url)
+        if garda:
+            return garda
     if netloc in ("www.ncsbi.gov", "ncsbi.gov"):
         ncsbi = _extract_ncsbi_gov(BeautifulSoup(html, "html.parser"), url)
         if ncsbi:
@@ -2488,6 +2715,18 @@ def extract(html: str, url: str) -> tuple[str, str, str, date | None] | None:
             or soup.select_one("article")
             or soup.select_one("main")
         )
+    elif netloc.endswith("dia.govt.nz"):
+        container = soup.select_one("div.content") or soup.select_one("article")
+    elif netloc in ("www.police.gov.sg", "police.gov.sg"):
+        rtes = soup.select("div.rte")
+        container = max(rtes, key=lambda node: len(node.get_text()), default=None)
+    elif netloc in ("alert-ab.ca", "www.alert-ab.ca"):
+        # Elementor singles: a generic "body" class match hits an empty inner section.
+        container = (
+            soup.select_one(".elementor-location-single .dynamic-content-for-elementor-acf")
+            or soup.select_one(".dynamic-content-for-elementor-acf")
+            or soup.select_one(".elementor-location-single")
+        )
     elif netloc in ("www.cbp.gov", "cbp.gov"):
         container = (
             soup.select_one(".field--name-body .field__item")
@@ -2504,13 +2743,24 @@ def extract(html: str, url: str) -> tuple[str, str, str, date | None] | None:
         )
 
     if container is None:
-        container = (
-            soup.find("article")
-            or soup.find("main")
-            or soup.find(attrs={"role": "main"})
-            or soup.find(class_=re.compile(r"content|body|field-body|article-body|post-body", re.I))
-            or soup.body
-        )
+        # Skip a short <article> shell (a label or teaser) and keep looking.
+        for candidate in (
+            soup.find("article"),
+            soup.find("main"),
+            soup.find(attrs={"role": "main"}),
+        ):
+            if candidate and len(candidate.get_text(" ", strip=True)) >= MIN_BODY_CHARS:
+                container = candidate
+                break
+        if container is None:
+            for candidate in soup.find_all(
+                class_=re.compile(r"content|body|field-body|article-body|post-body", re.I)
+            ):
+                if len(candidate.get_text(" ", strip=True)) >= MIN_BODY_CHARS:
+                    container = candidate
+                    break
+        if container is None:
+            container = soup.body
     if not container:
         return None
 
@@ -2560,6 +2810,9 @@ def write_pdf(
     url: str,
     pub_date: date | None,
 ) -> bool:
+    title = _fit_builtin_pdf_font(title)
+    byline = _fit_builtin_pdf_font(byline)
+    body = _fit_builtin_pdf_font(body)
     doc = SimpleDocTemplate(
         str(out_path),
         pagesize=LETTER,
@@ -2950,7 +3203,11 @@ def main():
                 failures.append(url)
             continue  # no network call made -> no rate-limit delay needed
 
-        got = resolve_url_content(url, args, verify_tls)
+        try:
+            got = resolve_url_content(url, args, verify_tls)
+        except (BlockedHost, RobotsDenied) as exc:
+            print(f"    [stop] {exc}", file=sys.stderr)
+            sys.exit(2)
         if got is None:
             failures.append(url)
             time.sleep(args.delay)

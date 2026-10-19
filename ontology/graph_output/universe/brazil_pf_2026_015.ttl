@@ -1,0 +1,85 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_015> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 00:50:58.912789" ;
+    dcterms:identifier "brazil_pf_2026_015" ;
+    dcterms:modified "2026-10-18 00:50:58.912789" ;
+    dcterms:source <https://www.gov.br/pf/pt-br/assuntos/noticias/2026/09/pf-combate-crimes-de-abuso-sexual-infantojuvenil-na-internet-no-rn>,
+        "BRAZIL PF" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/parnamirim>,
+        <https://w3id.org/caselinker/resource/location/piracicaba>,
+        <https://w3id.org/caselinker/resource/location/the-metropolitan-region-of-natal> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/event/possession>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/federal-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/parnamirim>,
+        <https://w3id.org/caselinker/resource/location/piracicaba>,
+        <https://w3id.org/caselinker/resource/location/the-metropolitan-region-of-natal> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/federal-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/charge/1> a ns4:CriminalCharge,
+        ns4:StateCharge ;
+    rdfs:label "sexual exploitation of children" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/charge/2> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/charge/1>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/charge/2> ;
+    ns4:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/location/parnamirim> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Parnamirim" ;
+    ns2:name "Parnamirim" .
+
+<https://w3id.org/caselinker/resource/location/piracicaba> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Piracicaba" ;
+    ns2:name "Piracicaba" .
+
+<https://w3id.org/caselinker/resource/location/the-metropolitan-region-of-natal> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the Metropolitan Region of Natal" ;
+    ns2:name "the Metropolitan Region of Natal" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_015> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/brazil_pf_2026_015/provenance> .

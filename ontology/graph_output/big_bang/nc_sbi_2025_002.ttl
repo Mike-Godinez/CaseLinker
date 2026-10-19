@@ -1,91 +1,144 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/production#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:55:30.425038" ;
+<https://w3id.org/caselinker/resource/case/nc_sbi_2025_002> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 05:42:46.585935" ;
     dcterms:identifier "nc_sbi_2025_002" ;
-    dcterms:modified "2026-09-10T19:55:30.425038" ;
+    dcterms:modified "2026-10-18 05:42:46.585935" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/provenance> ;
     dcterms:source <https://www.ncsbi.gov/Newsroom/News-Releases/Harnett-County-Amber-Alert-Arrests>,
         "NC SBI" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/fbi>,
-        <https://caselinker.up.railway.app/resource/agency/harnett-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/kitty-hawk-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/north-carolina-state-bureau-of-investigation> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/harnett-county>,
+        <https://w3id.org/caselinker/resource/location/kitty-hawk>,
+        <https://w3id.org/caselinker/resource/location/nc>,
+        <https://w3id.org/caselinker/resource/location/north-carolina>,
+        <https://w3id.org/caselinker/resource/location/spring-lake>,
+        <https://w3id.org/caselinker/resource/location/virginia>,
+        <https://w3id.org/caselinker/resource/location/virginia-beach> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/harnett-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/kitty-hawk-police-department>,
+        <https://w3id.org/caselinker/resource/agency/north-carolina-state-bureau-of-investigation> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/harnett-county>,
+        <https://w3id.org/caselinker/resource/location/kitty-hawk>,
+        <https://w3id.org/caselinker/resource/location/nc>,
+        <https://w3id.org/caselinker/resource/location/north-carolina>,
+        <https://w3id.org/caselinker/resource/location/spring-lake>,
+        <https://w3id.org/caselinker/resource/location/virginia>,
+        <https://w3id.org/caselinker/resource/location/virginia-beach> .
 
-<https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/event/conspiracy> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/event/conspiracy> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/fbi> a ns7:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/harnett-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/harnett-county-sheriffs-office> a ns7:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/kitty-hawk-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/kitty-hawk-police-department> a ns3:OrganizationLikeEntity,
+        ns7:LocalAgency ;
     rdfs:label "Kitty Hawk Police Department" .
 
-<https://caselinker.up.railway.app/resource/agency/north-carolina-state-bureau-of-investigation> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/north-carolina-state-bureau-of-investigation> a ns3:OrganizationLikeEntity,
+        ns7:StateAgency ;
+    rdfs:label "North Carolina State Bureau of Investigation" .
 
-<https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 1 .
+<https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/event/multi-jurisdiction> a ns3:Event,
+        ns7:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 1 .
 
-<https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
+<https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns6:LegalProceeding ;
     rdfs:comment "Pretrial detention facility (not a sentence): Harnett County Jail" ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+    ns6:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 23 .
+<https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 23 .
 
-<https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/person/offender/2> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 31 .
+<https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 31 .
 
-<https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:victimAge 15 .
 
-<https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/event/conspiracy> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/event/conspiracy> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/role/offender/2> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/event/conspiracy> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/person/offender/2> .
+<https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/role/offender/2> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/event/conspiracy> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/person/offender/2> .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/phase/charged> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/event/conspiracy> a cacontology:ConspiracyToCommitCSA,
-        cac-core:Event ;
-    cacontology:conspiracyMemberCount 2 ;
-    cacontology:participatesInConspiracy <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/role/offender/1>,
-        <https://caselinker.up.railway.app/resource/case/nc_sbi_2025_002/role/offender/2> ;
-    cacontology:severityLevel 1 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> .
+<https://w3id.org/caselinker/resource/location/harnett-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Harnett County" ;
+    ns5:name "Harnett County" .
+
+<https://w3id.org/caselinker/resource/location/kitty-hawk> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kitty Hawk" ;
+    ns5:name "Kitty Hawk" .
+
+<https://w3id.org/caselinker/resource/location/nc> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nc." ;
+    ns5:name "Nc." .
+
+<https://w3id.org/caselinker/resource/location/north-carolina> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "North Carolina" ;
+    ns5:name "North Carolina" .
+
+<https://w3id.org/caselinker/resource/location/spring-lake> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Spring Lake" ;
+    ns5:name "Spring Lake" .
+
+<https://w3id.org/caselinker/resource/location/virginia> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Virginia" ;
+    ns5:name "Virginia" .
+
+<https://w3id.org/caselinker/resource/location/virginia-beach> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Virginia Beach" ;
+    ns5:name "Virginia Beach" .
+
+<https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/event/conspiracy> a ns1:ConspiracyToCommitCSA,
+        ns3:Event ;
+    ns1:conspiracyMemberCount 2 ;
+    ns1:participatesInConspiracy <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/nc_sbi_2025_002/role/offender/2> ;
+    ns1:severityLevel 1 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> .
 

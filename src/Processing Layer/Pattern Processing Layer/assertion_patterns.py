@@ -162,6 +162,12 @@ _PERSONA_RIGHT = re.compile(r"^\W*(?:years?\W*olds?\W+)?(?:\w+\s+){0,2}?(?:decoy
 # "in which he believed he was communicating over the Internet with a thirteen-year-old girl":
 # a belief verb earlier in the clause plus a sting/undercover cue in the sentence = decoy persona.
 _BELIEVED_CLAUSE_LEFT = re.compile(r"\b(?:believ(?:ed|es|ing)|thought|thinking)\b[^.;:]{0,90}$", re.I)
+# "whom he believed was the father of a nine-year-old boy" — the age is the persona's child,
+# and the two-word persona window stops before "father of a".
+_BELIEVED_PARENT_LEFT = re.compile(
+    r"\bbeliev(?:ed|es|ing)\s+was\s+the\s+(?:father|mother|parent|dad|mom|guardian)\s+of\s+(?:a|an|the)\s+$",
+    re.I,
+)
 _STING_CUES = re.compile(r"\b(?:undercover|sting|decoys?|posing|posed|pretend\w*|fictitious)\b", re.I)
 _VICTIM_NOUN_EXACT = re.compile(r"\bvictims?\b", re.I)
 _VICTIM_RIGHT = re.compile(
@@ -282,6 +288,9 @@ def age_role_lexical(text: str, s: int, e: int, shape: str, defendants: Set[str]
         extras["persona_cue"] = persona.group("verb")
         return _persona_role(text, s, e, persona.group("verb")), 0.9, extras
     if _PERSONA_RIGHT.match(right):
+        return "decoy", 0.85, extras
+    if _BELIEVED_PARENT_LEFT.search(left[-90:]):
+        extras["persona_cue"] = "believed_parent_of"
         return "decoy", 0.85, extras
     if _BELIEVED_CLAUSE_LEFT.search(left) and _STING_CUES.search(text[slice(*sg.sentence_at(text, s, e))]):
         extras["persona_cue"] = "believed+sting"

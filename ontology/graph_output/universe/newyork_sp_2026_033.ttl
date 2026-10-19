@@ -1,0 +1,103 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_033> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 06:04:25.203181" ;
+    dcterms:identifier "newyork_sp_2026_033" ;
+    dcterms:modified "2026-10-18 06:04:25.203181" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/provenance> ;
+    dcterms:source <https://troopers.ny.gov/news/state-police-arrest-east-greenbush-man-possessing-child-sexual-abuse-material-0>,
+        "NEWYORK SP" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/east-greenbush>,
+        <https://w3id.org/caselinker/resource/location/new-york> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/cybertip>,
+        <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/event/possession>,
+        <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-homeland-security>,
+        <https://w3id.org/caselinker/resource/agency/east-greenbush-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/state-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/east-greenbush>,
+        <https://w3id.org/caselinker/resource/location/new-york> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/department-of-homeland-security> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/east-greenbush-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/state-police-department> a ns2:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/charge/2> a ns6:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/cybertip> a ns3:NCMECCybertipReport ;
+    ns3:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remanded to the Rensselaer County Correctional Facility" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/charge/1>,
+        <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/charge/2> ;
+    ns6:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 58 .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/phase/arrested> a ns1:InitialPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/east-greenbush> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "East Greenbush" ;
+    ns5:name "East Greenbush" .
+
+<https://w3id.org/caselinker/resource/location/new-york> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New York" ;
+    ns5:name "New York" .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/event/possession> a ns1:CSAMIncident,
+        ns7:Event ;
+    ns1:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/newyork_sp_2026_033/facet/possession> .
+

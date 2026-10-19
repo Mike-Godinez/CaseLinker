@@ -1,0 +1,140 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 13:16:58.487879" ;
+    dcterms:identifier "doj_archives_2004_004" ;
+    dcterms:modified "2026-10-18 13:16:58.487879" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/provenance> ;
+    dcterms:source <https://www.justice.gov/archive/criminal/ceos/pressreleases/downloads/SDWV%20Hoffman%20sentencing%20PR_111504.pdf>,
+        "DOJ ARCHIVES" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/charleston>,
+        <https://w3id.org/caselinker/resource/location/nitro>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/washington>,
+        <https://w3id.org/caselinker/resource/location/washington-dc>,
+        <https://w3id.org/caselinker/resource/location/west-virginia> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/offense-event/charge-1> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/ceos>,
+        <https://w3id.org/caselinker/resource/agency/doj>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/charleston>,
+        <https://w3id.org/caselinker/resource/location/nitro>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/washington>,
+        <https://w3id.org/caselinker/resource/location/washington-dc>,
+        <https://w3id.org/caselinker/resource/location/west-virginia> .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2004-11-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/offense-event/charge-1> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2004-11-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/offense-event/charge-1> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/ceos> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/doj> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/charge/1> a ns2:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/offense-event/charge-1> ;
+    ns4:chargeCluster "child_exploitation" ;
+    ns4:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/offense-event/charge-1> .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/event/multi-jurisdiction> a ns5:Event,
+        ns3:MultiJurisdictionalInvestigation .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/charge/1> ;
+    ns2:hasProceedingBeginPoint "2004-11-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2004_004/sentence/3> .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2004-11-15T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 31 .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/sentence/1> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "18 MONTHS" .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/sentence/2> a ns2:CriminalSentence,
+        ns2:SupervisedRelease ;
+    rdfs:label "3 years supervised release" .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/sentence/3> a ns2:CriminalSentence,
+        ns2:MonetaryPenalty ;
+    rdfs:label "$100" .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/phase/sentenced> a ns5:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2004-11-15T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/charleston> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Charleston" ;
+    ns6:name "Charleston" .
+
+<https://w3id.org/caselinker/resource/location/nitro> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nitro" ;
+    ns6:name "Nitro" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns6:name "United States" .
+
+<https://w3id.org/caselinker/resource/location/washington> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington" ;
+    ns6:name "Washington" .
+
+<https://w3id.org/caselinker/resource/location/washington-dc> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington Dc" ;
+    ns6:name "Washington Dc" .
+
+<https://w3id.org/caselinker/resource/location/west-virginia> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "West Virginia" ;
+    ns6:name "West Virginia" .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_004/offense-event/charge-1> a ns1:ChildSexualAbuseEvent,
+        ns5:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+

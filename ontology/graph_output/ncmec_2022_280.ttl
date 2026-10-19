@@ -1,110 +1,92 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2022_280> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.228796" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_280> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:22.749580" ;
     dcterms:identifier "ncmec_2022_280" ;
-    dcterms:modified "2026-09-15T20:45:06.228796" ;
-    dcterms:source <https://bonnercountydailybee.com/news/2022/mar/10/sagle-man-faces-15-exploitation-charges/>,
+    dcterms:modified "2026-10-17 21:51:22.749580" ;
+    dcterms:source <https://news.monroelocal.org/breaking-monroe-man-arrested-friday-on-child-pornography-charges/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/idaho>,
-        <https://caselinker.up.railway.app/resource/location/sandpoint> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/idaho>,
-        <https://caselinker.up.railway.app/resource/location/sandpoint> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/monroe> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_280/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_280/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_280/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_280/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/city-of-monroe-police-department>,
+        <https://w3id.org/caselinker/resource/agency/georgia-bureau-of-investigations>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/monroe-police-department> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/monroe> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_280/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_280/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_280/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_280/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_280/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_280/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/sentence/1> .
+<https://w3id.org/caselinker/resource/agency/city-of-monroe-police-department> a ns5:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "City of Monroe Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/operation> a cac-core:Event,
-        cacontology-taskforce:ReactiveOperation .
+<https://w3id.org/caselinker/resource/agency/georgia-bureau-of-investigations> a ns2:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/monroe-police-department> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_280/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns3:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_280/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_280/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_280/charge/1> ;
+    ns3:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-03-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_280/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 44 .
 
-<https://caselinker.up.railway.app/resource/location/idaho> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_280/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/sandpoint> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Sandpoint" ;
-    uco-core:name "Sandpoint" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_280/phase/charged> a ns1:LegalProcessPhase,
+        ns5:Phase ;
+    ns1:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "arresting officials that he began looking at child pornography in 2013, which would imply additional charges that wer..." ;
-    dcterms:source <https://bonnercountydailybee.com/news/2022/mar/10/sagle-man-faces-15-exploitation-charges/> ;
-    ns1:admissionContext "against Edgar date back to 2013, but the earliest specific charge is from Oct. 16, 2019. Edgar admitted to arresting officials that he be..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "arresting officials that he began looking at child pornography in 2013, which would imply additional charges that were not implicated in Edgar’s current court case" .
+<https://w3id.org/caselinker/resource/location/georgia> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Georgia" ;
+    ns4:name "Georgia" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_280/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/admission/1> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_280/facet/csam> .
+<https://w3id.org/caselinker/resource/location/monroe> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Monroe" ;
+    ns4:name "Monroe" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2022_280/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_280/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_280> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_280/provenance> .

@@ -1,0 +1,104 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/admission/1/extraction-confidence> a ns7:AssessmentResult ;
+    ns7:assesses <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/admission/1> ;
+    ns7:generatedBy <https://w3id.org/caselinker/resource/case/scotland_police_2022_013> ;
+    ns7:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-07-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/national-child-abuse-investigation-unit> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/police-scotland> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 14:18:20.756609" ;
+    dcterms:identifier "scotland_police_2022_013" ;
+    dcterms:modified "2026-10-18 14:18:20.756609" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/provenance> ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2024/february/mateusz-guzik-jailed-for-two-and-a-half-years-for-possession-of-indecent-images-of-children/>,
+        "SCOTLAND POLICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/newmilns-ayrshire> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/admission/1>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/event/possession>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/operation> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/national-child-abuse-investigation-unit>,
+        <https://w3id.org/caselinker/resource/agency/police-scotland> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/newmilns-ayrshire> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasProceedingBeginPoint "2022-07-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:resultsSentence <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/legal-step/sentenced> a ns7:Event,
+        ns7:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2022-07-12T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/operation> a ns7:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 24 .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-07-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/sentence/1> a ns5:CriminalSentence,
+        ns5:PrisonSentence ;
+    rdfs:label "31 months" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/phase/sentenced> a ns7:Phase,
+        ns5:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2022-07-12T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/newmilns-ayrshire> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Newmilns, Ayrshire" ;
+    ns6:name "Newmilns, Ayrshire" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "to charges relating to possession of indecent images and a communications offence when he appeared at Kilmarnock Sher..." ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2024/february/mateusz-guzik-jailed-for-two-and-a-half-years-for-possession-of-indecent-images-of-children/> ;
+    ns6:description "to charges relating to possession of indecent images and a communications offence when he appeared at Kilmarnock Sheriff Court on Tuesday, 12 December, 2023" ;
+    ns2:admissionContext "24, was arrested following a search of his home in Newmilns, Ayrshire, on 12 July, 2022. He admitted to charges relating to possession of..." ;
+    ns2:admissionFrame "he_admitted_paraphrase" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_013/event/possession> a ns1:CSAMIncident,
+        ns7:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/scotland_police_2022_013/facet/possession> .
+

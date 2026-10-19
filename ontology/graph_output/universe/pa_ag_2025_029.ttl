@@ -1,0 +1,96 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/detection#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns8: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_029> a ns6:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 06:23:11.977957" ;
+    dcterms:identifier "pa_ag_2025_029" ;
+    dcterms:modified "2026-10-18 06:23:11.977957" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/pa_ag_2025_029/provenance> ;
+    dcterms:source <https://www.attorneygeneral.gov/taking-action/bellwood-antis-school-district-head-wrestling-coach-jailed-for-his-role-in-sexual-abuse-investigation/>,
+        "PA AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/harrisburg>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania>,
+        <https://w3id.org/caselinker/resource/location/strawberry-square> ;
+    ns6:currentPhase <https://w3id.org/caselinker/resource/case/pa_ag_2025_029/phase/sentenced> ;
+    ns6:hasPhase <https://w3id.org/caselinker/resource/case/pa_ag_2025_029/phase/sentenced> ;
+    ns6:hasStep <https://w3id.org/caselinker/resource/case/pa_ag_2025_029/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/pa_ag_2025_029/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/pa_ag_2025_029/legal-step/sentenced> ;
+    ns6:investigationStatus "unknown" ;
+    ns8:involvesAgency <https://w3id.org/caselinker/resource/agency/office-of-the-attorney-general> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/harrisburg>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania>,
+        <https://w3id.org/caselinker/resource/location/strawberry-square> .
+
+<https://w3id.org/caselinker/resource/agency/office-of-the-attorney-general> a ns8:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_029/event/trust-violation> a ns3:AuthorityAbuse,
+        ns3:TrustViolation ;
+    ns3:violatesRelationship <https://w3id.org/caselinker/resource/case/pa_ag_2025_029/relationship/coach> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_029/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasProceedingBeginPoint "2025-08-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:resultsSentence <https://w3id.org/caselinker/resource/case/pa_ag_2025_029/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_029/legal-step/sentenced> a ns2:Event,
+        ns2:LegalEvent,
+        ns7:LegalProceeding,
+        ns7:SentencingHearing ;
+    ns7:hasProceedingBeginPoint "2025-08-25T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_029/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns1:ageEstimate 59 .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_029/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_029/relationship/coach> a ns3:Coach,
+        ns3:CustodialRelationship ;
+    ns3:involvesChild <https://w3id.org/caselinker/resource/case/pa_ag_2025_029/role/victim/1> ;
+    ns3:involvesCustodian <https://w3id.org/caselinker/resource/case/pa_ag_2025_029/role/offender/1> ;
+    ns3:relationshipType "coach" .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_029/role/offender/1> a ns6:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns6:hasRoleBeginPoint "2025-08-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/pa_ag_2025_029/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_029/role/victim/1> a ns6:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns6:hasRoleBeginPoint "2025-08-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/pa_ag_2025_029/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_029/sentence/1> a ns7:CriminalSentence,
+        ns7:PrisonSentence ;
+    rdfs:label "3 to 23 months" .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2025_029/phase/sentenced> a ns2:Phase,
+        ns7:SentencingPhase ;
+    ns6:hasPhaseBeginPoint "2025-08-25T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/harrisburg> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Harrisburg" ;
+    ns4:name "Harrisburg" .
+
+<https://w3id.org/caselinker/resource/location/pennsylvania> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pennsylvania" ;
+    ns4:name "Pennsylvania" .
+
+<https://w3id.org/caselinker/resource/location/strawberry-square> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Strawberry Square" ;
+    ns4:name "Strawberry Square" .
+

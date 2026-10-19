@@ -1,103 +1,106 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_440> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.560451" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_440> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:20.143587" ;
     dcterms:identifier "ncmec_2025_440" ;
-    dcterms:modified "2026-09-15T21:27:13.560451" ;
-    dcterms:source <https://www.wabi.tv/2025/05/05/former-piscataquis-school-employee-accused-possessing-child-pornography-appears-court/>,
+    dcterms:modified "2026-10-18 00:01:20.143587" ;
+    dcterms:source <https://sheriff.carrollcountymd.gov/wp-content/uploads/2025/02/Sheriffs-Office-makes-arrest-for-child-sexual-abuse-material-charges-060425.pdf>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/maine> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/maine> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/carroll-county>,
+        <https://w3id.org/caselinker/resource/location/maryland>,
+        <https://w3id.org/caselinker/resource/location/taneytown>,
+        <https://w3id.org/caselinker/resource/location/westminster> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_440/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_440/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_440/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_440/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/carroll-county-advocacy-and-investigation-center>,
+        <https://w3id.org/caselinker/resource/agency/carroll-county-advocacy-and-investigation-unit>,
+        <https://w3id.org/caselinker/resource/agency/carroll-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/carroll-county>,
+        <https://w3id.org/caselinker/resource/location/maryland>,
+        <https://w3id.org/caselinker/resource/location/taneytown>,
+        <https://w3id.org/caselinker/resource/location/westminster> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_440/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-06-04T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_440/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_440/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_440/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-06-04T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_440/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_440/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/agency/carroll-county-advocacy-and-investigation-center> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/sentence/1> .
+<https://w3id.org/caselinker/resource/agency/carroll-county-advocacy-and-investigation-unit> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/carroll-county-sheriffs-office> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_440/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns2:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$500\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_440/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_440/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held without bond" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_440/charge/1> ;
+    ns2:hasProceedingBeginPoint "2025-06-04T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/maine> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_440/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 18 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/admission/1> ;
-    cacontology:severityLevel 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_440/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/admission/1> ;
-    cacontology:severityLevel 2 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_440/phase/charged> a ns1:LegalProcessPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2025-06-04T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_440/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "exchanging child pornography images and videos online to an officer" ;
-    dcterms:source <https://www.wabi.tv/2025/05/05/former-piscataquis-school-employee-accused-possessing-child-pornography-appears-court/> ;
-    ns1:admissionContext "court, the judge read his charges and said the alleged victim was under 12 years of age. Mickle previously admitted to exchanging child p..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_440/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "exchanging child pornography images and videos online to an officer" .
+<https://w3id.org/caselinker/resource/location/carroll-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Carroll County" ;
+    ns3:name "Carroll County" .
 
+<https://w3id.org/caselinker/resource/location/maryland> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Maryland" ;
+    ns3:name "Maryland" .
+
+<https://w3id.org/caselinker/resource/location/taneytown> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Taneytown" ;
+    ns3:name "Taneytown" .
+
+<https://w3id.org/caselinker/resource/location/westminster> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Westminster" ;
+    ns3:name "Westminster" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_440/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_440/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_440> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_440/provenance> .

@@ -1,90 +1,84 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:10:06.704402" ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_012> a ns2:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 06:14:13.979732" ;
     dcterms:identifier "ohio_ag_2013_012" ;
-    dcterms:modified "2026-09-15T20:10:06.704402" ;
+    dcterms:modified "2026-10-18 06:14:13.979732" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/provenance> ;
     dcterms:source <https://www.ohioattorneygeneral.gov/Media/News-Releases/March-2013/Attorney-General-DeWine-s-Crimes-Against-Children>,
         "OHIO AG" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/mount-healthy>,
-        <https://caselinker.up.railway.app/resource/location/ohio> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/attorney-generals-bureau-of-criminal-investigation>,
-        <https://caselinker.up.railway.app/resource/agency/attorney-generals-office>,
-        <https://caselinker.up.railway.app/resource/agency/mount-healthy-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/mount-healthy>,
-        <https://caselinker.up.railway.app/resource/location/ohio> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/mount-healthy>,
+        <https://w3id.org/caselinker/resource/location/ohio> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-bureau-of-criminal-investigation>,
+        <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/mount-healthy-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/mount-healthy>,
+        <https://w3id.org/caselinker/resource/location/ohio> .
 
-<https://caselinker.up.railway.app/resource/agency/attorney-generals-bureau-of-criminal-investigation> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/attorney-generals-bureau-of-criminal-investigation> a ns6:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/attorney-generals-office> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns6:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/mount-healthy-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/mount-healthy-police-department> a ns1:OrganizationLikeEntity,
+        ns6:LocalAgency ;
     rdfs:label "Mount Healthy Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/relationship/mother> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/event/trust-violation> a ns4:CustodialAbuse,
+        ns4:TrustViolation ;
+    ns4:violatesRelationship <https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/relationship/mother> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns7:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): incarcerated at the Hamilton County Jail" ;
+    ns7:hasProceedingBeginPoint "2013-03-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 3 .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/relationship/mother> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/role/offender/1> ;
-    cacontology-custodial:relationshipType "mother" .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/relationship/mother> a ns4:CustodialRelationship,
+        ns4:FamilialRelationship ;
+    ns4:involvesChild <https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/role/victim/1> ;
+    ns4:involvesCustodian <https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/role/offender/1> ;
+    ns4:relationshipType "mother" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2013-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2013-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2013_012/phase/arrested> a ns2:InitialPhase,
+        ns1:Phase ;
+    ns2:hasPhaseBeginPoint "2013-03-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2013_012/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/mount-healthy> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/mount-healthy> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Mount Healthy" ;
-    uco-core:name "Mount Healthy" .
+    ns3:name "Mount Healthy" .
 
-<https://caselinker.up.railway.app/resource/location/ohio> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/ohio> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns3:name "Ohio" .
 

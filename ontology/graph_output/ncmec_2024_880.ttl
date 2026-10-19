@@ -1,87 +1,98 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_880> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.910227" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:35.060639" ;
     dcterms:identifier "ncmec_2024_880" ;
-    dcterms:modified "2026-09-15T21:08:10.910227" ;
-    dcterms:source <https://www.daytondailynews.com/crime/dayton-sex-offender-sentenced-to-4-6-more-years-in-prison/VY3TAQBZ4RF3TCB3ENFORBMQWA/#:~:text=Brett%20Andrew%20King%2C%2029%2C%20was,oriented%20material%20(with%20prior>,
+    dcterms:modified "2026-10-17 23:04:35.060639" ;
+    dcterms:source <https://www.newswatchman.com/news/article_be928676-fbfc-11ee-9ed8-8378daf1af4a.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/dayton>,
-        <https://caselinker.up.railway.app/resource/location/montgomery-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_880/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_880/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_880/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_880/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_880/legal-step/sentenced> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/dayton>,
-        <https://caselinker.up.railway.app/resource/location/montgomery-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/mansfield>,
+        <https://w3id.org/caselinker/resource/location/pike-county>,
+        <https://w3id.org/caselinker/resource/location/prc>,
+        <https://w3id.org/caselinker/resource/location/the-pike-county> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_880/phase/indicted> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_880/phase/indicted> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_880/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_880/legal-proceeding> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/mansfield>,
+        <https://w3id.org/caselinker/resource/location/pike-county>,
+        <https://w3id.org/caselinker/resource/location/prc>,
+        <https://w3id.org/caselinker/resource/location/the-pike-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_880/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_880/event/possession> ;
-    cacontology:perpetratorRegisteredSexOffender true ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_880/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-04-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_880/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_880/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_880/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_880/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_880/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-04-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_880/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_880/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_880/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "pandering sexually oriented matter involving a minor (solicit or" ;
-    cacontology-legal-outcomes:indictmentCounts 17 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "relating to child pornography" ;
+    ns4:indictmentCounts 87 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_880/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880/charge/2> a ns4:CriminalCharge ;
+    rdfs:label "the indictment concern acts that happened between May 31" ;
+    ns4:indictmentCounts 10 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_880/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_880/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_880/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880/charge/3> a ns4:CriminalCharge ;
+    rdfs:label "all deal with acts committed on or about July 13" ;
+    ns4:indictmentCounts 30 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_880/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-06-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_880/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 29 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_880/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_880/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_880/charge/3> ;
+    ns4:hasProceedingBeginPoint "2024-04-16T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_880/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_880/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MandatoryMinimumSentencing ;
-    rdfs:label "[\"mandatory minimum\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_880/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2024-06-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880/phase/indicted> a ns3:LegalProcessPhase,
+        ns5:Phase ;
+    ns3:hasPhaseBeginPoint "2024-04-16T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/dayton> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/mansfield> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mansfield" ;
+    ns1:name "Mansfield" .
 
-<https://caselinker.up.railway.app/resource/location/montgomery-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/pike-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pike County" ;
+    ns1:name "Pike County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_880/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_880/facet/possession> .
+<https://w3id.org/caselinker/resource/location/prc> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Prc" ;
+    ns1:name "Prc" .
 
+<https://w3id.org/caselinker/resource/location/the-pike-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the Pike County" ;
+    ns1:name "the Pike County" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880/event/csam> a ns3:CSAMIncident,
+        ns5:Event ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_880/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_880> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_880/provenance> .

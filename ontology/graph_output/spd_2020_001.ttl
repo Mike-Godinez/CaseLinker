@@ -1,85 +1,86 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/production#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/spd_2020_001> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:28:56.181366" ;
+<https://w3id.org/caselinker/resource/case/spd_2020_001> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 07:04:45.741341" ;
     dcterms:identifier "spd_2020_001" ;
-    dcterms:modified "2026-09-15T20:28:56.181366" ;
+    dcterms:modified "2026-10-18 07:04:45.741341" ;
     dcterms:source <https://spdblotter.seattle.gov/2020/09/28/spd-detectives-assist-in-arresting-texas-man-for-soliciting-sex-from-seattle-child/>,
         "SPD" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/bryan>,
-        <https://caselinker.up.railway.app/resource/location/houston>,
-        <https://caselinker.up.railway.app/resource/location/texas>,
-        <https://caselinker.up.railway.app/resource/location/washington-state> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/spd_2020_001/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/spd_2020_001/event/trust-violation> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/bryan>,
-        <https://caselinker.up.railway.app/resource/location/houston>,
-        <https://caselinker.up.railway.app/resource/location/texas>,
-        <https://caselinker.up.railway.app/resource/location/washington-state> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/bryan>,
+        <https://w3id.org/caselinker/resource/location/houston>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/washington-state> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/spd_2020_001/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/spd_2020_001/event/trust-violation> ;
+    ns2:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/bryan>,
+        <https://w3id.org/caselinker/resource/location/houston>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/washington-state> .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/spd_2020_001/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation .
+<https://w3id.org/caselinker/resource/case/spd_2020_001/event/multi-jurisdiction> a ns3:Event,
+        ns7:MultiJurisdictionalInvestigation .
 
-<https://caselinker.up.railway.app/resource/case/spd_2020_001/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/spd_2020_001/relationship/mother> .
+<https://w3id.org/caselinker/resource/case/spd_2020_001/event/trust-violation> a ns1:CustodialAbuse,
+        ns1:TrustViolation ;
+    ns1:violatesRelationship <https://w3id.org/caselinker/resource/case/spd_2020_001/relationship/mother> .
 
-<https://caselinker.up.railway.app/resource/case/spd_2020_001/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/spd_2020_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/spd_2020_001/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 12 .
+<https://w3id.org/caselinker/resource/case/spd_2020_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:victimAge 12 .
 
-<https://caselinker.up.railway.app/resource/case/spd_2020_001/relationship/mother> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/spd_2020_001/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/spd_2020_001/role/offender/1> ;
-    cacontology-custodial:relationshipType "mother" .
+<https://w3id.org/caselinker/resource/case/spd_2020_001/relationship/mother> a ns1:CustodialRelationship,
+        ns1:FamilialRelationship ;
+    ns1:involvesChild <https://w3id.org/caselinker/resource/case/spd_2020_001/role/victim/1> ;
+    ns1:involvesCustodian <https://w3id.org/caselinker/resource/case/spd_2020_001/role/offender/1> ;
+    ns1:relationshipType "mother" .
 
-<https://caselinker.up.railway.app/resource/case/spd_2020_001/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2020-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/spd_2020_001/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/spd_2020_001/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2020-09-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/spd_2020_001/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/spd_2020_001/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2020-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/spd_2020_001/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/spd_2020_001/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2020-09-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/spd_2020_001/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/location/bryan> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/bryan> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Bryan" ;
-    uco-core:name "Bryan" .
+    ns6:name "Bryan" .
 
-<https://caselinker.up.railway.app/resource/location/houston> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/houston> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Houston" ;
-    uco-core:name "Houston" .
+    ns6:name "Houston" .
 
-<https://caselinker.up.railway.app/resource/location/texas> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/texas> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns6:name "Texas" .
 
-<https://caselinker.up.railway.app/resource/location/washington-state> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/washington-state> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington State" ;
+    ns6:name "Washington State" .
 
+
+<https://w3id.org/caselinker/resource/case/spd_2020_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/spd_2020_001/provenance> .

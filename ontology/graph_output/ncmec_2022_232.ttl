@@ -1,91 +1,132 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.185042" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:22.201101" ;
     dcterms:identifier "ncmec_2022_232" ;
-    dcterms:modified "2026-09-15T20:45:06.185042" ;
-    dcterms:source <https://local12.com/news/local/local-man-arrested-child-porn-charges-montgomery-ohio-geoffrey-lovett-nude-young-girl-microsoft-account>,
+    dcterms:modified "2026-10-17 21:51:22.201101" ;
+    dcterms:source <https://finance.yahoo.com/news/pittsburgh-man-gets-10-years-010500903.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/montgomery>,
-        <https://caselinker.up.railway.app/resource/location/ohio> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/montgomery>,
-        <https://caselinker.up.railway.app/resource/location/ohio> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/greensburg>,
+        <https://w3id.org/caselinker/resource/location/north-point-breeze>,
+        <https://w3id.org/caselinker/resource/location/pa>,
+        <https://w3id.org/caselinker/resource/location/pittsburgh> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_232/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_232/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_232/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_232/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_232/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_232/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_232/legal-step/sentenced> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/greensburg>,
+        <https://w3id.org/caselinker/resource/location/north-point-breeze>,
+        <https://w3id.org/caselinker/resource/location/pa>,
+        <https://w3id.org/caselinker/resource/location/pittsburgh> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child porn" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-01-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_232/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_232/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_232/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/relationship/father> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-01-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_232/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_232/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_232/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/event/distribution> a ns5:Event,
+        ns4:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 33 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_232/charge/1> ;
+    ns4:hasProceedingBeginPoint "2022-01-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2022_232/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_232/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_232/sentence/3> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232/relationship/father> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/role/offender/1> ;
-    cacontology-custodial:relationshipType "father" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2022-01-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 50 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$100,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/sentence/1> a ns4:CriminalSentence,
+        ns4:PrisonSentence ;
+    rdfs:label "10 years" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/sentence/2> a ns4:CriminalSentence,
+        ns4:SupervisedRelease ;
+    rdfs:label "five years supervised release" .
 
-<https://caselinker.up.railway.app/resource/location/montgomery> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Montgomery" ;
-    uco-core:name "Montgomery" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/sentence/3> a ns4:CriminalSentence,
+        ns4:MonetaryPenalty ;
+    rdfs:label "$19,000" .
 
-<https://caselinker.up.railway.app/resource/location/ohio> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/phase/sentenced> a ns5:Phase,
+        ns4:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2022-01-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_232/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_232/facet/csam> .
+<https://w3id.org/caselinker/resource/location/greensburg> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Greensburg" ;
+    ns3:name "Greensburg" .
 
+<https://w3id.org/caselinker/resource/location/north-point-breeze> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "North Point Breeze" ;
+    ns3:name "North Point Breeze" .
+
+<https://w3id.org/caselinker/resource/location/pa> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pa." ;
+    ns3:name "Pa." .
+
+<https://w3id.org/caselinker/resource/location/pittsburgh> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pittsburgh" ;
+    ns3:name "Pittsburgh" .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
+
+<https://w3id.org/caselinker/resource/platform/mewe> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "MeWe" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns5:Event ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/mewe> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/mewe> ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_232/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_232> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_232/provenance> .

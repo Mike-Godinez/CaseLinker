@@ -1,0 +1,77 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2019_001> a ns5:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 07:00:44.520556" ;
+    dcterms:identifier "sdpd_2019_001" ;
+    dcterms:modified "2026-10-18 07:00:44.520556" ;
+    dcterms:source <https://www.sandiego.gov/sites/default/files/pr_07-27-19_sdpd_arrest.pdf>,
+        "SDPD" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/carmel-valley>,
+        <https://w3id.org/caselinker/resource/location/san-diego>,
+        <https://w3id.org/caselinker/resource/location/san-diego-county> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/sdpd_2019_001/phase/booked> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/sdpd_2019_001/phase/booked> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/sdpd_2019_001/legal-proceeding> ;
+    ns5:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/san-diego-police-department> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/carmel-valley>,
+        <https://w3id.org/caselinker/resource/location/san-diego>,
+        <https://w3id.org/caselinker/resource/location/san-diego-county> .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2019_001/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2019-07-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/sdpd_2019_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2019_001/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2019-07-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/sdpd_2019_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/san-diego-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2019_001/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into San Diego County Jail" ;
+    ns4:hasProceedingBeginPoint "2019-07-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2019_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 49 .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2019_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/sdpd_2019_001/phase/booked> a ns5:InitialPhase,
+        ns1:Phase ;
+    ns5:hasPhaseBeginPoint "2019-07-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/carmel-valley> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Carmel Valley" ;
+    ns3:name "Carmel Valley" .
+
+<https://w3id.org/caselinker/resource/location/san-diego> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "San Diego" ;
+    ns3:name "San Diego" .
+
+<https://w3id.org/caselinker/resource/location/san-diego-county> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "San Diego County" ;
+    ns3:name "San Diego County" .
+
+
+<https://w3id.org/caselinker/resource/case/sdpd_2019_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/sdpd_2019_001/provenance> .

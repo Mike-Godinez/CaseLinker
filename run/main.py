@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
 from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 from starlette.middleware.base import BaseHTTPMiddleware
-from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 from typing import List, Dict, Any, Optional, Tuple
@@ -70,6 +70,7 @@ if os.getenv("DATABASE_URL"):
 else:
     from storage import CaseStorage
     print("✅ Using SQLite database (local development)")
+from corpus_export import iter_corpus_json
 from facet_tree import (
     DEFAULT_FACET_ORDER,
     ERA_PERIOD_BUCKETS,
@@ -192,6 +193,37 @@ class _SparqlCorsMiddleware(BaseHTTPMiddleware):
 
 app.add_middleware(_SparqlCorsMiddleware)
 
+
+class _HeadMatchesGetMiddleware(BaseHTTPMiddleware):
+    """Answer HEAD on GET routes with that route's status and headers, and no body.
+
+    The page routes are registered as GET only. A HEAD request otherwise falls
+    through as 405, which breaks clients that probe the app before following
+    a redirect.
+    """
+
+    async def dispatch(self, request, call_next):
+        # Do not buffer GET /api/corpus. HEAD on that route stays a normal HEAD.
+        if request.url.path.rstrip("/") == "/api/corpus":
+            return await call_next(request)
+        if request.method != "HEAD":
+            return await call_next(request)
+        request.scope["method"] = "GET"
+        response = await call_next(request)
+        body = b""
+        async for chunk in response.body_iterator:
+            body += chunk
+        headers = {
+            key: value
+            for key, value in response.headers.items()
+            if key.lower() != "content-length"
+        }
+        headers["content-length"] = str(len(body))
+        return Response(status_code=response.status_code, headers=headers)
+
+
+app.add_middleware(_HeadMatchesGetMiddleware)
+
 # Structured logging
 logging.basicConfig(
     level=logging.INFO,
@@ -248,6 +280,12 @@ def _is_local_request(request: Request) -> bool:
 _BULK_CASES_FORBIDDEN_DETAIL = (
     "Bulk corpus export is restricted to local usage and access holders. "
     "To request full access to the corpus, please email mramachandra@umass.edu for the API key."
+)
+
+_CORPUS_FORBIDDEN_DETAIL = (
+    "Corpus export is restricted to local usage and trusted API key holders. "
+    "GET /api/corpus requires a CaseLinker-Key listed in CASELINKER_TRUSTED_KEYS. "
+    "Email mramachandra@umass.edu to request a key."
 )
 
 _LIFECYCLE_API_FORBIDDEN_DETAIL = (
@@ -1646,6 +1684,25 @@ def get_all_cases(request: Request, include_raw_data: bool = False):
             return storage.get_all_cases(include_raw_data=include_raw_data) or []
         except Exception:
             return []
+
+
+@app.get("/api/corpus")
+@limiter.limit("100/minute")
+def get_corpus(request: Request):
+    """
+    Full database export for rebuilding a local sqlite file.
+
+    One JSON object. Each present corpus table is an array of row objects keyed
+    by column name. Tables this database does not have are omitted. Rows are
+    read from this server's database (SQLite, or Postgres when DATABASE_URL is set).
+    """
+    if not _has_bulk_corpus_access(request):
+        raise HTTPException(status_code=403, detail=_CORPUS_FORBIDDEN_DETAIL)
+    return StreamingResponse(
+        iter_corpus_json(storage),
+        media_type="application/json",
+        headers={"Cache-Control": "no-store"},
+    )
 
 
 @app.get("/api/cases-summaries-chunk")
@@ -3691,10 +3748,11 @@ Rules:
 - Output ONLY a single SPARQL query. No prose, no markdown fences, no comments outside SPARQL.
 - Query forms only: SELECT, ASK, CONSTRUCT, or DESCRIBE. Never Update, INSERT, DELETE, LOAD, CLEAR, DROP, or SERVICE.
 - Prefer SELECT with an outer LIMIT <= 50 unless the user asks for a count/ASK.
-- Use the union default graph (no GRAPH) unless the user asks about one case; then use GRAPH <https://caselinker.projectvic.org/resource/case/{case_id}>.
+- Use the union default graph (no GRAPH) unless the user asks about one case; then use GRAPH <https://w3id.org/caselinker/resource/case/{case_id}>.
+- Evidence for one case: the case node dcterms:provenance points at GRAPH <https://w3id.org/caselinker/resource/case/{case_id}/provenance>. Inside it, the case IRI prov:wasGeneratedBy the extraction activity, and each annotation prov:wasGeneratedBy that same activity. Do not treat the provenance graph as a case.
 - Case ids look like nj_ag_2017_001. dcterms:identifier on cac:CACInvestigation holds the case_id.
-- Platform IRIs: https://caselinker.projectvic.org/resource/platform/{slug}
-- Agency IRIs: https://caselinker.projectvic.org/resource/agency/{slug}
+- Platform IRIs: https://w3id.org/caselinker/resource/platform/{slug}
+- Agency IRIs: https://w3id.org/caselinker/resource/agency/{slug}
 
 Prefixes (use as needed):
 PREFIX cac: <https://cacontology.projectvic.org#>
@@ -3707,7 +3765,7 @@ Useful patterns:
 - Investigation: ?case a cac:CACInvestigation
 - Platform use: ?event cac:usesChannel ?platform . ?case cac:hasStep ?event . ?platform rdfs:label ?label
 - Agency: ?case cac-multi:involvesAgency ?agency . ?agency rdfs:label ?label
-- Press-release graphs only: FILTER(STRSTARTS(STR(?g), "https://caselinker.projectvic.org/resource/case/"))
+- Press-release case graphs only: FILTER(STRSTARTS(STR(?g), "https://w3id.org/caselinker/resource/case/") && !STRENDS(STR(?g), "/provenance"))
 """
 
 

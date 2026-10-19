@@ -1,62 +1,125 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_259> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.394540" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259/admission/1/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_259/admission/1> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_259> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-05-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_259/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_259/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/florida-department-of-law-enforcement> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:27.746610" ;
     dcterms:identifier "ncmec_2024_259" ;
-    dcterms:modified "2026-09-15T21:08:10.394540" ;
-    dcterms:source <https://www.fdle.state.fl.us/News/2024/May/FDLE-arrests-McAlpin-man-for-possession-of-child-s>,
+    dcterms:modified "2026-10-17 23:04:27.746610" ;
+    dcterms:source <https://wpde.com/news/nation-world/man-92-charged-vincent-peter-lucchese-20-counts-possession-cyber-tip-internet-sexual-performance-florida-pornography-nude-naked-lewd-ncmec-child-national-center-missing-exploited-children-clermont-county-lake-sarasota>,
         "NCMEC" ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_259/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_259/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/florida-department-of-law-enforcement> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/clermont>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/lake-county>,
+        <https://w3id.org/caselinker/resource/location/sarasota-county>,
+        <https://w3id.org/caselinker/resource/location/tnd> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_259/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_259/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_259/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_259/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_259/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_259/operation> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/florida-department-of-law-enforcement>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/clermont>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/lake-county>,
+        <https://w3id.org/caselinker/resource/location/sarasota-county>,
+        <https://w3id.org/caselinker/resource/location/tnd> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_259/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_259/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_259/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_259/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_259/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_259/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/florida-department-of-law-enforcement> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259/operation> a ns2:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_259/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child sexual abuse material" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 92 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_259/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_259/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_259/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_259/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-05-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_259/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_259/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_259/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_259/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "having pornographic photos of children appear on his computer" ;
+    dcterms:source <https://wpde.com/news/nation-world/man-92-charged-vincent-peter-lucchese-20-counts-possession-cyber-tip-internet-sexual-performance-florida-pornography-nude-naked-lewd-ncmec-child-national-center-missing-exploited-children-clermont-county-lake-sarasota> ;
+    ns3:admissionContext "t said they seized Lucchese’s desktop, personal iPhone, and three other iPhones. Then, an officer wrote, “Vincent admitted to having porn..." ;
+    ns3:admissionFrame "admitted_to" ;
+    ns3:admissionTheme "other" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_259/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns4:description "having pornographic photos of children appear on his computer" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_259/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259/phase/charged> a ns1:LegalProcessPhase,
+        ns2:Phase ;
+    ns1:hasPhaseBeginPoint "2024-05-02T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_259/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_259/facet/possession> .
+<https://w3id.org/caselinker/resource/location/clermont> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Clermont" ;
+    ns4:name "Clermont" .
 
+<https://w3id.org/caselinker/resource/location/fla> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns4:name "Fla." .
+
+<https://w3id.org/caselinker/resource/location/florida> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Florida" ;
+    ns4:name "Florida" .
+
+<https://w3id.org/caselinker/resource/location/lake-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lake County" ;
+    ns4:name "Lake County" .
+
+<https://w3id.org/caselinker/resource/location/sarasota-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sarasota County" ;
+    ns4:name "Sarasota County" .
+
+<https://w3id.org/caselinker/resource/location/tnd> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tnd" ;
+    ns4:name "Tnd" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns1:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_259/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_259> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_259/provenance> .

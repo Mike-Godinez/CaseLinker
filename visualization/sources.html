@@ -821,6 +821,19 @@
                     ]
                 },
                 {
+                    name: "Wisconsin Department of Justice – ICAC Task Force press releases",
+                    url: "https://www.wisdoj.gov/Pages/AboutUs/press-releases.aspx",
+                    description: "Wisconsin DOJ Internet Crimes Against Children Task Force releases: arrests, charges, and sentences. SharePoint press archive.",
+                    type: "Official website",
+                    yearLinks: [
+                        {
+                            year: "Press archive",
+                            url: "https://www.wisdoj.gov/Pages/AboutUs/press-releases.aspx",
+                            casesUsed: 0
+                        }
+                    ]
+                },
+                {
                     name: "Oregon Department of Justice – Site search (ICAC)",
                     url: "https://www.doj.state.or.us/?s=ICAC&section=918&div=918",
                     description: "Oregon DOJ site search for ICAC task force media releases and related posts.",
@@ -1111,6 +1124,19 @@
                     ]
                 },
                 {
+                    name: "New Zealand Department of Internal Affairs – Digital Child Exploitation",
+                    url: "https://www.dia.govt.nz/press.nsf/index!OpenView&Start=1",
+                    description: "DIA press releases on single-person child sexual exploitation charges, convictions, and sentences. HTML press index.",
+                    type: "Official website",
+                    yearLinks: [
+                        {
+                            year: "Press index",
+                            url: "https://www.dia.govt.nz/press.nsf/index!OpenView&Start=1",
+                            casesUsed: 0
+                        }
+                    ]
+                },
+                {
                     name: "National Crime Agency – child sexual abuse prosecutions",
                     url: "https://www.nationalcrimeagency.gov.uk/news",
                     description: "UK National Crime Agency news on child sexual abuse prosecutions. Search harvest of individual case stories.",
@@ -1122,6 +1148,55 @@
                             casesUsed: 0
                         }
                     ]
+                },
+                {
+                    name: "Alberta Law Enforcement Response Teams, Internet Child Exploitation Unit",
+                    url: "https://alert-ab.ca/category/child-exploitation/",
+                    description: "Internet Child Exploitation unit releases on charges, arrests, and sentencings.",
+                    type: "Official website",
+                    yearLinks: [{ year: "Child exploitation", url: "https://alert-ab.ca/category/child-exploitation/", casesUsed: 0 }]
+                },
+                {
+                    name: "Maryland State Police – Child Exploitation Unit",
+                    url: "https://mdsp.maryland.gov/about-us/newsroom",
+                    description: "Maryland State Police arrest releases for child pornography and sexual solicitation of a minor.",
+                    type: "Official website",
+                    yearLinks: [{ year: "Newsroom", url: "https://mdsp.maryland.gov/about-us/newsroom", casesUsed: 0 }]
+                },
+                {
+                    name: "Police Scotland – child sexual abuse sentencings",
+                    url: "https://www.scotland.police.uk/what-s-happening/news/",
+                    description: "Police Scotland news on indecent images of children and sexual offences against children. 2020 and 2021 archives are not collected.",
+                    type: "Official website",
+                    yearLinks: [{ year: "News", url: "https://www.scotland.police.uk/what-s-happening/news/", casesUsed: 0 }]
+                },
+                {
+                    name: "Northern Virginia–DC Internet Crimes Against Children Task Force – press releases",
+                    url: "https://novadcicac.vsp.virginia.gov/category/press-release/",
+                    description: "Task force press releases hosted on the task force site.",
+                    type: "Official website",
+                    yearLinks: [{ year: "Press releases", url: "https://novadcicac.vsp.virginia.gov/category/press-release/", casesUsed: 0 }]
+                },
+                {
+                    name: "Minnesota Bureau of Criminal Apprehension – predatory crimes",
+                    url: "https://dps.mn.gov/news",
+                    description: "Predatory-crimes and Internet Crimes Against Children investigations.",
+                    type: "Official website",
+                    yearLinks: [{ year: "News", url: "https://dps.mn.gov/news", casesUsed: 0 }]
+                },
+                {
+                    name: "Philippines National Bureau of Investigation – child exploitation",
+                    url: "https://nbi.gov.ph/press_releases/",
+                    description: "Press releases on child sexual abuse and exploitation arrests.",
+                    type: "Official website",
+                    yearLinks: [{ year: "Press releases", url: "https://nbi.gov.ph/press_releases/", casesUsed: 0 }]
+                },
+                {
+                    name: "An Garda Síochána – child exploitation prosecutions",
+                    url: "https://www.garda.ie/en/about-us/our-departments/office-of-corporate-communications/press-releases/",
+                    description: "An Garda Síochána releases from the Online Child Exploitation Unit and under the Child Trafficking and Pornography Act 1998.",
+                    type: "Official website",
+                    yearLinks: [{ year: "Press releases", url: "https://www.garda.ie/en/about-us/our-departments/office-of-corporate-communications/press-releases/", casesUsed: 0 }]
                 }
                
             ];
@@ -2180,6 +2255,32 @@
                         const r = getDateRange(ncaCases);
                         if (r && staticSource.yearLinks?.length) staticSource.yearLinks[0].year = r;
                         if (staticSource.yearLinks?.length) staticSource.yearLinks[0].casesUsed = ncaCases.length;
+                    } else {
+                        const paired = [
+                            ['Alberta Law Enforcement Response Teams', 'ALERT ICE'],
+                            ['Maryland State Police', 'MDSP'],
+                            ['Police Scotland', 'SCOTLAND POLICE'],
+                            ['Northern Virginia–DC Internet Crimes Against Children', 'NOVA ICAC'],
+                            ['Minnesota Bureau of Criminal Apprehension', 'MN BCA'],
+                            ['Philippines National Bureau of Investigation', 'NBI'],
+                            ['Garda Síochána', 'GARDA'],
+                            ['Wisconsin Department of Justice', 'WI DOJ'],
+                            ['Department of Internal Affairs', 'NZ DIA']
+                        ].find(([part]) => staticSource.name.includes(part));
+                        if (paired) {
+                            const code = paired[1];
+                            const rows = cases.filter(c => {
+                                const s = (c.source || c.raw_data?.source || '')
+                                    .toUpperCase()
+                                    .replace(/_/g, ' ')
+                                    .trim();
+                                return s === code;
+                            });
+                            staticSource.cases = rows;
+                            const r = getDateRange(rows);
+                            if (r && staticSource.yearLinks?.length) staticSource.yearLinks[0].year = r;
+                            if (staticSource.yearLinks?.length) staticSource.yearLinks[0].casesUsed = rows.length;
+                        }
                     }
                 });
                 

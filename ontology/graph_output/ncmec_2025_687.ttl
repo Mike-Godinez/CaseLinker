@@ -1,104 +1,85 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.799359" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_687> a ns6:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:22.930956" ;
     dcterms:identifier "ncmec_2025_687" ;
-    dcterms:modified "2026-09-15T21:27:13.799359" ;
-    dcterms:source <https://www.witn.com/2025/05/15/pitt-county-man-arrested-multiple-child-porn-charges/>,
+    dcterms:modified "2026-10-18 00:01:22.930956" ;
+    dcterms:source <https://wlos.com/news/local/brevard-man-arrested-charged-third-degree-sexual-exploitation-minor-transylvania-county-sheriffs-office>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/craven-county>,
-        <https://caselinker.up.railway.app/resource/location/nc>,
-        <https://caselinker.up.railway.app/resource/location/pitt-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/pitt-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/craven-county>,
-        <https://caselinker.up.railway.app/resource/location/nc>,
-        <https://caselinker.up.railway.app/resource/location/pitt-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/brevard>,
+        <https://w3id.org/caselinker/resource/location/nc>,
+        <https://w3id.org/caselinker/resource/location/transylvania-county> ;
+    ns6:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_687/phase/charged> ;
+    ns6:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_687/phase/charged> ;
+    ns6:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_687/legal-proceeding> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/transylvania-county-sheriffs-office> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/brevard>,
+        <https://w3id.org/caselinker/resource/location/nc>,
+        <https://w3id.org/caselinker/resource/location/transylvania-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_687/role/offender/1> a ns6:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns6:hasRoleBeginPoint "2025-03-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_687/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_687/role/victim/1> a ns6:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns6:hasRoleBeginPoint "2025-03-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_687/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/pitt-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Pitt County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/agency/transylvania-county-sheriffs-office> a ns4:OrganizationLikeEntity,
+        ns7:LocalAgency ;
+    rdfs:label "Transylvania County Sheriff's Office" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "second-degree sexual exploitation of a minor" ;
-    cacontology-legal-outcomes:indictmentCounts 28 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_687/charge/1> a ns5:CriminalCharge,
+        ns5:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child porn" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_687/charge/2> a ns5:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_687/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held at the Transylvania County Detention Facility" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_687/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_687/charge/2> ;
+    ns5:hasProceedingBeginPoint "2025-03-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_687/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 62 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_687/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 4 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_687/phase/charged> a ns6:LegalProcessPhase,
+        ns4:Phase ;
+    ns6:hasPhaseBeginPoint "2025-03-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$150,000\"]" .
+<https://w3id.org/caselinker/resource/location/brevard> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Brevard" ;
+    ns1:name "Brevard" .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/location/nc> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "N.c." ;
+    ns1:name "N.c." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/transylvania-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Transylvania County" ;
+    ns1:name "Transylvania County" .
 
-<https://caselinker.up.railway.app/resource/location/craven-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
 
-<https://caselinker.up.railway.app/resource/location/nc> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/pitt-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_687/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_687/facet/csam> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_687> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_687/provenance> .

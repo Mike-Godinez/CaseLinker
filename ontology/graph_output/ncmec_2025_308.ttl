@@ -1,214 +1,127 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_308> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/agency/edwardsville-police-department> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/madison-county-sheriffs-department> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/mundelein-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Mundelein Police Department" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.453356" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308> a ns3:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:18.891975" ;
     dcterms:identifier "ncmec_2025_308" ;
-    dcterms:modified "2026-09-15T21:27:13.453356" ;
-    dcterms:source <https://www.thetelegraph.com/news/article/matthew-costello-godfrey-child-pornography-20166441.php>,
+    dcterms:modified "2026-10-18 00:01:18.891975" ;
+    dcterms:source <https://www.wdrb.com/news/crime-reports/southern-indiana-man-facing-5-felony-counts-for-allegedly-having-child-porn/article_8d59076a-da68-11ef-a650-9ba7747823fb.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/bethany-lane>,
-        <https://caselinker.up.railway.app/resource/location/edwardsville>,
-        <https://caselinker.up.railway.app/resource/location/lake-county>,
-        <https://caselinker.up.railway.app/resource/location/mchenry-county>,
-        <https://caselinker.up.railway.app/resource/location/mundelein>,
-        <https://caselinker.up.railway.app/resource/location/vernon-hills> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/production>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/edwardsville-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/madison-county-sheriffs-department>,
-        <https://caselinker.up.railway.app/resource/agency/mundelein-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/bethany-lane>,
-        <https://caselinker.up.railway.app/resource/location/edwardsville>,
-        <https://caselinker.up.railway.app/resource/location/lake-county>,
-        <https://caselinker.up.railway.app/resource/location/mchenry-county>,
-        <https://caselinker.up.railway.app/resource/location/mundelein>,
-        <https://caselinker.up.railway.app/resource/location/vernon-hills> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/elizabeth>,
+        <https://w3id.org/caselinker/resource/location/floyd-county>,
+        <https://w3id.org/caselinker/resource/location/indiana>,
+        <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/louisville> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_308/phase/booked> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_308/phase/booked> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_308/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_308/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_308/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_308/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/indiana-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/indianapolis-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/elizabeth>,
+        <https://w3id.org/caselinker/resource/location/floyd-county>,
+        <https://w3id.org/caselinker/resource/location/indiana>,
+        <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/louisville> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-01-24T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_308/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_308/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-01-24T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_308/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_308/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/indiana-state-police-department> a ns4:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/indianapolis-police-department> a ns6:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "Indianapolis Police Department" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308/charge/1> a ns8:CSAM_Possession,
+        ns8:CriminalCharge ;
     rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 76 .
+    ns8:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308/cybertip> a ns1:NCMECCybertipReport ;
+    ns1:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308/event/distribution> a ns6:Event,
+        ns8:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/trust-violation> a cacontology-custodial:AuthorityAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/relationship/coach> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns8:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Floyd County Jail" ;
+    ns8:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_308/charge/1> ;
+    ns8:hasProceedingBeginPoint "2025-01-24T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 39 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 43 .
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/person/offender/2> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 51 .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns4:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308/phase/booked> a ns3:InitialPhase,
+        ns6:Phase ;
+    ns3:hasPhaseBeginPoint "2025-01-24T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/relationship/coach> a cacontology-custodial:Coach,
-        cacontology-custodial:CustodialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/role/offender/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/role/offender/2> ;
-    cacontology-custodial:relationshipType "coach" .
+<https://w3id.org/caselinker/resource/location/elizabeth> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Elizabeth" ;
+    ns5:name "Elizabeth" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/person/victim/1> .
+<https://w3id.org/caselinker/resource/location/floyd-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Floyd County" ;
+    ns5:name "Floyd County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/indiana> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Indiana" ;
+    ns5:name "Indiana" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
+<https://w3id.org/caselinker/resource/location/ky> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ky." ;
+    ns5:name "Ky." .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/location/louisville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Louisville" ;
+    ns5:name "Louisville" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "poses a threat to the community since he is in a position of trust over children as a hockey coach" ;
-    dcterms:source <https://www.thetelegraph.com/news/article/matthew-costello-godfrey-child-pornography-20166441.php> ;
-    ns1:admissionContext "fternoon, Lake County State’s Attorney Colleen McConnell argued for Ustrnul to be held in custody and said he poses a threat to the commu..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "poses a threat to the community since he is in a position of trust over children as a hockey coach" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308/event/possession> a ns3:CSAMIncident,
+        ns6:Event ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_308/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/role/offender/2> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/person/offender/2> .
-
-<https://caselinker.up.railway.app/resource/location/bethany-lane> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Bethany Lane" ;
-    uco-core:name "Bethany Lane" .
-
-<https://caselinker.up.railway.app/resource/location/edwardsville> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/lake-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/mchenry-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/mundelein> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Mundelein" ;
-    uco-core:name "Mundelein" .
-
-<https://caselinker.up.railway.app/resource/location/vernon-hills> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Vernon Hills" ;
-    uco-core:name "Vernon Hills" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/conspiracy> a cacontology:ConspiracyToCommitCSA,
-        cac-core:Event ;
-    cacontology:conspiracyMemberCount 2 ;
-    cacontology:participatesInConspiracy <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/role/offender/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/role/offender/2> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/facet/possession> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_308/event/production> a cac-core:Event,
-        cacontology-production:ProductionOffense ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_308/facet/production> .
-
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
-    rdfs:label "Kik" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_308> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_308/provenance> .

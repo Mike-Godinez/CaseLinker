@@ -1,88 +1,134 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:02:57.603357" ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 06:14:13.218046" ;
     dcterms:identifier "ohio_ag_2016_003" ;
-    dcterms:modified "2026-09-10T20:02:57.603357" ;
+    dcterms:modified "2026-10-18 06:14:13.218046" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/provenance> ;
     dcterms:source <https://www.ohioattorneygeneral.gov/Media/News-Releases/July-2016/Ohio-Woman-Sentenced-to-51-Years-to-Life-for-Traff>,
         "OHIO AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/event/trafficking>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/legal-step/sentenced> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/cincinnati-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ohio-attorney-generals-office> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cincinnati>,
+        <https://w3id.org/caselinker/resource/location/hamilton-county>,
+        <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/pleasant-plain> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/legal-step/sentenced> ;
+    ns2:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/cincinnati-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ohio-attorney-generals-office> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/cincinnati>,
+        <https://w3id.org/caselinker/resource/location/hamilton-county>,
+        <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/pleasant-plain> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2016-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/hands-on> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/person/victim/1> .
+<https://w3id.org/caselinker/resource/agency/cincinnati-police-department> a ns3:OrganizationLikeEntity,
+        ns1:LocalAgency ;
+    rdfs:label "Cincinnati Police Department" .
 
-<https://caselinker.up.railway.app/resource/agency/cincinnati-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/ohio-attorney-generals-office> a ns1:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/ohio-attorney-generals-office> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/distribution> a ns3:Event,
+        ns7:CSAM_Distribution ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/trafficking> a ns3:Event,
+        ns7:SexTrafficking ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/event/trafficking> a cac-core:Event,
-        cacontology-legal-outcomes:SexTrafficking ;
-    cacontology:severityLevel 3 .
-
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns7:LegalProceeding ;
     rdfs:comment "Pretrial detention facility: Hamilton County Jail" ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/sentence/1>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/sentence/2> .
+    ns7:hasProceedingBeginPoint "2016-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:resultsSentence <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/sentence/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/legal-step/sentenced> a ns3:Event,
+        ns3:LegalEvent,
+        ns7:LegalProceeding,
+        ns7:SentencingHearing ;
+    ns7:hasProceedingBeginPoint "2016-07-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 42 .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 32 .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 42 .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2016-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/hands-on> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/role/offender/2> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2016-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/hands-on> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/person/offender/2> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/sentence/1> a ns7:CriminalSentence,
+        ns7:PrisonSentence ;
     rdfs:label "51 years" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/sentence/2> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:LifeImprisonmentSentence ;
-    rdfs:label "life in prison" .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/phase/sentenced> a ns3:Phase,
+        ns7:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2016-07-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/cincinnati> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cincinnati" ;
+    ns4:name "Cincinnati" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_003/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/location/hamilton-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hamilton County" ;
+    ns4:name "Hamilton County" .
+
+<https://w3id.org/caselinker/resource/location/ohio> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns4:name "Ohio" .
+
+<https://w3id.org/caselinker/resource/location/pleasant-plain> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pleasant Plain" ;
+    ns4:name "Pleasant Plain" .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/conspiracy> a ns2:ConspiracyToCommitCSA,
+        ns3:Event ;
+    ns2:conspiracyMemberCount 2 ;
+    ns2:participatesInConspiracy <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/role/offender/2> ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_003/event/hands-on> a ns2:ChildSexualAbuseEvent,
+        ns3:Event ;
+    ns2:severityLevel 3 .
 

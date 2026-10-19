@@ -1,112 +1,127 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_316> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.443344" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/admission/1/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_316/admission/1> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_316> ;
+    ns1:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/agency/illinois-department-of-human-services> a ns1:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Illinois Department of Human Services" .
+
+<https://w3id.org/caselinker/resource/agency/illinois-state-police-department> a ns3:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/quincy-police-department> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316> a ns2:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:28.442777" ;
     dcterms:identifier "ncmec_2024_316" ;
-    dcterms:modified "2026-09-15T21:08:10.443344" ;
-    dcterms:source <https://www.wcsjnews.com/news/local/minooka-man-with-prior-possession-of-child-porn-conviction-arrested-again/article_c508a90a-f2c8-11ee-8a96-8315daebb232.html#:~:text=Abreu%2C%20who%20is%20on%20the,charge%20in%20April%20of%202021>,
+    dcterms:modified "2026-10-17 23:04:28.442777" ;
+    dcterms:source <https://ipmnewsroom.org/co-manager-of-champaigns-the-beat-program-arrested-on-child-pornography-charges/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/grundy-county>,
-        <https://caselinker.up.railway.app/resource/location/minooka>,
-        <https://caselinker.up.railway.app/resource/location/will-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_316/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_316/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_316/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_316/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_316/legal-step/sentenced> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/illinois-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/minooka-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/national-cetner-of-missing-and-exploited-children-and-grundy-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/grundy-county>,
-        <https://caselinker.up.railway.app/resource/location/minooka>,
-        <https://caselinker.up.railway.app/resource/location/will-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/central-illinois>,
+        <https://w3id.org/caselinker/resource/location/champaign> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_316/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_316/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_316/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_316/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_316/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_316/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/illinois-department-of-human-services>,
+        <https://w3id.org/caselinker/resource/agency/illinois-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/quincy-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/central-illinois>,
+        <https://w3id.org/caselinker/resource/location/champaign> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_316/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_316/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_316/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_316/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_316/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_316/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/event/trust-violation> a ns7:CustodialAbuse,
+        ns7:TrustViolation ;
+    ns7:violatesRelationship <https://w3id.org/caselinker/resource/case/ncmec_2024_316/relationship/mother> .
 
-<https://caselinker.up.railway.app/resource/agency/illinois-state-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Illinois State Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/minooka-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Minooka Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility: lodged in the Adams County Jail; remains in the Champaign County Jail" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_316/charge/1> ;
+    ns4:hasProceedingBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2024_316/sentence/1> .
 
-<https://caselinker.up.railway.app/resource/agency/national-cetner-of-missing-and-exploited-children-and-grundy-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "National Cetner of Missing and Exploited Children and Grundy County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 28 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_316/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_316/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/relationship/mother> a ns7:CustodialRelationship,
+        ns7:FamilialRelationship ;
+    ns7:involvesChild <https://w3id.org/caselinker/resource/case/ncmec_2024_316/role/victim/1> ;
+    ns7:involvesCustodian <https://w3id.org/caselinker/resource/case/ncmec_2024_316/role/offender/1> ;
+    ns7:relationshipType "mother" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_316/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_316/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_316/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_316/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_316/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_316/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/sentence/1> a ns4:CriminalSentence,
+        ns4:MonetaryPenalty ;
+    rdfs:label "$100,000" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_316/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 36 .
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_316/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "had “significant concerns” that Davis would be a candidate to re- offend and questioned his honesty throughout the co..." ;
+    dcterms:source <https://ipmnewsroom.org/co-manager-of-champaigns-the-beat-program-arrested-on-child-pornography-charges/> ;
+    ns5:admissionContext "pacity to be honest or to engage in an honest exercise in that regard.” Assistant State’s Attorney Laura Keck said she had “significant c..." ;
+    ns5:admissionFrame "said_paraphrase" ;
+    ns5:admissionTheme "other" ;
+    ns5:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_316/role/offender/1> ;
+    ns5:evidenceTier "press_release_stated" ;
+    ns5:quoteType "paraphrase" ;
+    ns6:description "had “significant concerns” that Davis would be a candidate to re- offend and questioned his honesty throughout the court process" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_316/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:ProbationSentence ;
-    rdfs:label "[\"probation\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/phase/arrested> a ns2:InitialPhase,
+        ns1:Phase ;
+    ns2:hasPhaseBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_316/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_316/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_316/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/location/grundy-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Grundy County" ;
-    uco-core:name "Grundy County" .
+<https://w3id.org/caselinker/resource/location/central-illinois> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Central Illinois" ;
+    ns6:name "Central Illinois" .
 
-<https://caselinker.up.railway.app/resource/location/minooka> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Minooka" ;
-    uco-core:name "Minooka" .
+<https://w3id.org/caselinker/resource/location/champaign> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Champaign" ;
+    ns6:name "Champaign" .
 
-<https://caselinker.up.railway.app/resource/location/will-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Will County" ;
-    uco-core:name "Will County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316/event/possession> a ns2:CSAMIncident,
+        ns1:Event ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_316/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_316/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_316/facet/possession> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_316> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_316/provenance> .

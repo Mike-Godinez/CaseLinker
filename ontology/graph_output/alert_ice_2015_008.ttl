@@ -1,0 +1,101 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 14:12:36.130679" ;
+    dcterms:identifier "alert_ice_2015_008" ;
+    dcterms:modified "2026-10-18 14:12:36.130679" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/provenance> ;
+    dcterms:source <https://alert-ab.ca/supposed-edmonton-photographer-charged-with-child-exploitation-offences/>,
+        "ALERT ICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/edmonton> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/event/csam>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/offense-event/charge-2> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/calgary-police-department>,
+        <https://w3id.org/caselinker/resource/agency/edmonton-police-department>,
+        <https://w3id.org/caselinker/resource/agency/lethbridge-regional-police-department>,
+        <https://w3id.org/caselinker/resource/agency/medicine-hat-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/edmonton> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2015-06-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/event/csam>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/offense-event/charge-2> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2015-06-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/event/csam>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/offense-event/charge-2> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/calgary-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/edmonton-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/lethbridge-regional-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/medicine-hat-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008/charge/2> a ns3:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/offense-event/charge-2> ;
+    ns4:chargeCluster "child_exploitation" ;
+    ns4:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/offense-event/charge-2> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008/event/distribution> a ns6:Event,
+        ns3:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remained in custody" ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/charge/1>,
+        <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/charge/2> ;
+    ns3:hasProceedingBeginPoint "2015-06-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 36 .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008/phase/charged> a ns1:LegalProcessPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2015-06-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/edmonton> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Edmonton" ;
+    ns7:name "Edmonton" .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008/event/csam> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/alert_ice_2015_008/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/alert_ice_2015_008/offense-event/charge-2> a ns1:ChildSexualAbuseEvent,
+        ns6:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+

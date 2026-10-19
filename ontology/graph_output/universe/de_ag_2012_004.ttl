@@ -1,0 +1,116 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 01:01:29.506357" ;
+    dcterms:identifier "de_ag_2012_004" ;
+    dcterms:modified "2026-10-18 01:01:29.506357" ;
+    dcterms:source <https://news.delaware.gov/2012/10/16/newark-man-faces-child-pornography-charges>,
+        "DE AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cindy-drive>,
+        <https://w3id.org/caselinker/resource/location/delaware>,
+        <https://w3id.org/caselinker/resource/location/newark> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/de_ag_2012_004/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/de_ag_2012_004/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/de_ag_2012_004/event/csam>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_004/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_004/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_004/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_004/operation> ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/delaware-child-predator-task-force>,
+        <https://w3id.org/caselinker/resource/agency/delaware-department-of-justice>,
+        <https://w3id.org/caselinker/resource/agency/delaware-state-police-department> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/cindy-drive>,
+        <https://w3id.org/caselinker/resource/location/delaware>,
+        <https://w3id.org/caselinker/resource/location/newark> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2012-10-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/de_ag_2012_004/event/csam>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_004/event/online-only> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2012_004/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2012-10-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/de_ag_2012_004/event/csam>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_004/event/online-only> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2012_004/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/delaware-child-predator-task-force> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/delaware-department-of-justice> a ns1:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/delaware-state-police-department> a ns1:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/charge/1> a ns4:CriminalCharge ;
+    rdfs:label "dealing in child" ;
+    ns4:indictmentCounts 25 .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/charge/2> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/charge/3> a ns4:CSAM_Distribution,
+        ns4:CriminalCharge ;
+    rdfs:label "distribution of child pornography" .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/event/distribution> a ns3:Event,
+        ns4:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/de_ag_2012_004/charge/1>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_004/charge/2>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_004/charge/3> ;
+    ns4:hasProceedingBeginPoint "2012-10-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/operation> a ns3:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 18 .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/phase/charged> a ns2:LegalProcessPhase,
+        ns3:Phase ;
+    ns2:hasPhaseBeginPoint "2012-10-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/cindy-drive> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cindy Drive" ;
+    ns5:name "Cindy Drive" .
+
+<https://w3id.org/caselinker/resource/location/delaware> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Delaware" ;
+    ns5:name "Delaware" .
+
+<https://w3id.org/caselinker/resource/location/newark> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Newark" ;
+    ns5:name "Newark" .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/event/csam> a ns2:CSAMIncident,
+        ns3:Event ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/de_ag_2012_004/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004/event/online-only> a ns2:ChildSexualAbuseEvent,
+        ns3:Event .
+
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_004> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/de_ag_2012_004/provenance> .

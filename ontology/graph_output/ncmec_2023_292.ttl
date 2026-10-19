@@ -1,94 +1,82 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_292> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.002928" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_292> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:31.413761" ;
     dcterms:identifier "ncmec_2023_292" ;
-    dcterms:modified "2026-09-15T20:55:01.002928" ;
-    dcterms:source <https://www.kfyrtv.com/2023/02/28/minot-man-arrested-child-pornography-investigation/#lnekbmg4i1j257dip7>,
+    dcterms:modified "2026-10-17 22:21:31.413761" ;
+    dcterms:source <https://www.kplctv.com/2023/06/14/150-counts-child-porn-filed-against-hornbeck-man/#lnelyb0cjwn9mhndu7m>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/davis>,
-        <https://caselinker.up.railway.app/resource/location/minot>,
-        <https://caselinker.up.railway.app/resource/location/nd> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_292/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_292/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_292/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_292/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/minot-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/davis>,
-        <https://caselinker.up.railway.app/resource/location/minot>,
-        <https://caselinker.up.railway.app/resource/location/nd> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/calcasieu-parish>,
+        <https://w3id.org/caselinker/resource/location/lake-charles-louisiana> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_292/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_292/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_292/legal-proceeding> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/louisiana-attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/calcasieu-parish>,
+        <https://w3id.org/caselinker/resource/location/lake-charles-louisiana> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_292/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_292/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_292/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_292/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-06-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_292/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_292/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_292/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_292/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_292/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_292/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-06-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_292/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_292/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/minot-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Minot Police Department" .
+<https://w3id.org/caselinker/resource/agency/louisiana-attorney-generals-office> a ns6:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_292/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_292/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "pornography involving juveniles being" ;
+    ns2:indictmentCounts 301 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_292/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_292/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_292/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_292/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_292/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_292/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_292/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 63 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_292/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held at the Grant Parish Detention Facility; held at Calcasieu Correctional Center" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_292/charge/1> ;
+    ns2:hasProceedingBeginPoint "2023-06-14T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_292/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_292/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_292/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_292/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_292/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/location/davis> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Davis’" ;
-    uco-core:name "Davis’" .
+<https://w3id.org/caselinker/resource/location/calcasieu-parish> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Calcasieu Parish" ;
+    ns4:name "Calcasieu Parish" .
 
-<https://caselinker.up.railway.app/resource/location/minot> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Minot" ;
-    uco-core:name "Minot" .
+<https://w3id.org/caselinker/resource/location/lake-charles-louisiana> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lake Charles, Louisiana" ;
+    ns4:name "Lake Charles, Louisiana" .
 
-<https://caselinker.up.railway.app/resource/location/nd> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_292/event/csam> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns1:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_292/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_292/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_292/facet/possession> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2023_292> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_292/provenance> .

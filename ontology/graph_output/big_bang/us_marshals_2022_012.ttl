@@ -1,76 +1,133 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2022_012> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:20:00.784963" ;
+<https://w3id.org/caselinker/resource/case/us_marshals_2022_012> a ns3:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 07:26:58.011030" ;
     dcterms:identifier "us_marshals_2022_012" ;
-    dcterms:modified "2026-09-10T20:20:00.784963" ;
+    dcterms:modified "2026-10-18 07:26:58.011030" ;
     dcterms:source <https://www.usmarshals.gov/news/press-release/us-marshals-locate-missing-missouri-children-near-tucson>,
         "US MARSHALS" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/event/trust-violation> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/arizona-department-of-child-safety>,
-        <https://caselinker.up.railway.app/resource/agency/arizona-wanted-violent-offender-task-force>,
-        <https://caselinker.up.railway.app/resource/agency/midwest-violent-fugitive-task-force>,
-        <https://caselinker.up.railway.app/resource/agency/pascua-yaqui-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/usms> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/arizona>,
+        <https://w3id.org/caselinker/resource/location/greene-county>,
+        <https://w3id.org/caselinker/resource/location/missouri>,
+        <https://w3id.org/caselinker/resource/location/springfield>,
+        <https://w3id.org/caselinker/resource/location/the-state-of-missouri>,
+        <https://w3id.org/caselinker/resource/location/tucson>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/us_marshals_2022_012/phase/booked> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/us_marshals_2022_012/phase/booked> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/us_marshals_2022_012/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2022_012/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2022_012/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/arizona-department-of-child-safety>,
+        <https://w3id.org/caselinker/resource/agency/arizona-wanted-violent-offender-task-force>,
+        <https://w3id.org/caselinker/resource/agency/midwest-violent-fugitive-task-force>,
+        <https://w3id.org/caselinker/resource/agency/pascua-yaqui-police-department>,
+        <https://w3id.org/caselinker/resource/agency/usms> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/arizona>,
+        <https://w3id.org/caselinker/resource/location/greene-county>,
+        <https://w3id.org/caselinker/resource/location/missouri>,
+        <https://w3id.org/caselinker/resource/location/springfield>,
+        <https://w3id.org/caselinker/resource/location/the-state-of-missouri>,
+        <https://w3id.org/caselinker/resource/location/tucson>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/agency/arizona-department-of-child-safety> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/arizona-department-of-child-safety> a ns4:OrganizationLikeEntity,
+        ns2:LocalAgency ;
     rdfs:label "Arizona Department of Child Safety" .
 
-<https://caselinker.up.railway.app/resource/agency/arizona-wanted-violent-offender-task-force> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/arizona-wanted-violent-offender-task-force> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/midwest-violent-fugitive-task-force> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/midwest-violent-fugitive-task-force> a ns4:OrganizationLikeEntity,
+        ns2:LocalAgency ;
     rdfs:label "Midwest Violent Fugitive Task Force" .
 
-<https://caselinker.up.railway.app/resource/agency/pascua-yaqui-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Pascua Yaqui Police Department" .
+<https://w3id.org/caselinker/resource/agency/pascua-yaqui-police-department> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/usms> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/usms> a ns2:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 2 .
+<https://w3id.org/caselinker/resource/case/us_marshals_2022_012/event/multi-jurisdiction> a ns4:Event,
+        ns2:MultiJurisdictionalInvestigation ;
+    ns3:severityLevel 2 .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/relationship/mother> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2022_012/event/trust-violation> a ns1:CustodialAbuse,
+        ns1:TrustViolation ;
+    ns1:violatesRelationship <https://w3id.org/caselinker/resource/case/us_marshals_2022_012/relationship/mother> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/us_marshals_2022_012/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns7:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Pima County Adult Detention Center" ;
+    ns7:hasProceedingBeginPoint "2022-05-14T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/us_marshals_2022_012/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/relationship/mother> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/role/offender/1> ;
-    cacontology-custodial:relationshipType "mother" .
+<https://w3id.org/caselinker/resource/case/us_marshals_2022_012/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2022_012/relationship/mother> a ns1:CustodialRelationship,
+        ns1:FamilialRelationship ;
+    ns1:involvesChild <https://w3id.org/caselinker/resource/case/us_marshals_2022_012/role/victim/1> ;
+    ns1:involvesCustodian <https://w3id.org/caselinker/resource/case/us_marshals_2022_012/role/offender/1> ;
+    ns1:relationshipType "mother" .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2022_012/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2022-05-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2022_012/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2022_012/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/us_marshals_2022_012/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2022-05-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2022_012/person/victim/1> .
 
+<https://w3id.org/caselinker/resource/case/us_marshals_2022_012/phase/booked> a ns3:InitialPhase,
+        ns4:Phase ;
+    ns3:hasPhaseBeginPoint "2022-05-14T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/arizona> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Arizona" ;
+    ns5:name "Arizona" .
+
+<https://w3id.org/caselinker/resource/location/greene-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Greene County" ;
+    ns5:name "Greene County" .
+
+<https://w3id.org/caselinker/resource/location/missouri> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Missouri" ;
+    ns5:name "Missouri" .
+
+<https://w3id.org/caselinker/resource/location/springfield> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Springfield" ;
+    ns5:name "Springfield" .
+
+<https://w3id.org/caselinker/resource/location/the-state-of-missouri> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the State of Missouri" ;
+    ns5:name "the State of Missouri" .
+
+<https://w3id.org/caselinker/resource/location/tucson> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tucson" ;
+    ns5:name "Tucson" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns5:name "United States" .
+
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2022_012> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/us_marshals_2022_012/provenance> .

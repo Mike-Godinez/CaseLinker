@@ -1,41 +1,170 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_313> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.459026" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:18.951577" ;
     dcterms:identifier "ncmec_2025_313" ;
-    dcterms:modified "2026-09-15T21:27:13.459026" ;
-    dcterms:source <https://www.missingkids.org/gethelpnow/cybertipline/cybertiplinedata>,
+    dcterms:modified "2026-10-18 00:01:18.951577" ;
+    dcterms:source <https://cbs4indy.com/news/indycrime/docs-hartford-city-man-charged-after-reportedly-making-ai-generated-child-porn-images/?nxsparam=1>,
         "NCMEC" ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_313/event/online-only> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/blackford-county>,
+        <https://w3id.org/caselinker/resource/location/hartford-city>,
+        <https://w3id.org/caselinker/resource/location/ind> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_313/phase/convicted> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_313/phase/convicted> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/production>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/legal-step/convicted>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/offense-event/charge-2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/offense-event/charge-3> ;
+    ns2:investigationStatus "unknown" ;
+    ns2:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_313/tech/cybertipline> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/blackford-county>,
+        <https://w3id.org/caselinker/resource/location/hartford-city>,
+        <https://w3id.org/caselinker/resource/location/ind> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_313/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_313/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_313/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-01-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/production>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/offense-event/charge-2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/offense-event/charge-3> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_313/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_313/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_313/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_313/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-01-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/production>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/offense-event/charge-2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/offense-event/charge-3> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_313/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_313/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns4:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_313/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/charge/2> a ns4:CriminalCharge ;
+    rdfs:label "child molestation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2025_313/offense-event/charge-2> ;
+    ns3:chargeCluster "child_molestation" ;
+    ns3:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_313/offense-event/charge-2> .
 
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
-    rdfs:label "chat" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/charge/3> a ns4:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2025_313/offense-event/charge-3> ;
+    ns3:chargeCluster "child_exploitation" ;
+    ns3:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_313/offense-event/charge-3> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_313/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_313/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_313/charge/3> ;
+    ns4:hasProceedingBeginPoint "2025-01-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/legal-step/convicted> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2025-01-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 49 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/phase/convicted> a ns5:Phase,
+        ns4:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2025-01-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/blackford-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Blackford County" ;
+    ns1:name "Blackford County" .
+
+<https://w3id.org/caselinker/resource/location/hartford-city> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hartford City" ;
+    ns1:name "Hartford City" .
+
+<https://w3id.org/caselinker/resource/location/ind> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ind." ;
+    ns1:name "Ind." .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/ai-csam> a ns2:DigitallyGeneratedCSAMIncident,
+        <https://cacontology.projectvic.org/ai-csam#AIGeneratedCSAM>,
+        ns5:Event ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/gen-ai>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/hands-on> a ns2:ChildSexualAbuseEvent,
+        ns5:Event ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/gen-ai>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/possession> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/gen-ai>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_313/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/event/production> a ns5:Event,
+        <https://cacontology.projectvic.org/production#ProductionOffense> ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/gen-ai>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_313/facet/production> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/offense-event/charge-2> a ns2:ChildSexualAbuseEvent,
+        ns5:Event,
+        <https://cacontology.projectvic.org/usa-federal-law#SexualAbuseOfMinor>,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child molestation" ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/gen-ai>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313/offense-event/charge-3> a ns2:ChildSexualAbuseEvent,
+        ns5:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/gen-ai>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
+
+<https://w3id.org/caselinker/resource/platform/gen-ai> a <https://cacontology.projectvic.org/platforms#FileHostingService> ;
+    rdfs:label "Gen AI" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_313> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_313/provenance> .

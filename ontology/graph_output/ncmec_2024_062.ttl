@@ -1,82 +1,92 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_062> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.085873" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_062> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:24.977503" ;
     dcterms:identifier "ncmec_2024_062" ;
-    dcterms:modified "2026-09-15T21:08:10.085873" ;
-    dcterms:source <https://www.yourcentralvalley.com/news/crime/79-year-old-arrested-after-child-sexual-abuse-material-found-in-visalia/>,
+    dcterms:modified "2026-10-17 23:04:24.977503" ;
+    dcterms:source <https://krcrtv.com/news/local/sacramento-police-help-investigation-into-oroville-man-downloading-child-pornography>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/calif>,
-        <https://caselinker.up.railway.app/resource/location/visalia> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_062/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_062/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_062/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_062/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/visalia-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/calif>,
-        <https://caselinker.up.railway.app/resource/location/visalia> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/oroville>,
+        <https://w3id.org/caselinker/resource/location/sacramento> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_062/phase/booked> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_062/phase/booked> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_062/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_062/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/butte-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/sacramento-police-department> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/oroville>,
+        <https://w3id.org/caselinker/resource/location/sacramento> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_062/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_062/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_062/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_062/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-08-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_062/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_062/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_062/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_062/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_062/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_062/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-08-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_062/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_062/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/visalia-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/butte-county-sheriffs-office> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_062/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child sexual abuse material" .
+<https://w3id.org/caselinker/resource/agency/sacramento-police-department> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_062/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_062/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_062/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_062/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_062/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_062/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_062/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 79 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_062/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Butte County Jail" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_062/charge/1> ;
+    ns4:hasProceedingBeginPoint "2024-08-22T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_062/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_062/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 35 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_062/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_062/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_062/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_062/phase/booked> a ns2:InitialPhase,
+        ns5:Phase ;
+    ns2:hasPhaseBeginPoint "2024-08-22T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/calif> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/calif> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Calif." ;
+    ns1:name "Calif." .
 
-<https://caselinker.up.railway.app/resource/location/visalia> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/oroville> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Oroville" ;
+    ns1:name "Oroville" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_062/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_062/facet/possession> .
+<https://w3id.org/caselinker/resource/location/sacramento> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sacramento" ;
+    ns1:name "Sacramento" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_062/event/possession> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_062/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_062> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_062/provenance> .

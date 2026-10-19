@@ -1,37 +1,72 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_027> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:36:48.157760" ;
+<https://w3id.org/caselinker/resource/case/cbp_2026_027> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 00:55:13.724555" ;
     dcterms:identifier "cbp_2026_027" ;
-    dcterms:modified "2026-09-10T19:36:48.157760" ;
+    dcterms:modified "2026-10-18 00:55:13.724555" ;
     dcterms:source <https://www.cbp.gov/newsroom/local-media-release/laredo-cbp-officers-apprehend-man-wanted-sexual-abuse-child-warrant-0>,
         "CBP" ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/cbp_2026_027/event/distribution> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fort-bend-county>,
+        <https://w3id.org/caselinker/resource/location/laredo>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/webb-county> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/cbp_2026_027/event/distribution> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/fort-bend-county>,
+        <https://w3id.org/caselinker/resource/location/laredo>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/webb-county> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_027/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/cbp_2026_027/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/cbp_2026_027/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/cbp_2026_027/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_027/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/cbp_2026_027/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/cbp_2026_027/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/cbp_2026_027/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_027/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/cbp_2026_027/event/distribution> a ns2:Event,
+        <https://cacontology.projectvic.org/legal-outcomes#CSAM_Distribution> ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_027/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 39 .
+<https://w3id.org/caselinker/resource/case/cbp_2026_027/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_027/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/cbp_2026_027/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
+<https://w3id.org/caselinker/resource/location/fort-bend-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fort Bend County" ;
+    ns4:name "Fort Bend County" .
+
+<https://w3id.org/caselinker/resource/location/laredo> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Laredo" ;
+    ns4:name "Laredo" .
+
+<https://w3id.org/caselinker/resource/location/texas> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns4:name "Texas" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns4:name "United States" .
+
+<https://w3id.org/caselinker/resource/location/webb-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Webb County" ;
+    ns4:name "Webb County" .
+
+
+<https://w3id.org/caselinker/resource/case/cbp_2026_027> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/cbp_2026_027/provenance> .

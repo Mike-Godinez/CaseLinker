@@ -1,87 +1,110 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.281866" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132> a ns4:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:16.944373" ;
     dcterms:identifier "ncmec_2025_132" ;
-    dcterms:modified "2026-09-15T21:27:13.281866" ;
-    dcterms:source <https://gazette.com/news/crime/courts/police-arrest-fountain-man-accused-of-possessing-child-pornography/article_3cf3c5b2-f499-11ef-a0fb-1787c315297e.html>,
+    dcterms:modified "2026-10-18 00:01:16.944373" ;
+    dcterms:source <https://www.kktv.com/2025/01/13/canon-city-man-arrested-suspicion-having-child-sexual-abuse-materials/>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/fountain-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/canon-city>,
+        <https://w3id.org/caselinker/resource/location/cañon-city>,
+        <https://w3id.org/caselinker/resource/location/colo>,
+        <https://w3id.org/caselinker/resource/location/fremont-county> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_132/phase/arrested> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_132/phase/arrested> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_132/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_132/legal-proceeding> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/cañon-city-police-department>,
+        <https://w3id.org/caselinker/resource/agency/fremont-county-sheriffs-office> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/canon-city>,
+        <https://w3id.org/caselinker/resource/location/cañon-city>,
+        <https://w3id.org/caselinker/resource/location/colo>,
+        <https://w3id.org/caselinker/resource/location/fremont-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2025-01-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_132/event/csam> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_132/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2025-01-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_132/event/csam> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_132/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/fountain-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Fountain Police Department" .
+<https://w3id.org/caselinker/resource/agency/cañon-city-police-department> a ns3:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "Cañon City Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of children" .
+<https://w3id.org/caselinker/resource/agency/fremont-county-sheriffs-office> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132/charge/1> a ns1:CriminalCharge,
+        ns1:StateCharge ;
+    rdfs:label "sexual exploitation of children" ;
+    ns1:indictmentCounts 19 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132/charge/2> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132/charge/3> a ns1:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_132/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_132/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_132/charge/3> ;
+    ns1:hasProceedingBeginPoint "2025-01-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 63 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 30 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132/phase/arrested> a ns4:InitialPhase,
+        ns3:Phase ;
+    ns4:hasPhaseBeginPoint "2025-01-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/canon-city> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Canon City" ;
+    ns6:name "Canon City" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/cañon-city> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cañon City" ;
+    ns6:name "Cañon City" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_132/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_132/facet/possession> .
+<https://w3id.org/caselinker/resource/location/colo> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Colo." ;
+    ns6:name "Colo." .
 
+<https://w3id.org/caselinker/resource/location/fremont-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fremont County" ;
+    ns6:name "Fremont County" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132/event/csam> a ns4:CSAMIncident,
+        ns3:Event ;
+    ns4:severityLevel 3 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_132/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_132> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_132/provenance> .

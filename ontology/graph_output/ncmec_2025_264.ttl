@@ -1,120 +1,154 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.392026" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_264/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_264> ;
+    ns4:hasConfidence 0.9 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_264/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_264/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_264/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/fbi> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/hawaii-county-office-of-the-prosecuting-attorney> a ns4:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "Hawai'i County Office of the Prosecuting Attorney" .
+
+<https://w3id.org/caselinker/resource/agency/hawaii-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/hsi> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/maui-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:18.277273" ;
     dcterms:identifier "ncmec_2025_264" ;
-    dcterms:modified "2026-09-15T21:27:13.392026" ;
-    dcterms:source <https://www.walb.com/2025/04/02/cairo-man-arrested-child-exploitation-charges/>,
+    dcterms:modified "2026-10-18 00:01:18.277273" ;
+    dcterms:source <https://www.hawaiipolice.gov/police-arrest-and-charge-puna-man-with-sexual-assault/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/cairo>,
-        <https://caselinker.up.railway.app/resource/location/ga>,
-        <https://caselinker.up.railway.app/resource/location/grady-county>,
-        <https://caselinker.up.railway.app/resource/location/sydney> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/offense-event/charge-2> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/grady-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/icac> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/cairo>,
-        <https://caselinker.up.railway.app/resource/location/ga>,
-        <https://caselinker.up.railway.app/resource/location/grady-county>,
-        <https://caselinker.up.railway.app/resource/location/sydney> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/hawaii>,
+        <https://w3id.org/caselinker/resource/location/hawaii-island>,
+        <https://w3id.org/caselinker/resource/location/ocean-view> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_264/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_264/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_264/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_264/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_264/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_264/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_264/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/hawaii-county-office-of-the-prosecuting-attorney>,
+        <https://w3id.org/caselinker/resource/agency/hawaii-police-department>,
+        <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/maui-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/hawaii>,
+        <https://w3id.org/caselinker/resource/location/hawaii-island>,
+        <https://w3id.org/caselinker/resource/location/ocean-view> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns3:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/event/distribution> a ns4:Event,
+        ns3:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/agency/grady-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Grady County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns3:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remains in police custody" ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_264/charge/1> ;
+    ns3:hasProceedingBeginPoint "2025-06-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 44 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/offense-event/charge-2> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/offense-event/charge-2> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_264/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_264/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_264/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/phase/charged> a ns1:LegalProcessPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2025-06-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/hawaii> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hawaii" ;
+    ns6:name "Hawaii" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/hawaii-island> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hawai‘i Island" ;
+    ns6:name "Hawai‘i Island" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/ocean-view> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ocean View" ;
+    ns6:name "Ocean View" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Facebook" .
 
-<https://caselinker.up.railway.app/resource/location/cairo> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Cairo" ;
-    uco-core:name "Cairo" .
+<https://w3id.org/caselinker/resource/platform/facebook-messenger> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Facebook Messenger" .
 
-<https://caselinker.up.railway.app/resource/location/ga> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
 
-<https://caselinker.up.railway.app/resource/location/grady-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Grady County" ;
-    uco-core:name "Grady County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_264/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/facebook-messenger>,
+        <https://w3id.org/caselinker/resource/platform/kik> .
 
-<https://caselinker.up.railway.app/resource/location/sydney> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Sydney" ;
-    uco-core:name "Sydney" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/event/possession> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_264/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/facebook-messenger>,
+        <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_264/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_264/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "possessed, received, and distributed child pornography on various mobile applications to include Kik" ;
+    dcterms:source <https://www.hawaiipolice.gov/police-arrest-and-charge-puna-man-with-sexual-assault/> ;
+    ns5:admissionContext "gents found Forcum on Hawaii island, arrested him, and took his iPhone 15 Pro Max. In an interview with federal agents, Forcum allegedly..." ;
+    ns5:admissionFrame "perp_proximate_admitted_quote" ;
+    ns5:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns5:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_264/role/offender/1> ;
+    ns5:evidenceTier "press_release_stated" ;
+    ns5:quoteType "direct" ;
+    ns6:description "possessed, received, and distributed child pornography on various mobile applications to include Kik" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_264/offense-event/charge-2> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child exploitation" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_264> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_264/provenance> .

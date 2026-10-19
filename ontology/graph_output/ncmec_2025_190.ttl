@@ -1,119 +1,85 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_190> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/holly-hill-police-department> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.326836" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_190> a ns3:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:17.538898" ;
     dcterms:identifier "ncmec_2025_190" ;
-    dcterms:modified "2026-09-15T21:27:13.326836" ;
-    dcterms:source <https://www.yahoo.com/news/holly-hill-man-charged-possession-190421512.html>,
+    dcterms:modified "2026-10-18 00:01:17.538898" ;
+    dcterms:source <https://police.stpete.org/2025/april/02/arrestMadeForPossessionOfChildPornography.html>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/offense-event/charge-2> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/holly-hill-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/petersburg>,
+        <https://w3id.org/caselinker/resource/location/st-petersburg> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_190/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_190/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_190/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_190/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_190/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/st-petersburg-police-department> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/petersburg>,
+        <https://w3id.org/caselinker/resource/location/st-petersburg> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography and three counts of possession of pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 23 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_190/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-04-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_190/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_190/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/offense-event/charge-2> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/offense-event/charge-2> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_190/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-04-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_190/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_190/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/agency/st-petersburg-police-department> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_190/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns5:indictmentCounts 12 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_190/event/distribution> a ns2:Event,
+        ns5:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_190/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_190/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_190/charge/1> ;
+    ns5:hasProceedingBeginPoint "2025-04-02T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_190/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 45 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_190/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_190/phase/charged> a ns3:LegalProcessPhase,
+        ns2:Phase ;
+    ns3:hasPhaseBeginPoint "2025-04-02T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/location/petersburg> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Petersburg" ;
+    ns1:name "Petersburg" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/st-petersburg> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "St. Petersburg" ;
+    ns1:name "St. Petersburg" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "to knowingly possessing and distributing child pornography, and bestiality, possession of pornography involving anima..." ;
-    dcterms:source <https://www.yahoo.com/news/holly-hill-man-charged-possession-190421512.html> ;
-    ns1:admissionContext "ome and seized electronic devices and other evidence for forensic analysis, police said. Walker confessed to knowingly possessing and dis..." ;
-    ns1:admissionFrame "confessed_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "to knowingly possessing and distributing child pornography, and bestiality, possession of pornography involving animals, investigators said" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_190/event/possession> a ns3:CSAMIncident,
+        ns2:Event ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_190/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/admission/1> ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_190/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_190/offense-event/charge-2> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child exploitation" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_190> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_190/provenance> .

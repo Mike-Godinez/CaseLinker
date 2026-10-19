@@ -1,0 +1,58 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_066> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 00:50:59.202390" ;
+    dcterms:identifier "brazil_pf_2026_066" ;
+    dcterms:modified "2026-10-18 00:50:59.202390" ;
+    dcterms:source <https://www.gov.br/pf/pt-br/assuntos/noticias/2026/08/pf-deflagra-sexta-fase-de-operacao-contra-abuso-sexual-infantojuvenil>,
+        "BRAZIL PF" ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/event/possession> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/federal-police-department>,
+        <https://w3id.org/caselinker/resource/agency/social-communication-of-the-federal-police-department> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/federal-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/social-communication-of-the-federal-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/event/distribution> a ns3:Event,
+        <https://cacontology.projectvic.org/legal-outcomes#CSAM_Distribution> ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/platform/whatsapp> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "WhatsApp" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/whatsapp> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_066> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/brazil_pf_2026_066/provenance> .

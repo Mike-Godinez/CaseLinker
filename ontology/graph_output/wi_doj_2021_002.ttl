@@ -1,0 +1,111 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns8: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/wi_doj_2021_002> a ns3:CACInvestigation,
+        ns8:EnduringEntity ;
+    dcterms:created "2026-10-18 13:52:59.954145" ;
+    dcterms:identifier "wi_doj_2021_002" ;
+    dcterms:modified "2026-10-18 13:52:59.954145" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/wi_doj_2021_002/provenance> ;
+    dcterms:source <https://www.wisdoj.gov/PressReleases/5.27.21_Eagle_River_CSAM_0.pdf>,
+        "WI DOJ" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/eagle-river>,
+        <https://w3id.org/caselinker/resource/location/vilas-county>,
+        <https://w3id.org/caselinker/resource/location/wisconsin> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/wi_doj_2021_002/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/wi_doj_2021_002/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/wi_doj_2021_002/cybertip>,
+        <https://w3id.org/caselinker/resource/case/wi_doj_2021_002/event/possession>,
+        <https://w3id.org/caselinker/resource/case/wi_doj_2021_002/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/oneida-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/vilas-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/wisconsin-department-of-justice>,
+        <https://w3id.org/caselinker/resource/agency/wisconsin-doj> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/eagle-river>,
+        <https://w3id.org/caselinker/resource/location/vilas-county>,
+        <https://w3id.org/caselinker/resource/location/wisconsin> .
+
+<https://w3id.org/caselinker/resource/case/wi_doj_2021_002/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2021-05-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/wi_doj_2021_002/event/possession> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/wi_doj_2021_002/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/wi_doj_2021_002/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2021-05-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/wi_doj_2021_002/event/possession> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/wi_doj_2021_002/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/oneida-county-sheriffs-office> a ns8:OrganizationLikeEntity,
+        ns1:LocalAgency ;
+    rdfs:label "Oneida County Sheriff's Office" .
+
+<https://w3id.org/caselinker/resource/agency/vilas-county-sheriffs-office> a ns8:OrganizationLikeEntity,
+        ns1:LocalAgency ;
+    rdfs:label "Vilas County Sheriff's Office" .
+
+<https://w3id.org/caselinker/resource/agency/wisconsin-department-of-justice> a ns1:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/wisconsin-doj> a ns8:OrganizationLikeEntity,
+        ns1:LocalAgency ;
+    rdfs:label "Wisconsin DOJ" .
+
+<https://w3id.org/caselinker/resource/case/wi_doj_2021_002/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns7:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/wi_doj_2021_002/cybertip> a ns4:NCMECCybertipReport ;
+    ns4:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/wi_doj_2021_002/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/wi_doj_2021_002/legal-proceeding> a ns8:Event,
+        ns8:LegalEvent,
+        ns7:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held at Vilas County jail" ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/wi_doj_2021_002/charge/1> ;
+    ns7:hasProceedingBeginPoint "2021-05-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/wi_doj_2021_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 30 .
+
+<https://w3id.org/caselinker/resource/case/wi_doj_2021_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns1:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/wi_doj_2021_002/phase/arrested> a ns3:InitialPhase,
+        ns8:Phase ;
+    ns3:hasPhaseBeginPoint "2021-05-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/eagle-river> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Eagle River" ;
+    ns6:name "Eagle River" .
+
+<https://w3id.org/caselinker/resource/location/vilas-county> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Vilas County" ;
+    ns6:name "Vilas County" .
+
+<https://w3id.org/caselinker/resource/location/wisconsin> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wisconsin" ;
+    ns6:name "Wisconsin" .
+
+<https://w3id.org/caselinker/resource/case/wi_doj_2021_002/event/possession> a ns3:CSAMIncident,
+        ns8:Event ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/wi_doj_2021_002/facet/possession> .
+

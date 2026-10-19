@@ -1,75 +1,119 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_523> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.449200" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:25.838277" ;
     dcterms:identifier "ncmec_2022_523" ;
-    dcterms:modified "2026-09-15T20:45:06.449200" ;
-    dcterms:source <https://www.fontanaheraldnews.com/news/fontana-man-is-arrested-on-child-pornography-charge/article_a053dd62-230f-11ed-aa34-4b722a7682f2.html>,
+    dcterms:modified "2026-10-17 21:51:25.838277" ;
+    dcterms:source <https://weartv.com/news/local/deputies-crestview-men-arrested-with-child-pornography>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_523/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_523/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_523/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_523/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_523/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/fontana-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/icac> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/crestview>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/okaloosa-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_523/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_523/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_523/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_523/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_523/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_523/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/okaloosa-county-sheriffs-office> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/crestview>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/okaloosa-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_523/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_523/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_523/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_523/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_523/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_523/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_523/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_523/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_523/person/victim/1> .
+<https://w3id.org/caselinker/resource/agency/okaloosa-county-sheriffs-office> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/fontana-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns7:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/charge/2> a ns7:CSAM_Distribution,
+        ns7:CriminalCharge ;
+    rdfs:label "transmission of child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_523/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/event/distribution> a ns3:Event,
+        ns7:CSAM_Distribution ;
+    ns1:severityLevel 1 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_523/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_523/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_523/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_523/charge/2> ;
+    ns7:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_523/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_523/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_523/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 23 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_523/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 38 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_523/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_523/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_523/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_523/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_523/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_523/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/role/offender/2> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_523/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_523/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_523/person/offender/2> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_523/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_523/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/phase/charged> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/location/crestview> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Crestview" ;
+    ns2:name "Crestview" .
+
+<https://w3id.org/caselinker/resource/location/fla> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns2:name "Fla." .
+
+<https://w3id.org/caselinker/resource/location/okaloosa-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Okaloosa County" ;
+    ns2:name "Okaloosa County" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/event/conspiracy> a ns1:ConspiracyToCommitCSA,
+        ns3:Event ;
+    ns1:conspiracyMemberCount 2 ;
+    ns1:participatesInConspiracy <https://w3id.org/caselinker/resource/case/ncmec_2022_523/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_523/role/offender/2> ;
+    ns1:severityLevel 1 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:severityLevel 1 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_523/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_523> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_523/provenance> .

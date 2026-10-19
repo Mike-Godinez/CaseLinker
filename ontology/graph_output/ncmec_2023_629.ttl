@@ -1,91 +1,93 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_629> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.303427" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_629> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:35.860864" ;
     dcterms:identifier "ncmec_2023_629" ;
-    dcterms:modified "2026-09-15T20:55:01.303427" ;
-    dcterms:source <https://kornradio.com/latestnews/sioux-falls-man-arrested-for-alleged-possession-of-thousands-of-child-pornography-images/>,
+    dcterms:modified "2026-10-17 22:21:35.860864" ;
+    dcterms:source <https://www.wtap.com/2022/02/10/four-arrested-inappropriate-contact-with-children-why-fbi-was-parkersburg/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/sioux>,
-        <https://caselinker.up.railway.app/resource/location/sioux-falls> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_629/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_629/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_629/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_629/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_629/legal-step/convicted> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/sioux>,
-        <https://caselinker.up.railway.app/resource/location/sioux-falls> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/parkersburg>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/west-virginia>,
+        <https://w3id.org/caselinker/resource/location/wva> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_629/phase/convicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_629/phase/convicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_629/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_629/legal-step/convicted>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_629/operation> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/parkersburg-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/parkersburg>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/west-virginia>,
+        <https://w3id.org/caselinker/resource/location/wva> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_629/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_629/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_629/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_629/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-02-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:perpetratorRegisteredSexOffender true ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_629/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_629/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_629/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_629/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_629/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-02-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_629/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_629/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/agency/fbi> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_629/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/agency/parkersburg-police-department> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_629/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_629/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_629/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_629/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held at North Central Regional Jail" ;
+    ns5:hasProceedingBeginPoint "2022-02-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_629/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-11-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_629/legal-step/convicted> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2022-02-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_629/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 43 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_629/operation> a ns2:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_629/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 12 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_629/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_629/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$25,000\", \"10 years\", \"$20,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_629/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_629/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2023-11-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_629/phase/convicted> a ns2:Phase,
+        ns5:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2022-02-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/sioux> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Sioux" ;
-    uco-core:name "Sioux" .
+<https://w3id.org/caselinker/resource/location/parkersburg> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Parkersburg" ;
+    ns4:name "Parkersburg" .
 
-<https://caselinker.up.railway.app/resource/location/sioux-falls> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Sioux Falls" ;
-    uco-core:name "Sioux Falls" .
+<https://w3id.org/caselinker/resource/location/united-states> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns4:name "United States" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_629/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_629/facet/possession> .
+<https://w3id.org/caselinker/resource/location/west-virginia> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "West Virginia" ;
+    ns4:name "West Virginia" .
 
+<https://w3id.org/caselinker/resource/location/wva> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "W.va." ;
+    ns4:name "W.va." .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_629> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_629/provenance> .

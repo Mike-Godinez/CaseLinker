@@ -1,84 +1,82 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/sjpd_2024_009> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:12:49.868257" ;
+<https://w3id.org/caselinker/resource/case/sjpd_2024_009> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 07:02:45.242603" ;
     dcterms:identifier "sjpd_2024_009" ;
-    dcterms:modified "2026-09-10T20:12:49.868257" ;
+    dcterms:modified "2026-10-18 07:02:45.242603" ;
     dcterms:source <https://www.sjpd.org/Home/Components/News/News/1934/>,
         "SJPD" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/event/trafficking> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/human-trafficking-task-force>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/san-josé-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/rosemead>,
+        <https://w3id.org/caselinker/resource/location/san-josé>,
+        <https://w3id.org/caselinker/resource/location/santa-clara-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/sjpd_2024_009/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/sjpd_2024_009/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/sjpd_2024_009/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/sjpd_2024_009/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/human-trafficking-task-force>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/san-josé-police-department> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/rosemead>,
+        <https://w3id.org/caselinker/resource/location/san-josé>,
+        <https://w3id.org/caselinker/resource/location/santa-clara-county> .
 
-<https://caselinker.up.railway.app/resource/case/sjpd_2024_009/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/event/conspiracy> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/sjpd_2024_009/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/sjpd_2024_009/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/human-trafficking-task-force> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/case/sjpd_2024_009/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/sjpd_2024_009/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/human-trafficking-task-force> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/san-josé-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/sjpd_2024_009/event/trafficking> a cac-core:Event,
-        cacontology-legal-outcomes:SexTrafficking ;
-    cacontology:severityLevel 1 .
+<https://w3id.org/caselinker/resource/agency/san-josé-police-department> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/sjpd_2024_009/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 34 .
+<https://w3id.org/caselinker/resource/case/sjpd_2024_009/event/trafficking> a ns5:Event,
+        ns6:SexTrafficking .
 
-<https://caselinker.up.railway.app/resource/case/sjpd_2024_009/person/offender/2> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 53 .
+<https://w3id.org/caselinker/resource/case/sjpd_2024_009/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into Santa Clara County Main Jail" ;
+    ns6:hasProceedingBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/sjpd_2024_009/person/offender/3> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 60 .
+<https://w3id.org/caselinker/resource/case/sjpd_2024_009/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/sjpd_2024_009/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/sjpd_2024_009/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/sjpd_2024_009/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/event/conspiracy> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/sjpd_2024_009/phase/booked> a ns1:InitialPhase,
+        ns5:Phase ;
+    ns1:hasPhaseBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/sjpd_2024_009/role/offender/2> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/event/conspiracy> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/person/offender/2> .
+<https://w3id.org/caselinker/resource/location/rosemead> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Rosemead" ;
+    ns4:name "Rosemead" .
 
-<https://caselinker.up.railway.app/resource/case/sjpd_2024_009/role/offender/3> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/event/conspiracy> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/person/offender/3> .
+<https://w3id.org/caselinker/resource/location/san-josé> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "San José" ;
+    ns4:name "San José" .
 
-<https://caselinker.up.railway.app/resource/case/sjpd_2024_009/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/santa-clara-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Santa Clara County" ;
+    ns4:name "Santa Clara County" .
 
-<https://caselinker.up.railway.app/resource/case/sjpd_2024_009/event/conspiracy> a cacontology:ConspiracyToCommitCSA,
-        cac-core:Event ;
-    cacontology:conspiracyMemberCount 3 ;
-    cacontology:participatesInConspiracy <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/role/offender/1>,
-        <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/role/offender/2>,
-        <https://caselinker.up.railway.app/resource/case/sjpd_2024_009/role/offender/3> ;
-    cacontology:severityLevel 1 .
 
+<https://w3id.org/caselinker/resource/case/sjpd_2024_009> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/sjpd_2024_009/provenance> .

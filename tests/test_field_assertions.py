@@ -285,6 +285,17 @@ def test_believed_persona_is_a_decoy():
     assert (14, "decoy") in excluded(res)
 
 
+def test_believed_father_of_undercover_child_is_not_a_victim():
+    # doj_safe_childhood_2023_259: the nine-year-old is the child the undercover was posing as the father of.
+    text = (
+        "In August of 2021, Camero met an individual online whom he believed was the father of a "
+        "nine-year-old boy. In reality, this individual was a law enforcement officer, acting in an "
+        "undercover capacity."
+    )
+    _, res = run(text, "doj_safe_childhood_2023_259", year="2023")
+    assert 9 not in (age_final(res).get("victims") or [])
+
+
 def test_persona_echo_contests_victim_value():
     # The headline/body "13-year-old child" is the agent's persona.
     _, res = run(CNCIS, "ncis_2023_002", year="2023")
@@ -387,6 +398,88 @@ def test_life_without_parole_is_imposed_and_conduct_spans_are_not_terms():
     )
     _, res = run(text, "ncmec_2022_067", year="2022")
     assert sentence_final(res)["imposed"] == ["to life without parole"]
+
+
+def test_nz_starting_point_is_not_the_imposed_sentence():
+    text = (
+        "He was sentenced to 12 months home detention for distributing objectionable material. "
+        "The sentencing Judge adopted a starting point of 4 years and 6 months imprisonment "
+        "before applying discounts totalling 55%."
+    )
+    _, res = run(text, "nz_dia_2025_007", year="2025")
+    assert sentence_final(res)["imposed"] == ["12 months"]
+
+
+def test_nz_starting_point_for_sentencing_is_not_imposed():
+    text = (
+        "The court sentenced him to 12 months' imprisonment. "
+        "The judge took as a starting point for sentencing, 18 months' imprisonment, "
+        "reducing it to 12 after discounts."
+    )
+    _, res = run(text, "nz_dia_2006_001", year="2006")
+    assert sentence_final(res)["imposed"] == ["12 months"]
+
+
+def test_nz_recommended_starting_point_is_not_the_home_detention_term():
+    text = (
+        "He was sentenced to 8 months home detention and 300 hours of community work. "
+        "The prosecutor recommended as a starting point\n"
+        "that he be sentenced to four years' imprisonment with a discount for his guilty plea."
+    )
+    _, res = run(text, "nz_dia_2015_004", year="2015")
+    assert sentence_final(res)["imposed"] == ["8 months"]
+
+
+def test_nz_suggested_starting_point_does_not_replace_the_term():
+    text = (
+        "A former teacher was sentenced to two-and-a-half years prison after a jury found him guilty. "
+        "The prosecutor suggested six years imprisonment as an appropriate sentencing starting point."
+    )
+    _, res = run(text, "nz_dia_2009_005", year="2009")
+    assert "two-and-a-half years" in sentence_final(res)["imposed"]
+    assert "six years" not in sentence_final(res)["imposed"]
+
+
+def test_nz_minimum_period_of_imprisonment_is_not_imposed():
+    text = (
+        "He was sentenced to 8 years 7 months imprisonment with a minimum period of imprisonment "
+        "of 5 years 8 months in the High Court today."
+    )
+    _, res = run(text, "nz_dia_2019_001", year="2019")
+    assert sentence_final(res)["imposed"] == ["8 years 7 months"]
+
+
+def test_aged_years_is_not_a_prison_term():
+    text = (
+        "A man has been jailed for 20 months after trading child sexual abuse images. "
+        "They included the sexual abuse of girls aged six years or under."
+    )
+    _, res = run(text, "nz_dia_2009_011", year="2009")
+    assert sentence_final(res)["imposed"] == ["20 months"]
+
+
+def test_year_old_student_who_was_jailed_is_not_a_victim():
+    text = (
+        "The jailing of a 22-year-old student for possessing and distributing "
+        "pictures of children being sexually abused sends a strong warning."
+    )
+    _, res = run(text, "nz_dia_2006_001", year="2006")
+    # Defendant and victim cues both fire, so 22 is not stored as a victim final.
+    assert age_final(res).get("victims") == []
+    assert res["age"]["status"] == "needs_review"
+
+
+def test_depicted_girls_aged_eight_and_12_are_not_perpetrators():
+    text = (
+        "A 42-year-old manager has been fined $2500 after pleading guilty to possessing "
+        "objectionable movies involving girls, aged eight and 12."
+    )
+    _, res = run(text, "nz_dia_2007_001", year="2007")
+    assert 8 not in age_final(res)["perpetrators"]
+    assert 12 not in age_final(res)["perpetrators"]
+    assert 8 not in age_final(res)["victims"]
+    assert 12 not in age_final(res)["victims"]
+    assert {(8, "depicted_in_material"), (12, "depicted_in_material")} <= excluded(res)
 
 
 def test_not_less_than_is_statutory_exposure():
@@ -544,19 +637,28 @@ def test_storage_round_trip_append_only_and_reresolve(tmp_path):
 
 # --- hard 10, full text from the local corpus -------------------------------------------------
 
+# Phase 3 ids. Three rows moved when the corpus was re-split:
+# ncmec_2024_1175 → ncmec_2024_1136, ncmec_2023_105 → ncmec_2023_104,
+# ncmec_2022_512 → ncmec_2022_506. The 2007 DOJ release is still
+# doj_archives_2007_003. The old doj_safe_childhood_2026_001 sentencing
+# release is not in this corpus; south_florida_icac_2025_023 is the tenth real row.
 HARD_EXPECTED = {
     "doj_safe_childhood_2025_131": {"victims": [], "perps": [32], "imposed": ["240 months"]},
     "doj_safe_childhood_2025_325": {"victims": [12], "perps": [30], "imposed": ["50 years"]},
-    "ncmec_2024_1175": {"victims": [], "perps": [55], "imposed": [], "cybertip": True},
-    "ncmec_2023_105": {"victims": [], "perps": [23], "imposed": [], "cybertip": True},
+    "ncmec_2024_1136": {"victims": [], "perps": [55], "imposed": [], "cybertip": True},
+    "ncmec_2023_104": {"victims": [], "perps": [23], "imposed": [], "cybertip": True},
     "illinois_ag_2023_015": {"victims": [], "perps": [38], "imposed": [], "cybertip": True},
     "doj_archives_2007_003": {"victims": [5], "perps": [57], "imposed": []},
-    "doj_safe_childhood_2026_001": {"victims": [], "perps": [57], "imposed": ["90 months"]},
-    "ncmec_2022_512": {"victims": [], "perps": [56], "imposed": [], "cybertip": True},
+    "ncmec_2022_506": {"victims": [], "perps": [56], "imposed": [], "cybertip": True},
     "azicac_2011_001": {"victims": [], "perps": [25], "imposed": []},
     "doj_safe_childhood_2025_327": {"victims": [13], "perps": [41], "imposed": ["25 years", "30 months"]},
+    "south_florida_icac_2025_023": {"victims": [10], "perps": [28], "imposed": []},
 }
 DB = REPO / "caselinker.db"
+
+
+def test_hard_ten_lists_ten_cases():
+    assert len(HARD_EXPECTED) == 10
 
 
 @pytest.mark.skipif(not DB.exists(), reason="local caselinker.db not present")
@@ -565,13 +667,9 @@ def test_hard_ten_full_text(case_id):
     conn = sqlite3.connect(f"file:{DB}?mode=ro", uri=True)
     row = conn.execute("SELECT raw_data FROM cases WHERE id = ?", (case_id,)).fetchone()
     if row is None:
-        pytest.skip(f"{case_id} not in this corpus")
+        pytest.fail(f"{case_id} is not in caselinker.db")
     raw = json.loads(row[0])
     text = raw["case_text"]
-    # A field-test database can reuse an id for a different release. These expectations
-    # are for the corpus text; skip when that text is not the row.
-    if case_id == "doj_safe_childhood_2026_001" and "90 months" not in text.lower() and ", 57," not in text:
-        pytest.skip("local db has a different release at this id")
     case, res = run(text, case_id, year=str(raw.get("year") or ""))
     want = HARD_EXPECTED[case_id]
     assert age_final(res)["victims"] == want["victims"]

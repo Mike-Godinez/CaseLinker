@@ -1,7 +1,7 @@
 """SPARQL for a Search cohort: one row per case, with graph attributes.
 
 Case graphs in the public store are named
-``https://caselinker.projectvic.org/resource/case/{case_id}``.
+``https://w3id.org/caselinker/resource/case/{case_id}``.
 Search already decided which cases are in the cohort (facet tags live in
 the case database, not as a SPARQL pattern). This builder emits a SELECT
 over those named graphs: source, platforms, agencies, phase, steps,
@@ -20,7 +20,7 @@ import re
 from string import Template
 from typing import Any, Dict, Iterable, List, Optional
 
-CASE_GRAPH_BASE = "https://caselinker.projectvic.org/resource/case/"
+CASE_GRAPH_BASE = "https://w3id.org/caselinker/resource/case/"
 # Slugs used as case ids (nj_ag_2017_001, pacer_…). Reject anything that
 # could break out of an IRI token.
 CASE_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$")

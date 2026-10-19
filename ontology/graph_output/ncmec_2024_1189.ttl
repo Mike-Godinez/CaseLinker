@@ -1,96 +1,119 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1189> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:11.236987" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_1189> ;
+    ns3:hasConfidence 0.9 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-12-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/internet-crime-against-children-task-force> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/kenosha-police-department> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/wisconsin-department-of-justice> a ns1:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:39.421747" ;
     dcterms:identifier "ncmec_2024_1189" ;
-    dcterms:modified "2026-09-15T21:08:11.236987" ;
-    dcterms:source <https://www.wboy.com/news/west-virginia/west-virginia-state-trooper-resigns-amid-child-pornography-investigation/>,
+    dcterms:modified "2026-10-17 23:04:39.421747" ;
+    dcterms:source <https://kenoshacountyeye.com/2024/12/10/kenosha-bartender-charged-with-seven-counts-of-possession-of-child-pornography/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/huntington>,
-        <https://caselinker.up.railway.app/resource/location/west-virginia>,
-        <https://caselinker.up.railway.app/resource/location/wva> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/west-virginia-state-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/huntington>,
-        <https://caselinker.up.railway.app/resource/location/west-virginia>,
-        <https://caselinker.up.railway.app/resource/location/wva> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/amazon>,
+        <https://w3id.org/caselinker/resource/location/ashmus>,
+        <https://w3id.org/caselinker/resource/location/kenosha>,
+        <https://w3id.org/caselinker/resource/location/kenosha-county> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/internet-crime-against-children-task-force>,
+        <https://w3id.org/caselinker/resource/agency/kenosha-police-department>,
+        <https://w3id.org/caselinker/resource/agency/wisconsin-department-of-justice> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/amazon>,
+        <https://w3id.org/caselinker/resource/location/ashmus>,
+        <https://w3id.org/caselinker/resource/location/kenosha>,
+        <https://w3id.org/caselinker/resource/location/kenosha-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns5:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/charge/1> ;
+    ns5:hasProceedingBeginPoint "2024-12-10T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/west-virginia-state-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "West Virginia State Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-12-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "no, not that I can think of" ;
+    dcterms:source <https://kenoshacountyeye.com/2024/12/10/kenosha-bartender-charged-with-seven-counts-of-possession-of-child-pornography/> ;
+    ns4:admissionContext "ld have received the tip. She was asked if there would be any concerning materials on her phone and she stated “no, not that I can think of" ;
+    ns4:admissionFrame "stated_quote" ;
+    ns4:admissionTheme "other" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "direct" ;
+    ns6:description "no, not that I can think of" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189/phase/charged> a ns2:LegalProcessPhase,
+        ns3:Phase ;
+    ns2:hasPhaseBeginPoint "2024-12-10T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/amazon> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Amazon" ;
+    ns6:name "Amazon" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/ashmus> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ashmus’" ;
+    ns6:name "Ashmus’" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/kenosha> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kenosha" ;
+    ns6:name "Kenosha" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
+<https://w3id.org/caselinker/resource/location/kenosha-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kenosha County" ;
+    ns6:name "Kenosha County" .
 
-<https://caselinker.up.railway.app/resource/location/huntington> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Huntington" ;
-    uco-core:name "Huntington" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189/event/possession> a ns2:CSAMIncident,
+        ns3:Event ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/location/west-virginia> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
 
-<https://caselinker.up.railway.app/resource/location/wva> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_1189/facet/csam> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1189> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_1189/provenance> .

@@ -1,108 +1,93 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.310042" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_634> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:35.901339" ;
     dcterms:identifier "ncmec_2023_634" ;
-    dcterms:modified "2026-09-15T20:55:01.310042" ;
-    dcterms:source <https://fox59.com/news/indycrime/state-troopers-arrest-morgan-county-man-for-possessing-child-sex-abuse-material/>,
+    dcterms:modified "2026-10-17 22:21:35.901339" ;
+    dcterms:source <https://www.wkrg.com/baldwin-county/fairhope-man-arrested-tuesday-on-child-porn-charges/#:~:text=Tyler%20Lay%2C%2032%2C%20was%20arrested,to%20an%20FPD%20news%20release>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ind>,
-        <https://caselinker.up.railway.app/resource/location/martinsville>,
-        <https://caselinker.up.railway.app/resource/location/morgan-county>,
-        <https://caselinker.up.railway.app/resource/location/ohio> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_634/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_634/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_634/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_634/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2023_634/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/indiana-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ind>,
-        <https://caselinker.up.railway.app/resource/location/martinsville>,
-        <https://caselinker.up.railway.app/resource/location/morgan-county>,
-        <https://caselinker.up.railway.app/resource/location/ohio> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ala>,
+        <https://w3id.org/caselinker/resource/location/fairhope> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_634/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_634/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_634/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_634/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2023_634/tech/cybertipline> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/baldwin-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/fairhope-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/ala>,
+        <https://w3id.org/caselinker/resource/location/fairhope> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_634/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_634/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_634/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-10-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_634/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_634/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_634/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_634/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_634/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-10-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_634/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_634/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/indiana-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/baldwin-county-sheriffs-office> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/agency/fairhope-police-department> a ns7:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "Fairhope Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_634/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns6:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_634/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_634/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_634/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634/operation> a cac-core:Event,
-        cacontology-taskforce:UndercoverUnit .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_634/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_634/charge/1> ;
+    ns6:hasProceedingBeginPoint "2023-10-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_634/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 32 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_634/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_634/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
     rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_634/phase/arrested> a ns1:InitialPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2023-10-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/location/ala> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ala." ;
+    ns3:name "Ala." .
 
-<https://caselinker.up.railway.app/resource/location/ind> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/fairhope> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fairhope" ;
+    ns3:name "Fairhope" .
 
-<https://caselinker.up.railway.app/resource/location/martinsville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Martinsville" ;
-    uco-core:name "Martinsville" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_634/event/possession> a ns1:CSAMIncident,
+        ns7:Event ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_634/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/location/morgan-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
 
-<https://caselinker.up.railway.app/resource/location/ohio> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_634/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_634/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2023_634> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_634/provenance> .

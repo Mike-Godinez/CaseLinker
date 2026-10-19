@@ -1,160 +1,126 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_356> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_356> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/admission/3/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/admission/3> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_356> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/madison-county-sheriffs-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Madison County Sheriff's Department" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/operation> a cac-core:Event,
-        cacontology-taskforce:ReactiveOperation .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 29 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "was currently using" ;
-    dcterms:source <https://www.thetelegraph.com/news/article/godfrey-man-faces-charges-child-pornography-18689101.php> ;
-    ns1:admissionContext "uring the execution of the search warrant, “multiple videos and images” were found on the cellphone Bray admitted he was currently using" ;
-    ns1:admissionFrame "admitted_he_she" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "was currently using" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "currently using" ;
-    dcterms:source <https://www.thetelegraph.com/news/article/godfrey-man-faces-charges-child-pornography-18689101.php> ;
-    ns1:admissionContext "3 felonies. According to court documents, on Feb. 22 police executed a search warrant and discovered multiple files containing child porn..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "currently using" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/admission/3> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "to currently using" ;
-    dcterms:source <https://www.thetelegraph.com/news/article/godfrey-man-faces-charges-child-pornography-18689101.php> ;
-    ns1:admissionContext "search warrant and discovered multiple files containing child pornography on a cellphone he admitted to currently using" ;
-    ns1:admissionFrame "he_admitted_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "to currently using" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/edwardsville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Edwardsville" ;
-    uco-core:name "Edwardsville" .
-
-<https://caselinker.up.railway.app/resource/location/pinewood> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Pinewood" ;
-    uco-core:name "Pinewood" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.489749" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:28.922615" ;
     dcterms:identifier "ncmec_2024_356" ;
-    dcterms:modified "2026-09-15T21:08:10.489749" ;
-    dcterms:source <https://www.thetelegraph.com/news/article/godfrey-man-faces-charges-child-pornography-18689101.php>,
+    dcterms:modified "2026-10-17 23:04:28.922615" ;
+    dcterms:source <https://daily-journal.com/news/local/manteno_news/manteno-man-arrested-for-child-pornography/article_a9f19d84-d676-11ee-aa1f-5b6cacdd82aa.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/edwardsville>,
-        <https://caselinker.up.railway.app/resource/location/pinewood> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/admission/3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/madison-county-sheriffs-department>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/edwardsville>,
-        <https://caselinker.up.railway.app/resource/location/pinewood> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/chicago>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/kankakee-county>,
+        <https://w3id.org/caselinker/resource/location/manteno> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_356/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_356/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_356/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_356/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_356/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_356/legal-proceeding> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/illinois-attorney-generals>,
+        <https://w3id.org/caselinker/resource/agency/kankakee-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/tri-county-stolen-auto-task-force> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/chicago>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/kankakee-county>,
+        <https://w3id.org/caselinker/resource/location/manteno> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-02-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_356/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_356/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_356/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_356/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_356/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-02-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_356/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_356/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_356/person/victim/1> .
 
+<https://w3id.org/caselinker/resource/agency/illinois-attorney-generals> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/kankakee-county-sheriffs-office> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/tri-county-stolen-auto-task-force> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns4:indictmentCounts 12 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/charge/2> a ns4:CriminalCharge ;
+    rdfs:label "possessing" ;
+    ns4:indictmentCounts 10 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/charge/3> a ns4:CriminalCharge,
+        ns4:StateCharge ;
+    rdfs:label "sexual exploitation of a child" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/charge/4> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/event/distribution> a ns3:Event,
+        ns4:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): detained at the Kankakee County Jail" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_356/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_356/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_356/charge/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_356/charge/4> ;
+    ns4:hasProceedingBeginPoint "2024-02-29T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 38 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/phase/charged> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2024-02-29T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/chicago> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Chicago" ;
+    ns6:name "Chicago" .
+
+<https://w3id.org/caselinker/resource/location/illinois> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Illinois" ;
+    ns6:name "Illinois" .
+
+<https://w3id.org/caselinker/resource/location/kankakee-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kankakee County" ;
+    ns6:name "Kankakee County" .
+
+<https://w3id.org/caselinker/resource/location/manteno> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Manteno" ;
+    ns6:name "Manteno" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns3:Event .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_356/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_356> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_356/provenance> .

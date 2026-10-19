@@ -1,83 +1,90 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_927> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.956117" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_927> a ns4:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:35.931177" ;
     dcterms:identifier "ncmec_2024_927" ;
-    dcterms:modified "2026-09-15T21:08:10.956117" ;
-    dcterms:source <https://www.13abc.com/2024/05/30/wauseon-man-convicted-sex-crimes-against-minor-sentenced-jail-probation/>,
+    dcterms:modified "2026-10-17 23:04:35.931177" ;
+    dcterms:source <https://ktvl.com/news/local/sheriff-bend-man-arrested-on-charges-of-encouraging-child-sex-abuse-after-online-tip>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/north-ridgeville>,
-        <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/wauseon> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_927/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_927/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_927/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_927/legal-step/sentenced> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/north-ridgeville>,
-        <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/wauseon> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ore>,
+        <https://w3id.org/caselinker/resource/location/quintana> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_927/phase/charged> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_927/phase/charged> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_927/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_927/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_927/legal-proceeding> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/bend-police-department>,
+        <https://w3id.org/caselinker/resource/agency/deschutes-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/ore>,
+        <https://w3id.org/caselinker/resource/location/quintana> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_927/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_927/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_927/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_927/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_927/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_927/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_927/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_927/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_927/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "Pandering Obscenity Involving a" ;
-    cacontology-legal-outcomes:indictmentCounts 12 .
+<https://w3id.org/caselinker/resource/agency/bend-police-department> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_927/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_927/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_927/sentence/1> .
+<https://w3id.org/caselinker/resource/agency/deschutes-county-sheriffs-office> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_927/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_927/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_927/charge/1> a ns5:CriminalCharge ;
+    rdfs:label "each of the following:" ;
+    ns5:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_927/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_927/cybertip> a ns2:NCMECCybertipReport ;
+    ns2:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_927/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:ProbationSentence ;
-    rdfs:label "[\"probation\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_927/event/distribution> a ns1:Event,
+        ns5:CSAM_Distribution ;
+    ns4:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_927/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_927/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): lodged at the Deschutes County Sheriff's Office Adult Jail" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_927/charge/1> ;
+    ns5:hasProceedingBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/north-ridgeville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "North Ridgeville" ;
-    uco-core:name "North Ridgeville" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_927/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 30 .
 
-<https://caselinker.up.railway.app/resource/location/ohio> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_927/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/wauseon> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Wauseon" ;
-    uco-core:name "Wauseon" .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_927/phase/charged> a ns4:LegalProcessPhase,
+        ns1:Phase ;
+    ns4:hasPhaseBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/ore> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ore." ;
+    ns6:name "Ore." .
+
+<https://w3id.org/caselinker/resource/location/quintana> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Quintana" ;
+    ns6:name "Quintana" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_927> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_927/provenance> .

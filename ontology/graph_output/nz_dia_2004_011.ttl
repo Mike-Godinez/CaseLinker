@@ -1,0 +1,103 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/platforms#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 14:04:14.964430" ;
+    dcterms:identifier "nz_dia_2004_011" ;
+    dcterms:modified "2026-10-18 14:04:14.964430" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/provenance> ;
+    dcterms:source <https://www.dia.govt.nz/press.nsf/d77da9b523f12931cc256ac5000d19b6/418c98076521c369cc256e84007aa6ce!OpenDocument>,
+        "NZ DIA" ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/event/possession>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/legal-step/sentenced> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/department-inspectors>,
+        <https://w3id.org/caselinker/resource/agency/department-of-internal-affairs> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2004-04-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2004-04-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/department-inspectors> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/department-of-internal-affairs> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/event/distribution> a ns2:Event,
+        ns3:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/charge/1> ;
+    ns3:hasProceedingBeginPoint "2004-04-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:resultsSentence <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/sentence/2> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/legal-step/sentenced> a ns2:Event,
+        ns2:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2004-04-29T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/sentence/1> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "seven months" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/sentence/2> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "two to 14 years" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/phase/sentenced> a ns2:Phase,
+        ns3:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2004-04-29T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/platform/kazaa> a ns2:DigitalSystemEntity,
+        ns5:FileHostingService ;
+    rdfs:label "Kazaa" ;
+    ns5:platformType "p2p" ;
+    ns5:platformVersion "legacy" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/kazaa> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2004_011/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/kazaa> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/nz_dia_2004_011/facet/possession> .
+

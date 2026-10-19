@@ -1,188 +1,160 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2022_512> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_512/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_512> ;
+    ns3:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "1992-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2019-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_512/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_512/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_512/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.442436" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:25.745427" ;
     dcterms:identifier "ncmec_2022_512" ;
-    dcterms:modified "2026-09-15T20:45:06.442436" ;
-    dcterms:source <https://www.kilgorenewsherald.com/former-priest-charged-with-possessing-child-pornography/article_55c40a01-e0a3-55fa-82cc-5cee27a6472a.html>,
+    dcterms:modified "2026-10-17 21:51:25.745427" ;
+    dcterms:source <https://triblive.com/local/glassport-man-gets-federal-prison-term-for-child-porn-found-during-missing-kentucky-teen-investigation/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/871-miller-st>,
-        <https://caselinker.up.railway.app/resource/location/hazleton>,
-        <https://caselinker.up.railway.app/resource/location/lords-valley>,
-        <https://caselinker.up.railway.app/resource/location/luzerne>,
-        <https://caselinker.up.railway.app/resource/location/luzerne-county>,
-        <https://caselinker.up.railway.app/resource/location/milford>,
-        <https://caselinker.up.railway.app/resource/location/pike-county>,
-        <https://caselinker.up.railway.app/resource/location/pittston>,
-        <https://caselinker.up.railway.app/resource/location/scranton>,
-        <https://caselinker.up.railway.app/resource/location/west-hazleton>,
-        <https://caselinker.up.railway.app/resource/location/williamsport> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/legal-step/sentenced> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/tech/cybertipline> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/871-miller-st>,
-        <https://caselinker.up.railway.app/resource/location/hazleton>,
-        <https://caselinker.up.railway.app/resource/location/lords-valley>,
-        <https://caselinker.up.railway.app/resource/location/luzerne>,
-        <https://caselinker.up.railway.app/resource/location/luzerne-county>,
-        <https://caselinker.up.railway.app/resource/location/milford>,
-        <https://caselinker.up.railway.app/resource/location/pike-county>,
-        <https://caselinker.up.railway.app/resource/location/pittston>,
-        <https://caselinker.up.railway.app/resource/location/scranton>,
-        <https://caselinker.up.railway.app/resource/location/west-hazleton>,
-        <https://caselinker.up.railway.app/resource/location/williamsport> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/glassport>,
+        <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/paducah>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_512/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_512/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_512/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_512/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_512/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_512/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_512/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/glassport>,
+        <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/paducah>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns6:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_512/charge/1> ;
+    ns6:hasProceedingBeginPoint "2019-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2022_512/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_512/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_512/sentence/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_512/sentence/4>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_512/sentence/5> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "1992-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/legal-step/sentenced> a ns3:Event,
+        ns3:LegalEvent,
+        ns6:LegalProceeding,
+        ns6:SentencingHearing ;
+    ns6:hasProceedingBeginPoint "2019-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "1992-06-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 59 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 56 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 11 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2019-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_512/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_512/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_512/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "1992-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/event/possession> ;
-    cacontology:perpetratorRegisteredSexOffender true ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/sentence/1> a ns6:CriminalSentence,
+        ns6:PrisonSentence ;
+    rdfs:label "87 months" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"72 months\", \"10 years\", \"$20,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/sentence/2> a ns6:CriminalSentence,
+        ns6:PrisonSentence ;
+    rdfs:label "three to six years" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/sentence/3> a ns6:CriminalSentence,
+        ns6:SupervisedRelease ;
+    rdfs:label "five years supervised release" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "searched online for videos and images of younger males, police said" ;
-    dcterms:source <https://www.kilgorenewsherald.com/former-priest-charged-with-possessing-child-pornography/article_55c40a01-e0a3-55fa-82cc-5cee27a6472a.html> ;
-    ns1:admissionContext "tion with his Google Drive account. Timchak initially declined to speak with police, but later admitted he searched online for videos and..." ;
-    ns1:admissionFrame "admitted_he_she" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "searched online for videos and images of younger males, police said" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/sentence/4> a ns6:CriminalSentence,
+        ns6:ProbationSentence ;
+    rdfs:label "three years probation" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "1992-06-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/sentence/5> a ns6:CriminalSentence,
+        ns6:MonetaryPenalty ;
+    rdfs:label "$9,000" .
 
-<https://caselinker.up.railway.app/resource/location/871-miller-st> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "871 Miller St." ;
-    uco-core:name "871 Miller St." .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/phase/sentenced> a ns3:Phase,
+        ns6:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2019-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/hazleton> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Hazleton" ;
-    uco-core:name "Hazleton" .
+<https://w3id.org/caselinker/resource/location/glassport> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Glassport" ;
+    ns5:name "Glassport" .
 
-<https://caselinker.up.railway.app/resource/location/lords-valley> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Lord’s Valley" ;
-    uco-core:name "Lord’s Valley" .
+<https://w3id.org/caselinker/resource/location/kentucky> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kentucky" ;
+    ns5:name "Kentucky" .
 
-<https://caselinker.up.railway.app/resource/location/luzerne> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Luzerne" ;
-    uco-core:name "Luzerne" .
+<https://w3id.org/caselinker/resource/location/ky> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ky." ;
+    ns5:name "Ky." .
 
-<https://caselinker.up.railway.app/resource/location/luzerne-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/paducah> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Paducah" ;
+    ns5:name "Paducah" .
 
-<https://caselinker.up.railway.app/resource/location/milford> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/pennsylvania> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pennsylvania" ;
+    ns5:name "Pennsylvania" .
 
-<https://caselinker.up.railway.app/resource/location/pike-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/platform/instagram> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Instagram" .
 
-<https://caselinker.up.railway.app/resource/location/pittston> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Pittston" ;
-    uco-core:name "Pittston" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns3:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_512/admission/1> ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/instagram> .
 
-<https://caselinker.up.railway.app/resource/location/scranton> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_512/admission/1> ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/instagram> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_512/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/location/west-hazleton> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "rented a car and picked the girl up after they had conversed over Instagram" ;
+    dcterms:source <https://triblive.com/local/glassport-man-gets-federal-prison-term-for-child-porn-found-during-missing-kentucky-teen-investigation/> ;
+    ns2:admissionContext "owed the girl enter with Shelton on May 3, police said. During an interview with police, Shelton said he rented a car and picked the girl..." ;
+    ns2:admissionFrame "said_paraphrase" ;
+    ns2:admissionTheme "tech_use" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_512/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns5:description "rented a car and picked the girl up after they had conversed over Instagram" .
 
-<https://caselinker.up.railway.app/resource/location/williamsport> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Williamsport" ;
-    uco-core:name "Williamsport" .
 
-<https://caselinker.up.railway.app/resource/platform/google-drive> a cacontology-platforms:FileHostingService ;
-    rdfs:label "Google Drive" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/google-drive> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_512/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/google-drive> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_512/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2022_512> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_512/provenance> .

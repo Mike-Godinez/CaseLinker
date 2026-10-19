@@ -1,0 +1,72 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_005> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 14:18:20.861258" ;
+    dcterms:identifier "scotland_police_2024_005" ;
+    dcterms:modified "2026-10-18 14:18:20.861258" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scotland_police_2024_005/provenance> ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2024/april/man-sentenced-in-connection-with-non-recent-sexual-offences-in-renfrewshire-glasgow-and-argyll/>,
+        "SCOTLAND POLICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/argyll>,
+        <https://w3id.org/caselinker/resource/location/glasgow>,
+        <https://w3id.org/caselinker/resource/location/renfrewshire> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/scotland_police_2024_005/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/scotland_police_2024_005/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/scotland_police_2024_005/legal-step/sentenced> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/police-scotland> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/argyll>,
+        <https://w3id.org/caselinker/resource/location/glasgow>,
+        <https://w3id.org/caselinker/resource/location/renfrewshire> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_005/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-03-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2024_005/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_005/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-03-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2024_005/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/police-scotland> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_005/legal-step/sentenced> a ns4:Event,
+        ns4:LegalEvent,
+        ns7:LegalProceeding,
+        ns7:SentencingHearing ;
+    ns7:hasProceedingBeginPoint "2024-03-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_005/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 33 .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_005/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_005/phase/sentenced> a ns4:Phase,
+        ns7:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2024-03-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/argyll> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Argyll" ;
+    ns1:name "Argyll" .
+
+<https://w3id.org/caselinker/resource/location/glasgow> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Glasgow" ;
+    ns1:name "Glasgow" .
+
+<https://w3id.org/caselinker/resource/location/renfrewshire> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Renfrewshire" ;
+    ns1:name "Renfrewshire" .
+

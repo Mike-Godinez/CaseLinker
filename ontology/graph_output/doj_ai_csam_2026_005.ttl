@@ -1,185 +1,178 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/production>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2026-03-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/production>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/offense-event/charge-3> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:40:29.662912" ;
+<https://w3id.org/caselinker/resource/agency/doj> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 09:43:01.107719" ;
     dcterms:identifier "doj_ai_csam_2026_005" ;
-    dcterms:modified "2026-09-15T21:40:29.662912" ;
+    dcterms:modified "2026-10-18 09:43:01.107719" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/provenance> ;
     dcterms:source <https://www.justice.gov/usao-edmo/pr/missouri-sex-offender-admits-producing-ai-generated-child-sexual-abuse-material>,
-        "DOJ SAFE CHILDHOOD" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/farmington>,
-        <https://caselinker.up.railway.app/resource/location/missouri>,
-        <https://caselinker.up.railway.app/resource/location/st-louis> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/production>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/project-safe-childhood>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/offense-event/charge-3> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/farmington>,
-        <https://caselinker.up.railway.app/resource/location/missouri>,
-        <https://caselinker.up.railway.app/resource/location/st-louis> .
+        "DOJ AI CSAM" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/farmington>,
+        <https://w3id.org/caselinker/resource/location/missouri>,
+        <https://w3id.org/caselinker/resource/location/st-louis> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/admission/1>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/production>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/offense-event/charge-3> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/doj> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/farmington>,
+        <https://w3id.org/caselinker/resource/location/missouri>,
+        <https://w3id.org/caselinker/resource/location/st-louis> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+    ns6:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/charge/2> a ns6:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/charge/3> a ns6:CriminalCharge ;
     rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/offense-event/charge-3> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/offense-event/charge-3> .
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/offense-event/charge-3> ;
+    ns3:chargeCluster "child_exploitation" ;
+    ns3:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/offense-event/charge-3> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/project-safe-childhood> a cac-core:Event,
-        cacontology-multi:ProjectSafeChildhoodOperation ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/project-safe-childhood> a ns5:Event,
+        ns4:ProjectSafeChildhoodOperation ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/sentence/1> .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/charge/1>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/charge/2>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/charge/3> ;
+    ns6:hasProceedingBeginPoint "2026-03-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns6:LegalProceeding,
+        ns6:SentencingHearing ;
+    ns6:hasProceedingBeginPoint "2026-03-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 70 .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 70 .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/production>,
-        <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2026-03-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/production>,
+        <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/offense-event/charge-3> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:ProbationSentence ;
-    rdfs:label "[\"supervised release\", \"probation\", \"10 years\"]" .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/phase/sentenced> a ns5:Phase,
+        ns6:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2026-03-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/farmington> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/farmington> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Farmington" ;
-    uco-core:name "Farmington" .
+    ns1:name "Farmington" .
 
-<https://caselinker.up.railway.app/resource/location/missouri> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/missouri> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Missouri" ;
+    ns1:name "Missouri" .
 
-<https://caselinker.up.railway.app/resource/location/st-louis> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/st-louis> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "St. Louis" ;
-    uco-core:name "St. Louis" .
+    ns1:name "St. Louis" .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/ai-csam> a cacontology:DigitallyGeneratedCSAMIncident,
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/ai-csam> a ns2:DigitallyGeneratedCSAMIncident,
         <https://cacontology.projectvic.org/ai-csam#AIGeneratedCSAM>,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/admission/1> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/discord>,
-        <https://caselinker.up.railway.app/resource/platform/gen-ai>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> .
+        ns5:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/admission/1> ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/discord>,
+        <https://w3id.org/caselinker/resource/platform/gen-ai>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/admission/1> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/discord>,
-        <https://caselinker.up.railway.app/resource/platform/gen-ai>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/facet/possession> .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/possession> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/admission/1> ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/discord>,
+        <https://w3id.org/caselinker/resource/platform/gen-ai>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/event/production> a cac-core:Event,
-        cacontology-production:ProductionOffense ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/admission/1> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/discord>,
-        <https://caselinker.up.railway.app/resource/platform/gen-ai>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/facet/production> .
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/event/production> a ns5:Event,
+        <https://cacontology.projectvic.org/production#ProductionOffense> ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/admission/1> ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/discord>,
+        <https://w3id.org/caselinker/resource/platform/gen-ai>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/facet/production> .
 
-<https://caselinker.up.railway.app/resource/platform/discord> a cac-core:DigitalSystemEntity,
-        cacontology-platforms:MessagingService ;
+<https://w3id.org/caselinker/resource/platform/discord> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
     rdfs:label "Discord" .
 
-<https://caselinker.up.railway.app/resource/platform/gen-ai> a cacontology-platforms:FileHostingService ;
+<https://w3id.org/caselinker/resource/platform/gen-ai> a <https://cacontology.projectvic.org/platforms#FileHostingService> ;
     rdfs:label "Gen AI" .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "had used the AI program to create images depicting child pornography" ;
     dcterms:source <https://www.justice.gov/usao-edmo/pr/missouri-sex-offender-admits-producing-ai-generated-child-sexual-abuse-material> ;
-    ns1:admissionContext "generate AI images on the laptop, as well as a profile for an AI-generated teenage girl. Kerbrat admitted that he had used the AI program..." ;
-    ns1:admissionFrame "admitted_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "had used the AI program to create images depicting child pornography" .
+    ns1:description "had used the AI program to create images depicting child pornography" ;
+    ns3:admissionContext "generate AI images on the laptop, as well as a profile for an AI-generated teenage girl. Kerbrat admitted that he had used the AI program..." ;
+    ns3:admissionFrame "admitted_paraphrase" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" .
 
-<https://caselinker.up.railway.app/resource/case/doj_ai_csam_2026_005/offense-event/charge-3> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
+<https://w3id.org/caselinker/resource/case/doj_ai_csam_2026_005/offense-event/charge-3> a ns2:ChildSexualAbuseEvent,
+        ns5:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
     rdfs:label "Inferred offense from charge: child exploitation" ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/discord>,
-        <https://caselinker.up.railway.app/resource/platform/gen-ai>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> .
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/discord>,
+        <https://w3id.org/caselinker/resource/platform/gen-ai>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
 

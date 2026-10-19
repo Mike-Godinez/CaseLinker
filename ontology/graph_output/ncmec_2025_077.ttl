@@ -1,139 +1,165 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-usa-federal: <https://cacontology.projectvic.org/usa-federal-law#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.221254" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_077/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_077> ;
+    ns4:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-02-05T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_077/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/offense-event/charge-3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/offense-event/charge-5> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_077/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/anderson-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:16.211295" ;
     dcterms:identifier "ncmec_2025_077" ;
-    dcterms:modified "2026-09-15T21:27:13.221254" ;
-    dcterms:source <https://www.nbcsandiego.com/news/local/chula-vista-man-sentenced-to-prison-on-child-molestation-sex-abuse-charges/3726384/>,
+    dcterms:modified "2026-10-18 00:01:16.211295" ;
+    dcterms:source <https://krcrtv.com/news/local/apd-uncovers-over-13000-child-abuse-images-in-raid-on-suspects-home-in-redding>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/california>,
-        <https://caselinker.up.railway.app/resource/location/chula-vista>,
-        <https://caselinker.up.railway.app/resource/location/san-diego>,
-        <https://caselinker.up.railway.app/resource/location/san-diego-county>,
-        <https://caselinker.up.railway.app/resource/location/texas> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/offense-event/charge-2> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/district-attorneys-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/california>,
-        <https://caselinker.up.railway.app/resource/location/chula-vista>,
-        <https://caselinker.up.railway.app/resource/location/san-diego>,
-        <https://caselinker.up.railway.app/resource/location/san-diego-county>,
-        <https://caselinker.up.railway.app/resource/location/texas> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/redding> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_077/phase/pleaded-guilty> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_077/phase/pleaded-guilty> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_077/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/legal-step/pleaded-guilty>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/offense-event/charge-3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/offense-event/charge-5> ;
+    ns2:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/anderson-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/redding> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/charge/1> a ns5:CriminalCharge ;
+    rdfs:label "sending harmful material to a minor" ;
+    ns5:indictmentCounts 4 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/charge/2> a ns5:CriminalCharge ;
+    rdfs:label "communicating with a minor to commit a sex crime or felony involving a minor" ;
+    ns5:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/agency/district-attorneys-office> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/charge/3> a ns5:CriminalCharge ;
+    rdfs:label "distribution of child sexual assault material" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2025_077/offense-event/charge-3> ;
+    ns5:indictmentCounts 3 ;
+    ns1:chargeCluster "child_sexual_assault" ;
+    ns1:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_077/offense-event/charge-3> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/charge/4> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child molestation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/offense-event/charge-2> ;
-    ns1:chargeCluster "child_molestation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/offense-event/charge-2> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/charge/5> a ns5:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2025_077/offense-event/charge-5> ;
+    ns1:chargeCluster "child_exploitation" ;
+    ns1:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_077/offense-event/charge-5> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/event/distribution> a ns4:Event,
+        ns5:CSAM_Distribution ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_077/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/charge/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/charge/4>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/charge/5> ;
+    ns5:hasProceedingBeginPoint "2025-02-05T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/legal-step/pleaded-guilty> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:PleaBargaining ;
+    ns5:hasProceedingBeginPoint "2025-02-05T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 41 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"25 years\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-02-05T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_077/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/offense-event/charge-3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_077/offense-event/charge-5> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_077/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/phase/pleaded-guilty> a ns4:Phase,
+        ns5:PreTrialPhase ;
+    ns2:hasPhaseBeginPoint "2025-02-05T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/california> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/calif> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Calif." ;
+    ns3:name "Calif." .
 
-<https://caselinker.up.railway.app/resource/location/chula-vista> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Chula Vista" ;
-    uco-core:name "Chula Vista" .
+<https://w3id.org/caselinker/resource/location/redding> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Redding" ;
+    ns3:name "Redding" .
 
-<https://caselinker.up.railway.app/resource/location/san-diego> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "San Diego" ;
-    uco-core:name "San Diego" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "a sentencing enhancement for possessing a large quantity of contraband images" ;
+    dcterms:source <https://krcrtv.com/news/local/apd-uncovers-over-13000-child-abuse-images-in-raid-on-suspects-home-in-redding> ;
+    ns1:admissionContext "age of 18 3 counts of distribution of child sexual assault material One count of using a concealed camera in a bathroom APD said that Bat..." ;
+    ns1:admissionFrame "admitted_to" ;
+    ns1:admissionTheme "harm_conduct" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_077/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns3:description "a sentencing enhancement for possessing a large quantity of contraband images" .
 
-<https://caselinker.up.railway.app/resource/location/san-diego-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "San Diego County" ;
-    uco-core:name "San Diego County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/event/possession> a ns2:CSAMIncident,
+        ns4:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_077/admission/1> ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_077/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/location/texas> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_077/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/offense-event/charge-3> a ns2:ChildSexualAbuseEvent,
+        ns4:Event,
+        <https://cacontology.projectvic.org/usa-federal-law#SexualAbuseOfMinor>,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: distribution of child sexual assault material" ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_077/offense-event/charge-2> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        cacontology-usa-federal:SexualAbuseOfMinor,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child molestation" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077/offense-event/charge-5> a ns2:ChildSexualAbuseEvent,
+        ns4:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_077> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_077/provenance> .

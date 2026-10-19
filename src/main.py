@@ -14,6 +14,7 @@ sys.path.insert(0, str(src_path / "Storage Layer"))
 sys.path.insert(0, str(src_path / "Clustering & Analysis Layer"))
 sys.path.insert(0, str(src_path / "Visualization Layer"))
 
+from case_storage_utils import CaseIdCollision
 from processing import process_cases
 import difflib
 import os
@@ -62,7 +63,10 @@ def main():
                 print(f"\nProcessing {len(file_paths)} file(s)...")
 
         run_pipeline(file_paths)
-        
+
+    except CaseIdCollision as e:
+        print(f"\n❌ Case ID collision: {e}")
+        sys.exit(1)
     except Exception as e:
         print(f"\n❌ Error: {e}")
         import traceback
@@ -173,6 +177,9 @@ def get_database_path() -> Optional[str]:
     """
     if os.getenv("DATABASE_URL"):
         return None  # PostgreSQL doesn't use file path
+    scratch = os.getenv("CASELINKER_DB", "").strip()
+    if scratch:
+        return scratch
     try:
         from config import DATABASE_PATH
         return DATABASE_PATH

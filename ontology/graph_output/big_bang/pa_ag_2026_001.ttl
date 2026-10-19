@@ -1,80 +1,98 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:03:48.805967" ;
+<https://w3id.org/caselinker/resource/case/pa_ag_2026_001> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 06:23:11.203018" ;
     dcterms:identifier "pa_ag_2026_001" ;
-    dcterms:modified "2026-09-10T20:03:48.805967" ;
+    dcterms:modified "2026-10-18 06:23:11.203018" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/pa_ag_2026_001/provenance> ;
     dcterms:source <https://www.attorneygeneral.gov/taking-action/ag-sundays-child-predator-section-charges-repeat-offender-from-monroe-county-with-possessing-hundreds-of-files-of-child-sexual-abuse-material/>,
         "PA AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/office-of-the-attorney-general> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/harrisburg>,
+        <https://w3id.org/caselinker/resource/location/lackawanna-county>,
+        <https://w3id.org/caselinker/resource/location/monroe-county>,
+        <https://w3id.org/caselinker/resource/location/stroudsburg> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/pa_ag_2026_001/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/pa_ag_2026_001/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/pa_ag_2026_001/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/pa_ag_2026_001/event/possession>,
+        <https://w3id.org/caselinker/resource/case/pa_ag_2026_001/legal-proceeding> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/office-of-the-attorney-general> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/harrisburg>,
+        <https://w3id.org/caselinker/resource/location/lackawanna-county>,
+        <https://w3id.org/caselinker/resource/location/monroe-county>,
+        <https://w3id.org/caselinker/resource/location/stroudsburg> .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/pa_ag_2026_001/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/pa_ag_2026_001/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/pa_ag_2026_001/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/pa_ag_2026_001/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/pa_ag_2026_001/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/pa_ag_2026_001/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/office-of-the-attorney-general> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/office-of-the-attorney-general> a ns7:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/pa_ag_2026_001/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
     rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/pa_ag_2026_001/event/distribution> a ns5:Event,
+        ns3:CSAM_Distribution ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/pa_ag_2026_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/sentence/1>,
-        <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/sentence/2> .
+<https://w3id.org/caselinker/resource/case/pa_ag_2026_001/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/pa_ag_2026_001/charge/1> ;
+    ns3:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 54 .
+<https://w3id.org/caselinker/resource/case/pa_ag_2026_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 54 .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/pa_ag_2026_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "$250,000" .
+<https://w3id.org/caselinker/resource/case/pa_ag_2026_001/phase/charged> a ns2:LegalProcessPhase,
+        ns5:Phase ;
+    ns2:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/sentence/2> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:ProbationSentence ;
-    rdfs:label "probation" .
+<https://w3id.org/caselinker/resource/location/harrisburg> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Harrisburg" ;
+    ns6:name "Harrisburg" .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/lackawanna-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lackawanna County" ;
+    ns6:name "Lackawanna County" .
 
-<https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/pa_ag_2026_001/facet/possession> .
+<https://w3id.org/caselinker/resource/location/monroe-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Monroe County" ;
+    ns6:name "Monroe County" .
+
+<https://w3id.org/caselinker/resource/location/stroudsburg> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Stroudsburg" ;
+    ns6:name "Stroudsburg" .
+
+<https://w3id.org/caselinker/resource/case/pa_ag_2026_001/event/possession> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns2:severityLevel 3 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/pa_ag_2026_001/facet/possession> .
 

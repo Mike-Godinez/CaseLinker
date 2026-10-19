@@ -1,0 +1,136 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 04:42:34.438370" ;
+    dcterms:identifier "ice_2013_005" ;
+    dcterms:modified "2026-10-18 04:42:34.438370" ;
+    dcterms:source <https://www.ice.gov/news/releases/white-lake-man-charged-production-distribution-child-pornography>,
+        "ICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ireland>,
+        <https://w3id.org/caselinker/resource/location/white-lake> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ice_2013_005/phase/convicted> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ice_2013_005/phase/convicted> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ice_2013_005/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ice_2013_005/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ice_2013_005/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ice_2013_005/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ice_2013_005/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/ice_2013_005/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ice_2013_005/legal-step/convicted>,
+        <https://w3id.org/caselinker/resource/case/ice_2013_005/operation> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/ice>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/virtual-global-taskforce>,
+        <https://w3id.org/caselinker/resource/agency/white-lake-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/ireland>,
+        <https://w3id.org/caselinker/resource/location/white-lake> .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2013-11-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ice_2013_005/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ice_2013_005/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2013-11-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ice_2013_005/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ice_2013_005/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/hsi> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/ice> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/virtual-global-taskforce> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/white-lake-police-department> a ns5:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "White Lake Police Department" .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/charge/2> a ns4:CriminalCharge,
+        ns4:SexTrafficking ;
+    rdfs:label "sex trafficking" .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/charge/3> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/event/distribution> a ns5:Event,
+        ns4:CSAM_Distribution ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/event/multi-jurisdiction> a ns5:Event,
+        ns6:MultiJurisdictionalInvestigation ;
+    ns2:severityLevel 3 ;
+    ns6:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/event/trafficking> a ns5:Event,
+        ns4:SexTrafficking ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ice_2013_005/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ice_2013_005/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ice_2013_005/charge/3> ;
+    ns4:hasProceedingBeginPoint "2013-11-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/legal-step/convicted> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2013-11-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/operation> a ns5:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 34 .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/phase/convicted> a ns5:Phase,
+        ns4:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2013-11-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/ireland> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ireland" ;
+    ns1:name "Ireland" .
+
+<https://w3id.org/caselinker/resource/location/white-lake> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "White Lake" ;
+    ns1:name "White Lake" .
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005/event/csam> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns2:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ice_2013_005/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/ice_2013_005> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ice_2013_005/provenance> .

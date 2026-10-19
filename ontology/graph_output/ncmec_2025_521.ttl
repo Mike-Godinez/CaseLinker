@@ -1,89 +1,95 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.625425" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:21.060105" ;
     dcterms:identifier "ncmec_2025_521" ;
-    dcterms:modified "2026-09-15T21:27:13.625425" ;
-    dcterms:source <https://www.firstalert4.com/2025/05/23/2-st-francois-county-men-arrested-child-sex-crimes/>,
+    dcterms:modified "2026-10-18 00:01:21.060105" ;
+    dcterms:source <https://krcgtv.com/news/local/owensville-man-charged-with-multiple-sex-crimes-against-a-child-under-14>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/mo>,
-        <https://caselinker.up.railway.app/resource/location/st-francois-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/event/trafficking>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/mo>,
-        <https://caselinker.up.railway.app/resource/location/st-francois-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/franklin-county>,
+        <https://w3id.org/caselinker/resource/location/owensville> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_521/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_521/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_521/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_521/event/production>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_521/legal-proceeding> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/franklin-county>,
+        <https://w3id.org/caselinker/resource/location/owensville> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-05-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_521/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_521/event/production> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_521/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-05-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_521/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_521/event/production> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_521/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/charge/2> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns2:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/charge/3> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521/event/trafficking> a cac-core:Event,
-        cacontology-legal-outcomes:SexTrafficking .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_521/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_521/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_521/charge/3> ;
+    ns2:hasProceedingBeginPoint "2025-05-15T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 24 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/phase/charged> a ns3:LegalProcessPhase,
+        ns5:Phase ;
+    ns3:hasPhaseBeginPoint "2025-05-15T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/franklin-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Franklin County" ;
+    ns1:name "Franklin County" .
 
-<https://caselinker.up.railway.app/resource/location/mo> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/owensville> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Owensville" ;
+    ns1:name "Owensville" .
 
-<https://caselinker.up.railway.app/resource/location/st-francois-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "St. Francois County" ;
-    uco-core:name "St. Francois County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/event/possession> a ns3:CSAMIncident,
+        ns5:Event ;
+    ns3:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_521/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_521/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_521/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521/event/production> a ns5:Event,
+        <https://cacontology.projectvic.org/production#ProductionOffense> ;
+    ns3:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_521/facet/production> .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_521> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_521/provenance> .

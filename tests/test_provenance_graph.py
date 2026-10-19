@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 import pytest
-from rdflib import RDF
+from rdflib import RDF, URIRef
 
 REPO = Path(__file__).resolve().parents[1]
 ONTOLOGY = REPO / "ontology"
@@ -68,6 +68,12 @@ def test_provenance_graph_validates_and_keeps_decoys_off_case_roles():
     assert any(graph.triples((None, CL.evidenceFamily, None)))
     assert any(graph.triples((None, CL.resolutionStatus, None)))
     assert any(graph.triples((None, CL.ruleSetVersion, None)))
+    case = URIRef("https://w3id.org/caselinker/resource/case/example_case")
+    narrative = URIRef("https://w3id.org/caselinker/resource/case/example_case/narrative")
+    activity = next(graph.subjects(RDF.type, PROV.Activity))
+    assert (case, PROV.wasGeneratedBy, activity) in graph
+    assert (case, PROV.wasDerivedFrom, narrative) in graph
+    assert any(graph.triples((None, PROV.wasGeneratedBy, activity)))
 
 
 class _SidecarStore:
@@ -115,14 +121,18 @@ def test_provenance_sidecar_reads_the_store_the_case_export_uses(tmp_path, monke
     # rdflib serializes a Dataset to Turtle as an empty default graph.
     # The JSON-LD file is the fixture graph this export actually writes.
     case_jsonld = Path(result["jsonld_path"]).read_text(encoding="utf-8")
-    assert "https://caselinker.projectvic.org/resource/case/prov_sidecar_001" in case_jsonld
+    assert "https://w3id.org/caselinker/resource/case/prov_sidecar_001" in case_jsonld
+    assert "https://w3id.org/caselinker/resource/case/prov_sidecar_001/provenance" in case_jsonld
+    assert "caselinker.projectvic.org/resource" not in case_jsonld
     assert "caselinker.up.railway.app/resource" not in case_jsonld
     path = result["provenance_ttl_path"]
     assert path, "provenance sidecar did not read the database that held the case"
     text = Path(path).read_text(encoding="utf-8")
     assert "prov_sidecar_001" in text
     assert "2026-10-17T18:00:00.000000Z" in text
-    assert "https://caselinker.projectvic.org/resource/" in text
+    assert "https://w3id.org/caselinker/resource/" in text
+    assert "https://w3id.org/caselinker/ns/provenance#" in text
+    assert "caselinker.up.railway.app/ns/provenance" not in text
     graph = __import__("rdflib").Graph()
     graph.parse(path, format="turtle")
     conforms, report = validate_provenance(graph)

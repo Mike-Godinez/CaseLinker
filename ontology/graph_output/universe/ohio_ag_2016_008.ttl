@@ -1,65 +1,84 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:03:01.080368" ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_008> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 06:14:13.315879" ;
     dcterms:identifier "ohio_ag_2016_008" ;
-    dcterms:modified "2026-09-10T20:03:01.080368" ;
+    dcterms:modified "2026-10-18 06:14:13.315879" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/provenance> ;
     dcterms:source <https://www.ohioattorneygeneral.gov/Media/News-Releases/February-2016/Father-Pleads-Guilty-to-Endangering-Children-Felon>,
         "OHIO AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/legal-step/sentenced> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/coshocton-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/ohio-bureau-of-criminal-investigation> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/coshocton>,
+        <https://w3id.org/caselinker/resource/location/coshocton-county>,
+        <https://w3id.org/caselinker/resource/location/ohio> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/legal-step/sentenced> ;
+    ns8:involvesAgency <https://w3id.org/caselinker/resource/agency/coshocton-county-sheriffs-office> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/coshocton>,
+        <https://w3id.org/caselinker/resource/location/coshocton-county>,
+        <https://w3id.org/caselinker/resource/location/ohio> .
 
-<https://caselinker.up.railway.app/resource/agency/coshocton-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/coshocton-county-sheriffs-office> a ns8:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/ohio-bureau-of-criminal-investigation> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/event/trust-violation> a ns4:CustodialAbuse,
+        ns4:TrustViolation ;
+    ns4:violatesRelationship <https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/relationship/mother> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/relationship/mother> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/legal-step/sentenced> a ns7:Event,
+        ns7:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2016-02-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 22 .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 22 .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/relationship/mother> a ns4:CustodialRelationship,
+        ns4:FamilialRelationship ;
+    ns4:involvesChild <https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/role/victim/1> ;
+    ns4:involvesCustodian <https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/role/offender/1> ;
+    ns4:relationshipType "mother" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/relationship/mother> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/role/offender/1> ;
-    cacontology-custodial:relationshipType "mother" .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2016-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2016-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2016_008/phase/sentenced> a ns7:Phase,
+        ns3:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2016-02-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2016_008/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/coshocton> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Coshocton" ;
+    ns2:name "Coshocton" .
+
+<https://w3id.org/caselinker/resource/location/coshocton-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Coshocton County" ;
+    ns2:name "Coshocton County" .
+
+<https://w3id.org/caselinker/resource/location/ohio> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns2:name "Ohio" .
 

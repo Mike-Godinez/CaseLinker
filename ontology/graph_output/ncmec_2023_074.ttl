@@ -1,100 +1,72 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_074> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.802218" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_074> a ns2:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:28.479647" ;
     dcterms:identifier "ncmec_2023_074" ;
-    dcterms:modified "2026-09-15T20:55:00.802218" ;
-    dcterms:source <https://southernillinoisnow.com/2023/05/08/centralia-teen-charged-with-nine-counts-of-class-x-child-pornography/>,
+    dcterms:modified "2026-10-17 22:21:28.479647" ;
+    dcterms:source <https://www.wmur.com/article/pelham-man-charges-child-sex-abuse-images-new-hampshire-323/43151618#>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/centralia>,
-        <https://caselinker.up.railway.app/resource/location/jefferson-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/illinois-attorney-general-task-force> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/centralia>,
-        <https://caselinker.up.railway.app/resource/location/jefferson-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/madison>,
+        <https://w3id.org/caselinker/resource/location/nh> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_074/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_074/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_074/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_074/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/madison>,
+        <https://w3id.org/caselinker/resource/location/nh> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_074/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_074/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-03-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_074/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_074/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_074/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_074/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-03-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_074/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_074/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/illinois-attorney-general-task-force> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_074/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_074/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_074/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held at Valley Street Jail" ;
+    ns4:hasProceedingBeginPoint "2023-03-02T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_074/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_074/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 30 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_074/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_074/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_074/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_074/phase/arrested> a ns2:InitialPhase,
+        ns6:Phase ;
+    ns2:hasPhaseBeginPoint "2023-03-02T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_074/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/madison> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Madison" ;
+    ns3:name "Madison" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_074/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$100,000\"]" .
+<https://w3id.org/caselinker/resource/location/nh> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "N.h." ;
+    ns3:name "N.h." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_074/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_074/event/possession> a ns2:CSAMIncident,
+        ns6:Event ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_074/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/location/centralia> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
 
-<https://caselinker.up.railway.app/resource/location/jefferson-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Jefferson County" ;
-    uco-core:name "Jefferson County" .
-
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
-    rdfs:label "chat" .
-
-<https://caselinker.up.railway.app/resource/platform/meganz> a cac-core:DigitalSystemEntity,
-        cacontology-platforms:FileHostingService ;
-    rdfs:label "Mega.nz" ;
-    cacontology-platforms:encryptionLevel "end-to-end" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_074/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/meganz> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_074/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/meganz> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_074/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2023_074> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_074/provenance> .

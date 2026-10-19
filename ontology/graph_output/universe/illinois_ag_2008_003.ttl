@@ -1,0 +1,129 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003> a ns2:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 04:52:11.253204" ;
+    dcterms:identifier "illinois_ag_2008_003" ;
+    dcterms:modified "2026-10-18 04:52:11.253204" ;
+    dcterms:source <https://illinoisattorneygeneral.gov/News-Room/2006-2018-Press-Archive/200802-21%20HUNTLEY%20MAN%20ARRESTED%20ON%20CHILD%20PORNOGRAPHY%20CHARGES.pdf>,
+        "ILLINOIS AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/10618-michael-st>,
+        <https://w3id.org/caselinker/resource/location/chicago>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/mchenry-county> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/cybertip>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/event/possession>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-homeland-security>,
+        <https://w3id.org/caselinker/resource/agency/huntley-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ice>,
+        <https://w3id.org/caselinker/resource/agency/kane-county-sheriffs-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/south-elgin-police-department> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/10618-michael-st>,
+        <https://w3id.org/caselinker/resource/location/chicago>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/mchenry-county> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2008-02-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2008-02-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/department-of-homeland-security> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/huntley-police-department> a ns7:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Huntley Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/ice> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/kane-county-sheriffs-department> a ns7:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Kane County Sheriff's Department" .
+
+<https://w3id.org/caselinker/resource/agency/south-elgin-police-department> a ns7:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "South Elgin Police Department" .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns4:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/cybertip> a ns5:NCMECCybertipReport ;
+    ns5:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/event/distribution> a ns7:Event,
+        ns4:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in the McHenry County Correctional Facility" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/charge/1> ;
+    ns4:hasProceedingBeginPoint "2008-02-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 64 .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/phase/charged> a ns2:LegalProcessPhase,
+        ns7:Phase ;
+    ns2:hasPhaseBeginPoint "2008-02-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/10618-michael-st> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "10618 Michael St." ;
+    ns1:name "10618 Michael St." .
+
+<https://w3id.org/caselinker/resource/location/chicago> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Chicago" ;
+    ns1:name "Chicago" .
+
+<https://w3id.org/caselinker/resource/location/illinois> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Illinois" ;
+    ns1:name "Illinois" .
+
+<https://w3id.org/caselinker/resource/location/mchenry-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mchenry County" ;
+    ns1:name "Mchenry County" .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/event/possession> a ns2:CSAMIncident,
+        ns7:Event ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2008_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/illinois_ag_2008_003/provenance> .

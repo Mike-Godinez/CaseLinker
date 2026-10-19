@@ -213,12 +213,16 @@ def latest_run_id(cursor: Any, case_id: str, dialect: str = "sqlite") -> Optiona
 
 def load_assertions(cursor: Any, case_id: str, *, run_id: Optional[str] = None,
                     field: Optional[str] = None, dialect: str = "sqlite") -> List[Dict[str, Any]]:
-    """Assertions of the case's current run (plus every human verdict), as resolution inputs."""
+    """Assertions of the case's current extraction run, as resolution inputs.
+
+    An earlier run on the same case id is ignored, including a human verdict
+    stored against a previous article.
+    """
     ph = _ph(dialect)
     run_id = run_id or latest_run_id(cursor, case_id, dialect)
     if run_id is None:
         return []
-    sql = (f"SELECT * FROM field_assertions WHERE case_id = {ph} AND (run_id = {ph} OR method = 'human')")
+    sql = f"SELECT * FROM field_assertions WHERE case_id = {ph} AND run_id = {ph}"
     params: List[Any] = [case_id, run_id]
     if field:
         sql += f" AND field = {ph}"
@@ -234,9 +238,13 @@ def load_assertions(cursor: Any, case_id: str, *, run_id: Optional[str] = None,
 
 def latest_resolutions(cursor: Any, case_id: str, *, field: Optional[str] = None,
                        dialect: str = "sqlite") -> Dict[str, Dict[str, Any]]:
+    """Last resolution per field inside the case's current extraction run."""
     ph = _ph(dialect)
-    sql = f"SELECT * FROM field_resolutions WHERE case_id = {ph}"
-    params: List[Any] = [case_id]
+    run_id = latest_run_id(cursor, case_id, dialect)
+    if not run_id:
+        return {}
+    sql = f"SELECT * FROM field_resolutions WHERE case_id = {ph} AND run_id = {ph}"
+    params: List[Any] = [case_id, run_id]
     if field:
         sql += f" AND field = {ph}"
         params.append(field)
@@ -269,6 +277,24 @@ def read_case_assertions(cursor: Any, case_id: str, *, field: Optional[str] = No
     }
 
 
+def _latest_resolution_ids_sql() -> str:
+    """Newest resolution row per field, and only inside that case's current run.
+
+    A case id with no row in ``cases`` is omitted, so a deleted id cannot keep
+    an open disagreement after its article was removed.
+    """
+    return """
+        SELECT MAX(fr.id) FROM field_resolutions fr
+        WHERE fr.run_id = (
+            SELECT fa.run_id FROM field_assertions fa
+            WHERE fa.case_id = fr.case_id AND fa.method <> 'human'
+            ORDER BY fa.id DESC LIMIT 1
+        )
+        AND fr.case_id IN (SELECT id FROM cases)
+        GROUP BY fr.case_id, fr.field
+    """
+
+
 def read_disagreements(cursor: Any, *, field: Optional[str] = None, status: Optional[str] = None,
                        limit: int = 50, offset: int = 0, dialect: str = "sqlite") -> Dict[str, Any]:
     """Latest resolution per (case, field) whose status needs a human, newest first."""
@@ -279,7 +305,7 @@ def read_disagreements(cursor: Any, *, field: Optional[str] = None, status: Opti
     if field:
         where.append(f"r.field = {ph}")
         params.append(field)
-    latest = "SELECT MAX(id) FROM field_resolutions GROUP BY case_id, field"
+    latest = _latest_resolution_ids_sql()
     cursor.execute(
         f"""SELECT r.case_id, r.field, r.status, r.rule_id, r.rule_set_version, r.final_json, r.disagreement_json
             FROM field_resolutions r WHERE r.id IN ({latest}) AND {' AND '.join(where)}

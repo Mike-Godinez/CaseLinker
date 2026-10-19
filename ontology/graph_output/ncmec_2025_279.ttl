@@ -1,137 +1,157 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/detection#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_279> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/bonneville-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Bonneville County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.411467" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:18.454169" ;
     dcterms:identifier "ncmec_2025_279" ;
-    dcterms:modified "2026-09-15T21:27:13.411467" ;
-    dcterms:source <https://www.eastidahonews.com/2025/05/ammon-man-charged-with-13-counts-of-possessing-child-pornography/>,
+    dcterms:modified "2026-10-18 00:01:18.454169" ;
+    dcterms:source <https://idahonews.com/news/local/collaborative-effort-leads-to-arrests-in-child-exploitation-cases-in-treasure-valley>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ammon>,
-        <https://caselinker.up.railway.app/resource/location/east-idaho>,
-        <https://caselinker.up.railway.app/resource/location/idaho-falls> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/bonneville-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ammon>,
-        <https://caselinker.up.railway.app/resource/location/east-idaho>,
-        <https://caselinker.up.railway.app/resource/location/idaho-falls> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/boise>,
+        <https://w3id.org/caselinker/resource/location/caldwell>,
+        <https://w3id.org/caselinker/resource/location/the-treasure-valley>,
+        <https://w3id.org/caselinker/resource/location/treasure-valley> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_279/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_279/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_279/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_279/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_279/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_279/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_279/offense-event/charge-2> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/boise-police-department>,
+        <https://w3id.org/caselinker/resource/agency/caldwell-police-department>,
+        <https://w3id.org/caselinker/resource/agency/canyon-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/idaho-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/nampa-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/boise>,
+        <https://w3id.org/caselinker/resource/location/caldwell>,
+        <https://w3id.org/caselinker/resource/location/the-treasure-valley>,
+        <https://w3id.org/caselinker/resource/location/treasure-valley> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 15 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-02-06T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_279/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_279/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_279/offense-event/charge-2> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_279/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/agency/boise-police-department> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/agency/caldwell-police-department> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/agency/canyon-county-sheriffs-office> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/sentence/1> .
+<https://w3id.org/caselinker/resource/agency/hsi> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 28 .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/idaho-state-police-department> a ns5:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/person/offender/1> .
+<https://w3id.org/caselinker/resource/agency/nampa-police-department> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"10 years\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/charge/1> a ns3:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
-    rdfs:label "Kik" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/charge/2> a ns3:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2025_279/offense-event/charge-2> ;
+    ns4:chargeCluster "child_exploitation" ;
+    ns4:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_279/offense-event/charge-2> .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_279/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_279/charge/2> ;
+    ns3:hasProceedingBeginPoint "2025-02-06T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/ammon> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Ammon" ;
-    uco-core:name "Ammon" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 43 .
 
-<https://caselinker.up.railway.app/resource/location/east-idaho> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "East Idaho" ;
-    uco-core:name "East Idaho" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns2:ageEstimate 52 .
 
-<https://caselinker.up.railway.app/resource/location/idaho-falls> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "having a Kik account with the username “deviljuice666” and a Gmail account" ;
-    dcterms:source <https://www.eastidahonews.com/2025/05/ammon-man-charged-with-13-counts-of-possessing-child-pornography/> ;
-    ns1:admissionContext "ch warrant on Robinson’s home in Ammon, where he was later detained and interviewed. The documents state Robinson admitted to having a Ki..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "having a Kik account with the username “deviljuice666” and a Gmail account" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-02-06T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_279/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_279/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_279/offense-event/charge-2> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_279/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_279/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/admission/1> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_279/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/role/offender/2> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-02-06T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_279/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_279/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_279/offense-event/charge-2> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_279/person/offender/2> .
 
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/phase/arrested> a ns1:InitialPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2025-02-06T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/boise> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Boise" ;
+    ns6:name "Boise" .
+
+<https://w3id.org/caselinker/resource/location/caldwell> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Caldwell" ;
+    ns6:name "Caldwell" .
+
+<https://w3id.org/caselinker/resource/location/the-treasure-valley> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the Treasure Valley" ;
+    ns6:name "the Treasure Valley" .
+
+<https://w3id.org/caselinker/resource/location/treasure-valley> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Treasure Valley" ;
+    ns6:name "Treasure Valley" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/event/conspiracy> a ns1:ConspiracyToCommitCSA,
+        ns7:Event ;
+    ns1:conspiracyMemberCount 2 ;
+    ns1:participatesInConspiracy <https://w3id.org/caselinker/resource/case/ncmec_2025_279/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_279/role/offender/2> ;
+    ns1:severityLevel 1 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/event/possession> a ns1:CSAMIncident,
+        ns7:Event ;
+    ns1:severityLevel 1 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_279/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279/offense-event/charge-2> a ns1:ChildSexualAbuseEvent,
+        ns7:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_279> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_279/provenance> .

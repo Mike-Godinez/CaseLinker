@@ -1,0 +1,122 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/azicac_2011_010> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-17 21:39:43.411968" ;
+    dcterms:identifier "azicac_2011_010" ;
+    dcterms:modified "2026-10-17 21:39:43.411968" ;
+    dcterms:source <https://www.azicac.org/cases-and-arrests/>,
+        "AZICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/arkansas>,
+        <https://w3id.org/caselinker/resource/location/little-rock>,
+        <https://w3id.org/caselinker/resource/location/maricopa-county-jail>,
+        <https://w3id.org/caselinker/resource/location/monticello>,
+        <https://w3id.org/caselinker/resource/location/phoenix> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/azicac_2011_010/phase/indicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/azicac_2011_010/phase/indicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/azicac_2011_010/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/azicac_2011_010/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/azicac_2011_010/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/azicac_2011_010/operation> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/arkansas-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/azicac>,
+        <https://w3id.org/caselinker/resource/agency/maricopa-county-attorneys-office>,
+        <https://w3id.org/caselinker/resource/agency/phoenix-police-department> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/arkansas>,
+        <https://w3id.org/caselinker/resource/location/little-rock>,
+        <https://w3id.org/caselinker/resource/location/maricopa-county-jail>,
+        <https://w3id.org/caselinker/resource/location/monticello>,
+        <https://w3id.org/caselinker/resource/location/phoenix> .
+
+<https://w3id.org/caselinker/resource/agency/arkansas-state-police-department> a ns3:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/azicac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/maricopa-county-attorneys-office> a ns3:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/phoenix-police-department> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/azicac_2011_010/event/trust-violation> a ns2:AuthorityAbuse,
+        ns2:TrustViolation ;
+    ns2:violatesRelationship <https://w3id.org/caselinker/resource/case/azicac_2011_010/relationship/teacher> .
+
+<https://w3id.org/caselinker/resource/case/azicac_2011_010/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Maricopa County Jail" ;
+    ns5:hasProceedingBeginPoint "2011-12-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/azicac_2011_010/operation> a ns7:Event,
+        <https://cacontology.projectvic.org/taskforce#ProactiveOperation> .
+
+<https://w3id.org/caselinker/resource/case/azicac_2011_010/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 57 .
+
+<https://w3id.org/caselinker/resource/case/azicac_2011_010/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/azicac_2011_010/relationship/teacher> a ns2:CustodialRelationship,
+        ns2:Teacher ;
+    ns2:involvesChild <https://w3id.org/caselinker/resource/case/azicac_2011_010/role/victim/1> ;
+    ns2:involvesCustodian <https://w3id.org/caselinker/resource/case/azicac_2011_010/role/offender/1> ;
+    ns2:relationshipType "teacher" .
+
+<https://w3id.org/caselinker/resource/case/azicac_2011_010/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2011-12-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/azicac_2011_010/event/online-only> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/azicac_2011_010/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/azicac_2011_010/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2011-12-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/azicac_2011_010/event/online-only> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/azicac_2011_010/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
+
+<https://w3id.org/caselinker/resource/case/azicac_2011_010/phase/indicted> a ns1:LegalProcessPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2011-12-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/arkansas> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Arkansas" ;
+    ns4:name "Arkansas" .
+
+<https://w3id.org/caselinker/resource/location/little-rock> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Little Rock" ;
+    ns4:name "Little Rock" .
+
+<https://w3id.org/caselinker/resource/location/maricopa-county-jail> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Maricopa County Jail" ;
+    ns4:name "Maricopa County Jail" .
+
+<https://w3id.org/caselinker/resource/location/monticello> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Monticello" ;
+    ns4:name "Monticello" .
+
+<https://w3id.org/caselinker/resource/location/phoenix> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Phoenix" ;
+    ns4:name "Phoenix" .
+
+<https://w3id.org/caselinker/resource/case/azicac_2011_010/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns7:Event ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/chat> .
+
+
+<https://w3id.org/caselinker/resource/case/azicac_2011_010> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/azicac_2011_010/provenance> .

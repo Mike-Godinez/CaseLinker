@@ -1,157 +1,161 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-usa-federal: <https://cacontology.projectvic.org/usa-federal-law#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns8: <https://cacontology.projectvic.org/production#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/wa_ag_2013_003> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/admission/2/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/admission/2> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/wa_ag_2013_003> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/offense-event/charge-1> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2013-11-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/offense-event/charge-1> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/office-of-the-attorney-general> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/office-of-the-attorney-general> a ns3:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/washington-attorney-generals-office> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/washington-attorney-generals-office> a ns3:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/charge/1> a ns7:CriminalCharge ;
     rdfs:label "child molestation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/offense-event/charge-1> ;
-    ns1:chargeCluster "child_molestation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/offense-event/charge-1> .
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/offense-event/charge-1> ;
+    ns2:chargeCluster "child_molestation" ;
+    ns2:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/offense-event/charge-1> .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/sentence/1> .
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/charge/1> ;
+    ns7:hasProceedingBeginPoint "2013-11-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:resultsSentence <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/sentence/1> .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns7:LegalProceeding,
+        ns7:SentencingHearing ;
+    ns7:hasProceedingBeginPoint "2013-11-12T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 28 .
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 28 .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:victimAge 3 .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"12 years\"]" .
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/sentence/1> a ns7:CriminalSentence,
+        ns7:PrisonSentence ;
+    rdfs:label "15 to 36 weeks" .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:41:23.409222" ;
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 07:46:56.873229" ;
     dcterms:identifier "wa_ag_2013_003" ;
-    dcterms:modified "2026-09-15T20:41:23.409222" ;
+    dcterms:modified "2026-10-18 07:46:56.873229" ;
     dcterms:source <https://www.atg.wa.gov/news/news-releases/attorney-general-s-office-files-sexually-violent-predator-case-skamania-county>,
         "WA AG" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/king-county>,
-        <https://caselinker.up.railway.app/resource/location/mcneill-island>,
-        <https://caselinker.up.railway.app/resource/location/skamania-county>,
-        <https://caselinker.up.railway.app/resource/location/washington>,
-        <https://caselinker.up.railway.app/resource/location/washingtons> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/offense-event/charge-1> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/office-of-the-attorney-general>,
-        <https://caselinker.up.railway.app/resource/agency/washington-attorney-generals-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/king-county>,
-        <https://caselinker.up.railway.app/resource/location/mcneill-island>,
-        <https://caselinker.up.railway.app/resource/location/skamania-county>,
-        <https://caselinker.up.railway.app/resource/location/washington>,
-        <https://caselinker.up.railway.app/resource/location/washingtons> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/king-county>,
+        <https://w3id.org/caselinker/resource/location/mcneill-island>,
+        <https://w3id.org/caselinker/resource/location/skamania-county>,
+        <https://w3id.org/caselinker/resource/location/washington>,
+        <https://w3id.org/caselinker/resource/location/washingtons> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/admission/1>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/admission/2>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/offense-event/charge-1> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/office-of-the-attorney-general>,
+        <https://w3id.org/caselinker/resource/agency/washington-attorney-generals-office> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/king-county>,
+        <https://w3id.org/caselinker/resource/location/mcneill-island>,
+        <https://w3id.org/caselinker/resource/location/skamania-county>,
+        <https://w3id.org/caselinker/resource/location/washington>,
+        <https://w3id.org/caselinker/resource/location/washingtons> .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/phase/sentenced> a ns5:Phase,
+        ns7:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2013-11-12T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/offense-event/charge-1> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2013-11-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/offense-event/charge-1> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/location/king-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/king-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "King County" ;
+    ns6:name "King County" .
 
-<https://caselinker.up.railway.app/resource/location/mcneill-island> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/mcneill-island> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Mcneill Island" ;
-    uco-core:name "Mcneill Island" .
+    ns6:name "Mcneill Island" .
 
-<https://caselinker.up.railway.app/resource/location/skamania-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/skamania-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Skamania County" ;
-    uco-core:name "Skamania County" .
+    ns6:name "Skamania County" .
 
-<https://caselinker.up.railway.app/resource/location/washington> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/washington> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington" ;
+    ns6:name "Washington" .
 
-<https://caselinker.up.railway.app/resource/location/washingtons> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/washingtons> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington's" ;
+    ns6:name "Washington's" .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "repeated sexual assaults against a nine-year-old boy" ;
     dcterms:source <https://www.atg.wa.gov/news/news-releases/attorney-general-s-office-files-sexually-violent-predator-case-skamania-county> ;
-    ns1:admissionContext "sentenced to 15 to 36 weeks in the Juvenile Rehabilitation Administration. When he was 16 years old, he admitted to repeated sexual assau..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "repeated sexual assaults against a nine-year-old boy" .
+    ns2:admissionContext "sentenced to 15 to 36 weeks in the Juvenile Rehabilitation Administration. When he was 16 years old, he admitted to repeated sexual assau..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns6:description "repeated sexual assaults against a nine-year-old boy" .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/admission/2> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "to repeated sexual assaults against a nine-year-old boy" ;
     dcterms:source <https://www.atg.wa.gov/news/news-releases/attorney-general-s-office-files-sexually-violent-predator-case-skamania-county> ;
-    ns1:admissionContext "o 15 to 36 weeks in the Juvenile Rehabilitation Administration. When he was 16 years old, he admitted to repeated sexual assaults against..." ;
-    ns1:admissionFrame "he_admitted_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "to repeated sexual assaults against a nine-year-old boy" .
+    ns2:admissionContext "o 15 to 36 weeks in the Juvenile Rehabilitation Administration. When he was 16 years old, he admitted to repeated sexual assaults against..." ;
+    ns2:admissionFrame "he_admitted_paraphrase" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns6:description "to repeated sexual assaults against a nine-year-old boy" .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/admission/2> .
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns5:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/admission/1>,
+        <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/admission/2> .
 
-<https://caselinker.up.railway.app/resource/case/wa_ag_2013_003/offense-event/charge-1> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        cacontology-usa-federal:SexualAbuseOfMinor,
-        uco-action:Crime ;
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003/offense-event/charge-1> a ns1:ChildSexualAbuseEvent,
+        ns5:Event,
+        <https://cacontology.projectvic.org/usa-federal-law#SexualAbuseOfMinor>,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
     rdfs:label "Inferred offense from charge: child molestation" .
 
+
+<https://w3id.org/caselinker/resource/case/wa_ag_2013_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/wa_ag_2013_003/provenance> .

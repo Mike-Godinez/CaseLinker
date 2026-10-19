@@ -1,66 +1,132 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2024_011> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:19:29.640511" ;
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_011> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 07:26:57.616689" ;
     dcterms:identifier "us_marshals_2024_011" ;
-    dcterms:modified "2026-09-10T20:19:29.640511" ;
+    dcterms:modified "2026-10-18 07:26:57.616689" ;
     dcterms:source <https://www.usmarshals.gov/news/press-release/colorado-interstate-fugitive-apprehended-new-mexico>,
         "US MARSHALS" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/us_marshals_2024_011/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/us_marshals_2024_011/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/us_marshals_2024_011/event/multi-jurisdiction> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/bernalillo-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/colorado-bureau-of-investigation>,
-        <https://caselinker.up.railway.app/resource/agency/marshals-service-district-of-new-mexico-southwest-investigative-fugitive-team>,
-        <https://caselinker.up.railway.app/resource/agency/montrose-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/new-mexico-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/usms> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/albuquerque>,
+        <https://w3id.org/caselinker/resource/location/arizona>,
+        <https://w3id.org/caselinker/resource/location/bernalillo>,
+        <https://w3id.org/caselinker/resource/location/colorado>,
+        <https://w3id.org/caselinker/resource/location/montrose>,
+        <https://w3id.org/caselinker/resource/location/new-mexico>,
+        <https://w3id.org/caselinker/resource/location/the-district-of-colorado>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/us_marshals_2024_011/phase/booked> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/us_marshals_2024_011/phase/booked> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/us_marshals_2024_011/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/us_marshals_2024_011/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/bernalillo-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/colorado-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/marshals-service-district-of-new-mexico-southwest-investigative-fugitive-team>,
+        <https://w3id.org/caselinker/resource/agency/montrose-police-department>,
+        <https://w3id.org/caselinker/resource/agency/new-mexico-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/usms> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/albuquerque>,
+        <https://w3id.org/caselinker/resource/location/arizona>,
+        <https://w3id.org/caselinker/resource/location/bernalillo>,
+        <https://w3id.org/caselinker/resource/location/colorado>,
+        <https://w3id.org/caselinker/resource/location/montrose>,
+        <https://w3id.org/caselinker/resource/location/new-mexico>,
+        <https://w3id.org/caselinker/resource/location/the-district-of-colorado>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2024_011/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/us_marshals_2024_011/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_011/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-11-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2024_011/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2024_011/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/us_marshals_2024_011/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_011/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-11-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/us_marshals_2024_011/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/bernalillo-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/bernalillo-county-sheriffs-office> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/colorado-bureau-of-investigation> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
+<https://w3id.org/caselinker/resource/agency/colorado-bureau-of-investigation> a ns5:OrganizationLikeEntity,
+        ns4:StateAgency ;
     rdfs:label "Colorado Bureau of Investigation" .
 
-<https://caselinker.up.railway.app/resource/agency/marshals-service-district-of-new-mexico-southwest-investigative-fugitive-team> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/marshals-service-district-of-new-mexico-southwest-investigative-fugitive-team> a ns5:OrganizationLikeEntity,
+        ns4:LocalAgency ;
     rdfs:label "Marshals Service-District of New Mexico-Southwest Investigative Fugitive Team" .
 
-<https://caselinker.up.railway.app/resource/agency/montrose-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/montrose-police-department> a ns5:OrganizationLikeEntity,
+        ns4:LocalAgency ;
     rdfs:label "Montrose Police Department" .
 
-<https://caselinker.up.railway.app/resource/agency/new-mexico-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/new-mexico-state-police-department> a ns4:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/usms> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/usms> a ns4:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2024_011/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation .
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_011/event/multi-jurisdiction> a ns5:Event,
+        ns4:MultiJurisdictionalInvestigation .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2024_011/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_011/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Bernalillo County Metropolitan Detention Center" ;
+    ns6:hasProceedingBeginPoint "2024-11-19T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2024_011/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_011/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/us_marshals_2024_011/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_011/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_011/phase/booked> a ns2:InitialPhase,
+        ns5:Phase ;
+    ns2:hasPhaseBeginPoint "2024-11-19T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/albuquerque> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Albuquerque" ;
+    ns3:name "Albuquerque" .
+
+<https://w3id.org/caselinker/resource/location/arizona> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Arizona" ;
+    ns3:name "Arizona" .
+
+<https://w3id.org/caselinker/resource/location/bernalillo> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Bernalillo" ;
+    ns3:name "Bernalillo" .
+
+<https://w3id.org/caselinker/resource/location/colorado> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Colorado" ;
+    ns3:name "Colorado" .
+
+<https://w3id.org/caselinker/resource/location/montrose> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Montrose" ;
+    ns3:name "Montrose" .
+
+<https://w3id.org/caselinker/resource/location/new-mexico> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Mexico" ;
+    ns3:name "New Mexico" .
+
+<https://w3id.org/caselinker/resource/location/the-district-of-colorado> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the District of Colorado" ;
+    ns3:name "the District of Colorado" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns3:name "United States" .
+
+
+<https://w3id.org/caselinker/resource/case/us_marshals_2024_011> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/us_marshals_2024_011/provenance> .

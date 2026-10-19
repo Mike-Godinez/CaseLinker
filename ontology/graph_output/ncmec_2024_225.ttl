@@ -1,83 +1,106 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_225> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.355976" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/admission/1/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_225/admission/1> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_225> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:27.332828" ;
     dcterms:identifier "ncmec_2024_225" ;
-    dcterms:modified "2026-09-15T21:08:10.355976" ;
-    dcterms:source <https://www.wftv.com/news/local/orlando-man-arrested-charged-with-multiple-county-sex-abuse-child-under-12-years-old/J6A5ONNPRFC6BIEK3DU3S55NXU/>,
+    dcterms:modified "2026-10-17 23:04:27.332828" ;
+    dcterms:source <https://www.nbcmiami.com/news/local/broward-middle-school-teacher-arrested-for-alleged-possession-of-child-sex-abuse-material/3347416/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/fla>,
-        <https://caselinker.up.railway.app/resource/location/orlando> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_225/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_225/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_225/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_225/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/orange-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/fla>,
-        <https://caselinker.up.railway.app/resource/location/orlando> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/broward>,
+        <https://w3id.org/caselinker/resource/location/lauderhill> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_225/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_225/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_225/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_225/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_225/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_225/legal-proceeding> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/broward>,
+        <https://w3id.org/caselinker/resource/location/lauderhill> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_225/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_225/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_225/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "possession of material depicting child sexual conduct" ;
+    ns6:indictmentCounts 10 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_225/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_225/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_225/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/event/trust-violation> a ns4:AuthorityAbuse,
+        ns4:TrustViolation ;
+    ns4:violatesRelationship <https://w3id.org/caselinker/resource/case/ncmec_2024_225/relationship/teacher> .
 
-<https://caselinker.up.railway.app/resource/agency/orange-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_225/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "related to child sexual abuse" ;
-    cacontology-legal-outcomes:indictmentCounts 11 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into jail" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_225/charge/1> ;
+    ns6:hasProceedingBeginPoint "2024-06-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_225/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_225/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_225/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 25 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_225/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_225/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 7 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/relationship/teacher> a ns4:CustodialRelationship,
+        ns4:Teacher ;
+    ns4:involvesChild <https://w3id.org/caselinker/resource/case/ncmec_2024_225/role/victim/1> ;
+    ns4:involvesCustodian <https://w3id.org/caselinker/resource/case/ncmec_2024_225/role/offender/1> ;
+    ns4:relationshipType "teacher" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_225/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-06-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_225/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_225/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/platform/dropbox> a cacontology-platforms:FileHostingService ;
-    rdfs:label "Dropbox" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "was hired in January" ;
+    dcterms:source <https://www.nbcmiami.com/news/local/broward-middle-school-teacher-arrested-for-alleged-possession-of-child-sex-abuse-material/3347416/> ;
+    ns5:admissionContext "was booked into jail, where he was being held on a $200,000 bond, records showed. Broward County Public Schools said he was hired in January" ;
+    ns5:admissionFrame "said_paraphrase" ;
+    ns5:admissionTheme "other" ;
+    ns5:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_225/role/offender/1> ;
+    ns5:evidenceTier "press_release_stated" ;
+    ns5:quoteType "paraphrase" ;
+    ns3:description "was hired in January" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_225/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/phase/booked> a ns1:InitialPhase,
+        ns2:Phase ;
+    ns1:hasPhaseBeginPoint "2024-06-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/fla> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-06-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_225/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_225/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/location/orlando> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/broward> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Broward" ;
+    ns3:name "Broward" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_225/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/dropbox> .
+<https://w3id.org/caselinker/resource/location/lauderhill> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lauderhill" ;
+    ns3:name "Lauderhill" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_225/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_225> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_225/provenance> .

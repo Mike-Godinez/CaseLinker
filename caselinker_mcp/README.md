@@ -83,7 +83,7 @@ Trusted key does **not** change behavior. Includes corpus search, analysis, onto
 
 | Tool | Without trusted key | With trusted key |
 |------|---------------------|------------------|
-| `get_all_cases` | **403** (bulk export blocked) | Full corpus export; optional `include_raw_data` |
+| `get_all_cases` | **403** (bulk export blocked) | Full corpus via `GET /api/corpus` (every column) |
 | `get_lifecycle_cases` | **403** (lifecycle export blocked) | Lifecycle swimlane / visualization payload |
 | `get_lifecycle_lstar` | **403** (L* export blocked) | Full `lstar_all_cases.json` (transition matrix, global L*, per-case details) |
 | `get_case` | Sanitized case (no `raw_data`) | Full case including narratives |
@@ -178,7 +178,7 @@ Add `.cursor/mcp.json` to `.gitignore` if it contains secrets.
 
 ## Local corpus
 
-Useful once you are pointing MCP at localhost. The processed sqlite corpus is **10,362 case reports**, **126,314 extracted features**, and **4,000+ distinct law-enforcement agencies** (**61** sources, **10,362** per-case CAC graphs under `ontology/graph_output/`).
+Useful once you are pointing MCP at localhost. The live corpus is **10,711 case reports**, **131,332 extracted features**, and **4,428 distinct law-enforcement agencies** (**70** sources). Per-case graphs under `ontology/graph_output/` are the previous export until the Phase 3 reload.
 
 - **Railway:** same deployed snapshot, public rate limits. Set `CASELINKER_API_URL=https://caselinker.up.railway.app`.
 - **Localhost:** set `CASELINKER_API_URL=http://localhost:8000` after `python3 run/main.py`. The local DB starts empty unless you populate it.
@@ -191,7 +191,7 @@ export CASELINKER_API_URL=https://caselinker.up.railway.app
 python3 scripts/run/import_corpus_from_api.py
 ```
 
-That pulls the full production corpus via the trusted bulk API (`get_all_cases` / `GET /api/cases`). Without a trusted key, bulk export returns 403. You can also build a local DB by ingesting press-release PDFs yourself (see the repo root README and `collector/`).
+That pulls the full production corpus via `GET /api/corpus` (`get_all_cases` calls the same route). Without a trusted key, bulk export returns 403. You can also build a local DB by ingesting press-release PDFs yourself (see the repo root README and `collector/`).
 
 ## On-Demand Graph Generation
 

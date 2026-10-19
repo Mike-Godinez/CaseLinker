@@ -1,0 +1,83 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2013_003> a ns3:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 04:30:18.747704" ;
+    dcterms:identifier "fresno_so_2013_003" ;
+    dcterms:modified "2026-10-18 04:30:18.747704" ;
+    dcterms:source <https://www.fresnosheriff.org/media-relations/fresno-man-arrested-on-child-pornography-charges-after-using-public-library-s-free-wifi.html>,
+        "FRESNO SO" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/2420-mariposa>,
+        <https://w3id.org/caselinker/resource/location/fresno> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/fresno_so_2013_003/phase/booked> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/fresno_so_2013_003/phase/booked> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/fresno_so_2013_003/event/possession>,
+        <https://w3id.org/caselinker/resource/case/fresno_so_2013_003/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/fresno-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/2420-mariposa>,
+        <https://w3id.org/caselinker/resource/location/fresno> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2013_003/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2013-07-24T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/fresno_so_2013_003/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/fresno_so_2013_003/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2013_003/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2013-07-24T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/fresno_so_2013_003/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/fresno_so_2013_003/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/fresno-county-sheriffs-office> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2013_003/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns1:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2013_003/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2013_003/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns1:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Fresno County Jail" ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/fresno_so_2013_003/charge/1> ;
+    ns1:hasProceedingBeginPoint "2013-07-24T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2013_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2013_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2013_003/phase/booked> a ns3:InitialPhase,
+        ns4:Phase ;
+    ns3:hasPhaseBeginPoint "2013-07-24T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/2420-mariposa> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "2420 Mariposa" ;
+    ns5:name "2420 Mariposa" .
+
+<https://w3id.org/caselinker/resource/location/fresno> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fresno" ;
+    ns5:name "Fresno" .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2013_003/event/possession> a ns3:CSAMIncident,
+        ns4:Event ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/fresno_so_2013_003/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2013_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/fresno_so_2013_003/provenance> .

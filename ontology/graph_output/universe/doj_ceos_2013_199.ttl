@@ -1,0 +1,170 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/production#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns8: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns9: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199> a ns1:CACInvestigation,
+        ns9:EnduringEntity ;
+    dcterms:created "2026-10-18 01:29:57.739989" ;
+    dcterms:identifier "doj_ceos_2013_199" ;
+    dcterms:modified "2026-10-18 01:29:57.739989" ;
+    dcterms:source <https://www.justice.gov/usao-ndga/pr/man-who-extorted-minors-produce-child-pornography-sentenced>,
+        "DOJ CEOS" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/carolinas>,
+        <https://w3id.org/caselinker/resource/location/dekalb-county>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/mableton>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/sextortion>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns8:involvesAgency <https://w3id.org/caselinker/resource/agency/dekalb-county-police-department>,
+        <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/ice>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/carolinas>,
+        <https://w3id.org/caselinker/resource/location/dekalb-county>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/mableton>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
+
+<https://w3id.org/caselinker/resource/agency/dekalb-county-police-department> a ns9:OrganizationLikeEntity,
+        ns8:LocalAgency ;
+    rdfs:label "DeKalb County Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/hsi> a ns8:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/ice> a ns8:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns8:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/project-safe-childhood> a ns9:Event,
+        ns8:ProjectSafeChildhoodOperation ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/trust-violation> a ns7:CustodialAbuse,
+        ns7:TrustViolation ;
+    ns7:violatesRelationship <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/relationship/brother> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/legal-proceeding> a ns9:Event,
+        ns9:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/charge/1> ;
+    ns2:hasProceedingBeginPoint "2013-12-20T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/legal-step/sentenced> a ns9:Event,
+        ns9:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2013-12-20T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 28 .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:victimAge 11 .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/relationship/brother> a ns7:CustodialRelationship,
+        ns7:FamilialRelationship ;
+    ns7:involvesChild <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/role/victim/1> ;
+    ns7:involvesCustodian <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/role/offender/1> ;
+    ns7:relationshipType "brother" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2013-12-20T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/sextortion> ;
+    ns9:hasRole <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2013-12-20T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/sextortion> ;
+    ns9:hasRole <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/sentence/1> a ns2:CriminalSentence,
+        ns2:LifeImprisonmentSentence ;
+    rdfs:label "sentenced to life" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/phase/sentenced> a ns9:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2013-12-20T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/carolinas> a ns9:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Carolinas" ;
+    ns4:name "Carolinas" .
+
+<https://w3id.org/caselinker/resource/location/dekalb-county> a ns9:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Dekalb County" ;
+    ns4:name "Dekalb County" .
+
+<https://w3id.org/caselinker/resource/location/georgia> a ns9:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Georgia" ;
+    ns4:name "Georgia" .
+
+<https://w3id.org/caselinker/resource/location/mableton> a ns9:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mableton" ;
+    ns4:name "Mableton" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns9:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns4:name "United States" .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns9:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/possession> a ns1:CSAMIncident,
+        ns9:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/event/sextortion> a ns9:Event,
+        <https://cacontology.projectvic.org/sextortion#SextortionIncident> ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
+
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Facebook" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+
+<https://w3id.org/caselinker/resource/case/doj_ceos_2013_199> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/doj_ceos_2013_199/provenance> .

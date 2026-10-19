@@ -1,0 +1,92 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_029> a ns2:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 05:05:32.744966" ;
+    dcterms:identifier "idaho_icac_2024_029" ;
+    dcterms:modified "2026-10-18 05:05:32.744966" ;
+    dcterms:source <https://www.ag.idaho.gov/newsroom/category/icac/?showall=true>,
+        "Idaho ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/idaho>,
+        <https://w3id.org/caselinker/resource/location/kootenai-county> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/cybertip>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/legal-proceeding> ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/coeur-dalene-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/kootenai-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/usms> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/idaho>,
+        <https://w3id.org/caselinker/resource/location/kootenai-county> .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-06-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-06-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/coeur-dalene-police-department> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/kootenai-county-sheriffs-office> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/usms> a ns1:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/charge/1> a ns4:CriminalCharge,
+        ns4:StateCharge ;
+    rdfs:label "sexual exploitation of a child" .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/charge/2> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns6:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/charge/1>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/charge/2> ;
+    ns4:hasProceedingBeginPoint "2024-06-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 51 .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns1:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/phase/charged> a ns2:LegalProcessPhase,
+        ns7:Phase ;
+    ns2:hasPhaseBeginPoint "2024-06-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/idaho> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Idaho" ;
+    ns5:name "Idaho" .
+
+<https://w3id.org/caselinker/resource/location/kootenai-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kootenai County" ;
+    ns5:name "Kootenai County" .
+
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2024_029> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/idaho_icac_2024_029/provenance> .

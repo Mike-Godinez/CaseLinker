@@ -1,89 +1,135 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns8: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:50:44.448824" ;
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 05:05:32.828542" ;
     dcterms:identifier "idaho_icac_2025_041" ;
-    dcterms:modified "2026-09-10T19:50:44.448824" ;
+    dcterms:modified "2026-10-18 05:05:32.828542" ;
     dcterms:source <https://www.ag.idaho.gov/newsroom/category/icac/?showall=true>,
         "Idaho ICAC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/coeur-dalene-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/kootenai-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/idaho>,
+        <https://w3id.org/caselinker/resource/location/north-idaho> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/cybertip>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/possession>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/legal-proceeding> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/coeur-dalene-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/kootenai-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/idaho>,
+        <https://w3id.org/caselinker/resource/location/north-idaho> .
 
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-02-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/person/victim/1> .
+<https://w3id.org/caselinker/resource/agency/coeur-dalene-police-department> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/coeur-dalene-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/kootenai-county-sheriffs-office> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/kootenai-county-sheriffs-office> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/charge/1> a ns6:CriminalCharge,
+        ns6:StateCharge ;
     rdfs:label "sexual exploitation of children" .
 
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/charge/2> a ns6:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns7:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/cybertip> a ns3:NCMECCybertipReport ;
+    ns3:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/distribution> a ns4:Event,
+        ns6:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/charge/1>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/charge/2> ;
+    ns6:hasProceedingBeginPoint "2025-02-21T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 28 .
 
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 42 .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/person/offender/3> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 43 .
 
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/idaho_icac_2025_041/facet/possession> .
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-02-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/person/offender/1> .
 
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/role/offender/2> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-02-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/person/offender/2> .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/role/offender/3> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-02-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/person/offender/3> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/phase/arrested> a ns1:InitialPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2025-02-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/idaho> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Idaho" ;
+    ns8:name "Idaho" .
+
+<https://w3id.org/caselinker/resource/location/north-idaho> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "North Idaho" ;
+    ns8:name "North Idaho" .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/conspiracy> a ns1:ConspiracyToCommitCSA,
+        ns4:Event ;
+    ns1:conspiracyMemberCount 3 ;
+    ns1:participatesInConspiracy <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/role/offender/2>,
+        <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/role/offender/3> ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/event/possession> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:severityLevel 3 ;
+    ns8:hasFacet <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/idaho_icac_2025_041> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/idaho_icac_2025_041/provenance> .

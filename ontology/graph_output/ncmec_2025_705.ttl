@@ -1,115 +1,101 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns8: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_705> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.888698" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705> a ns3:CACInvestigation,
+        ns8:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:23.078916" ;
     dcterms:identifier "ncmec_2025_705" ;
-    dcterms:modified "2026-09-15T21:27:13.888698" ;
-    dcterms:source <https://www.cbsnews.com/sacramento/news/california-man-charged-north-carolina-alleged-sexual-exploitation-child/>,
+    dcterms:modified "2026-10-18 00:01:23.078916" ;
+    dcterms:source <https://www.willistonherald.com/news/man-arrested-for-possessing-sharing-child-sexual-abuse-material/article_c36c5e64-fb61-11ef-8a1d-bb749f928d6c.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/california>,
-        <https://caselinker.up.railway.app/resource/location/californias>,
-        <https://caselinker.up.railway.app/resource/location/north-carolina>,
-        <https://caselinker.up.railway.app/resource/location/sacramento> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_705/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_705/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_705/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_705/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/craven-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/usms> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/california>,
-        <https://caselinker.up.railway.app/resource/location/californias>,
-        <https://caselinker.up.railway.app/resource/location/north-carolina>,
-        <https://caselinker.up.railway.app/resource/location/sacramento> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/williston> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_705/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_705/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_705/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_705/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_705/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_705/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns3:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_705/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/north-dakota-bureau-of-criminal-investigation>,
+        <https://w3id.org/caselinker/resource/agency/williams-county-sheriffs-office> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/williston> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_705/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_705/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-04-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_705/event/possession> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_705/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_705/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_705/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-04-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_705/event/possession> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_705/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/platform/instagram> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Instagram" .
+<https://w3id.org/caselinker/resource/agency/north-dakota-bureau-of-criminal-investigation> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
+<https://w3id.org/caselinker/resource/agency/williams-county-sheriffs-office> a ns8:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "Williams County Sheriff's Office" .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns2:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/agency/craven-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Craven County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705/cybertip> a ns1:NCMECCybertipReport ;
+    ns1:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705/event/distribution> a ns8:Event,
+        ns2:CSAM_Distribution ;
+    ns3:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/agency/usms> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_705/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of a minor" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705/legal-proceeding> a ns8:Event,
+        ns8:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_705/charge/1> ;
+    ns2:hasProceedingBeginPoint "2025-04-14T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_705/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 44 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_705/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_705/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_705/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_705/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_705/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705/tech/cybertipline> a ns1:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_705/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 21 .
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_705/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_705/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$1\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705/phase/charged> a ns3:LegalProcessPhase,
+        ns8:Phase ;
+    ns3:hasPhaseBeginPoint "2025-04-14T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_705/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-08-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/williston> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Williston" ;
+    ns5:name "Williston" .
 
-<https://caselinker.up.railway.app/resource/location/california> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705/event/possession> a ns3:CSAMIncident,
+        ns8:Event ;
+    ns3:severityLevel 3 ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_705/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/location/californias> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "California's" ;
-    uco-core:name "California's" .
 
-<https://caselinker.up.railway.app/resource/location/north-carolina> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/sacramento> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Sacramento" ;
-    uco-core:name "Sacramento" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_705> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_705/provenance> .

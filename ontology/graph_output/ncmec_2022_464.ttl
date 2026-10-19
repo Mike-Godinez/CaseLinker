@@ -1,100 +1,192 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_464> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.389632" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/admission/1/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_464/admission/1> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_464> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/admission/2/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_464/admission/2> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_464> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-10-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_464/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_464/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_464/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/columbia-county-sheriffs-office> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/fontana-police-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/marion-county-sheriffs-office> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns7:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/charge/2> a ns7:CSAM_Distribution,
+        ns7:CriminalCharge ;
+    rdfs:label "distribution of child pornography" ;
+    ns7:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/event/distribution> a ns2:Event,
+        ns7:CSAM_Distribution ;
+    ns1:severityLevel 2 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns7:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked the suspect at West Valley Detention Center" ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_464/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_464/charge/2> ;
+    ns7:hasProceedingBeginPoint "2022-10-18T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/operation> a ns2:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 29 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:25.025097" ;
     dcterms:identifier "ncmec_2022_464" ;
-    dcterms:modified "2026-09-15T20:45:06.389632" ;
-    dcterms:source <https://www.wkbn.com/news/local-news/austintown-man-indicted-on-child-porn-charges/>,
+    dcterms:modified "2026-10-17 21:51:25.025097" ;
+    dcterms:source <https://www.clickorlando.com/news/local/2022/10/18/deputies-ocala-man-sought-sex-with-woman-child-more-victims-possible/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/austintown>,
-        <https://caselinker.up.railway.app/resource/location/bainbridge-st>,
-        <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/youngstown> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/austintown>,
-        <https://caselinker.up.railway.app/resource/location/bainbridge-st>,
-        <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/youngstown> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/columbia-county>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/marion-county>,
+        <https://w3id.org/caselinker/resource/location/ocala>,
+        <https://w3id.org/caselinker/resource/location/rosena-ranch>,
+        <https://w3id.org/caselinker/resource/location/san-bernardino> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_464/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_464/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_464/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_464/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_464/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_464/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_464/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_464/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_464/operation> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/columbia-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/fontana-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/marion-county-sheriffs-office> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/columbia-county>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/marion-county>,
+        <https://w3id.org/caselinker/resource/location/ocala>,
+        <https://w3id.org/caselinker/resource/location/rosena-ranch>,
+        <https://w3id.org/caselinker/resource/location/san-bernardino> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_464/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "was investigated after the woman filed a report with the sheriff’s office in Columbia County about the conversation s..." ;
+    dcterms:source <https://www.clickorlando.com/news/local/2022/10/18/deputies-ocala-man-sought-sex-with-woman-child-more-victims-possible/> ;
+    ns3:admissionContext "allace bragged online about committing child sex abuse and possessing child pornography. Deputies said he was investigated after the woma..." ;
+    ns3:admissionFrame "said_paraphrase" ;
+    ns3:admissionTheme "other" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_464/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns5:description "was investigated after the woman filed a report with the sheriff’s office in Columbia County about the conversation she’d had with Wallace on social media, where Wallace allegedly claimed to have sexu" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_464/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/phase/booked> a ns1:InitialPhase,
+        ns2:Phase ;
+    ns1:hasPhaseBeginPoint "2022-10-18T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_464/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "obscenity involving a minor" ;
-    cacontology-legal-outcomes:indictmentCounts 28 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-10-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_464/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_464/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_464/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_464/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/location/columbia-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Columbia County" ;
+    ns5:name "Columbia County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_464/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/sentence/1> .
+<https://w3id.org/caselinker/resource/location/fla> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns5:name "Fla." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_464/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 25 .
+<https://w3id.org/caselinker/resource/location/marion-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Marion County" ;
+    ns5:name "Marion County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_464/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/ocala> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ocala" ;
+    ns5:name "Ocala" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_464/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/rosena-ranch> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Rosena Ranch" ;
+    ns5:name "Rosena Ranch" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_464/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/san-bernardino> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "San Bernardino" ;
+    ns5:name "San Bernardino" .
 
-<https://caselinker.up.railway.app/resource/location/austintown> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Austintown" ;
-    uco-core:name "Austintown" .
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
 
-<https://caselinker.up.railway.app/resource/location/bainbridge-st> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Bainbridge St." ;
-    uco-core:name "Bainbridge St." .
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/location/ohio> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/platform/twitter-x> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Twitter / X" .
 
-<https://caselinker.up.railway.app/resource/location/youngstown> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Youngstown" ;
-    uco-core:name "Youngstown" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_464/admission/2> ;
+    ns1:severityLevel 2 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media>,
+        <https://w3id.org/caselinker/resource/platform/twitter-x> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_464/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_464/admission/2> ;
+    ns1:severityLevel 2 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media>,
+        <https://w3id.org/caselinker/resource/platform/twitter-x> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_464/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_464/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_464/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "also explained how he groomed the children for sexual activity" ;
+    dcterms:source <https://www.clickorlando.com/news/local/2022/10/18/deputies-ocala-man-sought-sex-with-woman-child-more-victims-possible/> ;
+    ns3:admissionContext "a child and could arrange a sexual encounter and bring the child with him. The sheriff’s office said he also explained how he groomed the..." ;
+    ns3:admissionFrame "said_paraphrase" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_464/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns5:description "also explained how he groomed the children for sexual activity" .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_464> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_464/provenance> .

@@ -1,77 +1,226 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_934> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.962513" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_934> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/2/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/2> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_934> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/3/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/3> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_934> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/4/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/4> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_934> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/5/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/5> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_934> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-11-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_934/event/csam> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_934/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/lackawanna-county-district-attorneys-office> a ns7:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/event/distribution> a ns3:Event,
+        ns5:CSAM_Distribution ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remained in Lackawanna County Prison" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_934/charge/1> ;
+    ns5:hasProceedingBeginPoint "2024-11-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/legal-step/pleaded-guilty> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:PleaBargaining ;
+    ns5:hasProceedingBeginPoint "2024-11-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 43 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/tech/cybertipline> a ns8:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Facebook" .
+
+<https://w3id.org/caselinker/resource/platform/instagram> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Instagram" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/platform/youtube> a <https://cacontology.projectvic.org/platforms#VideoStreamingPlatform> ;
+    rdfs:label "YouTube" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns7:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/4> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "was his, charging documents note" ;
+    dcterms:source <https://www.yahoo.com/news/detectives-scranton-sex-offender-admitted-200100626.html> ;
+    ns1:admissionContext "ile, an image of a naked prepubescent girl, from an account tied to an email address that Ultsh later admitted was his, charging document..." ;
+    ns1:admissionFrame "admitted_paraphrase" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_934/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "was his, charging documents note" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/phase/pleaded-guilty> a ns3:Phase,
+        ns5:PreTrialPhase ;
+    ns2:hasPhaseBeginPoint "2024-11-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/lackawanna-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lackawanna County" ;
+    ns4:name "Lackawanna County" .
+
+<https://w3id.org/caselinker/resource/location/lycoming-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lycoming County" ;
+    ns4:name "Lycoming County" .
+
+<https://w3id.org/caselinker/resource/location/pa> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pa." ;
+    ns4:name "Pa." .
+
+<https://w3id.org/caselinker/resource/location/scranton> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Scranton" ;
+    ns4:name "Scranton" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "VIEWING, POSTING CHILD SEXUAL ABUSE MATERIAL The Time-Tribune, Scranton, Pa" ;
+    dcterms:source <https://www.yahoo.com/news/detectives-scranton-sex-offender-admitted-200100626.html> ;
+    ns1:admissionContext "DETECTIVES: SCRANTON SEX OFFENDER ADMITTED TO VIEWING, POSTING CHILD SEXUAL ABUSE MATERIAL The Time-Tribune, Scranton, Pa" ;
+    ns1:admissionFrame "admitted_to" ;
+    ns1:admissionTheme "harm_conduct" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_934/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "VIEWING, POSTING CHILD SEXUAL ABUSE MATERIAL The Time-Tribune, Scranton, Pa" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "viewing and posting child sexual abuse material" ;
+    dcterms:source <https://www.yahoo.com/news/detectives-scranton-sex-offender-admitted-200100626.html> ;
+    ns1:admissionContext "who previously pleaded guilty to child pornography offenses in Lycoming County faces new felony charges after Lackawanna County detective..." ;
+    ns1:admissionFrame "admitted_to" ;
+    ns1:admissionTheme "harm_conduct" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_934/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "viewing and posting child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/3> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "viewing files of child pornography and did state that he would post the images to his accounts, but he had the settin..." ;
+    dcterms:source <https://www.yahoo.com/news/detectives-scranton-sex-offender-admitted-200100626.html> ;
+    ns1:admissionContext "cyber tips, but agreed to speak with detectives again at the district attorney’s office. “Ultsh admitted to viewing files of child pornog..." ;
+    ns1:admissionFrame "admitted_to" ;
+    ns1:admissionTheme "harm_conduct" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_934/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "viewing files of child pornography and did state that he would post the images to his accounts, but he had the settings enabled to where he was the one person able to view such files,” the detectives" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/5> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "to viewing and posting child sexual abuse material" ;
+    dcterms:source <https://www.yahoo.com/news/detectives-scranton-sex-offender-admitted-200100626.html> ;
+    ns1:admissionContext "fenses in Lycoming County faces new felony charges after Lackawanna County detectives say he admitted to viewing and posting child sexual..." ;
+    ns1:admissionFrame "he_admitted_paraphrase" ;
+    ns1:admissionTheme "harm_conduct" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_934/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "to viewing and posting child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/event/csam> a ns2:CSAMIncident,
+        ns3:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/5> ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/instagram>,
+        <https://w3id.org/caselinker/resource/platform/social-media>,
+        <https://w3id.org/caselinker/resource/platform/youtube> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_934/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:36.013517" ;
     dcterms:identifier "ncmec_2024_934" ;
-    dcterms:modified "2026-09-15T21:08:10.962513" ;
-    dcterms:source <https://www.limaohio.com/top-stories/2024/04/03/delphos-man-sentenced-in-van-wert-courtroom/>,
+    dcterms:modified "2026-10-17 23:04:36.013517" ;
+    dcterms:source <https://www.yahoo.com/news/detectives-scranton-sex-offender-admitted-200100626.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/delphos>,
-        <https://caselinker.up.railway.app/resource/location/van-wert-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_934/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_934/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_934/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_934/legal-step/sentenced> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/delphos>,
-        <https://caselinker.up.railway.app/resource/location/van-wert-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/lackawanna-county>,
+        <https://w3id.org/caselinker/resource/location/lycoming-county>,
+        <https://w3id.org/caselinker/resource/location/pa>,
+        <https://w3id.org/caselinker/resource/location/scranton> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_934/phase/pleaded-guilty> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_934/phase/pleaded-guilty> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/4>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_934/admission/5>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_934/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_934/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_934/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_934/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_934/legal-step/pleaded-guilty> ;
+    ns2:investigationStatus "unknown" ;
+    ns2:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2024_934/tech/cybertipline> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/lackawanna-county-district-attorneys-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/lackawanna-county>,
+        <https://w3id.org/caselinker/resource/location/lycoming-county>,
+        <https://w3id.org/caselinker/resource/location/pa>,
+        <https://w3id.org/caselinker/resource/location/scranton> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_934/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_934/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-11-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_934/event/csam> ;
+    ns2:perpetratorRegisteredSexOffender true ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_934/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_934/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_934/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_934/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "pandering" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_934/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_934/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_934/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_934/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_934/person/offender/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_934/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_934/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_934/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/delphos> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Delphos" ;
-    uco-core:name "Delphos" .
-
-<https://caselinker.up.railway.app/resource/location/van-wert-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Van Wert County" ;
-    uco-core:name "Van Wert County" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2024_934> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_934/provenance> .

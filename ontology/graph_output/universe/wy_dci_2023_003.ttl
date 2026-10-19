@@ -1,0 +1,115 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003> a ns4:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 07:49:27.139579" ;
+    dcterms:identifier "wy_dci_2023_003" ;
+    dcterms:modified "2026-10-18 07:49:27.139579" ;
+    dcterms:source <https://kgab.com/cheyenne-man-sentenced-to-3-8-years-in-prison-for-child-porn/>,
+        "WY DCI" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cheyenne>,
+        <https://w3id.org/caselinker/resource/location/laramie-county> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/phase/sentenced> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/phase/sentenced> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/event/possession>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/legal-step/sentenced> ;
+    ns4:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/wyoming-division-of-criminal-investigation> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/cheyenne>,
+        <https://w3id.org/caselinker/resource/location/laramie-county> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2023-10-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2023-10-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/wyoming-division-of-criminal-investigation> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/charge/1> a ns1:CriminalCharge,
+        ns1:StateCharge ;
+    rdfs:label "sexual exploitation of a child -- five for creating/receiving" ;
+    ns1:indictmentCounts 12 .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/charge/2> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns1:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/charge/3> a ns1:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns5:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/event/distribution> a ns3:Event,
+        ns1:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/charge/1>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/charge/2>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/charge/3> ;
+    ns1:hasProceedingBeginPoint "2023-10-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:resultsSentence <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/legal-step/sentenced> a ns3:Event,
+        ns3:LegalEvent,
+        ns1:LegalProceeding,
+        ns1:SentencingHearing ;
+    ns1:hasProceedingBeginPoint "2023-10-31T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 21 .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/sentence/1> a ns1:CriminalSentence,
+        ns1:PrisonSentence ;
+    rdfs:label "3-8 Years" .
+
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/phase/sentenced> a ns3:Phase,
+        ns1:SentencingPhase ;
+    ns4:hasPhaseBeginPoint "2023-10-31T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/cheyenne> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cheyenne" ;
+    ns2:name "Cheyenne" .
+
+<https://w3id.org/caselinker/resource/location/laramie-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Laramie County" ;
+    ns2:name "Laramie County" .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003/event/possession> a ns4:CSAMIncident,
+        ns3:Event ;
+    ns4:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat> ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2023_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/wy_dci_2023_003/provenance> .

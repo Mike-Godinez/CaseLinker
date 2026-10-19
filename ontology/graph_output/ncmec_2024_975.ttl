@@ -1,164 +1,117 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns9: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_975> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_975/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_975> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_975> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/3/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/3> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_975> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "each of sexual abuse of" ;
-    cacontology-legal-outcomes:indictmentCounts 25 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 21 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 7 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "was going through a “really dark time,” but there was no excuse" ;
-    dcterms:source <https://www.delcotimes.com/2024/01/11/lansdowne-man-arrested-on-charges-of-uploading-child-porn/> ;
-    ns1:admissionContext "nn” user name and to uploading the files flagged by Snapchat. Dorsey agreed to speak with investigators and allegedly said he was going t..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "was going through a “really dark time,” but there was no excuse" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/3> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "deleted the files from his phone" ;
-    dcterms:source <https://www.delcotimes.com/2024/01/11/lansdowne-man-arrested-on-charges-of-uploading-child-porn/> ;
-    ns1:admissionContext "k time,” but there was no excuse. He also acknowledged that he knows child pornography is illegal and said he deleted the files from his..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "deleted the files from his phone" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/delaware-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/lansdowne> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Lansdowne" ;
-    uco-core:name "Lansdowne" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.997295" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:36.556241" ;
     dcterms:identifier "ncmec_2024_975" ;
-    dcterms:modified "2026-09-15T21:08:10.997295" ;
-    dcterms:source <https://www.delcotimes.com/2024/01/11/lansdowne-man-arrested-on-charges-of-uploading-child-porn/>,
+    dcterms:modified "2026-10-17 23:04:36.556241" ;
+    dcterms:source <https://www.delcotimes.com/2024/02/21/octogenarian-pleads-to-child-porn-possession/CT148179203>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/delaware-county>,
-        <https://caselinker.up.railway.app/resource/location/lansdowne> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/delaware-county>,
-        <https://caselinker.up.railway.app/resource/location/lansdowne> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/delaware-county> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_975/phase/pleaded-guilty> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_975/phase/pleaded-guilty> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_975/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_975/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_975/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_975/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_975/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_975/legal-step/pleaded-guilty> ;
+    ns2:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/delaware-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "using the “gloryydann” user name and to uploading the files flagged by Snapchat" ;
-    dcterms:source <https://www.delcotimes.com/2024/01/11/lansdowne-man-arrested-on-charges-of-uploading-child-porn/> ;
-    ns1:admissionContext "Detectives and Lansdowne police served a search warrant on Dorsey’s address on Oct. 6, at which time Dorsey allegedly admitted to using t..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "using the “gloryydann” user name and to uploading the files flagged by Snapchat" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns1:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/admission/1> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_975/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_975/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/event/trust-violation> a ns3:CustodialAbuse,
+        ns3:TrustViolation ;
+    ns3:violatesRelationship <https://w3id.org/caselinker/resource/case/ncmec_2024_975/relationship/mother> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_975/charge/1> ;
+    ns1:hasProceedingBeginPoint "2024-02-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/legal-step/pleaded-guilty> a ns5:Event,
+        ns5:LegalEvent,
+        ns1:LegalProceeding,
+        ns1:PleaBargaining ;
+    ns1:hasProceedingBeginPoint "2024-02-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns9:ageEstimate 80 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/relationship/mother> a ns3:CustodialRelationship,
+        ns3:FamilialRelationship ;
+    ns3:involvesChild <https://w3id.org/caselinker/resource/case/ncmec_2024_975/role/victim/1> ;
+    ns3:involvesCustodian <https://w3id.org/caselinker/resource/case/ncmec_2024_975/role/offender/1> ;
+    ns3:relationshipType "mother" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-02-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_975/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_975/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/phase/pleaded-guilty> a ns5:Phase,
+        ns1:PreTrialPhase ;
+    ns2:hasPhaseBeginPoint "2024-02-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-02-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_975/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_975/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/location/delaware-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Delaware County" ;
+    ns8:name "Delaware County" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "police in 2023 that he likes looking at “little girls” entered an open guilty plea to two counts of possession of chi..." ;
+    dcterms:source <https://www.delcotimes.com/2024/02/21/octogenarian-pleads-to-child-porn-possession/CT148179203> ;
+    ns4:admissionContext "/www.delcotimes.com/2024/02/21/octogenarian-pleads-to-child-porn-possession/ CT148179203 MEDIA COURTHOUSE — An 80-year-old Haverford man..." ;
+    ns4:admissionFrame "admitted_to" ;
+    ns4:admissionTheme "harm_conduct" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_975/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns8:description "police in 2023 that he likes looking at “little girls” entered an open guilty plea to two counts of possession of child pornography before Common Pleas Court Judge Kevin F" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975/event/possession> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_975/admission/1> ;
+    ns2:severityLevel 3 ;
+    ns8:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_975/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_975> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_975/provenance> .

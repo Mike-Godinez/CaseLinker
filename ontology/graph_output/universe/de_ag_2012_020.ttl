@@ -1,0 +1,110 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 01:01:30.116558" ;
+    dcterms:identifier "de_ag_2012_020" ;
+    dcterms:modified "2026-10-18 01:01:30.116558" ;
+    dcterms:source <https://news.delaware.gov/2012/07/13/biden-announces-arrest-of-new-castle-man-on-child-pornography-charges>,
+        "DE AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/delaware>,
+        <https://w3id.org/caselinker/resource/location/new-castle>,
+        <https://w3id.org/caselinker/resource/location/smyrna>,
+        <https://w3id.org/caselinker/resource/location/williams> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/de_ag_2012_020/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/de_ag_2012_020/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/de_ag_2012_020/event/csam>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_020/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_020/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_020/operation> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/child-predator-task-force>,
+        <https://w3id.org/caselinker/resource/agency/delaware-child-predator-task-force>,
+        <https://w3id.org/caselinker/resource/agency/delaware-state-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/delaware>,
+        <https://w3id.org/caselinker/resource/location/new-castle>,
+        <https://w3id.org/caselinker/resource/location/smyrna>,
+        <https://w3id.org/caselinker/resource/location/williams> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2012-07-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/de_ag_2012_020/event/csam>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_020/event/online-only> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2012_020/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2012-07-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/de_ag_2012_020/event/csam>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2012_020/event/online-only> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2012_020/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/child-predator-task-force> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/delaware-child-predator-task-force> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/delaware-state-police-department> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
+    rdfs:label "dealing in child pornography" ;
+    ns7:indictmentCounts 26 .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/de_ag_2012_020/charge/1> ;
+    ns7:hasProceedingBeginPoint "2012-07-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020/operation> a ns4:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 28 .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020/phase/charged> a ns2:LegalProcessPhase,
+        ns4:Phase ;
+    ns2:hasPhaseBeginPoint "2012-07-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/delaware> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Delaware" ;
+    ns3:name "Delaware" .
+
+<https://w3id.org/caselinker/resource/location/new-castle> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Castle" ;
+    ns3:name "New Castle" .
+
+<https://w3id.org/caselinker/resource/location/smyrna> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Smyrna" ;
+    ns3:name "Smyrna" .
+
+<https://w3id.org/caselinker/resource/location/williams> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Williams’" ;
+    ns3:name "Williams’" .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020/event/csam> a ns2:CSAMIncident,
+        ns4:Event ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/de_ag_2012_020/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020/event/online-only> a ns2:ChildSexualAbuseEvent,
+        ns4:Event .
+
+
+<https://w3id.org/caselinker/resource/case/de_ag_2012_020> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/de_ag_2012_020/provenance> .

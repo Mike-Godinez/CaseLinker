@@ -1,160 +1,179 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/production#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/usss_2021_001/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/usss_2021_001> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/usss_2021_001/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/usss_2021_001/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/usss_2021_001> ;
+    ns4:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/usss_2021_001/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/usss_2021_001/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/usss_2021_001/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2021-03-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/usss_2021_001/event/online-only> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/usss_2021_001/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/ceos> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/ceos> a ns1:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/secret-service> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/secret-service> a ns1:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/us-secret-service> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/us-secret-service> a ns1:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/usao> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/usao> a ns1:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:36:45.977783" ;
+<https://w3id.org/caselinker/resource/case/usss_2021_001> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 07:32:39.252160" ;
     dcterms:identifier "usss_2021_001" ;
-    dcterms:modified "2026-09-15T20:36:45.977783" ;
+    dcterms:modified "2026-10-18 07:32:39.252160" ;
     dcterms:source <https://www.secretservice.gov/newsroom/releases/2021/03/cheraw-man-sentenced-nearly-seven-years-transferring-obscene-material>,
         "USSS" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/cheraw>,
-        <https://caselinker.up.railway.app/resource/location/florence>,
-        <https://caselinker.up.railway.app/resource/location/kentucky>,
-        <https://caselinker.up.railway.app/resource/location/south-carolina>,
-        <https://caselinker.up.railway.app/resource/location/united-states> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/usss_2021_001/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/usss_2021_001/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/usss_2021_001/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/usss_2021_001/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/usss_2021_001/event/project-safe-childhood>,
-        <https://caselinker.up.railway.app/resource/case/usss_2021_001/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/usss_2021_001/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/usss_2021_001/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ceos>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/secret-service>,
-        <https://caselinker.up.railway.app/resource/agency/us-secret-service>,
-        <https://caselinker.up.railway.app/resource/agency/usao> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/cheraw>,
-        <https://caselinker.up.railway.app/resource/location/florence>,
-        <https://caselinker.up.railway.app/resource/location/kentucky>,
-        <https://caselinker.up.railway.app/resource/location/south-carolina>,
-        <https://caselinker.up.railway.app/resource/location/united-states> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cheraw>,
+        <https://w3id.org/caselinker/resource/location/florence>,
+        <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/south-carolina>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/usss_2021_001/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/usss_2021_001/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/usss_2021_001/admission/1>,
+        <https://w3id.org/caselinker/resource/case/usss_2021_001/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/usss_2021_001/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/usss_2021_001/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/usss_2021_001/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/usss_2021_001/operation> ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/ceos>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/secret-service>,
+        <https://w3id.org/caselinker/resource/agency/us-secret-service>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/cheraw>,
+        <https://w3id.org/caselinker/resource/location/florence>,
+        <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/south-carolina>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/usss_2021_001/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
     rdfs:label "obscene material" .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/usss_2021_001/charge/2> a ns3:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns6:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/event/project-safe-childhood> a cac-core:Event,
-        cacontology-multi:ProjectSafeChildhoodOperation ;
-    cacontology:severityLevel 1 .
+<https://w3id.org/caselinker/resource/case/usss_2021_001/event/project-safe-childhood> a ns4:Event,
+        ns1:ProjectSafeChildhoodOperation ;
+    ns2:severityLevel 1 .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/usss_2021_001/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/usss_2021_001/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/usss_2021_001/sentence/1> .
+<https://w3id.org/caselinker/resource/case/usss_2021_001/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/usss_2021_001/charge/1>,
+        <https://w3id.org/caselinker/resource/case/usss_2021_001/charge/2> ;
+    ns3:hasProceedingBeginPoint "2021-03-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:resultsSentence <https://w3id.org/caselinker/resource/case/usss_2021_001/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/usss_2021_001/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/usss_2021_001/sentence/3>,
+        <https://w3id.org/caselinker/resource/case/usss_2021_001/sentence/4> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/usss_2021_001/legal-step/sentenced> a ns4:Event,
+        ns4:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2021-03-16T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/case/usss_2021_001/operation> a ns4:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 40 .
+<https://w3id.org/caselinker/resource/case/usss_2021_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 40 .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 13 .
+<https://w3id.org/caselinker/resource/case/usss_2021_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:victimAge 13 .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/usss_2021_001/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/usss_2021_001/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/usss_2021_001/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2021-03-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/usss_2021_001/event/online-only> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/usss_2021_001/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:SupervisedRelease ;
-    rdfs:label "[\"supervised release\", \"21 months\", \"60 months\"]" .
+<https://w3id.org/caselinker/resource/case/usss_2021_001/sentence/1> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "Nearly Seven Years" .
 
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
+<https://w3id.org/caselinker/resource/case/usss_2021_001/sentence/2> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "21 months" .
+
+<https://w3id.org/caselinker/resource/case/usss_2021_001/sentence/3> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "60 months" .
+
+<https://w3id.org/caselinker/resource/case/usss_2021_001/sentence/4> a ns3:CriminalSentence,
+        ns3:SupervisedRelease ;
+    rdfs:label "three-year supervised release" .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
     rdfs:label "chat" .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2021-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/usss_2021_001/phase/sentenced> a ns4:Phase,
+        ns3:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2021-03-16T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/cheraw> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/cheraw> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Cheraw" ;
-    uco-core:name "Cheraw" .
+    ns5:name "Cheraw" .
 
-<https://caselinker.up.railway.app/resource/location/florence> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/florence> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Florence" ;
+    ns5:name "Florence" .
 
-<https://caselinker.up.railway.app/resource/location/kentucky> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/kentucky> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kentucky" ;
+    ns5:name "Kentucky" .
 
-<https://caselinker.up.railway.app/resource/location/south-carolina> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/south-carolina> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Carolina" ;
+    ns5:name "South Carolina" .
 
-<https://caselinker.up.railway.app/resource/location/united-states> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/united-states> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns5:name "United States" .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/usss_2021_001/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "engaging in similar interactions with minors on more than thirty occasions and admitted to having had sexual intercou..." ;
     dcterms:source <https://www.secretservice.gov/newsroom/releases/2021/03/cheraw-man-sentenced-nearly-seven-years-transferring-obscene-material> ;
-    ns1:admissionContext "uth Carolina Attorney General’s Office ICAC task force. Branham – who has convictions for indecent exposure and assault and battery of a..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/usss_2021_001/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "engaging in similar interactions with minors on more than thirty occasions and admitted to having had sexual intercourse with a minor when he was 29 years old" .
+    ns6:admissionContext "uth Carolina Attorney General’s Office ICAC task force. Branham – who has convictions for indecent exposure and assault and battery of a..." ;
+    ns6:admissionFrame "admitted_to" ;
+    ns6:admissionTheme "harm_conduct" ;
+    ns6:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/usss_2021_001/role/offender/1> ;
+    ns6:evidenceTier "press_release_stated" ;
+    ns6:quoteType "paraphrase" ;
+    ns5:description "engaging in similar interactions with minors on more than thirty occasions and admitted to having had sexual intercourse with a minor when he was 29 years old" .
 
-<https://caselinker.up.railway.app/resource/case/usss_2021_001/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/usss_2021_001/admission/1> ;
-    cacontology:severityLevel 1 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> .
+<https://w3id.org/caselinker/resource/case/usss_2021_001/event/online-only> a ns2:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/usss_2021_001/admission/1> ;
+    ns2:severityLevel 1 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
 
+
+<https://w3id.org/caselinker/resource/case/usss_2021_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/usss_2021_001/provenance> .

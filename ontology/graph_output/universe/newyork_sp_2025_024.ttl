@@ -1,0 +1,94 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_024> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 06:04:24.211786" ;
+    dcterms:identifier "newyork_sp_2025_024" ;
+    dcterms:modified "2026-10-18 06:04:24.211786" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/provenance> ;
+    dcterms:source <https://troopers.ny.gov/news/critic-child-abuse-arrested-sex-crimes-against-children>,
+        "NEWYORK SP" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/amherst>,
+        <https://w3id.org/caselinker/resource/location/new-york> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/event/possession>,
+        <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/bureau-of-criminal-investigation>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/amherst>,
+        <https://w3id.org/caselinker/resource/location/new-york> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-04-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-04-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/bureau-of-criminal-investigation> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns5:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/charge/2> a ns5:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns7:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/event/distribution> a ns3:Event,
+        ns5:CSAM_Distribution ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/charge/1>,
+        <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/charge/2> ;
+    ns5:hasProceedingBeginPoint "2025-04-09T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 49 .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/phase/arrested> a ns2:InitialPhase,
+        ns3:Phase ;
+    ns2:hasPhaseBeginPoint "2025-04-09T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/amherst> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Amherst" ;
+    ns6:name "Amherst" .
+
+<https://w3id.org/caselinker/resource/location/new-york> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New York" ;
+    ns6:name "New York" .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/event/possession> a ns2:CSAMIncident,
+        ns3:Event ;
+    ns2:severityLevel 3 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/newyork_sp_2025_024/facet/possession> .
+

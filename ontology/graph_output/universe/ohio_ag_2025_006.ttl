@@ -1,0 +1,96 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2025_006> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 06:14:10.067365" ;
+    dcterms:identifier "ohio_ag_2025_006" ;
+    dcterms:modified "2026-10-18 06:14:10.067365" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/provenance> ;
+    dcterms:source <https://www.ohioattorneygeneral.gov/Media/News-Releases/July-2025/Guilty-Plea-Filed-in-Wayne-County-Child-Rape-Case>,
+        "OHIO AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/shreve>,
+        <https://w3id.org/caselinker/resource/location/wayne-county>,
+        <https://w3id.org/caselinker/resource/location/wooster> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/legal-step/sentenced> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/holmes-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/ohio-attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/wooster-police-department> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/shreve>,
+        <https://w3id.org/caselinker/resource/location/wayne-county>,
+        <https://w3id.org/caselinker/resource/location/wooster> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/holmes-county-sheriffs-office> a ns4:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Holmes County Sheriff's Office" .
+
+<https://w3id.org/caselinker/resource/agency/ohio-attorney-generals-office> a ns3:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/wooster-police-department> a ns4:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Wooster Police Department" .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/legal-step/sentenced> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2025-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 44 .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/phase/sentenced> a ns4:Phase,
+        ns5:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2025-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/ohio> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns2:name "Ohio" .
+
+<https://w3id.org/caselinker/resource/location/shreve> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Shreve" ;
+    ns2:name "Shreve" .
+
+<https://w3id.org/caselinker/resource/location/wayne-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wayne County" ;
+    ns2:name "Wayne County" .
+
+<https://w3id.org/caselinker/resource/location/wooster> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wooster" ;
+    ns2:name "Wooster" .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2025_006/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns1:severityLevel 3 .
+

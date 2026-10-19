@@ -1,63 +1,88 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_087> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.146494" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_087> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:25.308145" ;
     dcterms:identifier "ncmec_2024_087" ;
-    dcterms:modified "2026-09-15T21:08:10.146494" ;
-    dcterms:source <https://www.recorderonline.com/news/man-accused-of-having-child-pornography-arrested/article_9d652d36-81b3-11ef-8cea-2367c8c49a3a.html>,
+    dcterms:modified "2026-10-17 23:04:25.308145" ;
+    dcterms:source <https://kmph.com/news/local/man-arrested-for-possession-of-child-porn-in-visalia-child-abuse-material-south-giddings-street-youth-services-unit-national-center-for-missing-and-exploited-children-ncmec-tulare-county-adult-pre-trial-facility>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_087/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_087/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_087/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_087/legal-proceeding> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/visalia> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_087/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_087/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_087/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_087/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_087/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/visalia-police-department> ;
+    ns8:mentionsLocation <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/visalia> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_087/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_087/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_087/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_087/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-01-04T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_087/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_087/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_087/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_087/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_087/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_087/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-01-04T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_087/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_087/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_087/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/agency/visalia-police-department> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_087/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_087/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child porn" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_087/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_087/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_087/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_087/cybertip> a ns5:NCMECCybertipReport ;
+    ns5:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_087/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_087/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_087/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_087/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_087/charge/1> ;
+    ns6:hasProceedingBeginPoint "2024-01-04T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_087/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_087/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_087/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-10-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_087/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_087/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_087/facet/csam> .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns4:FederalAgency .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_087/phase/booked> a ns1:InitialPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2024-01-04T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/calif> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Calif." ;
+    ns2:name "Calif." .
+
+<https://w3id.org/caselinker/resource/location/visalia> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Visalia" ;
+    ns2:name "Visalia" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_087/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_087/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_087> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_087/provenance> .
