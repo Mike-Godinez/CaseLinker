@@ -101,7 +101,20 @@ def run_pipeline(file_paths: List[str]) -> None:
     print("\n" + "="*60)
     print("Step 2: Processing cases (batch, extract features, merge ml and pattern approaches)...")
     print("="*60)
-    cases = process_cases(df)
+    db_path = get_database_path()
+    fingerprint_storage = CaseStorage(db_path) if db_path else CaseStorage()
+    fingerprint_index = fingerprint_storage.load_fingerprint_index()
+    cases = process_cases(df, fingerprint_index=fingerprint_index)
+    if fingerprint_index.pending_duplicates:
+        print(
+            f"✓ fingerprint gate: skipped {len(fingerprint_index.pending_duplicates)} "
+            "duplicate article(s) (same normalized text already has an id)"
+        )
+        for row in fingerprint_index.pending_duplicates[:20]:
+            print(
+                f"  duplicate_of {row.get('duplicate_of_case_id')} "
+                f"from {row.get('source_file') or 'this ingest'}"
+            )
     print(f"✓ Found {len(cases)} cases across all PDFs")
 
     print("\n" + "="*60)

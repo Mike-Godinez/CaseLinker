@@ -26,7 +26,7 @@ class _SingleRowFrame:
 
 def _load_main(monkeypatch):
     processing = types.ModuleType("processing")
-    processing.process_cases = lambda _frame: [{"id": "other_2026_001"}]
+    processing.process_cases = lambda _frame, fingerprint_index=None: [{"id": "other_2026_001"}]
     monkeypatch.setitem(sys.modules, "processing", processing)
     monkeypatch.delenv("DATABASE_URL", raising=False)
 
@@ -64,9 +64,15 @@ def test_main_forwards_cli_paths_to_store_cases(monkeypatch):
     analysis.run_automated_analysis = lambda _cases: {}
     monkeypatch.setitem(sys.modules, "analysis", analysis)
 
+    class _Index:
+        pending_duplicates = []
+
     class _Storage:
         def __init__(self, *_args, **_kwargs):
             pass
+
+        def load_fingerprint_index(self):
+            return _Index()
 
         def store_precomputed_clusters(self, _clusters, _case_count):
             return True
