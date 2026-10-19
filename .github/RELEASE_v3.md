@@ -41,7 +41,7 @@ Working doc: [`src/Processing Layer/README.md`](https://github.com/mrinaalr/Case
 
 The Phase 3 pipeline is fully reproducible.
 
-A local LLM (`CASELINKER_LLM=1`, Ollama `qwen3:8b`) is the resolver's fourth optional witness, testifying only on mentions the deterministic layers could not settle. LLM input is restricted to sentence windows rather than the full release, returning findings from a fixed list with corroborating evidence. Quotes that fail the span gate are dropped. LLM claims carry confidence 0.6, below the 0.7 needed to finalize alone, so the LLM can confirm or veto but never store a value by itself. Replies are cached by model digest, prompt, and parameters.
+A local LLM (`CASELINKER_LLM=1`, Ollama `qwen3:8b`) is the resolver's optional fourth witness, testifying only on mentions the deterministic layers could not settle. LLM input is restricted to sentence windows rather than the full release, and it returns a role from a fixed list with a quote from its window. Quotes that fail the span gate are dropped. LLM claims carry confidence 0.6, below the 0.7 needed to finalize alone, so the LLM can confirm or veto but never store a value by itself. Replies are cached by model digest, prompt, and parameters.
 
 `scripts/run/llm_residue_pass.py` runs the LLM as its own pass over a stored corpus: it reads open mentions, appends the model's assertions, and re-resolves. The pass is resumable, and its added finals and vetoes are counted separately, so the LLM's contribution is measured on its own.
 
@@ -49,16 +49,15 @@ A local LLM (`CASELINKER_LLM=1`, Ollama `qwen3:8b`) is the resolver's fourth opt
 
 ### Identifiers
 
-Cases, agencies, platforms, and locations are named under `https://w3id.org/caselinker/resource/`. A case and its SPARQL named graph are `https://w3id.org/caselinker/resource/case/{case_id}`. 
+Cases, agencies, platforms, and locations are named under `https://w3id.org/caselinker/resource/`. A case and its SPARQL named graph are `https://w3id.org/caselinker/resource/case/{case_id}`.
 
-`https://w3id.org/caselinker/` redirects to the project. The redirect can move when the host moves. The IRIs do not. CaseLinker's IRIs now resolve through `https://w3id.org/caselinker/`. The demo, SPARQL endpoint, and API are `https://caselinker.up.railway.app/`.
+Every CaseLinker IRI resolves through `https://w3id.org/caselinker/`, CaseLinker's permanent namespace. If the host moves, only the redirect changes; the IRIs remain stable. The demo, SPARQL endpoint, and API are `https://caselinker.up.railway.app/`.
 
 Case graphs are typed with the CAC ontology (`https://cacontology.projectvic.org/`), UCO, and CASE. Those vocabularies are unchanged. CaseLinker's own identifiers are the w3id IRIs above.
 
 ### Provenance graphs
 
-Each case graph now has a companion, `{case_id}.provenance.ttl`, written beside it. Every assertion is a W3C Web Annotation and a CAC `AssessmentResult`, with its span as a `TextPositionSelector` and `TextQuoteSelector`, its confidence, its method, and its issue time. Extraction runs and methods are PROV-O activities and software agents, and each field resolution records the assertions it was derived from. Three terms are new, under the also new `https://w3id.org/caselinker/ns/provenance#`: `evidenceFamily`, `resolutionStatus`, and `ruleSetVersion`. SHACL rejects a provenance graph that is missing `ruleSetVersion`, `evidenceFamily`, or an annotation's quote, span, confidence, or issue time. The public store loads each file as named graph `https://w3id.org/caselinker/resource/case/{case_id}/provenance`. The case_id is linked via `dcterms:provenance`, so a query can walk back and forth from cases to quoted evidence in one hop.
-
+Each case graph now has a companion, `{case_id}.provenance.ttl`, written beside it. Every assertion is a W3C Web Annotation and a CAC `AssessmentResult`, with its span as a `TextPositionSelector` and `TextQuoteSelector`, its confidence, its method, and its issue time. Extraction runs and methods are PROV-O activities and software agents, and each field resolution records the assertions it was derived from. Three terms are new, under `https://w3id.org/caselinker/ns/provenance#`: `evidenceFamily`, `resolutionStatus`, and `ruleSetVersion`. SHACL rejects a provenance graph that is missing `ruleSetVersion`, `evidenceFamily`, or an annotation's quote, span, confidence, or issue time. The public store loads each file as named graph `https://w3id.org/caselinker/resource/case/{case_id}/provenance`. The case_id is linked via `dcterms:provenance`, so a query can walk back and forth from cases to quoted evidence in one hop.
 
 ### Built for documents beyond press releases
 
@@ -67,7 +66,7 @@ Detectors register by document kind. Only press-release detectors ship in Phase 
 ### Collection & sources
 
 - Collector MCP tools for press releases and free court records (CourtListener / RECAP first) ([#13](https://github.com/mrinaalr/CaseLinker/pull/13))
-- New sources: Australian Federal Police (25), Queensland Police Service (7), Brazil Federal Police (108; local Portuguese-to-English translation), Europol (61), National Crime Agency (24), New Zealand Department of Internal Affairs (141), Wisconsin Department of Justice (16), Alberta Law Enforcement Response Teams, Internet Child Exploitation Unit (60), Police Scotland (82), Northern Virginia–DC Internet Crimes Against Children Task Force (9), Philippines National Bureau of Investigation (47), Minnesota Bureau of Criminal Apprehension (2), An Garda Síochána (4), Maryland State Police (10)
+- New sources: Australian Federal Police (25), Queensland Police Service (7), Brazil Federal Police (108; local Portuguese-to-English translation), Europol (61), National Crime Agency (24), New Zealand Department of Internal Affairs (141), Wisconsin Department of Justice (16), Alberta ALERT Internet Child Exploitation unit (60), Police Scotland (82), Northern Virginia–DC Internet Crimes Against Children Task Force (9), Philippines National Bureau of Investigation (47), Minnesota Bureau of Criminal Apprehension (2), An Garda Síochána (4), Maryland State Police (10)
 - A duplicate-URL gate so one article is never stored twice, across sources or ingests
 - NCMEC duplicate-article noise removed
 - Michigan ICAC re-collected as a 47-article scrape that splits cleanly
