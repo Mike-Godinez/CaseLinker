@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import os
 import random
 import re
@@ -365,6 +366,32 @@ def sample_ids(by_source: dict[str, list[str]], alloc: dict[str, int], seed: int
     return chosen
 
 
+def _paired_sqlite(baseline: sqlite3.Connection, phase3: sqlite3.Connection) -> dict[str, list[str]]:
+    baseline_ids = {row[0] for row in baseline.execute("SELECT id FROM cases")}
+    by_source: dict[str, list[str]] = defaultdict(list)
+    for case_id, source in phase3.execute("SELECT id, source FROM cases"):
+        if case_id in baseline_ids and source:
+            by_source[source].append(case_id)
+    return by_source
+
+
+def fetch_sqlite_cases(conn: sqlite3.Connection, ids: list[str]) -> dict[str, sqlite3.Row]:
+    conn.row_factory = sqlite3.Row
+    found = {}
+    for start in range(0, len(ids), 100):
+        chunk = ids[start:start + 100]
+        marks = ",".join("?" for _ in chunk)
+        for row in conn.execute(
+            f"SELECT id, source, extracted_features, raw_data FROM cases WHERE id IN ({marks})",
+            chunk,
+        ):
+            found[row["id"]] = row
+    missing = [case_id for case_id in ids if case_id not in found]
+    if missing:
+        raise SystemExit(f"phase3 sqlite is missing {len(missing)} sampled ids")
+    return found
+
+
 def fetch_postgres(postgres, ids: list[str]) -> dict[str, dict]:
     cursor = postgres.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     cursor.execute(
@@ -464,17 +491,48 @@ def attach_readings(side: str, case_id: str, rows: list[dict]) -> list[str]:
     return unread
 
 
+# 95% normal quantile. Wilson's score interval for k errors in n stored finals.
+WILSON_Z = 1.959963984540054
+
+
+def wilson_interval(errors: int, stored: int, z: float = WILSON_Z) -> tuple[float, float] | None:
+    """Wilson 95% interval for an error rate. None when nothing was stored."""
+    if stored <= 0:
+        return None
+    if errors < 0 or errors > stored:
+        raise ValueError(f"{errors} errors is outside 0..{stored}")
+    proportion = errors / stored
+    z2 = z * z
+    denom = 1 + z2 / stored
+    center = (proportion + z2 / (2 * stored)) / denom
+    margin = z * math.sqrt(proportion * (1 - proportion) / stored + z2 / (4 * stored * stored)) / denom
+    return max(0.0, center - margin), min(1.0, center + margin)
+
+
+def _fmt_wilson(interval: tuple[float, float] | None) -> str:
+    if interval is None:
+        return "n/a"
+    low, high = interval
+    return f"[{low:.4f}, {high:.4f}]"
+
+
 def summarize(rows: list[dict]) -> dict[str, int]:
     return {
         "age_stored": sum(1 for row in rows if row["kind"] == "age"),
         "age_wrong": sum(1 for row in rows if row["kind"] == "age" and row["check"] == "wrong"),
+        "age_real_wrong": sum(1 for row in rows if row["kind"] == "age" and row.get("reading") == "real_wrong"),
         "sentence_stored": sum(1 for row in rows if row["kind"] == "sentence"),
         "sentence_wrong": sum(1 for row in rows if row["kind"] == "sentence" and row["check"] == "wrong"),
+        "sentence_real_wrong": sum(
+            1 for row in rows if row["kind"] == "sentence" and row.get("reading") == "real_wrong"
+        ),
     }
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--phase3-sqlite", type=Path,
+                        help="read Phase 3 from this sqlite file instead of DATABASE_URL")
     parser.add_argument("--ids", type=Path, help="judge these case ids in file order")
     parser.add_argument("--exclude", type=Path, help="case ids a fresh draw must not use")
     parser.add_argument("--seed", type=int, default=SEED, help="seed for a fresh draw")
@@ -483,8 +541,14 @@ def main() -> None:
     args = parser.parse_args()
 
     baseline = sqlite3.connect(f"file:{BASELINE}?mode=ro", uri=True)
-    postgres = psycopg2.connect(database_url())
-    by_source = paired_ids(baseline, postgres)
+    phase3_conn = None
+    postgres = None
+    if args.phase3_sqlite:
+        phase3_conn = sqlite3.connect(f"file:{args.phase3_sqlite}?mode=ro", uri=True)
+        by_source = _paired_sqlite(baseline, phase3_conn)
+    else:
+        postgres = psycopg2.connect(database_url())
+        by_source = paired_ids(baseline, postgres)
     if args.ids:
         chosen = load_id_file(args.ids)
         paired = {case_id for ids in by_source.values() for case_id in ids}
@@ -501,16 +565,26 @@ def main() -> None:
             }
             by_source = {source: ids for source, ids in by_source.items() if ids}
         chosen = sample_ids(by_source, allocate(by_source), seed=args.seed)
-    phase3 = fetch_postgres(postgres, chosen)
+    if phase3_conn is not None:
+        phase3 = fetch_sqlite_cases(phase3_conn, chosen)
+        phase3_conn.close()
+    else:
+        phase3 = fetch_postgres(postgres, chosen)
+        postgres.close()
     prior = fetch_baseline(baseline, chosen)
-    postgres.close()
 
     if args.write_ids:
         args.write_ids.write_text("\n".join(chosen) + "\n", encoding="utf-8")
 
     totals = {
-        "phase3": {"age_stored": 0, "age_wrong": 0, "sentence_stored": 0, "sentence_wrong": 0},
-        "v2": {"age_stored": 0, "age_wrong": 0, "sentence_stored": 0, "sentence_wrong": 0},
+        "phase3": {
+            "age_stored": 0, "age_wrong": 0, "age_real_wrong": 0,
+            "sentence_stored": 0, "sentence_wrong": 0, "sentence_real_wrong": 0,
+        },
+        "v2": {
+            "age_stored": 0, "age_wrong": 0, "age_real_wrong": 0,
+            "sentence_stored": 0, "sentence_wrong": 0, "sentence_real_wrong": 0,
+        },
     }
     records = []
     unread = []
@@ -524,8 +598,8 @@ def main() -> None:
             "phase3": value_rows("age", current["extracted_features"], current_text) + value_rows("sentence", current["extracted_features"], current_text),
         }
         for side, rows in sides.items():
-            add(totals[side], summarize(rows))
             unread.extend(attach_readings(side, case_id, rows))
+            add(totals[side], summarize(rows))
         records.append({
             "order": order,
             "case_id": case_id,
@@ -538,13 +612,20 @@ def main() -> None:
     print(f"shared_sources {len(by_source)}")
     print(f"sources_in_sample {len({phase3[case_id]['source'] for case_id in chosen})}")
     print(f"ids {'file' if args.ids else 'fresh'} seed {args.seed if not args.ids else 'frozen'}")
-    print("side\tage_stored\tage_wrong\tsentence_stored\tsentence_wrong")
+    print("side\tkind\tstored\tpassage_wrong\tpassage_rate\tpassage_wilson95\treal_wrong\terror_rate\terror_wilson95")
     for side in ("v2", "phase3"):
         row = totals[side]
-        print(
-            f"{side}\t{row['age_stored']}\t{row['age_wrong']}\t"
-            f"{row['sentence_stored']}\t{row['sentence_wrong']}"
-        )
+        for kind in ("age", "sentence"):
+            stored = row[f"{kind}_stored"]
+            passage = row[f"{kind}_wrong"]
+            real = row[f"{kind}_real_wrong"]
+            passage_rate = f"{passage / stored:.4f}" if stored else "n/a"
+            error_rate = f"{real / stored:.4f}" if stored else "n/a"
+            print(
+                f"{side}\t{kind}\t{stored}\t{passage}\t{passage_rate}\t"
+                f"{_fmt_wilson(wilson_interval(passage, stored))}\t"
+                f"{real}\t{error_rate}\t{_fmt_wilson(wilson_interval(real, stored))}"
+            )
     if unread:
         print("UNREAD")
         print("\n".join(unread))
