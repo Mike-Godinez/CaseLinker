@@ -619,7 +619,8 @@ async def get_field_disagreements(
     status: needs_review | disagreement | partial (empty = all three). field: age | sentence |
     investigation_type | date (empty = all). Each item has the case_id, resolution status, the
     settled part of the final value, and the contested mentions with which evidence families
-    asserted which role. status_counts gives corpus-wide totals per field. limit capped at 500.
+    asserted which role. status_counts is always corpus-wide per field (it ignores the
+    field/status filters on this call). limit capped at 500.
     """
     try:
         params: dict[str, Any] = {"limit": min(max(limit, 1), 500), "offset": max(offset, 0)}

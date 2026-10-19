@@ -4,10 +4,9 @@
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix cac-core: <https://cacontology.projectvic.org/core#> .
 @prefix caselinker: <https://w3id.org/caselinker/ns/provenance#> .
-@prefix cl-prev: <https://caselinker.projectvic.org/ns/provenance#> .
 
-# The in-flight export still writes cl-prev. New graphs write caselinker (w3id).
-# A node satisfies the check when either property is present.
+# Provenance terms are only the w3id namespace. Current graph_output writes that
+# namespace (10,654 provenance files).
 
 caselinker:ExtractionRunShape a sh:NodeShape ;
     sh:targetClass prov:Activity ;
@@ -17,7 +16,6 @@ caselinker:ExtractionRunShape a sh:NodeShape ;
             SELECT $this
             WHERE {
                 FILTER NOT EXISTS { $this <https://w3id.org/caselinker/ns/provenance#ruleSetVersion> ?v1 }
-                FILTER NOT EXISTS { $this <https://caselinker.projectvic.org/ns/provenance#ruleSetVersion> ?v2 }
             }
         """
     ] .
@@ -30,7 +28,6 @@ caselinker:MethodShape a sh:NodeShape ;
             SELECT $this
             WHERE {
                 FILTER NOT EXISTS { $this <https://w3id.org/caselinker/ns/provenance#evidenceFamily> ?v1 }
-                FILTER NOT EXISTS { $this <https://caselinker.projectvic.org/ns/provenance#evidenceFamily> ?v2 }
             }
         """
     ] .
@@ -80,26 +77,6 @@ caselinker:FieldResolutionShape a sh:NodeShape ;
     ] ;
     sh:property [
         sh:path caselinker:ruleSetVersion ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:datatype xsd:string
-    ] ;
-    sh:property [
-        sh:path prov:wasGeneratedBy ;
-        sh:minCount 1 ;
-        sh:class prov:Activity
-    ] .
-
-cl-prev:FieldResolutionShape a sh:NodeShape ;
-    sh:targetSubjectsOf cl-prev:resolutionStatus ;
-    sh:property [
-        sh:path cl-prev:resolutionStatus ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:datatype xsd:string
-    ] ;
-    sh:property [
-        sh:path cl-prev:ruleSetVersion ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:datatype xsd:string
