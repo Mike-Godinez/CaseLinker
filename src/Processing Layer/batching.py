@@ -107,7 +107,30 @@ def clean_artifacts_from_text(text: str, remove_urls: bool = True) -> str:
     return cleaned_text
 
 
-def case_batching(text: str, org_name: str = "case", source: str = None, source_file: str = None) -> List[Dict[str, Any]]:
+def case_batching(
+    text: str,
+    org_name: str = "case",
+    source: str = None,
+    source_file: str = None,
+    fingerprint_index: Any = None,
+) -> List[Dict[str, Any]]:
+    """Split a document, then replace document-order ids from the fingerprint map.
+
+    Without ``fingerprint_index`` the provisional ordinals are unchanged.
+    """
+    cases = _dispatch_case_batching(text, org_name=org_name, source=source, source_file=source_file)
+    if fingerprint_index is None:
+        return cases
+    from case_fingerprint import assign_content_locked_ids
+
+    for case in cases:
+        case.setdefault("source_file", source_file)
+    kept, duplicates = assign_content_locked_ids(cases, fingerprint_index)
+    fingerprint_index.pending_duplicates.extend(duplicates)
+    return kept
+
+
+def _dispatch_case_batching(text: str, org_name: str = "case", source: str = None, source_file: str = None) -> List[Dict[str, Any]]:
     """
     Router function that splits text corpus into individual cases.
     Routes to appropriate batch function based on source format.
