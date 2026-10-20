@@ -71,7 +71,11 @@ else:
     from storage import CaseStorage
     print("✅ Using SQLite database (local development)")
 from corpus_export import iter_corpus_json
-from platform_affordance_evidence_freshness import with_snapshot_freshness
+from platform_affordance_evidence_freshness import (
+    read_corpus_identity,
+    require_fresh_block,
+    with_snapshot_freshness,
+)
 from facet_tree import (
     DEFAULT_FACET_ORDER,
     ERA_PERIOD_BUCKETS,
@@ -4170,6 +4174,41 @@ _CASE_STUDIES_NOTES_MAX_NAME = 80
 _CASE_STUDIES_NOTES_MAX_TEXT = 1500
 
 
+def _live_platform_affordance_corpus() -> Optional[Dict[str, Any]]:
+    """Case count and extraction-run fingerprint for the database this process serves.
+
+    None means the comparison was not run. Callers must treat that as unverified,
+    not as a match.
+    """
+    conn = None
+    pooled = False
+    try:
+        if os.getenv("DATABASE_URL"):
+            from storage_postgres import get_connection, return_connection
+
+            conn = get_connection()
+            pooled = True
+            return read_corpus_identity(conn)
+        from storage import get_connection
+
+        conn = get_connection(str(storage.db_path))
+        return read_corpus_identity(conn)
+    except Exception:
+        logger.exception("platform affordance corpus identity unavailable")
+        return None
+    finally:
+        if conn is not None:
+            try:
+                if pooled:
+                    from storage_postgres import return_connection
+
+                    return_connection(conn)
+                else:
+                    conn.close()
+            except Exception:
+                logger.exception("platform affordance corpus connection close failed")
+
+
 def _load_platform_affordance_evidence() -> Dict[str, Any]:
     if not _PLATFORM_AFFORDANCE_EVIDENCE_PATH.exists():
         raise HTTPException(status_code=404, detail="platform affordance evidence data not available")
@@ -4291,8 +4330,13 @@ def api_platform_affordance_evidence(
     request: Request,
     platform: Optional[str] = Query(default=None),
     tier: Optional[str] = Query(default=None),
+    require_fresh: bool = Query(default=False),
 ):
-    """Frozen platform affordance evidence index or cohort; freshness metadata is not a current-corpus guarantee."""
+    """Frozen platform affordance evidence index or cohort.
+
+    ``require_fresh=true`` returns 409 when the snapshot is stale, unverified,
+    over the db_gaps warning threshold, or under the coverage bar.
+    """
     if tier is not None:
         tier_norm = tier.strip().lower()
         if tier_norm not in _PLATFORM_AFFORDANCE_EVIDENCE_VALID_TIERS:
@@ -4305,16 +4349,19 @@ def api_platform_affordance_evidence(
     data = _load_platform_affordance_evidence()
     records = data.get("records") or []
     meta = data.get("_meta") or {}
+    live = _live_platform_affordance_corpus()
 
     if platform is None or not platform.strip():
         payload = _platform_affordance_evidence_index(records)
-        payload = with_snapshot_freshness(payload, meta)
-        return payload
-
-    payload = _platform_affordance_evidence_cases(records, platform, tier)
-    payload = with_snapshot_freshness(payload, meta)
-    if tier:
-        payload["tier"] = tier
+    else:
+        payload = _platform_affordance_evidence_cases(records, platform, tier)
+        if tier:
+            payload["tier"] = tier
+    payload = with_snapshot_freshness(payload, meta, live)
+    if require_fresh:
+        reason = require_fresh_block(payload["freshness"])
+        if reason:
+            raise HTTPException(status_code=409, detail=reason)
     return payload
 
 

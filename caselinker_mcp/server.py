@@ -949,13 +949,21 @@ async def get_case_studies() -> dict[str, Any]:
 
 
 @mcp.tool()
-async def platform_affordance_evidence(platform: str | None = None, tier: str | None = None) -> dict[str, Any]:
-    """Query a frozen, precomputed platform affordance evidence snapshot, not the live corpus.
+async def platform_affordance_evidence(
+    platform: str | None = None,
+    tier: str | None = None,
+    require_fresh: bool = False,
+) -> dict[str, Any]:
+    """Query a precomputed platform affordance evidence snapshot, not a live cohort.
 
-    Inspect top-level freshness and _meta before using this historical index.
-    Current coverage and source/extraction-version freshness are unverified;
-    equal case counts would not prove freshness. Prefer filter_cases_by_tags
-    for current database cohorts and get_corpus_stats for reported corpus size.
+    Every response includes top-level freshness. stale is true unless the
+    snapshot recorded the corpus case count and extraction-run fingerprint and
+    both still match this database. Equal case counts alone do not prove
+    freshness. live_case_count and coverage_pct are filled when the database
+    can be counted. Prefer filter_cases_by_tags for current cohorts.
+
+    require_fresh=true asks the API to error instead of returning a snapshot
+    that is stale, over the db_gaps warning threshold, or under the coverage bar.
 
     Without platform: platform index with case_count and per-tier counts (stated, inferred, named_only).
     With platform: matching case IDs (same format as get_case / case2cac), each with tier and evidence_quote.
@@ -969,6 +977,8 @@ async def platform_affordance_evidence(platform: str | None = None, tier: str | 
             params["platform"] = platform.strip()
         if tier and tier.strip():
             params["tier"] = tier.strip().lower()
+        if require_fresh:
+            params["require_fresh"] = "true"
         result = await api_get("/api/platform-affordance-evidence", params=params or None)
         return result if isinstance(result, dict) else {"data": result}
     except Exception as e:

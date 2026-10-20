@@ -936,6 +936,19 @@ def main() -> None:
         ).fetchall()
         for row in rows:
             db_rows[row[0]] = row[1] or ""
+    corpus_identity = None
+    try:
+        import sys
+        from pathlib import Path
+
+        run_dir = Path(__file__).resolve().parents[2] / "run"
+        if str(run_dir) not in sys.path:
+            sys.path.insert(0, str(run_dir))
+        from platform_affordance_evidence_freshness import read_corpus_identity
+
+        corpus_identity = read_corpus_identity(conn)
+    except Exception as exc:
+        print(f"Corpus identity not recorded: {exc}", flush=True)
     conn.close()
     print(f"Loaded {len(db_rows)} case texts.", flush=True)
 
@@ -970,6 +983,14 @@ def main() -> None:
             "db_gaps": len(all_db_gaps),
             "text_cap_hits": text_cap_hits,
             "text_cap": TEXT_CAP,
+            **(
+                {
+                    "corpus_case_count": corpus_identity["case_count"],
+                    "extraction_run_fingerprint": corpus_identity["extraction_run_fingerprint"],
+                }
+                if corpus_identity
+                else {}
+            ),
         },
         "records": all_records,
         "excluded_platforms": all_exclusions,
