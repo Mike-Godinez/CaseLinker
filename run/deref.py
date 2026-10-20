@@ -161,7 +161,7 @@ def render_html(
                 "<tr><th>"
                 + html.escape(_short(pred))
                 + "</th><td>"
-                + _render_object(obj)
+                + _render_object(obj, graph)
                 + "</td></tr>"
             )
         heading = _label(graph, subject) or _short(subject)
@@ -255,10 +255,11 @@ def _short(term) -> str:
     return text.rstrip("/").rsplit("/", 1)[-1]
 
 
-def _render_object(obj) -> str:
+def _render_object(obj, graph: Optional[Graph] = None) -> str:
     if isinstance(obj, URIRef):
         target = str(obj)
-        shown = html.escape(_short(obj))
+        label = _label(graph, obj) if graph is not None else ""
+        shown = html.escape(label or _short(obj))
         if CAC_HOST in target:
             return f'<a href="{html.escape(target)}">{shown}</a>'
         if target.startswith(RESOURCE_BASE):

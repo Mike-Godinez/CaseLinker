@@ -155,6 +155,9 @@ CASELINKER_EVIDENCE_TIER = BASE["vocab/evidenceTier"]
 # NER geographic mentions → uco-location:Location (CAC has no dedicated geo class;
 # PlaceLikeEntity is the CAC spine branch; PACER graphs use the same UCO type).
 CASELINKER_MENTIONS_LOCATION = BASE["vocab/mentionsLocation"]
+CASELINKER_FIPS = BASE["vocab/fipsCode"]
+CASELINKER_ORI = BASE["vocab/oriCode"]
+CASELINKER_GROUND_STATUS = BASE["vocab/groundStatus"]
 
 UCO_CORE = Namespace("https://ontology.unifiedcyberontology.org/uco/core/")
 UCO_ACTION = Namespace("https://ontology.unifiedcyberontology.org/uco/action/")
@@ -1879,7 +1882,12 @@ class CaseToCAC:
         inv_uri: URIRef,
         warnings: List[str],
     ) -> List[URIRef]:
-        """Create agency nodes (shared singletons) and link to investigation."""
+        """Create agency nodes (shared singletons) and link to investigation.
+
+        When ``agency_grounds`` is present (or the pinned CDE registry is on disk),
+        grounded mentions mint readable ``agency/{name}-{st}`` IRIs with
+        ``caselinker:oriCode``. Ungrounded keep string-based slugs.
+        """
         agencies_raw = case.get("agencies_involved") or []
         if isinstance(agencies_raw, str):
             try:
@@ -1887,9 +1895,21 @@ class CaseToCAC:
             except (json.JSONDecodeError, TypeError):
                 agencies_raw = [agencies_raw]
 
+        grounds = case.get("agency_grounds")
+        if not isinstance(grounds, list):
+            grounds = []
+        if not grounds and agencies_raw:
+            grounds = self._ground_agencies_for_case(case, agencies_raw, warnings)
+        ground_by_mention = {
+            str(gnd.get("mention") or "").strip(): gnd
+            for gnd in grounds
+            if isinstance(gnd, dict) and gnd.get("mention")
+        }
+
         case_id = case.get("id", "unknown")
         uris: List[URIRef] = []
         seen: set = set()
+        used_slugs: set = set()
 
         for agency_name in agencies_raw:
             if not agency_name or agency_name in seen:
@@ -1902,10 +1922,36 @@ class CaseToCAC:
                 case_text = str(raw.get("case_text") or "")
             if not case_text:
                 case_text = str(case.get("case_text") or "")
-            slug, class_uri = self._classify_agency(
+            _, class_uri = self._classify_agency(
                 agency_name, case.get("source"), case_text
             )
-            ag_uri = self._get_or_create_agency(g, slug, agency_name, class_uri)
+            gnd = ground_by_mention.get(str(agency_name).strip()) or {}
+            status = (gnd.get("status") or "").strip() or "ungrounded"
+            display = (gnd.get("agency_name") or agency_name).strip()
+            if status == "grounded" and gnd.get("slug"):
+                slug = str(gnd["slug"]).strip()
+            elif status == "grounded":
+                slug = self._readable_agency_slug(
+                    agency_name=display,
+                    state_hint=gnd.get("state_hint"),
+                    ori=gnd.get("ori"),
+                    used=used_slugs,
+                )
+            else:
+                slug = _slug(agency_name)
+            used_slugs.add(slug)
+            ag_uri = self._get_or_create_agency(
+                g,
+                slug,
+                display,
+                class_uri,
+                ori=gnd.get("ori") if status == "grounded" else None,
+                ground_status=status,
+                ground_meta=gnd if status == "grounded" else None,
+                article_mention=(
+                    str(agency_name).strip() if status == "grounded" else None
+                ),
+            )
 
             # NCMEC also triggers a CyberTipline node
             if re.search(r"\bNCMEC\b|National Center for Missing", agency_name, re.I):
@@ -1918,6 +1964,76 @@ class CaseToCAC:
             uris.append(ag_uri)
 
         return uris
+
+    def _ground_agencies_for_case(
+        self,
+        case: Dict[str, Any],
+        agencies_raw: List[Any],
+        warnings: List[str],
+    ) -> List[Dict[str, Any]]:
+        from pathlib import Path
+        import importlib.util
+        import sys
+
+        ground_path = (
+            Path(__file__).resolve().parents[1]
+            / "src"
+            / "Processing Layer"
+            / "agency_grounding.py"
+        )
+        if not ground_path.is_file():
+            warnings.append("agency_grounding.py missing — agency grounds skipped")
+            return []
+        try:
+            spec = importlib.util.spec_from_file_location(
+                "agency_grounding", ground_path
+            )
+            mod = importlib.util.module_from_spec(spec)
+            assert spec.loader
+            sys.modules["agency_grounding"] = mod
+            spec.loader.exec_module(mod)
+            return mod.ground_case_agencies(
+                agencies_raw,
+                source=case.get("source"),
+                case_id=case.get("id"),
+                location_grounds=case.get("location_grounds"),
+            )
+        except Exception as exc:  # noqa: BLE001 — remap path must not hide graph build
+            # Missing registry should fail loud on ingest; remap warns and continues.
+            if exc.__class__.__name__ == "AgencyRegistryError":
+                raise
+            warnings.append(f"agency_grounding failed: {exc}")
+            return []
+
+    @staticmethod
+    def _readable_agency_slug(
+        *,
+        agency_name: str,
+        state_hint: Any,
+        ori: Any,
+        used: set,
+    ) -> str:
+        from pathlib import Path
+        import importlib.util
+        import sys
+
+        ground_path = (
+            Path(__file__).resolve().parents[1]
+            / "src"
+            / "Processing Layer"
+            / "agency_grounding.py"
+        )
+        spec = importlib.util.spec_from_file_location("agency_grounding", ground_path)
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader
+        sys.modules["agency_grounding"] = mod
+        spec.loader.exec_module(mod)
+        return mod.readable_agency_slug(
+            agency_name=agency_name,
+            state_hint=str(state_hint or "") or None,
+            ori=str(ori or "") or None,
+            collision_slugs=used,
+        )
 
     # ------------------------------------------------------------------
     # Step 7b: Geographic locations (NER)
@@ -1932,10 +2048,11 @@ class CaseToCAC:
     ) -> List[URIRef]:
         """Create shared ``uco-location:Location`` nodes from NER ``locations``.
 
-        CAC modules reference ``uco-location:Location`` (and ``cac-core:PlaceLikeEntity``)
-        but have no press-release geo class of their own. PACER graphs already emit the
-        same UCO type. Link each location to the investigation via ``dcterms:spatial``
-        (standard SPARQL) and ``caselinker:mentionsLocation`` (NER provenance).
+        When ``location_grounds`` is present (ingest linker) or the Census gazetteer
+        is on disk, grounded mentions mint readable ``location/{name}-{st}``
+        singletons (GEOID suffix on collision) so "Cumberland County" in NJ and NC
+        do not collapse. Ungrounded mentions keep the string slug. Link via
+        ``dcterms:spatial`` and ``caselinker:mentionsLocation``.
         """
         locations_raw = case.get("locations") or []
         if isinstance(locations_raw, str):
@@ -1949,6 +2066,15 @@ class CaseToCAC:
             )
             return []
 
+        grounds = case.get("location_grounds")
+        if not isinstance(grounds, list) or not grounds:
+            grounds = self._ground_locations_for_case(case, locations_raw, warnings)
+        ground_by_mention = {
+            str(gnd.get("mention") or "").strip(): gnd
+            for gnd in grounds
+            if isinstance(gnd, dict) and gnd.get("mention")
+        }
+
         uris: List[URIRef] = []
         seen_slugs: set = set()
 
@@ -1958,29 +2084,150 @@ class CaseToCAC:
             label = str(raw).strip()
             if len(label) < 2:
                 continue
-            slug = _slug(label)
+            gnd = ground_by_mention.get(label) or {}
+            status = (gnd.get("status") or "").strip() or "ungrounded"
+            fips = (gnd.get("fips") or gnd.get("geoid") or "").strip()
+            entity_name = (gnd.get("entity_name") or "").strip()
+            display = entity_name or label
+            if status == "grounded" and fips:
+                slug = (gnd.get("slug") or "").strip() or self._readable_location_slug(
+                    entity_name=display,
+                    state_hint=gnd.get("state_hint"),
+                    fips=fips,
+                    used=seen_slugs,
+                )
+            else:
+                slug = _slug(label)
+                status = status if status != "grounded" else "ungrounded"
             if slug in seen_slugs:
+                loc_uri = self._location_registry.get(slug) or BASE[f"location/{slug}"]
+                if status == "grounded" and label and label != display:
+                    self._add_alt_label(g, loc_uri, label)
+                g.add((inv_uri, DCTERMS.spatial, loc_uri))
+                g.add((inv_uri, CASELINKER_MENTIONS_LOCATION, loc_uri))
                 continue
             seen_slugs.add(slug)
 
-            loc_uri = self._get_or_create_location(g, slug, label)
+            loc_uri = self._get_or_create_location(
+                g,
+                slug,
+                display,
+                fips=fips if status == "grounded" else None,
+                ground_status=status,
+                ground_meta=gnd if status == "grounded" else None,
+                article_mention=label if status == "grounded" else None,
+            )
             g.add((inv_uri, DCTERMS.spatial, loc_uri))
             g.add((inv_uri, CASELINKER_MENTIONS_LOCATION, loc_uri))
             uris.append(loc_uri)
 
         return uris
 
+    @staticmethod
+    def _readable_location_slug(
+        *,
+        entity_name: str,
+        state_hint: Any,
+        fips: str,
+        used: set,
+    ) -> str:
+        from pathlib import Path
+        import importlib.util
+        import sys
+
+        ground_path = (
+            Path(__file__).resolve().parents[1]
+            / "src"
+            / "Processing Layer"
+            / "location_grounding.py"
+        )
+        spec = importlib.util.spec_from_file_location("location_grounding", ground_path)
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader
+        sys.modules["location_grounding"] = mod
+        spec.loader.exec_module(mod)
+        return mod.readable_location_slug(
+            entity_name=entity_name,
+            mention=entity_name,
+            state_hint=str(state_hint or "") or None,
+            fips=fips,
+            entity_kind=None,
+            collision_slugs=used,
+        )
+
+    def _ground_locations_for_case(
+        self,
+        case: Dict[str, Any],
+        locations_raw: List[Any],
+        warnings: List[str],
+    ) -> List[Dict[str, Any]]:
+        """Remap path: ground on the fly when stored ``location_grounds`` is absent.
+
+        Requires the pinned gazetteer — raises (does not silently slug).
+        """
+        from pathlib import Path
+        import importlib.util
+        import sys
+
+        ground_path = (
+            Path(__file__).resolve().parents[1]
+            / "src"
+            / "Processing Layer"
+            / "location_grounding.py"
+        )
+        if not ground_path.is_file():
+            raise RuntimeError(f"location_grounding.py missing at {ground_path}")
+        spec = importlib.util.spec_from_file_location(
+            "location_grounding", ground_path
+        )
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader
+        sys.modules["location_grounding"] = mod
+        spec.loader.exec_module(mod)
+        case_text = ""
+        raw = case.get("raw_data")
+        if isinstance(raw, dict):
+            case_text = str(raw.get("case_text") or "")
+        if not case_text:
+            case_text = str(case.get("case_text") or "")
+        return mod.ground_case_locations(
+            locations_raw,
+            source=case.get("source"),
+            case_text=case_text,
+            case_id=case.get("id"),
+        )
+
+    @staticmethod
+    def _add_alt_label(g: Graph, uri: URIRef, mention: str) -> None:
+        """Article wording as skos:altLabel; skip if empty or already present."""
+        text = (mention or "").strip()
+        if not text:
+            return
+        existing = {str(o) for o in g.objects(uri, SKOS.altLabel)}
+        labels = {str(o) for o in g.objects(uri, RDFS.label)}
+        if text in existing or text in labels:
+            return
+        g.add((uri, SKOS.altLabel, Literal(text)))
+
     def _get_or_create_location(
         self,
         g: Graph,
         slug: str,
         label: str,
+        *,
+        fips: Optional[str] = None,
+        ground_status: Optional[str] = None,
+        ground_meta: Optional[Dict[str, Any]] = None,
+        article_mention: Optional[str] = None,
     ) -> URIRef:
         """Return shared singleton location URIRef, creating it if new.
 
         Always (re)assert ``rdfs:label`` / ``uco-core:name`` on the current graph.
         Registry hits from earlier cases in a batch used to omit labels, which made
-        location nodes look vacuous in per-case TTL/JSON-LD.
+        location nodes look vacuous in per-case TTL/JSON-LD. Grounded places also
+        carry ``caselinker:fipsCode`` and grounding provenance literals.
+        Article wording (when distinct from the canonical label) is
+        ``skos:altLabel``.
         """
         uri = self._location_registry.get(slug)
         if uri is None:
@@ -1990,6 +2237,38 @@ class CaseToCAC:
         g.add((uri, RDF.type, CAC_CORE.PlaceLikeEntity))
         g.add((uri, RDFS.label, Literal(label)))
         g.add((uri, UCO_CORE.name, Literal(label)))
+        if article_mention:
+            self._add_alt_label(g, uri, article_mention)
+        if fips:
+            g.add((uri, CASELINKER_FIPS, Literal(str(fips))))
+            g.add((uri, DCTERMS.identifier, Literal(f"fips:{fips}")))
+        if ground_status:
+            g.add((uri, CASELINKER_GROUND_STATUS, Literal(ground_status)))
+        meta = ground_meta or {}
+        if meta.get("gazetteer_version"):
+            g.add(
+                (
+                    uri,
+                    BASE["vocab/gazetteerVersion"],
+                    Literal(str(meta["gazetteer_version"])),
+                )
+            )
+        if meta.get("hint_source"):
+            g.add(
+                (
+                    uri,
+                    BASE["vocab/stateHintSource"],
+                    Literal(str(meta["hint_source"])),
+                )
+            )
+        if meta.get("state_hint"):
+            g.add(
+                (
+                    uri,
+                    BASE["vocab/stateHint"],
+                    Literal(str(meta["state_hint"])),
+                )
+            )
         return uri
 
     def _classify_agency(
@@ -2038,17 +2317,59 @@ class CaseToCAC:
         slug: str,
         label: str,
         class_uri: URIRef,
+        *,
+        ori: Optional[str] = None,
+        ground_status: Optional[str] = None,
+        ground_meta: Optional[Dict[str, Any]] = None,
+        article_mention: Optional[str] = None,
     ) -> URIRef:
-        """Return shared singleton agency URIRef, creating it if new."""
+        """Return shared singleton agency URIRef, creating it if new.
+
+        Always (re)assert ``rdfs:label`` on the current graph — same fix as
+        locations. Registry hits from earlier cases in a batch used to omit
+        labels, so many per-case graphs referenced agencies with no label triple.
+        Article wording (when distinct from the CDE/federal canonical name) is
+        ``skos:altLabel``.
+        """
         uri = self._agency_registry.get(slug)
         if uri is None:
             uri = BASE[f"agency/{slug}"]
             self._agency_registry[slug] = uri
-            g.add((uri, RDF.type, class_uri))
-            g.add((uri, RDF.type, CAC_CORE.OrganizationLikeEntity))
-            g.add((uri, RDFS.label, Literal(label)))
-        else:
-            g.add((uri, RDF.type, class_uri))
+        g.add((uri, RDF.type, class_uri))
+        g.add((uri, RDF.type, CAC_CORE.OrganizationLikeEntity))
+        g.add((uri, RDFS.label, Literal(label)))
+        if article_mention:
+            self._add_alt_label(g, uri, article_mention)
+        if ori:
+            g.add((uri, CASELINKER_ORI, Literal(str(ori))))
+            g.add((uri, DCTERMS.identifier, Literal(f"ori:{ori}")))
+        if ground_status:
+            g.add((uri, CASELINKER_GROUND_STATUS, Literal(ground_status)))
+        meta = ground_meta or {}
+        if meta.get("registry_version"):
+            g.add(
+                (
+                    uri,
+                    BASE["vocab/agencyRegistryVersion"],
+                    Literal(str(meta["registry_version"])),
+                )
+            )
+        if meta.get("hint_source"):
+            g.add(
+                (
+                    uri,
+                    BASE["vocab/stateHintSource"],
+                    Literal(str(meta["hint_source"])),
+                )
+            )
+        if meta.get("state_hint"):
+            g.add(
+                (
+                    uri,
+                    BASE["vocab/stateHint"],
+                    Literal(str(meta["state_hint"])),
+                )
+            )
         return uri
 
     # ------------------------------------------------------------------

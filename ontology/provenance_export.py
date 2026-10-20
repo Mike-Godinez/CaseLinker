@@ -76,8 +76,14 @@ def build_provenance_graph(
     *,
     run_id: str = "unrecorded",
     issued_at: Optional[str] = None,
+    location_grounds: Optional[List[Dict[str, Any]]] = None,
+    agency_grounds: Optional[List[Dict[str, Any]]] = None,
 ) -> Graph:
-    """One graph: an extraction activity, one agent per method, one annotation per assertion."""
+    """One graph: an extraction activity, one agent per method, one annotation per assertion.
+
+    Optional ``location_grounds`` / ``agency_grounds`` add authority-link entities so
+    each grounded IRI can show gazetteer/registry version, GEOID/ORI, and hint source.
+    """
     g = Graph()
     g.bind("prov", PROV)
     g.bind("oa", OA)
@@ -184,7 +190,75 @@ def build_provenance_graph(
         g.add((node, PROV.wasGeneratedBy, activity))
         for source in by_field.get(field, []):
             g.add((node, PROV.wasDerivedFrom, source))
+
+    _add_location_grounds(g, case_id, activity, location_grounds or [])
+    _add_agency_grounds(g, case_id, activity, agency_grounds or [])
     return g
+
+
+def _add_location_grounds(
+    g: Graph,
+    case_id: str,
+    activity: URIRef,
+    grounds: List[Dict[str, Any]],
+) -> None:
+    for index, gnd in enumerate(grounds, start=1):
+        if not isinstance(gnd, dict):
+            continue
+        mention = str(gnd.get("mention") or "").strip()
+        if not mention:
+            continue
+        status = str(gnd.get("status") or "ungrounded")
+        node = _iri(case_id, "location_ground", str(index))
+        g.add((node, RDF.type, PROV.Entity))
+        g.add((node, RDFS.label, Literal(f"location ground · {mention} ({status})")))
+        g.add((node, CL.groundStatus, Literal(status)))
+        g.add((node, PROV.wasGeneratedBy, activity))
+        g.add((node, PROV.value, Literal(mention)))
+        if gnd.get("gazetteer_version"):
+            g.add((node, CL.gazetteerVersion, Literal(str(gnd["gazetteer_version"]))))
+        geoid = gnd.get("geoid") or gnd.get("fips")
+        if geoid:
+            g.add((node, CL.fipsCode, Literal(str(geoid))))
+        if gnd.get("state_hint"):
+            g.add((node, CL.stateHint, Literal(str(gnd["state_hint"]))))
+        if gnd.get("hint_source"):
+            g.add((node, CL.stateHintSource, Literal(str(gnd["hint_source"]))))
+        slug = str(gnd.get("slug") or "").strip()
+        if status == "grounded" and slug:
+            g.add((node, DCTERMS.subject, BASE[f"location/{slug}"]))
+
+
+def _add_agency_grounds(
+    g: Graph,
+    case_id: str,
+    activity: URIRef,
+    grounds: List[Dict[str, Any]],
+) -> None:
+    for index, gnd in enumerate(grounds, start=1):
+        if not isinstance(gnd, dict):
+            continue
+        mention = str(gnd.get("mention") or "").strip()
+        if not mention:
+            continue
+        status = str(gnd.get("status") or "ungrounded")
+        node = _iri(case_id, "agency_ground", str(index))
+        g.add((node, RDF.type, PROV.Entity))
+        g.add((node, RDFS.label, Literal(f"agency ground · {mention} ({status})")))
+        g.add((node, CL.groundStatus, Literal(status)))  # reuse status vocab
+        g.add((node, PROV.wasGeneratedBy, activity))
+        g.add((node, PROV.value, Literal(mention)))
+        if gnd.get("registry_version"):
+            g.add((node, CL.agencyRegistryVersion, Literal(str(gnd["registry_version"]))))
+        if gnd.get("ori"):
+            g.add((node, CL.oriCode, Literal(str(gnd["ori"]))))
+        if gnd.get("state_hint"):
+            g.add((node, CL.stateHint, Literal(str(gnd["state_hint"]))))
+        if gnd.get("hint_source"):
+            g.add((node, CL.stateHintSource, Literal(str(gnd["hint_source"]))))
+        slug = str(gnd.get("slug") or "").strip()
+        if status == "grounded" and slug:
+            g.add((node, DCTERMS.subject, BASE[f"agency/{slug}"]))
 
 
 def validate_provenance(graph: Graph) -> tuple[bool, str]:
@@ -261,12 +335,22 @@ def export_stored_case(case_id: str, output_dir: Path, storage: Any = None) -> O
         raise RuntimeError(
             f"no extraction-run or resolution timestamp for {case_id} (run_id={run_id})"
         )
+    location_grounds = None
+    agency_grounds = None
+    get_case = getattr(storage, "get_case", None)
+    if callable(get_case):
+        case_row = get_case(case_id)
+        if isinstance(case_row, dict):
+            location_grounds = case_row.get("location_grounds")
+            agency_grounds = case_row.get("agency_grounds")
     graph = build_provenance_graph(
         case_id,
         assertions,
         resolutions,
         run_id=run_id,
         issued_at=str(started) if started else None,
+        location_grounds=location_grounds if isinstance(location_grounds, list) else None,
+        agency_grounds=agency_grounds if isinstance(agency_grounds, list) else None,
     )
     conforms, report = validate_provenance(graph)
     if not conforms:

@@ -2,8 +2,9 @@
 
 The CaseLinker MCP (Model Context Protocol) server exposes structured tools to agents and AI Applications (Cursor, Claude Desktop, and other MCP clients). Tools include corpus search and analysis, knowledge graphs, triage, free court records search (via CourtListener), and the **collector suite** (press PDFs and free RECAP downloads).
 
-- **29** tools wrap the CaseLinker REST API
+- **28** tools wrap the CaseLinker REST API
 - **8** are MCP-only corpus / graph helpers
+- **1** SPARQL tool (`sparql_query`) — live `/sparql`, local Oxigraph, or local `.nq`
 - **4** search free public court and DOJ press records
 - **1** collector READ (`probe_press_url`) always
 - **8** collector WRITE — **local MCP only** (not registered on Railway)
@@ -73,7 +74,7 @@ Trusted key does **not** change behavior. Includes corpus search, analysis, onto
 - Analysis: `run_automated_analysis`, `triage_text`, `get_triage_eval_metrics`
 - Stats / filters: `get_case_count`, `get_facet_distinct`, `get_unique_tags`, `tag_threader`, `get_case_ids_by_filter`, `get_stats_detailed`, `get_technology_revolver`, `get_cluster_groups`, `get_location_stats`, `get_triage_model_corpus`
 - Ontology (pre-merged): `get_knowledge_graph`, `get_case_graph_manifest`
-- Reference: `get_case_studies`, `get_case_study_notes`, `list_sources`
+- Reference: `get_case_studies`, `list_sources`
 - Q1 research: `q1_platform_evidence` (platform harm evidence cohorts)
 - On-demand graphs (MCP-only): `case2cac`, `graph_get_neighbors`, `graph_find_cases_by_concept`, `graph_summarize`, `graph_compare_cohorts`, `export_case_graph_ttl`
 - Free public records (**READ**, all hosts): `search_doj_press_releases`, `search_courtlistener`, `list_free_recap_documents`, `resolve_free_recap_download`, `probe_press_url`

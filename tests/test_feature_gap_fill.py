@@ -291,7 +291,7 @@ class TestLocationNerMapping(unittest.TestCase):
     def test_fixture_emits_uco_location(self):
         mapper = cac.CaseToCAC()
         graph, warnings = mapper.map_case(cac.AZICAC_2011_006_FIXTURE)
-        loc = cac.BASE["location/mesa-arizona"]
+        loc = cac.BASE["location/mesa-city-az"]
         types = set()
         for ctx in graph.graphs():
             for o in ctx.objects(loc, cac.RDF.type):
@@ -335,9 +335,9 @@ class TestLocationNerMapping(unittest.TestCase):
         g2, _ = mapper.map_case(
             {**cac.AZICAC_2011_006_FIXTURE, "id": "case_b", "locations": ["Phoenix, Arizona"]}
         )
-        uri_a = cac.BASE["location/phoenix-arizona"]
+        uri_a = cac.BASE["location/phoenix-city-az"]
         # same registry URI; both graphs carry the type triple
-        self.assertEqual(mapper._location_registry["phoenix-arizona"], uri_a)
+        self.assertEqual(mapper._location_registry["phoenix-city-az"], uri_a)
         for g in (g1, g2):
             found = False
             for ctx in g.graphs():

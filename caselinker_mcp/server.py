@@ -1411,20 +1411,6 @@ async def get_triage_model_corpus(facet_constraints_json: str = "") -> dict[str,
 
 
 @mcp.tool()
-async def get_case_study_notes(case_id: str) -> dict[str, Any]:
-    """Community notes for a case study id. Wraps GET /api/case-studies/notes/{case_id}."""
-    try:
-        cid = case_id.strip()
-        if not cid:
-            return {"error": "case_id is required"}
-        result = await api_get(f"/api/case-studies/notes/{cid}")
-        return result if isinstance(result, dict) else {"notes": result}
-    except Exception as e:
-        logger.exception("get_case_study_notes failed")
-        return {"error": str(e)}
-
-
-@mcp.tool()
 async def llm_chat(question: str, model: str = "", provider: str = "") -> dict[str, Any]:
     """Natural-language SQL assistant over the cases table. Wraps POST /api/llm/chat.
 
@@ -1443,6 +1429,46 @@ async def llm_chat(question: str, model: str = "", provider: str = "") -> dict[s
         return result if isinstance(result, dict) else {"data": result}
     except Exception as e:
         logger.exception("llm_chat failed")
+        return {"error": str(e)}
+
+
+@mcp.tool()
+async def sparql_query(
+    query: str,
+    backend: str = "auto",
+    endpoint: str = "",
+    nq_path: str = "",
+    timeout_s: float = 90.0,
+) -> dict[str, Any]:
+    """Run a SPARQL 1.1 Query over the CASE/UCO/CAC graphs (Query only; no Update).
+
+    Backends:
+    - ``live`` (default via ``auto`` when OXIGRAPH_URL unset): POST
+      ``{CASELINKER_API_URL}/sparql`` — Railway public proxy → hosted Oxigraph.
+    - ``oxigraph``: POST ``{OXIGRAPH_URL|/query}`` or ``http://127.0.0.1:7878/query``
+      when running a local Oxigraph.
+    - ``nq``: evaluate against a local N-Quads file (``nq_path`` or env
+      ``CASELINKER_NQ``). Soft size cap; prefer live/oxigraph for the full corpus.
+    - ``auto``: ``OXIGRAPH_URL`` → local Oxigraph on ``127.0.0.1:7878`` if up,
+      else live.
+
+    Optional ``endpoint`` overrides the live URL or Oxigraph base. Same policy as
+    the public ``/sparql`` route: Update (INSERT/DELETE/LOAD/DROP/…) and SERVICE
+    rejected; default outer LIMIT 1000 (max 10_000); default timeout 90s
+    (clamped 1–600).
+    """
+    try:
+        from caselinker_mcp.sparql_tool import run_sparql
+
+        return await run_sparql(
+            query,
+            backend=backend,
+            endpoint=endpoint,
+            nq_path=nq_path,
+            timeout_s=float(timeout_s),
+        )
+    except Exception as e:
+        logger.exception("sparql_query failed")
         return {"error": str(e)}
 
 

@@ -10,12 +10,13 @@ Authoritative implementation: `caselinker_mcp/server.py`. This file is the human
 |---------|------:|-------|
 | REST API wrappers | **31** | Proxy to `GET`/`POST /api/*` |
 | MCP-only (corpus graphs) | **8** | `tree_traversal`, `list_sources`, `case2cac`, four graph tools, `export_case_graph_ttl` |
+| MCP-only (SPARQL) | **1** | `sparql_query` — live `/sparql`, local Oxigraph, or local `.nq` |
 | MCP-only (free public records) | **4** | DOJ press search + CourtListener/RECAP (`public_records.py`) |
 | MCP-only (press collector READ) | **1** | `probe_press_url` — all hosts |
 | MCP-only (press collector WRITE) | **8** | **Local MCP only** — not registered on Railway |
 | MCP-only (local duplicate audit) | **2** | `find_ingested_duplicates`, `verify_duplicate_pdf_pages` — local disk, read-only |
-| **Total (local)** | **54** | |
-| **Total (Railway)** | **44** | WRITE and local-disk duplicate tools absent |
+| **Total (local)** | **55** | |
+| **Total (Railway)** | **45** | WRITE and local-disk duplicate tools absent |
 
 There are **34** REST `/api/*` routes in `run/main.py`. **31** have MCP tools; four are intentionally excluded from MCP (admin/write/index): `POST /api/cache/clear`, `POST /api/case-studies/notes/{id}`, `POST /api/ontology/cache/warm`, `GET /api`.
 
@@ -27,9 +28,9 @@ No MCP resources (`@mcp.resource`) or prompts (`@mcp.prompt`) are registered.
 
 | Category | Local | Railway | Meaning |
 |----------|------:|--------:|---------|
-| Public (trusted key irrelevant) | **48** | **38** | Same behavior with or without trusted key |
+| Public (trusted key irrelevant) | **49** | **39** | Same behavior with or without trusted key |
 | Trusted-key sensitive | **6** | **6** | Blocked or reduced without trusted key |
-| **Total** | **54** | **44** | |
+| **Total** | **55** | **45** | |
 
 Corpus REST tools do **not** mutate the CaseLinker database. Collector WRITE tools create files on disk (JSON, url-lists, PDFs) under `collector_output/` or `collector/sources/` **on the MCP host**. They do **not** auto-ingest into sqlite. On Railway they are not registered (ephemeral FS).
 
@@ -110,6 +111,7 @@ Trusted key does **not** change behavior (still subject to normal slowapi / publ
 | `graph_summarize` | MCP-only | Structural graph summary |
 | `graph_compare_cohorts` | MCP-only | Diff two session graphs |
 | `export_case_graph_ttl` | MCP-only | Session graph → JSON-LD + Turtle; optional save to graph_output pool |
+| `sparql_query` | MCP-only | SPARQL 1.1 Query: `live` → `CASELINKER_API_URL/sparql`, `oxigraph` → `OXIGRAPH_URL` or `127.0.0.1:7878`, `nq` → local `.nq` |
 | `get_case_count` | `GET /api/case-count` | Fast COUNT |
 | `get_facet_distinct` | `GET /api/facet-distinct` | Facet prune values |
 | `get_unique_tags` | `GET /api/tags` | All tag dimensions |
@@ -120,7 +122,6 @@ Trusted key does **not** change behavior (still subject to normal slowapi / publ
 | `get_cluster_groups` | `GET /api/cluster-groups` | Similarity clusters |
 | `get_location_stats` | `GET /api/location-stats` | Map aggregation |
 | `get_triage_model_corpus` | `GET /api/triage-model-corpus` | Bundle predictions |
-| `get_case_study_notes` | `GET /api/case-studies/notes/{id}` | Community notes |
 | `search_doj_press_releases` | DOJ News API | **READ** press search |
 | `search_courtlistener` | CourtListener | **READ** free RECAP search |
 | `list_free_recap_documents` | CourtListener | **READ** free filings |
