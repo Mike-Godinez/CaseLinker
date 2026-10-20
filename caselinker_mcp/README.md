@@ -75,7 +75,11 @@ Trusted key does **not** change behavior. Includes corpus search, analysis, onto
 - Stats / filters: `get_case_count`, `get_facet_distinct`, `get_unique_tags`, `tag_threader`, `get_case_ids_by_filter`, `get_stats_detailed`, `get_technology_revolver`, `get_cluster_groups`, `get_location_stats`, `get_triage_model_corpus`
 - Ontology (pre-merged): `get_knowledge_graph`, `get_case_graph_manifest`
 - Reference: `get_case_studies`, `list_sources`
-- Q1 research: `q1_platform_evidence` (platform harm evidence cohorts)
+- Q1 research: `q1_platform_evidence` (historical platform-harm snapshot cohorts)
+
+`q1_platform_evidence` uses a precomputed index, not a live database cohort. Every successful index and platform-filtered response includes top-level `freshness` alongside the original `_meta`. `generated_at`, `cases_processed`, `db_gaps` and `text_cap` describe the recorded build; `coverage_status: reported_gaps` surfaces recorded gaps without treating zero gaps as proof of completeness. `current_corpus_verified` remains false, and `stale`, `coverage_pct` and `live_case_count` remain null because this endpoint has no source/extraction-revision match to the live corpus. Null means unknown, not fresh. Equal case counts alone would not establish freshness.
+
+Use `filter_cases_by_tags` for current database cohorts and `get_corpus_stats` for reported corpus size. This disclosure does not rebuild the index, verify its records, or establish complete or current corpus coverage.
 - On-demand graphs (MCP-only): `case2cac`, `graph_get_neighbors`, `graph_find_cases_by_concept`, `graph_summarize`, `graph_compare_cohorts`, `export_case_graph_ttl`
 - Free public records (**READ**, all hosts): `search_doj_press_releases`, `search_courtlistener`, `list_free_recap_documents`, `resolve_free_recap_download`, `probe_press_url`
 - Collector **WRITE** (**local MCP only**): `harvest_doj_press_topic`, `fetch_press_listing_urls`, `resolve_press_urls`, `build_press_pdf`, `collect_case_dual_path`, `download_free_recap`, `fetch_free_key_docs`, `drop_collected_pdf_pages`
@@ -226,3 +230,4 @@ For a standalone SSE process (not via Railway mount), set `MCP_TRANSPORT=sse` an
 | Trusted-key sensitive | 6 | 6 | `get_all_cases`, `get_lifecycle_cases`, `get_lifecycle_lstar`, `get_case`, `get_case_assertions`, `llm_chat` |
 
 Authoritative implementation: `@mcp.tool()` definitions in `server.py`. Tool docstrings there remain the source of parameter and behavior detail.
+
