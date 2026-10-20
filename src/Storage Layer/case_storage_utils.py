@@ -99,6 +99,8 @@ EXTRACTED_FEATURE_FIELDS = (
     "agencies_involved",
     "organizations",
     "locations",
+    "location_grounds",
+    "agency_grounds",
     "investigation_type",
     "investigation_types",
     "evidence_volume",

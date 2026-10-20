@@ -85,6 +85,12 @@ models/*
 !data/case_studies.json
 # Snapshot manifest schema. JSON is ignored by default above.
 !tests/snapshot-manifest-v1.schema.json
+# Grounding precision freeze + sentence judgments (must travel with code)
+!scripts/verify/extraction/hint_source_policy.json
+!scripts/verify/extraction/location_precision_*.json
+!scripts/verify/extraction/agency_precision_*.json
+# Working packs used while judging (ids + judgments.jsonl are the published artifacts)
+scripts/verify/extraction/grounding_holdout_*_pack.jsonl
 # NZ DIA build input: single-person scrapes plus split two-person releases.
 !collector/sources/nzdia_csea_resolved.json
 # Local claim-snapshot output from verify_paper --snapshot
@@ -135,6 +141,23 @@ state_machines/*
 *.key
 credentials/
 secrets/
+
+# Local Oxigraph store + CLI binary (rebuild from N-Quads backups)
+caselinker_oxigraph/
+.tools/oxigraph
+*.nq
+
+# Gazetteer/agency pin dirs: keep MANIFEST + pinned national snapshots tracked
+data/gazetteer/*
+!data/gazetteer/MANIFEST.json
+!data/gazetteer/2024_Gaz_state_national.txt
+!data/gazetteer/2024_Gaz_counties_national.txt
+!data/gazetteer/2024_Gaz_place_national.txt
+data/agency_registry/*
+!data/agency_registry/MANIFEST.json
+!data/agency_registry/federal_agencies.json
+!data/agency_registry/cde_agencies_*.json
+scripts/explore/_grounding_out/
 
 # Local config overrides (not for deploy)
 config/

@@ -286,6 +286,63 @@ class MergeProcessing:
 
         merged = self._supplement_jurisdictional_states(merged)
 
+        # Authority link (Census FIPS / FBI CDE ORI) — after mentions are settled
+        merged = self._apply_location_grounds(merged)
+        merged = self._apply_agency_grounds(merged)
+
+        return merged
+
+    def _apply_location_grounds(self, merged: Dict[str, Any]) -> Dict[str, Any]:
+        """Attach ``location_grounds`` for each settled location mention.
+
+        Deterministic linker against the pinned US Census gazetteer. Missing or
+        corrupt gazetteer raises — no silent slug fallback.
+        """
+        locations = merged.get("locations") or []
+        if not isinstance(locations, list) or not locations:
+            return merged
+        ground_path = Path(__file__).parent / "location_grounding.py"
+        if not ground_path.is_file():
+            return merged
+        import sys
+
+        spec = importlib.util.spec_from_file_location(
+            "location_grounding", ground_path
+        )
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader
+        sys.modules["location_grounding"] = mod
+        spec.loader.exec_module(mod)
+        # GazetteerError and other linker failures must surface — no silent slug fallback.
+        merged["location_grounds"] = mod.ground_case_locations(
+            locations,
+            source=merged.get("source"),
+            case_text=merged.get("case_text") or "",
+            case_id=merged.get("id") or merged.get("case_id"),
+        )
+        return merged
+
+    def _apply_agency_grounds(self, merged: Dict[str, Any]) -> Dict[str, Any]:
+        """Attach ``agency_grounds`` for each settled agency mention."""
+        agencies = merged.get("agencies_involved") or []
+        if not isinstance(agencies, list) or not agencies:
+            return merged
+        ground_path = Path(__file__).parent / "agency_grounding.py"
+        if not ground_path.is_file():
+            return merged
+        import sys
+
+        spec = importlib.util.spec_from_file_location("agency_grounding", ground_path)
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader
+        sys.modules["agency_grounding"] = mod
+        spec.loader.exec_module(mod)
+        merged["agency_grounds"] = mod.ground_case_agencies(
+            agencies,
+            source=merged.get("source"),
+            case_id=merged.get("id") or merged.get("case_id"),
+            location_grounds=merged.get("location_grounds"),
+        )
         return merged
 
     def _apply_resolved_sentences(self, merged: Dict[str, Any], res: Dict[str, Any]) -> Dict[str, Any]:

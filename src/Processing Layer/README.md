@@ -75,6 +75,10 @@ It reads sentence windows, not the document. It must return a quote that occurs 
 
 `scripts/run/reresolve_assertions.py` re-runs resolution over stored rows without re-extracting.
 
+## Location grounding
+
+After locations are merged, `location_grounding.py` links each mention to a US Census FIPS entity when the gazetteer is present (`data/gazetteer/`, fetch with `scripts/run/fetch_gazetteer.sh`). Results land on `location_grounds` and are stored with extracted features. The CAC mapper mints `location/fips/{geoid}` IRIs for grounded rows so the same county name in two states does not share one slug. This is **not** a resolve_v3.0 family vote — witnesses settle the text span; grounding settles the real-world referent.
+
 ## Document kinds
 
 `field_assertions/detectors.py` registers detectors by kind. `press_release` is the live set. `pacer`, `investigative_note`, and `cybertip` are accepted kinds with no press-release detectors. Register one function; it returns the same assertion dicts. The gate and the resolver do not change.
@@ -100,6 +104,7 @@ register_detector("pacer_ages", ("pacer",), pacer_ages, order=10)
 | `ML Processing Layer/` | Stanza NER, spaCy patterns, semantic concepts, optional LLM |
 | `victim_age_gate.py`, `victim_age_overrides.py`, `gender_extraction.py` | Age-gate validators and human overrides |
 | `agency_label_normalize.py`, `agency_context_gate.py`, `agency_possessive_repair.py` | Agency strings |
+| `location_grounding.py` | Post-extract Census FIPS linker → `location_grounds` |
 | `source_url_gate.py`, `source_url_continuations.py` | Duplicate-URL gate and wrapped `Source:` lines |
 
 ## Run
