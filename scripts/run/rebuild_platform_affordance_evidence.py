@@ -30,11 +30,44 @@ from platform_affordance_evidence_freshness import (  # noqa: E402
     gap_gate,
     read_corpus_identity,
     rebuild_decision,
+    snapshot_freshness,
 )
 
 EVIDENCE = ROOT / "ontology" / "platform_affordance_evidence" / "platform_affordance_evidence.json"
 DB = ROOT / "caselinker.db"
 BUILDER = ROOT / "ontology" / "platform_affordance_evidence" / "platform_affordance_evidence.py"
+
+
+def refresh_platform_affordance_evidence(root: Path | None = None) -> dict:
+    """Rebuild the snapshot from caselinker.db and report whether it is still stale.
+
+    An MCP tool or agent can call this. It writes the evidence file when the
+    recorded corpus count and extraction-run fingerprint do not match the
+    database, then returns the freshness object for that file.
+    """
+    root = root or ROOT
+    evidence = root / "ontology" / "platform_affordance_evidence" / "platform_affordance_evidence.json"
+    database = root / "caselinker.db"
+    builder = root / "ontology" / "platform_affordance_evidence" / "platform_affordance_evidence.py"
+    if not evidence.is_file():
+        raise FileNotFoundError(evidence)
+    if not database.is_file():
+        raise FileNotFoundError(database)
+    meta = json.loads(evidence.read_text(encoding="utf-8")).get("_meta") or {}
+    with sqlite3.connect(database) as conn:
+        live = read_corpus_identity(conn)
+    decision = rebuild_decision(meta, live)
+    rebuilt = False
+    if decision == "rebuild":
+        completed = subprocess.run([sys.executable, str(builder)], cwd=root)
+        if completed.returncode != 0:
+            raise RuntimeError(f"evidence builder exited {completed.returncode}")
+        rebuilt = True
+        meta = json.loads(evidence.read_text(encoding="utf-8")).get("_meta") or {}
+        with sqlite3.connect(database) as conn:
+            live = read_corpus_identity(conn)
+    freshness = snapshot_freshness(meta, live)
+    return {"decision": decision, "rebuilt": rebuilt, "freshness": freshness}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -69,8 +102,17 @@ def main(argv: list[str] | None = None) -> int:
     if decision == "unknown":
         print("corpus identity unavailable; not rebuilding", file=sys.stderr)
         return 1
-    completed = subprocess.run([sys.executable, str(BUILDER)], cwd=ROOT)
-    return completed.returncode
+    try:
+        result = refresh_platform_affordance_evidence(ROOT)
+    except RuntimeError as exc:
+        print(exc, file=sys.stderr)
+        return 1
+    freshness = result["freshness"]
+    print(
+        f"rebuilt={result['rebuilt']} stale={freshness['stale']} "
+        f"live_case_count={freshness['live_case_count']} coverage_pct={freshness['coverage_pct']}"
+    )
+    return 0 if freshness.get("stale") is False else 1
 
 
 if __name__ == "__main__":

@@ -938,9 +938,6 @@ def main() -> None:
             db_rows[row[0]] = row[1] or ""
     corpus_identity = None
     try:
-        import sys
-        from pathlib import Path
-
         run_dir = Path(__file__).resolve().parents[2] / "run"
         if str(run_dir) not in sys.path:
             sys.path.insert(0, str(run_dir))
