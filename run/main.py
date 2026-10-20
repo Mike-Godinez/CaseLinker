@@ -71,6 +71,7 @@ else:
     from storage import CaseStorage
     print("✅ Using SQLite database (local development)")
 from corpus_export import iter_corpus_json
+from q1_freshness import with_snapshot_freshness
 from facet_tree import (
     DEFAULT_FACET_ORDER,
     ERA_PERIOD_BUCKETS,
@@ -4291,7 +4292,7 @@ def api_q1_platform_evidence(
     platform: Optional[str] = Query(default=None),
     tier: Optional[str] = Query(default=None),
 ):
-    """Q1 platform harm evidence: platform index or per-platform case cohort with tiers and quotes."""
+    """Frozen Q1 index or cohort; freshness metadata is not a current-corpus guarantee."""
     if tier is not None:
         tier_norm = tier.strip().lower()
         if tier_norm not in _Q1_VALID_TIERS:
@@ -4307,11 +4308,11 @@ def api_q1_platform_evidence(
 
     if platform is None or not platform.strip():
         payload = _q1_platform_evidence_index(records)
-        payload["_meta"] = meta
+        payload = with_snapshot_freshness(payload, meta)
         return payload
 
     payload = _q1_platform_evidence_cases(records, platform, tier)
-    payload["_meta"] = meta
+    payload = with_snapshot_freshness(payload, meta)
     if tier:
         payload["tier"] = tier
     return payload
@@ -5678,3 +5679,4 @@ if __name__ == "__main__":
     # Disable reload when running directly (causes warning)
     # Use: uvicorn run.main:app --reload (from project root) for reload
     uvicorn.run(app, host=host, port=port, reload=False)
+

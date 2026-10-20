@@ -950,7 +950,12 @@ async def get_case_studies() -> dict[str, Any]:
 
 @mcp.tool()
 async def q1_platform_evidence(platform: str | None = None, tier: str | None = None) -> dict[str, Any]:
-    """Query Q1 platform harm evidence as a cohort source for case2cac and get_case.
+    """Query a frozen, precomputed Q1 platform-harm snapshot, not the live corpus.
+
+    Inspect top-level freshness and _meta before using this historical index.
+    Current coverage and source/extraction-version freshness are unverified;
+    equal case counts would not prove freshness. Prefer filter_cases_by_tags
+    for current database cohorts and get_corpus_stats for reported corpus size.
 
     Without platform: platform index with case_count and per-tier counts (stated, inferred, named_only).
     With platform: matching case IDs (same format as get_case / case2cac), each with tier and evidence_quote.
@@ -1889,3 +1894,4 @@ if __name__ == "__main__":
         uvicorn.run(_sse_app, host="0.0.0.0", port=PORT)
     else:
         mcp.run(transport="stdio")
+
