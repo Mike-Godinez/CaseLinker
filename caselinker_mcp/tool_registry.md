@@ -103,7 +103,7 @@ Trusted key does **not** change behavior (still subject to normal slowapi / publ
 | `get_knowledge_graph` | `GET /api/ontology/merged` | Pre-merged ontology pool |
 | `get_case_graph_manifest` | `GET /api/ontology/cases` | Graph coverage metadata |
 | `get_case_studies` | `GET /api/case-studies` | Era-based narratives |
-| `q1_platform_evidence` | `GET /api/q1/platform-evidence` | Q1 platform harm cohort index or per-platform evidence |
+| `platform_affordance_evidence` | `GET /api/platform-affordance-evidence` | Platform affordance evidence cohort index or per-platform evidence |
 | `list_sources` | (static) | Source catalog |
 | `case2cac` | MCP-only | On-demand cohort graph → `graph_id` |
 | `graph_get_neighbors` | MCP-only | Traverse session graph |

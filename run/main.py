@@ -71,7 +71,7 @@ else:
     from storage import CaseStorage
     print("✅ Using SQLite database (local development)")
 from corpus_export import iter_corpus_json
-from q1_freshness import with_snapshot_freshness
+from platform_affordance_evidence_freshness import with_snapshot_freshness
 from facet_tree import (
     DEFAULT_FACET_ORDER,
     ERA_PERIOD_BUCKETS,
@@ -4161,8 +4161,8 @@ async def serve_case_studies():
 # default ephemeral filesystem they reset on redeploy. Mount a volume at /data
 # (or swap to the DB) for durable storage.
 
-_Q1_EVIDENCE_PATH = Path(__file__).parent.parent / "ontology" / "q1" / "q1_evidence.json"
-_Q1_VALID_TIERS = frozenset({"stated", "inferred", "named_only"})
+_PLATFORM_AFFORDANCE_EVIDENCE_PATH = Path(__file__).parent.parent / "ontology" / "platform_affordance_evidence" / "platform_affordance_evidence.json"
+_PLATFORM_AFFORDANCE_EVIDENCE_VALID_TIERS = frozenset({"stated", "inferred", "named_only"})
 
 _CASE_STUDIES_CONTENT_PATH = Path(__file__).parent.parent / "data" / "case_studies.json"
 _CASE_STUDIES_NOTES_PATH = Path(__file__).parent.parent / "data" / "case_study_notes.json"
@@ -4170,20 +4170,20 @@ _CASE_STUDIES_NOTES_MAX_NAME = 80
 _CASE_STUDIES_NOTES_MAX_TEXT = 1500
 
 
-def _load_q1_evidence() -> Dict[str, Any]:
-    if not _Q1_EVIDENCE_PATH.exists():
-        raise HTTPException(status_code=404, detail="Q1 evidence data not available")
+def _load_platform_affordance_evidence() -> Dict[str, Any]:
+    if not _PLATFORM_AFFORDANCE_EVIDENCE_PATH.exists():
+        raise HTTPException(status_code=404, detail="platform affordance evidence data not available")
     try:
-        data = json.loads(read_utf8_text_file(_Q1_EVIDENCE_PATH))
+        data = json.loads(read_utf8_text_file(_PLATFORM_AFFORDANCE_EVIDENCE_PATH))
     except (json.JSONDecodeError, OSError) as e:
-        logger.exception("q1 evidence load failed: %s", e)
-        raise HTTPException(status_code=500, detail="Failed to load Q1 evidence")
+        logger.exception("platform affordance evidence load failed: %s", e)
+        raise HTTPException(status_code=500, detail="Failed to load platform affordance evidence")
     if not isinstance(data, dict) or not isinstance(data.get("records"), list):
-        raise HTTPException(status_code=500, detail="Invalid Q1 evidence format")
+        raise HTTPException(status_code=500, detail="Invalid platform affordance evidence format")
     return data
 
 
-def _q1_resolve_platform_name(records: List[Dict[str, Any]], platform: str) -> Optional[str]:
+def _platform_affordance_evidence_resolve_platform_name(records: List[Dict[str, Any]], platform: str) -> Optional[str]:
     """Case-insensitive match to canonical platform label in evidence records."""
     needle = platform.strip().casefold()
     if not needle:
@@ -4195,14 +4195,14 @@ def _q1_resolve_platform_name(records: List[Dict[str, Any]], platform: str) -> O
     return None
 
 
-def _q1_platform_evidence_index(records: List[Dict[str, Any]]) -> Dict[str, Any]:
+def _platform_affordance_evidence_index(records: List[Dict[str, Any]]) -> Dict[str, Any]:
     by_platform: Dict[str, Dict[str, Any]] = {}
     for rec in records:
         plat = rec.get("platform")
         tier = rec.get("stated_vs_inferred")
         if not isinstance(plat, str) or not plat:
             continue
-        if tier not in _Q1_VALID_TIERS:
+        if tier not in _PLATFORM_AFFORDANCE_EVIDENCE_VALID_TIERS:
             continue
         row = by_platform.get(plat)
         if row is None:
@@ -4220,12 +4220,12 @@ def _q1_platform_evidence_index(records: List[Dict[str, Any]]) -> Dict[str, Any]
     return {"platforms": platforms, "count": len(platforms)}
 
 
-def _q1_platform_evidence_cases(
+def _platform_affordance_evidence_cases(
     records: List[Dict[str, Any]],
     platform: str,
     tier: Optional[str] = None,
 ) -> Dict[str, Any]:
-    canonical = _q1_resolve_platform_name(records, platform)
+    canonical = _platform_affordance_evidence_resolve_platform_name(records, platform)
     if not canonical:
         raise HTTPException(status_code=404, detail=f"Unknown platform: {platform}")
 
@@ -4234,7 +4234,7 @@ def _q1_platform_evidence_cases(
         if rec.get("platform") != canonical:
             continue
         rec_tier = rec.get("stated_vs_inferred")
-        if rec_tier not in _Q1_VALID_TIERS:
+        if rec_tier not in _PLATFORM_AFFORDANCE_EVIDENCE_VALID_TIERS:
             continue
         if tier and rec_tier != tier:
             continue
@@ -4285,33 +4285,33 @@ def _save_case_study_notes(notes: List[Dict[str, Any]]) -> None:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
 
-@app.get("/api/q1/platform-evidence")
+@app.get("/api/platform-affordance-evidence")
 @limiter.limit("60/minute")
-def api_q1_platform_evidence(
+def api_platform_affordance_evidence(
     request: Request,
     platform: Optional[str] = Query(default=None),
     tier: Optional[str] = Query(default=None),
 ):
-    """Frozen Q1 index or cohort; freshness metadata is not a current-corpus guarantee."""
+    """Frozen platform affordance evidence index or cohort; freshness metadata is not a current-corpus guarantee."""
     if tier is not None:
         tier_norm = tier.strip().lower()
-        if tier_norm not in _Q1_VALID_TIERS:
+        if tier_norm not in _PLATFORM_AFFORDANCE_EVIDENCE_VALID_TIERS:
             raise HTTPException(
                 status_code=400,
-                detail=f"Invalid tier; expected one of: {', '.join(sorted(_Q1_VALID_TIERS))}",
+                detail=f"Invalid tier; expected one of: {', '.join(sorted(_PLATFORM_AFFORDANCE_EVIDENCE_VALID_TIERS))}",
             )
         tier = tier_norm
 
-    data = _load_q1_evidence()
+    data = _load_platform_affordance_evidence()
     records = data.get("records") or []
     meta = data.get("_meta") or {}
 
     if platform is None or not platform.strip():
-        payload = _q1_platform_evidence_index(records)
+        payload = _platform_affordance_evidence_index(records)
         payload = with_snapshot_freshness(payload, meta)
         return payload
 
-    payload = _q1_platform_evidence_cases(records, platform, tier)
+    payload = _platform_affordance_evidence_cases(records, platform, tier)
     payload = with_snapshot_freshness(payload, meta)
     if tier:
         payload["tier"] = tier
@@ -4496,13 +4496,13 @@ if _question_data.is_dir():
         name="question_data",
     )
 
-# Q01 affordance table: q1_evidence.json, q1_harm_analysis.json (manual harm vectors).
-_q1_data = Path(__file__).resolve().parent.parent / "ontology" / "q1"
-if _q1_data.is_dir():
+# Platform affordance evidence: platform_affordance_evidence.json and the manual harm-vector file.
+_platform_affordance_evidence_data = Path(__file__).resolve().parent.parent / "ontology" / "platform_affordance_evidence"
+if _platform_affordance_evidence_data.is_dir():
     app.mount(
-        "/ontology/q1",
-        StaticFiles(directory=str(_q1_data)),
-        name="q1_data",
+        "/ontology/platform-affordance-evidence",
+        StaticFiles(directory=str(_platform_affordance_evidence_data)),
+        name="platform_affordance_evidence_data",
     )
 
 # Q02 lifecycle table: q2_evidence.json, q2_lifecycle.json (manual pathway synthesis).

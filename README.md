@@ -264,7 +264,7 @@ Access the **Platform Harm Dashboard** via the [live demo](https://caselinker.up
   - **Affordances** → what the medium enables
   - **Misuse Surface** → how offenders abuse those properties
   - **Harm Vectors** → victim-facing harm pathways
-  - **Case Evidence** → expandable quotes from `q1_evidence.json`; links to Audit for full case review
+  - **Case Evidence** → expandable quotes from `platform_affordance_evidence.json`; links to Audit for full case review
 - **Filters**: search by platform name; narrow by evidence tier
 
 
@@ -419,7 +419,7 @@ CaseLinker/
 │   ├── features_to_cac.py            # Case features → CAC RDF
 │   ├── graph_generate.py             # Batch TTL / JSON-LD
 │   ├── oxigraph_rebuild.py           # Canonical TTL → named-graph N-Quads
-│   ├── q1/ q2/ q3/                   # Research evidence
+│   ├── platform_affordance_evidence/ q2/ q3/  # Research evidence
 │   ├── PACER/                        # PACER graphs + BULK_FOLDER (fetchers live in collector/pacer/)
 │   └── graph_output/                 # staging + universe/ + big_bang/ + analysis/
 ├── state_machines/                   # PACER CAC state machines + L* (AfH Appendix X)
@@ -495,7 +495,7 @@ How the readers, the gate, and the resolver fit together in **[src/Processing La
 - `GET /api/tags` - Distinct tag values across the corpus (public, rate limited)
 - `POST /api/tag-threader` - Tag co-occurrence threading analysis (public, rate limited)
 - `GET /visualization` - Platform Harm Dashboard (Q1 affordance-misuse-harm analysis, tiered evidence, manual platform analysis)
-- `GET /api/q1/platform-evidence` - Q1 platform evidence index or per-platform cohort (`platform`, optional `tier`)
+- `GET /api/platform-affordance-evidence` - platform affordance evidence index or per-platform cohort (`platform`, optional `tier`)
 - `GET /search` - Facet decision tree over stored cases (D3); prune filters; cohort case IDs via API
 - `GET /query` - Custom analysis lab (browser-only JavaScript calling public APIs; see page for examples)
 - `GET /lifecycle` - Exploitation lifecycle visualization (public HTML; payload embedded server-side)
@@ -518,7 +518,7 @@ How the readers, the gate, and the resolver fit together in **[src/Processing La
 - `POST /api/ontology/cache/warm` — rebuild/warm merged-graph cache (`pool=compare|all|universe|analysis|both`)
 - `GET /ontology/graph_output/{case_id}.jsonld|.ttl` — staging (full corpus); also `{pool}/{case_id}…` for universe/big_bang/analysis
 - `GET /ontology/PACER/...` — static PACER CASE-UCO JSON-LD
-- `GET /ontology/q1/*`, `/ontology/q2/*`, `/ontology/q3/*`, `/ontology/question_data/*` — Q1–Q3 evidence JSON
+- `GET /ontology/platform-affordance-evidence/*`, `/ontology/q2/*`, `/ontology/q3/*`, `/ontology/question_data/*` — platform affordance evidence and Q2–Q3 evidence JSON
 - `GET /ontology/q_results.json` — aggregated question results when present
 - `GET|POST /sparql` — SPARQL 1.1 over CASE/UCO/CAC graphs (public, 30/min; [SPARQL.md](ontology/docs/SPARQL.md))
 - `GET /mcp/sse` — MCP SSE transport (requires `Authorization: Bearer <MCP_ACCESS_KEY>`)

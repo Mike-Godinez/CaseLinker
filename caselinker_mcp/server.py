@@ -949,8 +949,8 @@ async def get_case_studies() -> dict[str, Any]:
 
 
 @mcp.tool()
-async def q1_platform_evidence(platform: str | None = None, tier: str | None = None) -> dict[str, Any]:
-    """Query a frozen, precomputed Q1 platform-harm snapshot, not the live corpus.
+async def platform_affordance_evidence(platform: str | None = None, tier: str | None = None) -> dict[str, Any]:
+    """Query a frozen, precomputed platform affordance evidence snapshot, not the live corpus.
 
     Inspect top-level freshness and _meta before using this historical index.
     Current coverage and source/extraction-version freshness are unverified;
@@ -961,7 +961,7 @@ async def q1_platform_evidence(platform: str | None = None, tier: str | None = N
     With platform: matching case IDs (same format as get_case / case2cac), each with tier and evidence_quote.
     Optional tier filter: stated, inferred, or named_only.
 
-    Example: q1_platform_evidence(\"Snapchat\") then case2cac on returned case_ids.
+    Example: platform_affordance_evidence(\"Snapchat\") then case2cac on returned case_ids.
     """
     try:
         params: dict[str, str] = {}
@@ -969,10 +969,10 @@ async def q1_platform_evidence(platform: str | None = None, tier: str | None = N
             params["platform"] = platform.strip()
         if tier and tier.strip():
             params["tier"] = tier.strip().lower()
-        result = await api_get("/api/q1/platform-evidence", params=params or None)
+        result = await api_get("/api/platform-affordance-evidence", params=params or None)
         return result if isinstance(result, dict) else {"data": result}
     except Exception as e:
-        logger.exception("q1_platform_evidence failed")
+        logger.exception("platform_affordance_evidence failed")
         return {"error": str(e)}
 
 

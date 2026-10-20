@@ -1,4 +1,4 @@
-"""Describe a frozen Q1 index without upgrading its metadata to current evidence."""
+"""Describe a frozen platform affordance evidence index without upgrading its metadata to current evidence."""
 from __future__ import annotations
 
 from collections.abc import Mapping
@@ -22,7 +22,7 @@ def snapshot_freshness(meta: object) -> dict[str, Any]:
     db_gaps = count("db_gaps")
     return {
         "status": "unverified_snapshot",
-        "artifact_kind": "precomputed_q1_index",
+        "artifact_kind": "precomputed_platform_affordance_evidence_index",
         "generated_at": generated_at,
         "cases_processed": count("cases_processed"),
         "db_gaps": db_gaps,
@@ -33,7 +33,7 @@ def snapshot_freshness(meta: object) -> dict[str, Any]:
         "coverage_pct": None,
         "stale": None,
         "warning": (
-            "This is a precomputed Q1 snapshot, not a live corpus query. "
+            "This is a precomputed platform affordance evidence snapshot, not a live corpus query. "
             "Build counts and db_gaps describe the recorded build; current "
             "corpus coverage and content freshness have not been verified. "
             "Equal case counts would not establish matching source or extraction versions."

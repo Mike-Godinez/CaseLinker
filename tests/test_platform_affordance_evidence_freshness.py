@@ -1,4 +1,4 @@
-"""Q1 snapshot disclosures retain uncertainty and preserve returned evidence."""
+"""Platform affordance evidence snapshot disclosures retain uncertainty and preserve returned evidence."""
 from __future__ import annotations
 
 import ast
@@ -10,7 +10,7 @@ from typing import Any, Dict, List, Optional
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "run"))
-from q1_freshness import snapshot_freshness, with_snapshot_freshness
+from platform_affordance_evidence_freshness import snapshot_freshness, with_snapshot_freshness
 
 
 class SnapshotFreshnessTests(unittest.TestCase):
@@ -72,8 +72,8 @@ class SnapshotRouteLogicTests(unittest.TestCase):
     def setUp(self):
         source = (ROOT / "run" / "main.py").read_text(encoding="utf-8")
         tree = ast.parse(source)
-        names = {"_q1_resolve_platform_name", "_q1_platform_evidence_index",
-                 "_q1_platform_evidence_cases", "api_q1_platform_evidence"}
+        names = {"_platform_affordance_evidence_resolve_platform_name", "_platform_affordance_evidence_index",
+                 "_platform_affordance_evidence_cases", "api_platform_affordance_evidence"}
         functions = [node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name in names]
         self.assertEqual(len(functions), len(names))
         for function in functions:
@@ -93,13 +93,13 @@ class SnapshotRouteLogicTests(unittest.TestCase):
             "Dict": Dict, "List": List, "Any": Any, "Optional": Optional,
             "Request": object, "Query": lambda default=None: default,
             "HTTPException": RouteError,
-            "_Q1_VALID_TIERS": frozenset({"stated", "inferred", "named_only"}),
-            "_load_q1_evidence": lambda: self.data,
+            "_PLATFORM_AFFORDANCE_EVIDENCE_VALID_TIERS": frozenset({"stated", "inferred", "named_only"}),
+            "_load_platform_affordance_evidence": lambda: self.data,
             "with_snapshot_freshness": with_snapshot_freshness,
         }
         module = ast.fix_missing_locations(ast.Module(body=functions, type_ignores=[]))
         exec(compile(module, str(ROOT / "run" / "main.py"), "exec"), namespace)
-        self.route = namespace["api_q1_platform_evidence"]
+        self.route = namespace["api_platform_affordance_evidence"]
 
     def test_index_response_has_snapshot_disclosure(self):
         out = self.route(None, None, None)

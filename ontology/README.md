@@ -128,7 +128,7 @@ Static files are public: `/ontology/graph_output/{pool}/{case_id}.ttl|.jsonld`.
 | [`select_cases.py`](select_cases.py) | Stratified / compare-set selection |
 | [`big_bang.py`](big_bang.py) / [`eval_big_bang_graphs.py`](eval_big_bang_graphs.py) | Bridge-dense subset + SHACL eval |
 | [`noise_filter.py`](noise_filter.py) | Noise / false-positive filter used by mapping |
-| [`q1/`](q1/) [`q2/`](q2/) [`q3/`](q3/) | Research evidence (see below) |
+| [`platform_affordance_evidence/`](platform_affordance_evidence/) [`q2/`](q2/) [`q3/`](q3/) | Research evidence (see below) |
 | [`PACER/`](PACER/) | PACER docket → lifecycle facts (feeds `/lifecycle`) |
 | [`docs/SPARQL.md`](docs/SPARQL.md) | Public SPARQL 1.1 API |
 | [`caselinker-provenance.ttl`](caselinker-provenance.ttl) | Provenance vocabulary (`w3id.org/caselinker/ns/provenance`) |
@@ -141,11 +141,11 @@ The graphs exist so these questions can be asked at corpus scale, not only in SQ
 
 | | Question | Evidence |
 |---|---|---|
-| **Q1** | What about a platform (affordance / surface / harm) made exploitation possible? | [`q1/`](q1/) — [`q1_evidence.json`](q1/q1_evidence.json), [`q1_affordance_table.md`](q1/q1_affordance_table.md) |
+| **Q1** | What about a platform (affordance / surface / harm) made exploitation possible? | [`platform_affordance_evidence/`](platform_affordance_evidence/) — [`platform_affordance_evidence.json`](platform_affordance_evidence/platform_affordance_evidence.json), [`platform_affordance_evidence_table.md`](platform_affordance_evidence/platform_affordance_evidence_table.md) |
 | **Q2** | What does offending and enforcement look like across offense subsets? | [`q2/`](q2/) — [`q2_lifecycle.json`](q2/q2_lifecycle.json), [`q2_lifecycle_table.md`](q2/q2_lifecycle_table.md) |
 | **Q3** | Where can technology or enforcement intervene? | [`q3/`](q3/) — [`q3_interventions.json`](q3/q3_interventions.json), [`q3_intervention_table.md`](q3/q3_intervention_table.md) |
 
-Rebuild tables: `python3 ontology/q1/q1_evidence.py` (same pattern for q2/q3). Narrative pages: `/patterns/questions/q01`–`q03`.
+Rebuild tables: `python3 ontology/platform_affordance_evidence/platform_affordance_evidence.py` (same pattern for q2/q3). Narrative pages: `/patterns/questions/q01`–`q03`.
 
 ## PACER and lifecycle
 

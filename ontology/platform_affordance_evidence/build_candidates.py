@@ -14,7 +14,7 @@ from ai_extraction_patterns import (  # noqa: E402
 )
 
 DB = "caselinker.db"
-OUT = "ontology/q1/candidates.json"
+OUT = "ontology/platform_affordance_evidence/candidates.json"
 
 PLATFORM_TYPE = {
     "Kik": "MessagingService",

@@ -75,9 +75,9 @@ Trusted key does **not** change behavior. Includes corpus search, analysis, onto
 - Stats / filters: `get_case_count`, `get_facet_distinct`, `get_unique_tags`, `tag_threader`, `get_case_ids_by_filter`, `get_stats_detailed`, `get_technology_revolver`, `get_cluster_groups`, `get_location_stats`, `get_triage_model_corpus`
 - Ontology (pre-merged): `get_knowledge_graph`, `get_case_graph_manifest`
 - Reference: `get_case_studies`, `list_sources`
-- Q1 research: `q1_platform_evidence` (historical platform-harm snapshot cohorts)
+- Platform affordance evidence: `platform_affordance_evidence` (historical platform-harm snapshot cohorts)
 
-`q1_platform_evidence` uses a precomputed index, not a live database cohort. Every successful index and platform-filtered response includes top-level `freshness` alongside the original `_meta`. `generated_at`, `cases_processed`, `db_gaps` and `text_cap` describe the recorded build; `coverage_status: reported_gaps` surfaces recorded gaps without treating zero gaps as proof of completeness. `current_corpus_verified` remains false, and `stale`, `coverage_pct` and `live_case_count` remain null because this endpoint has no source/extraction-revision match to the live corpus. Null means unknown, not fresh. Equal case counts alone would not establish freshness.
+`platform_affordance_evidence` uses a precomputed index, not a live database cohort. Every successful index and platform-filtered response includes top-level `freshness` alongside the original `_meta`. `generated_at`, `cases_processed`, `db_gaps` and `text_cap` describe the recorded build; `coverage_status: reported_gaps` surfaces recorded gaps without treating zero gaps as proof of completeness. `current_corpus_verified` remains false, and `stale`, `coverage_pct` and `live_case_count` remain null because this endpoint has no source/extraction-revision match to the live corpus. Null means unknown, not fresh. Equal case counts alone would not establish freshness.
 
 Use `filter_cases_by_tags` for current database cohorts and `get_corpus_stats` for reported corpus size. This disclosure does not rebuild the index, verify its records, or establish complete or current corpus coverage.
 - On-demand graphs (MCP-only): `case2cac`, `graph_get_neighbors`, `graph_find_cases_by_concept`, `graph_summarize`, `graph_compare_cohorts`, `export_case_graph_ttl`

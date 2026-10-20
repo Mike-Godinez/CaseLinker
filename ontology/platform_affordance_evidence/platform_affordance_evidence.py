@@ -7,8 +7,8 @@ boilerplate, pick an offense sentence, classify stated/inferred/named_only,
 extract quote + harm. No nested regex; all text capped before processing.
 
 Outputs:
-  ontology/q1/q1_evidence.json
-  ontology/q1/q1_affordance_table.md
+  ontology/platform_affordance_evidence/platform_affordance_evidence.json
+  ontology/platform_affordance_evidence/platform_affordance_evidence_table.md
 """
 
 from __future__ import annotations
@@ -23,8 +23,8 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 DB = "caselinker.db"
-CANDIDATES_FILE = "ontology/q1/candidates.json"
-OUTPUT_DIR = Path("ontology/q1")
+CANDIDATES_FILE = "ontology/platform_affordance_evidence/candidates.json"
+OUTPUT_DIR = Path("ontology/platform_affordance_evidence")
 TEXT_CAP = 6000
 QUOTE_MAX = 120
 # Max chars between platform mention and offense keyword for stated (same sentence).
@@ -975,10 +975,10 @@ def main() -> None:
         "excluded_platforms": all_exclusions,
         "db_gaps": all_db_gaps,
     }
-    (OUTPUT_DIR / "q1_evidence.json").write_text(
+    (OUTPUT_DIR / "platform_affordance_evidence.json").write_text(
         json.dumps(evidence_out, indent=2), encoding="utf-8"
     )
-    print("Wrote q1_evidence.json", flush=True)
+    print("Wrote platform_affordance_evidence.json", flush=True)
 
     summary: Dict[str, Dict[str, Any]] = {}
     for r in all_records:
@@ -1000,8 +1000,8 @@ def main() -> None:
 
     summary_list = sorted(summary.values(), key=lambda x: -x["stated"])
 
-    write_affordance_md(all_records, all_exclusions, all_db_gaps, OUTPUT_DIR / "q1_affordance_table.md")
-    print("Wrote q1_affordance_table.md", flush=True)
+    write_affordance_md(all_records, all_exclusions, all_db_gaps, OUTPUT_DIR / "platform_affordance_evidence_table.md")
+    print("Wrote platform_affordance_evidence_table.md", flush=True)
 
     total_stated = sum(1 for r in all_records if r["stated_vs_inferred"] == "stated")
     total_inferred = sum(1 for r in all_records if r["stated_vs_inferred"] == "inferred")

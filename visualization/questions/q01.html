@@ -289,7 +289,7 @@
       <p class="method" id="limitations"></p>
       <details style="margin-top:10px;">
         <summary class="method">SPARQL / query (if applicable)</summary>
-        <pre id="sparql"># Placeholder — live query will ship with q1_evidence.json wire-up.</pre>
+        <pre id="sparql"># Placeholder — live query will ship with platform_affordance_evidence.json wire-up.</pre>
       </details>
     </div>
 
@@ -724,8 +724,8 @@
     async function loadData() {
       try {
         const [evidenceRes, harmRes] = await Promise.all([
-          fetch("/ontology/q1/q1_evidence.json", { cache: "no-store" }),
-          fetch("/ontology/q1/q1_harm_analysis.json", { cache: "no-store" }),
+          fetch("/ontology/platform-affordance-evidence/platform_affordance_evidence.json", { cache: "no-store" }),
+          fetch("/ontology/platform-affordance-evidence/platform_affordance_evidence_harm_analysis.json", { cache: "no-store" }),
         ]);
         if (!evidenceRes.ok) throw new Error("evidence not ready");
         const evidence = await evidenceRes.json();
