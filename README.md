@@ -495,7 +495,7 @@ How the readers, the gate, and the resolver fit together in **[src/Processing La
 - `GET /api/tags` - Distinct tag values across the corpus (public, rate limited)
 - `POST /api/tag-threader` - Tag co-occurrence threading analysis (public, rate limited)
 - `GET /visualization` - Platform Harm Dashboard (Q1 affordance-misuse-harm analysis, tiered evidence, manual platform analysis)
-- `GET /api/platform-affordance-evidence` - platform affordance evidence index or per-platform cohort (`platform`, optional `tier`)
+- `GET /api/platform-affordance-evidence` - platform affordance evidence index or per-platform cohort (`platform`, optional `tier`, optional `require_fresh=true`)
 - `GET /search` - Facet decision tree over stored cases (D3); prune filters; cohort case IDs via API
 - `GET /query` - Custom analysis lab (browser-only JavaScript calling public APIs; see page for examples)
 - `GET /lifecycle` - Exploitation lifecycle visualization (public HTML; payload embedded server-side)
