@@ -1,0 +1,92 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/detection#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/production#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2026_003> a ns3:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 06:14:14.038575" ;
+    dcterms:identifier "ohio_ag_2026_003" ;
+    dcterms:modified "2026-10-18 06:14:14.038575" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/provenance> ;
+    dcterms:source <https://www.ohioattorneygeneral.gov/Media/News-Releases/November/State-Agents-Arrest-Man-on-Child-Rape-Allegation>,
+        "OHIO AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fairfield-county>,
+        <https://w3id.org/caselinker/resource/location/gallia-county>,
+        <https://w3id.org/caselinker/resource/location/gallipolis>,
+        <https://w3id.org/caselinker/resource/location/ohio> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/bureau-of-criminal-investigation> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/fairfield-county>,
+        <https://w3id.org/caselinker/resource/location/gallia-county>,
+        <https://w3id.org/caselinker/resource/location/gallipolis>,
+        <https://w3id.org/caselinker/resource/location/ohio> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns7:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/bureau-of-criminal-investigation> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Gallia County Jail" ;
+    ns5:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns1:ageEstimate 63 .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:victimAge 9 .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/phase/arrested> a ns3:InitialPhase,
+        ns4:Phase ;
+    ns3:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/fairfield-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fairfield County" ;
+    ns2:name "Fairfield County" .
+
+<https://w3id.org/caselinker/resource/location/gallia-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Gallia County" ;
+    ns2:name "Gallia County" .
+
+<https://w3id.org/caselinker/resource/location/gallipolis> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Gallipolis" ;
+    ns2:name "Gallipolis" .
+
+<https://w3id.org/caselinker/resource/location/ohio> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns2:name "Ohio" .
+
+<https://w3id.org/caselinker/resource/case/ohio_ag_2026_003/event/hands-on> a ns3:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns3:severityLevel 3 .
+

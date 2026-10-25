@@ -1,106 +1,98 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/europol_2015_003> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-23T17:43:34.360876" ;
+<https://w3id.org/caselinker/resource/case/europol_2015_003> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 04:25:58.182810" ;
     dcterms:identifier "europol_2015_003" ;
-    dcterms:modified "2026-09-23T17:43:34.360876" ;
+    dcterms:modified "2026-10-18 04:25:58.182810" ;
     dcterms:source <https://www.europol.europa.eu/media-press/newsroom/news/darknet-hidden-service-for-child-sexual-abuse-material-shut-down>,
         "EUROPOL" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/babylon>,
-        <https://caselinker.up.railway.app/resource/location/campania>,
-        <https://caselinker.up.railway.app/resource/location/italy> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/europol_2015_003/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/europol_2015_003/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/europol_2015_003/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/europol_2015_003/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/italian-postal-and-communications-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/italian-state-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/babylon>,
-        <https://caselinker.up.railway.app/resource/location/campania>,
-        <https://caselinker.up.railway.app/resource/location/italy> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/babylon>,
+        <https://w3id.org/caselinker/resource/location/campania>,
+        <https://w3id.org/caselinker/resource/location/italy> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/europol_2015_003/event/csam>,
+        <https://w3id.org/caselinker/resource/case/europol_2015_003/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/europol_2015_003/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/europol_2015_003/operation> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/italian-postal-and-communications-police-department>,
+        <https://w3id.org/caselinker/resource/agency/italian-state-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/babylon>,
+        <https://w3id.org/caselinker/resource/location/campania>,
+        <https://w3id.org/caselinker/resource/location/italy> .
 
-<https://caselinker.up.railway.app/resource/case/europol_2015_003/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2015-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/europol_2015_003/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/europol_2015_003/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/europol_2015_003/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2015-07-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/europol_2015_003/event/csam> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/europol_2015_003/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/europol_2015_003/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2015-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/europol_2015_003/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/europol_2015_003/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/europol_2015_003/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2015-07-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/europol_2015_003/event/csam> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/europol_2015_003/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/italian-postal-and-communications-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/italian-postal-and-communications-police-department> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/italian-state-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
+<https://w3id.org/caselinker/resource/agency/italian-state-police-department> a ns6:OrganizationLikeEntity,
+        ns4:StateAgency ;
     rdfs:label "Italian State Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/europol_2015_003/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/europol_2015_003/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
     rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns2:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/europol_2015_003/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/europol_2015_003/event/distribution> a ns6:Event,
+        ns2:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/europol_2015_003/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/europol_2015_003/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/europol_2015_003/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/europol_2015_003/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2015-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/europol_2015_003/sentence/1> .
+<https://w3id.org/caselinker/resource/case/europol_2015_003/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/europol_2015_003/charge/1> ;
+    ns2:hasProceedingBeginPoint "2015-07-31T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/europol_2015_003/operation> a cac-core:Event,
-        cacontology-taskforce:UndercoverUnit .
+<https://w3id.org/caselinker/resource/case/europol_2015_003/operation> a ns6:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
 
-<https://caselinker.up.railway.app/resource/case/europol_2015_003/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/europol_2015_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/europol_2015_003/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/europol_2015_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/europol_2015_003/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/platform/cryptocurrency> a cacontology-platforms:CryptocurrencyService ;
+<https://w3id.org/caselinker/resource/platform/cryptocurrency> a <https://cacontology.projectvic.org/platforms#CryptocurrencyService> ;
     rdfs:label "cryptocurrency" .
 
-<https://caselinker.up.railway.app/resource/location/babylon> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/babylon> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Babylon" ;
-    uco-core:name "Babylon" .
+    ns3:name "Babylon" .
 
-<https://caselinker.up.railway.app/resource/location/campania> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/campania> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Campania" ;
-    uco-core:name "Campania" .
+    ns3:name "Campania" .
 
-<https://caselinker.up.railway.app/resource/location/italy> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/italy> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Italy" ;
-    uco-core:name "Italy" .
+    ns3:name "Italy" .
 
-<https://caselinker.up.railway.app/resource/case/europol_2015_003/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/cryptocurrency> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/europol_2015_003/facet/csam> .
+<https://w3id.org/caselinker/resource/case/europol_2015_003/event/csam> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/cryptocurrency> ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/europol_2015_003/facet/csam> .
 
+
+<https://w3id.org/caselinker/resource/case/europol_2015_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/europol_2015_003/provenance> .

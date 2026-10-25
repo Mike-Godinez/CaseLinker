@@ -1,85 +1,186 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix ns9: <https://cacontology.projectvic.org/production#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_557> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:08:40.554884" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/admission/1/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_557/admission/1> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_557> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/admission/2/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_557/admission/2> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_557> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-11-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_557/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_557/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/charleston-police-department> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/charge/1> a ns4:CriminalCharge,
+        ns4:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/charge/2> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/charge/3> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/cybertip> a ns5:NCMECCybertipReport ;
+    ns5:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/event/distribution> a ns6:Event,
+        ns4:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_557/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_557/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_557/charge/3> ;
+    ns4:hasProceedingBeginPoint "2022-11-07T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/legal-step/sentenced> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2022-11-07T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 38 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns9:victimAge 16 .
+
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:26.306843" ;
     dcterms:identifier "ncmec_2022_557" ;
-    dcterms:modified "2026-09-10T19:08:40.554884" ;
-    dcterms:source <https://www.wesh.com/article/altamonte-springs-charges-child-pornography/41246510>,
+    dcterms:modified "2026-10-17 21:51:26.306843" ;
+    dcterms:source <https://www.postandcourier.com/news/snapchat-tip-leads-police-to-charge-charleston-man-with-child-sex-crimes/article_80e9d2ea-5ebc-11ed-957d-e3b963eb10aa.html>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_557/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_557/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_557/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_557/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_557/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/altamonte-springs-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/florida-department-of-law-enforcement> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/aspinwall>,
+        <https://w3id.org/caselinker/resource/location/charleston>,
+        <https://w3id.org/caselinker/resource/location/charleston-county>,
+        <https://w3id.org/caselinker/resource/location/hanahan>,
+        <https://w3id.org/caselinker/resource/location/maine>,
+        <https://w3id.org/caselinker/resource/location/summerville> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_557/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_557/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_557/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_557/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_557/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_557/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_557/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_557/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_557/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/charleston-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/aspinwall>,
+        <https://w3id.org/caselinker/resource/location/charleston>,
+        <https://w3id.org/caselinker/resource/location/charleston-county>,
+        <https://w3id.org/caselinker/resource/location/hanahan>,
+        <https://w3id.org/caselinker/resource/location/maine>,
+        <https://w3id.org/caselinker/resource/location/summerville> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_557/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_557/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_557/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/phase/sentenced> a ns6:Phase,
+        ns4:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2022-11-07T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_557/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_557/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_557/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-11-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_557/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_557/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/altamonte-springs-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Altamonte Springs Police Department" .
+<https://w3id.org/caselinker/resource/location/aspinwall> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Aspinwall" ;
+    ns7:name "Aspinwall" .
 
-<https://caselinker.up.railway.app/resource/agency/florida-department-of-law-enforcement> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/location/charleston> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Charleston" ;
+    ns7:name "Charleston" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_557/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "related to child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 11 .
+<https://w3id.org/caselinker/resource/location/charleston-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Charleston County" ;
+    ns7:name "Charleston County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_557/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/location/hanahan> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hanahan" ;
+    ns7:name "Hanahan" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_557/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/location/maine> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Maine" ;
+    ns7:name "Maine" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_557/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    rdfs:comment "Pretrial detention facility (not a sentence): Lake County Jail" ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_557/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/summerville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Summerville" ;
+    ns7:name "Summerville" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_557/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "driving the 14-year-old boy in April 2015 to a wooded lot on Oak Island Drive, off Folly Road, and performing a sex a..." ;
+    dcterms:source <https://www.postandcourier.com/news/snapchat-tip-leads-police-to-charge-charleston-man-with-child-sex-crimes/article_80e9d2ea-5ebc-11ed-957d-e3b963eb10aa.html> ;
+    ns2:admissionContext "rges expunged. The other two men arrested in the 2015 investigation were convicted. The police officer, Michael Paul Norton, admitted to..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_557/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns7:description "driving the 14-year-old boy in April 2015 to a wooded lot on Oak Island Drive, off Folly Road, and performing a sex act on the victim, court records show" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_557/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 8 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "a probation officer he was watching pornography on his phone and using a dating app, which violated the conditions of..." ;
+    dcterms:source <https://www.postandcourier.com/news/snapchat-tip-leads-police-to-charge-charleston-man-with-child-sex-crimes/article_80e9d2ea-5ebc-11ed-957d-e3b963eb10aa.html> ;
+    ns2:admissionContext "could communicate, despite a temporary protection order prohibiting contact between them. Norton also admitted to a probation officer he..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_557/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns7:description "a probation officer he was watching pornography on his phone and using a dating app, which violated the conditions of his sex offender registration" .
 
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
-    rdfs:label "chat" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_557/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_557/admission/2> ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_557/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
-    rdfs:label "Kik" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_557/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_557/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/kik> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_557/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2022_557> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_557/provenance> .

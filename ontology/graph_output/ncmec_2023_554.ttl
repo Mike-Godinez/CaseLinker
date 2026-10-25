@@ -1,75 +1,159 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.228782" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_554/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_554> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/admission/2/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_554/admission/2> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_554> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2014-10-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_554/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_554/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/maine-state-police-department> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/event/distribution> a ns3:Event,
+        ns5:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/event/multi-jurisdiction> a ns3:Event,
+        ns6:MultiJurisdictionalInvestigation .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_554/charge/1> ;
+    ns5:hasProceedingBeginPoint "2014-10-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2023_554/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_554/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_554/sentence/3> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/legal-step/sentenced> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2014-10-30T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 58 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/sentence/1> a ns5:CriminalSentence,
+        ns5:PrisonSentence ;
+    rdfs:label "7 months" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/sentence/2> a ns5:CriminalSentence,
+        ns5:PrisonSentence ;
+    rdfs:label "three years" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/sentence/3> a ns5:CriminalSentence,
+        ns5:ProbationSentence ;
+    rdfs:label "two years probation" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:34.843620" ;
     dcterms:identifier "ncmec_2023_554" ;
-    dcterms:modified "2026-09-15T20:55:01.228782" ;
-    dcterms:source <https://www.shawlocal.com/mywebtimes/2023/06/09/wedron-man-arrested-on-child-porn-charges/>,
+    dcterms:modified "2026-10-17 22:21:34.843620" ;
+    dcterms:source <https://thecourier.com/news/455285/one-man-29-alleged-offenses-involving-a-minor/>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/legal-step/convicted> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/augusta>,
+        <https://w3id.org/caselinker/resource/location/maine>,
+        <https://w3id.org/caselinker/resource/location/maryland>,
+        <https://w3id.org/caselinker/resource/location/sparks> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_554/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_554/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_554/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_554/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_554/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_554/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_554/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_554/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_554/legal-step/sentenced> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/maine-state-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/augusta>,
+        <https://w3id.org/caselinker/resource/location/maine>,
+        <https://w3id.org/caselinker/resource/location/maryland>,
+        <https://w3id.org/caselinker/resource/location/sparks> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "‘had a problem with it since he was 14 years old" ;
+    dcterms:source <https://thecourier.com/news/455285/one-man-29-alleged-offenses-involving-a-minor/> ;
+    ns1:admissionContext "t filings by Assistant Attorney General Kate M. Lawrence, “Stagge admitted to downloading child pornography and said that he ‘had a probl..." ;
+    ns1:admissionFrame "said_paraphrase" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_554/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "‘had a problem with it since he was 14 years old" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/phase/sentenced> a ns3:Phase,
+        ns5:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2014-10-30T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2014-10-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_554/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_554/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/location/augusta> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Augusta" ;
+    ns4:name "Augusta" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/location/maine> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Maine" ;
+    ns4:name "Maine" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/sentence/1> .
+<https://w3id.org/caselinker/resource/location/maryland> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Maryland" ;
+    ns4:name "Maryland" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/sparks> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sparks" ;
+    ns4:name "Sparks" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "downloading child pornography and said that he ‘had a problem with it since he was 14 years old" ;
+    dcterms:source <https://thecourier.com/news/455285/one-man-29-alleged-offenses-involving-a-minor/> ;
+    ns1:admissionContext "activity. At that time, according to court filings by Assistant Attorney General Kate M. Lawrence, “Stagge admitted to downloading child..." ;
+    ns1:admissionFrame "admitted_to" ;
+    ns1:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_554/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "downloading child pornography and said that he ‘had a problem with it since he was 14 years old" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554/event/possession> a ns2:CSAMIncident,
+        ns3:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_554/admission/1> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_554/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"60 years\", \"$200\"]" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2023-06-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_554/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_554/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2023_554> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_554/provenance> .

@@ -1,0 +1,74 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2018_001> a ns4:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 04:30:18.384770" ;
+    dcterms:identifier "fresno_so_2018_001" ;
+    dcterms:modified "2026-10-18 04:30:18.384770" ;
+    dcterms:source <https://www.fresnosheriff.org/media-relations/detectives-arrest-registered-sex-offender-on-multiple-charges-of-child-sex-abuse.html>,
+        "FRESNO SO" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fowler>,
+        <https://w3id.org/caselinker/resource/location/fresno-county>,
+        <https://w3id.org/caselinker/resource/location/sanger> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/fresno_so_2018_001/phase/arrested> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/fresno_so_2018_001/phase/arrested> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/fresno_so_2018_001/legal-proceeding> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/fresno-county-sheriffs-office> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/fowler>,
+        <https://w3id.org/caselinker/resource/location/fresno-county>,
+        <https://w3id.org/caselinker/resource/location/sanger> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2018_001/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2018-01-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:perpetratorRegisteredSexOffender true ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/fresno_so_2018_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2018_001/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2018-01-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/fresno_so_2018_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/fresno-county-sheriffs-office> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2018_001/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns1:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remains in the Fresno County Jail" ;
+    ns1:hasProceedingBeginPoint "2018-01-10T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2018_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 53 .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2018_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2018_001/phase/arrested> a ns4:InitialPhase,
+        ns5:Phase ;
+    ns4:hasPhaseBeginPoint "2018-01-10T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/fowler> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fowler" ;
+    ns2:name "Fowler" .
+
+<https://w3id.org/caselinker/resource/location/fresno-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fresno County" ;
+    ns2:name "Fresno County" .
+
+<https://w3id.org/caselinker/resource/location/sanger> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sanger" ;
+    ns2:name "Sanger" .
+
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2018_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/fresno_so_2018_001/provenance> .

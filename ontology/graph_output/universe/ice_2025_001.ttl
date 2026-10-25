@@ -1,97 +1,110 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:45:30.385307" ;
+<https://w3id.org/caselinker/resource/case/ice_2025_001> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 04:42:34.308775" ;
     dcterms:identifier "ice_2025_001" ;
-    dcterms:modified "2026-09-10T19:45:30.385307" ;
+    dcterms:modified "2026-10-18 04:42:34.308775" ;
     dcterms:source <https://www.ice.gov/news/releases/ice-arrests-santa-claus-impersonator-child-sexual-abuse-material>,
         "ICE" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ice_2025_001/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ice_2025_001/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ice_2025_001/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ice_2025_001/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ice_2025_001/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ice_2025_001/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/hsi>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/ice>,
-        <https://caselinker.up.railway.app/resource/agency/new-jersey-state-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/new-jersey>,
+        <https://w3id.org/caselinker/resource/location/trenton> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ice_2025_001/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ice_2025_001/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ice_2025_001/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ice_2025_001/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ice_2025_001/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/ice_2025_001/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ice>,
+        <https://w3id.org/caselinker/resource/agency/new-jersey-state-police-department> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/new-jersey>,
+        <https://w3id.org/caselinker/resource/location/trenton> .
 
-<https://caselinker.up.railway.app/resource/agency/hsi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/hsi> a ns3:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/ice> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/ice> a ns3:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/new-jersey-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/new-jersey-state-police-department> a ns3:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ice_2025_001/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
     rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ice_2025_001/charge/2> a ns4:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns7:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ice_2025_001/event/distribution> a ns6:Event,
+        ns4:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/event/trust-violation> a cacontology-custodial:AuthorityAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ice_2025_001/relationship/teacher> .
+<https://w3id.org/caselinker/resource/case/ice_2025_001/event/trust-violation> a ns5:AuthorityAbuse,
+        ns5:TrustViolation ;
+    ns5:violatesRelationship <https://w3id.org/caselinker/resource/case/ice_2025_001/relationship/teacher> .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ice_2025_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ice_2025_001/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ice_2025_001/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ice_2025_001/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ice_2025_001/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ice_2025_001/charge/2> ;
+    ns4:hasProceedingBeginPoint "2025-12-22T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ice_2025_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ice_2025_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/relationship/teacher> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:Teacher ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ice_2025_001/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ice_2025_001/role/offender/1> ;
-    cacontology-custodial:relationshipType "teacher" .
+<https://w3id.org/caselinker/resource/case/ice_2025_001/relationship/teacher> a ns5:CustodialRelationship,
+        ns5:Teacher ;
+    ns5:involvesChild <https://w3id.org/caselinker/resource/case/ice_2025_001/role/victim/1> ;
+    ns5:involvesCustodian <https://w3id.org/caselinker/resource/case/ice_2025_001/role/offender/1> ;
+    ns5:relationshipType "teacher" .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ice_2025_001/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ice_2025_001/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ice_2025_001/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-12-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ice_2025_001/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ice_2025_001/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ice_2025_001/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ice_2025_001/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ice_2025_001/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-12-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ice_2025_001/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ice_2025_001/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ice_2025_001/phase/charged> a ns1:LegalProcessPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2025-12-22T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ice_2025_001/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ice_2025_001/facet/possession> .
+<https://w3id.org/caselinker/resource/location/new-jersey> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Jersey" ;
+    ns2:name "New Jersey" .
 
+<https://w3id.org/caselinker/resource/location/trenton> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Trenton" ;
+    ns2:name "Trenton" .
+
+<https://w3id.org/caselinker/resource/case/ice_2025_001/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ice_2025_001/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ice_2025_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ice_2025_001/provenance> .

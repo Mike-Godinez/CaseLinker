@@ -1,73 +1,103 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:16:48.170283" ;
+<https://w3id.org/caselinker/resource/case/tbi_icac_2016_010> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 07:19:08.411260" ;
     dcterms:identifier "tbi_icac_2016_010" ;
-    dcterms:modified "2026-09-10T20:16:48.170283" ;
+    dcterms:modified "2026-10-18 07:19:08.411260" ;
     dcterms:source <https://tbinewsroom.com/2016/11/13/long-time-fugitive-on-tbis-top-10-most-wanted-list-captured-in-texas/>,
         "TBI ICAC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/rutherford-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/san-jacinto-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/tennessee-bureau-of-investigations> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/coldspring>,
+        <https://w3id.org/caselinker/resource/location/nashville>,
+        <https://w3id.org/caselinker/resource/location/san-jacinto-county>,
+        <https://w3id.org/caselinker/resource/location/texas> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/rutherford-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/san-jacinto-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigations> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/coldspring>,
+        <https://w3id.org/caselinker/resource/location/nashville>,
+        <https://w3id.org/caselinker/resource/location/san-jacinto-county>,
+        <https://w3id.org/caselinker/resource/location/texas> .
 
-<https://caselinker.up.railway.app/resource/agency/rutherford-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/rutherford-county-sheriffs-office> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/san-jacinto-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/san-jacinto-county-sheriffs-office> a ns7:OrganizationLikeEntity,
+        ns4:LocalAgency ;
     rdfs:label "San Jacinto County Sheriff's Office" .
 
-<https://caselinker.up.railway.app/resource/agency/tennessee-bureau-of-investigations> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigations> a ns4:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/event/multi-jurisdiction> a ns7:Event,
+        ns4:MultiJurisdictionalInvestigation .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/relationship/brother> .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/event/trust-violation> a ns2:CustodialAbuse,
+        ns2:TrustViolation ;
+    ns2:violatesRelationship <https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/relationship/brother> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    rdfs:comment "Pretrial detention facility (not a sentence): San Jacinto County Jail" ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held without bond in the San Jacinto County Jail" ;
+    ns6:hasProceedingBeginPoint "2016-11-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/relationship/brother> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/role/offender/1> ;
-    cacontology-custodial:relationshipType "brother" .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/relationship/brother> a ns2:CustodialRelationship,
+        ns2:FamilialRelationship ;
+    ns2:involvesChild <https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/role/victim/1> ;
+    ns2:involvesCustodian <https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/role/offender/1> ;
+    ns2:relationshipType "brother" .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2016-11-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2016-11-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2016_010/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/phase/arrested> a ns1:InitialPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2016-11-13T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/location/coldspring> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Coldspring" ;
+    ns5:name "Coldspring" .
+
+<https://w3id.org/caselinker/resource/location/nashville> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nashville" ;
+    ns5:name "Nashville" .
+
+<https://w3id.org/caselinker/resource/location/san-jacinto-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "San Jacinto County" ;
+    ns5:name "San Jacinto County" .
+
+<https://w3id.org/caselinker/resource/location/texas> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns5:name "Texas" .
+
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2016_010> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/tbi_icac_2016_010/provenance> .

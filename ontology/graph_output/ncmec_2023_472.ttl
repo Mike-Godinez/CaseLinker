@@ -1,79 +1,139 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_472> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.158974" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_472> a ns3:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:33.728063" ;
     dcterms:identifier "ncmec_2023_472" ;
-    dcterms:modified "2026-09-15T20:55:01.158974" ;
-    dcterms:source <https://www.wfmj.com/story/50234574/youngstown-man-indicted-on-child-pornography-charges>,
+    dcterms:modified "2026-10-17 22:21:33.728063" ;
+    dcterms:source <https://waynecountypalawyers.com/lake-ariel-man-arrested-in-child-pornography-investigation/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/youngstown> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_472/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_472/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_472/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_472/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/mahoning-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/youngstown> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/lackawanna-county>,
+        <https://w3id.org/caselinker/resource/location/lake-ariel>,
+        <https://w3id.org/caselinker/resource/location/wayne-county> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_472/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_472/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_472/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_472/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_472/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/hazleton-city-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/kingston-township-police-department>,
+        <https://w3id.org/caselinker/resource/agency/luzerne-county-detectives>,
+        <https://w3id.org/caselinker/resource/agency/lycoming-county-detectives>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/north-east-computer-crime-task-force>,
+        <https://w3id.org/caselinker/resource/agency/pennsylvania-office-of-attorney-general>,
+        <https://w3id.org/caselinker/resource/agency/pennsylvania-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/town-of-bloomsburg-police-department>,
+        <https://w3id.org/caselinker/resource/agency/wayne-county-detectives>,
+        <https://w3id.org/caselinker/resource/agency/west-hazleton-city-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/lackawanna-county>,
+        <https://w3id.org/caselinker/resource/location/lake-ariel>,
+        <https://w3id.org/caselinker/resource/location/wayne-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_472/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_472/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_472/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_472/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2023-05-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_472/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_472/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_472/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_472/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_472/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_472/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2023-05-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_472/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_472/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/mahoning-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Mahoning County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/agency/hazleton-city-police-department> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_472/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 4 .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_472/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/agency/kingston-township-police-department> a ns6:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "Kingston Township Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_472/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_472/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_472/sentence/1> .
+<https://w3id.org/caselinker/resource/agency/luzerne-county-detectives> a ns6:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "Luzerne County Detectives" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_472/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/lycoming-county-detectives> a ns6:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "Lycoming County Detectives" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_472/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/north-east-computer-crime-task-force> a ns6:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "North East Computer Crime Task Force" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_472/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/agency/pennsylvania-office-of-attorney-general> a ns2:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_472/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/agency/pennsylvania-state-police-department> a ns2:StateAgency .
 
-<https://caselinker.up.railway.app/resource/location/youngstown> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Youngstown" ;
-    uco-core:name "Youngstown" .
+<https://w3id.org/caselinker/resource/agency/town-of-bloomsburg-police-department> a ns6:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "Town of Bloomsburg Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_472/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_472/facet/possession> .
+<https://w3id.org/caselinker/resource/agency/wayne-county-detectives> a ns2:LocalAgency .
 
+<https://w3id.org/caselinker/resource/agency/west-hazleton-city-police-department> a ns6:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "West Hazleton City Police Department" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_472/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns1:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_472/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_472/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_472/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns1:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remanded to the Wayne County Correctional Facility" ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_472/charge/1> ;
+    ns1:hasProceedingBeginPoint "2023-05-03T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_472/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 25 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_472/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_472/phase/charged> a ns3:LegalProcessPhase,
+        ns6:Phase ;
+    ns3:hasPhaseBeginPoint "2023-05-03T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/lackawanna-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lackawanna County" ;
+    ns4:name "Lackawanna County" .
+
+<https://w3id.org/caselinker/resource/location/lake-ariel> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lake Ariel" ;
+    ns4:name "Lake Ariel" .
+
+<https://w3id.org/caselinker/resource/location/wayne-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wayne County" ;
+    ns4:name "Wayne County" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_472/event/possession> a ns3:CSAMIncident,
+        ns6:Event ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_472/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_472> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_472/provenance> .

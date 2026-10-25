@@ -1,92 +1,117 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:47:11.962913" ;
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 04:52:11.195487" ;
     dcterms:identifier "illinois_ag_2026_010" ;
-    dcterms:modified "2026-09-10T19:47:11.962913" ;
+    dcterms:modified "2026-10-18 04:52:11.195487" ;
     dcterms:source <https://illinoisattorneygeneral.gov/News-Room/2006-2018-Press-Archive/200804-28%20KANE%20COUNTY%20MAN%20SENTENCED%20ON%20CHILD%20PORNOGRAPHY%20CONVICTION.pdf>,
         "ILLINOIS AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/legal-step/sentenced> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/department-of-corrections>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/illinois-high-tech-crimes-bureau> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/aurora>,
+        <https://w3id.org/caselinker/resource/location/chicago>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/kane-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/event/possession>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/legal-step/sentenced> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-corrections>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/illinois-high-tech-crimes-bureau> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/aurora>,
+        <https://w3id.org/caselinker/resource/location/chicago>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/kane-county> .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/event/possession> ;
-    cacontology:perpetratorRegisteredSexOffender true ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/event/possession> ;
+    ns1:perpetratorRegisteredSexOffender true ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/department-of-corrections> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/department-of-corrections> a ns5:OrganizationLikeEntity,
+        ns6:LocalAgency ;
     rdfs:label "Department of Corrections" .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/illinois-high-tech-crimes-bureau> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/illinois-high-tech-crimes-bureau> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns3:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    rdfs:comment "Pretrial detention facility: Kane County Jail" ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/sentence/1>,
-        <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/sentence/2> .
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns3:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility: held in the Kane County Jail" ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/charge/1> ;
+    ns3:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:resultsSentence <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/sentence/1> .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 44 .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/sentence/1> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
     rdfs:label "13 years" .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/sentence/2> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:SupervisedRelease ;
-    rdfs:label "supervised release" .
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/phase/sentenced> a ns5:Phase,
+        ns3:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/aurora> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Aurora" ;
+    ns4:name "Aurora" .
 
-<https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/illinois_ag_2026_010/facet/possession> .
+<https://w3id.org/caselinker/resource/location/chicago> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Chicago" ;
+    ns4:name "Chicago" .
 
+<https://w3id.org/caselinker/resource/location/illinois> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Illinois" ;
+    ns4:name "Illinois" .
+
+<https://w3id.org/caselinker/resource/location/kane-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kane County" ;
+    ns4:name "Kane County" .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns1:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2026_010> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/illinois_ag_2026_010/provenance> .

@@ -1,135 +1,64 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.178724" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_501> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:34.030438" ;
     dcterms:identifier "ncmec_2023_501" ;
-    dcterms:modified "2026-09-15T20:55:01.178724" ;
-    dcterms:source <https://www.cbsnews.com/sacramento/news/2-suspects-separate-cases-arrested-child-pornography-placer-county/>,
+    dcterms:modified "2026-10-17 22:21:34.030438" ;
+    dcterms:source <https://www.wfmj.com/story/49185032/niles-man-pleads-guilty-to-sending-obscene-video-to-minors>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/colfax>,
-        <https://caselinker.up.railway.app/resource/location/placer-county>,
-        <https://caselinker.up.railway.app/resource/location/roseville>,
-        <https://caselinker.up.railway.app/resource/location/sacramento> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/placer-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/colfax>,
-        <https://caselinker.up.railway.app/resource/location/placer-county>,
-        <https://caselinker.up.railway.app/resource/location/roseville>,
-        <https://caselinker.up.railway.app/resource/location/sacramento> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/pennsylvania> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_501/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_501/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_501/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_501/legal-step/sentenced> ;
+    ns2:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/niles-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/pennsylvania> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_501/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_501/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_501/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_501/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/placer-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Placer County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/agency/niles-police-department> a ns7:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_501/event/distribution> a ns5:Event,
+        ns3:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/charge/2> a cacontology-legal-outcomes:CSAM_Distribution,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "distribution of child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_501/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 1 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_501/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 30 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_501/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_501/phase/sentenced> a ns5:Phase,
+        ns3:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 22 .
+<https://w3id.org/caselinker/resource/location/pennsylvania> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pennsylvania" ;
+    ns6:name "Pennsylvania" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/person/offender/2> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 40 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/role/offender/2> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/person/offender/2> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:ProbationSentence ;
-    rdfs:label "[\"probation\"]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-07-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/colfax> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Colfax" ;
-    uco-core:name "Colfax" .
-
-<https://caselinker.up.railway.app/resource/location/placer-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Placer County" ;
-    uco-core:name "Placer County" .
-
-<https://caselinker.up.railway.app/resource/location/roseville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Roseville" ;
-    uco-core:name "Roseville" .
-
-<https://caselinker.up.railway.app/resource/location/sacramento> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/event/conspiracy> a cacontology:ConspiracyToCommitCSA,
-        cac-core:Event ;
-    cacontology:conspiracyMemberCount 2 ;
-    cacontology:participatesInConspiracy <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/role/offender/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/role/offender/2> ;
-    cacontology:severityLevel 1 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_501/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 1 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_501/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2023_501> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_501/provenance> .

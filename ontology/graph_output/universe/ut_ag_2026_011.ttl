@@ -1,50 +1,57 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2026_011> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:22:00.961358" ;
+<https://w3id.org/caselinker/resource/case/ut_ag_2026_011> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 07:37:09.036128" ;
     dcterms:identifier "ut_ag_2026_011" ;
-    dcterms:modified "2026-09-10T20:22:00.961358" ;
+    dcterms:modified "2026-10-18 07:37:09.036128" ;
     dcterms:source <https://attorneygeneral.utah.gov/icac-task-force-combats-increasing-child-sex-crimes/>,
         "UT AG" ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/utah> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ut_ag_2026_011/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ut_ag_2026_011/operation> ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ut_ag_2026_011/tech/cybertipline> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/utah> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ut_ag_2026_011/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ut_ag_2026_011/event/online-only> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ut_ag_2026_011/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ut_ag_2026_011/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ut_ag_2026_011/event/online-only> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ut_ag_2026_011/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/operation> a cac-core:Event,
-        cacontology-taskforce:ReactiveOperation .
+<https://w3id.org/caselinker/resource/case/ut_ag_2026_011/operation> a ns3:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ut_ag_2026_011/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ut_ag_2026_011/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
+<https://w3id.org/caselinker/resource/case/ut_ag_2026_011/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
     rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ut_ag_2026_011/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event .
+<https://w3id.org/caselinker/resource/location/utah> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Utah" ;
+    ns4:name "Utah" .
 
+<https://w3id.org/caselinker/resource/case/ut_ag_2026_011/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns3:Event .
+
+
+<https://w3id.org/caselinker/resource/case/ut_ag_2026_011> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ut_ag_2026_011/provenance> .

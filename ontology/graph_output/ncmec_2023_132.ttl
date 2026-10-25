@@ -1,115 +1,179 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.858325" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132> a ns3:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:29.340140" ;
     dcterms:identifier "ncmec_2023_132" ;
-    dcterms:modified "2026-09-15T20:55:00.858325" ;
-    dcterms:source <https://www.wgal.com/article/cumberland-county-man-accused-distributing-child-pornography-pennsylvania/42748421>,
+    dcterms:modified "2026-10-17 22:21:29.340140" ;
+    dcterms:source <https://report.cybertip.org/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/allen-township>,
-        <https://caselinker.up.railway.app/resource/location/cumberland-county>,
-        <https://caselinker.up.railway.app/resource/location/mechanicsburg>,
-        <https://caselinker.up.railway.app/resource/location/pa>,
-        <https://caselinker.up.railway.app/resource/location/upper-allen-township> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/allen-township>,
-        <https://caselinker.up.railway.app/resource/location/cumberland-county>,
-        <https://caselinker.up.railway.app/resource/location/mechanicsburg>,
-        <https://caselinker.up.railway.app/resource/location/pa>,
-        <https://caselinker.up.railway.app/resource/location/upper-allen-township> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/brentwood>,
+        <https://w3id.org/caselinker/resource/location/franklin>,
+        <https://w3id.org/caselinker/resource/location/nashville>,
+        <https://w3id.org/caselinker/resource/location/williamson-county> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_132/phase/indicted> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_132/phase/indicted> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_132/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns3:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2023_132/tech/cybertipline> ;
+    ns8:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/williamson-county-sheriffs-office> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/brentwood>,
+        <https://w3id.org/caselinker/resource/location/franklin>,
+        <https://w3id.org/caselinker/resource/location/nashville>,
+        <https://w3id.org/caselinker/resource/location/williamson-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2023-09-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_132/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/person/victim/1> .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/agency/williamson-county-sheriffs-office> a ns8:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132/charge/2> a cacontology-legal-outcomes:CSAM_Distribution,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "distribution of child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" ;
+    ns2:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/charge/2> a ns2:CriminalCharge ;
+    rdfs:label "aggravated sexual exploitation of a" ;
+    ns2:indictmentCounts 5 ;
+    ns5:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/charge/3> a ns2:CriminalCharge ;
+    rdfs:label "violation of the" ;
+    ns2:indictmentCounts 8 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/charge/4> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 21 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/distribution> a ns1:Event,
+        ns2:CSAM_Distribution ;
+    ns3:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_132/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/charge/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/charge/4> ;
+    ns2:hasProceedingBeginPoint "2023-09-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/allen-township> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Allen Township" ;
-    uco-core:name "Allen Township" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 26 .
 
-<https://caselinker.up.railway.app/resource/location/cumberland-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Cumberland County" ;
-    uco-core:name "Cumberland County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 28 .
 
-<https://caselinker.up.railway.app/resource/location/mechanicsburg> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Mechanicsburg" ;
-    uco-core:name "Mechanicsburg" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/person/offender/3> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 43 .
 
-<https://caselinker.up.railway.app/resource/location/pa> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Pa." ;
-    uco-core:name "Pa." .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/person/offender/4> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 65 .
 
-<https://caselinker.up.railway.app/resource/location/upper-allen-township> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Upper Allen Township" ;
-    uco-core:name "Upper Allen Township" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_132/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_132/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2023-09-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_132/person/offender/1> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/role/offender/2> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2023-09-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_132/person/offender/2> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/role/offender/3> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2023-09-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_132/person/offender/3> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/role/offender/4> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2023-09-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_132/person/offender/4> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/tech/cybertipline> a ns7:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns8:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/phase/indicted> a ns3:LegalProcessPhase,
+        ns1:Phase ;
+    ns3:hasPhaseBeginPoint "2023-09-26T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/brentwood> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Brentwood" ;
+    ns4:name "Brentwood" .
+
+<https://w3id.org/caselinker/resource/location/franklin> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Franklin" ;
+    ns4:name "Franklin" .
+
+<https://w3id.org/caselinker/resource/location/nashville> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nashville" ;
+    ns4:name "Nashville" .
+
+<https://w3id.org/caselinker/resource/location/williamson-county> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Williamson County" ;
+    ns4:name "Williamson County" .
+
+<https://w3id.org/caselinker/resource/platform/bittorrent> a <https://cacontology.projectvic.org/platforms#FileHostingService> ;
+    rdfs:label "BitTorrent" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/conspiracy> a ns3:ConspiracyToCommitCSA,
+        ns1:Event ;
+    ns3:conspiracyMemberCount 4 ;
+    ns3:participatesInConspiracy <https://w3id.org/caselinker/resource/case/ncmec_2023_132/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/role/offender/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/role/offender/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_132/role/offender/4> ;
+    ns3:severityLevel 3 ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/bittorrent> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132/event/possession> a ns3:CSAMIncident,
+        ns1:Event ;
+    ns3:severityLevel 3 ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/bittorrent> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_132/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_132> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_132/provenance> .

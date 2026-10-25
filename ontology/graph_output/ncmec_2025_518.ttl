@@ -1,139 +1,88 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.623591" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_518/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_518> ;
+    ns4:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-06-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_518/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_518/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_518/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/boone-county-sheriffs-office> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:21.035080" ;
     dcterms:identifier "ncmec_2025_518" ;
-    dcterms:modified "2026-09-15T21:27:13.623591" ;
-    dcterms:source <https://krcgtv.com/news/local/convicted-sex-offender-charged-with-possession-of-child-sex-abuse-materials-in-rolla>,
+    dcterms:modified "2026-10-18 00:01:21.035080" ;
+    dcterms:source <https://krcgtv.com/news/local/suspect-in-cooper-county-child-sex-abuse-materials-case-lived-near-elementary-school-illegal-pornography-court-missouri>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/phelps-county>,
-        <https://caselinker.up.railway.app/resource/location/rolla> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/legal-step/convicted> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/missouri-department-of-probation-and-parole>,
-        <https://caselinker.up.railway.app/resource/agency/rolla-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/phelps-county>,
-        <https://caselinker.up.railway.app/resource/location/rolla> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cooper-county> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_518/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_518/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_518/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_518/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_518/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_518/event/possession> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/boone-county-sheriffs-office> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/cooper-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518/event/distribution> a ns4:Event,
+        <https://cacontology.projectvic.org/legal-outcomes#CSAM_Distribution> .
 
-<https://caselinker.up.railway.app/resource/agency/missouri-department-of-probation-and-parole> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Missouri Department of Probation and Parole" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/rolla-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Rolla Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-06-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_518/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_518/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_518/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518/phase/charged> a ns2:LegalProcessPhase,
+        ns4:Phase ;
+    ns2:hasPhaseBeginPoint "2025-06-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/cooper-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cooper County" ;
+    ns1:name "Cooper County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 18 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518/event/online-only> a ns2:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_518/admission/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/person/offender/2> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 26 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518/event/possession> a ns2:CSAMIncident,
+        ns4:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_518/admission/1> ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_518/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "officials that he has had an addiction to CSAM for the past year and a half" ;
+    dcterms:source <https://krcgtv.com/news/local/suspect-in-cooper-county-child-sex-abuse-materials-case-lived-near-elementary-school-illegal-pornography-court-missouri> ;
+    ns3:admissionContext "nversations with other platform users, ask for the explicit content and share CSAM. Upon further questioning, he allegedly admitted to of..." ;
+    ns3:admissionFrame "admitted_to" ;
+    ns3:admissionTheme "harm_conduct",
+        "recidivism_escalation" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_518/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns1:description "officials that he has had an addiction to CSAM for the past year and a half" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/possession> ;
-    cacontology:perpetratorRegisteredSexOffender true ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/role/offender/2> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/possession> ;
-    cacontology:perpetratorRegisteredSexOffender true ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/person/offender/2> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:ProbationSentence ;
-    rdfs:label "[\"Probation\", \"$250,000\"]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/phelps-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Phelps County" ;
-    uco-core:name "Phelps County" .
-
-<https://caselinker.up.railway.app/resource/location/rolla> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Rolla" ;
-    uco-core:name "Rolla" .
-
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/conspiracy> a cacontology:ConspiracyToCommitCSA,
-        cac-core:Event ;
-    cacontology:conspiracyMemberCount 2 ;
-    cacontology:participatesInConspiracy <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/role/offender/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/role/offender/2> ;
-    cacontology:severityLevel 1 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 1 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_518/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 1 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/snapchat> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_518/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_518> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_518/provenance> .

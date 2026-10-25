@@ -1,84 +1,146 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.264072" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:16.816671" ;
     dcterms:identifier "ncmec_2025_120" ;
-    dcterms:modified "2026-09-15T21:27:13.264072" ;
-    dcterms:source <https://www.kget.com/news/crime-watch/hearing-postponed-for-ex-shafter-teacher-charged-with-child-porn-possession/>,
+    dcterms:modified "2026-10-18 00:01:16.816671" ;
+    dcterms:source <https://www.steamboatpilot.com/news/steamboat-man-arrested-for-allegedly-possessing-copious-amount-of-child-pornography/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/calif> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/calif> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/boulder-county>,
+        <https://w3id.org/caselinker/resource/location/colorado>,
+        <https://w3id.org/caselinker/resource/location/matthews>,
+        <https://w3id.org/caselinker/resource/location/steamboat> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_120/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_120/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_120/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_120/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_120/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_120/legal-proceeding> ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_120/tech/cybertipline> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/aspen-police-department>,
+        <https://w3id.org/caselinker/resource/agency/boulder-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/boulder-police-department>,
+        <https://w3id.org/caselinker/resource/agency/district-attorneys-office>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/longmont-department-of-public-safety>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/steamboat-springs-police-department> ;
+    ns8:mentionsLocation <https://w3id.org/caselinker/resource/location/boulder-county>,
+        <https://w3id.org/caselinker/resource/location/colorado>,
+        <https://w3id.org/caselinker/resource/location/matthews>,
+        <https://w3id.org/caselinker/resource/location/steamboat> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_120/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_120/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120/event/trust-violation> a cacontology-custodial:AuthorityAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/relationship/teacher> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_120/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_120/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/agency/aspen-police-department> a ns6:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "Aspen Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/sentence/1> .
+<https://w3id.org/caselinker/resource/agency/boulder-county-sheriffs-office> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/boulder-police-department> a ns5:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/district-attorneys-office> a ns5:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120/relationship/teacher> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:Teacher ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/role/offender/1> ;
-    cacontology-custodial:relationshipType "teacher" .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/person/offender/1> .
+<https://w3id.org/caselinker/resource/agency/longmont-department-of-public-safety> a ns5:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/person/victim/1> .
+<https://w3id.org/caselinker/resource/agency/steamboat-springs-police-department> a ns6:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "Steamboat Springs Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/charge/1> a ns4:CriminalCharge,
+        ns4:StateCharge ;
+    rdfs:label "sexual exploitation of a child as a Class 5 felony" ;
+    ns4:indictmentCounts 105 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/charge/2> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/location/calif> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/charge/3> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns8:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_120/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_120/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/cybertip> a ns3:NCMECCybertipReport ;
+    ns3:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/event/trafficking> a ns6:Event,
+        ns4:SexTrafficking ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Routt County Jail" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_120/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_120/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_120/charge/3> ;
+    ns4:hasProceedingBeginPoint "2025-10-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 70 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/tech/cybertipline> a ns3:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/phase/charged> a ns1:LegalProcessPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2025-10-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/boulder-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Boulder County" ;
+    ns2:name "Boulder County" .
+
+<https://w3id.org/caselinker/resource/location/colorado> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Colorado" ;
+    ns2:name "Colorado" .
+
+<https://w3id.org/caselinker/resource/location/matthews> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Matthews’" ;
+    ns2:name "Matthews’" .
+
+<https://w3id.org/caselinker/resource/location/steamboat> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Steamboat" ;
+    ns2:name "Steamboat" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_120/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_120> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_120/provenance> .

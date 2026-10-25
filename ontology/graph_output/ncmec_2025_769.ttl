@@ -1,116 +1,118 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.964921" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/admission/1/extraction-confidence> a ns7:AssessmentResult ;
+    ns7:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_769/admission/1> ;
+    ns7:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_769> ;
+    ns7:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-07-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_769/event/csam> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_769/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/bensalem-detectives> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/bensalem-police-department> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769> a ns2:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:23.758840" ;
     dcterms:identifier "ncmec_2025_769" ;
-    dcterms:modified "2026-09-15T21:27:13.964921" ;
-    dcterms:source <https://www.centraloregondaily.com/email/police-seek-information-after-charging-a-redmond-man-with-possession-of-child-pornography/article_c46655d2-d3a6-11ef-b72e-2bc4ffe3b079.html?=/&subcategory=14%7CKids+%2F+Family>,
+    dcterms:modified "2026-10-18 00:01:23.758840" ;
+    dcterms:source <https://bucks.crimewatchpa.com/bensalempd/15488/post/child-porn-offender-arrested>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/deschutes-county>,
-        <https://caselinker.up.railway.app/resource/location/redmond> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/offense-event/charge-1> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/redmond-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/deschutes-county>,
-        <https://caselinker.up.railway.app/resource/location/redmond> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/bensalem>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_769/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_769/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_769/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_769/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_769/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_769/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_769/operation> ;
+    ns2:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_769/tech/cybertipline> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/bensalem-detectives>,
+        <https://w3id.org/caselinker/resource/agency/bensalem-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/bensalem>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/offense-event/charge-1> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns4:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/offense-event/charge-1> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/cybertip> a ns1:NCMECCybertipReport ;
+    ns1:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/agency/redmond-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Redmond Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "Encouraging Child Sex Abuse in the First and and 10 more counts in the Second" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/offense-event/charge-1> ;
-    cacontology-legal-outcomes:indictmentCounts 10 ;
-    ns1:chargeCluster "encouraging_child_sexual_abuse" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/offense-event/charge-1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remanded to the Bucks County Correctional Facility" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_769/charge/1> ;
+    ns4:hasProceedingBeginPoint "2025-07-31T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/operation> a ns7:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-07-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_769/event/csam> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_769/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 27 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/tech/cybertipline> a ns1:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/phase/arrested> a ns2:InitialPhase,
+        ns7:Phase ;
+    ns2:hasPhaseBeginPoint "2025-07-31T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/bensalem> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Bensalem" ;
+    ns6:name "Bensalem" .
 
-<https://caselinker.up.railway.app/resource/location/deschutes-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Deschutes County" ;
-    uco-core:name "Deschutes County" .
+<https://w3id.org/caselinker/resource/location/united-states> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns6:name "United States" .
 
-<https://caselinker.up.railway.app/resource/location/redmond> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Redmond" ;
-    uco-core:name "Redmond" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "being the person at the address attempting to download child pornography in February" ;
+    dcterms:source <https://bucks.crimewatchpa.com/bensalempd/15488/post/child-porn-offender-arrested> ;
+    ns3:admissionContext "ined a search warrant for the residence on Woodview Drive and served it on June 19, 2025. Detectives made contact with Dennis Realley, 74..." ;
+    ns3:admissionFrame "admitted_to" ;
+    ns3:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_769/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns6:description "being the person at the address attempting to download child pornography in February" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769/event/csam> a ns2:CSAMIncident,
+        ns7:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_769/admission/1> ;
+    ns2:severityLevel 3 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_769/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_769/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_769/offense-event/charge-1> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: Encouraging Child Sex Abuse in the First and and 10 more counts in the Second" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_769> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_769/provenance> .

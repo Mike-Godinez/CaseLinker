@@ -1,161 +1,122 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_955> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_955> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/agency/washington-county-district-attorneys-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Washington County District Attorney's Office" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 47 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MandatoryMinimumSentencing ;
-    rdfs:label "[\"mandatory minimum sentence\", \"300 months\"]" .
-
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.978485" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955> a ns1:CACInvestigation,
+        ns8:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:36.275968" ;
     dcterms:identifier "ncmec_2024_955" ;
-    dcterms:modified "2026-09-15T21:08:10.978485" ;
-    dcterms:source <https://www.koin.com/news/crime/washington-county-man-sentenced-25-years-child-sex-abuse/#:~:text=PORTLAND%2C%20Ore.,sex%20abuse%20and%20sodomy%20charges>,
+    dcterms:modified "2026-10-17 23:04:36.275968" ;
+    dcterms:source <https://www.timesobserver.com/news/local-news/2024/08/sheffield-man-faces-child-pornography-charges/#:~:text=Castor%20was%20sentenced%20back%20in,sexual%20offender%20under%20Megan's%20Law>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/beaverton>,
-        <https://caselinker.up.railway.app/resource/location/ore>,
-        <https://caselinker.up.railway.app/resource/location/oregon>,
-        <https://caselinker.up.railway.app/resource/location/portland>,
-        <https://caselinker.up.railway.app/resource/location/washington> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/legal-step/sentenced> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/washington-county-district-attorneys-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/beaverton>,
-        <https://caselinker.up.railway.app/resource/location/ore>,
-        <https://caselinker.up.railway.app/resource/location/oregon>,
-        <https://caselinker.up.railway.app/resource/location/portland>,
-        <https://caselinker.up.railway.app/resource/location/washington> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/sci-coal-township>,
+        <https://w3id.org/caselinker/resource/location/sheffield> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_955/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_955/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_955/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_955/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_955/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_955/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_955/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_955/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-child-predator-section>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/pennsylvania-office-of-attorney-general> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/sci-coal-township>,
+        <https://w3id.org/caselinker/resource/location/sheffield> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "trading the explicit images online" ;
-    dcterms:source <https://www.koin.com/news/crime/washington-county-man-sentenced-25-years-child-sex-abuse/#:~:text=PORTLAND%2C%20Ore.,sex%20abuse%20and%20sodomy%20charges> ;
-    ns1:admissionContext "he internet the DA’s office said. Beaverton police, after being contacted by the Internet Crimes Against Children Task Force Program, con..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "trading the explicit images online" .
+<https://w3id.org/caselinker/resource/agency/attorney-generals-child-predator-section> a ns4:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "made a failed attempt to kill himself while in custody" ;
-    dcterms:source <https://www.koin.com/news/crime/washington-county-man-sentenced-25-years-child-sex-abuse/#:~:text=PORTLAND%2C%20Ore.,sex%20abuse%20and%20sodomy%20charges> ;
-    ns1:admissionContext "Mitchie sexually abusing a child, which had been shared online. Mitchie was arrested, and authorities said that he made a failed attempt..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "made a failed attempt to kill himself while in custody" .
+<https://w3id.org/caselinker/resource/agency/pennsylvania-office-of-attorney-general> a ns4:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography as well as a" ;
+    ns3:indictmentCounts 26 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/location/beaverton> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Beaverton" ;
-    uco-core:name "Beaverton" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/event/trust-violation> a ns6:CustodialAbuse,
+        ns6:TrustViolation ;
+    ns6:violatesRelationship <https://w3id.org/caselinker/resource/case/ncmec_2024_955/relationship/mother> .
 
-<https://caselinker.up.railway.app/resource/location/ore> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Ore." ;
-    uco-core:name "Ore." .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/location/oregon> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/legal-proceeding> a ns8:Event,
+        ns8:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_955/charge/1> ;
+    ns3:hasProceedingBeginPoint "2024-08-28T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/portland> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Portland" ;
-    uco-core:name "Portland" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/legal-step/sentenced> a ns8:Event,
+        ns8:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2024-08-28T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/washington> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_955/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_955/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/relationship/mother> a ns6:CustodialRelationship,
+        ns6:FamilialRelationship ;
+    ns6:involvesChild <https://w3id.org/caselinker/resource/case/ncmec_2024_955/role/victim/1> ;
+    ns6:involvesCustodian <https://w3id.org/caselinker/resource/case/ncmec_2024_955/role/offender/1> ;
+    ns6:relationshipType "mother" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-08-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_955/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_955/event/possession> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_955/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-08-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_955/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_955/event/possession> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_955/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/phase/sentenced> a ns8:Phase,
+        ns3:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2024-08-28T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/sci-coal-township> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sci Coal Township" ;
+    ns5:name "Sci Coal Township" .
+
+<https://w3id.org/caselinker/resource/location/sheffield> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sheffield" ;
+    ns5:name "Sheffield" .
+
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Facebook" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns8:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/facebook> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955/event/possession> a ns1:CSAMIncident,
+        ns8:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/facebook> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_955/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_955> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_955/provenance> .

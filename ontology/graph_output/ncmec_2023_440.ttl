@@ -1,144 +1,110 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_440> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_440> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/agency/merrill-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Merrill Police Department" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possessing child" ;
-    cacontology-legal-outcomes:indictmentCounts 16 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/person/offender/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 12 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$50,000\"]" .
-
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
-    rdfs:label "Kik" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.127560" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_440> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:33.371906" ;
     dcterms:identifier "ncmec_2023_440" ;
-    dcterms:modified "2026-09-15T20:55:01.127560" ;
-    dcterms:source <https://www.wsaw.com/2022/08/22/merrill-man-charged-with-16-counts-possessing-child-pornography/>,
+    dcterms:modified "2026-10-17 22:21:33.371906" ;
+    dcterms:source <https://www.thenews-messenger.com/story/news/local/2023/02/13/ottawa-county-man-arrested-on-charges-related-to-child-obscenity/69898183007/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/rothschild>,
-        <https://caselinker.up.railway.app/resource/location/wis> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/merrill-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/rothschild>,
-        <https://caselinker.up.railway.app/resource/location/wis> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/lebanon>,
+        <https://w3id.org/caselinker/resource/location/martin>,
+        <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/ottawa-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_440/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_440/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_440/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_440/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_440/offense-event/charge-1> ;
+    ns1:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/lebanon>,
+        <https://w3id.org/caselinker/resource/location/martin>,
+        <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/ottawa-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_440/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-02-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_440/offense-event/charge-1> ;
+    ns1:perpetratorRegisteredSexOffender true ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_440/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_440/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-02-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_440/offense-event/charge-1> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_440/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/location/rothschild> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Rothschild" ;
-    uco-core:name "Rothschild" .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/location/wis> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Wis." ;
-    uco-core:name "Wis." .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_440/charge/1> a ns5:CriminalCharge ;
+    rdfs:label "illegal use of a minor in nudity-oriented material and four" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2023_440/offense-event/charge-1> ;
+    ns5:indictmentCounts 15 ;
+    ns3:chargeCluster "nudity_oriented_minor" ;
+    ns3:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_440/offense-event/charge-1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "exchanged pornography images which included images of children as young as 12 years old using Kik" ;
-    dcterms:source <https://www.wsaw.com/2022/08/22/merrill-man-charged-with-16-counts-possessing-child-pornography/> ;
-    ns1:admissionContext "atthew Czarnecki was charged Monday in Lincoln County Circuit Court with 16 counts. Court documents state Czarnecki admitted he exchanged..." ;
-    ns1:admissionFrame "admitted_he_she" ;
-    ns1:admissionTheme "harm_conduct",
-        "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "exchanged pornography images which included images of children as young as 12 years old using Kik" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_440/charge/2> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "pandering obscenity involving a minor" ;
+    ns5:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "receiving, viewing and sending videos that contained child pornography" ;
-    dcterms:source <https://www.wsaw.com/2022/08/22/merrill-man-charged-with-16-counts-possessing-child-pornography/> ;
-    ns1:admissionContext "for the IP address for the kik user. Police arrested Czarnekci in Rothschild on Aug. 19. Authorities said Czarnecki admitted to receiving..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "receiving, viewing and sending videos that contained child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_440/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_440/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_440/charge/2> ;
+    ns5:hasProceedingBeginPoint "2023-02-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_440/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/admission/2> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_440/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_440/legal-step/sentenced> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2023-02-13T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2023_440/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 29 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_440/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_440/phase/sentenced> a ns2:Phase,
+        ns5:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2023-02-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/lebanon> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lebanon" ;
+    ns4:name "Lebanon" .
+
+<https://w3id.org/caselinker/resource/location/martin> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Martin" ;
+    ns4:name "Martin" .
+
+<https://w3id.org/caselinker/resource/location/ohio> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns4:name "Ohio" .
+
+<https://w3id.org/caselinker/resource/location/ottawa-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ottawa County" ;
+    ns4:name "Ottawa County" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_440/offense-event/charge-1> a ns1:ChildSexualAbuseEvent,
+        ns2:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: illegal use of a minor in nudity-oriented material and four" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_440> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_440/provenance> .

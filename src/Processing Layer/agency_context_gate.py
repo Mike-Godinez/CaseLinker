@@ -152,13 +152,16 @@ _PROGRAM_CONTEXT_LABEL_DOJ = "DOJ (program context)"
 _PROGRAM_CONTEXT_LABEL_AG = "AG (program context)"
 
 # First-party federal DOJ press (pathway: generic DOJ labels count as federal).
-_FEDERAL_DOJ_PRESS_SOURCES = frozenset({"DOJ ARCHIVES", "DOJ CEOS", "DOJ SAFE CHILDHOOD"})
+_FEDERAL_DOJ_PRESS_SOURCES = frozenset({
+    "DOJ ARCHIVES", "DOJ CEOS", "DOJ SAFE CHILDHOOD", "DOJ AI CSAM",
+})
 
 # Other federal LE publishers (non-DOJ agencies still pathway-federal).
 _FEDERAL_LE_PUBLISHER_SOURCES = frozenset({
     "DOJ ARCHIVES",
     "DOJ CEOS",
     "DOJ SAFE CHILDHOOD",
+    "DOJ AI CSAM",
     "CBP",
     "ICE",
     "US MARSHALS",

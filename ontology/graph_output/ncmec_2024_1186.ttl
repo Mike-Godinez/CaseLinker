@@ -1,135 +1,125 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_1186> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/admission/2/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/admission/2> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_1186> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-05-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/department-of-homeland-security> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/criminal-investigations-bureau> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/usao> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 53 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"20 years\"]" .
-
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:11.230875" ;
-    dcterms:identifier "ncmec_2024_1186" ;
-    dcterms:modified "2026-09-15T21:08:11.230875" ;
-    dcterms:source <https://www.justice.gov/usao-ndwv/pr/brooke-county-man-admits-child-pornography-charge>,
-        "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/follansbee>,
-        <https://caselinker.up.railway.app/resource/location/united-states>,
-        <https://caselinker.up.railway.app/resource/location/west-virginia>,
-        <https://caselinker.up.railway.app/resource/location/wheeling> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/department-of-homeland-security>,
-        <https://caselinker.up.railway.app/resource/agency/usao> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/follansbee>,
-        <https://caselinker.up.railway.app/resource/location/united-states>,
-        <https://caselinker.up.railway.app/resource/location/west-virginia>,
-        <https://caselinker.up.railway.app/resource/location/wheeling> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/location/follansbee> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Follansbee" ;
-    uco-core:name "Follansbee" .
-
-<https://caselinker.up.railway.app/resource/location/united-states> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/west-virginia> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/wheeling> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Wheeling" ;
-    uco-core:name "Wheeling" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "CHILD PORNOGRAPHY CHARGE PRESS RELEASE United States Attorney’s Office Northern District of West Virginia April 23, 2..." ;
-    dcterms:source <https://www.justice.gov/usao-ndwv/pr/brooke-county-man-admits-child-pornography-charge> ;
-    ns1:admissionContext "BROOKE COUNTY MAN ADMITS TO CHILD PORNOGRAPHY CHARGE PRESS RELEASE United States Attorney’s Office Northern District of West Virginia Apr..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "CHILD PORNOGRAPHY CHARGE PRESS RELEASE United States Attorney’s Office Northern District of West Virginia April 23, 2024 https://www" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/admission/2> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    dcterms:source <https://www.justice.gov/usao-ndwv/pr/brooke-county-man-admits-child-pornography-charge> ;
-    ns1:admissionContext "brooke-county-man-admits-child-pornography-charge CT 101525197 WHEELING, WEST VIRGINIA – Harry Fred Wells, age 53, of Follansbee, West Vi..." ;
+    ns2:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remains in custody" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/charge/1> ;
+    ns2:hasProceedingBeginPoint "2024-05-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186> a ns3:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:39.383654" ;
+    dcterms:identifier "ncmec_2024_1186" ;
+    dcterms:modified "2026-10-17 23:04:39.383654" ;
+    dcterms:source <https://racinecountyeye.com/2024/05/13/man-new-child-pornography-charges/>,
+        "NCMEC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/burlington>,
+        <https://w3id.org/caselinker/resource/location/racine-county> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/criminal-investigations-bureau>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/burlington>,
+        <https://w3id.org/caselinker/resource/location/racine-county> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/phase/arrested> a ns3:InitialPhase,
+        ns5:Phase ;
+    ns3:hasPhaseBeginPoint "2024-05-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-05-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/location/burlington> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Burlington" ;
+    ns6:name "Burlington" .
+
+<https://w3id.org/caselinker/resource/location/racine-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Racine County" ;
+    ns6:name "Racine County" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "downloading An investigator reported there were more than 200 photos and videos in Brau’s “KIK” account, and that out..." ;
+    dcterms:source <https://racinecountyeye.com/2024/05/13/man-new-child-pornography-charges/> ;
+    ns1:admissionContext "ine County Jail on a $10,000 cash bond that was amended Monday morning from $200,000. The criminal complaint: Child pornography found; de..." ;
     ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/role/offender/1> ;
+    ns1:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/role/offender/1> ;
     ns1:evidenceTier "press_release_stated" ;
     ns1:quoteType "paraphrase" ;
-    uco-core:description "possession of child pornography" .
+    ns6:description "downloading An investigator reported there were more than 200 photos and videos in Brau’s “KIK” account, and that out of those 200, “there are many more images and videos of illegal child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/admission/2> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_1186/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "police he used the KIK application to view child pornography, and he further admitted that he communicated with under..." ;
+    dcterms:source <https://racinecountyeye.com/2024/05/13/man-new-child-pornography-charges/> ;
+    ns1:admissionContext "warrant at Brau’s residence on May 9 and seized cell phones, computers and tablets. Brau allegedly admitted to police he used the KIK app..." ;
+    ns1:admissionFrame "admitted_to" ;
+    ns1:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns6:description "police he used the KIK application to view child pornography, and he further admitted that he communicated with underage children but never touched them or met up with them" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186/event/possession> a ns3:CSAMIncident,
+        ns5:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/admission/2> ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_1186> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_1186/provenance> .

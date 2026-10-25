@@ -1,192 +1,96 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_161> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_161> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:17.228082" ;
+    dcterms:identifier "ncmec_2025_161" ;
+    dcterms:modified "2026-10-18 00:01:17.228082" ;
+    dcterms:source <https://www.wfla.com/news/pasco-county/pasco-relator-coach-facing-82-charges-related-to-videos-of-sex-with-animals-affidavit/>,
+        "NCMEC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/pasco>,
+        <https://w3id.org/caselinker/resource/location/pasco-county>,
+        <https://w3id.org/caselinker/resource/location/spring-hill> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_161/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_161/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_161/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_161/event/trust-violation> ;
+    ns1:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/pasco-county-sheriffs-office> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/pasco>,
+        <https://w3id.org/caselinker/resource/location/pasco-county>,
+        <https://w3id.org/caselinker/resource/location/spring-hill> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_161> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/agency/pasco-county-sheriffs-office> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/3/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/3> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_161> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_161/event/trust-violation> a ns4:AuthorityAbuse,
+        ns4:TrustViolation ;
+    ns4:violatesRelationship <https://w3id.org/caselinker/resource/case/ncmec_2025_161/relationship/coach> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_161/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_161/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/agency/plantation-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Plantation Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_161/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_161/relationship/coach> a ns4:Coach,
+        ns4:CustodialRelationship ;
+    ns4:involvesChild <https://w3id.org/caselinker/resource/case/ncmec_2025_161/role/victim/1> ;
+    ns4:involvesCustodian <https://w3id.org/caselinker/resource/case/ncmec_2025_161/role/offender/1> ;
+    ns4:relationshipType "coach" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/charge/2> a cacontology-legal-outcomes:CSAM_Distribution,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "distribution of child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_161/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-03-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_161/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_161/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_161/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-03-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_161/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_161/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 2 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 38 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "hadn't used it since around 2020, the complaint said" ;
-    dcterms:source <https://www.nbcmiami.com/news/local/plantation-man-arrested-on-federal-child-porn-charges-after-fbi-raids-apartment/3588605/> ;
-    ns1:admissionContext "warrant at Cunningham's apartment and he was detained. Cunningham admitted he had a Kik account but said he hadn't used it since around 2..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "hadn't used it since around 2020, the complaint said" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/humble> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Humble" ;
-    uco-core:name "Humble" .
-
-<https://caselinker.up.railway.app/resource/location/plantation> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Plantation" ;
-    uco-core:name "Plantation" .
-
-<https://caselinker.up.railway.app/resource/location/texas> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
-    rdfs:label "chat" .
-
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
     rdfs:label "Kik" .
 
-<https://caselinker.up.railway.app/resource/platform/youtube> a cac-core:DigitalSystemEntity,
-        cacontology-platforms:VideoStreamingPlatform ;
-    rdfs:label "YouTube" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_161/phase/arrested> a ns1:InitialPhase,
+        ns5:Phase ;
+    ns1:hasPhaseBeginPoint "2025-03-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.301703" ;
-    dcterms:identifier "ncmec_2025_161" ;
-    dcterms:modified "2026-09-15T21:27:13.301703" ;
-    dcterms:source <https://www.nbcmiami.com/news/local/plantation-man-arrested-on-federal-child-porn-charges-after-fbi-raids-apartment/3588605/>,
-        "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/humble>,
-        <https://caselinker.up.railway.app/resource/location/plantation>,
-        <https://caselinker.up.railway.app/resource/location/texas> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/fbi>,
-        <https://caselinker.up.railway.app/resource/agency/plantation-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/humble>,
-        <https://caselinker.up.railway.app/resource/location/plantation>,
-        <https://caselinker.up.railway.app/resource/location/texas> .
+<https://w3id.org/caselinker/resource/location/fla> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns2:name "Fla." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/3> ;
-    cacontology:severityLevel 2 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/kik>,
-        <https://caselinker.up.railway.app/resource/platform/youtube> .
+<https://w3id.org/caselinker/resource/location/pasco> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pasco" ;
+    ns2:name "Pasco" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/3> ;
-    cacontology:severityLevel 2 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/kik>,
-        <https://caselinker.up.railway.app/resource/platform/youtube> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/facet/possession> .
+<https://w3id.org/caselinker/resource/location/pasco-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pasco County" ;
+    ns2:name "Pasco County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/person/offender/1> .
+<https://w3id.org/caselinker/resource/location/spring-hill> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Spring Hill" ;
+    ns2:name "Spring Hill" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "had a Kik account but said he hadn't used it since around 2020, the complaint said" ;
-    dcterms:source <https://www.nbcmiami.com/news/local/plantation-man-arrested-on-federal-child-porn-charges-after-fbi-raids-apartment/3588605/> ;
-    ns1:admissionContext "nesday, the FBI executed a search warrant at Cunningham's apartment and he was detained. Cunningham admitted he had a Kik account but sai..." ;
-    ns1:admissionFrame "admitted_he_she" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "had a Kik account but said he hadn't used it since around 2020, the complaint said" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_161/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_161/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_161/admission/3> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "\"seeks out children for sexual encounters while bragging about his past sexual experiences\" including one with a 12-y..." ;
-    dcterms:source <https://www.nbcmiami.com/news/local/plantation-man-arrested-on-federal-child-porn-charges-after-fbi-raids-apartment/3588605/> ;
-    ns1:admissionContext "rested in trading child pornography, the complaint said. They also found a message where he said he \"seeks out children for sexual encoun..." ;
-    ns1:admissionFrame "he_said_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_161/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "\"seeks out children for sexual encounters while bragging about his past sexual experiences\" including one with a 12-year-old girl, the complaint said" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_161> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_161/provenance> .

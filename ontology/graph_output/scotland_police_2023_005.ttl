@@ -1,0 +1,84 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_005> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 14:18:20.036094" ;
+    dcterms:identifier "scotland_police_2023_005" ;
+    dcterms:modified "2026-10-18 14:18:20.036094" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scotland_police_2023_005/provenance> ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2023/may/man-sentenced-for-non-recent-sexual-offences-in-the-stirling-area/>,
+        "SCOTLAND POLICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/glasgow>,
+        <https://w3id.org/caselinker/resource/location/stirling>,
+        <https://w3id.org/caselinker/resource/location/stirlingshire> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/scotland_police_2023_005/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/scotland_police_2023_005/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/scotland_police_2023_005/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2023_005/legal-step/sentenced> ;
+    ns2:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/police-scotland> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/glasgow>,
+        <https://w3id.org/caselinker/resource/location/stirling>,
+        <https://w3id.org/caselinker/resource/location/stirlingshire> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_005/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-05-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2023_005/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_005/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-05-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2023_005/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/police-scotland> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_005/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasProceedingBeginPoint "2023-05-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:resultsSentence <https://w3id.org/caselinker/resource/case/scotland_police_2023_005/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_005/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2023-05-31T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_005/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 41 .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_005/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_005/sentence/1> a ns4:CriminalSentence,
+        ns4:PrisonSentence ;
+    rdfs:label "nine years" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_005/phase/sentenced> a ns5:Phase,
+        ns4:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2023-05-31T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/glasgow> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Glasgow" ;
+    ns3:name "Glasgow" .
+
+<https://w3id.org/caselinker/resource/location/stirling> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Stirling" ;
+    ns3:name "Stirling" .
+
+<https://w3id.org/caselinker/resource/location/stirlingshire> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Stirlingshire" ;
+    ns3:name "Stirlingshire" .
+

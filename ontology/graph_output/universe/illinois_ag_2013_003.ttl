@@ -1,0 +1,145 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003> a ns4:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 04:52:14.137305" ;
+    dcterms:identifier "illinois_ag_2013_003" ;
+    dcterms:modified "2026-10-18 04:52:14.137305" ;
+    dcterms:source <https://illinoisattorneygeneral.gov/News-Room/2006-2018-Press-Archive/201301-18%20ATTORNEY%20GENERAL%20MADIGAN%20FULTON%20COUNTY%20MAN%20ARRESTED%20ON%20CHILD%20PORNOGRAPHY%20CHARGES.pdf>,
+        "ILLINOIS AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/canton>,
+        <https://w3id.org/caselinker/resource/location/fulton-county>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/springfield> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/phase/convicted> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/phase/convicted> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/event/possession>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/legal-step/convicted>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/offense-event/charge-2>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/operation> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/canton-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/illinois-department-of-corrections> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/canton>,
+        <https://w3id.org/caselinker/resource/location/fulton-county>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/springfield> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2013-01-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/event/possession>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/offense-event/charge-2> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2013-01-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/event/possession>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/offense-event/charge-2> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/canton-police-department> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/illinois-department-of-corrections> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns2:indictmentCounts 22 .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/charge/2> a ns2:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/offense-event/charge-2> ;
+    ns1:chargeCluster "child_exploitation" ;
+    ns1:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/offense-event/charge-2> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/event/distribution> a ns6:Event,
+        ns2:CSAM_Distribution ;
+    ns4:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/event/trafficking> a ns6:Event,
+        ns2:SexTrafficking ;
+    ns4:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in the Fulton County Jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/charge/1>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/charge/2> ;
+    ns2:hasProceedingBeginPoint "2013-01-18T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/legal-step/convicted> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2013-01-18T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/operation> a ns6:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 23 .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/phase/convicted> a ns6:Phase,
+        ns2:SentencingPhase ;
+    ns4:hasPhaseBeginPoint "2013-01-18T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/canton> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Canton" ;
+    ns3:name "Canton" .
+
+<https://w3id.org/caselinker/resource/location/fulton-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fulton County" ;
+    ns3:name "Fulton County" .
+
+<https://w3id.org/caselinker/resource/location/illinois> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Illinois" ;
+    ns3:name "Illinois" .
+
+<https://w3id.org/caselinker/resource/location/springfield> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Springfield" ;
+    ns3:name "Springfield" .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/event/hands-on> a ns4:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns4:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/event/possession> a ns4:CSAMIncident,
+        ns6:Event ;
+    ns4:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/offense-event/charge-2> a ns4:ChildSexualAbuseEvent,
+        ns6:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2013_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/illinois_ag_2013_003/provenance> .

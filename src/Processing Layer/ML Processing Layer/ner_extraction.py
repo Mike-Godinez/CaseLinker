@@ -79,6 +79,39 @@ _COUNT_PREFIX_RE = re.compile(
 _WORD_TOKEN_RE = re.compile(r"[A-Za-z][A-Za-z'\-]*")
 
 
+_COMPASS_DISTRICT = r"northern|southern|eastern|western|middle|central"
+_US_STATE = (
+    r"new\s+hampshire|new\s+jersey|new\s+mexico|new\s+york|"
+    r"north\s+carolina|north\s+dakota|south\s+carolina|south\s+dakota|"
+    r"west\s+virginia|rhode\s+island|"
+    r"alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|"
+    r"florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|"
+    r"louisiana|maine|maryland|massachusetts|michigan|minnesota|mississippi|"
+    r"missouri|montana|nebraska|nevada|ohio|oklahoma|oregon|pennsylvania|"
+    r"tennessee|texas|utah|vermont|virginia|washington|wisconsin|wyoming"
+)
+_OF_STATE_RE = re.compile(rf"^[\s]+of[\s]+({_US_STATE})\b", re.IGNORECASE)
+_THE_BEFORE_RE = re.compile(r"\bthe[\s]+$", re.IGNORECASE)
+
+
+def stored_location(text: str, start: int, end: int) -> str:
+    """The place to store for one NER span.
+
+    The model often stops at \"Southern District\" and leaves \"of Texas\" outside
+    the span, and it often starts after \"the\". The stored string is the place
+    the sentence names: \"Southern District of Texas\".
+    """
+    if not text or start is None or end is None or start < 0 or end > len(text) or start >= end:
+        return (text or "")[max(0, start or 0): end or 0].strip()
+    if _THE_BEFORE_RE.search(text[:start]):
+        start = _THE_BEFORE_RE.search(text[:start]).start()
+    of_state = _OF_STATE_RE.match(text[end:])
+    if of_state and re.search(rf"\b(?:{_COMPASS_DISTRICT})\s+district\s*$", text[start:end], re.I):
+        end = end + of_state.end()
+    phrase = re.sub(r"\s+", " ", text[start:end]).strip()
+    return re.sub(r"^the\s+", "", phrase, count=1, flags=re.I)
+
+
 def _is_sentencing_context(text: str,
                            num_start: int,
                            num_end: int,
@@ -196,7 +229,7 @@ class NERExtractor:
         else:
             raise ValueError(f"Unknown backend: {backend}. Use 'stanza', 'transformers', or 'spacy'")
 
-        self._stanza_batch_size = int(os.environ.get("STANZA_NER_BATCH_SIZE", "16"))
+        self._stanza_batch_size = int(os.environ.get("STANZA_NER_BATCH_SIZE", "64"))
         # Bulk is the default. Set STANZA_NER_BATCH=0 to force serial.
         self._stanza_use_bulk = os.environ.get("STANZA_NER_BATCH", "1").lower() not in (
             "0",
@@ -304,15 +337,23 @@ class NERExtractor:
             'dates': [],
             'ages': []
         }
+        # Char offsets for 3.0 span-gated NER assertions (not persisted; see merge_processing).
+        number_spans: List[List[Any]] = []
+        person_spans: List[List[Any]] = []
 
         for ent in doc.ents:
             entity_text = ent.text.strip()
             entity_type = ent.type
 
+            if entity_type in ('DATE', 'CARDINAL', 'QUANTITY'):
+                number_spans.append([ent.start_char, ent.end_char, entity_type])
+            elif entity_type == 'PERSON':
+                person_spans.append([ent.start_char, ent.end_char, ent.text])
+
             if entity_type == 'ORG':
                 entities['organizations'].append(entity_text)
             elif entity_type in ['LOC', 'GPE']:
-                entities['locations'].append(entity_text)
+                entities['locations'].append(stored_location(text, ent.start_char, ent.end_char))
             elif entity_type == 'DATE':
                 entity_lower = entity_text.lower()
                 context = text[max(0, ent.start_char-30):min(len(text), ent.end_char+30)].lower()
@@ -356,6 +397,8 @@ class NERExtractor:
             else:
                 entities[key] = list(dict.fromkeys(entities[key]))
 
+        entities['number_spans'] = number_spans
+        entities['person_spans'] = person_spans
         return entities
 
     def _extract_entities_stanza(self, text: str) -> Dict[str, List[str]]:
@@ -427,7 +470,12 @@ class NERExtractor:
             if entity_label == 'ORG':
                 entities['organizations'].append(entity_text)
             elif entity_label in ['LOC', 'GPE']:
-                entities['locations'].append(entity_text)
+                span_start = entity.get("start")
+                span_end = entity.get("end")
+                if span_start is None or span_end is None:
+                    entities["locations"].append(entity_text)
+                else:
+                    entities["locations"].append(stored_location(text, span_start, span_end))
             # Note: Transformers doesn't extract dates/ages well, use pattern matching
         
         # Extract dates and ages using pattern matching
@@ -484,7 +532,7 @@ class NERExtractor:
             if ent.label_ == 'ORG':
                 entities['organizations'].append(ent.text.strip())
             elif ent.label_ in ['GPE', 'LOC']:  # Geopolitical entity or location
-                entities['locations'].append(ent.text.strip())
+                entities['locations'].append(stored_location(text, ent.start_char, ent.end_char))
             elif ent.label_ == 'DATE':
                 entities['dates'].append(ent.text.strip())
         

@@ -1,136 +1,97 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_355> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_355> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of a minor — promote film" ;
-    cacontology-legal-outcomes:indictmentCounts 11 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 43 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
-    rdfs:label "Kik" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.492400" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:19.378374" ;
     dcterms:identifier "ncmec_2025_355" ;
-    dcterms:modified "2026-09-15T21:27:13.492400" ;
-    dcterms:source <https://www.kcci.com/article/des-moines-man-gabriel-flores-charged-in-child-pornography-investigation-iowa-crime/64795324>,
+    dcterms:modified "2026-10-18 00:01:19.378374" ;
+    dcterms:source <https://www.mcphersonsentinel.com/man-arrested-on-multiple-counts-of-child-exploitation/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/des-moines>,
-        <https://caselinker.up.railway.app/resource/location/iowa> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/des-moines>,
-        <https://caselinker.up.railway.app/resource/location/iowa> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/mcpherson-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_355/phase/convicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_355/phase/convicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_355/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_355/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_355/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_355/legal-step/convicted>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_355/offense-event/charge-1> ;
+    ns1:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/mcpherson-county-district-attorneys-office> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/mcpherson-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "speaking with minors on different cellphone applications and exchanging explicit images with them" ;
-    dcterms:source <https://www.kcci.com/article/des-moines-man-gabriel-flores-charged-in-child-pornography-investigation-iowa-crime/64795324> ;
-    ns1:admissionContext "o says he admitted to sharing the images with others over platforms like Signal and Kik. Court records show Flores also admitted to speak..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "speaking with minors on different cellphone applications and exchanging explicit images with them" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-04-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_355/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_355/offense-event/charge-1> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_355/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-04-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_355/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_355/offense-event/charge-1> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_355/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/person/offender/1> .
+<https://w3id.org/caselinker/resource/agency/mcpherson-county-district-attorneys-office> a ns2:OrganizationLikeEntity,
+        ns7:StateAgency ;
+    rdfs:label "McPherson County District Attorney's Office" .
 
-<https://caselinker.up.railway.app/resource/location/des-moines> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Des Moines" ;
-    uco-core:name "Des Moines" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355/charge/1> a ns3:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2025_355/offense-event/charge-1> ;
+    ns4:chargeCluster "child_exploitation" ;
+    ns4:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_355/offense-event/charge-1> .
 
-<https://caselinker.up.railway.app/resource/location/iowa> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355/event/distribution> a ns2:Event,
+        ns3:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "to sharing the images with others over platforms like Signal and Kik" ;
-    dcterms:source <https://www.kcci.com/article/des-moines-man-gabriel-flores-charged-in-child-pornography-investigation-iowa-crime/64795324> ;
-    ns1:admissionContext "cords say Flores had over 250 explicit images of children on his cell phone. It also says he admitted to sharing the images with others o..." ;
-    ns1:admissionFrame "he_admitted_paraphrase" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "to sharing the images with others over platforms like Signal and Kik" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_355/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/admission/2> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_355/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns3:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the McPherson County Jail; remains in custody" ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_355/charge/1> ;
+    ns3:hasProceedingBeginPoint "2025-04-29T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355/legal-step/convicted> a ns2:Event,
+        ns2:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2025-04-29T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 30 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355/phase/convicted> a ns2:Phase,
+        ns3:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2025-04-29T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/mcpherson-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mcpherson County" ;
+    ns5:name "Mcpherson County" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_355/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355/offense-event/charge-1> a ns1:ChildSexualAbuseEvent,
+        ns2:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_355> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_355/provenance> .

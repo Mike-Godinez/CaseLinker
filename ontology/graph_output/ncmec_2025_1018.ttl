@@ -1,86 +1,103 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://cacontology.projectvic.org/production#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1018> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:14.248966" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1018> a ns5:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:27.048111" ;
     dcterms:identifier "ncmec_2025_1018" ;
-    dcterms:modified "2026-09-15T21:27:14.248966" ;
-    dcterms:source <https://www.wdbj7.com/2025/04/09/roanoke-man-arrested-possession-child-pornography/>,
+    dcterms:modified "2026-10-18 00:01:27.048111" ;
+    dcterms:source <https://www.yahoo.com/news/cyber-tip-leads-arrest-wisconsin-164947204.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/roanoke>,
-        <https://caselinker.up.railway.app/resource/location/va> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/roanoke-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/roanoke>,
-        <https://caselinker.up.railway.app/resource/location/va> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ozaukee-county>,
+        <https://w3id.org/caselinker/resource/location/port-washington>,
+        <https://w3id.org/caselinker/resource/location/wis>,
+        <https://w3id.org/caselinker/resource/location/wisconsin> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_1018/phase/convicted> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_1018/phase/convicted> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_1018/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1018/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1018/legal-step/convicted> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/ozaukee-county>,
+        <https://w3id.org/caselinker/resource/location/port-washington>,
+        <https://w3id.org/caselinker/resource/location/wis>,
+        <https://w3id.org/caselinker/resource/location/wisconsin> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1018/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2025-02-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_1018/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1018/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2025-02-19T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_1018/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/roanoke-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Roanoke Police Department" .
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1018/charge/1> a ns1:CriminalCharge,
+        ns1:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" ;
+    ns1:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1018/charge/2> a ns1:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1018/event/multi-jurisdiction> a ns7:Event,
+        <https://cacontology.projectvic.org/multi-jurisdiction#MultiJurisdictionalInvestigation> ;
+    ns5:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1018/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_1018/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1018/charge/2> ;
+    ns1:hasProceedingBeginPoint "2025-02-19T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1018/legal-step/convicted> a ns7:Event,
+        ns7:LegalEvent,
+        ns1:LegalProceeding,
+        ns1:SentencingHearing ;
+    ns1:hasProceedingBeginPoint "2025-02-19T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1018/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 26 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1018/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:victimAge 14 .
 
-<https://caselinker.up.railway.app/resource/location/roanoke> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Roanoke" ;
-    uco-core:name "Roanoke" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1018/phase/convicted> a ns7:Phase,
+        ns1:SentencingPhase ;
+    ns5:hasPhaseBeginPoint "2025-02-19T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/va> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Va." ;
-    uco-core:name "Va." .
+<https://w3id.org/caselinker/resource/location/ozaukee-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ozaukee County" ;
+    ns3:name "Ozaukee County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_1018/facet/possession> .
+<https://w3id.org/caselinker/resource/location/port-washington> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Port Washington" ;
+    ns3:name "Port Washington" .
 
+<https://w3id.org/caselinker/resource/location/wis> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wis." ;
+    ns3:name "Wis." .
+
+<https://w3id.org/caselinker/resource/location/wisconsin> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wisconsin" ;
+    ns3:name "Wisconsin" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1018> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_1018/provenance> .

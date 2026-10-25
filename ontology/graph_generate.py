@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
-"""Shared CaseLinker → JSON-LD/TTL graph generation (features_to_cac)."""
+"""Shared CaseLinker → JSON-LD/TTL graph generation (features_to_cac).
+
+Writes a case graph and, by default, its provenance sidecar. Turtle is taken
+from the mapped triples, not from a Dataset's empty default graph. When
+DATABASE_URL is set, cases are read from Postgres. A ``done.txt`` in the
+output directory lets a stopped run continue.
+"""
 
 from __future__ import annotations
 
 import json
+import os
 import sys
 import traceback
 from pathlib import Path
@@ -12,8 +19,44 @@ from typing import Any, Dict, List, Optional, Tuple
 REPO_ROOT = Path(__file__).resolve().parent.parent
 ONTOLOGY = REPO_ROOT / "ontology"
 DEFAULT_GRAPH_DIR = ONTOLOGY / "graph_output"
+RESOURCE_IRI = "w3id.org/caselinker/resource"
+# Hosts that must not be minted as CaseLinker names. The CAC ontology
+# (cacontology.projectvic.org) is a different vocabulary and is allowed.
+_REJECTED_IRIS = (
+    ("caselinker.projectvic.org", "projectvic IRI"),
+    ("caselinker.up.railway.app/resource", "railway resource IRI"),
+    ("caselinker.up.railway.app/ns/provenance", "railway provenance IRI"),
+)
 
 sys.path.insert(0, str(ONTOLOGY))
+
+
+def _open_export_storage(*, postgres_only: Optional[bool] = None) -> Tuple[Any, str]:
+    """Postgres when DATABASE_URL is set, otherwise the local SQLite file.
+
+    A local ``caselinker.db`` must not hide the production corpus while
+    DATABASE_URL is set. Pass ``postgres_only=False`` to force SQLite.
+    """
+    from features_to_cac import CaseToCAC  # noqa: E402
+
+    use_postgres = postgres_only if postgres_only is not None else bool(os.getenv("DATABASE_URL"))
+    if use_postgres:
+        storage = CaseToCAC._open_postgres()
+        if storage is None:
+            raise RuntimeError("DATABASE_URL is set but Postgres did not open")
+        return storage, "postgres"
+    storage = CaseToCAC._open_local_sqlite()
+    if storage is None:
+        raise FileNotFoundError("No local caselinker.db and DATABASE_URL is not set")
+    return storage, "sqlite"
+
+
+def _reject_bad_iris(text: str, case_id: str, kind: str) -> None:
+    for needle, label in _REJECTED_IRIS:
+        if needle in text:
+            raise RuntimeError(f"{label} in {kind} for {case_id}")
+    if RESOURCE_IRI not in text:
+        raise RuntimeError(f"missing w3id resource IRI in {kind} for {case_id}")
 
 
 def generate_graphs(
@@ -21,22 +64,36 @@ def generate_graphs(
     out_dir: Path,
     *,
     validate_shacl: bool = True,
+    provenance: bool = True,
+    resume: bool = True,
+    postgres_only: Optional[bool] = None,
+    storage: Any = None,
 ) -> Dict[str, Any]:
-    from features_to_cac import CaseToCAC, _load_case_with_fallback  # noqa: E402
-    from rdflib import Graph
+    from features_to_cac import CaseToCAC, flatten_dataset, _write_serialized  # noqa: E402
+    from provenance_export import export_stored_case  # noqa: E402
 
     out_dir.mkdir(parents=True, exist_ok=True)
+    done_path = out_dir / "done.txt"
+    already = set()
+    if resume and done_path.is_file():
+        already = {line.strip() for line in done_path.read_text().splitlines() if line.strip()}
+    if storage is None:
+        storage, _source = _open_export_storage(postgres_only=postgres_only)
     mapper = CaseToCAC()
 
     generated: List[str] = []
     skipped: List[Dict[str, str]] = []
     failed: List[Dict[str, str]] = []
+    no_provenance: List[str] = []
     shacl_ok: List[str] = []
     shacl_fail: List[Dict[str, Any]] = []
 
     for i, cid in enumerate(ids, 1):
+        if cid in already:
+            skipped.append({"case_id": cid, "reason": "already in done.txt"})
+            continue
         try:
-            case, src = _load_case_with_fallback(cid)
+            case = storage.get_case(cid)
             if case is None:
                 skipped.append({"case_id": cid, "reason": "not in DB"})
                 continue
@@ -45,24 +102,31 @@ def generate_graphs(
             conforms, shacl_report = True, ""
             if validate_shacl:
                 conforms, shacl_report = mapper.validate(graph)
+                if not conforms:
+                    shacl_fail.append({"case_id": cid, "shacl_report": (shacl_report or "")[:4000]})
+                    raise RuntimeError("case SHACL failed: " + (shacl_report or "")[:300])
 
-            jsonld_path = out_dir / f"{cid}.jsonld"
+            flat = flatten_dataset(graph)
             ttl_path = out_dir / f"{cid}.ttl"
-            graph.serialize(destination=str(jsonld_path), format="json-ld", indent=2)
-            flat_g = Graph()
-            for ctx in graph.graphs():
-                for triple in ctx:
-                    flat_g.add(triple)
-            for prefix, ns in graph.namespaces():
-                flat_g.bind(prefix, ns, replace=True)
-            flat_g.serialize(destination=str(ttl_path), format="turtle")
+            jsonld_path = out_dir / f"{cid}.jsonld"
+            _write_serialized(flat, jsonld_path, "json-ld")
+            _write_serialized(flat, ttl_path, "turtle")
+            turtle = ttl_path.read_text()
+            _reject_bad_iris(turtle, cid, "case graph")
 
-            if validate_shacl and not conforms:
-                shacl_fail.append({"case_id": cid, "shacl_report": (shacl_report or "")[:4000]})
-            else:
-                shacl_ok.append(cid)
+            if provenance:
+                prov = export_stored_case(cid, out_dir, storage)
+                if prov is None:
+                    no_provenance.append(cid)
+                    print(f"  NO_PROV {cid}", flush=True)
+                else:
+                    _reject_bad_iris(Path(prov).read_text(), cid, "provenance")
+
+            with done_path.open("a") as fh:
+                fh.write(cid + "\n")
+            already.add(cid)
+            shacl_ok.append(cid)
             generated.append(cid)
-
         except Exception as exc:
             failed.append(
                 {
@@ -84,6 +148,7 @@ def generate_graphs(
         "generated": generated,
         "skipped": skipped,
         "failed": failed,
+        "no_provenance": no_provenance,
         "shacl_ok": shacl_ok,
         "shacl_fail": shacl_fail,
         "out_dir": str(out_dir),
@@ -160,7 +225,22 @@ def generate_graph_for_ids(case_ids: List[str]) -> Dict[str, Any]:
     return {"nodes": nodes, "edges": edges, "metadata": metadata, "flat_nodes": flat}
 
 
-def load_all_case_ids(db_path: Optional[Path] = None) -> List[str]:
+def load_all_case_ids(db_path: Optional[Path] = None, *, postgres_only: Optional[bool] = None) -> List[str]:
+    """Case ids in storage order. Postgres when DATABASE_URL is set."""
+    use_postgres = postgres_only if postgres_only is not None else bool(os.getenv("DATABASE_URL"))
+    if use_postgres and db_path is None:
+        from features_to_cac import CaseToCAC  # noqa: E402
+
+        CaseToCAC._storage_layer_dir()
+        from storage_postgres import get_connection, return_connection  # type: ignore
+
+        conn = get_connection()
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id FROM cases ORDER BY id")
+            return [row[0] for row in cursor.fetchall()]
+        finally:
+            return_connection(conn)
     import sqlite3
 
     db = db_path or (REPO_ROOT / "caselinker.db")
@@ -171,3 +251,49 @@ def load_all_case_ids(db_path: Optional[Path] = None) -> List[str]:
         return [r[0] for r in conn.execute("SELECT id FROM cases ORDER BY id").fetchall()]
     finally:
         conn.close()
+
+
+def _load_dotenv() -> None:
+    env = REPO_ROOT / ".env"
+    if not env.is_file() or os.getenv("DATABASE_URL"):
+        return
+    for line in env.read_text().splitlines():
+        if line.startswith("DATABASE_URL="):
+            os.environ["DATABASE_URL"] = line.split("=", 1)[1].strip().strip('"').strip("'")
+            return
+
+
+def main(argv: Optional[List[str]] = None) -> int:
+    """Export case graphs and provenance sidecars. Resumes from ``done.txt``."""
+    import argparse
+
+    _load_dotenv()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--out", type=Path, default=DEFAULT_GRAPH_DIR, help="output directory")
+    parser.add_argument("--ids", nargs="*", help="case ids (default: every case in the database)")
+    parser.add_argument("--sqlite", action="store_true", help="read caselinker.db even if DATABASE_URL is set")
+    parser.add_argument("--no-provenance", action="store_true")
+    parser.add_argument("--no-resume", action="store_true")
+    parser.add_argument("--no-shacl", action="store_true")
+    args = parser.parse_args(argv)
+    postgres_only = False if args.sqlite else None
+    ids = args.ids or load_all_case_ids(postgres_only=postgres_only)
+    print(f"Exporting {len(ids)} cases to {args.out}", flush=True)
+    result = generate_graphs(
+        ids,
+        args.out,
+        validate_shacl=not args.no_shacl,
+        provenance=not args.no_provenance,
+        resume=not args.no_resume,
+        postgres_only=postgres_only,
+    )
+    print(
+        f"DONE generated={len(result['generated'])} skipped={len(result['skipped'])} "
+        f"fail={len(result['failed'])} no_provenance={len(result['no_provenance'])}",
+        flush=True,
+    )
+    return 1 if result["failed"] else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

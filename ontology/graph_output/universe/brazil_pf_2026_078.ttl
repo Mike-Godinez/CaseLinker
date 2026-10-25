@@ -1,0 +1,103 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 00:50:59.269073" ;
+    dcterms:identifier "brazil_pf_2026_078" ;
+    dcterms:modified "2026-10-18 00:50:59.269073" ;
+    dcterms:source <https://www.gov.br/pf/pt-br/assuntos/noticias/2026/07/pf-reprime-crimes-de-abuso-sexual-infantil-praticados-pela-internet-na-paraiba>,
+        "BRAZIL PF" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/rio-grande>,
+        <https://w3id.org/caselinker/resource/location/sul-fone>,
+        <https://w3id.org/caselinker/resource/location/são-bento> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/cybertip>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/event/possession>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/event/production>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/federal-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/rio-grande>,
+        <https://w3id.org/caselinker/resource/location/sul-fone>,
+        <https://w3id.org/caselinker/resource/location/são-bento> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/event/possession>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/event/production> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/event/possession>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/event/production> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/federal-police-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/event/distribution> a ns3:Event,
+        ns7:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/charge/1> ;
+    ns7:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/location/rio-grande> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Rio Grande" ;
+    ns2:name "Rio Grande" .
+
+<https://w3id.org/caselinker/resource/location/sul-fone> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sul Fone" ;
+    ns2:name "Sul Fone" .
+
+<https://w3id.org/caselinker/resource/location/são-bento> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "São Bento" ;
+    ns2:name "São Bento" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/event/production> a ns3:Event,
+        <https://cacontology.projectvic.org/production#ProductionOffense> ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/facet/production> .
+
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_078> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/brazil_pf_2026_078/provenance> .

@@ -1,0 +1,115 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns9: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 05:32:21.723630" ;
+    dcterms:identifier "lapd_2013_001" ;
+    dcterms:modified "2026-10-18 05:32:21.723630" ;
+    dcterms:source <https://www.lapdonline.org/newsroom/child-pornography-suspect-arrested-nr13399bb/>,
+        "LAPD" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/hernandez>,
+        <https://w3id.org/caselinker/resource/location/los-angeles>,
+        <https://w3id.org/caselinker/resource/location/the-san-fernando-valley> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/lapd_2013_001/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/lapd_2013_001/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/lapd_2013_001/cybertip>,
+        <https://w3id.org/caselinker/resource/case/lapd_2013_001/event/csam>,
+        <https://w3id.org/caselinker/resource/case/lapd_2013_001/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/lapd_2013_001/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/lapd_2013_001/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns8:mentionsLocation <https://w3id.org/caselinker/resource/location/hernandez>,
+        <https://w3id.org/caselinker/resource/location/los-angeles>,
+        <https://w3id.org/caselinker/resource/location/the-san-fernando-valley> .
+
+<https://w3id.org/caselinker/resource/agency/hsi> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/cybertip> a ns9:NCMECCybertipReport ;
+    ns9:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/event/distribution> a ns7:Event,
+        ns4:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/event/trust-violation> a ns3:AuthorityAbuse,
+        ns3:TrustViolation ;
+    ns3:violatesRelationship <https://w3id.org/caselinker/resource/case/lapd_2013_001/relationship/teacher> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked at Van Nuys Jail" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/lapd_2013_001/charge/1> ;
+    ns4:hasProceedingBeginPoint "2013-08-28T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 35 .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/relationship/teacher> a ns3:CustodialRelationship,
+        ns3:Teacher ;
+    ns3:involvesChild <https://w3id.org/caselinker/resource/case/lapd_2013_001/role/victim/1> ;
+    ns3:involvesCustodian <https://w3id.org/caselinker/resource/case/lapd_2013_001/role/offender/1> ;
+    ns3:relationshipType "teacher" .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2013-08-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/lapd_2013_001/event/csam> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/lapd_2013_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2013-08-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/lapd_2013_001/event/csam> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/lapd_2013_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/phase/booked> a ns1:InitialPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2013-08-28T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/hernandez> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hernandez’" ;
+    ns5:name "Hernandez’" .
+
+<https://w3id.org/caselinker/resource/location/los-angeles> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Los Angeles" ;
+    ns5:name "Los Angeles" .
+
+<https://w3id.org/caselinker/resource/location/the-san-fernando-valley> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the San Fernando Valley" ;
+    ns5:name "the San Fernando Valley" .
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001/event/csam> a ns1:CSAMIncident,
+        ns7:Event ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/lapd_2013_001/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/lapd_2013_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/lapd_2013_001/provenance> .

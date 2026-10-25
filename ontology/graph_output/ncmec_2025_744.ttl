@@ -1,150 +1,92 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_744> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_744> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/person/offender/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 13 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.942193" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:23.457761" ;
     dcterms:identifier "ncmec_2025_744" ;
-    dcterms:modified "2026-09-15T21:27:13.942193" ;
-    dcterms:source <https://www.wkbn.com/news/local-news/youngstown-news/couple-convicted-of-child-abuse-in-bench-trial/>,
+    dcterms:modified "2026-10-18 00:01:23.457761" ;
+    dcterms:source <https://www.1600kush.com/news/stillwater-man-accused-of-distributing-child-sex-abuse-material/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/celina>,
-        <https://caselinker.up.railway.app/resource/location/cuyahoga-county>,
-        <https://caselinker.up.railway.app/resource/location/mercer-county>,
-        <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/youngstown> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/legal-step/sentenced> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/celina>,
-        <https://caselinker.up.railway.app/resource/location/cuyahoga-county>,
-        <https://caselinker.up.railway.app/resource/location/mercer-county>,
-        <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/youngstown> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/stillwater> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_744/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_744/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_744/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_744/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_744/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_744/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/stillwater-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/stillwater> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-03-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_744/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_744/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-03-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_744/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_744/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/location/celina> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Celina" ;
-    uco-core:name "Celina" .
+<https://w3id.org/caselinker/resource/agency/stillwater-police-department> a ns6:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/location/cuyahoga-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Cuyahoga County" ;
-    uco-core:name "Cuyahoga County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns1:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/location/mercer-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Mercer County" ;
-    uco-core:name "Mercer County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/location/ohio> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744/event/distribution> a ns4:Event,
+        ns1:CSAM_Distribution ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/location/youngstown> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Youngstown" ;
-    uco-core:name "Youngstown" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "receiving and sending child pornography" ;
-    dcterms:source <https://www.wkbn.com/news/local-news/youngstown-news/couple-convicted-of-child-abuse-in-bench-trial/> ;
-    ns1:admissionContext "got an email tip from the Internet Crimes Against Children office out of Cuyahoga County. Detectives talked to Evers, and he admitted to..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "receiving and sending child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_744/charge/1> ;
+    ns1:hasProceedingBeginPoint "2025-03-03T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "to receiving and sending child pornography" ;
-    dcterms:source <https://www.wkbn.com/news/local-news/youngstown-news/couple-convicted-of-child-abuse-in-bench-trial/> ;
-    ns1:admissionContext "et Crimes Against Children office out of Cuyahoga County. Detectives talked to Evers, and he admitted to receiving and sending child porn..." ;
-    ns1:admissionFrame "he_admitted_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "to receiving and sending child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 21 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_744/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/admission/2> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_744/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744/phase/charged> a ns2:LegalProcessPhase,
+        ns4:Phase ;
+    ns2:hasPhaseBeginPoint "2025-03-03T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/stillwater> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Stillwater" ;
+    ns5:name "Stillwater" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744/event/possession> a ns2:CSAMIncident,
+        ns4:Event ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_744/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_744> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_744/provenance> .

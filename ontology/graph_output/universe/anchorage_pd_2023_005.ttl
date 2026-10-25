@@ -1,0 +1,101 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 00:39:05.977835" ;
+    dcterms:identifier "anchorage_pd_2023_005" ;
+    dcterms:modified "2026-10-18 00:39:05.977835" ;
+    dcterms:source <https://www.anchoragepolice.com/news/vance-peronto-convicted-of-attempted-sexual-abuse-of-a-minor-in-the-second-degree>,
+        "ANCHORAGE PD" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/alaska>,
+        <https://w3id.org/caselinker/resource/location/anchorage> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/phase/convicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/phase/convicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/event/possession>,
+        <https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/legal-step/convicted> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/alaska-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/alaska-department-of-public-safety>,
+        <https://w3id.org/caselinker/resource/agency/anchorage-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/alaska>,
+        <https://w3id.org/caselinker/resource/location/anchorage> .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-03-24T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-03-24T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/alaska-bureau-of-investigation> a ns6:OrganizationLikeEntity,
+        ns5:StateAgency ;
+    rdfs:label "Alaska Bureau of Investigation" .
+
+<https://w3id.org/caselinker/resource/agency/alaska-department-of-public-safety> a ns6:OrganizationLikeEntity,
+        ns5:StateAgency ;
+    rdfs:label "Alaska Department of Public Safety" .
+
+<https://w3id.org/caselinker/resource/agency/anchorage-police-department> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns2:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/charge/1> ;
+    ns2:hasProceedingBeginPoint "2023-03-24T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/legal-step/convicted> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2023-03-24T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/phase/convicted> a ns6:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2023-03-24T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/alaska> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Alaska" ;
+    ns3:name "Alaska" .
+
+<https://w3id.org/caselinker/resource/location/anchorage> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Anchorage" ;
+    ns3:name "Anchorage" .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/anchorage_pd_2023_005/provenance> .

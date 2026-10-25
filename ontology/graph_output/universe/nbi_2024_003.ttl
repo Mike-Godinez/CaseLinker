@@ -1,0 +1,82 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2024_003> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 14:24:47.606850" ;
+    dcterms:identifier "nbi_2024_003" ;
+    dcterms:modified "2026-10-18 14:24:47.606850" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nbi_2024_003/provenance> ;
+    dcterms:source <https://nbi.gov.ph/press_releases/2024/10112024/7085/>,
+        "NBI" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cabiao>,
+        <https://w3id.org/caselinker/resource/location/nueva-ecija>,
+        <https://w3id.org/caselinker/resource/location/san-gregorio> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/nbi_2024_003/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/nbi_2024_003/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/nbi_2024_003/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nbi_2024_003/event/trust-violation> ;
+    ns1:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/cabiao>,
+        <https://w3id.org/caselinker/resource/location/nueva-ecija>,
+        <https://w3id.org/caselinker/resource/location/san-gregorio> .
+
+<https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/nbi_2024_003/event/trust-violation> a ns2:CustodialAbuse,
+        ns2:TrustViolation ;
+    ns2:violatesRelationship <https://w3id.org/caselinker/resource/case/nbi_2024_003/relationship/mother> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2024_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2024_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2024_003/relationship/mother> a ns2:CustodialRelationship,
+        ns2:FamilialRelationship ;
+    ns2:involvesChild <https://w3id.org/caselinker/resource/case/nbi_2024_003/role/victim/1> ;
+    ns2:involvesCustodian <https://w3id.org/caselinker/resource/case/nbi_2024_003/role/offender/1> ;
+    ns2:relationshipType "mother" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2024_003/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-10-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nbi_2024_003/event/hands-on> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/nbi_2024_003/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2024_003/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-10-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nbi_2024_003/event/hands-on> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/nbi_2024_003/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2024_003/phase/arrested> a ns1:InitialPhase,
+        ns5:Phase ;
+    ns1:hasPhaseBeginPoint "2024-10-11T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/cabiao> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cabiao" ;
+    ns4:name "Cabiao" .
+
+<https://w3id.org/caselinker/resource/location/nueva-ecija> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nueva Ecija" ;
+    ns4:name "Nueva Ecija" .
+
+<https://w3id.org/caselinker/resource/location/san-gregorio> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "San Gregorio" ;
+    ns4:name "San Gregorio" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2024_003/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns5:Event ;
+    ns1:severityLevel 3 .
+

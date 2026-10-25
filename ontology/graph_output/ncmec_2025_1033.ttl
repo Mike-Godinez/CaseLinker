@@ -1,97 +1,171 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/admission/1/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/admission/1> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_1033> ;
+    ns2:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/admission/2/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/admission/2> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_1033> ;
+    ns2:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:14.261417" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/event/csam> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/wyoming-division-of-criminal-investigation> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/charge/1> a ns5:CriminalCharge,
+        ns5:StateCharge ;
+    rdfs:label "sexual exploitation of a child" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/charge/2> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/charge/3> a ns5:CSAM_Distribution,
+        ns5:CriminalCharge ;
+    rdfs:label "distribution of child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/charge/4> a ns5:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/event/distribution> a ns2:Event,
+        ns5:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/event/multi-jurisdiction> a ns2:Event,
+        ns6:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 ;
+    ns6:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/charge/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/charge/4> ;
+    ns5:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 27 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/tech/cybertipline> a ns8:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
+
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Facebook" .
+
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:27.329545" ;
     dcterms:identifier "ncmec_2025_1033" ;
-    dcterms:modified "2026-09-15T21:27:14.261417" ;
-    dcterms:source <https://www.sovanow.com/articles/elementary-school-assistant-charged-with-child-porn-possession/>,
+    dcterms:modified "2026-10-18 00:01:27.329545" ;
+    dcterms:source <https://www.facebook.com/freedomlibertasinternational/posts/cheyenne-wyoming-per-cowboystatedaily-a-27-year-old-cheyenne-man-faces-three-chi/1124901409669180/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/mecklenburg-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/mecklenburg-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cheyenne>,
+        <https://w3id.org/caselinker/resource/location/hayes>,
+        <https://w3id.org/caselinker/resource/location/laramie-county> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/wyoming-division-of-criminal-investigation> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/cheyenne>,
+        <https://w3id.org/caselinker/resource/location/hayes>,
+        <https://w3id.org/caselinker/resource/location/laramie-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "watched the videos and did not delete them right away, and admitted that he knew it was wrong when he was watching them" ;
+    dcterms:source <https://www.facebook.com/freedomlibertasinternational/posts/cheyenne-wyoming-per-cowboystatedaily-a-27-year-old-cheyenne-man-faces-three-chi/1124901409669180/> ;
+    ns4:admissionContext "d 19, but the user sent him videos with child pornography, according to court documents. Hayes said he watched the videos and did not del..." ;
+    ns4:admissionFrame "said_paraphrase" ;
+    ns4:admissionTheme "other" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns3:description "watched the videos and did not delete them right away, and admitted that he knew it was wrong when he was watching them" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/event/csam> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/sentence/1> .
+<https://w3id.org/caselinker/resource/location/cheyenne> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cheyenne" ;
+    ns3:name "Cheyenne" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/hayes> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hayes’" ;
+    ns3:name "Hayes’" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/laramie-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Laramie County" ;
+    ns3:name "Laramie County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "originally started talking to an unknown person on Kik" ;
+    dcterms:source <https://www.facebook.com/freedomlibertasinternational/posts/cheyenne-wyoming-per-cowboystatedaily-a-27-year-old-cheyenne-man-faces-three-chi/1124901409669180/> ;
+    ns4:admissionContext "At the Sheriff’s Office, Hayes said he originally started talking to an unknown person on Kik" ;
+    ns4:admissionFrame "said_paraphrase" ;
+    ns4:admissionTheme "tech_use" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns3:description "originally started talking to an unknown person on Kik" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033/event/csam> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/kik>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "was not at liberty to discuss what actions, if any, the school division has taken in light of the charges pending aga..." ;
-    dcterms:source <https://www.sovanow.com/articles/elementary-school-assistant-charged-with-child-porn-possession/> ;
-    ns1:admissionContext "been informed only that he was charged,” Worner said. Because it is a personnel matter, Worner said he was not at liberty to discuss what..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "was not at liberty to discuss what actions, if any, the school division has taken in light of the charges pending against Fitzgerald" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/mecklenburg-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Mecklenburg County" ;
-    uco-core:name "Mecklenburg County" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_1033/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_1033> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_1033/provenance> .

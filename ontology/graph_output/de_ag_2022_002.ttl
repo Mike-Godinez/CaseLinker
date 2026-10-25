@@ -1,70 +1,63 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2022_002> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T19:29:01.643418" ;
+<https://w3id.org/caselinker/resource/case/de_ag_2022_002> a ns2:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 01:01:29.849018" ;
     dcterms:identifier "de_ag_2022_002" ;
-    dcterms:modified "2026-09-15T19:29:01.643418" ;
+    dcterms:modified "2026-10-18 01:01:29.849018" ;
     dcterms:source <https://news.delaware.gov/2022/03/14/dcrpt-indicts-officer-for-sexual-solicitation-of-a-child>,
         "DE AG" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/delaware> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/de_ag_2022_002/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/de_ag_2022_002/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/de_ag_2022_002/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/de_ag_2022_002/legal-step/convicted> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/doj>,
-        <https://caselinker.up.railway.app/resource/agency/wilmington-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/delaware> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/delaware> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/de_ag_2022_002/phase/convicted> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/de_ag_2022_002/phase/convicted> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/de_ag_2022_002/legal-step/convicted> ;
+    ns2:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/doj>,
+        <https://w3id.org/caselinker/resource/agency/wilmington-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/delaware> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2022_002/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/de_ag_2022_002/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/de_ag_2022_002/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2022-03-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2022_002/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2022_002/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/de_ag_2022_002/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/de_ag_2022_002/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2022-03-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2022_002/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/doj> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/doj> a ns1:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/wilmington-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/wilmington-police-department> a ns1:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2022_002/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/de_ag_2022_002/sentence/1> .
+<https://w3id.org/caselinker/resource/case/de_ag_2022_002/legal-step/convicted> a ns6:Event,
+        ns6:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2022-03-14T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2022_002/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/de_ag_2022_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 30 .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2022_002/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/de_ag_2022_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2022_002/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/de_ag_2022_002/phase/convicted> a ns6:Phase,
+        ns5:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2022-03-14T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2022_002/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"26 years\"]" .
+<https://w3id.org/caselinker/resource/location/delaware> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Delaware" ;
+    ns7:name "Delaware" .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2022_002/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/delaware> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
+<https://w3id.org/caselinker/resource/case/de_ag_2022_002> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/de_ag_2022_002/provenance> .

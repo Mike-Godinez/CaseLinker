@@ -1,70 +1,117 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_449> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.581080" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:30.012411" ;
     dcterms:identifier "ncmec_2024_449" ;
-    dcterms:modified "2026-09-15T21:08:10.581080" ;
-    dcterms:source <https://www.missingkids.org/gethelpnow/cybertipline/cybertiplinedata>,
+    dcterms:modified "2026-10-17 23:04:30.012411" ;
+    dcterms:source <https://hutchpost.com/posts/7c375c5d-cc3c-4cec-8774-61bc8696d239>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/union-city> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_449/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_449/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_449/operation> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/union-city> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/arkansas>,
+        <https://w3id.org/caselinker/resource/location/kansas>,
+        <https://w3id.org/caselinker/resource/location/sedgwick-county>,
+        <https://w3id.org/caselinker/resource/location/wichita> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_449/phase/convicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_449/phase/convicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_449/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_449/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_449/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_449/legal-step/convicted> ;
+    ns1:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/united-states-attorney>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/arkansas>,
+        <https://w3id.org/caselinker/resource/location/kansas>,
+        <https://w3id.org/caselinker/resource/location/sedgwick-county>,
+        <https://w3id.org/caselinker/resource/location/wichita> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_449/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_449/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_449/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-03-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_449/event/possession> ;
+    ns1:perpetratorRegisteredSexOffender true ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_449/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_449/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_449/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_449/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-03-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_449/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_449/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_449/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/agency/hsi> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_449/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_449/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_449/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_449/sentence/1> .
+<https://w3id.org/caselinker/resource/agency/united-states-attorney> a ns7:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "United State's Attorney" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_449/operation> a cac-core:Event,
-        cacontology-taskforce:UndercoverUnit .
+<https://w3id.org/caselinker/resource/agency/usao> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_449/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child porn" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_449/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449/event/distribution> a ns7:Event,
+        ns4:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_449/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/location/union-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_449/charge/1> ;
+    ns4:hasProceedingBeginPoint "2024-03-16T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_449/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_449/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449/legal-step/convicted> a ns7:Event,
+        ns7:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2024-03-16T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 35 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449/phase/convicted> a ns7:Phase,
+        ns4:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2024-03-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/arkansas> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Arkansas" ;
+    ns3:name "Arkansas" .
+
+<https://w3id.org/caselinker/resource/location/kansas> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kansas" ;
+    ns3:name "Kansas" .
+
+<https://w3id.org/caselinker/resource/location/sedgwick-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sedgwick County" ;
+    ns3:name "Sedgwick County" .
+
+<https://w3id.org/caselinker/resource/location/wichita> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wichita" ;
+    ns3:name "Wichita" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449/event/possession> a ns1:CSAMIncident,
+        ns7:Event ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_449/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_449> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_449/provenance> .

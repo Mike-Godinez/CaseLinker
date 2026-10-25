@@ -1,102 +1,161 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.490482" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:19.339207" ;
     dcterms:identifier "ncmec_2025_352" ;
-    dcterms:modified "2026-09-15T21:27:13.490482" ;
-    dcterms:source <https://www.kcci.com/article/dylan-mills-urbandale-man-charged-with-possession-of-child-pornography/64302781>,
+    dcterms:modified "2026-10-18 00:01:19.339207" ;
+    dcterms:source <https://www.justice.gov/usao-ndia/pr/cherokee-iowa-man-federal-prison-possession-child-pornography>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/iowa>,
-        <https://caselinker.up.railway.app/resource/location/urbandale> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/iowa>,
-        <https://caselinker.up.railway.app/resource/location/urbandale> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cherokee>,
+        <https://w3id.org/caselinker/resource/location/cherokee-iowa>,
+        <https://w3id.org/caselinker/resource/location/iowa>,
+        <https://w3id.org/caselinker/resource/location/sioux-city>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_352/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_352/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_352/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_352/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_352/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_352/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_352/offense-event/charge-3> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/ceos>,
+        <https://w3id.org/caselinker/resource/agency/cherokee-police-department>,
+        <https://w3id.org/caselinker/resource/agency/iowa-division-of-criminal-investigation>,
+        <https://w3id.org/caselinker/resource/agency/usao>,
+        <https://w3id.org/caselinker/resource/agency/usms> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/cherokee>,
+        <https://w3id.org/caselinker/resource/location/cherokee-iowa>,
+        <https://w3id.org/caselinker/resource/location/iowa>,
+        <https://w3id.org/caselinker/resource/location/sioux-city>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-09-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_352/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_352/offense-event/charge-3> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_352/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-09-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_352/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_352/offense-event/charge-3> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_352/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of a minor" .
+<https://w3id.org/caselinker/resource/agency/ceos> a ns3:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/agency/cherokee-police-department> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/iowa-division-of-criminal-investigation> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/usms> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns2:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/charge/2> a ns2:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/charge/3> a ns2:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2025_352/offense-event/charge-3> ;
+    ns4:chargeCluster "child_exploitation" ;
+    ns4:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_352/offense-event/charge-3> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/event/project-safe-childhood> a ns6:Event,
+        ns3:ProjectSafeChildhoodOperation ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility: remains in custody" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_352/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_352/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_352/charge/3> ;
+    ns2:hasProceedingBeginPoint "2025-09-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2025_352/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_352/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_352/sentence/3> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/legal-step/sentenced> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2025-09-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-03-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/iowa> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/sentence/1> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "63 months" .
 
-<https://caselinker.up.railway.app/resource/location/urbandale> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/sentence/2> a ns2:CriminalSentence,
+        ns2:SupervisedRelease ;
+    rdfs:label "5-year supervised release" .
 
-<https://caselinker.up.railway.app/resource/platform/kik> a cacontology-platforms:MessagingService ;
-    rdfs:label "Kik" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/sentence/3> a ns2:CriminalSentence,
+        ns2:MonetaryPenalty ;
+    rdfs:label "$39,000" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/phase/sentenced> a ns6:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2025-09-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_352/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_352/facet/possession> .
+<https://w3id.org/caselinker/resource/location/cherokee> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cherokee" ;
+    ns5:name "Cherokee" .
 
+<https://w3id.org/caselinker/resource/location/cherokee-iowa> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cherokee, Iowa" ;
+    ns5:name "Cherokee, Iowa" .
+
+<https://w3id.org/caselinker/resource/location/iowa> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Iowa" ;
+    ns5:name "Iowa" .
+
+<https://w3id.org/caselinker/resource/location/sioux-city> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sioux City" ;
+    ns5:name "Sioux City" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns5:name "United States" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_352/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352/offense-event/charge-3> a ns1:ChildSexualAbuseEvent,
+        ns6:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_352> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_352/provenance> .

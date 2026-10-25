@@ -1,74 +1,89 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/la_ag_2025_004> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:54:27.036998" ;
+<https://w3id.org/caselinker/resource/case/la_ag_2025_004> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 05:29:42.021731" ;
     dcterms:identifier "la_ag_2025_004" ;
-    dcterms:modified "2026-09-10T19:54:27.036998" ;
+    dcterms:modified "2026-10-18 05:29:42.021731" ;
     dcterms:source <https://www.ag.state.la.us/Article/384>,
         "LA AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/la_ag_2025_004/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/la_ag_2025_004/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/la_ag_2025_004/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/la_ag_2025_004/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/hsi>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/louisiana-bureau-of-investigation>,
-        <https://caselinker.up.railway.app/resource/agency/new-orleans-city-park-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/new-orleans-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/new-orleans> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/la_ag_2025_004/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/la_ag_2025_004/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/la_ag_2025_004/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/la_ag_2025_004/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/la_ag_2025_004/operation> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/louisiana-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/new-orleans-city-park-police-department>,
+        <https://w3id.org/caselinker/resource/agency/new-orleans-police-department> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/new-orleans> .
 
-<https://caselinker.up.railway.app/resource/case/la_ag_2025_004/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/la_ag_2025_004/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/la_ag_2025_004/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/la_ag_2025_004/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/la_ag_2025_004/event/online-only> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/la_ag_2025_004/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/la_ag_2025_004/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/la_ag_2025_004/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/la_ag_2025_004/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/la_ag_2025_004/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/la_ag_2025_004/event/online-only> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/la_ag_2025_004/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/hsi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/hsi> a ns2:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/louisiana-bureau-of-investigation> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/louisiana-bureau-of-investigation> a ns2:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/new-orleans-city-park-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/new-orleans-city-park-police-department> a ns4:OrganizationLikeEntity,
+        ns2:LocalAgency ;
     rdfs:label "New Orleans City Park Police Department" .
 
-<https://caselinker.up.railway.app/resource/agency/new-orleans-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/new-orleans-police-department> a ns4:OrganizationLikeEntity,
+        ns2:LocalAgency ;
     rdfs:label "New Orleans Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/la_ag_2025_004/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/case/la_ag_2025_004/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the St. Martin Parish Jail" ;
+    ns5:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/la_ag_2025_004/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 45 .
+<https://w3id.org/caselinker/resource/case/la_ag_2025_004/operation> a ns4:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
 
-<https://caselinker.up.railway.app/resource/case/la_ag_2025_004/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/la_ag_2025_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 45 .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/case/la_ag_2025_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/la_ag_2025_004/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/la_ag_2025_004/phase/booked> a ns1:InitialPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/la_ag_2025_004/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/social-media> .
+<https://w3id.org/caselinker/resource/location/new-orleans> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Orleans" ;
+    ns3:name "New Orleans" .
 
+<https://w3id.org/caselinker/resource/case/la_ag_2025_004/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> .
+
+
+<https://w3id.org/caselinker/resource/case/la_ag_2025_004> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/la_ag_2025_004/provenance> .

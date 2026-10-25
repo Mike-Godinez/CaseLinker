@@ -1,59 +1,64 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_054> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T19:26:30.162214" ;
+<https://w3id.org/caselinker/resource/case/cbp_2026_054> a ns2:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 00:55:14.179908" ;
     dcterms:identifier "cbp_2026_054" ;
-    dcterms:modified "2026-09-15T19:26:30.162214" ;
+    dcterms:modified "2026-10-18 00:55:14.179908" ;
     dcterms:source <https://www.cbp.gov/newsroom/local-media-release/laredo-cbp-officers-apprehend-man-wanted-sexual-assault-child-0>,
         "CBP" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/laredo>,
-        <https://caselinker.up.railway.app/resource/location/texas>,
-        <https://caselinker.up.railway.app/resource/location/united-states> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/cbp_2026_054/event/distribution> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/laredo-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/laredo>,
-        <https://caselinker.up.railway.app/resource/location/texas>,
-        <https://caselinker.up.railway.app/resource/location/united-states> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/laredo>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/cbp_2026_054/event/distribution> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/laredo-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/laredo>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_054/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/cbp_2026_054/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/cbp_2026_054/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/cbp_2026_054/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_054/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/cbp_2026_054/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/cbp_2026_054/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/cbp_2026_054/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/laredo-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/laredo-police-department> a ns1:OrganizationLikeEntity,
+        ns4:LocalAgency ;
     rdfs:label "Laredo Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_054/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/cbp_2026_054/event/distribution> a ns1:Event,
+        <https://cacontology.projectvic.org/legal-outcomes#CSAM_Distribution> ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_054/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/cbp_2026_054/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_054/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/cbp_2026_054/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/laredo> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/laredo> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Laredo" ;
+    ns5:name "Laredo" .
 
-<https://caselinker.up.railway.app/resource/location/texas> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/texas> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns5:name "Texas" .
 
-<https://caselinker.up.railway.app/resource/location/united-states> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/united-states> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns5:name "United States" .
 
+
+<https://w3id.org/caselinker/resource/case/cbp_2026_054> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/cbp_2026_054/provenance> .

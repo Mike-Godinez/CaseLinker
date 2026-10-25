@@ -1,104 +1,118 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org#> .
+@prefix ns7: <https://cacontology.projectvic.org/production#> .
+@prefix ns8: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns9: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.511270" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_599/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_599> ;
+    ns4:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/agency/dupage-county-sheriffs-office> a ns8:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599> a ns6:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:27.171101" ;
     dcterms:identifier "ncmec_2022_599" ;
-    dcterms:modified "2026-09-15T20:45:06.511270" ;
-    dcterms:source <https://www.villages-news.com/2022/07/01/sex-offender-in-summerfield-arrested-after-tip-leads-to-child-pornography-activity/>,
+    dcterms:modified "2026-10-17 21:51:27.171101" ;
+    dcterms:source <https://abc7chicago.com/downers-grove-news-child-pornography-wyatt-kopka/11939635/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/marion-county>,
-        <https://caselinker.up.railway.app/resource/location/summerfield> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/legal-step/sentenced> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/marion-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/marion-county>,
-        <https://caselinker.up.railway.app/resource/location/summerfield> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/downers-grove>,
+        <https://w3id.org/caselinker/resource/location/dupage-county>,
+        <https://w3id.org/caselinker/resource/location/ill> ;
+    ns6:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_599/phase/charged> ;
+    ns6:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_599/phase/charged> ;
+    ns6:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_599/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_599/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_599/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_599/legal-proceeding> ;
+    ns6:investigationStatus "unknown" ;
+    ns8:involvesAgency <https://w3id.org/caselinker/resource/agency/dupage-county-sheriffs-office> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/downers-grove>,
+        <https://w3id.org/caselinker/resource/location/dupage-county>,
+        <https://w3id.org/caselinker/resource/location/ill> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/event/csam> ;
-    cacontology:perpetratorRegisteredSexOffender true ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/marion-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Marion County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
     rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/event/trust-violation> a ns1:AuthorityAbuse,
+        ns1:TrustViolation ;
+    ns1:violatesRelationship <https://w3id.org/caselinker/resource/case/ncmec_2022_599/relationship/coach> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_599/charge/1> ;
+    ns5:hasProceedingBeginPoint "2022-06-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns9:ageEstimate 30 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 32 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:victimAge 13 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/relationship/coach> a ns1:Coach,
+        ns1:CustodialRelationship ;
+    ns1:involvesChild <https://w3id.org/caselinker/resource/case/ncmec_2022_599/role/victim/1> ;
+    ns1:involvesCustodian <https://w3id.org/caselinker/resource/case/ncmec_2022_599/role/offender/1> ;
+    ns1:relationshipType "coach" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:ProbationSentence ;
-    rdfs:label "[\"probation\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/role/victim/1> a ns6:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns6:hasRoleBeginPoint "2022-06-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_599/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_599/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "was a long-time employee of about 10 years, but was not employed at the time of his arrest; he resigned days earlier" ;
+    dcterms:source <https://abc7chicago.com/downers-grove-news-child-pornography-wyatt-kopka/11939635/> ;
+    ns3:admissionContext "mnastics coach and also a daycare employee at the Elite Sports Complex in Downers Grove. Elite Sports Complex said he was a long-time emp..." ;
+    ns3:admissionFrame "said_paraphrase" ;
+    ns3:admissionTheme "other" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_599/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns2:description "was a long-time employee of about 10 years, but was not employed at the time of his arrest; he resigned days earlier" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/phase/charged> a ns6:LegalProcessPhase,
+        ns4:Phase ;
+    ns6:hasPhaseBeginPoint "2022-06-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/marion-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Marion County" ;
-    uco-core:name "Marion County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/role/offender/1> a ns6:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns6:hasRoleBeginPoint "2022-06-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_599/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_599/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/location/summerfield> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Summerfield" ;
-    uco-core:name "Summerfield" .
+<https://w3id.org/caselinker/resource/location/downers-grove> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Downers Grove" ;
+    ns2:name "Downers Grove" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_599/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_599/facet/csam> .
+<https://w3id.org/caselinker/resource/location/dupage-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Dupage County" ;
+    ns2:name "Dupage County" .
 
+<https://w3id.org/caselinker/resource/location/ill> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ill." ;
+    ns2:name "Ill." .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599/event/possession> a ns6:CSAMIncident,
+        ns4:Event ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_599/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_599> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_599/provenance> .

@@ -1,180 +1,99 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_487> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_487> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2020-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/hailey-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Hailey Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/agency/usao> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/event/project-safe-childhood> a cac-core:Event,
-        cacontology-multi:ProjectSafeChildhoodOperation .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2020-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2020-10-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 20 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:SupervisedRelease ;
-    rdfs:label "[\"36 months\", \"15 years of supervised release\", \"$60,000\", \"$5,100\"]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.169622" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_487> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:33.896778" ;
     dcterms:identifier "ncmec_2023_487" ;
-    dcterms:modified "2026-09-15T20:55:01.169622" ;
-    dcterms:source <https://www.justice.gov/usao-id/pr/hailey-man-sentenced-3-years-possession-child-pornography#:~:text=BOISE%20%E2%80%93%20Noah%20Fischman%2C%2020%2C,Davis%20announced%20today>,
+    dcterms:modified "2026-10-17 22:21:33.896778" ;
+    dcterms:source <https://www.kfvs12.com/2023/05/22/mt-vernon-ill-woman-facing-child-porn-charge/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/boise>,
-        <https://caselinker.up.railway.app/resource/location/hailey>,
-        <https://caselinker.up.railway.app/resource/location/idaho> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/event/project-safe-childhood>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/hailey-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/usao> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/boise>,
-        <https://caselinker.up.railway.app/resource/location/hailey>,
-        <https://caselinker.up.railway.app/resource/location/idaho> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ill>,
+        <https://w3id.org/caselinker/resource/location/jefferson-county>,
+        <https://w3id.org/caselinker/resource/location/mount-vernon>,
+        <https://w3id.org/caselinker/resource/location/mt-vernon> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_487/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_487/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_487/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_487/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/jefferson-county-sheriffs-office> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/ill>,
+        <https://w3id.org/caselinker/resource/location/jefferson-county>,
+        <https://w3id.org/caselinker/resource/location/mount-vernon>,
+        <https://w3id.org/caselinker/resource/location/mt-vernon> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2020-10-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_487/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-05-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_487/event/csam> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_487/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2020-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_487/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-05-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_487/event/csam> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_487/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/location/boise> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Boise" ;
-    uco-core:name "Boise" .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/location/hailey> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Hailey" ;
-    uco-core:name "Hailey" .
+<https://w3id.org/caselinker/resource/agency/jefferson-county-sheriffs-office> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/location/idaho> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Idaho" ;
-    uco-core:name "Idaho" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_487/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns2:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
-    rdfs:label "chat" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_487/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/platform/skype> a cac-core:DigitalSystemEntity,
-        cacontology-platforms:MessagingService ;
-    rdfs:label "Skype" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_487/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Jefferson County Jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_487/charge/1> ;
+    ns2:hasProceedingBeginPoint "2023-05-22T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/admission/2> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/skype> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_487/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 69 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/admission/2> ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/skype> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_487/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "accessing child pornography and to saving child pornography to his computer" ;
-    dcterms:source <https://www.justice.gov/usao-id/pr/hailey-man-sentenced-3-years-possession-child-pornography#:~:text=BOISE%20%E2%80%93%20Noah%20Fischman%2C%2020%2C,Davis%20announced%20today> ;
-    ns1:admissionContext "nsic examination of the computer revealed approximately 4,900 files of child pornography. Fischman admitted to accessing child pornograph..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "accessing child pornography and to saving child pornography to his computer" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_487/phase/charged> a ns1:LegalProcessPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2023-05-22T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_487/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "receiving child pornography from other users on Chat Step and Skype" ;
-    dcterms:source <https://www.justice.gov/usao-id/pr/hailey-man-sentenced-3-years-possession-child-pornography#:~:text=BOISE%20%E2%80%93%20Noah%20Fischman%2C%2020%2C,Davis%20announced%20today> ;
-    ns1:admissionContext "admitted to accessing child pornography and to saving child pornography to his computer. Fischman also admitted to receiving child pornog..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct",
-        "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_487/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "receiving child pornography from other users on Chat Step and Skype" .
+<https://w3id.org/caselinker/resource/location/ill> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ill." ;
+    ns3:name "Ill." .
 
+<https://w3id.org/caselinker/resource/location/jefferson-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Jefferson County" ;
+    ns3:name "Jefferson County" .
+
+<https://w3id.org/caselinker/resource/location/mount-vernon> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mount Vernon" ;
+    ns3:name "Mount Vernon" .
+
+<https://w3id.org/caselinker/resource/location/mt-vernon> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mt. Vernon" ;
+    ns3:name "Mt. Vernon" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_487/event/csam> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_487/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_487> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_487/provenance> .

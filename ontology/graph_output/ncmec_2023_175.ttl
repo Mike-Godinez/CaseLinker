@@ -1,84 +1,74 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_175> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.899969" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_175> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:29.949888" ;
     dcterms:identifier "ncmec_2023_175" ;
-    dcterms:modified "2026-09-15T20:55:00.899969" ;
-    dcterms:source <https://www.blackhillsfox.com/2023/10/26/rapid-city-man-pleads-guilty-possession-child-pornography/>,
+    dcterms:modified "2026-10-17 22:21:29.949888" ;
+    dcterms:source <https://www.geaugamapleleaf.com/news/news-briefs-99/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/rapid-city>,
-        <https://caselinker.up.railway.app/resource/location/sd> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_175/phase/pleaded-guilty> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_175/phase/pleaded-guilty> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_175/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_175/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_175/legal-step/pleaded-guilty> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/rapid-city>,
-        <https://caselinker.up.railway.app/resource/location/sd> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/geauga-county>,
+        <https://w3id.org/caselinker/resource/location/newbury-township> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_175/phase/indicted> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_175/phase/indicted> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_175/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_175/legal-proceeding> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/geauga-county>,
+        <https://w3id.org/caselinker/resource/location/newbury-township> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_175/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_175/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_175/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_175/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2020-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_175/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_175/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_175/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_175/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_175/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_175/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2020-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_175/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_175/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_175/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child porn" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_175/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns4:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_175/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_175/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_175/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_175/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_175/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_175/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_175/charge/1> ;
+    ns4:hasProceedingBeginPoint "2020-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_175/legal-step/pleaded-guilty> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:PleaBargaining ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_175/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_175/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 68 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_175/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_175/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_175/phase/indicted> a ns2:LegalProcessPhase,
+        ns5:Phase ;
+    ns2:hasPhaseBeginPoint "2020-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_175/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"10 years\", \"$250,000\"]" .
+<https://w3id.org/caselinker/resource/location/geauga-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Geauga County" ;
+    ns3:name "Geauga County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_175/phase/pleaded-guilty> a cac-core:Phase,
-        cacontology-legal-outcomes:PreTrialPhase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/newbury-township> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Newbury Township" ;
+    ns3:name "Newbury Township" .
 
-<https://caselinker.up.railway.app/resource/location/rapid-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_175/event/csam> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_175/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/location/sd> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_175/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_175/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2023_175> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_175/provenance> .

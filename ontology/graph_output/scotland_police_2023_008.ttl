@@ -1,0 +1,76 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_008> a ns5:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 14:18:20.308915" ;
+    dcterms:identifier "scotland_police_2023_008" ;
+    dcterms:modified "2026-10-18 14:18:20.308915" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scotland_police_2023_008/provenance> ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2023/june/kenneth-divers-sentenced-for-non-recent-sexual-offences-in-renfrewshire/>,
+        "SCOTLAND POLICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/paisley>,
+        <https://w3id.org/caselinker/resource/location/renfrewshire> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/scotland_police_2023_008/phase/sentenced> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/scotland_police_2023_008/phase/sentenced> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/scotland_police_2023_008/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2023_008/legal-step/sentenced> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/police-scotland> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/paisley>,
+        <https://w3id.org/caselinker/resource/location/renfrewshire> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_008/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2023-05-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2023_008/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_008/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2023-05-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2023_008/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/police-scotland> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_008/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasProceedingBeginPoint "2023-05-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:resultsSentence <https://w3id.org/caselinker/resource/case/scotland_police_2023_008/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_008/legal-step/sentenced> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2023-05-25T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_008/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 78 .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_008/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_008/sentence/1> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "five years" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_008/phase/sentenced> a ns6:Phase,
+        ns3:SentencingPhase ;
+    ns5:hasPhaseBeginPoint "2023-05-25T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/paisley> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Paisley" ;
+    ns1:name "Paisley" .
+
+<https://w3id.org/caselinker/resource/location/renfrewshire> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Renfrewshire" ;
+    ns1:name "Renfrewshire" .
+

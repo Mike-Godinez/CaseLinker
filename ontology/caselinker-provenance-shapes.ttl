@@ -1,0 +1,102 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix cac-core: <https://cacontology.projectvic.org/core#> .
+@prefix caselinker: <https://w3id.org/caselinker/ns/provenance#> .
+
+# Provenance terms are only the w3id namespace. Current graph_output writes that
+# namespace (one provenance file per press-release case).
+
+caselinker:ExtractionRunShape a sh:NodeShape ;
+    sh:targetClass prov:Activity ;
+    sh:sparql [
+        sh:message "An extraction run needs ruleSetVersion." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS { $this <https://w3id.org/caselinker/ns/provenance#ruleSetVersion> ?v1 }
+            }
+        """
+    ] .
+
+caselinker:MethodShape a sh:NodeShape ;
+    sh:targetClass prov:SoftwareAgent ;
+    sh:sparql [
+        sh:message "An extractor needs evidenceFamily." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS { $this <https://w3id.org/caselinker/ns/provenance#evidenceFamily> ?v1 }
+            }
+        """
+    ] .
+
+caselinker:AssertionShape a sh:NodeShape ;
+    sh:targetClass oa:Annotation ;
+    sh:property [ sh:path oa:hasTarget ; sh:minCount 1 ; sh:nodeKind sh:BlankNodeOrIRI ] ;
+    sh:property [
+        sh:path cac-core:hasConfidence ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:decimal
+    ] ;
+    sh:property [
+        sh:path cac-core:issuedAtTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTimeStamp
+    ] ;
+    sh:property [
+        sh:path cac-core:generatedBy ;
+        sh:minCount 1 ;
+        sh:class prov:Activity
+    ] ;
+    sh:property [
+        sh:path cac-core:usesMethod ;
+        sh:minCount 1 ;
+        sh:class prov:SoftwareAgent
+    ] .
+
+caselinker:PositionShape a sh:NodeShape ;
+    sh:targetClass oa:TextPositionSelector ;
+    sh:property [ sh:path oa:start ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:nonNegativeInteger ] ;
+    sh:property [ sh:path oa:end ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:nonNegativeInteger ] .
+
+caselinker:QuoteShape a sh:NodeShape ;
+    sh:targetClass oa:TextQuoteSelector ;
+    sh:property [ sh:path oa:exact ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+caselinker:FieldResolutionShape a sh:NodeShape ;
+    sh:targetSubjectsOf caselinker:resolutionStatus ;
+    sh:property [
+        sh:path caselinker:resolutionStatus ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string
+    ] ;
+    sh:property [
+        sh:path caselinker:ruleSetVersion ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string
+    ] ;
+    sh:property [
+        sh:path prov:wasGeneratedBy ;
+        sh:minCount 1 ;
+        sh:class prov:Activity
+    ] .
+
+caselinker:GroundEntityShape a sh:NodeShape ;
+    sh:targetSubjectsOf caselinker:groundStatus ;
+    sh:property [
+        sh:path caselinker:groundStatus ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string
+    ] ;
+    sh:property [
+        sh:path prov:wasGeneratedBy ;
+        sh:minCount 1 ;
+        sh:class prov:Activity
+    ] .

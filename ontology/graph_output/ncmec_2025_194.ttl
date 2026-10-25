@@ -1,88 +1,131 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.331538" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194> a ns4:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:17.578970" ;
     dcterms:identifier "ncmec_2025_194" ;
-    dcterms:modified "2026-09-15T21:27:13.331538" ;
-    dcterms:source <https://www.pinellassheriff.gov/Contents/ContentItems/40jfr9vpgc468x3at33zpv57n9>,
+    dcterms:modified "2026-10-18 00:01:17.578970" ;
+    dcterms:source <https://www.nbcmiami.com/news/local/man-on-probation-in-2017-child-porn-conviction-facing-new-child-porn-charges-miami-pd/3567766/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/pinellas-county>,
-        <https://caselinker.up.railway.app/resource/location/seminole> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/pinellas-county>,
-        <https://caselinker.up.railway.app/resource/location/seminole> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/miami>,
+        <https://w3id.org/caselinker/resource/location/miami-gardens>,
+        <https://w3id.org/caselinker/resource/location/south-florida>,
+        <https://w3id.org/caselinker/resource/location/the-city-of-miami> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_194/phase/sentenced> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_194/phase/sentenced> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_194/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_194/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_194/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_194/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_194/operation> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/miami-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/miami>,
+        <https://w3id.org/caselinker/resource/location/miami-gardens>,
+        <https://w3id.org/caselinker/resource/location/south-florida>,
+        <https://w3id.org/caselinker/resource/location/the-city-of-miami> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_194/event/possession> ;
+    ns4:perpetratorRegisteredSexOffender true ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_194/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_194/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_194/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "Possession of Child Pornography and 2" ;
-    cacontology-legal-outcomes:indictmentCounts 4 .
+<https://w3id.org/caselinker/resource/agency/miami-police-department> a ns7:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194/charge/2> a cacontology-legal-outcomes:CSAM_Distribution,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "transmission of child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/charge/1> a ns2:CriminalCharge ;
+    rdfs:label "possessing images of sexual performance by a" ;
+    ns2:indictmentCounts 15 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/charge/2> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns2:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/event/distribution> a ns6:Event,
+        ns2:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 43 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_194/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_194/charge/2> ;
+    ns2:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2025_194/sentence/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/legal-step/sentenced> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/operation> a ns6:Event,
+        <https://cacontology.projectvic.org/taskforce#ReactiveOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 33 .
 
-<https://caselinker.up.railway.app/resource/location/pinellas-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/seminole> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/sentence/1> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "84 months" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_194/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_194/facet/possession> .
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/phase/sentenced> a ns6:Phase,
+        ns2:SentencingPhase ;
+    ns4:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/florida> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Florida" ;
+    ns3:name "Florida" .
+
+<https://w3id.org/caselinker/resource/location/miami> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Miami" ;
+    ns3:name "Miami" .
+
+<https://w3id.org/caselinker/resource/location/miami-gardens> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Miami Gardens" ;
+    ns3:name "Miami Gardens" .
+
+<https://w3id.org/caselinker/resource/location/south-florida> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Florida" ;
+    ns3:name "South Florida" .
+
+<https://w3id.org/caselinker/resource/location/the-city-of-miami> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the City of Miami" ;
+    ns3:name "the City of Miami" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194/event/possession> a ns4:CSAMIncident,
+        ns6:Event ;
+    ns4:usesChannel <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_194/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_194> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_194/provenance> .

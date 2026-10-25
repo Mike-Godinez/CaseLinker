@@ -1,0 +1,143 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 14:24:47.336175" ;
+    dcterms:identifier "nbi_2025_013" ;
+    dcterms:modified "2026-10-18 14:24:47.336175" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nbi_2025_013/provenance> ;
+    dcterms:source <https://nbi.gov.ph/press_releases/2025/06112025/8110/>,
+        "NBI" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/davao>,
+        <https://w3id.org/caselinker/resource/location/davao-city>,
+        <https://w3id.org/caselinker/resource/location/davao-oriental>,
+        <https://w3id.org/caselinker/resource/location/lupon-davao-oriental>,
+        <https://w3id.org/caselinker/resource/location/mati-city> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/nbi_2025_013/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/nbi_2025_013/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/nbi_2025_013/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/nbi_2025_013/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/nbi_2025_013/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/nbi_2025_013/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/nbi_2025_013/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/nbi_2025_013/tech/cybertipline> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/belgian-police-department>,
+        <https://w3id.org/caselinker/resource/agency/department-of-social-welfare-and-development>,
+        <https://w3id.org/caselinker/resource/agency/doj-iacat>,
+        <https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/office-of-city-prosecutor> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/davao>,
+        <https://w3id.org/caselinker/resource/location/davao-city>,
+        <https://w3id.org/caselinker/resource/location/davao-oriental>,
+        <https://w3id.org/caselinker/resource/location/lupon-davao-oriental>,
+        <https://w3id.org/caselinker/resource/location/mati-city> .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
+
+<https://w3id.org/caselinker/resource/platform/webcam-platform> a <https://cacontology.projectvic.org/platforms#VideoStreamingPlatform> ;
+    rdfs:label "Webcam platform" .
+
+<https://w3id.org/caselinker/resource/agency/belgian-police-department> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/department-of-social-welfare-and-development> a ns7:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "Department of Social Welfare and Development" .
+
+<https://w3id.org/caselinker/resource/agency/doj-iacat> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/office-of-city-prosecutor> a ns7:OrganizationLikeEntity,
+        ns5:LocalAgency ;
+    rdfs:label "Office of City Prosecutor" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/charge/1> a ns6:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/event/distribution> a ns7:Event,
+        ns6:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/event/multi-jurisdiction> a ns7:Event,
+        ns5:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 ;
+    ns5:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/event/trafficking> a ns7:Event,
+        ns6:SexTrafficking ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/event/trust-violation> a ns2:CustodialAbuse,
+        ns2:TrustViolation ;
+    ns2:violatesRelationship <https://w3id.org/caselinker/resource/case/nbi_2025_013/relationship/father> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/nbi_2025_013/charge/1> ;
+    ns6:hasProceedingBeginPoint "2025-06-03T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/relationship/father> a ns2:CustodialRelationship,
+        ns2:FamilialRelationship ;
+    ns2:involvesChild <https://w3id.org/caselinker/resource/case/nbi_2025_013/role/victim/1> ;
+    ns2:involvesCustodian <https://w3id.org/caselinker/resource/case/nbi_2025_013/role/offender/1> ;
+    ns2:relationshipType "father" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-06-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/nbi_2025_013/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-06-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/nbi_2025_013/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_013/phase/arrested> a ns1:InitialPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2025-06-03T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/davao> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Davao" ;
+    ns3:name "Davao" .
+
+<https://w3id.org/caselinker/resource/location/davao-city> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Davao City" ;
+    ns3:name "Davao City" .
+
+<https://w3id.org/caselinker/resource/location/davao-oriental> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Davao Oriental" ;
+    ns3:name "Davao Oriental" .
+
+<https://w3id.org/caselinker/resource/location/lupon-davao-oriental> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lupon, Davao Oriental" ;
+    ns3:name "Lupon, Davao Oriental" .
+
+<https://w3id.org/caselinker/resource/location/mati-city> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mati City" ;
+    ns3:name "Mati City" .
+

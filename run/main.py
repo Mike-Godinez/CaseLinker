@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
 from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 from starlette.middleware.base import BaseHTTPMiddleware
-from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 from typing import List, Dict, Any, Optional, Tuple
@@ -70,6 +70,12 @@ if os.getenv("DATABASE_URL"):
 else:
     from storage import CaseStorage
     print("✅ Using SQLite database (local development)")
+from corpus_export import iter_corpus_json
+from platform_affordance_evidence_freshness import (
+    read_corpus_identity,
+    require_fresh_block,
+    with_snapshot_freshness,
+)
 from facet_tree import (
     DEFAULT_FACET_ORDER,
     ERA_PERIOD_BUCKETS,
@@ -192,6 +198,37 @@ class _SparqlCorsMiddleware(BaseHTTPMiddleware):
 
 app.add_middleware(_SparqlCorsMiddleware)
 
+
+class _HeadMatchesGetMiddleware(BaseHTTPMiddleware):
+    """Answer HEAD on GET routes with that route's status and headers, and no body.
+
+    The page routes are registered as GET only. A HEAD request otherwise falls
+    through as 405, which breaks clients that probe the app before following
+    a redirect.
+    """
+
+    async def dispatch(self, request, call_next):
+        # Do not buffer GET /api/corpus. HEAD on that route stays a normal HEAD.
+        if request.url.path.rstrip("/") == "/api/corpus":
+            return await call_next(request)
+        if request.method != "HEAD":
+            return await call_next(request)
+        request.scope["method"] = "GET"
+        response = await call_next(request)
+        body = b""
+        async for chunk in response.body_iterator:
+            body += chunk
+        headers = {
+            key: value
+            for key, value in response.headers.items()
+            if key.lower() != "content-length"
+        }
+        headers["content-length"] = str(len(body))
+        return Response(status_code=response.status_code, headers=headers)
+
+
+app.add_middleware(_HeadMatchesGetMiddleware)
+
 # Structured logging
 logging.basicConfig(
     level=logging.INFO,
@@ -248,6 +285,12 @@ def _is_local_request(request: Request) -> bool:
 _BULK_CASES_FORBIDDEN_DETAIL = (
     "Bulk corpus export is restricted to local usage and access holders. "
     "To request full access to the corpus, please email mramachandra@umass.edu for the API key."
+)
+
+_CORPUS_FORBIDDEN_DETAIL = (
+    "Corpus export is restricted to local usage and trusted API key holders. "
+    "GET /api/corpus requires a CaseLinker-Key listed in CASELINKER_TRUSTED_KEYS. "
+    "Email mramachandra@umass.edu to request a key."
 )
 
 _LIFECYCLE_API_FORBIDDEN_DETAIL = (
@@ -1648,6 +1691,25 @@ def get_all_cases(request: Request, include_raw_data: bool = False):
             return []
 
 
+@app.get("/api/corpus")
+@limiter.limit("100/minute")
+def get_corpus(request: Request):
+    """
+    Full database export for rebuilding a local sqlite file.
+
+    One JSON object. Each present corpus table is an array of row objects keyed
+    by column name. Tables this database does not have are omitted. Rows are
+    read from this server's database (SQLite, or Postgres when DATABASE_URL is set).
+    """
+    if not _has_bulk_corpus_access(request):
+        raise HTTPException(status_code=403, detail=_CORPUS_FORBIDDEN_DETAIL)
+    return StreamingResponse(
+        iter_corpus_json(storage),
+        media_type="application/json",
+        headers={"Cache-Control": "no-store"},
+    )
+
+
 @app.get("/api/cases-summaries-chunk")
 @limiter.limit("240/minute")
 def cases_summaries_chunk(
@@ -2082,6 +2144,52 @@ def get_case(request: Request, case_id: str):
     return case
 
 
+_ASSERTION_FIELDS = ("age", "sentence", "investigation_type", "date")
+_REVIEW_STATUSES = ("needs_review", "disagreement", "partial")
+
+
+@app.get("/api/cases/{case_id}/assertions")
+def get_case_assertions(request: Request, case_id: str, field: Optional[str] = None):
+    """
+    Per-method field assertions (method, version, family, role, span) and the latest
+    resolutions for one case. Same daily limit as GET /api/cases/{case_id}; public
+    callers get offsets but not the narrative excerpts (span_text, LLM quotes).
+    """
+    _enforce_case_id_daily_limit(request)
+    field = (field or "").strip() or None
+    if field and field not in _ASSERTION_FIELDS:
+        raise HTTPException(status_code=400, detail=f"field must be one of {list(_ASSERTION_FIELDS)}")
+    out = storage.get_case_assertions(case_id, field=field)
+    if not out["assertions"] and not out["resolutions"] and storage.get_case(case_id) is None:
+        raise HTTPException(status_code=404, detail="Case not found")
+    if not _has_bulk_corpus_access(request):
+        for a in out["assertions"]:
+            a.pop("span_text", None)
+            (a.get("extras") or {}).pop("quote", None)
+    return out
+
+
+@app.get("/api/assertions/disagreements")
+@limiter.limit("60/minute")
+def get_field_disagreements(
+    request: Request,
+    field: Optional[str] = None,
+    status: Optional[str] = None,
+    limit: int = 50,
+    offset: int = 0,
+):
+    """Cases whose latest 3.0 resolution is needs_review, disagreement, or partial."""
+    field = (field or "").strip() or None
+    status = (status or "").strip() or None
+    if field and field not in _ASSERTION_FIELDS:
+        raise HTTPException(status_code=400, detail=f"field must be one of {list(_ASSERTION_FIELDS)}")
+    if status and status not in _REVIEW_STATUSES:
+        raise HTTPException(status_code=400, detail=f"status must be one of {list(_REVIEW_STATUSES)}")
+    return storage.get_field_disagreements(
+        field=field, status=status, limit=min(max(limit, 1), 500), offset=max(offset, 0)
+    )
+
+
 @app.get("/api/stats")
 @limiter.limit("60/minute")
 def get_stats(request: Request):
@@ -2202,6 +2310,28 @@ def get_stats(request: Request):
             if case.get('perpetrator_gender'):
                 total_features += 1
         
+        # Prefer publication starts for corpus bounds. Year-only rows historically
+        # stored end=YYYY-12-31 (#23); ignore those synthetic Dec 31 ends so
+        # get_corpus_stats does not advertise a future cutoff.
+        pub_starts: list[str] = []
+        pub_ends: list[str] = []
+        for c in cases:
+            dr = c.get("date_range") if isinstance(c.get("date_range"), dict) else {}
+            start = c.get("date_start") or (dr.get("start") if dr else None)
+            end = c.get("date_end") if c.get("date_end") is not None else (dr.get("end") if dr else None)
+            if start:
+                pub_starts.append(str(start))
+            if end:
+                end_s = str(end)
+                start_s = str(start) if start else ""
+                year_bucket = (
+                    len(start_s) >= 10
+                    and start_s.endswith("-01-01")
+                    and end_s == f"{start_s[:4]}-12-31"
+                )
+                if not year_bucket:
+                    pub_ends.append(end_s)
+        corpus_end = max(pub_ends) if pub_ends else (max(pub_starts) if pub_starts else None)
         result = {
             "total_cases": len(cases),
             "sources": list(sources),
@@ -2209,8 +2339,8 @@ def get_stats(request: Request):
             "unique_features": total_features,
             "unique_organizations": len(distinct_named_agencies(agency_labels)),
             "date_range": {
-                "start": min((c.get('date_range', {}).get('start') for c in cases if c.get('date_range', {}).get('start')), default=None),
-                "end": max((c.get('date_range', {}).get('end') for c in cases if c.get('date_range', {}).get('end')), default=None)
+                "start": min(pub_starts) if pub_starts else None,
+                "end": corpus_end,
             }
         }
         
@@ -2310,6 +2440,29 @@ def get_tagged_cases(request: Request, selected_tags: List[Dict[str, str]]):
     return _sanitize_tagged_cases_response(request, out)
 
 
+_CASE_IDS_FILTER_KEYS = (
+    "organization",
+    "relationship",
+    "prosecution_status",
+    "age_range",
+    "severity_indicator",
+    "platform",
+    "year",
+    "investigation_type",
+)
+
+
+def _parse_age_range_bounds(age_range: str) -> tuple[int, int]:
+    """Parse ``min-max`` age_range; raises ValueError when invalid."""
+    parts = age_range.strip().split("-")
+    if len(parts) != 2:
+        raise ValueError("age_range must look like '25-29'")
+    age_min, age_max = int(parts[0]), int(parts[1])
+    if age_min > age_max:
+        raise ValueError("age_range min must be <= max")
+    return age_min, age_max
+
+
 @app.get("/api/case-ids-by-filter")
 @limiter.limit("100/minute")
 def get_case_ids_by_filter(
@@ -2326,22 +2479,63 @@ def get_case_ids_by_filter(
     """
     Get case IDs filtered by various criteria.
     Returns just the case IDs that match the filter.
+
+    Requires at least one recognized filter. Empty / unknown-only queries no longer
+    dump the full corpus (#27).
     """
     try:
+        organization = (organization or "").strip() or None
+        relationship = (relationship or "").strip() or None
+        prosecution_status = (prosecution_status or "").strip() or None
+        age_range = (age_range or "").strip() or None
+        severity_indicator = (severity_indicator or "").strip() or None
+        platform = (platform or "").strip() or None
+        year = (year or "").strip() or None
+        investigation_type = (investigation_type or "").strip() or None
+
+        applied = {
+            "organization": organization,
+            "relationship": relationship,
+            "prosecution_status": prosecution_status,
+            "age_range": age_range,
+            "severity_indicator": severity_indicator,
+            "platform": platform,
+            "year": year,
+            "investigation_type": investigation_type,
+        }
+        if not any(applied.values()):
+            unknown = [
+                k for k in request.query_params.keys()
+                if k not in _CASE_IDS_FILTER_KEYS and k not in ("token",)
+            ]
+            detail = {
+                "error": "Provide at least one filter",
+                "allowed": list(_CASE_IDS_FILTER_KEYS),
+                "hint": "Use POST /api/return-tagged-cases or MCP filter_cases_by_tags for topic/platform intersections.",
+            }
+            if unknown:
+                detail["ignored_unknown_keys"] = unknown
+            raise HTTPException(status_code=400, detail=detail)
+
+        if age_range:
+            try:
+                age_min, age_max = _parse_age_range_bounds(age_range)
+            except ValueError as exc:
+                raise HTTPException(
+                    status_code=400,
+                    detail={
+                        "error": f"Invalid age_range: {exc}",
+                        "age_range": age_range,
+                        "hint": "Use min-max integers, e.g. '25-29'.",
+                    },
+                ) from exc
+        else:
+            age_min = age_max = None
+
         current_count = get_case_count()
         rk = None
         if REDIS_AVAILABLE:
-            filter_params = {
-                "organization": organization,
-                "relationship": relationship,
-                "prosecution_status": prosecution_status,
-                "age_range": age_range,
-                "severity_indicator": severity_indicator,
-                "platform": platform,
-                "year": year,
-                "investigation_type": investigation_type,
-            }
-            ph = _redis_cache_payload_hash(filter_params)
+            ph = _redis_cache_payload_hash(applied)
             rk = get_cache_key("case-ids-filter", h=ph, version=current_count)
             cached = get_cached(rk)
             if cached is not None and "error" not in cached:
@@ -2353,7 +2547,7 @@ def get_case_ids_by_filter(
             if isinstance(field, str):
                 try:
                     return json.loads(field)
-                except:
+                except Exception:
                     return []
             return field if field else []
         
@@ -2361,7 +2555,7 @@ def get_case_ids_by_filter(
         
         # Filter by organization (exact match on stored agencies_involved)
         if organization:
-            org_search = organization.strip()
+            org_search = organization
             filtered_cases = [
                 c for c in filtered_cases
                 if org_search in _agencies_involved_for_case(c, parse_field)
@@ -2399,22 +2593,18 @@ def get_case_ids_by_filter(
         
         # Filter by age range (e.g., "25-29")
         # Match bubble chart logic: only count ages between 18-99
-        if age_range:
-            try:
-                age_min, age_max = map(int, age_range.split('-'))
-                filtered_cases = [
-                    c for c in filtered_cases
-                    if c.get('perpetrator_age') and (
-                        (isinstance(c.get('perpetrator_age'), list) and
-                         any(age_min <= age <= age_max for age in c.get('perpetrator_age') 
-                             if isinstance(age, (int, float)) and 18 <= age <= 99)) or
-                        (isinstance(c.get('perpetrator_age'), (int, float)) and 
-                         18 <= c.get('perpetrator_age') <= 99 and
-                         age_min <= c.get('perpetrator_age') <= age_max)
-                    )
-                ]
-            except:
-                pass
+        if age_range is not None and age_min is not None and age_max is not None:
+            filtered_cases = [
+                c for c in filtered_cases
+                if c.get('perpetrator_age') and (
+                    (isinstance(c.get('perpetrator_age'), list) and
+                     any(age_min <= age <= age_max for age in c.get('perpetrator_age') 
+                         if isinstance(age, (int, float)) and 18 <= age <= 99)) or
+                    (isinstance(c.get('perpetrator_age'), (int, float)) and 
+                     18 <= c.get('perpetrator_age') <= 99 and
+                     age_min <= c.get('perpetrator_age') <= age_max)
+                )
+            ]
         
         # Filter by severity indicator
         if severity_indicator:
@@ -2423,11 +2613,15 @@ def get_case_ids_by_filter(
                 if severity_indicator in parse_field(c.get('severity_indicators', []))
             ]
         
-        # Filter by platform
+        # Filter by platform (case-insensitive; aligns with return_tagged_cases)
         if platform:
+            plat_key = platform.lower()
             filtered_cases = [
                 c for c in filtered_cases
-                if platform in parse_field(c.get('platforms_used', []))
+                if any(
+                    isinstance(p, str) and p.lower() == plat_key
+                    for p in parse_field(c.get('platforms_used', []))
+                )
             ]
         
         # Filter by year
@@ -2453,20 +2647,14 @@ def get_case_ids_by_filter(
         out = {
             "case_ids": case_ids,
             "count": len(case_ids),
-            "filter": {
-                "organization": organization,
-                "relationship": relationship,
-                "prosecution_status": prosecution_status,
-                "age_range": age_range,
-                "severity_indicator": severity_indicator,
-                "platform": platform,
-                "year": year,
-                "investigation_type": investigation_type
-            }
+            "filter": applied,
+            "applied_filters": {k: v for k, v in applied.items() if v},
         }
         if REDIS_AVAILABLE and rk:
             set_cached(rk, out, ttl=3600)
         return out
+    except HTTPException:
+        raise
     except Exception as e:
         from error_handler import handle_error
         return handle_error(e)
@@ -3565,10 +3753,11 @@ Rules:
 - Output ONLY a single SPARQL query. No prose, no markdown fences, no comments outside SPARQL.
 - Query forms only: SELECT, ASK, CONSTRUCT, or DESCRIBE. Never Update, INSERT, DELETE, LOAD, CLEAR, DROP, or SERVICE.
 - Prefer SELECT with an outer LIMIT <= 50 unless the user asks for a count/ASK.
-- Use the union default graph (no GRAPH) unless the user asks about one case; then use GRAPH <https://caselinker.up.railway.app/resource/case/{case_id}>.
+- Use the union default graph (no GRAPH) unless the user asks about one case; then use GRAPH <https://w3id.org/caselinker/resource/case/{case_id}>.
+- Evidence for one case: the case node dcterms:provenance points at GRAPH <https://w3id.org/caselinker/resource/case/{case_id}/provenance>. Inside it, the case IRI prov:wasGeneratedBy the extraction activity, and each annotation prov:wasGeneratedBy that same activity. Do not treat the provenance graph as a case.
 - Case ids look like nj_ag_2017_001. dcterms:identifier on cac:CACInvestigation holds the case_id.
-- Platform IRIs: https://caselinker.up.railway.app/resource/platform/{slug}
-- Agency IRIs: https://caselinker.up.railway.app/resource/agency/{slug}
+- Platform IRIs: https://w3id.org/caselinker/resource/platform/{slug}
+- Agency IRIs: https://w3id.org/caselinker/resource/agency/{slug}
 
 Prefixes (use as needed):
 PREFIX cac: <https://cacontology.projectvic.org#>
@@ -3581,7 +3770,7 @@ Useful patterns:
 - Investigation: ?case a cac:CACInvestigation
 - Platform use: ?event cac:usesChannel ?platform . ?case cac:hasStep ?event . ?platform rdfs:label ?label
 - Agency: ?case cac-multi:involvesAgency ?agency . ?agency rdfs:label ?label
-- Press-release graphs only: FILTER(STRSTARTS(STR(?g), "https://caselinker.up.railway.app/resource/case/"))
+- Press-release case graphs only: FILTER(STRSTARTS(STR(?g), "https://w3id.org/caselinker/resource/case/") && !STRENDS(STR(?g), "/provenance"))
 """
 
 
@@ -3976,8 +4165,8 @@ async def serve_case_studies():
 # default ephemeral filesystem they reset on redeploy. Mount a volume at /data
 # (or swap to the DB) for durable storage.
 
-_Q1_EVIDENCE_PATH = Path(__file__).parent.parent / "ontology" / "q1" / "q1_evidence.json"
-_Q1_VALID_TIERS = frozenset({"stated", "inferred", "named_only"})
+_PLATFORM_AFFORDANCE_EVIDENCE_PATH = Path(__file__).parent.parent / "ontology" / "platform_affordance_evidence" / "platform_affordance_evidence.json"
+_PLATFORM_AFFORDANCE_EVIDENCE_VALID_TIERS = frozenset({"stated", "inferred", "named_only"})
 
 _CASE_STUDIES_CONTENT_PATH = Path(__file__).parent.parent / "data" / "case_studies.json"
 _CASE_STUDIES_NOTES_PATH = Path(__file__).parent.parent / "data" / "case_study_notes.json"
@@ -3985,20 +4174,55 @@ _CASE_STUDIES_NOTES_MAX_NAME = 80
 _CASE_STUDIES_NOTES_MAX_TEXT = 1500
 
 
-def _load_q1_evidence() -> Dict[str, Any]:
-    if not _Q1_EVIDENCE_PATH.exists():
-        raise HTTPException(status_code=404, detail="Q1 evidence data not available")
+def _live_platform_affordance_corpus() -> Optional[Dict[str, Any]]:
+    """Case count and extraction-run fingerprint for the database this process serves.
+
+    None means the comparison was not run. Callers must treat that as unverified,
+    not as a match.
+    """
+    conn = None
+    pooled = False
     try:
-        data = json.loads(read_utf8_text_file(_Q1_EVIDENCE_PATH))
+        if os.getenv("DATABASE_URL"):
+            from storage_postgres import get_connection, return_connection
+
+            conn = get_connection()
+            pooled = True
+            return read_corpus_identity(conn)
+        from storage import get_connection
+
+        conn = get_connection(str(storage.db_path))
+        return read_corpus_identity(conn)
+    except Exception:
+        logger.exception("platform affordance corpus identity unavailable")
+        return None
+    finally:
+        if conn is not None:
+            try:
+                if pooled:
+                    from storage_postgres import return_connection
+
+                    return_connection(conn)
+                else:
+                    conn.close()
+            except Exception:
+                logger.exception("platform affordance corpus connection close failed")
+
+
+def _load_platform_affordance_evidence() -> Dict[str, Any]:
+    if not _PLATFORM_AFFORDANCE_EVIDENCE_PATH.exists():
+        raise HTTPException(status_code=404, detail="platform affordance evidence data not available")
+    try:
+        data = json.loads(read_utf8_text_file(_PLATFORM_AFFORDANCE_EVIDENCE_PATH))
     except (json.JSONDecodeError, OSError) as e:
-        logger.exception("q1 evidence load failed: %s", e)
-        raise HTTPException(status_code=500, detail="Failed to load Q1 evidence")
+        logger.exception("platform affordance evidence load failed: %s", e)
+        raise HTTPException(status_code=500, detail="Failed to load platform affordance evidence")
     if not isinstance(data, dict) or not isinstance(data.get("records"), list):
-        raise HTTPException(status_code=500, detail="Invalid Q1 evidence format")
+        raise HTTPException(status_code=500, detail="Invalid platform affordance evidence format")
     return data
 
 
-def _q1_resolve_platform_name(records: List[Dict[str, Any]], platform: str) -> Optional[str]:
+def _platform_affordance_evidence_resolve_platform_name(records: List[Dict[str, Any]], platform: str) -> Optional[str]:
     """Case-insensitive match to canonical platform label in evidence records."""
     needle = platform.strip().casefold()
     if not needle:
@@ -4010,14 +4234,14 @@ def _q1_resolve_platform_name(records: List[Dict[str, Any]], platform: str) -> O
     return None
 
 
-def _q1_platform_evidence_index(records: List[Dict[str, Any]]) -> Dict[str, Any]:
+def _platform_affordance_evidence_index(records: List[Dict[str, Any]]) -> Dict[str, Any]:
     by_platform: Dict[str, Dict[str, Any]] = {}
     for rec in records:
         plat = rec.get("platform")
         tier = rec.get("stated_vs_inferred")
         if not isinstance(plat, str) or not plat:
             continue
-        if tier not in _Q1_VALID_TIERS:
+        if tier not in _PLATFORM_AFFORDANCE_EVIDENCE_VALID_TIERS:
             continue
         row = by_platform.get(plat)
         if row is None:
@@ -4035,12 +4259,12 @@ def _q1_platform_evidence_index(records: List[Dict[str, Any]]) -> Dict[str, Any]
     return {"platforms": platforms, "count": len(platforms)}
 
 
-def _q1_platform_evidence_cases(
+def _platform_affordance_evidence_cases(
     records: List[Dict[str, Any]],
     platform: str,
     tier: Optional[str] = None,
 ) -> Dict[str, Any]:
-    canonical = _q1_resolve_platform_name(records, platform)
+    canonical = _platform_affordance_evidence_resolve_platform_name(records, platform)
     if not canonical:
         raise HTTPException(status_code=404, detail=f"Unknown platform: {platform}")
 
@@ -4049,7 +4273,7 @@ def _q1_platform_evidence_cases(
         if rec.get("platform") != canonical:
             continue
         rec_tier = rec.get("stated_vs_inferred")
-        if rec_tier not in _Q1_VALID_TIERS:
+        if rec_tier not in _PLATFORM_AFFORDANCE_EVIDENCE_VALID_TIERS:
             continue
         if tier and rec_tier != tier:
             continue
@@ -4100,36 +4324,44 @@ def _save_case_study_notes(notes: List[Dict[str, Any]]) -> None:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
 
-@app.get("/api/q1/platform-evidence")
+@app.get("/api/platform-affordance-evidence")
 @limiter.limit("60/minute")
-def api_q1_platform_evidence(
+def api_platform_affordance_evidence(
     request: Request,
     platform: Optional[str] = Query(default=None),
     tier: Optional[str] = Query(default=None),
+    require_fresh: bool = Query(default=False),
 ):
-    """Q1 platform harm evidence: platform index or per-platform case cohort with tiers and quotes."""
+    """Frozen platform affordance evidence index or cohort.
+
+    ``require_fresh=true`` returns 409 when the snapshot is stale, unverified,
+    over the db_gaps warning threshold, or under the coverage bar.
+    """
     if tier is not None:
         tier_norm = tier.strip().lower()
-        if tier_norm not in _Q1_VALID_TIERS:
+        if tier_norm not in _PLATFORM_AFFORDANCE_EVIDENCE_VALID_TIERS:
             raise HTTPException(
                 status_code=400,
-                detail=f"Invalid tier; expected one of: {', '.join(sorted(_Q1_VALID_TIERS))}",
+                detail=f"Invalid tier; expected one of: {', '.join(sorted(_PLATFORM_AFFORDANCE_EVIDENCE_VALID_TIERS))}",
             )
         tier = tier_norm
 
-    data = _load_q1_evidence()
+    data = _load_platform_affordance_evidence()
     records = data.get("records") or []
     meta = data.get("_meta") or {}
+    live = _live_platform_affordance_corpus()
 
     if platform is None or not platform.strip():
-        payload = _q1_platform_evidence_index(records)
-        payload["_meta"] = meta
-        return payload
-
-    payload = _q1_platform_evidence_cases(records, platform, tier)
-    payload["_meta"] = meta
-    if tier:
-        payload["tier"] = tier
+        payload = _platform_affordance_evidence_index(records)
+    else:
+        payload = _platform_affordance_evidence_cases(records, platform, tier)
+        if tier:
+            payload["tier"] = tier
+    payload = with_snapshot_freshness(payload, meta, live)
+    if require_fresh:
+        reason = require_fresh_block(payload["freshness"])
+        if reason:
+            raise HTTPException(status_code=409, detail=reason)
     return payload
 
 
@@ -4311,13 +4543,13 @@ if _question_data.is_dir():
         name="question_data",
     )
 
-# Q01 affordance table: q1_evidence.json, q1_harm_analysis.json (manual harm vectors).
-_q1_data = Path(__file__).resolve().parent.parent / "ontology" / "q1"
-if _q1_data.is_dir():
+# Platform affordance evidence: platform_affordance_evidence.json and the manual harm-vector file.
+_platform_affordance_evidence_data = Path(__file__).resolve().parent.parent / "ontology" / "platform_affordance_evidence"
+if _platform_affordance_evidence_data.is_dir():
     app.mount(
-        "/ontology/q1",
-        StaticFiles(directory=str(_q1_data)),
-        name="q1_data",
+        "/ontology/platform-affordance-evidence",
+        StaticFiles(directory=str(_platform_affordance_evidence_data)),
+        name="platform_affordance_evidence_data",
     )
 
 # Q02 lifecycle table: q2_evidence.json, q2_lifecycle.json (manual pathway synthesis).
@@ -5383,6 +5615,77 @@ async def api_oxigraph_warm(request: Request):
     return JSONResponse(body, headers=headers)
 
 
+def _oxigraph_base() -> str:
+    return os.environ.get("OXIGRAPH_URL", "").strip().rstrip("/")
+
+
+@app.get("/ns/provenance", tags=["Dereference"])
+async def provenance_vocabulary(request: Request):
+    """The provenance vocabulary. Browsers get HTML; ``Accept: text/turtle`` gets the ontology."""
+    import deref
+
+    media = deref.preferred_media(request.headers.get("accept"), vocabulary=True)
+    graph = deref.provenance_graph()
+    if media == "text/turtle":
+        body = deref.PROVENANCE_TTL.read_text()
+        return Response(body, media_type="text/turtle; charset=utf-8")
+    return HTMLResponse(deref.render_html(graph, focus=deref.PROVENANCE_IRI))
+
+
+@app.get("/resource/{path:path}", tags=["Dereference"])
+async def dereference_resource(path: str, request: Request):
+    """Describe one w3id resource from Oxigraph.
+
+    A case IRI and ``{case}/provenance`` are named graphs. An agency, platform,
+    or location IRI is a node that lives inside those case graphs. HTML links
+    every CAC class to its cacontology.projectvic.org IRI.
+    """
+    import deref
+
+    try:
+        iri = deref.resource_iri(path)
+    except ValueError:
+        raise HTTPException(status_code=404, detail="Unknown resource.")
+    base = _oxigraph_base()
+    if not base:
+        raise HTTPException(status_code=503, detail="SPARQL store is not configured (set OXIGRAPH_URL).")
+    query = deref.construct_query(iri)
+    hub = deref.is_hub_resource(iri)
+    try:
+        async with httpx.AsyncClient(timeout=httpx.Timeout(30.0, connect=5.0)) as client:
+            upstream = await client.post(
+                f"{base}/query",
+                content=query.encode("utf-8"),
+                headers={"Content-Type": "application/sparql-query", "Accept": "text/turtle"},
+            )
+            refs_payload = None
+            if hub and upstream.status_code < 400:
+                refs = await client.post(
+                    f"{base}/query",
+                    content=deref.referencing_cases_query(iri).encode("utf-8"),
+                    headers={
+                        "Content-Type": "application/sparql-query",
+                        "Accept": "application/sparql-results+json",
+                    },
+                )
+                if refs.status_code < 400:
+                    refs_payload = refs.text
+    except httpx.HTTPError as exc:
+        raise HTTPException(status_code=502, detail="SPARQL store did not answer.") from exc
+    if upstream.status_code >= 400:
+        raise HTTPException(status_code=502, detail="SPARQL store rejected the description query.")
+    graph = deref.parse_turtle(upstream.text)
+    if len(graph) == 0:
+        raise HTTPException(status_code=404, detail="No description is stored for this IRI.")
+    media = deref.preferred_media(request.headers.get("accept"))
+    if media == "text/html":
+        cases = deref.parse_sparql_json_bindings(refs_payload) if hub else None
+        return HTMLResponse(
+            deref.render_html(graph, focus=iri, referencing_cases=cases)
+        )
+    return Response(deref.serialize_graph(graph, media), media_type=f"{media}; charset=utf-8")
+
+
 # MCP mounts: legacy SSE at /mcp/sse + Streamable HTTP at /mcp-http
 try:
     if str(_REPO_ROOT) not in sys.path:
@@ -5423,3 +5726,4 @@ if __name__ == "__main__":
     # Disable reload when running directly (causes warning)
     # Use: uvicorn run.main:app --reload (from project root) for reload
     uvicorn.run(app, host=host, port=port, reload=False)
+

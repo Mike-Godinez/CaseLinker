@@ -1,87 +1,112 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_913> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.936710" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_913/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_913> ;
+    ns5:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-06-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_913/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_913/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/cleveland-county-sheriffs-office> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:35.750965" ;
     dcterms:identifier "ncmec_2024_913" ;
-    dcterms:modified "2026-09-15T21:08:10.936710" ;
-    dcterms:source <https://www.ashlandsource.com/2024/02/08/23-people-charged-criminally-in-ashland-county-in-january/>,
+    dcterms:modified "2026-10-17 23:04:35.750965" ;
+    dcterms:source <https://kfor.com/news/local/moore-man-arrested-on-child-pornography-charges/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ashland>,
-        <https://caselinker.up.railway.app/resource/location/ashland-county>,
-        <https://caselinker.up.railway.app/resource/location/columbus>,
-        <https://caselinker.up.railway.app/resource/location/greenwich>,
-        <https://caselinker.up.railway.app/resource/location/navarre> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_913/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_913/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_913/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ashland-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/ashland-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ashland>,
-        <https://caselinker.up.railway.app/resource/location/ashland-county>,
-        <https://caselinker.up.railway.app/resource/location/columbus>,
-        <https://caselinker.up.railway.app/resource/location/greenwich>,
-        <https://caselinker.up.railway.app/resource/location/navarre> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cleveland-county>,
+        <https://w3id.org/caselinker/resource/location/okla> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_913/phase/booked> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_913/phase/booked> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_913/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_913/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_913/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_913/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/cleveland-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/cleveland-county>,
+        <https://w3id.org/caselinker/resource/location/okla> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_913/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_913/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_913/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_913/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/agency/ashland-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/ashland-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Ashland Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Cleveland County Detention Center" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_913/charge/1> ;
+    ns2:hasProceedingBeginPoint "2024-06-18T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_913/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_913/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 19 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_913/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_913/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-06-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_913/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_913/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_913/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/platform/reddit> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Reddit" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_913/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/location/ashland> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913/phase/booked> a ns1:InitialPhase,
+        ns5:Phase ;
+    ns1:hasPhaseBeginPoint "2024-06-18T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/ashland-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/cleveland-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cleveland County" ;
+    ns4:name "Cleveland County" .
 
-<https://caselinker.up.railway.app/resource/location/columbus> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/okla> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Okla." ;
+    ns4:name "Okla." .
 
-<https://caselinker.up.railway.app/resource/location/greenwich> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "to looking for and finding child pornography online" ;
+    dcterms:source <https://kfor.com/news/local/moore-man-arrested-on-child-pornography-charges/> ;
+    ns3:admissionContext "ccounts. The search of his home uncovered more evidence of CSAM, and during an interview, detectives say Williams confessed to looking fo..." ;
+    ns3:admissionFrame "confessed_paraphrase" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_913/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns4:description "to looking for and finding child pornography online" .
 
-<https://caselinker.up.railway.app/resource/location/navarre> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Navarre" ;
-    uco-core:name "Navarre" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_913/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/reddit> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_913/facet/possession> .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_913> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_913/provenance> .

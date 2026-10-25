@@ -1,156 +1,102 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_896> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/akron-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Akron Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/bureau-of-criminal-investigation> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/ohio-bureau-of-criminal-investigation> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Ohio Bureau of Criminal Investigation" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.920670" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:35.471170" ;
     dcterms:identifier "ncmec_2024_896" ;
-    dcterms:modified "2026-09-15T21:08:10.920670" ;
-    dcterms:source <https://www.wkyc.com/article/news/crime/former-akron-police-officer-sentenced-24-28-years-prison-child-phonography-trumbull-county/95-5d5cac6b-32ff-4cb7-a39f-eab43ae960c4>,
+    dcterms:modified "2026-10-17 23:04:35.471170" ;
+    dcterms:source <https://www.wkbn.com/news/local-news/youngstown-news/man-receives-sentence-for-raping-3-children-for-years/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/akron>,
-        <https://caselinker.up.railway.app/resource/location/mineral-ridge>,
-        <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/trumbull-county>,
-        <https://caselinker.up.railway.app/resource/location/warren>,
-        <https://caselinker.up.railway.app/resource/location/weathersfield> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/akron-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/bureau-of-criminal-investigation>,
-        <https://caselinker.up.railway.app/resource/agency/ohio-bureau-of-criminal-investigation> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/akron>,
-        <https://caselinker.up.railway.app/resource/location/mineral-ridge>,
-        <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/trumbull-county>,
-        <https://caselinker.up.railway.app/resource/location/warren>,
-        <https://caselinker.up.railway.app/resource/location/weathersfield> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/youngstown> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_896/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_896/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_896/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_896/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_896/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_896/legal-step/sentenced> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/youngstown> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 4 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/charge/1> a ns2:CriminalCharge ;
+    rdfs:label "gross" ;
+    ns2:indictmentCounts 10 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/event/trust-violation> a ns6:CustodialAbuse,
+        ns6:TrustViolation ;
+    ns6:violatesRelationship <https://w3id.org/caselinker/resource/case/ncmec_2024_896/relationship/brother> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_896/charge/1> ;
+    ns2:hasProceedingBeginPoint "2024-05-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2024_896/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_896/sentence/2> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2024-05-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 55 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 4 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/relationship/brother> a ns6:CustodialRelationship,
+        ns6:FamilialRelationship ;
+    ns6:involvesChild <https://w3id.org/caselinker/resource/case/ncmec_2024_896/role/victim/1> ;
+    ns6:involvesCustodian <https://w3id.org/caselinker/resource/case/ncmec_2024_896/role/offender/1> ;
+    ns6:relationshipType "brother" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-05-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_896/event/hands-on> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_896/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"28 YEARS\", \"65 years\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-05-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_896/event/hands-on> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_896/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/sentence/1> a ns2:CriminalSentence,
+        ns2:PrisonSentence ;
+    rdfs:label "44 and a half years" .
 
-<https://caselinker.up.railway.app/resource/location/akron> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/sentence/2> a ns2:CriminalSentence,
+        ns2:LifeImprisonmentSentence ;
+    rdfs:label "years to life" .
 
-<https://caselinker.up.railway.app/resource/location/mineral-ridge> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Mineral Ridge" ;
-    uco-core:name "Mineral Ridge" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/phase/sentenced> a ns5:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2024-05-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/ohio> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/ohio> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns4:name "Ohio" .
 
-<https://caselinker.up.railway.app/resource/location/trumbull-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/youngstown> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Youngstown" ;
+    ns4:name "Youngstown" .
 
-<https://caselinker.up.railway.app/resource/location/warren> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Warren" ;
-    uco-core:name "Warren" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns5:Event ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/location/weathersfield> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Weathersfield" ;
-    uco-core:name "Weathersfield" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/admission/1> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/facet/csam> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/admission/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_896/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "eight felony counts last week: Three counts of pandering sexually oriented material involving a minor Three counts of..." ;
-    dcterms:source <https://www.wkyc.com/article/news/crime/former-akron-police-officer-sentenced-24-28-years-prison-child-phonography-trumbull-county/95-5d5cac6b-32ff-4cb7-a39f-eab43ae960c4> ;
-    ns1:admissionContext "nald Rice on Tuesday sentenced Geoffrey Parker, 34, to between 24 and 28 years in prison. Parker admitted to eight felony counts last wee..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_896/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "eight felony counts last week: Three counts of pandering sexually oriented material involving a minor Three counts of illegal use of a minor in nudity-oriented material One count of gross sexual impo" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2024_896> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_896/provenance> .

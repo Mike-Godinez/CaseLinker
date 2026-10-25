@@ -1,116 +1,136 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.411576" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_278/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_278> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-07-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_278/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_278/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_278/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/department-of-juvenile-justice> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:27.941103" ;
     dcterms:identifier "ncmec_2024_278" ;
-    dcterms:modified "2026-09-15T21:08:10.411576" ;
-    dcterms:source <https://www.fox5atlanta.com/news/coweta-county-grandfather-child-porn-charges>,
+    dcterms:modified "2026-10-17 23:04:27.941103" ;
+    dcterms:source <https://www.facebook.com/HernandoSheriff/posts/media-releasebrooksville-teen-charged-with-possession-of-child-pornography-20240/867228138763552/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/atlanta>,
-        <https://caselinker.up.railway.app/resource/location/coweta>,
-        <https://caselinker.up.railway.app/resource/location/coweta-county>,
-        <https://caselinker.up.railway.app/resource/location/ga> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/atlanta>,
-        <https://caselinker.up.railway.app/resource/location/coweta>,
-        <https://caselinker.up.railway.app/resource/location/coweta-county>,
-        <https://caselinker.up.railway.app/resource/location/ga> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/brooksville>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/hernando-county> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_278/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_278/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_278/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_278/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_278/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_278/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_278/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_278/operation> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-juvenile-justice> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/brooksville>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/hernando-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "Possession of Child Pornography" ;
+    ns5:indictmentCounts 13 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/event/distribution> a ns3:Event,
+        ns5:CSAM_Distribution ;
+    ns2:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of children" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_278/charge/1> ;
+    ns5:hasProceedingBeginPoint "2024-07-10T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child porn" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/operation> a ns3:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-07-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_278/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_278/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_278/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/phase/charged> a ns2:LegalProcessPhase,
+        ns3:Phase ;
+    ns2:hasPhaseBeginPoint "2024-07-10T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/location/brooksville> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Brooksville" ;
+    ns4:name "Brooksville" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 51 .
+<https://w3id.org/caselinker/resource/location/georgia> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Georgia" ;
+    ns4:name "Georgia" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/hernando-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hernando County" ;
+    ns4:name "Hernando County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-11-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Facebook" .
 
-<https://caselinker.up.railway.app/resource/location/atlanta> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/location/coweta> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Coweta" ;
-    uco-core:name "Coweta" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/event/hands-on> a ns2:ChildSexualAbuseEvent,
+        ns3:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_278/admission/1> ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
 
-<https://caselinker.up.railway.app/resource/location/coweta-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Coweta County" ;
-    uco-core:name "Coweta County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/event/possession> a ns2:CSAMIncident,
+        ns3:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_278/admission/1> ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_278/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/location/ga> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "ownership of the social media account and uploading/sharing the initial file on the social media platform" ;
+    dcterms:source <https://www.facebook.com/HernandoSheriff/posts/media-releasebrooksville-teen-charged-with-possession-of-child-pornography-20240/867228138763552/> ;
+    ns1:admissionContext "younger family member. Post Miranda, an interview was conducted with Smith, at which time he admitted ownership of the social media accou..." ;
+    ns1:admissionFrame "he_admitted_paraphrase" ;
+    ns1:admissionTheme "tech_use" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_278/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "ownership of the social media account and uploading/sharing the initial file on the social media platform" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_278/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_278/facet/possession> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2024_278> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_278/provenance> .

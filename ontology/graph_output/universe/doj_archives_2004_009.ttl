@@ -1,0 +1,137 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_009> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 13:16:58.674860" ;
+    dcterms:identifier "doj_archives_2004_009" ;
+    dcterms:modified "2026-10-18 13:16:58.674860" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/provenance> ;
+    dcterms:source <https://www.justice.gov/archive/criminal/ceos/pressreleases/downloads/DMT%20Lambert%20indict%20PR_032504.pdf>,
+        "DOJ ARCHIVES" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/billings>,
+        <https://w3id.org/caselinker/resource/location/clackamas>,
+        <https://w3id.org/caselinker/resource/location/lavina>,
+        <https://w3id.org/caselinker/resource/location/montana>,
+        <https://w3id.org/caselinker/resource/location/oregon>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/phase/convicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/phase/convicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/legal-step/convicted> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/federal-express> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/billings>,
+        <https://w3id.org/caselinker/resource/location/clackamas>,
+        <https://w3id.org/caselinker/resource/location/lavina>,
+        <https://w3id.org/caselinker/resource/location/montana>,
+        <https://w3id.org/caselinker/resource/location/oregon>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_009/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2004-03-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/event/hands-on> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_009/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2004-03-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/event/hands-on> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/federal-express> a ns6:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Federal Express" .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_009/event/distribution> a ns6:Event,
+        ns4:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_009/event/multi-jurisdiction> a ns6:Event,
+        ns3:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_009/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasProceedingBeginPoint "2004-03-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:resultsSentence <https://w3id.org/caselinker/resource/case/doj_archives_2004_009/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_009/legal-step/convicted> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2004-03-25T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_009/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 64 .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_009/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_009/sentence/1> a ns4:CriminalSentence,
+        ns4:SupervisedRelease ;
+    rdfs:label "5 years supervised release" .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_009/phase/convicted> a ns6:Phase,
+        ns4:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2004-03-25T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/billings> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Billings" ;
+    ns5:name "Billings" .
+
+<https://w3id.org/caselinker/resource/location/clackamas> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Clackamas" ;
+    ns5:name "Clackamas" .
+
+<https://w3id.org/caselinker/resource/location/lavina> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lavina" ;
+    ns5:name "Lavina" .
+
+<https://w3id.org/caselinker/resource/location/montana> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Montana" ;
+    ns5:name "Montana" .
+
+<https://w3id.org/caselinker/resource/location/oregon> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Oregon" ;
+    ns5:name "Oregon" .
+
+<https://w3id.org/caselinker/resource/location/texas> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns5:name "Texas" .
+
+<https://w3id.org/caselinker/resource/location/united> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United" ;
+    ns5:name "United" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns5:name "United States" .
+
+<https://w3id.org/caselinker/resource/case/doj_archives_2004_009/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns1:severityLevel 3 .
+

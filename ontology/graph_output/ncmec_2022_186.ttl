@@ -1,109 +1,117 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.129293" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/admission/1/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_186/admission/1> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_186> ;
+    ns1:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2022-08-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_186/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_186/event/online-only> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_186/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186> a ns3:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:21.521162" ;
     dcterms:identifier "ncmec_2022_186" ;
-    dcterms:modified "2026-09-15T20:45:06.129293" ;
-    dcterms:source <https://www.thebee.news/child-pornography-arrest-2/>,
+    dcterms:modified "2026-10-17 21:51:21.521162" ;
+    dcterms:source <https://www.wcjb.com/2022/08/02/summerfield-man-arrested-child-pornography/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ariz>,
-        <https://caselinker.up.railway.app/resource/location/bullhead-city>,
-        <https://caselinker.up.railway.app/resource/location/kingman> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/bullhead-city-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/icac> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ariz>,
-        <https://caselinker.up.railway.app/resource/location/bullhead-city>,
-        <https://caselinker.up.railway.app/resource/location/kingman> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/marion-county>,
+        <https://w3id.org/caselinker/resource/location/summerfield> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_186/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_186/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_186/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_186/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_186/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_186/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_186/legal-proceeding> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/marion-county>,
+        <https://w3id.org/caselinker/resource/location/summerfield> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns5:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/event/distribution> a ns1:Event,
+        ns5:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/agency/bullhead-city-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Bullhead City Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_186/charge/1> ;
+    ns5:hasProceedingBeginPoint "2022-08-02T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of a minor" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 38 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2022-08-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_186/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_186/event/online-only> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_186/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/phase/arrested> a ns3:InitialPhase,
+        ns1:Phase ;
+    ns3:hasPhaseBeginPoint "2022-08-02T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/sentence/1> .
+<https://w3id.org/caselinker/resource/location/fla> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns4:name "Fla." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 40 .
+<https://w3id.org/caselinker/resource/location/marion-county> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Marion County" ;
+    ns4:name "Marion County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/summerfield> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Summerfield" ;
+    ns4:name "Summerfield" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-10-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/event/csam> a ns3:CSAMIncident,
+        ns1:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_186/admission/1> ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_186/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/location/ariz> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Ariz." ;
-    uco-core:name "Ariz." .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/event/online-only> a ns3:ChildSexualAbuseEvent,
+        ns1:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_186/admission/1> ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> .
 
-<https://caselinker.up.railway.app/resource/location/bullhead-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Bullhead City" ;
-    uco-core:name "Bullhead City" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "sending child porn to other users online" ;
+    dcterms:source <https://www.wcjb.com/2022/08/02/summerfield-man-arrested-child-pornography/> ;
+    ns2:admissionContext "Rummel, 38, uploaded multiple files depicting child sex abuse to a social media account. Detectives interviewed Rummel who admitted to se..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_186/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns4:description "sending child porn to other users online" .
 
-<https://caselinker.up.railway.app/resource/location/kingman> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Kingman" ;
-    uco-core:name "Kingman" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_186/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_186/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2022_186> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_186/provenance> .

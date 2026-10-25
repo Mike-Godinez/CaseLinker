@@ -1,171 +1,111 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.377376" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/admission/1/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_242/admission/1> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_242> ;
+    ns1:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-05-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_242/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_242/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/glynn-county-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242> a ns3:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:18.078807" ;
     dcterms:identifier "ncmec_2025_242" ;
-    dcterms:modified "2026-09-15T21:27:13.377376" ;
-    dcterms:source <https://www.fox5atlanta.com/news/22-year-old-coweta-county-man-arrested-child-sex-abuse-material>,
+    dcterms:modified "2026-10-18 00:01:18.078807" ;
+    dcterms:source <https://www.wsav.com/crime-safety/saint-simons-island-man-arrested-for-10-counts-of-sexual-exploitation-of-children/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/atlanta>,
-        <https://caselinker.up.railway.app/resource/location/coweta>,
-        <https://caselinker.up.railway.app/resource/location/coweta-county>,
-        <https://caselinker.up.railway.app/resource/location/ga>,
-        <https://caselinker.up.railway.app/resource/location/georgia>,
-        <https://caselinker.up.railway.app/resource/location/grantville>,
-        <https://caselinker.up.railway.app/resource/location/newnan>,
-        <https://caselinker.up.railway.app/resource/location/rock-ridge> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/offense-event/charge-3> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/coweta-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/atlanta>,
-        <https://caselinker.up.railway.app/resource/location/coweta>,
-        <https://caselinker.up.railway.app/resource/location/coweta-county>,
-        <https://caselinker.up.railway.app/resource/location/ga>,
-        <https://caselinker.up.railway.app/resource/location/georgia>,
-        <https://caselinker.up.railway.app/resource/location/grantville>,
-        <https://caselinker.up.railway.app/resource/location/newnan>,
-        <https://caselinker.up.railway.app/resource/location/rock-ridge> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ga>,
+        <https://w3id.org/caselinker/resource/location/glynn-county> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_242/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_242/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_242/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_242/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_242/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_242/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/glynn-county-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/ga>,
+        <https://w3id.org/caselinker/resource/location/glynn-county> .
 
-<https://caselinker.up.railway.app/resource/agency/coweta-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Coweta County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/charge/1> a ns2:CriminalCharge ;
+    rdfs:label "SEXUAL EXPLOITATION OF" ;
+    ns2:indictmentCounts 11 ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/charge/2> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/event/distribution> a ns1:Event,
+        ns2:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/offense-event/charge-3> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/offense-event/charge-3> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_242/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_242/charge/2> ;
+    ns2:hasProceedingBeginPoint "2025-05-07T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 39 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/relationship/parent> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-05-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_242/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_242/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/phase/charged> a ns3:LegalProcessPhase,
+        ns1:Phase ;
+    ns3:hasPhaseBeginPoint "2025-05-07T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 22 .
+<https://w3id.org/caselinker/resource/location/ga> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ga." ;
+    ns5:name "Ga." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/glynn-county> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Glynn County" ;
+    ns5:name "Glynn County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/relationship/parent> a cacontology-custodial:CaregiverRelationship,
-        cacontology-custodial:CustodialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/role/offender/1> ;
-    cacontology-custodial:relationshipType "parent" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "to possessing and distributing child pornography, a police spokesperson said" ;
+    dcterms:source <https://www.wsav.com/crime-safety/saint-simons-island-man-arrested-for-10-counts-of-sexual-exploitation-of-children/> ;
+    ns4:admissionContext "e Drive Wednesday. James Waller, 39, was arrested and interviewed by detectives where he reportedly confessed to possessing and distribut..." ;
+    ns4:admissionFrame "confessed_paraphrase" ;
+    ns4:admissionTheme "harm_conduct" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_242/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns5:description "to possessing and distributing child pornography, a police spokesperson said" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242/event/possession> a ns3:CSAMIncident,
+        ns1:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_242/admission/1> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_242/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/atlanta> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/coweta> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Coweta" ;
-    uco-core:name "Coweta" .
-
-<https://caselinker.up.railway.app/resource/location/coweta-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Coweta County" ;
-    uco-core:name "Coweta County" .
-
-<https://caselinker.up.railway.app/resource/location/ga> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/georgia> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/grantville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Grantville" ;
-    uco-core:name "Grantville" .
-
-<https://caselinker.up.railway.app/resource/location/newnan> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Newnan" ;
-    uco-core:name "Newnan" .
-
-<https://caselinker.up.railway.app/resource/location/rock-ridge> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Rock Ridge" ;
-    uco-core:name "Rock Ridge" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_242/facet/possession> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_242/offense-event/charge-3> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child exploitation" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_242> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_242/provenance> .

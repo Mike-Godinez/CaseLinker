@@ -1,127 +1,120 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2023_430> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.119363" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:33.140741" ;
     dcterms:identifier "ncmec_2023_430" ;
-    dcterms:modified "2026-09-15T20:55:01.119363" ;
-    dcterms:source <https://fox2now.com/news/missouri/st-peters-man-sentenced-on-child-porn-charge/>,
+    dcterms:modified "2026-10-17 22:21:33.140741" ;
+    dcterms:source <https://patch.com/rhode-island/smithfield/smithfield-man-indicted-charges-child-sexual-exploitation>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/missouri>,
-        <https://caselinker.up.railway.app/resource/location/st-louis>,
-        <https://caselinker.up.railway.app/resource/location/st-peters> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/legal-step/sentenced> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/missouri>,
-        <https://caselinker.up.railway.app/resource/location/st-louis>,
-        <https://caselinker.up.railway.app/resource/location/st-peters> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/smithfield>,
+        <https://w3id.org/caselinker/resource/location/smithfield-rhode-island> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_430/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_430/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_430/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_430/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_430/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_430/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_430/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_430/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/smithfield>,
+        <https://w3id.org/caselinker/resource/location/smithfield-rhode-island> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2021-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_430/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_430/event/possession> ;
+    ns1:perpetratorRegisteredSexOffender true ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_430/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2021-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_430/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_430/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_430/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
     rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns6:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/charge/2> a ns6:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/event/distribution> a ns7:Event,
+        ns6:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_430/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_430/charge/2> ;
+    ns6:hasProceedingBeginPoint "2021-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/legal-step/sentenced> a ns7:Event,
+        ns7:LegalEvent,
+        ns6:LegalProceeding,
+        ns6:SentencingHearing ;
+    ns6:hasProceedingBeginPoint "2021-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 35 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns2:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/phase/sentenced> a ns7:Phase,
+        ns6:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2021-05-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/smithfield> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Smithfield" ;
+    ns5:name "Smithfield" .
 
-<https://caselinker.up.railway.app/resource/location/missouri> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Missouri" ;
-    uco-core:name "Missouri" .
+<https://w3id.org/caselinker/resource/location/smithfield-rhode-island> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Smithfield, Rhode Island" ;
+    ns5:name "Smithfield, Rhode Island" .
 
-<https://caselinker.up.railway.app/resource/location/st-louis> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "St. Louis" ;
-    uco-core:name "St. Louis" .
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/location/st-peters> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "St. Peters" ;
-    uco-core:name "St. Peters" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns7:Event ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "investigators that he’d viewed and downloaded child porn from the internet, and had been doing so for over a year at ..." ;
-    dcterms:source <https://fox2now.com/news/missouri/st-peters-man-sentenced-on-child-porn-charge/> ;
-    ns1:admissionContext "ploading multiple files containing illicit material. Prosecutors with the U.S. Attorney’s Office for the Eastern District of Missouri sai..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct",
-        "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "investigators that he’d viewed and downloaded child porn from the internet, and had been doing so for over a year at the time of questioning" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430/event/possession> a ns1:CSAMIncident,
+        ns7:Event ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_430/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_430/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/admission/1> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_430/facet/possession> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2023_430> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_430/provenance> .

@@ -1,61 +1,60 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2014_003> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:31:48.052362" ;
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_003> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 07:19:08.191749" ;
     dcterms:identifier "tbi_icac_2014_003" ;
-    dcterms:modified "2026-09-15T20:31:48.052362" ;
+    dcterms:modified "2026-10-18 07:19:08.191749" ;
     dcterms:source <https://tbinewsroom.com/2014/03/20/tbi-hosts-first-ever-department-of-childrens-services-graduation-ceremony/>,
         "TBI ICAC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/tennessee> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/tbi_icac_2014_003/event/trafficking> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/department-of-childrens-services>,
-        <https://caselinker.up.railway.app/resource/agency/department-of-finance-and-administration>,
-        <https://caselinker.up.railway.app/resource/agency/tennessee-bureau-of-investigation>,
-        <https://caselinker.up.railway.app/resource/agency/tennessee-department-of-childrens-services> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/tennessee> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/tennessee> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/tbi_icac_2014_003/event/trafficking> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-childrens-services>,
+        <https://w3id.org/caselinker/resource/agency/department-of-finance-and-administration>,
+        <https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/tennessee-department-of-childrens-services> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/tennessee> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2014_003/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/tbi_icac_2014_003/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_003/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2014-03-20T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2014_003/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2014_003/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/tbi_icac_2014_003/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_003/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2014-03-20T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2014_003/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/department-of-childrens-services> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/department-of-childrens-services> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/department-of-finance-and-administration> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/department-of-finance-and-administration> a ns4:OrganizationLikeEntity,
+        ns2:LocalAgency ;
     rdfs:label "Department of Finance and Administration" .
 
-<https://caselinker.up.railway.app/resource/agency/tennessee-bureau-of-investigation> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> a ns2:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/tennessee-department-of-childrens-services> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Tennessee Department of Children's Services" .
+<https://w3id.org/caselinker/resource/agency/tennessee-department-of-childrens-services> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2014_003/event/trafficking> a cac-core:Event,
-        cacontology-legal-outcomes:SexTrafficking ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_003/event/trafficking> a ns4:Event,
+        <https://cacontology.projectvic.org/legal-outcomes#SexTrafficking> ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2014_003/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2014_003/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/tennessee> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/tennessee> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tennessee" ;
+    ns5:name "Tennessee" .
 
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/tbi_icac_2014_003/provenance> .

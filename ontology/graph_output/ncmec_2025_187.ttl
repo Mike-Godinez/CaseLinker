@@ -1,99 +1,130 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.325706" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_187/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_187> ;
+    ns4:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/admission/2/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_187/admission/2> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_187> ;
+    ns4:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-01-04T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_187/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_187/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/clay-county-sheriffs-office> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/charge/1> a ns6:CriminalCharge ;
+    rdfs:label "possessing child abuse sexual material" ;
+    ns6:indictmentCounts 10 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_187/charge/1> ;
+    ns6:hasProceedingBeginPoint "2025-01-04T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 63 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:17.512602" ;
     dcterms:identifier "ncmec_2025_187" ;
-    dcterms:modified "2026-09-15T21:27:13.325706" ;
-    dcterms:source <https://www.facebook.com/jcsoflorida/posts/cottondale-man-charged-with-seven-counts-of-possession-of-child-pornography-addi/1104523285036734/>,
+    dcterms:modified "2026-10-18 00:01:17.512602" ;
+    dcterms:source <https://www.firstcoastnews.com/article/news/crime/clay-county-florida-escape-room-co-owner-charged-with-possessing-csam/77-46bdedab-d703-414e-ac7a-07020201eeae>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/jackson-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/jackson-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/jackson-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/clay-county>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/fleming-island>,
+        <https://w3id.org/caselinker/resource/location/middleburg> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_187/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_187/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_187/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_187/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_187/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_187/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/clay-county-sheriffs-office> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/clay-county>,
+        <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/fleming-island>,
+        <https://w3id.org/caselinker/resource/location/middleburg> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "occasionally plays golf with Nicholls and considered him a friendly person" ;
+    dcterms:source <https://www.firstcoastnews.com/article/news/crime/clay-county-florida-escape-room-co-owner-charged-with-possessing-csam/77-46bdedab-d703-414e-ac7a-07020201eeae> ;
+    ns3:admissionContext "f our house on the street, it was just a lot of police presence at once.” One man on the street said he occasionally plays golf with Nich..." ;
+    ns3:admissionFrame "said_paraphrase" ;
+    ns3:admissionTheme "other" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_187/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns5:description "occasionally plays golf with Nicholls and considered him a friendly person" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/phase/charged> a ns1:LegalProcessPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2025-01-04T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/jackson-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Jackson County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-01-04T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_187/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_187/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/location/clay-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Clay County" ;
+    ns5:name "Clay County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/location/fla> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns5:name "Fla." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/location/fleming-island> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fleming Island" ;
+    ns5:name "Fleming Island" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/sentence/1> .
+<https://w3id.org/caselinker/resource/location/middleburg> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Middleburg" ;
+    ns5:name "Middleburg" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "has lived near Nicholls for nearly 20 years and is disgusted that her children grew up down the street from someone w..." ;
+    dcterms:source <https://www.firstcoastnews.com/article/news/crime/clay-county-florida-escape-room-co-owner-charged-with-possessing-csam/77-46bdedab-d703-414e-ac7a-07020201eeae> ;
+    ns3:admissionContext "nally plays golf with Nicholls and considered him a friendly person. Another woman on the street said she has lived near Nicholls for nea..." ;
+    ns3:admissionFrame "said_paraphrase" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_187/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns5:description "has lived near Nicholls for nearly 20 years and is disgusted that her children grew up down the street from someone who has now been arrested for possessing child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187/event/possession> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_187/admission/2> ;
+    ns1:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_187/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$60,000\"]" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/jackson-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
-    rdfs:label "chat" .
-
-<https://caselinker.up.railway.app/resource/platform/facebook> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Facebook" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/facebook> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_187/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat>,
-        <https://caselinker.up.railway.app/resource/platform/facebook> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_187/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_187> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_187/provenance> .

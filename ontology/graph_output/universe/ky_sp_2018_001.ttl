@@ -1,76 +1,105 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2018_001> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:53:45.816570" ;
+<https://w3id.org/caselinker/resource/case/ky_sp_2018_001> a ns1:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 05:15:34.213689" ;
     dcterms:identifier "ky_sp_2018_001" ;
-    dcterms:modified "2026-09-10T19:53:45.816570" ;
+    dcterms:modified "2026-10-18 05:15:34.213689" ;
     dcterms:source <https://www.kentuckystatepolice.ky.gov/news/hq-12-18-18-3/>,
         "KY SP" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/kentucky-state-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/monroe-county-sheriffs-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/new-haven>,
+        <https://w3id.org/caselinker/resource/location/tennessee> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ky_sp_2018_001/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ky_sp_2018_001/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ky_sp_2018_001/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ky_sp_2018_001/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ky_sp_2018_001/operation> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/kentucky-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/monroe-county-sheriffs-department> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/kentucky>,
+        <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/new-haven>,
+        <https://w3id.org/caselinker/resource/location/tennessee> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2018-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ky_sp_2018_001/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2018-12-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ky_sp_2018_001/event/online-only> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ky_sp_2018_001/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2018-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ky_sp_2018_001/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2018-12-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ky_sp_2018_001/event/online-only> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ky_sp_2018_001/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/kentucky-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/kentucky-state-police-department> a ns5:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/monroe-county-sheriffs-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/monroe-county-sheriffs-department> a ns7:OrganizationLikeEntity,
+        ns5:LocalAgency ;
     rdfs:label "Monroe County Sheriff's Department" .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
+<https://w3id.org/caselinker/resource/case/ky_sp_2018_001/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
     rdfs:label "sexual exploitation of a minor" .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ky_sp_2018_001/charge/2> a ns2:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns6:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2018-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ky_sp_2018_001/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): lodged in the LaRue County Detention Center" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ky_sp_2018_001/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ky_sp_2018_001/charge/2> ;
+    ns2:hasProceedingBeginPoint "2018-12-18T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/operation> a cac-core:Event,
-        cacontology-taskforce:UndercoverUnit .
+<https://w3id.org/caselinker/resource/case/ky_sp_2018_001/operation> a ns7:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 44 .
+<https://w3id.org/caselinker/resource/case/ky_sp_2018_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 44 .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ky_sp_2018_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2018-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ky_sp_2018_001/phase/charged> a ns1:LegalProcessPhase,
+        ns7:Phase ;
+    ns1:hasPhaseBeginPoint "2018-12-18T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ky_sp_2018_001/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event .
+<https://w3id.org/caselinker/resource/location/kentucky> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kentucky" ;
+    ns4:name "Kentucky" .
 
+<https://w3id.org/caselinker/resource/location/ky> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ky." ;
+    ns4:name "Ky." .
+
+<https://w3id.org/caselinker/resource/location/new-haven> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Haven" ;
+    ns4:name "New Haven" .
+
+<https://w3id.org/caselinker/resource/location/tennessee> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tennessee" ;
+    ns4:name "Tennessee" .
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2018_001/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns7:Event .
+
+
+<https://w3id.org/caselinker/resource/case/ky_sp_2018_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ky_sp_2018_001/provenance> .

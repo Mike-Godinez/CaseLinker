@@ -1,85 +1,111 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2025_002> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:45:29.002725" ;
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 04:40:03.762738" ;
     dcterms:identifier "hi_ag_2025_002" ;
-    dcterms:modified "2026-09-10T19:45:29.002725" ;
+    dcterms:modified "2026-10-18 04:40:03.762738" ;
     dcterms:source <https://governor.hawaii.gov/newsroom/ag-news-release-operation-keiki-shield-29-nets-three-internet-predators-on-o%CA%BBahu/>,
         "HI AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/army-criminal-investigation-division>,
-        <https://caselinker.up.railway.app/resource/agency/fbi>,
-        <https://caselinker.up.railway.app/resource/agency/hawaii-department>,
-        <https://caselinker.up.railway.app/resource/agency/hawaini-attorney-general-special-investigation-and-prosecution-division>,
-        <https://caselinker.up.railway.app/resource/agency/honolulu-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/taskforce>,
-        <https://caselinker.up.railway.app/resource/agency/us-secret-service> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/oiahu-honolulu> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/army-criminal-investigation-division>,
+        <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/hawaii-department>,
+        <https://w3id.org/caselinker/resource/agency/hawaiii-attorney-general-special-investigation-and-prosecution-division>,
+        <https://w3id.org/caselinker/resource/agency/honolulu-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/taskforce>,
+        <https://w3id.org/caselinker/resource/agency/us-secret-service> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/oiahu-honolulu> .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-11-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/event/conspiracy> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/person/victim/1> .
+<https://w3id.org/caselinker/resource/agency/army-criminal-investigation-division> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/army-criminal-investigation-division> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/fbi> a ns2:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/hawaii-department> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/hawaii-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/hawaiii-attorney-general-special-investigation-and-prosecution-division> a ns3:OrganizationLikeEntity,
+        ns2:StateAgency ;
+    rdfs:label "HawaiIi Attorney General Special Investigation and Prosecution Division" .
 
-<https://caselinker.up.railway.app/resource/agency/hawaini-attorney-general-special-investigation-and-prosecution-division> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Hawaini Attorney General Special Investigation and Prosecution Division" .
+<https://w3id.org/caselinker/resource/agency/honolulu-police-department> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/honolulu-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/taskforce> a ns2:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/taskforce> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/us-secret-service> a ns2:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/us-secret-service> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002/charge/1> a ns5:CriminalCharge,
+        ns5:StateCharge ;
     rdfs:label "sexual exploitation of a minor" .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002/charge/2> a ns5:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/charge/1>,
+        <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/charge/2> ;
+    ns5:hasProceedingBeginPoint "2025-11-26T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 26 .
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 26 .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 42 .
 
-<https://caselinker.up.railway.app/resource/case/hi_ag_2025_002/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-11-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/event/conspiracy> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002/role/offender/2> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-11-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/event/conspiracy> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/person/offender/2> .
+
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002/phase/charged> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2025-11-26T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/oiahu-honolulu> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Oiahu Honolulu" ;
+    ns7:name "Oiahu Honolulu" .
+
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002/event/conspiracy> a ns1:ConspiracyToCommitCSA,
+        ns3:Event ;
+    ns1:conspiracyMemberCount 2 ;
+    ns1:participatesInConspiracy <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/role/offender/2> ;
+    ns1:severityLevel 1 .
+
+
+<https://w3id.org/caselinker/resource/case/hi_ag_2025_002> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/hi_ag_2025_002/provenance> .

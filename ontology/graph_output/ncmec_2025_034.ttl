@@ -1,118 +1,117 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_034> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/admission/1/extraction-confidence> a ns7:AssessmentResult ;
+    ns7:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_034/admission/1> ;
+    ns7:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_034> ;
+    ns7:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-04-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_034/event/csam> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_034/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/sahuarita-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/sahuarita-police-department> a ns7:OrganizationLikeEntity,
+        ns2:LocalAgency ;
     rdfs:label "Sahuarita Police Department" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.180994" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034> a ns3:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:15.754845" ;
     dcterms:identifier "ncmec_2025_034" ;
-    dcterms:modified "2026-09-15T21:27:13.180994" ;
+    dcterms:modified "2026-10-18 00:01:15.754845" ;
     dcterms:source <https://www.kold.com/2025/05/01/sahuarita-man-arrested-child-porn-charges/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ariz>,
-        <https://caselinker.up.railway.app/resource/location/sahuarita>,
-        <https://caselinker.up.railway.app/resource/location/tucson> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/sahuarita-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ariz>,
-        <https://caselinker.up.railway.app/resource/location/sahuarita>,
-        <https://caselinker.up.railway.app/resource/location/tucson> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ariz>,
+        <https://w3id.org/caselinker/resource/location/sahuarita>,
+        <https://w3id.org/caselinker/resource/location/tucson> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_034/phase/arrested> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_034/phase/arrested> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_034/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_034/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_034/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/sahuarita-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/ariz>,
+        <https://w3id.org/caselinker/resource/location/sahuarita>,
+        <https://w3id.org/caselinker/resource/location/tucson> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/charge/1> a ns1:CriminalCharge,
+        ns1:StateCharge ;
     rdfs:label "sexual exploitation of a minor" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/charge/2> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
     rdfs:label "child porn" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/charge/3> a ns1:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_034/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_034/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_034/charge/3> ;
+    ns1:hasProceedingBeginPoint "2025-04-30T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 28 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-04-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_034/event/csam> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_034/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$25,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/phase/arrested> a ns3:InitialPhase,
+        ns7:Phase ;
+    ns3:hasPhaseBeginPoint "2025-04-30T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/ariz> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ariz." ;
+    ns6:name "Ariz." .
 
-<https://caselinker.up.railway.app/resource/location/ariz> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/sahuarita> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/sahuarita> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Sahuarita" ;
-    uco-core:name "Sahuarita" .
+    ns6:name "Sahuarita" .
 
-<https://caselinker.up.railway.app/resource/location/tucson> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/tucson> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tucson" ;
+    ns6:name "Tucson" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "cannot take any illegal drugs or alcohol, and must have a substance abuse assessment" ;
     dcterms:source <https://www.kold.com/2025/05/01/sahuarita-man-arrested-child-porn-charges/> ;
-    ns1:admissionContext "an be watched below. If he posts bond, Olson would be released to pretrial services. The judge said he cannot take any illegal drugs or a..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "cannot take any illegal drugs or alcohol, and must have a substance abuse assessment" .
+    ns4:admissionContext "an be watched below. If he posts bond, Olson would be released to pretrial services. The judge said he cannot take any illegal drugs or a..." ;
+    ns4:admissionFrame "said_paraphrase" ;
+    ns4:admissionTheme "harm_conduct" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_034/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns6:description "cannot take any illegal drugs or alcohol, and must have a substance abuse assessment" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_034/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/admission/1> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_034/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034/event/csam> a ns3:CSAMIncident,
+        ns7:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_034/admission/1> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_034/facet/csam> .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_034> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_034/provenance> .

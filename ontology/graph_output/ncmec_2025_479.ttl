@@ -1,107 +1,110 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns8: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.595710" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:20.676112" ;
     dcterms:identifier "ncmec_2025_479" ;
-    dcterms:modified "2026-09-15T21:27:13.595710" ;
-    dcterms:source <https://www.detroitnews.com/story/news/local/michigan/2025/06/27/michigan-men-charged-child-sexually-abusive-material-cases/84383019007/>,
+    dcterms:modified "2026-10-18 00:01:20.676112" ;
+    dcterms:source <https://www.wilx.com/2025/03/05/montrose-man-arrested-allegedly-uploading-child-porn-internet/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/fairgrove>,
-        <https://caselinker.up.railway.app/resource/location/michigan> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/michigan-state-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/fairgrove>,
-        <https://caselinker.up.railway.app/resource/location/michigan> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/mich>,
+        <https://w3id.org/caselinker/resource/location/montrose> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_479/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_479/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_479/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_479/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_479/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_479/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_479/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2025_479/tech/cybertipline> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/michigan-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/mich>,
+        <https://w3id.org/caselinker/resource/location/montrose> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-03-05T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_479/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_479/event/online-only> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_479/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-03-05T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_479/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_479/event/online-only> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_479/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/michigan-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/michigan-state-police-department> a ns5:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child sexually abusive material – aggravated possession" ;
-    cacontology-legal-outcomes:indictmentCounts 10 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
+    rdfs:label "child porn" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "using a computer to" ;
-    cacontology-legal-outcomes:indictmentCounts 15 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/charge/2> a ns7:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/event/distribution> a ns4:Event,
+        ns7:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_479/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_479/charge/2> ;
+    ns7:hasProceedingBeginPoint "2025-03-05T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 24 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 79 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$200,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/tech/cybertipline> a ns6:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-06-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/location/fairgrove> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Fairgrove" ;
-    uco-core:name "Fairgrove" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/phase/charged> a ns1:LegalProcessPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2025-03-05T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/michigan> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/mich> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mich." ;
+    ns8:name "Mich." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event .
+<https://w3id.org/caselinker/resource/location/montrose> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Montrose" ;
+    ns8:name "Montrose" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_479/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_479/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/event/csam> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns8:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_479/facet/csam> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns4:Event .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_479> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_479/provenance> .

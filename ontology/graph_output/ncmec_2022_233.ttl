@@ -1,129 +1,95 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2022_233> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2022_233> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 74 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/person/offender/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:LifeImprisonmentSentence ;
-    rdfs:label "[\"life in prison\", \"$25,000\"]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.185425" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:22.209334" ;
     dcterms:identifier "ncmec_2022_233" ;
-    dcterms:modified "2026-09-15T20:45:06.185425" ;
-    dcterms:source <https://www.wxow.com/news/crime/sparta-man-facing-71-counts-of-possession-of-child-porn/article_8f36bbe4-bb4f-11ec-95e8-7f6ccf356939.html>,
+    dcterms:modified "2026-10-17 21:51:22.209334" ;
+    dcterms:source <https://www.wxii12.com/article/3-men-arrested-in-randolph-county-child-sex-abuse/39803833>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/monroe-county>,
-        <https://caselinker.up.railway.app/resource/location/sparta>,
-        <https://caselinker.up.railway.app/resource/location/wis> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/legal-step/convicted> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/monroe-county>,
-        <https://caselinker.up.railway.app/resource/location/sparta>,
-        <https://caselinker.up.railway.app/resource/location/wis> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/nc>,
+        <https://w3id.org/caselinker/resource/location/randolph-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_233/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_233/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_233/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_233/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_233/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2022_233/tech/cybertipline> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/randolph-county-sheriffs-office> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/nc>,
+        <https://w3id.org/caselinker/resource/location/randolph-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-05-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_233/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_233/event/online-only> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_233/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-05-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_233/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_233/event/online-only> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_233/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/location/monroe-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Monroe County" ;
-    uco-core:name "Monroe County" .
+<https://w3id.org/caselinker/resource/agency/randolph-county-sheriffs-office> a ns7:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/location/sparta> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Sparta" ;
-    uco-core:name "Sparta" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/location/wis> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233/charge/2> a ns3:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns5:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "had a problem and said he had downloaded the images to his phone" ;
-    dcterms:source <https://www.wxow.com/news/crime/sparta-man-facing-71-counts-of-possession-of-child-porn/article_8f36bbe4-bb4f-11ec-95e8-7f6ccf356939.html> ;
-    ns1:admissionContext "September 2019 to March 2022. When confronted by a Monroe County Sheriff's investigator, Bradley admitted he had a problem and said he ha..." ;
-    ns1:admissionFrame "admitted_he_she" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "had a problem and said he had downloaded the images to his phone" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "had downloaded the images to his phone" ;
-    dcterms:source <https://www.wxow.com/news/crime/sparta-man-facing-71-counts-of-possession-of-child-porn/article_8f36bbe4-bb4f-11ec-95e8-7f6ccf356939.html> ;
-    ns1:admissionContext "22. When confronted by a Monroe County Sheriff's investigator, Bradley admitted he had a problem and said he had downloaded the images to..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "had downloaded the images to his phone" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_233/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_233/charge/2> ;
+    ns3:hasProceedingBeginPoint "2022-05-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_233/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/admission/2> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_233/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 26 .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233/phase/charged> a ns1:LegalProcessPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2022-05-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/nc> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "N.c." ;
+    ns2:name "N.c." .
+
+<https://w3id.org/caselinker/resource/location/randolph-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Randolph County" ;
+    ns2:name "Randolph County" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233/event/csam> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_233/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns6:Event .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_233> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_233/provenance> .

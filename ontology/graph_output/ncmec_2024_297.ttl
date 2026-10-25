@@ -1,103 +1,130 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_297> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.422529" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/admission/1/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_297/admission/1> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_297> ;
+    ns1:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/admission/2/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_297/admission/2> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_297> ;
+    ns1:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-08-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_297/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_297/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/madison-county-sheriffs-office> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/rexburg-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns4:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/event/distribution> a ns1:Event,
+        ns4:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_297/charge/1> ;
+    ns4:hasProceedingBeginPoint "2024-08-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 18 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/platform/discord> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Discord" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297> a ns3:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:28.168245" ;
     dcterms:identifier "ncmec_2024_297" ;
-    dcterms:modified "2026-09-15T21:08:10.422529" ;
-    dcterms:source <https://www.facebook.com/staradvertiser/posts/in-august-the-fbi-honolulu-division-was-assigned-a-cybertip-about-jefrey-balogo-/897880225770436/>,
+    dcterms:modified "2026-10-17 23:04:28.168245" ;
+    dcterms:source <https://www.eastidahonews.com/2024/08/rexburg-man-accused-of-buying-second-cell-phone-to-look-at-child-porn-after-police-seize-his-first-one/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/honolulu>,
-        <https://caselinker.up.railway.app/resource/location/waipahu> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_297/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_297/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_297/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2024_297/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/fbi>,
-        <https://caselinker.up.railway.app/resource/agency/icac> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/honolulu>,
-        <https://caselinker.up.railway.app/resource/location/waipahu> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/idaho>,
+        <https://w3id.org/caselinker/resource/location/rexburg> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_297/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_297/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_297/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_297/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_297/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_297/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_297/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/madison-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/rexburg-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/idaho>,
+        <https://w3id.org/caselinker/resource/location/rexburg> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_297/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_297/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_297/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "buying a new phone just after the search warrant in June" ;
+    dcterms:source <https://www.eastidahonews.com/2024/08/rexburg-man-accused-of-buying-second-cell-phone-to-look-at-child-porn-after-police-seize-his-first-one/> ;
+    ns5:admissionContext "rward, he was detained and taken to the Madison County Sheriff’s Office for an interview. During the interview, Allan reportedly admitted..." ;
+    ns5:admissionFrame "admitted_to" ;
+    ns5:admissionTheme "other" ;
+    ns5:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_297/role/offender/1> ;
+    ns5:evidenceTier "press_release_stated" ;
+    ns5:quoteType "paraphrase" ;
+    ns2:description "buying a new phone just after the search warrant in June" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_297/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_297/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_297/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/phase/charged> a ns3:LegalProcessPhase,
+        ns1:Phase ;
+    ns3:hasPhaseBeginPoint "2024-08-27T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-08-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_297/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_297/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/location/idaho> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Idaho" ;
+    ns2:name "Idaho" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_297/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child porn" .
+<https://w3id.org/caselinker/resource/location/rexburg> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Rexburg" ;
+    ns2:name "Rexburg" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_297/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "having viewed images of child pornography" ;
+    dcterms:source <https://www.eastidahonews.com/2024/08/rexburg-man-accused-of-buying-second-cell-phone-to-look-at-child-porn-after-police-seize-his-first-one/> ;
+    ns5:admissionContext "and Rexburg Police Department executed a search warrant at Allan’s home in Rexburg. They reportedly seized and examined multiple devices,..." ;
+    ns5:admissionFrame "admitted_to" ;
+    ns5:admissionTheme "harm_conduct" ;
+    ns5:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_297/role/offender/1> ;
+    ns5:evidenceTier "press_release_stated" ;
+    ns5:quoteType "paraphrase" ;
+    ns2:description "having viewed images of child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_297/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_297/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-09-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_297/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297/event/possession> a ns3:CSAMIncident,
+        ns1:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_297/admission/1> ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/discord> ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_297/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_297/operation> a cac-core:Event,
-        cacontology-taskforce:ReactiveOperation .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_297/person/offender/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_297/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_297/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_297/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
-
-<https://caselinker.up.railway.app/resource/platform/facebook> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Facebook" .
-
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
-
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
-
-<https://caselinker.up.railway.app/resource/location/honolulu> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Honolulu" ;
-    uco-core:name "Honolulu" .
-
-<https://caselinker.up.railway.app/resource/location/waipahu> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Waipahu" ;
-    uco-core:name "Waipahu" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_297/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/snapchat>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_297/facet/csam> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2024_297> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_297/provenance> .

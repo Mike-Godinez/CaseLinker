@@ -217,14 +217,14 @@ def predicted_bridges(case: Dict[str, Any]) -> Set[str]:
     for plat in parse_list(case.get("platforms_used")) or parse_list(ef.get("platforms_used")):
         slug = re.sub(r"[^a-z0-9]+", "-", plat.lower()).strip("-")
         if slug:
-            out.add(f"https://caselinker.up.railway.app/resource/platform/{slug}")
+            out.add(f"https://w3id.org/caselinker/resource/platform/{slug}")
     agencies = ef.get("agencies_involved") or []
     if isinstance(agencies, list):
         for ag in agencies:
             if isinstance(ag, str):
                 slug = re.sub(r"[^a-z0-9]+", "-", ag.lower()).strip("-")
                 if slug:
-                    out.add(f"https://caselinker.up.railway.app/resource/agency/{slug}")
+                    out.add(f"https://w3id.org/caselinker/resource/agency/{slug}")
     return out
 
 
@@ -552,7 +552,7 @@ def scale_opts_to_target(opts: Dict[str, int], target_n: int) -> Dict[str, int]:
     return out
 
 
-def parse_args(argv: List[str]) -> Tuple[Dict[str, int], bool]:
+def parse_args(argv: List[str]) -> Tuple[Dict[str, int], bool, Optional[str]]:
     opts: Dict[str, int] = {
         "target": TARGET_TOTAL,
         "bridge": N_BRIDGE,
@@ -564,6 +564,7 @@ def parse_args(argv: List[str]) -> Tuple[Dict[str, int], bool]:
         "max_per_source": MAX_PER_SOURCE_DEFAULT,
     }
     boom = False
+    db: Optional[str] = None
     i = 0
     while i < len(argv):
         if argv[i] == "--boom":
@@ -578,18 +579,21 @@ def parse_args(argv: List[str]) -> Tuple[Dict[str, int], bool]:
         elif argv[i] == "--reinforce" and i + 1 < len(argv):
             opts["reinforce"] = int(argv[i + 1])
             i += 2
+        elif argv[i] == "--db" and i + 1 < len(argv):
+            db = argv[i + 1]
+            i += 2
         else:
             i += 1
-    return opts, boom
+    return opts, boom, db
 
 
 def main() -> None:
-    opts, boom = parse_args(sys.argv[1:])
+    opts, boom, db_arg = parse_args(sys.argv[1:])
     nf = NoiseFilter()
     quality_gate_rejected = 0
     ncmec_excluded = 0
 
-    db_path = REPO_ROOT / "caselinker.db"
+    db_path = Path(db_arg) if db_arg else REPO_ROOT / "caselinker.db"
     if not db_path.is_file():
         print(f"ERROR: {db_path} not found — run ingest first.")
         sys.exit(1)
@@ -603,6 +607,29 @@ def main() -> None:
     conn.close()
 
     text_by_id: Dict[str, str] = {cid: case_text(c) for cid, c in cases.items()}
+    # One pass. Bucket scans used to re-parse features inside O(pool × picked) loops.
+    bridge_by_id: Dict[str, Set[str]] = {}
+    spine_by_id: Dict[str, Tuple[int, int, int]] = {}
+    density_by_id: Dict[str, int] = {}
+    richness_by_id: Dict[str, int] = {}
+    severity_by_id: Dict[str, int] = {}
+    fp_by_id: Dict[str, FrozenSet[str]] = {}
+    groups_by_id: Dict[str, Set[str]] = {}
+    spine_rich_by_id: Dict[str, int] = {}
+    quality_by_id: Dict[str, bool] = {}
+    for cid, c in cases.items():
+        spine = spine_node_counts(c)
+        rich = score_richness(c)
+        e, r, b = spine
+        spine_by_id[cid] = spine
+        bridge_by_id[cid] = predicted_bridges(c)
+        density_by_id[cid] = score_density(c)
+        richness_by_id[cid] = rich
+        severity_by_id[cid] = score_severity(c)
+        fp_by_id[cid] = case_fingerprint(c)
+        groups_by_id[cid] = platform_groups_for_case(c, text_by_id[cid])
+        spine_rich_by_id[cid] = e + r + min(b, 5) + rich
+        quality_by_id[cid] = e >= 1 and r >= 1 and b >= 1
     ai_ids = sorted(cid for cid, t in text_by_id.items() if is_ai_case(t))
     ai_pinned = set(ai_ids)
 
@@ -652,7 +679,7 @@ def main() -> None:
         for k, v in extra.items():
             picked[cid][k] = v
         if cid not in tracker.case_bridges:
-            tracker.add(cid, predicted_bridges(c))
+            tracker.add(cid, bridge_by_id[cid])
 
     def try_admit(
         cid: str,
@@ -672,10 +699,10 @@ def main() -> None:
                 ncmec_excluded += 1
             return False
         if quality and not is_protected(cid) and bucket not in ("ai_pin", "seed_200"):
-            if not passes_quality_gate(case):
+            if not quality_by_id[cid]:
                 quality_gate_rejected += 1
                 return False
-        bridges = predicted_bridges(case)
+        bridges = bridge_by_id[cid]
         if cap_check and tracker.would_exceed_cap(cid, bridges):
             return False
         record(cid, bucket, rationale)
@@ -693,7 +720,8 @@ def main() -> None:
         n_seed += 1
     print(
         f"Seed 200: pinned {n_seed}/{len(seed_ids)} from selected_200_ids.txt"
-        + (f" ({n_seed_missing} not in DB)" if n_seed_missing else "")
+        + (f" ({n_seed_missing} not in DB)" if n_seed_missing else ""),
+        flush=True,
     )
 
     # --- ai_pin ---
@@ -715,13 +743,12 @@ def main() -> None:
     # --- platform set-cover (cap 120) ---
     group_to_cases: Dict[str, List[str]] = defaultdict(list)
     for cid in substantive:
-        text = text_by_id[cid]
-        for g in platform_groups_for_case(cases[cid], text):
+        for g in groups_by_id[cid]:
             group_to_cases[g].append(cid)
 
     uncovered = set(PLATFORM_GROUPS.keys())
     for cid in picked:
-        uncovered -= platform_groups_for_case(cases[cid], text_by_id[cid])
+        uncovered -= groups_by_id[cid]
 
     platform_n = 0
     while uncovered and platform_n < opts["platform_max"]:
@@ -731,13 +758,13 @@ def main() -> None:
         for cid in substantive:
             if cid in picked:
                 continue
-            covers = platform_groups_for_case(cases[cid], text_by_id[cid]) & uncovered
+            covers = groups_by_id[cid] & uncovered
             if not covers:
                 continue
             key = (
                 len(covers),
-                spine_richness_score(cases[cid]),
-                score_density(cases[cid]),
+                spine_rich_by_id[cid],
+                density_by_id[cid],
             )
             if key > best_key:
                 best_key = key
@@ -753,7 +780,7 @@ def main() -> None:
         ):
             uncovered -= best_covers
             platform_n += 1
-    print(f"Platform bucket: {platform_n}")
+    print(f"Platform bucket: {platform_n}", flush=True)
 
     # --- bridge (marginal novel URIs) ---
     bridge_n = 0
@@ -761,39 +788,38 @@ def main() -> None:
     while bridge_n < opts["bridge"] and bridge_pool:
         best: Optional[Tuple[int, int, str]] = None
         for cid in bridge_pool:
-            bridges = predicted_bridges(cases[cid])
-            novel = tracker.novel_bridges(bridges)
+            novel = tracker.novel_bridges(bridge_by_id[cid])
             if not novel and bridge_n > 0:
                 continue
-            key = (len(novel), spine_richness_score(cases[cid]), cid)
+            key = (len(novel), spine_rich_by_id[cid], cid)
             if best is None or key > best:
                 best = key
         if best is None or (best[0] < 1 and bridge_n > 0):
             break
         cid = best[2]
-        novel = tracker.novel_bridges(predicted_bridges(cases[cid]))
+        novel = tracker.novel_bridges(bridge_by_id[cid])
         if try_admit(cid, "bridge", f"novel_bridges={len(novel)} sample={list(novel)[:3]}"):
             bridge_n += 1
             bridge_pool = [c for c in bridge_pool if c != cid and c not in picked]
         else:
             bridge_pool = [c for c in bridge_pool if c != cid]
-    print(f"Bridge bucket: {bridge_n}")
+    print(f"Bridge bucket: {bridge_n}", flush=True)
 
     # --- reinforce (touch bridge with degree >= 2) ---
     reinforce_n = 0
     reinforce_rank = sorted(
         [c for c in substantive if c not in picked],
         key=lambda c: (
-            -len(tracker.reinforcing_bridges(predicted_bridges(cases[c]), min_degree=2)),
-            spine_richness_score(cases[c]),
-            score_richness(cases[c]),
+            -len(tracker.reinforcing_bridges(bridge_by_id[c], min_degree=2)),
+            spine_rich_by_id[c],
+            richness_by_id[c],
         ),
         reverse=True,
     )
     for cid in reinforce_rank:
         if reinforce_n >= opts["reinforce"]:
             break
-        ref = tracker.reinforcing_bridges(predicted_bridges(cases[cid]), min_degree=2)
+        ref = tracker.reinforcing_bridges(bridge_by_id[cid], min_degree=2)
         if len(ref) < 1:
             continue
         if try_admit(
@@ -802,27 +828,27 @@ def main() -> None:
             f"reinforces={len(ref)} bridges deg>=2 sample={list(ref)[:3]}",
         ):
             reinforce_n += 1
-    print(f"Reinforce bucket: {reinforce_n}")
+    print(f"Reinforce bucket: {reinforce_n}", flush=True)
 
     # --- rich ---
     rich_n = 0
     for cid in sorted(
         substantive,
-        key=lambda c: (-spine_richness_score(cases[c]), -score_density(cases[c]), c),
+        key=lambda c: (-spine_rich_by_id[c], -density_by_id[c], c),
     ):
         if rich_n >= opts["rich"]:
             break
         if cid in picked:
             continue
-        if try_admit(cid, "rich", f"spine_richness={spine_richness_score(cases[cid])}"):
+        if try_admit(cid, "rich", f"spine_richness={spine_rich_by_id[cid]}"):
             rich_n += 1
-    print(f"Rich bucket: {rich_n}")
+    print(f"Rich bucket: {rich_n}", flush=True)
 
     # --- severe ---
     sev_n = 0
     for cid in sorted(
         substantive,
-        key=lambda c: (-score_severity(cases[c]), -spine_richness_score(cases[c]), c),
+        key=lambda c: (-severity_by_id[c], -spine_rich_by_id[c], c),
     ):
         if sev_n >= opts["severe"]:
             break
@@ -830,19 +856,19 @@ def main() -> None:
             continue
         if try_admit(cid, "severe", f"severity={score_severity(cases[cid])}"):
             sev_n += 1
-    print(f"Severe bucket: {sev_n}")
+    print(f"Severe bucket: {sev_n}", flush=True)
 
     # --- distinct ---
-    picked_fps = [case_fingerprint(cases[cid]) for cid in picked]
+    picked_fps = [fp_by_id[cid] for cid in picked]
     distinct_n = 0
     distinct_rank = sorted(
         substantive,
         key=lambda c: (
             min(
-                (fingerprint_distance(case_fingerprint(cases[c]), p) for p in picked_fps),
+                (fingerprint_distance(fp_by_id[c], p) for p in picked_fps),
                 default=1.0,
             ),
-            score_richness(cases[c]),
+            richness_by_id[c],
             c,
         ),
         reverse=True,
@@ -852,18 +878,19 @@ def main() -> None:
             break
         if cid in picked:
             continue
+        fp = fp_by_id[cid]
         dist = min(
-            (fingerprint_distance(case_fingerprint(cases[cid]), p) for p in picked_fps),
+            (fingerprint_distance(fp, p) for p in picked_fps),
             default=1.0,
         )
         if try_admit(cid, "distinct", f"min_fp_dist={dist:.2f}"):
-            picked_fps.append(case_fingerprint(cases[cid]))
+            picked_fps.append(fp)
             distinct_n += 1
-    print(f"Distinct bucket: {distinct_n}")
+    print(f"Distinct bucket: {distinct_n}", flush=True)
 
     # --- spine median for fill preference ---
     non_ncmec_spine = [
-        sum(spine_node_counts(cases[c])[:2])
+        sum(spine_by_id[c][:2])
         for c in substantive
         if not is_ncmec(cases[c])
     ]
@@ -883,10 +910,10 @@ def main() -> None:
         picked_n = per_src.get(src, 0)
         cap = caps.get(src, 50)
         headroom = cap - picked_n
-        spine_sum = sum(spine_node_counts(cases[cid])[:2])
+        spine_sum = sum(spine_by_id[cid][:2])
         spine_bonus = 1 if spine_sum >= corpus_median_spine else 0
         rarity = (1.0 / corpus_src.get(src, 1)) * (headroom / max(1, cap))
-        bridges = predicted_bridges(cases[cid])
+        bridges = bridge_by_id[cid]
         marginal = len(tracker.novel_bridges(bridges)) + len(
             tracker.reinforcing_bridges(bridges, min_degree=1)
         )
@@ -894,7 +921,7 @@ def main() -> None:
             rarity if headroom > 0 else -1.0,
             marginal,
             spine_bonus,
-            spine_richness_score(cases[cid]),
+            spine_rich_by_id[cid],
             cid,
         )
 
@@ -931,7 +958,7 @@ def main() -> None:
                     break
             else:
                 break
-    print(f"Source-diverse fill: {fill_n} (total {len(picked)} / {target_n})")
+    print(f"Source-diverse fill: {fill_n} (total {len(picked)} / {target_n})", flush=True)
 
     # --- post-trim mega-hubs (non-protected only) ---
     cap = tracker.max_allowed_degree()
@@ -968,13 +995,13 @@ def main() -> None:
     platform_coverage: Dict[str, int] = {}
     for g in PLATFORM_GROUPS:
         platform_coverage[g] = sum(
-            1 for cid in ids if g in platform_groups_for_case(cases[cid], text_by_id[cid])
+            1 for cid in ids if g in groups_by_id[cid]
         )
 
     bucket_spine: Dict[str, List[int]] = defaultdict(list)
     for cid in ids:
         primary = picked[cid]["buckets"][0]
-        bucket_spine[primary].append(sum(spine_node_counts(cases[cid])[:2]))
+        bucket_spine[primary].append(sum(spine_by_id[cid][:2]))
 
     def median(vals: List[int]) -> float:
         if not vals:

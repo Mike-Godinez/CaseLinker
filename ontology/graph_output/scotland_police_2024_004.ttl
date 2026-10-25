@@ -1,0 +1,95 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_004> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 14:18:20.795122" ;
+    dcterms:identifier "scotland_police_2024_004" ;
+    dcterms:modified "2026-10-18 14:18:20.795122" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scotland_police_2024_004/provenance> ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2024/april/man-found-sentenced-following-non-recent-sexual-offences-against-children-in-shetland/>,
+        "SCOTLAND POLICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/lerwick>,
+        <https://w3id.org/caselinker/resource/location/scotland>,
+        <https://w3id.org/caselinker/resource/location/shetland> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/scotland_police_2024_004/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/scotland_police_2024_004/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/scotland_police_2024_004/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2024_004/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2024_004/legal-step/sentenced> ;
+    ns8:involvesAgency <https://w3id.org/caselinker/resource/agency/police-scotland> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/lerwick>,
+        <https://w3id.org/caselinker/resource/location/scotland>,
+        <https://w3id.org/caselinker/resource/location/shetland> .
+
+<https://w3id.org/caselinker/resource/agency/police-scotland> a ns8:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_004/event/trust-violation> a ns2:AuthorityAbuse,
+        ns2:TrustViolation ;
+    ns2:violatesRelationship <https://w3id.org/caselinker/resource/case/scotland_police_2024_004/relationship/teacher> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_004/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasProceedingBeginPoint "2024-04-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:resultsSentence <https://w3id.org/caselinker/resource/case/scotland_police_2024_004/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_004/legal-step/sentenced> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2024-04-15T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 41 .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_004/relationship/teacher> a ns2:CustodialRelationship,
+        ns2:Teacher ;
+    ns2:involvesChild <https://w3id.org/caselinker/resource/case/scotland_police_2024_004/role/victim/1> ;
+    ns2:involvesCustodian <https://w3id.org/caselinker/resource/case/scotland_police_2024_004/role/offender/1> ;
+    ns2:relationshipType "teacher" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_004/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-04-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2024_004/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_004/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-04-15T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2024_004/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_004/sentence/1> a ns4:CriminalSentence,
+        ns4:PrisonSentence ;
+    rdfs:label "two years and six months" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2024_004/phase/sentenced> a ns6:Phase,
+        ns4:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2024-04-15T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/lerwick> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lerwick" ;
+    ns3:name "Lerwick" .
+
+<https://w3id.org/caselinker/resource/location/scotland> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Scotland" ;
+    ns3:name "Scotland" .
+
+<https://w3id.org/caselinker/resource/location/shetland> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Shetland" ;
+    ns3:name "Shetland" .
+

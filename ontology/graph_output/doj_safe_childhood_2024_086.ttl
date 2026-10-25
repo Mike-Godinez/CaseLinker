@@ -1,159 +1,159 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086> ;
+    ns4:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/offense-event/charge-3> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2024-10-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/offense-event/charge-3> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/doj> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/doj> a ns7:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/fbi> a ns7:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T22:12:27.212146" ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 02:38:14.887723" ;
     dcterms:identifier "doj_safe_childhood_2024_086" ;
-    dcterms:modified "2026-09-15T22:12:27.212146" ;
+    dcterms:modified "2026-10-18 11:51:32.035777" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/provenance> ;
     dcterms:source <https://www.justice.gov/usao-edmo/pr/missouri-sex-offender-sentenced-10-years-new-child-pornography-charge>,
         "DOJ SAFE CHILDHOOD" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/glenwood>,
-        <https://caselinker.up.railway.app/resource/location/missouri>,
-        <https://caselinker.up.railway.app/resource/location/schuyler-county>,
-        <https://caselinker.up.railway.app/resource/location/st-louis> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/event/project-safe-childhood>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/offense-event/charge-3> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/doj>,
-        <https://caselinker.up.railway.app/resource/agency/fbi> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/glenwood>,
-        <https://caselinker.up.railway.app/resource/location/missouri>,
-        <https://caselinker.up.railway.app/resource/location/schuyler-county>,
-        <https://caselinker.up.railway.app/resource/location/st-louis> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/glenwood>,
+        <https://w3id.org/caselinker/resource/location/missouri>,
+        <https://w3id.org/caselinker/resource/location/schuyler-county>,
+        <https://w3id.org/caselinker/resource/location/st-louis> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/admission/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/offense-event/charge-3> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/doj>,
+        <https://w3id.org/caselinker/resource/agency/fbi> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/glenwood>,
+        <https://w3id.org/caselinker/resource/location/missouri>,
+        <https://w3id.org/caselinker/resource/location/schuyler-county>,
+        <https://w3id.org/caselinker/resource/location/st-louis> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
     rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns5:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/charge/2> a ns5:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/charge/3> a ns5:CriminalCharge ;
     rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/offense-event/charge-3> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/offense-event/charge-3> .
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/offense-event/charge-3> ;
+    ns2:chargeCluster "child_exploitation" ;
+    ns2:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/offense-event/charge-3> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/event/distribution> a ns4:Event,
+        ns5:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/event/project-safe-childhood> a cac-core:Event,
-        cacontology-multi:ProjectSafeChildhoodOperation ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/event/project-safe-childhood> a ns4:Event,
+        ns7:ProjectSafeChildhoodOperation ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/sentence/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/charge/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/charge/2>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/charge/3> ;
+    ns5:hasProceedingBeginPoint "2024-10-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:resultsSentence <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/sentence/1> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/legal-step/sentenced> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2024-10-31T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 53 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 53 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/offense-event/charge-3> ;
-    cacontology:perpetratorRegisteredSexOffender true ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2024-10-31T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/offense-event/charge-3> ;
+    ns1:perpetratorRegisteredSexOffender true ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"10 Years\"]" .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/sentence/1> a ns5:CriminalSentence,
+        ns5:PrisonSentence ;
+    rdfs:label "10 Years" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2024-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/phase/sentenced> a ns4:Phase,
+        ns5:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2024-10-31T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/glenwood> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/glenwood> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Glenwood" ;
-    uco-core:name "Glenwood" .
+    ns3:name "Glenwood" .
 
-<https://caselinker.up.railway.app/resource/location/missouri> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/missouri> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Missouri" ;
+    ns3:name "Missouri" .
 
-<https://caselinker.up.railway.app/resource/location/schuyler-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/schuyler-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Schuyler County" ;
-    uco-core:name "Schuyler County" .
+    ns3:name "Schuyler County" .
 
-<https://caselinker.up.railway.app/resource/location/st-louis> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/st-louis> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "St. Louis" ;
+    ns3:name "St. Louis" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "investigators that he used his laptop to search for and download child sexual abuse material" ;
     dcterms:source <https://www.justice.gov/usao-edmo/pr/missouri-sex-offender-sentenced-10-years-new-child-pornography-charge> ;
-    ns1:admissionContext "nography on a peer-to-peer file sharing program. They traced the videos to Beeler’s home. Beeler later admitted to investigators that he..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct",
+    ns3:description "investigators that he used his laptop to search for and download child sexual abuse material" ;
+    ns2:admissionContext "nography on a peer-to-peer file sharing program. They traced the videos to Beeler’s home. Beeler later admitted to investigators that he..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct",
         "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "investigators that he used his laptop to search for and download child sexual abuse material" .
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/admission/1> ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/facet/possession> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/event/possession> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2024_086/offense-event/charge-3> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2024_086/offense-event/charge-3> a ns1:ChildSexualAbuseEvent,
+        ns4:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
     rdfs:label "Inferred offense from charge: child exploitation" .
 

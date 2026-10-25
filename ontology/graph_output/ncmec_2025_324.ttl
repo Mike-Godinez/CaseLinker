@@ -1,91 +1,129 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-usa-federal: <https://cacontology.projectvic.org/usa-federal-law#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/production#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_324> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.468118" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/admission/1/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_324/admission/1> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_324> ;
+    ns1:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-01-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_324/offense-event/charge-1> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_324/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/hamilton-county-metro-child-exploitation-task-force> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/indiana-department-of-correction> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324> a ns2:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:19.069990" ;
     dcterms:identifier "ncmec_2025_324" ;
-    dcterms:modified "2026-09-15T21:27:13.468118" ;
-    dcterms:source <https://www.14news.com/2025/06/14/evansville-man-arrested-child-molestation-sheriff-says/>,
+    dcterms:modified "2026-10-18 00:01:19.069990" ;
+    dcterms:source <https://www.yahoo.com/news/anderson-man-convicted-child-exploitation-232200497.html?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAHZ8JxKWqVUcIxEMWyZ5DtxTA6P4kUsZC1wxnWZRu_qEHJ1R4rgBIejiUgR9lZ45rDBZykPoESD7fsyFQQJydgHz0EnaHS9MXeK2KDjUedz0VSmiY52Zr_U5M6gIpVUa790ErMCAkoCDZgHZIu6eTwBmsRjXfkA32DpxsWqCkv0x>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/evansville>,
-        <https://caselinker.up.railway.app/resource/location/ind> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/offense-event/charge-1> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/vanderburgh-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/evansville>,
-        <https://caselinker.up.railway.app/resource/location/ind> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/anderson>,
+        <https://w3id.org/caselinker/resource/location/ind> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_324/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_324/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_324/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_324/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_324/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_324/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_324/offense-event/charge-1> ;
+    ns2:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/hamilton-county-metro-child-exploitation-task-force>,
+        <https://w3id.org/caselinker/resource/agency/indiana-department-of-correction> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/anderson>,
+        <https://w3id.org/caselinker/resource/location/ind> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_324/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/offense-event/charge-1> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/charge/1> a ns3:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2025_324/offense-event/charge-1> ;
+    ns4:chargeCluster "child_exploitation" ;
+    ns4:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_324/offense-event/charge-1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_324/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/offense-event/charge-1> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/event/distribution> a ns1:Event,
+        ns3:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/agency/vanderburgh-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Vanderburgh County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_324/charge/1> ;
+    ns3:hasProceedingBeginPoint "2025-01-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2025_324/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_324/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_324/sentence/3> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_324/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child molestation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/offense-event/charge-1> ;
-    ns1:chargeCluster "child_molestation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/offense-event/charge-1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/legal-step/sentenced> a ns1:Event,
+        ns1:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2025-01-17T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_324/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_324/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 32 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_324/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:victimAge 15 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_324/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-01-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_324/offense-event/charge-1> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_324/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_324/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/sentence/1> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "25 years" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_324/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-06-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/sentence/2> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "18 years" .
 
-<https://caselinker.up.railway.app/resource/location/evansville> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/sentence/3> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "seven years" .
 
-<https://caselinker.up.railway.app/resource/location/ind> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "distributing child sexual material 100-150 times" ;
+    dcterms:source <https://www.yahoo.com/news/anderson-man-convicted-child-exploitation-232200497.html?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAHZ8JxKWqVUcIxEMWyZ5DtxTA6P4kUsZC1wxnWZRu_qEHJ1R4rgBIejiUgR9lZ45rDBZykPoESD7fsyFQQJydgHz0EnaHS9MXeK2KDjUedz0VSmiY52Zr_U5M6gIpVUa790ErMCAkoCDZgHZIu6eTwBmsRjXfkA32DpxsWqCkv0x> ;
+    ns4:admissionContext "a sex offender for life. The state's case was presented by deputy prosecutor Dan Kopp. Detective Christoher Borgmann reported that Hoskin..." ;
+    ns4:admissionFrame "admitted_to" ;
+    ns4:admissionTheme "harm_conduct" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_324/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns6:description "distributing child sexual material 100-150 times" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_324/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/phase/sentenced> a ns1:Phase,
+        ns3:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2025-01-17T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_324/offense-event/charge-1> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        cacontology-usa-federal:SexualAbuseOfMinor,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child molestation" .
+<https://w3id.org/caselinker/resource/location/anderson> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Anderson" ;
+    ns6:name "Anderson" .
 
+<https://w3id.org/caselinker/resource/location/ind> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ind" ;
+    ns6:name "Ind" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324/offense-event/charge-1> a ns2:ChildSexualAbuseEvent,
+        ns1:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_324> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_324/provenance> .

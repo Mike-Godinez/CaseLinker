@@ -1,0 +1,73 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002> a ns2:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 00:39:05.906690" ;
+    dcterms:identifier "anchorage_pd_2025_002" ;
+    dcterms:modified "2026-10-18 00:39:05.906690" ;
+    dcterms:source <https://www.anchoragepolice.com/news/warrant-locate-terry-wayne-baugher>,
+        "ANCHORAGE PD" ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/event/possession>,
+        <https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/legal-proceeding> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/anchorage-police-department>,
+        <https://w3id.org/caselinker/resource/agency/police-dispatch> .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-08-20T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-08-20T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/anchorage-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/police-dispatch> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns3:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/charge/2> a ns3:CSAM_Distribution,
+        ns3:CriminalCharge ;
+    rdfs:label "distribution of child pornography" .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/event/distribution> a ns1:Event,
+        ns3:CSAM_Distribution ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/charge/1>,
+        <https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/charge/2> ;
+    ns3:hasProceedingBeginPoint "2025-08-20T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 62 .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/event/possession> a ns2:CSAMIncident,
+        ns1:Event ;
+    ns2:severityLevel 3 ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/anchorage_pd_2025_002/provenance> .

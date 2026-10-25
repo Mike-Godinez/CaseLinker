@@ -1,0 +1,80 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/detection#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2025_013> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 14:18:21.687460" ;
+    dcterms:identifier "scotland_police_2025_013" ;
+    dcterms:modified "2026-10-18 14:18:21.687460" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scotland_police_2025_013/provenance> ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2025/august/man-jailed-after-being-convicted-of-sexual-offences-against-teenage-girl/>,
+        "SCOTLAND POLICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/edinburgh>,
+        <https://w3id.org/caselinker/resource/location/glenrothes> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/scotland_police_2025_013/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/scotland_police_2025_013/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/scotland_police_2025_013/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2025_013/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2025_013/legal-step/sentenced> ;
+    ns2:investigationStatus "unknown" ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/edinburgh>,
+        <https://w3id.org/caselinker/resource/location/glenrothes> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2025_013/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-07-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/scotland_police_2025_013/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2025_013/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2025_013/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-07-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/scotland_police_2025_013/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2025_013/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2025_013/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasProceedingBeginPoint "2025-07-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:resultsSentence <https://w3id.org/caselinker/resource/case/scotland_police_2025_013/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2025_013/legal-step/sentenced> a ns4:Event,
+        ns4:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2025-07-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2025_013/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns1:ageEstimate 43 .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2025_013/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2025_013/sentence/1> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "27 months" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2025_013/phase/sentenced> a ns4:Phase,
+        ns3:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2025-07-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/edinburgh> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Edinburgh" ;
+    ns6:name "Edinburgh" .
+
+<https://w3id.org/caselinker/resource/location/glenrothes> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Glenrothes" ;
+    ns6:name "Glenrothes" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2025_013/event/hands-on> a ns2:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns2:severityLevel 3 .
+

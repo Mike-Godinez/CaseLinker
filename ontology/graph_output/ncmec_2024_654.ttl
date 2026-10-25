@@ -1,99 +1,176 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_654> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.738448" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/admission/1/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_654/admission/1> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_654> ;
+    ns1:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2024-02-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_654/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_654/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/montgomery-county-sheriffs-department> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654> a ns4:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:32.149097" ;
     dcterms:identifier "ncmec_2024_654" ;
-    dcterms:modified "2026-09-15T21:08:10.738448" ;
-    dcterms:source <https://www.wmur.com/article/hillsborough-new-hampshire-maurice-morissette-89/61840914>,
+    dcterms:modified "2026-10-17 23:04:32.149097" ;
+    dcterms:source <https://6abc.com/james-christopher-buckley-arrest-montgomery-county-sheriffs-department-cape-may-prosecutors-office-wildwood/14453502/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/hillsborough>,
-        <https://caselinker.up.railway.app/resource/location/manchester>,
-        <https://caselinker.up.railway.app/resource/location/new-hampshire>,
-        <https://caselinker.up.railway.app/resource/location/nh> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/hillsborough>,
-        <https://caselinker.up.railway.app/resource/location/manchester>,
-        <https://caselinker.up.railway.app/resource/location/new-hampshire>,
-        <https://caselinker.up.railway.app/resource/location/nh> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/buckley>,
+        <https://w3id.org/caselinker/resource/location/gilbertsville>,
+        <https://w3id.org/caselinker/resource/location/montgomery-county>,
+        <https://w3id.org/caselinker/resource/location/new-jersey>,
+        <https://w3id.org/caselinker/resource/location/nj>,
+        <https://w3id.org/caselinker/resource/location/pa>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania>,
+        <https://w3id.org/caselinker/resource/location/philadelphia>,
+        <https://w3id.org/caselinker/resource/location/wildwood> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_654/phase/arrested> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_654/phase/arrested> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_654/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_654/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_654/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_654/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_654/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_654/legal-proceeding> ;
+    ns4:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/montgomery-county-sheriffs-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/buckley>,
+        <https://w3id.org/caselinker/resource/location/gilbertsville>,
+        <https://w3id.org/caselinker/resource/location/montgomery-county>,
+        <https://w3id.org/caselinker/resource/location/new-jersey>,
+        <https://w3id.org/caselinker/resource/location/nj>,
+        <https://w3id.org/caselinker/resource/location/pa>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania>,
+        <https://w3id.org/caselinker/resource/location/philadelphia>,
+        <https://w3id.org/caselinker/resource/location/wildwood> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_654/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns7:indictmentCounts 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_654/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/charge/2> a ns7:CSAM_Distribution,
+        ns7:CriminalCharge ;
+    rdfs:label "distribution of child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_654/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_654/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/event/distribution> a ns1:Event,
+        ns7:CSAM_Distribution ;
+    ns4:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_654/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 69 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/event/multi-jurisdiction> a ns1:Event,
+        ns5:MultiJurisdictionalInvestigation ;
+    ns4:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_654/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_654/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns7:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held at the Cape May County Correctional Facility" ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_654/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_654/charge/2> ;
+    ns7:hasProceedingBeginPoint "2024-02-21T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_654/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 57 .
 
-<https://caselinker.up.railway.app/resource/location/hillsborough> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Hillsborough" ;
-    uco-core:name "Hillsborough" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/manchester> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2024-02-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_654/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_654/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/location/new-hampshire> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/platform/icloud> a <https://cacontology.projectvic.org/platforms#FileHostingService> ;
+    rdfs:label "iCloud" .
 
-<https://caselinker.up.railway.app/resource/location/nh> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/platform/gen-ai> a cacontology-platforms:FileHostingService ;
-    rdfs:label "Gen AI" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "to viewing and storing the images during the COVID pandemic, and says he was viewing it as his younger self" ;
+    dcterms:source <https://6abc.com/james-christopher-buckley-arrest-montgomery-county-sheriffs-department-cape-may-prosecutors-office-wildwood/14453502/> ;
+    ns2:admissionContext "ion residence located in Wildwood, New Jersey, the prosecutor's office said. An affidavit stated that Buckley confessed to viewing and st..." ;
+    ns2:admissionFrame "confessed_paraphrase" ;
+    ns2:admissionTheme "other" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_654/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns3:description "to viewing and storing the images during the COVID pandemic, and says he was viewing it as his younger self" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_654/event/ai-csam> a cacontology:DigitallyGeneratedCSAMIncident,
-        <https://cacontology.projectvic.org/ai-csam#AIGeneratedCSAM>,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/gen-ai> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/phase/arrested> a ns4:InitialPhase,
+        ns1:Phase ;
+    ns4:hasPhaseBeginPoint "2024-02-21T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_654/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/gen-ai> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_654/facet/possession> .
+<https://w3id.org/caselinker/resource/location/buckley> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Buckley" ;
+    ns3:name "Buckley" .
 
+<https://w3id.org/caselinker/resource/location/gilbertsville> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Gilbertsville" ;
+    ns3:name "Gilbertsville" .
+
+<https://w3id.org/caselinker/resource/location/montgomery-county> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Montgomery County" ;
+    ns3:name "Montgomery County" .
+
+<https://w3id.org/caselinker/resource/location/new-jersey> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Jersey" ;
+    ns3:name "New Jersey" .
+
+<https://w3id.org/caselinker/resource/location/nj> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "N.j." ;
+    ns3:name "N.j." .
+
+<https://w3id.org/caselinker/resource/location/pa> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pa." ;
+    ns3:name "Pa." .
+
+<https://w3id.org/caselinker/resource/location/pennsylvania> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pennsylvania" ;
+    ns3:name "Pennsylvania" .
+
+<https://w3id.org/caselinker/resource/location/philadelphia> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Philadelphia" ;
+    ns3:name "Philadelphia" .
+
+<https://w3id.org/caselinker/resource/location/wildwood> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wildwood" ;
+    ns3:name "Wildwood" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654/event/possession> a ns4:CSAMIncident,
+        ns1:Event ;
+    ns4:severityLevel 3 ;
+    ns4:usesChannel <https://w3id.org/caselinker/resource/platform/icloud> ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_654/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_654> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_654/provenance> .

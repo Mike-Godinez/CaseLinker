@@ -1,104 +1,92 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.222434" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_079> a ns3:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:16.231170" ;
     dcterms:identifier "ncmec_2025_079" ;
-    dcterms:modified "2026-09-15T21:27:13.222434" ;
-    dcterms:source <https://mynewsla.com/crime/2025/05/07/man-charged-with-molesting-6-year-old-boy/>,
+    dcterms:modified "2026-10-18 00:01:16.231170" ;
+    dcterms:source <https://abc30.com/post/registered-sex-offender-arrested-fresno-alleged-possession-child-sexual-abuse-material/15990398/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/orange>,
-        <https://caselinker.up.railway.app/resource/location/santa-ana> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/orange-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/orange>,
-        <https://caselinker.up.railway.app/resource/location/santa-ana> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/fresno>,
+        <https://w3id.org/caselinker/resource/location/gettysburg> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_079/phase/booked> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_079/phase/booked> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_079/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_079/legal-proceeding> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/fresno-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/calif>,
+        <https://w3id.org/caselinker/resource/location/fresno>,
+        <https://w3id.org/caselinker/resource/location/gettysburg> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_079/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-03-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_079/event/possession> ;
+    ns3:perpetratorRegisteredSexOffender true ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_079/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_079/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-03-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_079/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_079/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/orange-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Orange Police Department" .
+<https://w3id.org/caselinker/resource/agency/fresno-county-sheriffs-office> a ns7:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/charge/2> a cacontology-legal-outcomes:CSAM_Distribution,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "distribution of child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_079/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_079/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_079/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Fresno County Jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_079/charge/1> ;
+    ns2:hasProceedingBeginPoint "2025-03-07T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_079/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 34 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_079/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_079/phase/booked> a ns3:InitialPhase,
+        ns6:Phase ;
+    ns3:hasPhaseBeginPoint "2025-03-07T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/calif> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Calif." ;
+    ns1:name "Calif." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/fresno> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fresno" ;
+    ns1:name "Fresno" .
 
-<https://caselinker.up.railway.app/resource/location/orange> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Orange" ;
-    uco-core:name "Orange" .
+<https://w3id.org/caselinker/resource/location/gettysburg> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Gettysburg" ;
+    ns1:name "Gettysburg" .
 
-<https://caselinker.up.railway.app/resource/location/santa-ana> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Santa Ana" ;
-    uco-core:name "Santa Ana" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_079/event/possession> a ns3:CSAMIncident,
+        ns6:Event ;
+    ns3:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_079/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_079/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_079/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_079> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_079/provenance> .

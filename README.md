@@ -6,7 +6,7 @@
 
 **Try the latest version online:** [https://caselinker.up.railway.app/](https://caselinker.up.railway.app/)
 
-The live release includes all features and a processed case corpus from publicly available ICAC / NCMEC / DOJ / State Attorneys General press materials. The processed corpus holds **10,362 case reports**, **126,314 extracted features**, and **4,000+ distinct law-enforcement agencies** across **61** sources. Per-source coverage is on the in-app **Sources** page. These reports summarize investigations, arrests, and prosecutions, redacted for public release. No PII was processed; all data was already in the public domain. No installation required — just open the link in your browser.
+The live release includes all features and a processed case corpus from publicly available ICAC / NCMEC / DOJ / State Attorneys General press materials. The processed corpus holds **10,711 case reports**, **131,332 extracted features**, and **4,000+ distinct law-enforcement agencies** across **70** sources. Per-source coverage is on the in-app **Sources** page. These reports summarize investigations, arrests, and prosecutions, redacted for public release. No PII was processed; all data was already in the public domain. No installation required — just open the link in your browser.
 
 ## Technical Reports
 
@@ -162,8 +162,8 @@ You can process additional PDFs to add more cases to the database.
    - Provides REST API endpoints for case data, analysis, and statistics
 
 3. **`caselinker_mcp/server.py`** - **MCP server for agents and operators**
-   - **Local stdio:** **52 tools** (corpus + free RECAP/DOJ search + full collector READ/WRITE + local duplicate audit). Collector WRITE writes JSON/PDFs under `collector_output/` on your machine
-   - **Railway hosted MCP:** **42 tools** — same corpus/READ surface; collector **WRITE tools** are not registered (no ephemeral-disk side effects). Use local MCP or the `collector/` CLI to harvest PDFs.
+   - **Local stdio:** **54 tools** (corpus + free RECAP/DOJ search + full collector READ/WRITE + local duplicate audit). Collector WRITE writes JSON/PDFs under `collector_output/` on your machine
+   - **Railway hosted MCP:** **44 tools** — same corpus/READ surface; collector **WRITE tools** are not registered (no ephemeral-disk side effects). Use local MCP or the `collector/` CLI to harvest PDFs.
    - Reach out for private mcp.json keys and review `caselinker_mcp/README.md` and `caselinker_mcp/tool_registry.md` for setup, auth, and the full catalog
 
 **Typical use case:**
@@ -173,32 +173,23 @@ You can process additional PDFs to add more cases to the database.
 
 ## Process Your Own PDF Files
 
-**The local database starts empty.** To populate it with cases, you need to process PDF files you want to ingest.
+**The local database starts empty.** To populate CaseLinker with cases, collect PDFs, then run them through the extractor.
 
-### Finding PDF Sources
+### Collecting PDFs
 
-Visit the **Sources** page for agency links and what is already in the corpus:
-- **Live Demo Sources Page**: [https://caselinker.up.railway.app/sources](https://caselinker.up.railway.app/sources)
-- Or visit `/sources` when running locally: http://localhost:8000/sources
+Visit the **Sources** page for agency links and what is already in the corpus: [live](https://caselinker.up.railway.app/sources) or `/sources` locally ([http://localhost:8000/sources](http://localhost:8000/sources)).
 
 Processed sources include:
 
-- **ICAC task forces / regional units** — Arizona ICAC, Silicon Valley ICAC, South Florida ICAC, plus ICAC-tagged feeds from state and local newsrooms
-- **State Attorneys General / state DOJs** — e.g. Texas, Illinois, Pennsylvania, New Jersey, Florida, Ohio, Washington, Oregon, Utah, New Mexico, Mississippi, Louisiana, South Carolina, Hawaii, Vermont, Rhode Island, Delaware, Montana, South Dakota, Idaho
-- **State police / investigative bureaus** — e.g. Michigan SP, New York SP, TBI, GBI, NC SBI, Kentucky SP, Nebraska SP, Wyoming DCI, Iowa DCI, ALEA, Arkansas DPS
+- **ICAC task forces / regional units** — Arizona ICAC, Silicon Valley ICAC, South Florida ICAC, NOVA-DC ICAC, plus ICAC-tagged feeds from state and local newsrooms
+- **State Attorneys General / state DOJs** — e.g. Texas, Illinois, Pennsylvania, New Jersey, Florida, Ohio, Washington, Oregon, Utah, New Mexico, Mississippi, Louisiana, South Carolina, Hawaii, Vermont, Rhode Island, Delaware, Montana, South Dakota, Wisconsin, Idaho
+- **State police / investigative bureaus** — e.g. Michigan SP, New York SP, TBI, GBI, NC SBI, Kentucky SP, Nebraska SP, Wyoming DCI, Iowa DCI, ALEA, Maryland SP, Minnesota BCA, Arkansas DPS
 - **Local police / sheriffs / prosecutors** — e.g. LAPD, SJPD, SDPD, SPD, LVMPD, CSPD, Anchorage PD; Fresno / Osceola / Washoe / Sedgwick sheriffs; Cook County State's Attorney
 - **NCMEC** — public case summaries and CyberTipline-related publications
 - **Federal** — DOJ CEOS (incl. 2002–2008 archives); ICE/HSI; CBP; NCIS; Army CID; AF OSI; USSS; U.S. Marshals Service
-- **International** — Australian Federal Police; Queensland Police; Brazil Federal Police; Europol; UK National Crime Agency
+- **International** — Australian Federal Police; Queensland Police; Brazil Federal Police; Europol; UK NCA; New Zealand DIA; Police Scotland; Philippines NBI; Alberta ALERT ICE; An Garda Síochána
 
-### Agency → PDF (in-house collector)
-
-Use the **collector suite** to turn press releases and public agency / task-force case records into structured PDFs. 
-
-**CLI (under `collector/`)**
-
-1. **URL path** - `fetch_source_urls.py` harvests article URLs from a listing/search page → `resolve_press_urls.py` resolves them (`justice.gov` via the DOJ API; other hosts pass through) → `build_press_pdf.py` builds the merged PDF
-2. **DOJ News API** - `harvest_doj_press.py` discovers by title term → resolved JSON → `build_press_pdf.py` builds the PDF (no live justice.gov HTML; Akamai)
+The **collector suite** (`collector/`) turns press releases into standardized, merged PDFs, either from a listing page or from the DOJ News API:
 
 ```mermaid
 flowchart LR
@@ -210,18 +201,21 @@ flowchart LR
   P --> D["src/main.py<br/>→ database"]
 ```
 
-For federal cases, corresponding court documents can be searched and collected after a press hit via **`ontology/PACER/cases2records.py`**. Try free CourtListener / RECAP first, paid PACER if unavailable.
-
-Outputs under `collector_output/` stay local (gitignored) and do not auto-ingest.
+For federal cases, court documents can be collected after a press hit with `collector/PACER/cases2records.py` (free CourtListener / RECAP first, paid PACER if unavailable). Outputs stay local under `collector_output/` and never auto-ingest.
 
 > Agents can orchestrate the same steps (`harvest_doj_press_topic`, `resolve_press_urls`, `build_press_pdf`, `search_courtlistener`, …) over MCP.
 
+Full workflow and flags: **[collector/README.md](collector/README.md)** / **[PRESS_RELEASE_COLLECTION.md](collector/PRESS_RELEASE_COLLECTION.md)**.
 
-Full workflow, flags, and collection framework: **[collector/README.md](collector/README.md)** / **[PRESS_RELEASE_COLLECTION.md](collector/PRESS_RELEASE_COLLECTION.md)**.
+### Extracting Cases
 
-### Processing PDFs to Populate Database
+The system will:
 
-Once you have PDF files, process them using the CLI tool:
+1. Extract text from each PDF
+2. Identify organization name from filename (AZICAC, NCMEC, etc.)
+3. Batch cases, extract features, assign case IDs
+4. Store all cases in the local SQLite database
+5. Pre-compute clusters for fast visualization
 
 **Single PDF:**
 ```bash
@@ -231,7 +225,7 @@ python3 src/main.py "path/to/your/file.pdf"
 
 **Multiple PDFs:**
 ```bash
-python3 src/main.py "2011 Cases and Arrests – AZICAC.ORG.pdf" "2020 Reports" "2024-media-coverage-cybertipline-success-stories.pdf" 
+python3 src/main.py "2011 Cases and Arrests – AZICAC.ORG.pdf" "2020 Reports" "2024-media-coverage-cybertipline-success-stories.pdf"
 ```
 
 **All PDFs under the repo** (e.g. after a fresh DB wipe):
@@ -239,16 +233,25 @@ python3 src/main.py "2011 Cases and Arrests – AZICAC.ORG.pdf" "2020 Reports" "
 ./scripts/run/ingest_all_pdfs.sh
 
 # Skip NCMEC/DOJ on first pass if you want state feeds first:
-
 ./scripts/run/ingest_all_pdfs.sh --no-aggregate
 ```
 
-The system will:
-1. Extract text from each PDF
-2. Identify organization name from filename (AZICAC, NCMEC, etc.)
-3. Batch cases, extract features, assign case IDs
-4. Store all cases in the local SQLite database
-5. Pre-compute clusters for fast visualization
+Each case runs through the four-layer extractor. Every layer writes its own assertion, the span gate checks each value against its source text, and `resolve_v3.0` stores only what the evidence supports. The optional local LLM adjudicates disputed extractions, quoting its source and never finalizing alone.
+
+```mermaid
+flowchart LR
+  T["Case text<br/>press release"] --> SP["Surface patterns<br/>regex · token patterns"]
+  T --> DP["Dependency parse<br/>spaCy grammar"]
+  T --> NER["Stanza NER<br/>entities"]
+  SP & DP & NER --> G["Span gate<br/>needs a passage"]
+  G --> RES["Resolver<br/>evidence-family vote"]
+  RES -- "open mentions" --> LLM["Local LLM<br/>optional fourth witness"]
+  LLM -- "quoted evidence" --> G
+  RES -.->|"proposed rules, human-approved"| SP
+  RES --> CF["Case features<br/>settled values"]
+  RES --> RQ["Review queue<br/>disputed values"]
+  RES --> PG["Provenance graph<br/>attribution for every value"]
+```
 
 ## Using the Visualizations
 
@@ -261,7 +264,7 @@ Access the **Platform Harm Dashboard** via the [live demo](https://caselinker.up
   - **Affordances** → what the medium enables
   - **Misuse Surface** → how offenders abuse those properties
   - **Harm Vectors** → victim-facing harm pathways
-  - **Case Evidence** → expandable quotes from `q1_evidence.json`; links to Audit for full case review
+  - **Case Evidence** → expandable quotes from `platform_affordance_evidence.json`; links to Audit for full case review
 - **Filters**: search by platform name; narrow by evidence tier
 
 
@@ -274,29 +277,14 @@ Search provides a **facet decision tree** over the stored case corpus: the serve
 
 ## Using Advanced Case Analysis and Triage
 
-Navigate to [live demo](https://caselinker.up.railway.app/analysis) or run server locally and navigate to http://localhost:8000/analysis.
+Navigate to [analysis](https://caselinker.up.railway.app/analysis) on the live demo, or http://localhost:8000/analysis locally.
 
+**Tag-based analysis** finds every case matching *all* selected tags (Case Topics, Severity Indicators, Platforms & Environments, Investigation Types, Perpetrator Relationships, Perpetrator Status), with per-tag counts and the matching text highlighted in each case.
 
-1. **Tag-Based Analysis (Run Advanced Analysis)**:
-   - Select one or more tags from categories: Case Topics, Severity Indicators, Platforms & Environments, Investigation Types, Perpetrator Relationships, Perpetrator Status
-   - Click "Run Advanced Analysis" to find all cases matching ALL selected tags (intersection logic)
-   - View matching cases with highlighted text showing where tags were found in the raw case data
-   - See case counts for each selected tag
+**Automated analysis** runs the full pipeline: similarity-based case groups, priority-ranked cases, corpus insights, detected patterns (repeat offenders, relationships, investigation focus), and top keywords. Click any result to see the case text with its priority indicators highlighted and why it was grouped or ranked.
 
-2. **Automated Analysis (Run Automated Analysis)**:
-   - Click "Run Automated Analysis" to run the full automated analysis pipeline
-   - **Case Groups**: View cases grouped by similarity (platforms, demographics, topics, severity, investigation)
-   - **Top Priority Cases**: See cases sorted by priority score (normalized to 5-10 scale) based on:
-     - Severity indicators (35%): infant, rape, very_young, physical_abuse
-     - Victim count (30%): Higher scores for multiple victims
-      - Case type (25%): production, hands_on, possession, online_only
-     - Severity phrases (15%): dangerous, stated, told, continue, attacked, out_of_control, attracted
-     - Evidence volume (10%): images, videos, storage size
-     - Registered sex offender (10%): Repeat offender status
-   - **Automated Insights**: View insights about most common platforms, severity distribution, and case topics
-   - **Patterns Detected**: See patterns like repeat offenders, relationship patterns, and investigation focus
-   - **Top Keywords**: View most frequent keywords extracted from case text
-   - **Expandable Details**: Click any box to view raw case data with highlighted priority indicators and detailed explanations of why the analysis prioritized/grouped the case
+Priority scores combine weighted signals (severity indicators, victim count, case type, severity phrases, evidence volume, and registered-offender status), normalized to a 5–10 scale.
+
 
 Access Triage via the [live demo](https://caselinker.up.railway.app/triage) or locally at http://localhost:8000/triage. Current implementation uses **rule-based** priority tiers, **ML Classification for triage** (random forest or decision tree trained on features from the database with labels derived from deterministic rules), optionally constrained by the same facet-dimension filtering used in Search, and supports **paste-in live triage** that scores text in memory without writing to the database. For the full triage documentation (rules, bundle paths, APIs, live paste), see **[triage.md](triage.md)**.
 
@@ -323,13 +311,17 @@ A deterministic mapping layer translates each case's extracted features into CAC
 4. **SHACL validation** — only conformant graphs enter the merged corpus.
 5. **SPARQL-queryable corpus** — canonical per-case graphs are loaded into Oxigraph (named graph per case; union default graph) and served at `GET|POST /sparql`.
 
-The live store holds **10,362** press-release case graphs (`…/resource/case/{case_id}`) plus **297** PACER court-record graphs (`urn:pacer:kg:…`). Agents can also build cohort graphs on demand via MCP (`case2cac` → `graph_summarize` → `export_case_graph_ttl`), or query the live store with the [CASE/UCO SDK](https://github.com/vulnmaster/CASE-UCO-SDK) `execute_sparql_query` tool.
+The live store holds **10,711** press-release case graphs (`…/resource/case/{case_id}`) plus **297** PACER court-record graphs (`urn:pacer:kg:…`). Agents can also build cohort graphs on demand via MCP (`case2cac` → `graph_summarize` → `export_case_graph_ttl`), or query the live store with the [CASE/UCO SDK](https://github.com/vulnmaster/CASE-UCO-SDK) `execute_sparql_query` tool.
 
 > **[Graph Interface](https://caselinker.up.railway.app/patterns)**: browse and compare case graphs, look up by CAC class / platform / agency, open PACER investigations, and explore CaseLinker data.
 
 
+### **Persistent IRIs (w3id)**
+
+Case, platform, agency, location, and provenance IRIs use `https://w3id.org/caselinker/…`. After the perma-id registration lands, those URLs **303** to the live app and keep the path (`/resource/…`, `/ns/provenance`). The app returns HTML for browsers, or Turtle / JSON-LD when `Accept` asks for them. The Apache rules to submit are [`ontology/w3id-caselinker.htaccess`](ontology/w3id-caselinker.htaccess) (details in [`ontology/README.md`](ontology/README.md#w3idorg)).
+
 ### **Public SPARQL** 
-(`GET|POST /sparql`) — SPARQL 1.1 Query only (`SELECT`, `CONSTRUCT`, `ASK`, `DESCRIBE`). No auth. Update and `SERVICE` are rejected. Rate limit is **30/minute** per IP. If a query has no outer `LIMIT`, the proxy injects **1000**; outer `LIMIT` above **10,000** is rejected. Each case is named graph `https://caselinker.up.railway.app/resource/case/{case_id}`; default-graph patterns see the union. Request formats, namespaces, errors, and more examples: **[ontology/docs/SPARQL.md](ontology/docs/SPARQL.md)**.
+(`GET|POST /sparql`) — SPARQL 1.1 Query only (`SELECT`, `CONSTRUCT`, `ASK`, `DESCRIBE`). No auth. Update and `SERVICE` are rejected. Rate limit is **30/minute** per IP. If a query has no outer `LIMIT`, the proxy injects **1000**; outer `LIMIT` above **10,000** is rejected. Each case is named graph `https://w3id.org/caselinker/resource/case/{case_id}`. Its provenance graph is `https://w3id.org/caselinker/resource/case/{case_id}/provenance`. Default-graph patterns see the union. Request formats, namespaces, errors, and more examples: **[ontology/docs/SPARQL.md](ontology/docs/SPARQL.md)**.
 
 ```bash
 curl -sS -X POST 'https://caselinker.up.railway.app/sparql' \
@@ -366,7 +358,7 @@ Full ontology documentation (vocabulary, pipeline, graph pools, Q1–Q3, PACER, 
 - **Clusters Tab**: View pre-computed clusters and analyze case reports
 - **Stats Tab**: Coverage over the dataset and case distributions
 - **Tech Landscape**: Technology revolver (platforms, investigation tech, anonymization, P2P) by era
-- **Lifecycle**: PACER exploitation lifecycles. Five offense types as CAC ontology state machines — see [`state_machines/README.md`](state_machines/README.md)
+- **Lifecycle**: PACER exploitation lifecycles. Five offense types as CAC ontology state machines
 - **Query**: Custom analysis lab (public APIs)
 - **LLM**: Natural-language queries over case statistics (SQL-backed; rate limited on production)
 - **Case Studies Tab**: Era-organized narrative case studies (`data/case_studies.json`)
@@ -386,7 +378,8 @@ CaseLinker/
 │   ├── Visualization Layer/          # Server-side viz helpers
 │   └── main.py                       # CLI: ingest PDFs → process → store
 ├── run/
-│   ├── main.py                       # FastAPI app: pages + REST API + /sparql
+│   ├── main.py                       # FastAPI app: pages + REST API + /sparql + /resource
+│   ├── deref.py                      # w3id resource / provenance content negotiation
 │   ├── sparql_proxy.py               # SPARQL parser policy (LIMIT / Update / SERVICE)
 │   ├── redis_cache.py                # Optional Redis caching (production)
 │   └── auth.py                       # Access gates / keys for sensitive views
@@ -419,12 +412,14 @@ CaseLinker/
 │   ├── under-the-hood.html           # /under-the-hood
 │   └── crash-course.html             # /crash-course
 ├── ontology/
-│   ├── README.md                     # Ontology docs (vocabulary, pipeline, pools)
+│   ├── README.md                     # Ontology docs (vocabulary, pipeline, pools, w3id)
 │   ├── docs/SPARQL.md                # Public SPARQL 1.1 API guide
+│   ├── w3id-caselinker.htaccess      # Submit to perma-id as ids/caselinker/.htaccess
+│   ├── caselinker-provenance.ttl     # Provenance vocabulary (w3id ns)
 │   ├── features_to_cac.py            # Case features → CAC RDF
 │   ├── graph_generate.py             # Batch TTL / JSON-LD
 │   ├── oxigraph_rebuild.py           # Canonical TTL → named-graph N-Quads
-│   ├── q1/ q2/ q3/                   # Research evidence
+│   ├── platform_affordance_evidence/ q2/ q3/  # Research evidence
 │   ├── PACER/                        # PACER graphs + BULK_FOLDER (fetchers live in collector/pacer/)
 │   └── graph_output/                 # staging + universe/ + big_bang/ + analysis/
 ├── state_machines/                   # PACER CAC state machines + L* (AfH Appendix X)
@@ -433,7 +428,7 @@ CaseLinker/
 │   ├── data/lstar_all_cases.json     # Transition matrix + L* trajectories
 │   ├── compute_lstar.py              # Rebuild L* export
 │   └── lifecycle_api.py              # /lifecycle + trusted API payload
-├── caselinker_mcp/                   # MCP server (52 local / 42 Railway; corpus + collector + RECAP)
+├── caselinker_mcp/                   # MCP server (54 local / 44 Railway; corpus + collector + RECAP)
 │   ├── server.py                     # MCPServer (mcp 2.x) entry point
 │   ├── collector_tools.py            # Collector wrappers (WRITE local-only)
 │   ├── public_records.py             # DOJ API + CourtListener/RECAP READ
@@ -459,23 +454,28 @@ Each case includes structured features extracted from case narratives:
 ### **Regex extraction**
 
 - **Perpetrator**: Age(s), registered sex offender status, gender when stated; flags for multi-defendant operations
-- **Victim**: Age(s), age ranges, count when explicitly stated in victim-clause phrasing, gender after validation
+- **Victim**: Age ranges, count when explicitly stated in victim-clause phrasing, gender after validation
 - **Relationship**: Kin and role labels (father, mother, parent, sibling, teacher, coach, stranger, etc.); unknown when not stated
 - **Platforms**: Named apps and surfaces — social, messaging, gaming, file hosting, livestreaming, early-era chat, Gen AI tools when cited — plus generic online, chat, or social media when no product matches
 - **Technology signals** (stored separately from the platform list): investigation tooling (PhotoDNA, hash matching, CyberTipline language), anonymization (Tor, dark web, cryptocurrency), P2P clients
-- **Prosecution**: Charge phrases with counts, booking stage (arrest through sentenced), jail mentions, sentence durations
+- **Prosecution**: Charge phrases with counts, booking stage (arrest through sentenced), jail mentions
 - **Evidence volume**: Image, video, storage, and message counts when quantified in text
-- **Investigation**: Non-exclusive types — proactive, reactive, online, undercover, CyberTipline-origin, or unknown; agencies from pattern matching plus NER supplements
+- **Investigation**: Non-exclusive types — proactive, reactive, online, undercover, or unknown; agencies from pattern matching plus Stanza NER. CyberTipline-origin only when the tip is about this case
 - **Prior record**: Registered status and age at prior arrest when stated
 
 ### **Pattern-based classification**
 
-- **Case topics**: production, possession, distribution, trafficking, csam, ai_csam, sextortion, hands_on vs online_only, family vs stranger, international, multi_state
-- **Severity indicators**: infant, very_young, under_12, sexual_abuse; multiple_perpetrators when several offender ages are extracted
+- **Case topics**: production, possession, distribution, trafficking, csam, ai_csam, sextortion, hands_on vs online_only, family vs stranger, international, multi_state, project_safe_childhood
+- **Severity indicators**: infant, very_young, under_12, sexual_abuse; multiple_perpetrators when more than one offender age is stored
 - **Severity phrases**: dangerous, stated, told, continue, attacked, out_of_control, attracted — used in priority scoring
 
 ### **ML enrichment**
-When the ML stack is enabled, NER adds organizations, locations, dates, and ages, merged with regex output. A victim-age gate drops decoy and headline ages. Semantic sentence scoring stores concept scores on each case; grooming may add a severity tag, and strong possession or AI-generation language may reinforce case topics. Most concept scores are kept for analysis; only selected ones are merged in with main fields.
+Stanza NER adds organizations and locations, and supplies person and number spans for age resolution. A spaCy dependency parse records which noun an age hangs on. Semantic sentence scoring stores concept scores; grooming may add a severity tag, and a strong possession score may add the possession topic. Production, AI-CSAM, and sextortion stay regex-only. Most concept scores are kept for analysis. An optional local LLM (`CASELINKER_LLM=1`, Ollama `qwen3:8b`) sharpens what the rules leave open, adjudicating matters the deterministic layers could not settle.
+
+### **Field assertions and resolution**
+Regex, spaCy, Stanza, statute lookup, temporal tags, an optional LLM, and human overrides each write their own assertion. A span gate and `resolve_v3.0` decide what becomes a final; disagreements stay in review. MCP: `get_case_assertions`, `get_field_disagreements`.
+
+How the readers, the gate, and the resolver fit together in **[src/Processing Layer/README.md](<src/Processing Layer/README.md>)**.
 
 ### **Clustering & storage**
 - **Comparison values**: Normalized vectors (platforms, demographics, investigation, evidence, topics, severity, date) for similarity and pre-computed clusters
@@ -485,7 +485,8 @@ When the ML stack is enabled, NER adds organizations, locations, dates, and ages
 ## API Endpoints
 
 - `GET /` - Home page
-- `GET /api/cases` - Full bulk case export (localhost or `CaseLinker-Key` in `CASELINKER_TRUSTED_KEYS`)
+- `GET /api/corpus` - Full sqlite rebuild (localhost or `CaseLinker-Key` in `CASELINKER_TRUSTED_KEYS`). One JSON object of table rows. `scripts/run/import_corpus_from_api.py` calls this.
+- `GET /api/cases` - Case list export (localhost or `CaseLinker-Key` in `CASELINKER_TRUSTED_KEYS`)
 - `GET /api/cases-summaries-chunk` - Public paginated summaries (`offset`, `limit` ≤ 500); UI loads the full timeline via many small responses, not one bulk JSON
 - `POST /api/cases-summaries-by-ids` - Public batched summaries (max 500 ids per request) for cluster membership and similar flows
 - `GET /api/cases/{case_id}` - Single case (public responses omit `raw_data`; narrative available as `case_text` for UI drill-down)
@@ -494,7 +495,7 @@ When the ML stack is enabled, NER adds organizations, locations, dates, and ages
 - `GET /api/tags` - Distinct tag values across the corpus (public, rate limited)
 - `POST /api/tag-threader` - Tag co-occurrence threading analysis (public, rate limited)
 - `GET /visualization` - Platform Harm Dashboard (Q1 affordance-misuse-harm analysis, tiered evidence, manual platform analysis)
-- `GET /api/q1/platform-evidence` - Q1 platform evidence index or per-platform cohort (`platform`, optional `tier`)
+- `GET /api/platform-affordance-evidence` - platform affordance evidence index or per-platform cohort (`platform`, optional `tier`, optional `require_fresh=true`)
 - `GET /search` - Facet decision tree over stored cases (D3); prune filters; cohort case IDs via API
 - `GET /query` - Custom analysis lab (browser-only JavaScript calling public APIs; see page for examples)
 - `GET /lifecycle` - Exploitation lifecycle visualization (public HTML; payload embedded server-side)
@@ -517,7 +518,7 @@ When the ML stack is enabled, NER adds organizations, locations, dates, and ages
 - `POST /api/ontology/cache/warm` — rebuild/warm merged-graph cache (`pool=compare|all|universe|analysis|both`)
 - `GET /ontology/graph_output/{case_id}.jsonld|.ttl` — staging (full corpus); also `{pool}/{case_id}…` for universe/big_bang/analysis
 - `GET /ontology/PACER/...` — static PACER CASE-UCO JSON-LD
-- `GET /ontology/q1/*`, `/ontology/q2/*`, `/ontology/q3/*`, `/ontology/question_data/*` — Q1–Q3 evidence JSON
+- `GET /ontology/platform-affordance-evidence/*`, `/ontology/q2/*`, `/ontology/q3/*`, `/ontology/question_data/*` — platform affordance evidence and Q2–Q3 evidence JSON
 - `GET /ontology/q_results.json` — aggregated question results when present
 - `GET|POST /sparql` — SPARQL 1.1 over CASE/UCO/CAC graphs (public, 30/min; [SPARQL.md](ontology/docs/SPARQL.md))
 - `GET /mcp/sse` — MCP SSE transport (requires `Authorization: Bearer <MCP_ACCESS_KEY>`)
@@ -549,19 +550,24 @@ When the ML stack is enabled, NER adds organizations, locations, dates, and ages
 - `GET /api` - API info root; `GET /healthz` - health check
 - `GET /docs` - Interactive API documentation
 
+
+
+
 ## Technology Stack
 
 - **Backend**: Python 3, FastAPI, Uvicorn
 - **Data Processing**: Pandas, NumPy
-- **PDF Processing**: pdfplumber
+- **PDF Processing**: PyMuPDF (primary), pdfplumber (layout fallback)
 - **Database**: PostgreSQL (production) / SQLite (local development)
   - Production: Railway PostgreSQL with encrypted connections
   - Local: SQLite database auto-created on first run
 - **Visualization**: D3.js, HTML/CSS/JavaScript
 - **ML/NER**: 
-  - Stanza primary NER model; optional Transformers/spaCy paths in code
+  - spaCy dependency parser, Stanza NER, and an optional local LLM (Ollama `qwen3:8b`)
   - Semantic concept scoring (grooming, possession, AI-generated CSAM language, and related themes) merged into case topics and severity where thresholds are met
   - **Supervised triage (experimental)**: scikit-learn random forest or decision tree; labels from rule-based priority scores; `joblib` bundle loaded at inference time
+- **Ontology & Graphs**: RDFLib, pySHACL, Oxigraph (SPARQL)
+- **Agents**: MCP server (`mcp` 2.x) over stdio, SSE, and Streamable HTTP
 - **Architecture**: Modular 5-layer design
 
 ## Deployment

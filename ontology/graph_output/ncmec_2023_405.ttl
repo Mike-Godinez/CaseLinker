@@ -1,116 +1,211 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_405> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.096459" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/admission/1/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_405/admission/1> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_405> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-11-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_405/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/lubbock-police-department> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:32.865578" ;
     dcterms:identifier "ncmec_2023_405" ;
-    dcterms:modified "2026-09-15T20:55:01.096459" ;
-    dcterms:source <https://www.sent-trib.com/2023/02/06/weston-man-indicted-for-alleged-rape/>,
+    dcterms:modified "2026-10-17 22:21:32.865578" ;
+    dcterms:source <https://www.arkansasonline.com/news/2023/apr/28/four-people-arrested-on-various-charges-in/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/holland>,
-        <https://caselinker.up.railway.app/resource/location/lucas-county>,
-        <https://caselinker.up.railway.app/resource/location/perrysburg>,
-        <https://caselinker.up.railway.app/resource/location/weston>,
-        <https://caselinker.up.railway.app/resource/location/wood-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/holland>,
-        <https://caselinker.up.railway.app/resource/location/lucas-county>,
-        <https://caselinker.up.railway.app/resource/location/perrysburg>,
-        <https://caselinker.up.railway.app/resource/location/weston>,
-        <https://caselinker.up.railway.app/resource/location/wood-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/benton-county>,
+        <https://w3id.org/caselinker/resource/location/lubbock>,
+        <https://w3id.org/caselinker/resource/location/northwest-arkansas>,
+        <https://w3id.org/caselinker/resource/location/rogers>,
+        <https://w3id.org/caselinker/resource/location/springdale>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/washington-county>,
+        <https://w3id.org/caselinker/resource/location/west-fork> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_405/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_405/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_405/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/legal-proceeding> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/lubbock-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/benton-county>,
+        <https://w3id.org/caselinker/resource/location/lubbock>,
+        <https://w3id.org/caselinker/resource/location/northwest-arkansas>,
+        <https://w3id.org/caselinker/resource/location/rogers>,
+        <https://w3id.org/caselinker/resource/location/springdale>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/washington-county>,
+        <https://w3id.org/caselinker/resource/location/west-fork> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_405/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/distribution> a ns6:Event,
+        ns2:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_405/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/multi-jurisdiction> a ns6:Event,
+        ns7:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_405/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_405/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remained at the Lubbock County Detention Center; held Thursday in the Benton County Jail; held Thursday in the Washington County Detention Center" ;
+    ns2:hasProceedingBeginPoint "2023-11-27T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_405/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 20 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_405/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 23 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_405/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 15 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/person/offender/3> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 37 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_405/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/person/offender/4> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 42 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_405/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/person/offender/5> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 43 .
 
-<https://caselinker.up.railway.app/resource/location/holland> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Holland" ;
-    uco-core:name "Holland" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/lucas-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Lucas County" ;
-    uco-core:name "Lucas County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/role/offender/2> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-11-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_405/person/offender/2> .
 
-<https://caselinker.up.railway.app/resource/location/perrysburg> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Perrysburg" ;
-    uco-core:name "Perrysburg" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/role/offender/3> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-11-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_405/person/offender/3> .
 
-<https://caselinker.up.railway.app/resource/location/weston> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Weston" ;
-    uco-core:name "Weston" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/role/offender/4> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-11-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_405/person/offender/4> .
 
-<https://caselinker.up.railway.app/resource/location/wood-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Wood County" ;
-    uco-core:name "Wood County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/role/offender/5> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-11-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_405/person/offender/5> .
 
-<https://caselinker.up.railway.app/resource/platform/chat> a cacontology-platforms:AnonymousChatPlatform ;
-    rdfs:label "chat" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/phase/charged> a ns1:LegalProcessPhase,
+        ns6:Phase ;
+    ns1:hasPhaseBeginPoint "2023-11-27T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_405/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-11-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_405/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_405/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/chat> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_405/facet/possession> .
+<https://w3id.org/caselinker/resource/location/benton-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Benton County" ;
+    ns3:name "Benton County" .
 
+<https://w3id.org/caselinker/resource/location/lubbock> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lubbock" ;
+    ns3:name "Lubbock" .
+
+<https://w3id.org/caselinker/resource/location/northwest-arkansas> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Northwest Arkansas" ;
+    ns3:name "Northwest Arkansas" .
+
+<https://w3id.org/caselinker/resource/location/rogers> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Rogers" ;
+    ns3:name "Rogers" .
+
+<https://w3id.org/caselinker/resource/location/springdale> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Springdale" ;
+    ns3:name "Springdale" .
+
+<https://w3id.org/caselinker/resource/location/texas> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns3:name "Texas" .
+
+<https://w3id.org/caselinker/resource/location/washington-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington County" ;
+    ns3:name "Washington County" .
+
+<https://w3id.org/caselinker/resource/location/west-fork> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "West Fork" ;
+    ns3:name "West Fork" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "was sexually assaulted by Aguilar" ;
+    dcterms:source <https://www.arkansasonline.com/news/2023/apr/28/four-people-arrested-on-various-charges-in/> ;
+    ns4:admissionContext "rtment were called to the 6300 block of Elgin Avenue on June 1, 2022. Officers met with a victim who said she was sexually assaulted by A..." ;
+    ns4:admissionFrame "said_paraphrase" ;
+    ns4:admissionTheme "harm_conduct" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_405/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns3:description "was sexually assaulted by Aguilar" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/conspiracy> a ns1:ConspiracyToCommitCSA,
+        ns6:Event ;
+    ns1:conspiracyMemberCount 5 ;
+    ns1:participatesInConspiracy <https://w3id.org/caselinker/resource/case/ncmec_2023_405/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/role/offender/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/role/offender/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/role/offender/4>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_405/role/offender/5> ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_405/admission/1> ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_405/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_405/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_405> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_405/provenance> .

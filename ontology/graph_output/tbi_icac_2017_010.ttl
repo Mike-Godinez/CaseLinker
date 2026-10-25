@@ -1,59 +1,61 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2017_010> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:31:48.086654" ;
+<https://w3id.org/caselinker/resource/case/tbi_icac_2017_010> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 07:19:08.723896" ;
     dcterms:identifier "tbi_icac_2017_010" ;
-    dcterms:modified "2026-09-15T20:31:48.086654" ;
+    dcterms:modified "2026-10-18 07:19:08.723896" ;
     dcterms:source <https://tbinewsroom.com/2017/11/17/tbi-top-10-fugitive-captured-in-jonesborough/>,
         "TBI ICAC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/johnson-city>,
-        <https://caselinker.up.railway.app/resource/location/jonesborough> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/tbi_icac_2017_010/event/multi-jurisdiction> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/greeneville-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/tennessee-bureau-of-investigation>,
-        <https://caselinker.up.railway.app/resource/agency/washington-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/johnson-city>,
-        <https://caselinker.up.railway.app/resource/location/jonesborough> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/johnson-city>,
+        <https://w3id.org/caselinker/resource/location/jonesborough> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/tbi_icac_2017_010/event/multi-jurisdiction> ;
+    ns2:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/greeneville-police-department>,
+        <https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/washington-county-sheriffs-office> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/johnson-city>,
+        <https://w3id.org/caselinker/resource/location/jonesborough> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2017_010/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2017-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/tbi_icac_2017_010/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2017_010/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2017-11-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2017_010/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2017_010/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2017-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/tbi_icac_2017_010/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2017_010/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2017-11-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2017_010/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/greeneville-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/greeneville-police-department> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/tennessee-bureau-of-investigation> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> a ns3:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/washington-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Washington County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/agency/washington-county-sheriffs-office> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2017_010/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2017_010/event/multi-jurisdiction> a ns4:Event,
+        ns3:MultiJurisdictionalInvestigation .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2017_010/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2017_010/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2017_010/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2017_010/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/johnson-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/johnson-city> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Johnson City" ;
+    ns1:name "Johnson City" .
 
-<https://caselinker.up.railway.app/resource/location/jonesborough> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/jonesborough> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Jonesborough" ;
+    ns1:name "Jonesborough" .
 
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2017_010> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/tbi_icac_2017_010/provenance> .

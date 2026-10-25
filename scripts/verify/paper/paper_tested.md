@@ -89,40 +89,40 @@ Database: `/Users/mrinaalramachandran/Projects/CaseLinker/caselinker.db`
 | ⚠️ warn | `s3.corpus_public` | §3.1 |  |  | scripts/verify/paper/paper.txt | substring not found in extracted text |
 | ⚠️ warn | `s3.hrpo_determination` | §3.1 |  |  | scripts/verify/paper/paper.txt | substring not found in extracted text |
 | ✅ pass | `s3.agency_variants` | §3.1 | 3793 | 3796 | extracted_features | raw agency strings=3793 |
-| ✅ pass | `s3.q1_candidates` | §3.1 | 1875 | 1875 | ontology/q1/candidates.json | candidates.json |
+| ✅ pass | `s3.q1_candidates` | §3.1 | 1875 | 1875 | ontology/platform_affordance_evidence/candidates.json | candidates.json |
 | ⚠️ warn | `s3.q1_no_platform_pct` | §3.1 | 74.8 | 74.9 | computed | unnamed share=74.8% |
 | ✅ pass | `s3.q1_platform_pairs` | §3.1 | 3128 | 3128 | candidates.json | platform-case pairs |
 | ✅ pass | `s3.q1_named_platforms` | §3.1 | 54 | 54 | candidates.json | named platforms |
-| ✅ pass | `s3.q1_stated_cases` | §3.1 | 856 | 856 | q1_evidence.json | 856 (45.8%) |
-| ✅ pass | `s3.q1_inferred_only` | §3.1 | 134 | 134 | q1_evidence.json | 134 |
-| ✅ pass | `s3.q1_named_only` | §3.1 | 881 | 881 | q1_evidence.json | 881 |
+| ✅ pass | `s3.q1_stated_cases` | §3.1 | 856 | 856 | platform_affordance_evidence.json | 856 (45.8%) |
+| ✅ pass | `s3.q1_inferred_only` | §3.1 | 134 | 134 | platform_affordance_evidence.json | 134 |
+| ✅ pass | `s3.q1_named_only` | §3.1 | 881 | 881 | platform_affordance_evidence.json | 881 |
 | ✅ pass | `s3.shacl_graphs` | §3.2 | 2034 | >=1500 | ontology/graph_output/universe | universe/*.ttl count=2034 |
 | ✅ pass | `s3.mcp_tools` | §3.2 | 37 | 37 | caselinker_mcp/server.py | @mcp.tool count=37 |
 | 🌐 external | `s3.case_uco_classes` | §3.2 |  |  | CASE-UCO SDK / Project VIC | Requires manual or web verification against cited primary source. |
 | 🌐 external | `s3.opensource_mit` | §3.1 |  |  | external source | Requires manual or web verification against cited primary source. |
 | ⚠️ warn | `s3.pacer_expansion_four` | §3.3 | 3 | >=4 | BULK_FOLDER | bulk folders=3 |
 | ✅ pass | `s3.q2_anchor_five` | §3.3 | 8 | 5 anchors | state_machines/graphs | jsonld graphs=8 |
-| ✅ pass | `manifest.kik` | §4 Table 1 | 208 stated · 352 total | 208/352 | q1_evidence.json | 208 stated · 352 total |
-| ✅ pass | `manifest.snapchat` | §4 Table 1 | 169 stated · 257 total | 169/257 | q1_evidence.json | 169 stated · 257 total |
-| ✅ pass | `manifest.discord` | §4 Table 1 | 43 stated · 99 total | 43/99 | q1_evidence.json | 43 stated · 99 total |
-| ✅ pass | `manifest.facebook` | §4 Table 1 | 55 stated · 274 total | 55/274 | q1_evidence.json | 55 stated · 274 total |
-| ✅ pass | `manifest.instagram` | §4 Table 1 | 27 stated · 174 total | 27/174 | q1_evidence.json | 27 stated · 174 total |
-| ✅ pass | `manifest.reddit` | §4 Table 1 | 10 stated · 22 total | 10/22 | q1_evidence.json | 10 stated · 22 total |
-| ✅ pass | `manifest.tiktok` | §4 Table 1 | 4 stated · 25 total | 4/25 | q1_evidence.json | 4 stated · 25 total |
-| ✅ pass | `manifest.dropbox` | §4 Table 1 | 33 stated · 86 total | 33/86 | q1_evidence.json | 33 stated · 86 total |
-| ✅ pass | `manifest.mega` | §4 Table 1 | 3 stated · 15 total | 3/15 | q1_evidence.json | 3 stated · 15 total |
-| ✅ pass | `manifest.whisper` | §4 Table 1 | 3 stated · 11 total | 3/11 | q1_evidence.json | 3 stated · 11 total |
-| ✅ pass | `manifest.omegle` | §4 Table 1 | 2 stated · 7 total | 2/7 | q1_evidence.json | 2 stated · 7 total |
-| ✅ pass | `manifest.genai` | §4 Table 1 | 21 stated · 54 total | 21/54 | q1_evidence.json | 21 stated · 54 total |
-| ⚠️ warn | `manifest.p2p` | §4 Table 1 | 3 stated · 12 total | 3/8 | q1_evidence.json | 3 stated · 12 total |
-| ⚠️ warn | `manifest.video` | §4 Table 1 | 9 stated · 94 total | 6/28 | q1_evidence.json | 9 stated · 94 total |
-| ⚠️ warn | `manifest.gaming` | §4 Table 1 | 4 stated · 19 total | 4/29 | q1_evidence.json | 4 stated · 19 total |
+| ✅ pass | `manifest.kik` | §4 Table 1 | 208 stated · 352 total | 208/352 | platform_affordance_evidence.json | 208 stated · 352 total |
+| ✅ pass | `manifest.snapchat` | §4 Table 1 | 169 stated · 257 total | 169/257 | platform_affordance_evidence.json | 169 stated · 257 total |
+| ✅ pass | `manifest.discord` | §4 Table 1 | 43 stated · 99 total | 43/99 | platform_affordance_evidence.json | 43 stated · 99 total |
+| ✅ pass | `manifest.facebook` | §4 Table 1 | 55 stated · 274 total | 55/274 | platform_affordance_evidence.json | 55 stated · 274 total |
+| ✅ pass | `manifest.instagram` | §4 Table 1 | 27 stated · 174 total | 27/174 | platform_affordance_evidence.json | 27 stated · 174 total |
+| ✅ pass | `manifest.reddit` | §4 Table 1 | 10 stated · 22 total | 10/22 | platform_affordance_evidence.json | 10 stated · 22 total |
+| ✅ pass | `manifest.tiktok` | §4 Table 1 | 4 stated · 25 total | 4/25 | platform_affordance_evidence.json | 4 stated · 25 total |
+| ✅ pass | `manifest.dropbox` | §4 Table 1 | 33 stated · 86 total | 33/86 | platform_affordance_evidence.json | 33 stated · 86 total |
+| ✅ pass | `manifest.mega` | §4 Table 1 | 3 stated · 15 total | 3/15 | platform_affordance_evidence.json | 3 stated · 15 total |
+| ✅ pass | `manifest.whisper` | §4 Table 1 | 3 stated · 11 total | 3/11 | platform_affordance_evidence.json | 3 stated · 11 total |
+| ✅ pass | `manifest.omegle` | §4 Table 1 | 2 stated · 7 total | 2/7 | platform_affordance_evidence.json | 2 stated · 7 total |
+| ✅ pass | `manifest.genai` | §4 Table 1 | 21 stated · 54 total | 21/54 | platform_affordance_evidence.json | 21 stated · 54 total |
+| ⚠️ warn | `manifest.p2p` | §4 Table 1 | 3 stated · 12 total | 3/8 | platform_affordance_evidence.json | 3 stated · 12 total |
+| ⚠️ warn | `manifest.video` | §4 Table 1 | 9 stated · 94 total | 6/28 | platform_affordance_evidence.json | 9 stated · 94 total |
+| ⚠️ warn | `manifest.gaming` | §4 Table 1 | 4 stated · 19 total | 4/29 | platform_affordance_evidence.json | 4 stated · 19 total |
 | ✅ pass | `s4.platform_labels` | §4 | 54 | 54 | candidates.json | named platforms |
 | ✅ pass | `s4.affordance_predicts_harm` | §4 |  |  | scripts/verify/paper/paper.txt | found in paper.txt |
-| ⏭️ skip | `affordance.contact_cases` | §4.contact |  | 1720 | ontology/q1/q1_harm_analysis.json | Affordance-class case counts require hand-tuned crosswalk to q1_harm_analysis.json (not auto-verified yet). |
-| ⏭️ skip | `affordance.production_cases` | §4.production |  | 177 | ontology/q1/q1_harm_analysis.json | Affordance-class case counts require hand-tuned crosswalk to q1_harm_analysis.json (not auto-verified yet). |
-| ⏭️ skip | `affordance.possession_cases` | §4.possession |  | 1708 | ontology/q1/q1_harm_analysis.json | Affordance-class case counts require hand-tuned crosswalk to q1_harm_analysis.json (not auto-verified yet). |
-| ⏭️ skip | `affordance.coordination_cases` | §4.coordination |  | 198 | ontology/q1/q1_harm_analysis.json | Affordance-class case counts require hand-tuned crosswalk to q1_harm_analysis.json (not auto-verified yet). |
+| ⏭️ skip | `affordance.contact_cases` | §4.contact |  | 1720 | ontology/platform_affordance_evidence/platform_affordance_evidence_harm_analysis.json | Affordance-class case counts require hand-tuned crosswalk to platform_affordance_evidence_harm_analysis.json (not auto-verified yet). |
+| ⏭️ skip | `affordance.production_cases` | §4.production |  | 177 | ontology/platform_affordance_evidence/platform_affordance_evidence_harm_analysis.json | Affordance-class case counts require hand-tuned crosswalk to platform_affordance_evidence_harm_analysis.json (not auto-verified yet). |
+| ⏭️ skip | `affordance.possession_cases` | §4.possession |  | 1708 | ontology/platform_affordance_evidence/platform_affordance_evidence_harm_analysis.json | Affordance-class case counts require hand-tuned crosswalk to platform_affordance_evidence_harm_analysis.json (not auto-verified yet). |
+| ⏭️ skip | `affordance.coordination_cases` | §4.coordination |  | 198 | ontology/platform_affordance_evidence/platform_affordance_evidence_harm_analysis.json | Affordance-class case counts require hand-tuned crosswalk to platform_affordance_evidence_harm_analysis.json (not auto-verified yet). |
 | ⚠️ warn | `s5.amin_accounts` | §5.3 |  |  | scripts/verify/paper/paper.txt | substring not found in extracted text |
 | ✅ pass | `s5.bermudez_defendants` | §5.4 |  |  | scripts/verify/paper/paper.txt | found in paper.txt |
 | 🌐 external | `s6.ncmec_2023_incidents` | §6.1 |  |  | [21] NCMEC annual report | Requires manual or web verification against cited primary source. |

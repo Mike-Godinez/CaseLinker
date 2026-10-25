@@ -1,92 +1,85 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_013> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:05.994945" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_013> a ns2:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:19.713897" ;
     dcterms:identifier "ncmec_2022_013" ;
-    dcterms:modified "2026-09-15T20:45:05.994945" ;
+    dcterms:modified "2026-10-17 21:51:19.713897" ;
     dcterms:source <https://www.wtvy.com/2022/03/30/dothan-man-faces-more-porn-charges/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ala>,
-        <https://caselinker.up.railway.app/resource/location/dothan> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_013/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_013/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_013/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_013/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/dothan-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/icac> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ala>,
-        <https://caselinker.up.railway.app/resource/location/dothan> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ala>,
+        <https://w3id.org/caselinker/resource/location/dothan> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_013/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_013/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_013/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_013/legal-proceeding> ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/dothan-police-department>,
+        <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/ala>,
+        <https://w3id.org/caselinker/resource/location/dothan> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_013/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_013/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_013/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_013/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2022-03-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_013/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_013/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_013/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_013/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_013/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_013/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2022-03-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_013/event/possession> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_013/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/dothan-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/dothan-police-department> a ns7:OrganizationLikeEntity,
+        ns3:LocalAgency ;
     rdfs:label "Dothan Police Department" .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_013/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_013/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
     rdfs:label "child pornography possession" ;
-    cacontology-legal-outcomes:indictmentCounts 27 .
+    ns5:indictmentCounts 27 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_013/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_013/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_013/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_013/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_013/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_013/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_013/charge/1> ;
+    ns5:hasProceedingBeginPoint "2022-03-30T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_013/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 20 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_013/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 20 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_013/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_013/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_013/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_013/phase/charged> a ns2:LegalProcessPhase,
+        ns7:Phase ;
+    ns2:hasPhaseBeginPoint "2022-03-30T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_013/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/ala> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/ala> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Ala." ;
-    uco-core:name "Ala." .
+    ns4:name "Ala." .
 
-<https://caselinker.up.railway.app/resource/location/dothan> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/dothan> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Dothan" ;
-    uco-core:name "Dothan" .
+    ns4:name "Dothan" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_013/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_013/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_013/event/possession> a ns2:CSAMIncident,
+        ns7:Event ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_013/facet/possession> .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_013> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_013/provenance> .

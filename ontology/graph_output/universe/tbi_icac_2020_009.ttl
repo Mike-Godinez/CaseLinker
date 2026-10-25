@@ -1,0 +1,89 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_009> a ns3:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 07:19:08.938936" ;
+    dcterms:identifier "tbi_icac_2020_009" ;
+    dcterms:modified "2026-10-18 07:19:08.938936" ;
+    dcterms:source <https://tbinewsroom.com/2020/09/23/lawrence-county-couple-son-indicted-on-charges-stemming-from-child-abuse-investigation/>,
+        "TBI ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/cumming>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/lawrence-county>,
+        <https://w3id.org/caselinker/resource/location/tennessee> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/phase/indicted> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/phase/indicted> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/georgia-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/cumming>,
+        <https://w3id.org/caselinker/resource/location/georgia>,
+        <https://w3id.org/caselinker/resource/location/lawrence-county>,
+        <https://w3id.org/caselinker/resource/location/tennessee> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2020-09-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2020-09-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/georgia-bureau-of-investigation> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Lawrence County Jail" ;
+    ns6:hasProceedingBeginPoint "2020-09-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/phase/indicted> a ns3:LegalProcessPhase,
+        ns4:Phase ;
+    ns3:hasPhaseBeginPoint "2020-09-23T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/cumming> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Cumming" ;
+    ns2:name "Cumming" .
+
+<https://w3id.org/caselinker/resource/location/georgia> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Georgia" ;
+    ns2:name "Georgia" .
+
+<https://w3id.org/caselinker/resource/location/lawrence-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lawrence County" ;
+    ns2:name "Lawrence County" .
+
+<https://w3id.org/caselinker/resource/location/tennessee> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tennessee" ;
+    ns2:name "Tennessee" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/event/hands-on> a ns3:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns3:severityLevel 3 .
+
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2020_009> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/tbi_icac_2020_009/provenance> .

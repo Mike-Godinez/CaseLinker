@@ -1,52 +1,60 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2025_004> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:38:02.326103" ;
+<https://w3id.org/caselinker/resource/case/de_ag_2025_004> a ns3:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 01:01:29.886276" ;
     dcterms:identifier "de_ag_2025_004" ;
-    dcterms:modified "2026-09-10T19:38:02.326103" ;
+    dcterms:modified "2026-10-18 01:01:29.886276" ;
     dcterms:source <https://news.delaware.gov/2025/01/09/doj-secures-lengthy-prison-sentence-for-repeat-child-pornography-offender>,
         "DE AG" ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/de_ag_2025_004/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/de_ag_2025_004/legal-proceeding> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/delaware> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/de_ag_2025_004/event/csam>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2025_004/legal-proceeding> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/delaware> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2025_004/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/de_ag_2025_004/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/de_ag_2025_004/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/de_ag_2025_004/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2025-01-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/de_ag_2025_004/event/csam> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2025_004/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2025_004/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/de_ag_2025_004/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/de_ag_2025_004/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/de_ag_2025_004/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2025-01-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/de_ag_2025_004/event/csam> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2025_004/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2025_004/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/de_ag_2025_004/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
     rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2025_004/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/de_ag_2025_004/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2025_004/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/de_ag_2025_004/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/de_ag_2025_004/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/de_ag_2025_004/charge/1> ;
+    ns5:hasProceedingBeginPoint "2025-01-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2025_004/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/de_ag_2025_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2025_004/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/de_ag_2025_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2025_004/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/de_ag_2025_004/facet/csam> .
+<https://w3id.org/caselinker/resource/location/delaware> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Delaware" ;
+    ns1:name "Delaware" .
 
+<https://w3id.org/caselinker/resource/case/de_ag_2025_004/event/csam> a ns3:CSAMIncident,
+        ns2:Event ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/de_ag_2025_004/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/de_ag_2025_004> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/de_ag_2025_004/provenance> .

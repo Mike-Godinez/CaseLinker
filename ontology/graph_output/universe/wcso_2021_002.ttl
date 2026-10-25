@@ -1,0 +1,106 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/wcso_2021_002> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 07:51:14.163215" ;
+    dcterms:identifier "wcso_2021_002" ;
+    dcterms:modified "2026-10-18 07:51:14.163215" ;
+    dcterms:source <https://washoelife.washoecounty.gov/sheriff/regional-detectives-arrest-sparks-man-for-possession-of-child-pornography-probation-violation/>,
+        "WCSO" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/nevada>,
+        <https://w3id.org/caselinker/resource/location/sparks> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/wcso_2021_002/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/wcso_2021_002/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/wcso_2021_002/event/possession>,
+        <https://w3id.org/caselinker/resource/case/wcso_2021_002/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/wcso_2021_002/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/nevada-department-of-public-safety>,
+        <https://w3id.org/caselinker/resource/agency/reno-police-department>,
+        <https://w3id.org/caselinker/resource/agency/sparks-police-department>,
+        <https://w3id.org/caselinker/resource/agency/washoe-county-sheriffs-office> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/nevada>,
+        <https://w3id.org/caselinker/resource/location/sparks> .
+
+<https://w3id.org/caselinker/resource/case/wcso_2021_002/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2021-09-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/wcso_2021_002/event/possession> ;
+    ns1:perpetratorRegisteredSexOffender true ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/wcso_2021_002/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/wcso_2021_002/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2021-09-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/wcso_2021_002/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/wcso_2021_002/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/fbi> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/nevada-department-of-public-safety> a ns5:OrganizationLikeEntity,
+        ns3:StateAgency ;
+    rdfs:label "Nevada Department of Public Safety" .
+
+<https://w3id.org/caselinker/resource/agency/reno-police-department> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/sparks-police-department> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/washoe-county-sheriffs-office> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/wcso_2021_002/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns2:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/wcso_2021_002/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/wcso_2021_002/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/wcso_2021_002/charge/1> ;
+    ns2:hasProceedingBeginPoint "2021-09-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/wcso_2021_002/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns2:LegalProceeding,
+        ns2:SentencingHearing ;
+    ns2:hasProceedingBeginPoint "2021-09-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/wcso_2021_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 22 .
+
+<https://w3id.org/caselinker/resource/case/wcso_2021_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/wcso_2021_002/phase/sentenced> a ns5:Phase,
+        ns2:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2021-09-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/nevada> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nevada" ;
+    ns4:name "Nevada" .
+
+<https://w3id.org/caselinker/resource/location/sparks> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sparks" ;
+    ns4:name "Sparks" .
+
+<https://w3id.org/caselinker/resource/case/wcso_2021_002/event/possession> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/wcso_2021_002/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/wcso_2021_002> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/wcso_2021_002/provenance> .

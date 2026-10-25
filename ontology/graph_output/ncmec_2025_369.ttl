@@ -1,117 +1,152 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.507079" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/admission/1/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_369/admission/1> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_369> ;
+    ns4:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/admission/2/extraction-confidence> a ns4:AssessmentResult ;
+    ns4:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_369/admission/2> ;
+    ns4:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_369> ;
+    ns4:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-08-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_369/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_369/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_369/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/kentucky-attorney-generals-office> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/charge/1> a ns8:CSAM_Possession,
+        ns8:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/event/distribution> a ns4:Event,
+        ns8:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns8:LegalProceeding ;
+    ns8:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_369/charge/1> ;
+    ns8:hasProceedingBeginPoint "2025-08-25T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 25 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:19.501449" ;
     dcterms:identifier "ncmec_2025_369" ;
-    dcterms:modified "2026-09-15T21:27:13.507079" ;
-    dcterms:source <https://www.kwch.com/2025/05/30/kbi-arrests-law-enforcement-officer-child-sex-crimes/>,
+    dcterms:modified "2026-10-18 00:01:19.501449" ;
+    dcterms:source <https://www.wbko.com/2025/08/25/man-jailed-hart-county-sex-crimes-against-child/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ashland>,
-        <https://caselinker.up.railway.app/resource/location/dodge-city>,
-        <https://caselinker.up.railway.app/resource/location/kan>,
-        <https://caselinker.up.railway.app/resource/location/kansas> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/clark-county-attorneys-office>,
-        <https://caselinker.up.railway.app/resource/agency/kansas-bureau-of-investigation>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ashland>,
-        <https://caselinker.up.railway.app/resource/location/dodge-city>,
-        <https://caselinker.up.railway.app/resource/location/kan>,
-        <https://caselinker.up.railway.app/resource/location/kansas> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/hardyville>,
+        <https://w3id.org/caselinker/resource/location/hart-county>,
+        <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/munfordville> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_369/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_369/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_369/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_369/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_369/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_369/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_369/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_369/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_369/legal-proceeding> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/kentucky-attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/hardyville>,
+        <https://w3id.org/caselinker/resource/location/hart-county>,
+        <https://w3id.org/caselinker/resource/location/ky>,
+        <https://w3id.org/caselinker/resource/location/munfordville> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/phase/charged> a ns1:LegalProcessPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2025-08-25T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/event/online-only> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-08-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_369/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_369/event/hands-on> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_369/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/clark-county-attorneys-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Clark County Attorney's Office" .
+<https://w3id.org/caselinker/resource/location/hardyville> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hardyville" ;
+    ns2:name "Hardyville" .
 
-<https://caselinker.up.railway.app/resource/agency/kansas-bureau-of-investigation> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Kansas Bureau of Investigation" .
+<https://w3id.org/caselinker/resource/location/hart-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hart County" ;
+    ns2:name "Hart County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of a child" .
+<https://w3id.org/caselinker/resource/location/ky> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ky." ;
+    ns2:name "Ky." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/location/munfordville> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Munfordville" ;
+    ns2:name "Munfordville" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/event/csam> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_369/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_369/admission/2> ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_369/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_369/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_369/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_369/admission/2> ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "recording a video of the child and told them how to perform sexual acts" ;
+    dcterms:source <https://www.wbko.com/2025/08/25/man-jailed-hart-county-sex-crimes-against-child/> ;
+    ns3:admissionContext "om the app company indicated the account used to upload the video was linked to Hawkins. According to a citation, he admitted to recordin..." ;
+    ns3:admissionFrame "admitted_to" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_369/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns2:description "recording a video of the child and told them how to perform sexual acts" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 42 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "to recording a video of the child and told them how to perform sexual acts" ;
+    dcterms:source <https://www.wbko.com/2025/08/25/man-jailed-hart-county-sex-crimes-against-child/> ;
+    ns3:admissionContext "ted the account used to upload the video was linked to Hawkins. According to a citation, he admitted to recording a video of the child an..." ;
+    ns3:admissionFrame "he_admitted_paraphrase" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_369/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns2:description "to recording a video of the child and told them how to perform sexual acts" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369/person/victim/1> a uco-identity:Person .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$75,000\"]" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/ashland> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Ashland" ;
-    uco-core:name "Ashland" .
-
-<https://caselinker.up.railway.app/resource/location/dodge-city> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Dodge City" ;
-    uco-core:name "Dodge City" .
-
-<https://caselinker.up.railway.app/resource/location/kan> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/kansas> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_369/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_369> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_369/provenance> .

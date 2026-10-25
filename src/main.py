@@ -14,6 +14,7 @@ sys.path.insert(0, str(src_path / "Storage Layer"))
 sys.path.insert(0, str(src_path / "Clustering & Analysis Layer"))
 sys.path.insert(0, str(src_path / "Visualization Layer"))
 
+from case_storage_utils import CaseIdCollision
 from processing import process_cases
 import difflib
 import os
@@ -62,7 +63,10 @@ def main():
                 print(f"\nProcessing {len(file_paths)} file(s)...")
 
         run_pipeline(file_paths)
-        
+
+    except CaseIdCollision as e:
+        print(f"\n❌ Case ID collision: {e}")
+        sys.exit(1)
     except Exception as e:
         print(f"\n❌ Error: {e}")
         import traceback
@@ -97,7 +101,20 @@ def run_pipeline(file_paths: List[str]) -> None:
     print("\n" + "="*60)
     print("Step 2: Processing cases (batch, extract features, merge ml and pattern approaches)...")
     print("="*60)
-    cases = process_cases(df)
+    db_path = get_database_path()
+    fingerprint_storage = CaseStorage(db_path) if db_path else CaseStorage()
+    fingerprint_index = fingerprint_storage.load_fingerprint_index()
+    cases = process_cases(df, fingerprint_index=fingerprint_index)
+    if fingerprint_index.pending_duplicates:
+        print(
+            f"✓ fingerprint gate: skipped {len(fingerprint_index.pending_duplicates)} "
+            "duplicate article(s) (same normalized text already has an id)"
+        )
+        for row in fingerprint_index.pending_duplicates[:20]:
+            print(
+                f"  duplicate_of {row.get('duplicate_of_case_id')} "
+                f"from {row.get('source_file') or 'this ingest'}"
+            )
     print(f"✓ Found {len(cases)} cases across all PDFs")
 
     print("\n" + "="*60)
@@ -173,6 +190,9 @@ def get_database_path() -> Optional[str]:
     """
     if os.getenv("DATABASE_URL"):
         return None  # PostgreSQL doesn't use file path
+    scratch = os.getenv("CASELINKER_DB", "").strip()
+    if scratch:
+        return scratch
     try:
         from config import DATABASE_PATH
         return DATABASE_PATH
@@ -235,12 +255,14 @@ def store_cases(
         cases_to_store = cases
 
     try:
+        import processing
         from provenance import attach_ingest_provenance
 
         attach_ingest_provenance(
             storage,
             cases_to_store,
             source_files=ingest_paths,
+            extractor_versions=processing.last_extraction_versions,
         )
     except Exception as exc:
         print(f"⚠️  Provenance attach skipped (ingest continues): {exc}")

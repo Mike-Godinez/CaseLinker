@@ -1,61 +1,110 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
+@prefix ns1: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:16:23.951269" ;
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_003> a ns5:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 07:19:08.086134" ;
     dcterms:identifier "tbi_icac_2013_003" ;
-    dcterms:modified "2026-09-10T20:16:23.951269" ;
+    dcterms:modified "2026-10-18 07:19:08.086134" ;
     dcterms:source <https://tbinewsroom.com/2013/04/16/tbi-arrests-algood-man-on-child-rape-and-sexual-battery-charges/>,
         "TBI ICAC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/event/trust-violation> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/tennessee-bureau-of-investigation> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/algood>,
+        <https://w3id.org/caselinker/resource/location/jackson-county>,
+        <https://w3id.org/caselinker/resource/location/nashville>,
+        <https://w3id.org/caselinker/resource/location/putnam-county>,
+        <https://w3id.org/caselinker/resource/location/tenn> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/phase/charged> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/phase/charged> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/legal-proceeding> ;
+    ns5:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/jackson-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/algood>,
+        <https://w3id.org/caselinker/resource/location/jackson-county>,
+        <https://w3id.org/caselinker/resource/location/nashville>,
+        <https://w3id.org/caselinker/resource/location/putnam-county>,
+        <https://w3id.org/caselinker/resource/location/tenn> .
 
-<https://caselinker.up.railway.app/resource/agency/tennessee-bureau-of-investigation> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/jackson-county-sheriffs-office> a ns3:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/relationship/mother> .
+<https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> a ns3:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 47 .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/event/trust-violation> a ns1:CustodialAbuse,
+        ns1:TrustViolation ;
+    ns1:violatesRelationship <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/relationship/mother> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns7:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Jackson County Jail" ;
+    ns7:hasProceedingBeginPoint "2013-04-16T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/relationship/mother> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/role/offender/1> ;
-    cacontology-custodial:relationshipType "mother" .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 47 .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/event/hands-on> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/relationship/mother> a ns1:CustodialRelationship,
+        ns1:FamilialRelationship ;
+    ns1:involvesChild <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/role/victim/1> ;
+    ns1:involvesCustodian <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/role/offender/1> ;
+    ns1:relationshipType "mother" .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2013-04-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:participatesInEvent <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/event/hands-on> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_003/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2013-04-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:participatesInEvent <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/event/hands-on> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/person/victim/1> .
 
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/phase/charged> a ns5:LegalProcessPhase,
+        ns6:Phase ;
+    ns5:hasPhaseBeginPoint "2013-04-16T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/algood> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Algood" ;
+    ns4:name "Algood" .
+
+<https://w3id.org/caselinker/resource/location/jackson-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Jackson County" ;
+    ns4:name "Jackson County" .
+
+<https://w3id.org/caselinker/resource/location/nashville> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nashville" ;
+    ns4:name "Nashville" .
+
+<https://w3id.org/caselinker/resource/location/putnam-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Putnam County" ;
+    ns4:name "Putnam County" .
+
+<https://w3id.org/caselinker/resource/location/tenn> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tenn." ;
+    ns4:name "Tenn." .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/event/hands-on> a ns5:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns5:severityLevel 3 .
+
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_003> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/tbi_icac_2013_003/provenance> .

@@ -1,0 +1,142 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004> a ns2:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 14:15:57.885691" ;
+    dcterms:identifier "mdsp_2025_004" ;
+    dcterms:modified "2026-10-18 14:15:57.885691" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/mdsp_2025_004/provenance> ;
+    dcterms:source <https://mdsp.maryland.gov/about-us/newsroom/state-police-arrest-man-production-possession-child-pornography-sexual-solicitation-minor-anne>,
+        "MDSP" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/anne-arundel-county>,
+        <https://w3id.org/caselinker/resource/location/linthicum-heights>,
+        <https://w3id.org/caselinker/resource/location/maryland>,
+        <https://w3id.org/caselinker/resource/location/philippines> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/mdsp_2025_004/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/mdsp_2025_004/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/possession>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/production>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2025_004/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2025_004/operation> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/maryland-state-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/anne-arundel-county>,
+        <https://w3id.org/caselinker/resource/location/linthicum-heights>,
+        <https://w3id.org/caselinker/resource/location/maryland>,
+        <https://w3id.org/caselinker/resource/location/philippines> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-10-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/possession>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/production> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/mdsp_2025_004/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-10-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/possession>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/production> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/mdsp_2025_004/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/hsi> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/maryland-state-police-department> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns1:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/charge/2> a ns1:CSAM_Production,
+        ns1:CriminalCharge ;
+    rdfs:label "production of child pornography" .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/charge/3> a ns1:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/multi-jurisdiction> a ns7:Event,
+        ns5:MultiJurisdictionalInvestigation ;
+    ns2:severityLevel 2 ;
+    ns5:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/trafficking> a ns7:Event,
+        ns1:SexTrafficking ;
+    ns2:severityLevel 2 .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/mdsp_2025_004/charge/1>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2025_004/charge/2>,
+        <https://w3id.org/caselinker/resource/case/mdsp_2025_004/charge/3> ;
+    ns1:hasProceedingBeginPoint "2025-10-28T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/operation> a ns7:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 46 .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/phase/charged> a ns2:LegalProcessPhase,
+        ns7:Phase ;
+    ns2:hasPhaseBeginPoint "2025-10-28T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/anne-arundel-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Anne Arundel County" ;
+    ns6:name "Anne Arundel County" .
+
+<https://w3id.org/caselinker/resource/location/linthicum-heights> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Linthicum Heights" ;
+    ns6:name "Linthicum Heights" .
+
+<https://w3id.org/caselinker/resource/location/maryland> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Maryland" ;
+    ns6:name "Maryland" .
+
+<https://w3id.org/caselinker/resource/location/philippines> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Philippines" ;
+    ns6:name "Philippines" .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/online-only> a ns2:ChildSexualAbuseEvent,
+        ns7:Event ;
+    ns2:severityLevel 2 .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/possession> a ns2:CSAMIncident,
+        ns7:Event ;
+    ns2:severityLevel 2 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/mdsp_2025_004/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/mdsp_2025_004/event/production> a ns7:Event,
+        <https://cacontology.projectvic.org/production#ProductionOffense> ;
+    ns2:severityLevel 2 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/mdsp_2025_004/facet/production> .
+

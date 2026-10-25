@@ -1,0 +1,84 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_016> a ns2:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 14:24:47.411358" ;
+    dcterms:identifier "nbi_2025_016" ;
+    dcterms:modified "2026-10-18 14:24:47.411358" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nbi_2025_016/provenance> ;
+    dcterms:source <https://nbi.gov.ph/press_releases/2025/03142025/7767/>,
+        "NBI" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/baclaran-paranaque-city>,
+        <https://w3id.org/caselinker/resource/location/manila>,
+        <https://w3id.org/caselinker/resource/location/paranaque-city> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/nbi_2025_016/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/nbi_2025_016/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/nbi_2025_016/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nbi_2025_016/event/trust-violation> ;
+    ns2:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation-national-capital-region> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/baclaran-paranaque-city>,
+        <https://w3id.org/caselinker/resource/location/manila>,
+        <https://w3id.org/caselinker/resource/location/paranaque-city> .
+
+<https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation-national-capital-region> a ns6:OrganizationLikeEntity,
+        ns1:StateAgency ;
+    rdfs:label "National Bureau of Investigation-National Capital Region" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_016/event/trust-violation> a ns4:CustodialAbuse,
+        ns4:TrustViolation ;
+    ns4:violatesRelationship <https://w3id.org/caselinker/resource/case/nbi_2025_016/relationship/father> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_016/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_016/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_016/relationship/father> a ns4:CustodialRelationship,
+        ns4:FamilialRelationship ;
+    ns4:involvesChild <https://w3id.org/caselinker/resource/case/nbi_2025_016/role/victim/1> ;
+    ns4:involvesCustodian <https://w3id.org/caselinker/resource/case/nbi_2025_016/role/offender/1> ;
+    ns4:relationshipType "father" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_016/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-03-06T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/nbi_2025_016/event/hands-on> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/nbi_2025_016/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_016/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-03-06T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/nbi_2025_016/event/hands-on> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/nbi_2025_016/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_016/phase/arrested> a ns2:InitialPhase,
+        ns6:Phase ;
+    ns2:hasPhaseBeginPoint "2025-03-06T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/baclaran-paranaque-city> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Baclaran, Paranaque City" ;
+    ns3:name "Baclaran, Paranaque City" .
+
+<https://w3id.org/caselinker/resource/location/manila> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Manila" ;
+    ns3:name "Manila" .
+
+<https://w3id.org/caselinker/resource/location/paranaque-city> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Paranaque City" ;
+    ns3:name "Paranaque City" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_016/event/hands-on> a ns2:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns2:severityLevel 3 .
+

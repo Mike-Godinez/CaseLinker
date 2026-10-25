@@ -1,0 +1,85 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_010> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 00:50:58.888022" ;
+    dcterms:identifier "brazil_pf_2026_010" ;
+    dcterms:modified "2026-10-18 00:50:58.888022" ;
+    dcterms:source <https://www.gov.br/pf/pt-br/assuntos/noticias/2026/09/pf-faz-busca-e-apreensao-em-investigacao-sobre-material-de-abuso-sexual-infantojuvenil>,
+        "BRAZIL PF" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/araçatuba>,
+        <https://w3id.org/caselinker/resource/location/clementinasp> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/cybertip>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/event/possession>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/alert-the-federal-police-department>,
+        <https://w3id.org/caselinker/resource/agency/federal-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/araçatuba>,
+        <https://w3id.org/caselinker/resource/location/clementinasp> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/alert-the-federal-police-department> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/federal-police-department> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/charge/1> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/cybertip> a ns5:NCMECCybertipReport ;
+    ns5:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): remained in prison" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/charge/1> ;
+    ns4:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns7:FederalAgency .
+
+<https://w3id.org/caselinker/resource/location/araçatuba> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Araçatuba" ;
+    ns2:name "Araçatuba" .
+
+<https://w3id.org/caselinker/resource/location/clementinasp> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Clementina/sp" ;
+    ns2:name "Clementina/sp" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_010> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/brazil_pf_2026_010/provenance> .

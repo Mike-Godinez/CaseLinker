@@ -1,0 +1,95 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_013> a ns5:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:50:58.903119" ;
+    dcterms:identifier "brazil_pf_2026_013" ;
+    dcterms:modified "2026-10-18 00:50:58.903119" ;
+    dcterms:source <https://www.gov.br/pf/pt-br/assuntos/noticias/2026/09/pf-localiza-brasileiro-condenado-por-crime-de-abuso-sexual-na-irlanda>,
+        "BRAZIL PF" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/brazil>,
+        <https://w3id.org/caselinker/resource/location/ireland>,
+        <https://w3id.org/caselinker/resource/location/london>,
+        <https://w3id.org/caselinker/resource/location/rio-grande> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/phase/sentenced> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/phase/sentenced> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/legal-step/sentenced> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/federal-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/brazil>,
+        <https://w3id.org/caselinker/resource/location/ireland>,
+        <https://w3id.org/caselinker/resource/location/london>,
+        <https://w3id.org/caselinker/resource/location/rio-grande> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/federal-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/event/multi-jurisdiction> a ns4:Event,
+        ns2:MultiJurisdictionalInvestigation ;
+    ns5:severityLevel 3 ;
+    ns2:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:resultsSentence <https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/legal-step/sentenced> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding,
+        ns6:SentencingHearing ;
+    ns6:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/sentence/1> a ns6:CriminalSentence,
+        ns6:PrisonSentence ;
+    rdfs:label "25 years" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/phase/sentenced> a ns4:Phase,
+        ns6:SentencingPhase ;
+    ns5:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/brazil> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Brazil" ;
+    ns1:name "Brazil" .
+
+<https://w3id.org/caselinker/resource/location/ireland> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ireland" ;
+    ns1:name "Ireland" .
+
+<https://w3id.org/caselinker/resource/location/london> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "London" ;
+    ns1:name "London" .
+
+<https://w3id.org/caselinker/resource/location/rio-grande> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Rio Grande" ;
+    ns1:name "Rio Grande" .
+
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_013> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/brazil_pf_2026_013/provenance> .

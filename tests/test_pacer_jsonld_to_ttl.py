@@ -58,7 +58,7 @@ def test_convert_adds_only_metadata_triples(tmp_path: Path):
     assert (
         graph_iri,
         URIRef("http://www.w3.org/ns/prov#wasDerivedFrom"),
-        URIRef("https://caselinker.up.railway.app/resource/case/doj_ceos_2025_014"),
+        URIRef("https://w3id.org/caselinker/resource/case/doj_ceos_2025_014"),
     ) in out
     assert (
         URIRef("http://example.org/kb/example-investigation"),

@@ -1,0 +1,105 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_010> a ns2:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 06:04:24.768883" ;
+    dcterms:identifier "newyork_sp_2026_010" ;
+    dcterms:modified "2026-10-18 06:04:24.768883" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/provenance> ;
+    dcterms:source <https://troopers.ny.gov/news/camillus-man-charged-possession-child-sexual-abuse-material-0>,
+        "NEWYORK SP" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/camillus-new-york>,
+        <https://w3id.org/caselinker/resource/location/north-syracuse> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/event/possession>,
+        <https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/camillus-police-department>,
+        <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/monroe-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/new-york-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/troop-d-bureau-of-criminal-investigation> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/camillus-new-york>,
+        <https://w3id.org/caselinker/resource/location/north-syracuse> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/camillus-police-department> a ns6:OrganizationLikeEntity,
+        ns1:LocalAgency ;
+    rdfs:label "Camillus Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/fbi> a ns1:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/monroe-county-sheriffs-office> a ns6:OrganizationLikeEntity,
+        ns1:LocalAgency ;
+    rdfs:label "Monroe County Sheriff's Office" .
+
+<https://w3id.org/caselinker/resource/agency/new-york-state-police-department> a ns1:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/troop-d-bureau-of-criminal-investigation> a ns1:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/event/distribution> a ns6:Event,
+        ns3:CSAM_Distribution ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/charge/1> ;
+    ns3:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 29 .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/phase/charged> a ns2:LegalProcessPhase,
+        ns6:Phase ;
+    ns2:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/camillus-new-york> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Camillus, New York" ;
+    ns5:name "Camillus, New York" .
+
+<https://w3id.org/caselinker/resource/location/north-syracuse> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "North Syracuse" ;
+    ns5:name "North Syracuse" .
+
+<https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/event/possession> a ns2:CSAMIncident,
+        ns6:Event ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/newyork_sp_2026_010/facet/possession> .
+

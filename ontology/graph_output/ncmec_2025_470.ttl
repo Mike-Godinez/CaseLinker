@@ -1,126 +1,72 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.587714" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_470> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:20.592120" ;
     dcterms:identifier "ncmec_2025_470" ;
-    dcterms:modified "2026-09-15T21:27:13.587714" ;
-    dcterms:source <https://www.communityadvocate.com/marlborough/marlborough-pd-makes-arrest-after-discovering-500-images-of-child-pornography/article_443cd8f5-60b9-5390-abd7-3a96022950fe.html>,
+    dcterms:modified "2026-10-18 00:01:20.592120" ;
+    dcterms:source <https://www.cbsnews.com/detroit/news/macomb-county-woman-possessing-distributing-child-pornography/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/marlborough> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/marlborough-detectives>,
-        <https://caselinker.up.railway.app/resource/agency/marlborough-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/massachusetts-attorney-generals-office>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/marlborough> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/macomb-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_470/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_470/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_470/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_470/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_470/legal-proceeding> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/macomb-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_470/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-06-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_470/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_470/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/marlborough-detectives> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Marlborough Detectives" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_470/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-06-17T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_470/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_470/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/marlborough-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Marlborough Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_470/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/agency/massachusetts-attorney-generals-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Massachusetts Attorney General's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_470/event/distribution> a ns2:Event,
+        ns4:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_470/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_470/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_470/charge/1> ;
+    ns4:hasProceedingBeginPoint "2025-06-17T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_470/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 29 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_470/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 18 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_470/phase/charged> a ns1:LegalProcessPhase,
+        ns2:Phase ;
+    ns1:hasPhaseBeginPoint "2025-06-17T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/person/offender/2> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 37 .
+<https://w3id.org/caselinker/resource/location/macomb-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Macomb County" ;
+    ns3:name "Macomb County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_470/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_470/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/role/offender/2> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/person/offender/2> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/marlborough> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Marlborough" ;
-    uco-core:name "Marlborough" .
-
-<https://caselinker.up.railway.app/resource/platform/facebook> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Facebook" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/event/conspiracy> a cacontology:ConspiracyToCommitCSA,
-        cac-core:Event ;
-    cacontology:conspiracyMemberCount 2 ;
-    cacontology:participatesInConspiracy <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/role/offender/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/role/offender/2> ;
-    cacontology:severityLevel 1 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/facebook> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_470/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 1 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/facebook> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_470/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_470> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_470/provenance> .

@@ -1,0 +1,257 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/wy_dci_2025_002> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/admission/2/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/admission/2> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/wy_dci_2025_002> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/agency/campbell-county-sheriffs-office> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/division-of-criminal-investigation> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/fbi> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/wyoming-division-of-criminal-investigation> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/charge/1> a ns7:CriminalCharge,
+        ns7:SextortionCharge ;
+    rdfs:label "sextortion" .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/charge/2> a ns7:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/offense-event/charge-2> ;
+    ns2:chargeCluster "child_exploitation" ;
+    ns2:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/offense-event/charge-2> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/event/multi-jurisdiction> a ns3:Event,
+        ns5:MultiJurisdictionalInvestigation .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/event/trust-violation> a ns6:CustodialAbuse,
+        ns6:TrustViolation ;
+    ns6:violatesRelationship <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/relationship/father> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/charge/1>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/charge/2> ;
+    ns7:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/operation> a ns3:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 24 .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/relationship/father> a ns6:CustodialRelationship,
+        ns6:FamilialRelationship ;
+    ns6:involvesChild <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/role/victim/1> ;
+    ns6:involvesCustodian <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/role/offender/1> ;
+    ns6:relationshipType "father" .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/event/sextortion>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/offense-event/charge-2> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 07:49:26.993146" ;
+    dcterms:identifier "wy_dci_2025_002" ;
+    dcterms:modified "2026-10-18 07:49:26.993146" ;
+    dcterms:source <https://cowboystatedaily.com/2025/01/26/how-a-budding-gillette-baseball-star-and-marine-became-a-pedophile-hunter/>,
+        "WY DCI" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/alaska>,
+        <https://w3id.org/caselinker/resource/location/baghdad>,
+        <https://w3id.org/caselinker/resource/location/campbell-county>,
+        <https://w3id.org/caselinker/resource/location/gillette>,
+        <https://w3id.org/caselinker/resource/location/kuala-lumpur>,
+        <https://w3id.org/caselinker/resource/location/kuwait>,
+        <https://w3id.org/caselinker/resource/location/malaysia>,
+        <https://w3id.org/caselinker/resource/location/maldives>,
+        <https://w3id.org/caselinker/resource/location/new-mexico>,
+        <https://w3id.org/caselinker/resource/location/palestine>,
+        <https://w3id.org/caselinker/resource/location/quantico>,
+        <https://w3id.org/caselinker/resource/location/ukraine>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/virginia>,
+        <https://w3id.org/caselinker/resource/location/wyoming> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/admission/1>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/admission/2>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/event/sextortion>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/offense-event/charge-2>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/operation> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/campbell-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/division-of-criminal-investigation>,
+        <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/usao>,
+        <https://w3id.org/caselinker/resource/agency/wyoming-division-of-criminal-investigation> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/alaska>,
+        <https://w3id.org/caselinker/resource/location/baghdad>,
+        <https://w3id.org/caselinker/resource/location/campbell-county>,
+        <https://w3id.org/caselinker/resource/location/gillette>,
+        <https://w3id.org/caselinker/resource/location/kuala-lumpur>,
+        <https://w3id.org/caselinker/resource/location/kuwait>,
+        <https://w3id.org/caselinker/resource/location/malaysia>,
+        <https://w3id.org/caselinker/resource/location/maldives>,
+        <https://w3id.org/caselinker/resource/location/new-mexico>,
+        <https://w3id.org/caselinker/resource/location/palestine>,
+        <https://w3id.org/caselinker/resource/location/quantico>,
+        <https://w3id.org/caselinker/resource/location/ukraine>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/virginia>,
+        <https://w3id.org/caselinker/resource/location/wyoming> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "appreciated meeting law enforcement from all over the world, including from war-worn countries like Ukraine and Pales..." ;
+    dcterms:source <https://cowboystatedaily.com/2025/01/26/how-a-budding-gillette-baseball-star-and-marine-became-a-pedophile-hunter/> ;
+    ns2:admissionContext ") at the University of Wyoming. Along with the physical and mental aspect of the program, McDonald said he appreciated meeting law enforc..." ;
+    ns2:admissionFrame "said_paraphrase" ;
+    ns2:admissionTheme "other" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns4:description "appreciated meeting law enforcement from all over the world, including from war-worn countries like Ukraine and Palestine, where the mass scale of terrorism is an everyday reality" .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "felt compelled to “put on the greens” only to be told he was too old to re-enlist" ;
+    dcterms:source <https://cowboystatedaily.com/2025/01/26/how-a-budding-gillette-baseball-star-and-marine-became-a-pedophile-hunter/> ;
+    ns2:admissionContext "the way to go. Then 9/11 happened, and once again McDonald’s priorities were rearranged. He said he felt compelled to “put on the greens”..." ;
+    ns2:admissionFrame "he_said_paraphrase" ;
+    ns2:admissionTheme "other" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns4:description "felt compelled to “put on the greens” only to be told he was too old to re-enlist" .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/phase/charged> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/alaska> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Alaska" ;
+    ns4:name "Alaska" .
+
+<https://w3id.org/caselinker/resource/location/baghdad> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Baghdad" ;
+    ns4:name "Baghdad" .
+
+<https://w3id.org/caselinker/resource/location/campbell-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Campbell County" ;
+    ns4:name "Campbell County" .
+
+<https://w3id.org/caselinker/resource/location/gillette> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Gillette" ;
+    ns4:name "Gillette" .
+
+<https://w3id.org/caselinker/resource/location/kuala-lumpur> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kuala Lumpur" ;
+    ns4:name "Kuala Lumpur" .
+
+<https://w3id.org/caselinker/resource/location/kuwait> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kuwait" ;
+    ns4:name "Kuwait" .
+
+<https://w3id.org/caselinker/resource/location/malaysia> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Malaysia" ;
+    ns4:name "Malaysia" .
+
+<https://w3id.org/caselinker/resource/location/maldives> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Maldives" ;
+    ns4:name "Maldives" .
+
+<https://w3id.org/caselinker/resource/location/new-mexico> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Mexico" ;
+    ns4:name "New Mexico" .
+
+<https://w3id.org/caselinker/resource/location/palestine> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Palestine" ;
+    ns4:name "Palestine" .
+
+<https://w3id.org/caselinker/resource/location/quantico> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Quantico" ;
+    ns4:name "Quantico" .
+
+<https://w3id.org/caselinker/resource/location/ukraine> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ukraine" ;
+    ns4:name "Ukraine" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns4:name "United States" .
+
+<https://w3id.org/caselinker/resource/location/virginia> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Virginia" ;
+    ns4:name "Virginia" .
+
+<https://w3id.org/caselinker/resource/location/wyoming> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wyoming" ;
+    ns4:name "Wyoming" .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns3:Event .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/event/sextortion> a ns3:Event,
+        <https://cacontology.projectvic.org/sextortion#SextortionIncident> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/event/sextortion>,
+        <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/offense-event/charge-2> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002/offense-event/charge-2> a ns1:ChildSexualAbuseEvent,
+        ns3:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/wy_dci_2025_002> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/wy_dci_2025_002/provenance> .

@@ -1,101 +1,113 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_473> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.159270" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/admission/1/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_473/admission/1> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_473> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2023-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_473/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_473/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/margate-police-department> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473> a ns3:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:33.743253" ;
     dcterms:identifier "ncmec_2023_473" ;
-    dcterms:modified "2026-09-15T20:55:01.159270" ;
-    dcterms:source <https://www.starvedrock.media/wlpo/la-salle-county-grand-jury-indicts-on-child-porn-agg-domestic-battery/article_e81c83a8-6858-11ee-b760-af7960445be7.html>,
+    dcterms:modified "2026-10-17 22:21:33.743253" ;
+    dcterms:source <https://margatetalk.com/google-cyber-tip-margate-child-pornography-44732#:~:text=Google%20Cyber%20Tip%20Leads%20to%20Arrest%20of%20Margate%20Man%20on%20Child%20Pornography%20Charges,-October%2021%2C%202023&text=A%20Google%20cyber%20tip%20led,charges%20of%20possessing%20child%20pornography>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/la-salle-county>,
-        <https://caselinker.up.railway.app/resource/location/mendota>,
-        <https://caselinker.up.railway.app/resource/location/oldenburg>,
-        <https://caselinker.up.railway.app/resource/location/ottawa>,
-        <https://caselinker.up.railway.app/resource/location/seneca> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_473/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_473/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_473/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_473/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/la-salle-county>,
-        <https://caselinker.up.railway.app/resource/location/mendota>,
-        <https://caselinker.up.railway.app/resource/location/oldenburg>,
-        <https://caselinker.up.railway.app/resource/location/ottawa>,
-        <https://caselinker.up.railway.app/resource/location/seneca> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/margate> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_473/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_473/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_473/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_473/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_473/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_473/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_473/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns3:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2023_473/tech/cybertipline> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/margate-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/margate> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_473/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_473/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_473/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_473/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_473/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_473/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_473/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/event/distribution> a ns6:Event,
+        ns4:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_473/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_473/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_473/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_473/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_473/charge/1> ;
+    ns4:hasProceedingBeginPoint "2023-10-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_473/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 21 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_473/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_473/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2023-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_473/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_473/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_473/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/tech/cybertipline> a ns7:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
 
-<https://caselinker.up.railway.app/resource/location/la-salle-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "la Salle County" ;
-    uco-core:name "la Salle County" .
+<https://w3id.org/caselinker/resource/platform/google-drive> a <https://cacontology.projectvic.org/platforms#FileHostingService> ;
+    rdfs:label "Google Drive" .
 
-<https://caselinker.up.railway.app/resource/location/mendota> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Mendota" ;
-    uco-core:name "Mendota" .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns5:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/location/oldenburg> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Oldenburg" ;
-    uco-core:name "Oldenburg" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "viewing several explicit materials and recognized certain photos" ;
+    dcterms:source <https://margatetalk.com/google-cyber-tip-margate-child-pornography-44732#:~:text=Google%20Cyber%20Tip%20Leads%20to%20Arrest%20of%20Margate%20Man%20on%20Child%20Pornography%20Charges,-October%2021%2C%202023&text=A%20Google%20cyber%20tip%20led,charges%20of%20possessing%20child%20pornography> ;
+    ns1:admissionContext "s bedroom within the residence, further linking the contents of the Google Drive to him. Elias subsequently admitted to viewing several e..." ;
+    ns1:admissionFrame "admitted_to" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_473/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns2:description "viewing several explicit materials and recognized certain photos" .
 
-<https://caselinker.up.railway.app/resource/location/ottawa> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Ottawa" ;
-    uco-core:name "Ottawa" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/phase/charged> a ns3:LegalProcessPhase,
+        ns6:Phase ;
+    ns3:hasPhaseBeginPoint "2023-10-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/seneca> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Seneca" ;
-    uco-core:name "Seneca" .
+<https://w3id.org/caselinker/resource/location/margate> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Margate" ;
+    ns2:name "Margate" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_473/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_473/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473/event/possession> a ns3:CSAMIncident,
+        ns6:Event ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/google-drive> ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_473/facet/possession> .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_473> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_473/provenance> .

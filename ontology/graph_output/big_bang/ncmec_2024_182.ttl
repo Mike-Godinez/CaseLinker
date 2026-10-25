@@ -1,256 +1,142 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_182> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_182> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/3/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/3> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_182> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/miami-police-department> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child sexual abuse material" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/trafficking> a cac-core:Event,
-        cacontology-legal-outcomes:SexTrafficking ;
-    cacontology:severityLevel 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/relationship/mother> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/sentence/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/sentence/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/sentence/3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/sentence/4>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/sentence/5>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/sentence/6> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 21 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/relationship/mother> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/role/offender/1> ;
-    cacontology-custodial:relationshipType "mother" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "$1" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/sentence/2> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "$10" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/sentence/3> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "$1500" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/sentence/4> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:LifeImprisonmentSentence ;
-    rdfs:label "life in prison" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/sentence/5> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "$5" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/sentence/6> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "$42,500" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "had to post on OnlyFans out of desperation" ;
-    dcterms:source <https://ftltimes.com/2024/02/27/man-faces-15-felonies-in-miami-after-uploading-videos-of-children-as-young-as-3-being-raped/> ;
-    ns1:admissionContext "home late, argued and refused to get a job. McKeever has kicked him out. That September, Graham said he had to post on OnlyFans out of de..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "had to post on OnlyFans out of desperation" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/3> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "called the FBI and asked for help in removing the videos" ;
-    dcterms:source <https://ftltimes.com/2024/02/27/man-faces-15-felonies-in-miami-after-uploading-videos-of-children-as-young-as-3-being-raped/> ;
-    ns1:admissionContext "ldn't, \"because he didn't know who to write the charge against,\" McKeever said. Stressed, McKeever said she called the FBI and asked for..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "called the FBI and asked for help in removing the videos" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:15:47.712721" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182> a ns3:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:26.710656" ;
     dcterms:identifier "ncmec_2024_182" ;
-    dcterms:modified "2026-09-10T19:15:47.712721" ;
-    dcterms:source <https://ftltimes.com/2024/02/27/man-faces-15-felonies-in-miami-after-uploading-videos-of-children-as-young-as-3-being-raped/>,
+    dcterms:modified "2026-10-17 23:04:26.710656" ;
+    dcterms:source <https://bocanewsnow.com/2024/06/22/kings-point-delray-beach-resident-jailed-on-child-images-charge/>,
         "NCMEC" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/production>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/trafficking>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/legal-step/convicted>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/operation> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/fbi>,
-        <https://caselinker.up.railway.app/resource/agency/miami-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/delray-beach>,
+        <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/kings-point>,
+        <https://w3id.org/caselinker/resource/location/monaco-j>,
+        <https://w3id.org/caselinker/resource/location/palm-beach-county>,
+        <https://w3id.org/caselinker/resource/location/south-palm-beach-county> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_182/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_182/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_182/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_182/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_182/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_182/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_182/operation> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/kings-point-bureau>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/delray-beach>,
+        <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/kings-point>,
+        <https://w3id.org/caselinker/resource/location/monaco-j>,
+        <https://w3id.org/caselinker/resource/location/palm-beach-county>,
+        <https://w3id.org/caselinker/resource/location/south-palm-beach-county> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/2> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/discord>,
-        <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/instagram>,
-        <https://caselinker.up.railway.app/resource/platform/snapchat>,
-        <https://caselinker.up.railway.app/resource/platform/social-media>,
-        <https://caselinker.up.railway.app/resource/platform/twitter-x> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-06-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_182/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_182/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_182/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/2> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/discord>,
-        <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/instagram>,
-        <https://caselinker.up.railway.app/resource/platform/snapchat>,
-        <https://caselinker.up.railway.app/resource/platform/social-media>,
-        <https://caselinker.up.railway.app/resource/platform/twitter-x> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-06-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_182/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_182/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_182/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/production> a cac-core:Event,
-        cacontology-production:ProductionOffense ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/2> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/discord>,
-        <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/instagram>,
-        <https://caselinker.up.railway.app/resource/platform/snapchat>,
-        <https://caselinker.up.railway.app/resource/platform/social-media>,
-        <https://caselinker.up.railway.app/resource/platform/twitter-x> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/facet/production> .
+<https://w3id.org/caselinker/resource/agency/kings-point-bureau> a ns4:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "Kings Point Bureau" .
 
-<https://caselinker.up.railway.app/resource/platform/discord> a cacontology-platforms:MessagingService ;
-    rdfs:label "Discord" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "obscene material" ;
+    ns5:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/platform/facebook> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Palm Beach County Jail" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_182/charge/1> ;
+    ns5:hasProceedingBeginPoint "2024-06-22T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182/operation> a ns4:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182/phase/charged> a ns3:LegalProcessPhase,
+        ns4:Phase ;
+    ns3:hasPhaseBeginPoint "2024-06-22T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/delray-beach> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Delray Beach" ;
+    ns1:name "Delray Beach" .
+
+<https://w3id.org/caselinker/resource/location/florida> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Florida" ;
+    ns1:name "Florida" .
+
+<https://w3id.org/caselinker/resource/location/kings-point> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kings Point" ;
+    ns1:name "Kings Point" .
+
+<https://w3id.org/caselinker/resource/location/monaco-j> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Monaco J" ;
+    ns1:name "Monaco J" .
+
+<https://w3id.org/caselinker/resource/location/palm-beach-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Palm Beach County" ;
+    ns1:name "Palm Beach County" .
+
+<https://w3id.org/caselinker/resource/location/south-palm-beach-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Palm Beach County" ;
+    ns1:name "South Palm Beach County" .
+
+<https://w3id.org/caselinker/resource/platform/dropbox> a <https://cacontology.projectvic.org/platforms#FileHostingService> ;
+    rdfs:label "Dropbox" .
+
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "Facebook" .
 
-<https://caselinker.up.railway.app/resource/platform/instagram> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/instagram> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "Instagram" .
 
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182/event/online-only> a ns3:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/dropbox>,
+        <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/instagram> .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182/event/possession> a ns3:CSAMIncident,
+        ns4:Event ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/dropbox>,
+        <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/instagram> ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_182/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/platform/twitter-x> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Twitter / X" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_182/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "discovered the account in December 2022" ;
-    dcterms:source <https://ftltimes.com/2024/02/27/man-faces-15-felonies-in-miami-after-uploading-videos-of-children-as-young-as-3-being-raped/> ;
-    ns1:admissionContext "lyFans\" and began selling her sexually explicit material. She was starting to earn money. McKeever said she discovered the account in Dec..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_182/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "discovered the account in December 2022" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2024_182> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_182/provenance> .

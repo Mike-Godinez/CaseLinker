@@ -1,116 +1,99 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-sextortion: <https://cacontology.projectvic.org/sextortion#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.341900" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397/admission/1/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_397/admission/1> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_397> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2022-03-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_397/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_397/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397> a ns3:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:24.236881" ;
     dcterms:identifier "ncmec_2022_397" ;
-    dcterms:modified "2026-09-15T20:45:06.341900" ;
-    dcterms:source <https://www.knoe.com/2022/08/29/la-man-accused-sextortion-child-evidence-more-cases-found/>,
+    dcterms:modified "2026-10-17 21:51:24.236881" ;
+    dcterms:source <https://kimatv.com/news/local/police-kennewick-man-had-over-200-images-of-child-pornography-on-his-phone>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/ferriday>,
-        <https://caselinker.up.railway.app/resource/location/la> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/event/sextortion>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/adams-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/ferriday>,
-        <https://caselinker.up.railway.app/resource/location/la> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/benton-county>,
+        <https://w3id.org/caselinker/resource/location/kennewick> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_397/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_397/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_397/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_397/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_397/legal-proceeding> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/benton-county>,
+        <https://w3id.org/caselinker/resource/location/kennewick> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/event/sextortion> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns6:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/event/sextortion> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/adams-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Adams County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Benton County Jail" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_397/charge/1> ;
+    ns6:hasProceedingBeginPoint "2022-03-28T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:SextortionCharge ;
-    rdfs:label "sextortion" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 27 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2022-03-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_397/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_397/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397/phase/charged> a ns3:LegalProcessPhase,
+        ns2:Phase ;
+    ns3:hasPhaseBeginPoint "2022-03-28T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 19 .
+<https://w3id.org/caselinker/resource/location/benton-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Benton County" ;
+    ns5:name "Benton County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 12 .
+<https://w3id.org/caselinker/resource/location/kennewick> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kennewick" ;
+    ns5:name "Kennewick" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "police that he had viewed child porn images since he was 16 years old" ;
+    dcterms:source <https://kimatv.com/news/local/police-kennewick-man-had-over-200-images-of-child-pornography-on-his-phone> ;
+    ns1:admissionContext "ns of minors engaged in sexually explicit conduct. Police contacted Sanchez on March 25. According to court documents, Sanchez admitted t..." ;
+    ns1:admissionFrame "admitted_to" ;
+    ns1:admissionTheme "harm_conduct" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_397/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns5:description "police that he had viewed child porn images since he was 16 years old" .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397/event/possession> a ns3:CSAMIncident,
+        ns2:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_397/admission/1> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_397/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/ferriday> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Ferriday" ;
-    uco-core:name "Ferriday" .
-
-<https://caselinker.up.railway.app/resource/location/la> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/instagram> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/instagram> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_397/facet/possession> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_397/event/sextortion> a cac-core:Event,
-        cacontology-sextortion:SextortionIncident ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/instagram> .
-
-<https://caselinker.up.railway.app/resource/platform/instagram> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Instagram" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2022_397> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_397/provenance> .

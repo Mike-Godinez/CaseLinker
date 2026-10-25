@@ -1,37 +1,40 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2014_015> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T19:29:01.693435" ;
+<https://w3id.org/caselinker/resource/case/de_ag_2014_015> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 01:01:30.331280" ;
     dcterms:identifier "de_ag_2014_015" ;
-    dcterms:modified "2026-09-15T19:29:01.693435" ;
+    dcterms:modified "2026-10-18 01:01:30.331280" ;
     dcterms:source <https://news.delaware.gov/2014/10/30/child-predator-task-force-investigation-results-in-44-year-sentence-for-kent-county-man>,
         "DE AG" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/delaware> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/delaware> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/delaware> ;
+    ns1:investigationStatus "unknown" ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/delaware> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2014_015/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/de_ag_2014_015/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/de_ag_2014_015/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2014-10-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2014_015/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2014_015/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/de_ag_2014_015/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/de_ag_2014_015/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2014-10-30T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2014_015/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2014_015/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/de_ag_2014_015/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/de_ag_2014_015/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/de_ag_2014_015/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/delaware> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/delaware> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Delaware" ;
+    ns4:name "Delaware" .
 
+
+<https://w3id.org/caselinker/resource/case/de_ag_2014_015> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/de_ag_2014_015/provenance> .

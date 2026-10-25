@@ -1,87 +1,98 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_861> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:14.083022" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861> a ns2:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:24.784392" ;
     dcterms:identifier "ncmec_2025_861" ;
-    dcterms:modified "2026-09-15T21:27:14.083022" ;
-    dcterms:source <https://www.live5news.com/2025/01/15/charleston-county-deputy-charged-with-10-counts-sexual-exploitation-minor/>,
+    dcterms:modified "2026-10-18 00:01:24.784392" ;
+    dcterms:source <https://wcyb.com/news/local/kingsport-man-charged-with-aggravated-sexual-exploitation-of-a-minor-brandon-scott-overbay-sullivan-county>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/charleston-county>,
-        <https://caselinker.up.railway.app/resource/location/sc> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_861/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_861/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_861/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/charleston-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/charleston-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/charleston-county>,
-        <https://caselinker.up.railway.app/resource/location/sc> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/kingsport>,
+        <https://w3id.org/caselinker/resource/location/tenn> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_861/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_861/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_861/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_861/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_861/legal-proceeding> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/sullivan-county-sheriffs-office> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/kingsport>,
+        <https://w3id.org/caselinker/resource/location/tenn> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_861/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_861/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-04-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_861/event/csam> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_861/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_861/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_861/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-04-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_861/event/csam> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_861/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/charleston-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Charleston County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/agency/sullivan-county-sheriffs-office> a ns1:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "Sullivan County Sheriff's Office" .
 
-<https://caselinker.up.railway.app/resource/agency/charleston-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Charleston Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861/charge/1> a ns5:CriminalCharge,
+        ns5:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_861/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "SEXUAL EXPLOITATION OF" ;
-    cacontology-legal-outcomes:indictmentCounts 11 ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861/charge/2> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_861/charge/2> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "third-degree sexual exploitation of a minor" ;
-    cacontology-legal-outcomes:indictmentCounts 11 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861/charge/3> a ns5:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_861/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_861/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_861/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_861/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861/cybertip> a ns3:NCMECCybertipReport ;
+    ns3:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_861/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_861/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_861/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_861/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_861/charge/3> ;
+    ns5:hasProceedingBeginPoint "2025-04-25T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_861/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_861/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/charleston-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Charleston County" ;
-    uco-core:name "Charleston County" .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/location/sc> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861/phase/charged> a ns2:LegalProcessPhase,
+        ns1:Phase ;
+    ns2:hasPhaseBeginPoint "2025-04-25T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/location/kingsport> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kingsport" ;
+    ns7:name "Kingsport" .
+
+<https://w3id.org/caselinker/resource/location/tenn> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tenn." ;
+    ns7:name "Tenn." .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861/event/csam> a ns2:CSAMIncident,
+        ns1:Event ;
+    ns2:severityLevel 3 ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_861/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_861> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_861/provenance> .

@@ -1,61 +1,67 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_888> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.913730" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_888> a ns3:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:35.347569" ;
     dcterms:identifier "ncmec_2024_888" ;
-    dcterms:modified "2026-09-15T21:08:10.913730" ;
-    dcterms:source <https://www.wfmj.com/story/50765254/warren-man-indicted-on-felony-counts-of-pandering-obscenity-involving-a-minor-and-other-charges?clienttype=generic&mobilecgbypass>,
+    dcterms:modified "2026-10-17 23:04:35.347569" ;
+    dcterms:source <https://mercercountyoutlook.net/2024/05/28/rockford-teen-indicted-on-42-felony-counts/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/trumbull-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_888/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_888/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_888/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/trumbull-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/mercer-county>,
+        <https://w3id.org/caselinker/resource/location/rockford> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_888/phase/indicted> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_888/phase/indicted> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_888/legal-proceeding> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/mercer-county>,
+        <https://w3id.org/caselinker/resource/location/rockford> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_888/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_888/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_888/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2024-05-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_888/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_888/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_888/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_888/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2024-05-16T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_888/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_888/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "pandering obscenity involving a minor" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_888/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "pandering" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_888/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_888/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_888/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_888/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked or is in custody" ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_888/charge/1> ;
+    ns4:hasProceedingBeginPoint "2024-05-16T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_888/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_888/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 18 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_888/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_888/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_888/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$100,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_888/phase/indicted> a ns3:LegalProcessPhase,
+        ns2:Phase ;
+    ns3:hasPhaseBeginPoint "2024-05-16T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_888/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/mercer-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mercer County" ;
+    ns5:name "Mercer County" .
 
-<https://caselinker.up.railway.app/resource/location/trumbull-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/rockford> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Rockford" ;
+    ns5:name "Rockford" .
 
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_888> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_888/provenance> .

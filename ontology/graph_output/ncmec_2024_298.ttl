@@ -1,180 +1,164 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_298> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/2/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/2> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_298> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/3/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/3> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2024_298> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child sexual abuse material" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/legal-step/pleaded-guilty> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:PleaBargaining ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 27 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 17 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:ProbationSentence ;
-    rdfs:label "[\"$250,000\", \"probation\"]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/phase/pleaded-guilty> a cac-core:Phase,
-        cacontology-legal-outcomes:PreTrialPhase ;
-    cacontology:hasPhaseBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/hayden> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Hayden" ;
-    uco-core:name "Hayden" .
-
-<https://caselinker.up.railway.app/resource/location/idaho> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/platform/dropbox> a cacontology-platforms:FileHostingService ;
-    rdfs:label "Dropbox" .
-
-<https://caselinker.up.railway.app/resource/platform/twitter-x> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Twitter / X" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.424563" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298> a ns7:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:28.180904" ;
     dcterms:identifier "ncmec_2024_298" ;
-    dcterms:modified "2026-09-15T21:08:10.424563" ;
-    dcterms:source <https://cdapress.com/news/2024/jul/10/hayden-man-jailed-for-possessing-child-sexual-abuse-material/>,
+    dcterms:modified "2026-10-17 23:04:28.180904" ;
+    dcterms:source <https://www.ag.idaho.gov/newsroom/franklin-county-man-arrested-for-sexual-exploitation-of-a-child/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/hayden>,
-        <https://caselinker.up.railway.app/resource/location/idaho> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/phase/pleaded-guilty> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/phase/pleaded-guilty> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/legal-step/pleaded-guilty> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/icac> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/hayden>,
-        <https://caselinker.up.railway.app/resource/location/idaho> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/boise>,
+        <https://w3id.org/caselinker/resource/location/coeur-dalene>,
+        <https://w3id.org/caselinker/resource/location/franklin-county>,
+        <https://w3id.org/caselinker/resource/location/idaho>,
+        <https://w3id.org/caselinker/resource/location/logan>,
+        <https://w3id.org/caselinker/resource/location/utah> ;
+    ns7:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_298/phase/convicted> ;
+    ns7:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_298/phase/convicted> ;
+    ns7:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_298/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_298/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_298/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_298/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_298/legal-step/convicted> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/bonneville-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/franklin-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/idaho-department-of-corrections-probation-and-parole-district-6>,
+        <https://w3id.org/caselinker/resource/agency/idaho-department-of-fish-and-game>,
+        <https://w3id.org/caselinker/resource/agency/idaho-falls-police-department>,
+        <https://w3id.org/caselinker/resource/agency/madison-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/pocatello-police-department>,
+        <https://w3id.org/caselinker/resource/agency/preston-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/boise>,
+        <https://w3id.org/caselinker/resource/location/coeur-dalene>,
+        <https://w3id.org/caselinker/resource/location/franklin-county>,
+        <https://w3id.org/caselinker/resource/location/idaho>,
+        <https://w3id.org/caselinker/resource/location/logan>,
+        <https://w3id.org/caselinker/resource/location/utah> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/3> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/dropbox>,
-        <https://caselinker.up.railway.app/resource/platform/twitter-x> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/role/offender/1> a ns7:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns7:hasRoleBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_298/event/csam> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_298/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/3> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/dropbox>,
-        <https://caselinker.up.railway.app/resource/platform/twitter-x> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/role/victim/1> a ns7:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns7:hasRoleBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_298/event/csam> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_298/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/person/offender/1> .
+<https://w3id.org/caselinker/resource/agency/bonneville-county-sheriffs-office> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "possessing more than 800 videos of child sexual abuse material is in jail on $250,000 bail" ;
-    dcterms:source <https://cdapress.com/news/2024/jul/10/hayden-man-jailed-for-possessing-child-sexual-abuse-material/> ;
-    ns1:admissionContext "https://cdapress.com/news/2024/jul/10/hayden-man-jailed-for-possessing-child-sexual-abuse-material/ CT 185789897, 159759815, 124270866 HA..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "possessing more than 800 videos of child sexual abuse material is in jail on $250,000 bail" .
+<https://w3id.org/caselinker/resource/agency/franklin-county-sheriffs-office> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/2> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "using his phone to view child sexual abuse material and said he possessed more than 800 such videos" ;
-    dcterms:source <https://cdapress.com/news/2024/jul/10/hayden-man-jailed-for-possessing-child-sexual-abuse-material/> ;
-    ns1:admissionContext "records. Police executed a search warrant for Ove’s residence in Hayden on Tuesday. When questioned by police, Ove allegedly admitted to..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "using his phone to view child sexual abuse material and said he possessed more than 800 such videos" .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_298/admission/3> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "possessed more than 800 such videos" ;
-    dcterms:source <https://cdapress.com/news/2024/jul/10/hayden-man-jailed-for-possessing-child-sexual-abuse-material/> ;
-    ns1:admissionContext "When questioned by police, Ove allegedly admitted to using his phone to view child sexual abuse material and said he possessed more than..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_298/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "possessed more than 800 such videos" .
+<https://w3id.org/caselinker/resource/agency/idaho-department-of-corrections-probation-and-parole-district-6> a ns4:LocalAgency .
 
+<https://w3id.org/caselinker/resource/agency/idaho-department-of-fish-and-game> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/idaho-falls-police-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/madison-county-sheriffs-office> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/pocatello-police-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/preston-police-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/charge/1> a ns6:CriminalCharge,
+        ns6:StateCharge ;
+    rdfs:label "Sexual Exploitation of a child" ;
+    ns6:indictmentCounts 12 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/charge/2> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/charge/3> a ns6:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/cybertip> a ns1:NCMECCybertipReport ;
+    ns1:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/event/distribution> a ns2:Event,
+        ns6:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Madison County Jail; booked into the Cache County Jail" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_298/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_298/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_298/charge/3> ;
+    ns6:hasProceedingBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/legal-step/convicted> a ns2:Event,
+        ns2:LegalEvent,
+        ns6:LegalProceeding,
+        ns6:SentencingHearing ;
+    ns6:hasProceedingBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/phase/convicted> a ns2:Phase,
+        ns6:SentencingPhase ;
+    ns7:hasPhaseBeginPoint "2024-08-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/boise> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Boise" ;
+    ns5:name "Boise" .
+
+<https://w3id.org/caselinker/resource/location/coeur-dalene> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Coeur D’alene" ;
+    ns5:name "Coeur D’alene" .
+
+<https://w3id.org/caselinker/resource/location/franklin-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Franklin County" ;
+    ns5:name "Franklin County" .
+
+<https://w3id.org/caselinker/resource/location/idaho> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Idaho" ;
+    ns5:name "Idaho" .
+
+<https://w3id.org/caselinker/resource/location/logan> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Logan" ;
+    ns5:name "Logan" .
+
+<https://w3id.org/caselinker/resource/location/utah> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Utah" ;
+    ns5:name "Utah" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298/event/csam> a ns7:CSAMIncident,
+        ns2:Event ;
+    ns7:usesChannel <https://w3id.org/caselinker/resource/platform/snapchat> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_298/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_298> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_298/provenance> .

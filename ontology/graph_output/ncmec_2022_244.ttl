@@ -1,105 +1,170 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/detection#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/production#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.193890" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_244/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_244> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/admission/2/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_244/admission/2> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_244> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_244/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/polk-county-sheriffs-office> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns5:indictmentCounts 24 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_244/charge/1> ;
+    ns5:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns1:ageEstimate 30 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns1:ageEstimate 33 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:victimAge 5 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/role/offender/2> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_244/person/offender/2> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:22.348549" ;
     dcterms:identifier "ncmec_2022_244" ;
-    dcterms:modified "2026-09-15T20:45:06.193890" ;
-    dcterms:source <https://www.yahoo.com/news/clermont-man-accused-downloading-child-185000643.html?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAHd0MaYtEKasIeH0L85nK2XTtePfCniuta18AeMZ6WmrCuhvJynRjdqbEMO34WRMGxRiO88OuAQQBJvdOtAHiwB9SWvsPx-dni9JIMZFDIuAYc3imqUj3Zfk3dd5BTsmZeI-bwWKZMYmO5V19Pof9QgawEQTrA_GzIOcLNX_7vNi>,
+    dcterms:modified "2026-10-17 21:51:22.348549" ;
+    dcterms:source <https://www.wfla.com/news/polk-county/winter-haven-men-get-31-total-life-sentences-after-sexually-abusing-8-year-old/#:~:text=The%20Polk%20County%20Sheriff's%20Office,month%2Dlong%20child%20pornography%20investigation.&text=A%20search%20of%20Egbert's%20home,%2Dold%2C%20being%20sexually%20battered>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/clermont>,
-        <https://caselinker.up.railway.app/resource/location/ga>,
-        <https://caselinker.up.railway.app/resource/location/gainesville> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/hall-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/clermont>,
-        <https://caselinker.up.railway.app/resource/location/ga>,
-        <https://caselinker.up.railway.app/resource/location/gainesville> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/tampa>,
+        <https://w3id.org/caselinker/resource/location/winter-haven> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_244/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_244/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_244/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/polk-county-sheriffs-office> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/fla>,
+        <https://w3id.org/caselinker/resource/location/tampa>,
+        <https://w3id.org/caselinker/resource/location/winter-haven> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/phase/arrested> a ns2:InitialPhase,
+        ns3:Phase ;
+    ns2:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/person/victim/1> .
+<https://w3id.org/caselinker/resource/location/fla> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fla." ;
+    ns6:name "Fla." .
 
-<https://caselinker.up.railway.app/resource/agency/hall-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/location/tampa> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tampa" ;
+    ns6:name "Tampa" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of children" .
+<https://w3id.org/caselinker/resource/location/winter-haven> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Winter Haven" ;
+    ns6:name "Winter Haven" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_244/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/platform/instagram> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Instagram" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "recording the 8-year-old’s abuse with Lavin’s help" ;
+    dcterms:source <https://www.wfla.com/news/polk-county/winter-haven-men-get-31-total-life-sentences-after-sexually-abusing-8-year-old/#:~:text=The%20Polk%20County%20Sheriff's%20Office,month%2Dlong%20child%20pornography%20investigation.&text=A%20search%20of%20Egbert's%20home,%2Dold%2C%20being%20sexually%20battered> ;
+    ns4:admissionContext "fants. Egbert also told detectives that he sexually abused three girls, ages 5, 7, and 8. According to the sheriff’s office, Egbert admit..." ;
+    ns4:admissionFrame "admitted_to" ;
+    ns4:admissionTheme "harm_conduct" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_244/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns6:description "recording the 8-year-old’s abuse with Lavin’s help" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "to looking at thousands of child porn images on Snapchat and Instagram, some of which included infants" ;
+    dcterms:source <https://www.wfla.com/news/polk-county/winter-haven-men-get-31-total-life-sentences-after-sexually-abusing-8-year-old/#:~:text=The%20Polk%20County%20Sheriff's%20Office,month%2Dlong%20child%20pornography%20investigation.&text=A%20search%20of%20Egbert's%20home,%2Dold%2C%20being%20sexually%20battered> ;
+    ns4:admissionContext "1,000 pictures and videos of children, as young as 2- years-old, being sexually battered. Deputies said Egbert confessed to looking at th..." ;
+    ns4:admissionFrame "confessed_paraphrase" ;
+    ns4:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_244/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns6:description "to looking at thousands of child porn images on Snapchat and Instagram, some of which included infants" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 39 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/conspiracy> a ns2:ConspiracyToCommitCSA,
+        ns3:Event ;
+    ns2:conspiracyMemberCount 2 ;
+    ns2:participatesInConspiracy <https://w3id.org/caselinker/resource/case/ncmec_2022_244/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/role/offender/2> ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/instagram>,
+        <https://w3id.org/caselinker/resource/platform/snapchat> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/hands-on> a ns2:ChildSexualAbuseEvent,
+        ns3:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_244/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/admission/2> ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/instagram>,
+        <https://w3id.org/caselinker/resource/platform/snapchat> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244/event/possession> a ns2:CSAMIncident,
+        ns3:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_244/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_244/admission/2> ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/instagram>,
+        <https://w3id.org/caselinker/resource/platform/snapchat> ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_244/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-07-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/clermont> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Clermont" ;
-    uco-core:name "Clermont" .
-
-<https://caselinker.up.railway.app/resource/location/ga> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/gainesville> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Gainesville" ;
-    uco-core:name "Gainesville" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_244/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_244/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2022_244> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_244/provenance> .

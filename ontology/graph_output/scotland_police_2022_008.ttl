@@ -1,0 +1,77 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_008> a ns4:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 14:18:19.570770" ;
+    dcterms:identifier "scotland_police_2022_008" ;
+    dcterms:modified "2026-10-18 14:18:19.570770" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scotland_police_2022_008/provenance> ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2022/september/man-sentenced-for-sexual-offences-against-children/>,
+        "SCOTLAND POLICE" ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/scotland_police_2022_008/phase/sentenced> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/scotland_police_2022_008/phase/sentenced> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/scotland_police_2022_008/event/possession>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2022_008/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2022_008/legal-step/sentenced> ;
+    ns4:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/national-child-abuse-investigation-unit>,
+        <https://w3id.org/caselinker/resource/agency/police-scotland> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_008/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2022-09-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/scotland_police_2022_008/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2022_008/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_008/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2022-09-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/scotland_police_2022_008/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2022_008/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/national-child-abuse-investigation-unit> a ns2:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "National Child Abuse Investigation Unit" .
+
+<https://w3id.org/caselinker/resource/agency/police-scotland> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_008/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_008/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasProceedingBeginPoint "2022-09-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:resultsSentence <https://w3id.org/caselinker/resource/case/scotland_police_2022_008/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_008/legal-step/sentenced> a ns2:Event,
+        ns2:LegalEvent,
+        ns1:LegalProceeding,
+        ns1:SentencingHearing ;
+    ns1:hasProceedingBeginPoint "2022-09-14T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_008/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 47 .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_008/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_008/sentence/1> a ns1:CriminalSentence,
+        ns1:PrisonSentence ;
+    rdfs:label "four years and 11 months" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_008/phase/sentenced> a ns2:Phase,
+        ns1:SentencingPhase ;
+    ns4:hasPhaseBeginPoint "2022-09-14T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_008/event/possession> a ns4:CSAMIncident,
+        ns2:Event ;
+    ns4:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/scotland_police_2022_008/facet/possession> .
+

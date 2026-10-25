@@ -1,0 +1,65 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix caselinker: <https://w3id.org/caselinker/ns/provenance#> .
+
+<https://w3id.org/caselinker/ns/provenance> a owl:Ontology ;
+    owl:versionInfo "3.1" ;
+    owl:versionIRI <https://w3id.org/caselinker/ns/provenance/3.1> ;
+    rdfs:label "CaseLinker provenance vocabulary"@en ;
+    rdfs:comment "Terms CaseLinker writes on extraction runs, assertions, and field resolutions."@en .
+
+caselinker:evidenceFamily a owl:DatatypeProperty ;
+    rdfs:label "evidence family"@en ;
+    rdfs:comment "The family of the extractor that wrote an assertion: surface_pattern, dependency, ner, lookup, temporal, llm, or human. Resolution counts one vote per family."@en ;
+    rdfs:range xsd:string .
+
+caselinker:resolutionStatus a owl:DatatypeProperty ;
+    rdfs:label "resolution status"@en ;
+    rdfs:comment "How resolve_v3.0 left a field: empty, resolved, agreed, partial, needs_review, or a disagreement state. It is the status stored on the field resolution, not a second opinion."@en ;
+    rdfs:range xsd:string .
+
+caselinker:ruleSetVersion a owl:DatatypeProperty ;
+    rdfs:label "rule set version"@en ;
+    rdfs:comment "The resolution rule set that produced the result. Current graphs use resolve_v3.0. A resolution without this term fails the provenance shape."@en ;
+    rdfs:range xsd:string .
+
+caselinker:assertionRole a owl:DatatypeProperty ;
+    rdfs:label "assertion role"@en ;
+    rdfs:comment "Optional role on an assertion when known (victim, perpetrator, decoy, publication, event, …). Omitted when the extractor did not assign a role; never the string unknown."@en ;
+    rdfs:range xsd:string .
+
+caselinker:gazetteerVersion a owl:DatatypeProperty ;
+    rdfs:label "gazetteer version"@en ;
+    rdfs:comment "Pinned Census gazetteer MANIFEST version used when grounding a location mention."@en ;
+    rdfs:range xsd:string .
+
+caselinker:fipsCode a owl:DatatypeProperty ;
+    rdfs:label "FIPS / GEOID"@en ;
+    rdfs:comment "Census GEOID for a grounded location (state/county/place) or national code US."@en ;
+    rdfs:range xsd:string .
+
+caselinker:stateHint a owl:DatatypeProperty ;
+    rdfs:label "state hint"@en ;
+    rdfs:comment "USPS state code used to disambiguate a location mention."@en ;
+    rdfs:range xsd:string .
+
+caselinker:stateHintSource a owl:DatatypeProperty ;
+    rdfs:label "state hint source"@en ;
+    rdfs:comment "Where the state hint came from: sentence, string, usao, or source."@en ;
+    rdfs:range xsd:string .
+
+caselinker:groundStatus a owl:DatatypeProperty ;
+    rdfs:label "ground status"@en ;
+    rdfs:comment "Authority-link outcome for a location or agency mention: grounded, ambiguous, ungrounded, international, out_of_scope, or out_of_registry."@en ;
+    rdfs:range xsd:string .
+
+caselinker:agencyRegistryVersion a owl:DatatypeProperty ;
+    rdfs:label "agency registry version"@en ;
+    rdfs:comment "Pinned FBI CDE / federal agency registry version used when grounding an agency."@en ;
+    rdfs:range xsd:string .
+
+caselinker:oriCode a owl:DatatypeProperty ;
+    rdfs:label "ORI"@en ;
+    rdfs:comment "FBI CJIS Originating Agency Identifier for a grounded local/state agency."@en ;
+    rdfs:range xsd:string .

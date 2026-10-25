@@ -107,7 +107,30 @@ def clean_artifacts_from_text(text: str, remove_urls: bool = True) -> str:
     return cleaned_text
 
 
-def case_batching(text: str, org_name: str = "case", source: str = None, source_file: str = None) -> List[Dict[str, Any]]:
+def case_batching(
+    text: str,
+    org_name: str = "case",
+    source: str = None,
+    source_file: str = None,
+    fingerprint_index: Any = None,
+) -> List[Dict[str, Any]]:
+    """Split a document, then replace document-order ids from the fingerprint map.
+
+    Without ``fingerprint_index`` the provisional ordinals are unchanged.
+    """
+    cases = _dispatch_case_batching(text, org_name=org_name, source=source, source_file=source_file)
+    if fingerprint_index is None:
+        return cases
+    from case_fingerprint import assign_content_locked_ids
+
+    for case in cases:
+        case.setdefault("source_file", source_file)
+    kept, duplicates = assign_content_locked_ids(cases, fingerprint_index)
+    fingerprint_index.pending_duplicates.extend(duplicates)
+    return kept
+
+
+def _dispatch_case_batching(text: str, org_name: str = "case", source: str = None, source_file: str = None) -> List[Dict[str, Any]]:
     """
     Router function that splits text corpus into individual cases.
     Routes to appropriate batch function based on source format.
@@ -117,7 +140,7 @@ def case_batching(text: str, org_name: str = "case", source: str = None, source_
     - AZICAC: Split by month patterns ("In [Month]" or "[Month] [Year],")
     - GBI: Georgia Bureau of Investigation press releases split on "# # # # #" then by release date lines
     - Texas AG: Texas Attorney General CEU releases split by date-line starts and "Back to Top"
-    - SVICAC / TBI ICAC / SCAG ICAC / NEWYORK SP / ILLINOIS AG / NJ AG / PA AG / VT AG / OHIO AG / DE AG / UT AG / WA AG / OREGON DOJ / MS AG / MT DOJ / NM AG / NC SBI / LA AG / HI AG / CCSAO / IA DCI / WY DCI / SD AG / RI AG / FL AG / KY SP / NE SP / ARMY CID / USSS / ICE / LVMPD / SJPD / ARKANSAS DPS / ALEA / DOJ CEOS / DOJ ARCHIVES / DOJ SAFE CHILDHOOD / WCSO / FRESNO SO / OSCEOLA SO / SEDGWICK SO / ANCHORAGE PD / LAPD / CSPD / SPD / SDPD / SOUTH FLORIDA ICAC / same-layout merged scrapes: split on ``Source: https://`` per article
+    - SVICAC / TBI ICAC / SCAG ICAC / NEWYORK SP / ILLINOIS AG / NJ AG / PA AG / VT AG / OHIO AG / DE AG / UT AG / WA AG / OREGON DOJ / MS AG / MT DOJ / NM AG / NC SBI / LA AG / HI AG / CCSAO / IA DCI / WY DCI / SD AG / RI AG / FL AG / KY SP / NE SP / ARMY CID / USSS / ICE / LVMPD / SJPD / ARKANSAS DPS / ALEA / DOJ CEOS / DOJ ARCHIVES / DOJ SAFE CHILDHOOD / WCSO / FRESNO SO / OSCEOLA SO / SEDGWICK SO / ANCHORAGE PD / LAPD / CSPD / SPD / SDPD / SOUTH FLORIDA ICAC / MICHIGAN ICAC / same-layout merged scrapes: split on ``Source: https://`` per article
     - Other / External: Delimited narratives: "Case 1 : ... Case 2 : ..." (news scrapes, LinkedIn, international, misc.)
     - Default: If text matches ``Case N :`` markers, falls back to external batching; otherwise AZICAC month-splitting
     
@@ -194,6 +217,18 @@ def case_batching(text: str, org_name: str = "case", source: str = None, source_
     is_brazil_pf = False
     is_europol = False
     is_nca = False
+    is_alert_ice = False
+    is_mdsp = False
+    is_scotland_police = False
+    is_va_ag = False
+    is_nova_icac = False
+    is_spf = False
+    is_co_cbi = False
+    is_mn_bca = False
+    is_nbi = False
+    is_garda = False
+    is_wi_doj = False
+    is_nz_dia = False
     is_doj_ceos = False
     is_doj_ai_csam = False
     is_doj_archives = False
@@ -318,6 +353,30 @@ def case_batching(text: str, org_name: str = "case", source: str = None, source_
             is_europol = True
         elif source_upper == 'NCA':
             is_nca = True
+        elif source_upper == 'ALERT ICE':
+            is_alert_ice = True
+        elif source_upper == 'MDSP':
+            is_mdsp = True
+        elif source_upper == 'SCOTLAND POLICE':
+            is_scotland_police = True
+        elif source_upper == 'VA AG':
+            is_va_ag = True
+        elif source_upper == 'NOVA ICAC':
+            is_nova_icac = True
+        elif source_upper == 'SPF':
+            is_spf = True
+        elif source_upper == 'CO CBI':
+            is_co_cbi = True
+        elif source_upper == 'MN BCA':
+            is_mn_bca = True
+        elif source_upper == 'NBI':
+            is_nbi = True
+        elif source_upper == 'GARDA':
+            is_garda = True
+        elif source_upper == 'WI DOJ':
+            is_wi_doj = True
+        elif source_upper == 'NZ DIA':
+            is_nz_dia = True
         elif source_upper == 'DOJ CEOS':
             is_doj_ceos = True
         elif source_upper == 'DOJ AI CSAM':
@@ -339,7 +398,7 @@ def case_batching(text: str, org_name: str = "case", source: str = None, source_
     elif is_idaho_icac:
         return _batch_idaho_icac_cases(text, org_name, source_file)
     elif is_michigan_icac:
-        return _batch_michigan_icac_cases(text, org_name, source_file)
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "MICHIGAN ICAC")
     elif is_gbi:
         return _batch_gbi_cases(text, org_name, source_file)
     elif is_texas_ag:
@@ -450,11 +509,37 @@ def case_batching(text: str, org_name: str = "case", source: str = None, source_
         return _batch_merged_icac_news_cases(text, org_name, source_file, "EUROPOL")
     elif is_nca:
         return _batch_merged_icac_news_cases(text, org_name, source_file, "NCA")
-    elif is_doj_ceos or is_doj_archives:
-        # Archives PDFs share the DOJ CEOS source label.
+    elif is_alert_ice:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "ALERT ICE")
+    elif is_mdsp:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "MDSP")
+    elif is_scotland_police:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "SCOTLAND POLICE")
+    elif is_va_ag:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "VA AG")
+    elif is_nova_icac:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "NOVA ICAC")
+    elif is_spf:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "SPF")
+    elif is_co_cbi:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "CO CBI")
+    elif is_mn_bca:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "MN BCA")
+    elif is_nbi:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "NBI")
+    elif is_garda:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "GARDA")
+    elif is_wi_doj:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "WI DOJ")
+    elif is_nz_dia:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "NZ DIA")
+    elif is_doj_archives:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "DOJ ARCHIVES")
+    elif is_doj_ceos:
         return _batch_merged_icac_news_cases(text, org_name, source_file, "DOJ CEOS")
-    elif is_doj_safe_childhood or is_doj_ai_csam:
-        # AI-CSAM USAO topic harvest shares Project Safe Childhood source label.
+    elif is_doj_ai_csam:
+        return _batch_merged_icac_news_cases(text, org_name, source_file, "DOJ AI CSAM")
+    elif is_doj_safe_childhood:
         return _batch_merged_icac_news_cases(text, org_name, source_file, "DOJ SAFE CHILDHOOD")
     elif is_other_external:
         return _batch_external_cases(text, org_name, source_file)
@@ -1031,122 +1116,6 @@ def _batch_ncmec_2024_cases(text: str, org_name: str, source_file: str = None) -
     return cases
 
 
-def _batch_michigan_icac_cases(text: str, org_name: str, source_file: str = None) -> List[Dict[str, Any]]:
-    """
-    Split Michigan ICAC / Michigan State Police newsroom PDF into individual cases.
-    
-    Format (from Michigan ICAC.pdf):
-    - Web-printed MSP Newsroom articles, each repeated 3 times with patterns like:
-      "3/16/26, 2:36 PM Lake City Man Arrested for ..."
-      followed by "1/3", "2/3", "3/3".
-    
-    Strategy (kept intentionally simple and robust):
-    - Each case is the contiguous block of text from the first occurrence of
-      "MSP Newsroom" to the ICAC/MissingKids footer line:
-        "If you have information regarding possible child sexual exploitation, report it to the
-         Cyber Tip Line at https://www.missingkids.org/cybertipline."
-    - We find all such [start, end] spans and treat each as one case.
-    - Year/month are extracted from the first date in the case (MM/DD/YY).
-    """
-    cases: List[Dict[str, Any]] = []
-    
-    # Define markers
-    start_marker = "MSP Newsroom"
-    # Footer phrase can vary in spacing/capitalization (e.g., "CyberTipLine", "Cyber tipline"),
-    # and can use http/https with or without "www". The stable part is the path:
-    #   missingkids.org/cybertipline
-    # We therefore batch each article from "MSP Newsroom" to the *end of the first occurrence*
-    # of this URL path after that header (case-insensitive).
-    footer_core = "missingkids.org/cybertipline"
-    lower_text = text.lower()
-    
-    # Find all case spans: from "MSP Newsroom" to first footer_core URL after it
-    spans: List[Tuple[int, int]] = []
-    pos = 0
-    while True:
-        start = text.find(start_marker, pos)
-        if start == -1:
-            break
-        
-        # Look for the footer URL after this header (case-insensitive)
-        footer_index = lower_text.find(footer_core, start)
-        if footer_index == -1:
-            # No footer URL found after this header; treat the rest of the text as one span
-            end = len(text)
-        else:
-            end = footer_index + len(footer_core)
-        
-        spans.append((start, end))
-        pos = end
-    
-    if not spans:
-        from datetime import datetime
-        year = str(datetime.now().year)
-        return [{
-            'case_text': clean_artifacts_from_text(text),
-            'month_year': None,
-            'month': None,
-            'year': year,
-            'case_id': f'{org_name}_{year}_001'
-        }]
-    
-    # Helper to map month number to name
-    month_names = [
-        None,
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ]
-    
-    # Track case numbers per year
-    year_case_counts: Dict[str, int] = {}
-    
-    # Regex to grab first date in MM/DD/YY format for month/year
-    date_pattern = r'(\d{1,2})/(\d{1,2})/(\d{2})'
-    
-    for start_pos, end_pos in spans:
-        case_text_raw = text[start_pos:end_pos].strip()
-        case_text = clean_artifacts_from_text(case_text_raw)
-        
-        # Skip very short fragments
-        if len(case_text) < 200:
-            continue
-        
-        # Extract date from case text
-        m = re.search(date_pattern, case_text)
-        if m:
-            mm, dd, yy = m.groups()
-            year = f"20{yy}"
-            month_num = int(mm)
-        else:
-            year = None
-            month_num = None
-        
-        month = month_names[month_num] if month_num and 1 <= month_num <= 12 else None
-        month_year = f"{month} {year}" if month else year
-        
-        # Case numbering per year
-        if not year:
-            from datetime import datetime
-            year = str(datetime.now().year)
-        
-        if year not in year_case_counts:
-            year_case_counts[year] = 0
-        year_case_counts[year] += 1
-        case_number = year_case_counts[year]
-        
-        case_id = f"{org_name}_{year}_{case_number:03d}"
-        
-        cases.append({
-            'case_text': case_text,
-            'month_year': month_year,
-            'month': month,
-            'year': year,
-            'case_id': case_id
-        })
-    
-    return cases
-
-
 def _batch_ncmec_media_cases(text: str, org_name: str, source_file: str = None) -> List[Dict[str, Any]]:
     """
     Split NCMEC media cases (2022/2023 format) by title → text → link pattern.
@@ -1617,22 +1586,31 @@ _MERGED_ICAC_NEWS_PDF_CANDIDATES: Dict[str, List[str]] = {
     "AFP": ["AFP_CSEA_All.pdf"],
     "QPS": ["QPS_CSEA_All.pdf"],
     "BRAZIL PF": ["BRAZIL_PF_CSEA_All.pdf"],
+    "MICHIGAN ICAC": ["Michigan ICAC.pdf"],
     "EUROPOL": ["EUROPOL_CSEA_All.pdf"],
     "NCA": ["NCA_CSEA_All.pdf"],
+    "ALERT ICE": ["ALERT_ICE_CSEA_All.pdf"],
+    "MDSP": ["MDSP_CSEA_All.pdf"],
+    "SCOTLAND POLICE": ["SCOTLAND_POLICE_CSEA_All.pdf"],
+    "VA AG": ["VAAG_ICAC_All.pdf"],
+    "NOVA ICAC": ["NOVA_ICAC_All.pdf"],
+    "SPF": ["SPF_CSEA_All.pdf"],
+    "CO CBI": ["COCBI_CSEA_All.pdf"],
+    "MN BCA": ["MNBCA_CSEA_All.pdf"],
+    "NBI": ["NBI_CSEA_All.pdf"],
+    "GARDA": ["GARDA_CSEA_All.pdf"],
+    "WI DOJ": ["WIDOJ_ICAC_All.pdf"],
+    "NZ DIA": ["NZDIA_CSEA_All.pdf"],
     "DOJ CEOS": [
         "DOJ_CEOS_All.pdf",
         "DOJ_BULK.pdf",
         "doj_ceos_output/DOJ_CEOS_All.pdf",
-        "DOJ_ARCHIVES_All.pdf",
-        "doj_archives_output/DOJ_ARCHIVES_All.pdf",
     ],
     "DOJ AI CSAM": ["DOJ_AI_CSAM_All.pdf", "collector/state/ai_csam_backfill/AI_CSAM_DOJ_batch.pdf"],
     "DOJ ARCHIVES": ["DOJ_ARCHIVES_All.pdf", "doj_archives_output/DOJ_ARCHIVES_All.pdf"],
     "DOJ SAFE CHILDHOOD": [
         "DOJ_SAFE_CHILDHOOD.pdf",
         "DOJ_SAFE_CHILDHOOD_All.pdf",
-        "DOJ_AI_CSAM_All.pdf",
-        "collector/state/ai_csam_backfill/AI_CSAM_DOJ_batch.pdf",
     ],
 }
 
@@ -2110,6 +2088,10 @@ def _merged_news_title_starts(lines: List[str], sources: List[int]) -> List[int]
                 and lines[t].strip()
                 and _merged_news_line_looks_like_title_case_headline(lines[t])
             ):
+                # A long body sentence can also look like Title Case. Once a closer
+                # headline line is already claimed, do not walk into that sentence.
+                if title_start < hi and _merged_news_line_looks_like_narrative_body(lines[t]):
+                    break
                 title_start = t
                 t -= 1
             while t > prev_barrier and _merged_news_is_likely_preface_before_date(lines[t]):

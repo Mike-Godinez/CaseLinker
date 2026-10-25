@@ -1,0 +1,117 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 14:04:16.321272" ;
+    dcterms:identifier "nz_dia_2014_006" ;
+    dcterms:modified "2026-10-18 14:04:16.321272" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/provenance> ;
+    dcterms:source <https://www.dia.govt.nz/press.nsf/d77da9b523f12931cc256ac5000d19b6/ac074ea14e5b99fecc257d3e007f5578!OpenDocument>,
+        "NZ DIA" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/hastings-district> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/possession>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/operation> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-internal>,
+        <https://w3id.org/caselinker/resource/agency/department-of-internal-affairs-censorship-compliance-unit>,
+        <https://w3id.org/caselinker/resource/agency/new-zealand-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/hastings-district> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2014-08-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2014-08-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/ai-csam>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/department-of-internal> a ns2:OrganizationLikeEntity,
+        ns4:LocalAgency ;
+    rdfs:label "Department of Internal" .
+
+<https://w3id.org/caselinker/resource/agency/department-of-internal-affairs-censorship-compliance-unit> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/new-zealand-police-department> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/distribution> a ns2:Event,
+        ns3:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/multi-jurisdiction> a ns2:Event,
+        ns4:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 ;
+    ns4:crossesBorders true .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasProceedingBeginPoint "2014-08-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:resultsSentence <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/legal-step/sentenced> a ns2:Event,
+        ns2:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2014-08-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/operation> a ns2:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 30 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/sentence/1> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "10 months" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/phase/sentenced> a ns2:Phase,
+        ns3:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2014-08-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/hastings-district> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hastings District" ;
+    ns7:name "Hastings District" .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/ai-csam> a ns1:DigitallyGeneratedCSAMIncident,
+        <https://cacontology.projectvic.org/ai-csam#AIGeneratedCSAM>,
+        ns2:Event ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nz_dia_2014_006/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns1:severityLevel 3 ;
+    ns7:hasFacet <https://w3id.org/caselinker/resource/case/nz_dia_2014_006/facet/possession> .
+

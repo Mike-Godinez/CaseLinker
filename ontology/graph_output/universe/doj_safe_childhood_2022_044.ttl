@@ -1,0 +1,206 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/admission/2/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/admission/2> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-11-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/ceos> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/department-of-homeland-security> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/doj> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/hsi> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/charge/2> a ns5:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns2:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/event/distribution> a ns3:Event,
+        ns5:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/event/project-safe-childhood> a ns3:Event,
+        ns6:ProjectSafeChildhoodOperation .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/charge/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/charge/2> ;
+    ns5:hasProceedingBeginPoint "2022-11-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/legal-step/sentenced> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2022-11-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/operation> a ns3:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 22 .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 02:38:31.363712" ;
+    dcterms:identifier "doj_safe_childhood_2022_044" ;
+    dcterms:modified "2026-10-18 12:36:04.176482" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/provenance> ;
+    dcterms:source <https://www.justice.gov/usao-sdwv/pr/mason-county-man-pleads-guilty-child-pornography-crime-0>,
+        "DOJ SAFE CHILDHOOD" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/huntington>,
+        <https://w3id.org/caselinker/resource/location/mason-county>,
+        <https://w3id.org/caselinker/resource/location/point-pleasant>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/west-virginia>,
+        <https://w3id.org/caselinker/resource/location/wva> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/admission/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/admission/2>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/event/possession>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/operation> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/ceos>,
+        <https://w3id.org/caselinker/resource/agency/department-of-homeland-security>,
+        <https://w3id.org/caselinker/resource/agency/doj>,
+        <https://w3id.org/caselinker/resource/agency/hsi>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/huntington>,
+        <https://w3id.org/caselinker/resource/location/mason-county>,
+        <https://w3id.org/caselinker/resource/location/point-pleasant>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/west-virginia>,
+        <https://w3id.org/caselinker/resource/location/wva> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/phase/sentenced> a ns3:Phase,
+        ns5:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2022-11-21T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-11-21T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/location/huntington> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Huntington" ;
+    ns4:name "Huntington" .
+
+<https://w3id.org/caselinker/resource/location/mason-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mason County" ;
+    ns4:name "Mason County" .
+
+<https://w3id.org/caselinker/resource/location/point-pleasant> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Point Pleasant" ;
+    ns4:name "Point Pleasant" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns4:name "United States" .
+
+<https://w3id.org/caselinker/resource/location/west-virginia> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "West Virginia" ;
+    ns4:name "West Virginia" .
+
+<https://w3id.org/caselinker/resource/location/wva> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "W.va." ;
+    ns4:name "W.va." .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
+
+<https://w3id.org/caselinker/resource/platform/omegle> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "Omegle" .
+
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns3:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/admission/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/admission/2> ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/omegle>,
+        <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/admission/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/admission/2> ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/omegle>,
+        <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "distributing videos containing child pornography on three additional occasions in June 2021" ;
+    dcterms:source <https://www.justice.gov/usao-sdwv/pr/mason-county-man-pleads-guilty-child-pornography-crime-0> ;
+    ns4:description "distributing videos containing child pornography on three additional occasions in June 2021" ;
+    ns2:admissionContext "o distribute a video of a prepubescent minor female engaged in sexually explicit conduct. Harper admitted to distributing videos containi..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "possessing 100 images and 38 videos of child pornography on January 25, 2022" ;
+    dcterms:source <https://www.justice.gov/usao-sdwv/pr/mason-county-man-pleads-guilty-child-pornography-crime-0> ;
+    ns4:description "possessing 100 images and 38 videos of child pornography on January 25, 2022" ;
+    ns2:admissionContext "megle online chat website about obtaining and trading child pornography during this time. Harper further admitted to possessing 100 image..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_044/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" .
+

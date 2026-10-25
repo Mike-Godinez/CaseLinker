@@ -1,0 +1,117 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/production#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/svicac_2026_004> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 07:08:06.502859" ;
+    dcterms:identifier "svicac_2026_004" ;
+    dcterms:modified "2026-10-18 07:08:06.502859" ;
+    dcterms:source <https://www.sfchronicle.com/crime/article/former-bay-area-mayor-and-cannabis-entrepreneur-17749915.php>,
+        "SVICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/bay-area>,
+        <https://w3id.org/caselinker/resource/location/sebastopol>,
+        <https://w3id.org/caselinker/resource/location/sonoma-county>,
+        <https://w3id.org/caselinker/resource/location/windsor> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/svicac_2026_004/phase/convicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/svicac_2026_004/phase/convicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/svicac_2026_004/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/svicac_2026_004/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/svicac_2026_004/legal-step/convicted>,
+        <https://w3id.org/caselinker/resource/case/svicac_2026_004/operation> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/california-attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/district-attorneys-office>,
+        <https://w3id.org/caselinker/resource/agency/sebastopol-police-department>,
+        <https://w3id.org/caselinker/resource/agency/sonoma-county-sheriffs-office> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/bay-area>,
+        <https://w3id.org/caselinker/resource/location/sebastopol>,
+        <https://w3id.org/caselinker/resource/location/sonoma-county>,
+        <https://w3id.org/caselinker/resource/location/windsor> .
+
+<https://w3id.org/caselinker/resource/case/svicac_2026_004/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/svicac_2026_004/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/svicac_2026_004/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/svicac_2026_004/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/platform/grindr> a <https://cacontology.projectvic.org/platforms#OnlineDatingPlatform> ;
+    rdfs:label "Grindr" .
+
+<https://w3id.org/caselinker/resource/platform/twitter-x> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Twitter / X" .
+
+<https://w3id.org/caselinker/resource/agency/california-attorney-generals-office> a ns3:OrganizationLikeEntity,
+        ns7:StateAgency ;
+    rdfs:label "California Attorney General's Office" .
+
+<https://w3id.org/caselinker/resource/agency/district-attorneys-office> a ns7:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/sebastopol-police-department> a ns3:OrganizationLikeEntity,
+        ns7:LocalAgency ;
+    rdfs:label "Sebastopol Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/sonoma-county-sheriffs-office> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/svicac_2026_004/event/distribution> a ns3:Event,
+        ns4:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/svicac_2026_004/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns4:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in jail" ;
+    ns4:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/svicac_2026_004/legal-step/convicted> a ns3:Event,
+        ns3:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/svicac_2026_004/operation> a ns3:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/svicac_2026_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 45 .
+
+<https://w3id.org/caselinker/resource/case/svicac_2026_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:victimAge 16 .
+
+<https://w3id.org/caselinker/resource/case/svicac_2026_004/phase/convicted> a ns3:Phase,
+        ns4:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/bay-area> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Bay Area" ;
+    ns5:name "Bay Area" .
+
+<https://w3id.org/caselinker/resource/location/sebastopol> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sebastopol" ;
+    ns5:name "Sebastopol" .
+
+<https://w3id.org/caselinker/resource/location/sonoma-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sonoma County" ;
+    ns5:name "Sonoma County" .
+
+<https://w3id.org/caselinker/resource/location/windsor> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Windsor" ;
+    ns5:name "Windsor" .
+
+
+<https://w3id.org/caselinker/resource/case/svicac_2026_004> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/svicac_2026_004/provenance> .

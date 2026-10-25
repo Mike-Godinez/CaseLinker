@@ -29,35 +29,35 @@ Legend: **bold** = headline / table stat picked for high scrutiny.
 - **s3.q1_stated_cases** (§3.1): 856 cases (45.8%) contain at least one stated platform-offense record.
   - _Why:_ Strongest evidentiary tier; headline Q1 quality stat.
 - **manifest.kik** (§4 Table 1): Kik: 208 stated · 352 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.snapchat** (§4 Table 1): Snapchat: 169 stated · 257 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.discord** (§4 Table 1): Discord: 43 stated · 99 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.facebook** (§4 Table 1): Facebook: 55 stated · 274 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.instagram** (§4 Table 1): Instagram: 27 stated · 174 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.reddit** (§4 Table 1): Reddit: 10 stated · 22 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.tiktok** (§4 Table 1): TikTok: 4 stated · 25 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.dropbox** (§4 Table 1): Dropbox: 33 stated · 86 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.mega** (§4 Table 1): Mega.nz: 3 stated · 15 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.whisper** (§4 Table 1): Whisper: 3 stated · 11 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.omegle** (§4 Table 1): Omegle: 2 stated · 7 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.genai** (§4 Table 1): Gen AI: 21 stated · 54 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.p2p** (§4 Table 1): BitTorrent/P2P: 3 stated · 8 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.video** (§4 Table 1): Video streaming: 6 stated · 28 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **manifest.gaming** (§4 Table 1): Gaming platforms: 4 stated · 29 total in Q1 evidence.
-  - _Why:_ Table 1 headline platform row; verified against q1_evidence.json tiers.
+  - _Why:_ Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.
 - **s4.affordance_predicts_harm** (§4): A platform's affordance profile predicts its harm profile.
   - _Why:_ Analytical thesis statement in §4 intro.
 - **affordance.contact_cases** (§4.contact): Contact and approach affordances appear across 1,720 cases in Q1 evidence base.

@@ -1,0 +1,145 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 04:52:10.907631" ;
+    dcterms:identifier "illinois_ag_2010_007" ;
+    dcterms:modified "2026-10-18 04:52:10.907631" ;
+    dcterms:source <https://illinoisattorneygeneral.gov/News-Room/2006-2018-Press-Archive/201009-29%20SEX%20OFFENDER%20ARRESTED%20ON%20CHILD%20PORNOGRAPHY%20CHARGE.pdf>,
+        "ILLINOIS AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/danville>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/tilton>,
+        <https://w3id.org/caselinker/resource/location/vermilion-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/phase/convicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/phase/convicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/cybertip>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/event/possession>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/legal-step/convicted>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/offense-event/charge-2> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/illinois-department-of-corrections>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/tilton-police-department> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/danville>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/tilton>,
+        <https://w3id.org/caselinker/resource/location/vermilion-county> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2010-09-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/event/possession>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/offense-event/charge-2> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2010-09-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/event/possession>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/offense-event/charge-2> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/illinois-department-of-corrections> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/tilton-police-department> a ns2:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Tilton Police Department" .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns5:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/charge/2> a ns5:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/offense-event/charge-2> ;
+    ns4:chargeCluster "child_exploitation" ;
+    ns4:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/offense-event/charge-2> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/event/distribution> a ns2:Event,
+        ns5:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/event/trafficking> a ns2:Event,
+        ns5:SexTrafficking ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in the Vermilion County Jail" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/charge/1>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/charge/2> ;
+    ns5:hasProceedingBeginPoint "2010-09-29T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/legal-step/convicted> a ns2:Event,
+        ns2:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2010-09-29T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 70 .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/phase/convicted> a ns2:Phase,
+        ns5:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2010-09-29T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/danville> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Danville" ;
+    ns6:name "Danville" .
+
+<https://w3id.org/caselinker/resource/location/illinois> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Illinois" ;
+    ns6:name "Illinois" .
+
+<https://w3id.org/caselinker/resource/location/tilton> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tilton" ;
+    ns6:name "Tilton" .
+
+<https://w3id.org/caselinker/resource/location/vermilion-county> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Vermilion County" ;
+    ns6:name "Vermilion County" .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns1:severityLevel 3 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/offense-event/charge-2> a ns1:ChildSexualAbuseEvent,
+        ns2:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2010_007> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/illinois_ag_2010_007/provenance> .

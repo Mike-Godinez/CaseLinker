@@ -1,103 +1,139 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:56:19.230065" ;
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 05:52:13.240629" ;
     dcterms:identifier "nj_ag_2016_005" ;
-    dcterms:modified "2026-09-10T19:56:19.230065" ;
+    dcterms:modified "2026-10-18 05:52:13.240629" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/provenance> ;
     dcterms:source <https://www.njoag.gov/camden-county-man-convicted-at-trial-of-distributing-child-pornography-on-the-internet-using-file-sharing-software>,
         "NJ AG" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/legal-step/sentenced> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/division-of-criminal-justice-financial-computer-crimes-bureau>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/new-jersey-state-police-department> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/camden>,
+        <https://w3id.org/caselinker/resource/location/camden-county>,
+        <https://w3id.org/caselinker/resource/location/gloucester-county>,
+        <https://w3id.org/caselinker/resource/location/hamilton>,
+        <https://w3id.org/caselinker/resource/location/mount-ephraim>,
+        <https://w3id.org/caselinker/resource/location/nj> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/event/possession>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/division-of-criminal-justice-financial-computer-crimes-bureau>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/new-jersey-state-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/camden>,
+        <https://w3id.org/caselinker/resource/location/camden-county>,
+        <https://w3id.org/caselinker/resource/location/gloucester-county>,
+        <https://w3id.org/caselinker/resource/location/hamilton>,
+        <https://w3id.org/caselinker/resource/location/mount-ephraim>,
+        <https://w3id.org/caselinker/resource/location/nj> .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2016-02-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2016-02-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/division-of-criminal-justice-financial-computer-crimes-bureau> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/division-of-criminal-justice-financial-computer-crimes-bureau> a ns7:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/agency/new-jersey-state-police-department> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/new-jersey-state-police-department> a ns7:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
     rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns3:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/charge/2> a cacontology-legal-outcomes:CSAM_Distribution,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/charge/2> a ns3:CSAM_Distribution,
+        ns3:CriminalCharge ;
     rdfs:label "distribution of child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/event/distribution> a ns6:Event,
+        ns3:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/sentence/1> .
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/charge/1>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/charge/2> ;
+    ns3:hasProceedingBeginPoint "2016-02-10T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/legal-step/sentenced> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2016-02-10T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 28 .
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 28 .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "10 years" .
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/phase/sentenced> a ns6:Phase,
+        ns3:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2016-02-10T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2016-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/camden> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Camden" ;
+    ns2:name "Camden" .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/location/camden-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Camden County" ;
+    ns2:name "Camden County" .
 
-<https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/nj_ag_2016_005/facet/possession> .
+<https://w3id.org/caselinker/resource/location/gloucester-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Gloucester County" ;
+    ns2:name "Gloucester County" .
+
+<https://w3id.org/caselinker/resource/location/hamilton> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Hamilton" ;
+    ns2:name "Hamilton" .
+
+<https://w3id.org/caselinker/resource/location/mount-ephraim> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mount Ephraim" ;
+    ns2:name "Mount Ephraim" .
+
+<https://w3id.org/caselinker/resource/location/nj> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "N.j." ;
+    ns2:name "N.j." .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2016_005/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:severityLevel 3 ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/nj_ag_2016_005/facet/possession> .
 

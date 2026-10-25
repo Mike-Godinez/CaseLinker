@@ -1,112 +1,114 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_336> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.477218" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_336> a ns4:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:19.198194" ;
     dcterms:identifier "ncmec_2025_336" ;
-    dcterms:modified "2026-09-15T21:27:13.477218" ;
-    dcterms:source <https://www.14news.com/2025/02/24/police-arrest-man-charged-with-14-counts-possessing-child-porn/>,
+    dcterms:modified "2026-10-18 00:01:19.198194" ;
+    dcterms:source <https://indianachronicle.com/2025/03/southern-indiana-man-arrested-for-possession-of-child-pornography/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/evansville>,
-        <https://caselinker.up.railway.app/resource/location/ind> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/offense-event/charge-2> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/evansville>,
-        <https://caselinker.up.railway.app/resource/location/ind> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/clark-county>,
+        <https://w3id.org/caselinker/resource/location/clarksville>,
+        <https://w3id.org/caselinker/resource/location/indiana>,
+        <https://w3id.org/caselinker/resource/location/otisco>,
+        <https://w3id.org/caselinker/resource/location/sellersburg> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_336/phase/arrested> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_336/phase/arrested> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_336/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_336/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_336/legal-proceeding> ;
+    ns4:investigationStatus "unknown" ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/indiana-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/clark-county>,
+        <https://w3id.org/caselinker/resource/location/clarksville>,
+        <https://w3id.org/caselinker/resource/location/indiana>,
+        <https://w3id.org/caselinker/resource/location/otisco>,
+        <https://w3id.org/caselinker/resource/location/sellersburg> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "POSSESSING CHILD PORN" ;
-    cacontology-legal-outcomes:indictmentCounts 15 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_336/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2025-03-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_336/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_336/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/offense-event/charge-2> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/offense-event/charge-2> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_336/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2025-03-12T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_336/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_336/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/sentence/1> .
+<https://w3id.org/caselinker/resource/agency/indiana-state-police-department> a ns2:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_336/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns1:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_336/cybertip> a ns6:NCMECCybertipReport ;
+    ns6:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_336/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MonetaryPenalty ;
-    rdfs:label "[\"$100,000\"]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_336/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns1:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Clark County Jail" ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_336/charge/1> ;
+    ns1:hasProceedingBeginPoint "2025-03-12T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "viewing the material on his devices" ;
-    dcterms:source <https://www.14news.com/2025/02/24/police-arrest-man-charged-with-14-counts-possessing-child-porn/> ;
-    ns1:admissionContext "served a search warrant to Lapensee’s home in the 200 block of North Rotherwood Avenue. Police say during the investigation, they talked..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "viewing the material on his devices" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_336/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 26 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-02-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_336/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/evansville> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns2:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/location/ind> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_336/phase/arrested> a ns4:InitialPhase,
+        ns5:Phase ;
+    ns4:hasPhaseBeginPoint "2025-03-12T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_336/facet/possession> .
+<https://w3id.org/caselinker/resource/location/clark-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Clark County" ;
+    ns3:name "Clark County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_336/offense-event/charge-2> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child exploitation" .
+<https://w3id.org/caselinker/resource/location/clarksville> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Clarksville" ;
+    ns3:name "Clarksville" .
 
+<https://w3id.org/caselinker/resource/location/indiana> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Indiana" ;
+    ns3:name "Indiana" .
+
+<https://w3id.org/caselinker/resource/location/otisco> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Otisco" ;
+    ns3:name "Otisco" .
+
+<https://w3id.org/caselinker/resource/location/sellersburg> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Sellersburg" ;
+    ns3:name "Sellersburg" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_336/event/possession> a ns4:CSAMIncident,
+        ns5:Event ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_336/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_336> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_336/provenance> .

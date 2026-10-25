@@ -1,80 +1,96 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_002> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:55:04.004967" ;
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_002> a ns5:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 05:35:36.654565" ;
     dcterms:identifier "mt_doj_2023_002" ;
-    dcterms:modified "2026-09-10T19:55:04.004967" ;
+    dcterms:modified "2026-10-18 05:35:36.654565" ;
     dcterms:source <https://dojmt.gov/former-deputy-sheriff-receives-100-year-prison-sentence-for-child-sexual-abuse/>,
         "MT DOJ" ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/legal-step/sentenced> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/department-public-of-health-and-human-services>,
-        <https://caselinker.up.railway.app/resource/agency/doj>,
-        <https://caselinker.up.railway.app/resource/agency/montana-department-of-justice-division-of-criminal-investigation>,
-        <https://caselinker.up.railway.app/resource/agency/prosecution-services-bureau> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/wibaux-county> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/mt_doj_2023_002/phase/sentenced> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/mt_doj_2023_002/phase/sentenced> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/mt_doj_2023_002/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/mt_doj_2023_002/legal-step/sentenced> ;
+    ns5:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/department-public-of-health-and-human-services>,
+        <https://w3id.org/caselinker/resource/agency/doj>,
+        <https://w3id.org/caselinker/resource/agency/montana-department-of-justice-division-of-criminal-investigation>,
+        <https://w3id.org/caselinker/resource/agency/prosecution-services-bureau> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/wibaux-county> .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_002/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2023-11-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/mt_doj_2023_002/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_002/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2023-11-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/mt_doj_2023_002/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/department-public-of-health-and-human-services> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/department-public-of-health-and-human-services> a ns7:OrganizationLikeEntity,
+        ns4:LocalAgency ;
     rdfs:label "Department Public of Health and Human Services" .
 
-<https://caselinker.up.railway.app/resource/agency/doj> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/doj> a ns4:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/montana-department-of-justice-division-of-criminal-investigation> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
+<https://w3id.org/caselinker/resource/agency/montana-department-of-justice-division-of-criminal-investigation> a ns7:OrganizationLikeEntity,
+        ns4:StateAgency ;
     rdfs:label "Montana Department of Justice Division of Criminal Investigation" .
 
-<https://caselinker.up.railway.app/resource/agency/prosecution-services-bureau> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/prosecution-services-bureau> a ns7:OrganizationLikeEntity,
+        ns4:LocalAgency ;
     rdfs:label "Prosecution Services Bureau" .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/sentence/1>,
-        <https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/sentence/2> .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_002/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasProceedingBeginPoint "2023-11-29T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:resultsSentence <https://w3id.org/caselinker/resource/case/mt_doj_2023_002/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/mt_doj_2023_002/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/mt_doj_2023_002/sentence/3> .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_002/legal-step/sentenced> a ns7:Event,
+        ns7:LegalEvent,
+        ns1:LegalProceeding,
+        ns1:SentencingHearing ;
+    ns1:hasProceedingBeginPoint "2023-11-29T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 42 .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_002/sentence/1> a ns1:CriminalSentence,
+        ns1:PrisonSentence ;
+    rdfs:label "100-year" .
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_002/sentence/2> a ns1:CriminalSentence,
+        ns1:PrisonSentence ;
     rdfs:label "80 years" .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/sentence/2> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_002/sentence/3> a ns1:CriminalSentence,
+        ns1:PrisonSentence ;
     rdfs:label "20 years" .
 
-<https://caselinker.up.railway.app/resource/case/mt_doj_2023_002/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_002/phase/sentenced> a ns7:Phase,
+        ns1:SentencingPhase ;
+    ns5:hasPhaseBeginPoint "2023-11-29T00:00:00Z"^^xsd:dateTimeStamp .
 
+<https://w3id.org/caselinker/resource/location/wibaux-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wibaux County" ;
+    ns6:name "Wibaux County" .
+
+
+<https://w3id.org/caselinker/resource/case/mt_doj_2023_002> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/mt_doj_2023_002/provenance> .

@@ -1,248 +1,126 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2025_291> ;
-    cac-core:hasConfidence 0.65 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/boise-police-department> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/coeur-dalene-police-department> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/agency/madison-county-sheriffs-office> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/meridian-police-department> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/pocatello-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Pocatello Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/shoshone-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Shoshone County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.425649" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:18.647540" ;
     dcterms:identifier "ncmec_2025_291" ;
-    dcterms:modified "2026-09-15T21:27:13.425649" ;
-    dcterms:source <https://www.ag.idaho.gov/newsroom/ag-labrador-announces-prison-sentences-for-three-idaho-men-in-child-pornography-cases/>,
+    dcterms:modified "2026-10-18 00:01:18.647540" ;
+    dcterms:source <https://www.wrex.com/news/south-beloit-man-faces-charges-for-child-porn-after-investigation/article_74f6eb42-004c-11f0-b5ad-37429e361f96.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/bannock-county>,
-        <https://caselinker.up.railway.app/resource/location/boise>,
-        <https://caselinker.up.railway.app/resource/location/bonneville-county>,
-        <https://caselinker.up.railway.app/resource/location/idaho>,
-        <https://caselinker.up.railway.app/resource/location/moscow>,
-        <https://caselinker.up.railway.app/resource/location/pinehurst>,
-        <https://caselinker.up.railway.app/resource/location/shoshone-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/legal-step/sentenced>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/boise-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/coeur-dalene-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/madison-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/meridian-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/pocatello-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/shoshone-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/bannock-county>,
-        <https://caselinker.up.railway.app/resource/location/boise>,
-        <https://caselinker.up.railway.app/resource/location/bonneville-county>,
-        <https://caselinker.up.railway.app/resource/location/idaho>,
-        <https://caselinker.up.railway.app/resource/location/moscow>,
-        <https://caselinker.up.railway.app/resource/location/pinehurst>,
-        <https://caselinker.up.railway.app/resource/location/shoshone-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/south-beloit> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_291/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_291/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_291/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_291/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_291/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_291/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/belvidere-police-department>,
+        <https://w3id.org/caselinker/resource/agency/freeport-police-department>,
+        <https://w3id.org/caselinker/resource/agency/illinois-state-police-department>,
+        <https://w3id.org/caselinker/resource/agency/loves-park-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/rockford-police-department>,
+        <https://w3id.org/caselinker/resource/agency/south-beloit-police-department>,
+        <https://w3id.org/caselinker/resource/agency/stephenson-county-sheriffs-department>,
+        <https://w3id.org/caselinker/resource/agency/winnebago-county-sheriffs-department> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/south-beloit> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of children" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-03-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_291/event/csam> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_291/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/charge/2> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-03-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_291/event/csam> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_291/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns3:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/belvidere-police-department> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/freeport-police-department> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/illinois-state-police-department> a ns3:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/loves-park-police-department> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/rockford-police-department> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/south-beloit-police-department> a ns4:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "South Beloit Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/stephenson-county-sheriffs-department> a ns4:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Stephenson County Sheriff's Department" .
+
+<https://w3id.org/caselinker/resource/agency/winnebago-county-sheriffs-department> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291/charge/1> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
     rdfs:label "child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+    ns2:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291/event/distribution> a ns4:Event,
+        ns2:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): Winnebago County Jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_291/charge/1> ;
+    ns2:hasProceedingBeginPoint "2025-03-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 52 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/operation> a cac-core:Event,
-        cacontology-taskforce:UndercoverUnit .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 23 .
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/person/offender/2> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 25 .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns3:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/person/offender/3> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 51 .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291/phase/charged> a ns1:LegalProcessPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2025-03-13T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/location/illinois> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Illinois" ;
+    ns5:name "Illinois" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/role/offender/2> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/person/offender/2> .
+<https://w3id.org/caselinker/resource/location/south-beloit> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Beloit" ;
+    ns5:name "South Beloit" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/role/offender/3> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/person/offender/3> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291/event/csam> a ns1:CSAMIncident,
+        ns4:Event ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_291/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[\"10 years\"]" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/ai-csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/conspiracy>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/hands-on>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/location/bannock-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Bannock County" ;
-    uco-core:name "Bannock County" .
-
-<https://caselinker.up.railway.app/resource/location/boise> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/bonneville-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/idaho> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/moscow> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/pinehurst> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Pinehurst" ;
-    uco-core:name "Pinehurst" .
-
-<https://caselinker.up.railway.app/resource/location/shoshone-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Shoshone County" ;
-    uco-core:name "Shoshone County" .
-
-<https://caselinker.up.railway.app/resource/platform/gen-ai> a cacontology-platforms:FileHostingService ;
-    rdfs:label "Gen AI" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "receiving links to CSAM files through torrent sites and searching for CSAM on those same sites" ;
-    dcterms:source <https://www.ag.idaho.gov/newsroom/ag-labrador-announces-prison-sentences-for-three-idaho-men-in-child-pornography-cases/> ;
-    ns1:admissionContext "address, during which various electronic devices and a child-sized sex doll were seized. McFarlane admitted to receiving links to CSAM fi..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "harm_conduct" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "receiving links to CSAM files through torrent sites and searching for CSAM on those same sites" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/ai-csam> a cacontology:DigitallyGeneratedCSAMIncident,
-        <https://cacontology.projectvic.org/ai-csam#AIGeneratedCSAM>,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/admission/1> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/gen-ai> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/conspiracy> a cacontology:ConspiracyToCommitCSA,
-        cac-core:Event ;
-    cacontology:conspiracyMemberCount 3 ;
-    cacontology:participatesInConspiracy <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/role/offender/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/role/offender/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/role/offender/3> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/gen-ai> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/hands-on> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/admission/1> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/gen-ai> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_291/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/admission/1> ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/gen-ai> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_291/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2025_291> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_291/provenance> .

@@ -1,72 +1,98 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_495> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:13.605380" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495> a ns4:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:20.823098" ;
     dcterms:identifier "ncmec_2025_495" ;
-    dcterms:modified "2026-09-15T21:27:13.605380" ;
-    dcterms:source <https://www.isanti-chisagocountystar.com/crime/isanti-and-chisago-county-court-reports-april-13---19/article_9be72896-98dd-401d-ab7d-326e8e74d99f.html>,
+    dcterms:modified "2026-10-18 00:01:20.823098" ;
+    dcterms:source <https://www.kttc.com/2025/09/03/former-resurrection-lutheran-school-teacher-sentenced-internet-sex-crimes-against-minors/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/cambridge>,
-        <https://caselinker.up.railway.app/resource/location/chisago-county>,
-        <https://caselinker.up.railway.app/resource/location/isanti> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_495/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_495/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_495/legal-proceeding> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/cambridge>,
-        <https://caselinker.up.railway.app/resource/location/chisago-county>,
-        <https://caselinker.up.railway.app/resource/location/isanti> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/minn>,
+        <https://w3id.org/caselinker/resource/location/rochester> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_495/phase/sentenced> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_495/phase/sentenced> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_495/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_495/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_495/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_495/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_495/legal-step/sentenced> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/minn>,
+        <https://w3id.org/caselinker/resource/location/rochester> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_495/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_495/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/event/distribution> a ns5:Event,
+        ns7:CSAM_Distribution .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_495/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_495/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/event/trust-violation> a ns6:AuthorityAbuse,
+        ns6:TrustViolation ;
+    ns6:violatesRelationship <https://w3id.org/caselinker/resource/case/ncmec_2025_495/relationship/teacher> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_495/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_495/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_495/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasProceedingBeginPoint "2025-09-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns7:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2025_495/sentence/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_495/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns7:LegalProceeding,
+        ns7:SentencingHearing ;
+    ns7:hasProceedingBeginPoint "2025-09-03T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_495/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 38 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_495/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/location/cambridge> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Cambridge" ;
-    uco-core:name "Cambridge" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/relationship/teacher> a ns6:CustodialRelationship,
+        ns6:Teacher ;
+    ns6:involvesChild <https://w3id.org/caselinker/resource/case/ncmec_2025_495/role/victim/1> ;
+    ns6:involvesCustodian <https://w3id.org/caselinker/resource/case/ncmec_2025_495/role/offender/1> ;
+    ns6:relationshipType "teacher" .
 
-<https://caselinker.up.railway.app/resource/location/chisago-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Chisago County" ;
-    uco-core:name "Chisago County" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2025-09-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_495/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_495/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/location/isanti> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Isanti" ;
-    uco-core:name "Isanti" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2025-09-03T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_495/event/possession> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_495/person/victim/1> .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/sentence/1> a ns7:CriminalSentence,
+        ns7:PrisonSentence ;
+    rdfs:label "six and a half years" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/phase/sentenced> a ns5:Phase,
+        ns7:SentencingPhase ;
+    ns4:hasPhaseBeginPoint "2025-09-03T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/minn> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Minn." ;
+    ns2:name "Minn." .
+
+<https://w3id.org/caselinker/resource/location/rochester> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Rochester" ;
+    ns2:name "Rochester" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495/event/possession> a ns4:CSAMIncident,
+        ns5:Event ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_495/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_495> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2025_495/provenance> .

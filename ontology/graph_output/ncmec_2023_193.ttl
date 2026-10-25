@@ -1,87 +1,220 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/production#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_193> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.913550" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/admission/1/extraction-confidence> a ns6:AssessmentResult ;
+    ns6:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_193/admission/1> ;
+    ns6:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_193> ;
+    ns6:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/production>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/offense-event/charge-3> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_193/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/ceos> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/fbi> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/metropolitan-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/tampa-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns2:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193> a ns1:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:30.160645" ;
     dcterms:identifier "ncmec_2023_193" ;
-    dcterms:modified "2026-09-15T20:55:00.913550" ;
-    dcterms:source <https://www.wavy.com/news/crime/man-faces-child-sexual-abuse-material-charges-in-chesapeake/>,
+    dcterms:modified "2026-10-17 22:21:30.160645" ;
+    dcterms:source <https://www.justice.gov/usao-mdfl/pr/new-port-richey-man-sentenced-more-30-years-federal-prison-producing-child-sex-abuse>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/chesapeake>,
-        <https://caselinker.up.railway.app/resource/location/chesapeake-juvenile>,
-        <https://caselinker.up.railway.app/resource/location/va> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_193/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_193/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_193/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_193/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/chesapeake>,
-        <https://caselinker.up.railway.app/resource/location/chesapeake-juvenile>,
-        <https://caselinker.up.railway.app/resource/location/va> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/middle-district>,
+        <https://w3id.org/caselinker/resource/location/new-port-richey>,
+        <https://w3id.org/caselinker/resource/location/tampa>,
+        <https://w3id.org/caselinker/resource/location/the-district-of-columbia>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_193/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_193/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_193/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/production>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/offense-event/charge-3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/operation> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/ceos>,
+        <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/metropolitan-police-department>,
+        <https://w3id.org/caselinker/resource/agency/tampa-police-department>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/florida>,
+        <https://w3id.org/caselinker/resource/location/middle-district>,
+        <https://w3id.org/caselinker/resource/location/new-port-richey>,
+        <https://w3id.org/caselinker/resource/location/tampa>,
+        <https://w3id.org/caselinker/resource/location/the-district-of-columbia>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_193/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_193/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_193/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_193/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_193/event/csam> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_193/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/charge/2> a ns3:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_193/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child sexual abuse material" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/charge/3> a ns3:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/ncmec_2023_193/offense-event/charge-3> ;
+    ns4:chargeCluster "child_exploitation" ;
+    ns4:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_193/offense-event/charge-3> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_193/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/distribution> a ns6:Event,
+        ns3:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_193/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_193/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_193/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/multi-jurisdiction> a ns6:Event,
+        ns2:MultiJurisdictionalInvestigation ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_193/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/project-safe-childhood> a ns6:Event,
+        ns2:ProjectSafeChildhoodOperation ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_193/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_193/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_193/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_193/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/charge/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/charge/3> ;
+    ns3:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:resultsSentence <https://w3id.org/caselinker/resource/case/ncmec_2023_193/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/sentence/3> .
 
-<https://caselinker.up.railway.app/resource/location/chesapeake> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Chesapeake" ;
-    uco-core:name "Chesapeake" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/legal-step/sentenced> a ns6:Event,
+        ns6:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/chesapeake-juvenile> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Chesapeake Juvenile" ;
-    uco-core:name "Chesapeake Juvenile" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/operation> a ns6:Event,
+        <https://cacontology.projectvic.org/taskforce#UndercoverUnit> .
 
-<https://caselinker.up.railway.app/resource/location/va> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 44 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_193/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_193/facet/csam> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:victimAge 10 .
 
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/production>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_193/offense-event/charge-3> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_193/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/sentence/1> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "30 years and 5 months" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/sentence/2> a ns3:CriminalSentence,
+        ns3:MonetaryPenalty ;
+    rdfs:label "$18,528" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/sentence/3> a ns3:CriminalSentence,
+        ns3:MonetaryPenalty ;
+    rdfs:label "$18,000" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/phase/sentenced> a ns6:Phase,
+        ns3:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/florida> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Florida" ;
+    ns5:name "Florida" .
+
+<https://w3id.org/caselinker/resource/location/middle-district> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Middle District" ;
+    ns5:name "Middle District" .
+
+<https://w3id.org/caselinker/resource/location/new-port-richey> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Port Richey" ;
+    ns5:name "New Port Richey" .
+
+<https://w3id.org/caselinker/resource/location/tampa> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tampa" ;
+    ns5:name "Tampa" .
+
+<https://w3id.org/caselinker/resource/location/the-district-of-columbia> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the District of Columbia" ;
+    ns5:name "the District of Columbia" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns5:name "United States" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns6:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_193/admission/1> ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/possession> a ns1:CSAMIncident,
+        ns6:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_193/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_193/facet/possession> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/event/production> a ns6:Event,
+        ns8:ProductionOffense ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_193/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_193/facet/production> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "agents that he had been producing child sex abuse images of the child victim for several years" ;
+    dcterms:source <https://www.justice.gov/usao-mdfl/pr/new-port-richey-man-sentenced-more-30-years-federal-prison-producing-child-sex-abuse> ;
+    ns4:admissionContext "same images and videos that Jones had sent to the undercover agent on Jones’s cellphone. Jones later admitted to agents that he had been..." ;
+    ns4:admissionFrame "admitted_to" ;
+    ns4:admissionTheme "harm_conduct" ;
+    ns4:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_193/role/offender/1> ;
+    ns4:evidenceTier "press_release_stated" ;
+    ns4:quoteType "paraphrase" ;
+    ns5:description "agents that he had been producing child sex abuse images of the child victim for several years" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193/offense-event/charge-3> a ns1:ChildSexualAbuseEvent,
+        ns6:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_193> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_193/provenance> .

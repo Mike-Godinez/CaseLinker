@@ -1,105 +1,89 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/detection#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:00.991278" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_276> a ns5:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:31.223393" ;
     dcterms:identifier "ncmec_2023_276" ;
-    dcterms:modified "2026-09-15T20:55:00.991278" ;
-    dcterms:source <https://abcnews4.com/news/local/ccsd-substitute-teacher-arrested-on-multiple-counts-of-sexual-exploitation-of-a-minor-mppd>,
+    dcterms:modified "2026-10-17 22:21:31.223393" ;
+    dcterms:source <https://www.syracuse.com/crime/2023/05/syracuse-man-arrested-on-26-child-porn-charges-deputies-say.html>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/charleston-county>,
-        <https://caselinker.up.railway.app/resource/location/mount-pleasant>,
-        <https://caselinker.up.railway.app/resource/location/sc>,
-        <https://caselinker.up.railway.app/resource/location/school-district> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/mount-pleasant-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/charleston-county>,
-        <https://caselinker.up.railway.app/resource/location/mount-pleasant>,
-        <https://caselinker.up.railway.app/resource/location/sc>,
-        <https://caselinker.up.railway.app/resource/location/school-district> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/ny>,
+        <https://w3id.org/caselinker/resource/location/onondaga-county>,
+        <https://w3id.org/caselinker/resource/location/syracuse> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_276/phase/charged> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_276/phase/charged> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_276/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_276/legal-proceeding> ;
+    ns5:investigationStatus "unknown" ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/ny>,
+        <https://w3id.org/caselinker/resource/location/onondaga-county>,
+        <https://w3id.org/caselinker/resource/location/syracuse> .
 
-<https://caselinker.up.railway.app/resource/agency/mount-pleasant-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_276/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2023-05-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_276/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_276/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276/charge/1> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "third-degree sexual" ;
-    cacontology-legal-outcomes:indictmentCounts 10 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_276/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2023-05-11T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_276/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_276/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276/charge/2> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
-    rdfs:label "sexual exploitation of a minor" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_276/charge/1> a ns2:CriminalCharge ;
+    rdfs:label "promoting a sexual performance by a" ;
+    ns2:indictmentCounts 13 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_276/charge/2> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child porn" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276/event/trust-violation> a cacontology-custodial:AuthorityAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/relationship/teacher> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_276/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_276/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns2:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held at the Onondaga County Justice Center jail" ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_276/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_276/charge/2> ;
+    ns2:hasProceedingBeginPoint "2023-05-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_276/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns1:ageEstimate 59 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_276/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276/relationship/teacher> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:Teacher ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/role/offender/1> ;
-    cacontology-custodial:relationshipType "teacher" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_276/phase/charged> a ns5:LegalProcessPhase,
+        ns6:Phase ;
+    ns5:hasPhaseBeginPoint "2023-05-11T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/person/offender/1> .
+<https://w3id.org/caselinker/resource/location/ny> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "N.y." ;
+    ns3:name "N.y." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_276/person/victim/1> .
+<https://w3id.org/caselinker/resource/location/onondaga-county> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Onondaga County" ;
+    ns3:name "Onondaga County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/syracuse> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Syracuse" ;
+    ns3:name "Syracuse" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_276/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2023-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_276/event/possession> a ns5:CSAMIncident,
+        ns6:Event ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_276/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/location/charleston-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
 
-<https://caselinker.up.railway.app/resource/location/mount-pleasant> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/sc> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/school-district> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "School District" ;
-    uco-core:name "School District" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2023_276> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_276/provenance> .

@@ -1,0 +1,76 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_052> a ns4:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 00:50:59.123114" ;
+    dcterms:identifier "brazil_pf_2026_052" ;
+    dcterms:modified "2026-10-18 00:50:59.123114" ;
+    dcterms:source <https://www.gov.br/pf/pt-br/assuntos/noticias/2026/08/pf-prende-dois-condenados-por-estupro-de-vulneravel-em-acoes-consecutivas>,
+        "BRAZIL PF" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/curitiba>,
+        <https://w3id.org/caselinker/resource/location/santa-catarina> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/phase/convicted> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/phase/convicted> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/legal-step/convicted> ;
+    ns2:involvesAgency <https://w3id.org/caselinker/resource/agency/federal-police-department>,
+        <https://w3id.org/caselinker/resource/agency/paraná-military-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/curitiba>,
+        <https://w3id.org/caselinker/resource/location/santa-catarina> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/event/hands-on> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/event/hands-on> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/federal-police-department> a ns2:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/paraná-military-police-department> a ns1:OrganizationLikeEntity,
+        ns2:LocalAgency ;
+    rdfs:label "Paraná Military Police Department" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/legal-step/convicted> a ns1:Event,
+        ns1:LegalEvent,
+        ns6:LegalProceeding,
+        ns6:SentencingHearing ;
+    ns6:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/phase/convicted> a ns1:Phase,
+        ns6:SentencingPhase ;
+    ns4:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/curitiba> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Curitiba" ;
+    ns3:name "Curitiba" .
+
+<https://w3id.org/caselinker/resource/location/santa-catarina> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Santa Catarina" ;
+    ns3:name "Santa Catarina" .
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/event/hands-on> a ns4:ChildSexualAbuseEvent,
+        ns1:Event ;
+    ns4:severityLevel 3 .
+
+
+<https://w3id.org/caselinker/resource/case/brazil_pf_2026_052> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/brazil_pf_2026_052/provenance> .

@@ -1,0 +1,113 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010> a ns2:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 07:19:08.243785" ;
+    dcterms:identifier "tbi_icac_2014_010" ;
+    dcterms:modified "2026-10-18 07:19:08.243785" ;
+    dcterms:source <https://tbinewsroom.com/2014/09/25/williamson-county-man-arrested-on-child-porn-charges/>,
+        "TBI ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/franklin>,
+        <https://w3id.org/caselinker/resource/location/nashville>,
+        <https://w3id.org/caselinker/resource/location/tennessee>,
+        <https://w3id.org/caselinker/resource/location/williamson-county> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/cybertip>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/event/csam>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/franklin>,
+        <https://w3id.org/caselinker/resource/location/nashville>,
+        <https://w3id.org/caselinker/resource/location/tennessee>,
+        <https://w3id.org/caselinker/resource/location/williamson-county> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2014-09-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/event/csam> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2014-09-25T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/event/csam> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/charge/1> a ns4:CriminalCharge,
+        ns4:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/charge/2> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns4:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/charge/3> a ns4:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns5:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/charge/1>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/charge/2>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/charge/3> ;
+    ns4:hasProceedingBeginPoint "2014-09-25T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 37 .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/phase/charged> a ns2:LegalProcessPhase,
+        ns1:Phase ;
+    ns2:hasPhaseBeginPoint "2014-09-25T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/franklin> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Franklin" ;
+    ns3:name "Franklin" .
+
+<https://w3id.org/caselinker/resource/location/nashville> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Nashville" ;
+    ns3:name "Nashville" .
+
+<https://w3id.org/caselinker/resource/location/tennessee> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tennessee" ;
+    ns3:name "Tennessee" .
+
+<https://w3id.org/caselinker/resource/location/williamson-county> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Williamson County" ;
+    ns3:name "Williamson County" .
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/event/csam> a ns2:CSAMIncident,
+        ns1:Event ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/facet/csam> .
+
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2014_010> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/tbi_icac_2014_010/provenance> .

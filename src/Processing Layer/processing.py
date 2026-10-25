@@ -10,7 +10,9 @@ It re-exports all functions from the Pattern Processing Layer and Batching modul
 # Re-export everything from Pattern Processing Layer and Batching
 # Handle spaces in directory name using importlib
 import importlib.util
+import os
 import sys
+import time
 from pathlib import Path
 import pandas as pd
 import re
@@ -94,6 +96,42 @@ _semantic_spec.loader.exec_module(semantic_module)
 
 SemanticConcepts = semantic_module.SemanticConcepts
 
+# CaseLinker 3.0 assertions / resolution (assertions.py is loaded once by merge_processing)
+assertions_module = merge_module._assertions()
+_llm_path = Path(__file__).parent / "ML Processing Layer" / "llm_extraction.py"
+_llm_spec = importlib.util.spec_from_file_location("llm_extraction", _llm_path)
+llm_module = importlib.util.module_from_spec(_llm_spec)
+_llm_spec.loader.exec_module(llm_module)
+
+# Pins for the extraction_runs row of the most recent process_cases() call.
+last_extraction_versions: Dict[str, str] = {}
+
+
+def _extraction_versions(ner_backend: str, llm_cfg: Any, llm_digest: Any) -> Dict[str, str]:
+    try:
+        import stanza
+        stanza_version = f"stanza {stanza.__version__}" if ner_backend == "stanza" else ner_backend
+    except Exception:
+        stanza_version = ner_backend
+    versions = {
+        "ner_backend": ner_backend,
+        "stanza_version": stanza_version,
+        "rule_set_version": assertions_module.resolution.RULE_SET_VERSION,
+        "pattern_layer_version": assertions_module.patterns.REGEX_VERSION,
+        "compiled_rules": ",".join(r["id"] for r in assertions_module.compiled_rules.APPROVED) or "none",
+        **assertions_module.spacy_patterns.spacy_status(),
+        "extraction_mode": "deterministic",
+    }
+    if llm_cfg:
+        versions.update({
+            "extraction_mode": "llm",
+            "llm_provider": llm_cfg["provider"],
+            "llm_model": llm_cfg["model"],
+            "llm_model_digest": llm_digest,
+            "prompt_id": f"{llm_module.PROMPT_ID}@{llm_module.PROMPT_SHA}",
+        })
+    return versions
+
 
 def _extract_source_url(case_text: str) -> str:
     """Extract URL only from `Source: <url>` lines."""
@@ -131,7 +169,7 @@ def _extract_source_url(case_text: str) -> str:
     return ""
 
 
-def process_cases(df):
+def process_cases(df, fingerprint_index=None):
     """
     Process cases: batch → pattern extract → NER extract → merge → comparison values.
     
@@ -143,7 +181,7 @@ def process_cases(df):
     1. Batch cases using batching.py
     2. Extract pattern features using Pattern Processing Layer
     3. Extract NER features using ML Processing Layer (if available)
-    4. Merge features using MergeProcessing (for now, pattern-only)
+    4. Merge: ages, sentences, and CyberTip origin from resolve_v3.0; organizations and locations from pattern plus NER
     5. Assign comparison values
     6. Return cases ready for storage
     
@@ -179,9 +217,27 @@ def process_cases(df):
     
     processed_cases = []
     merger = MergeProcessing()
-    
+
+    # LLM layer is additive: only when CASELINKER_LLM=1 and the provider answers.
+    llm_cfg = llm_cache = llm_digest = None
+    if llm_module.llm_enabled():
+        llm_cfg = llm_module.llm_config()
+        llm_digest = llm_module.model_digest(llm_cfg)
+        if llm_digest.startswith(("unreachable", "model_not_pulled")):
+            print(f"⚠️  LLM layer disabled for this run ({llm_digest}); deterministic-only", file=sys.stderr)
+            llm_cfg = None
+        else:
+            llm_cache = llm_module.LLMCache(llm_cfg["cache_path"])
+    global last_extraction_versions
+    last_extraction_versions = _extraction_versions(ner_backend, llm_cfg, llm_digest)
+
+    profile = os.environ.get("CASELINKER_PROFILE", "").strip().lower() in ("1", "true", "yes", "on")
+    stages = {"batching": 0.0, "stanza": 0.0, "pattern": 0.0, "minilm": 0.0, "spacy": 0.0,
+              "assertions": 0.0, "resolve": 0.0, "merge": 0.0}
+
     # First pass: Collect all case batches to get total count for progress bar
     all_case_batches = []
+    t_batch = time.perf_counter()
     for idx, row in df.iterrows():
         extracted_text = row.get('extracted_text', '')
         source = row.get('source', 'unknown')
@@ -194,7 +250,13 @@ def process_cases(df):
             if org_match:
                 org_name = org_match.group(1).lower()
         
-        case_batches = case_batching(extracted_text, org_name=org_name, source=source, source_file=source_file)
+        case_batches = case_batching(
+            extracted_text,
+            org_name=org_name,
+            source=source,
+            source_file=source_file,
+            fingerprint_index=fingerprint_index,
+        )
         
         # Store batches with metadata for processing
         for case_batch in case_batches:
@@ -204,6 +266,7 @@ def process_cases(df):
                 'source_file': source_file,
                 'source_url': row.get('source_url'),
             })
+    stages["batching"] = time.perf_counter() - t_batch
     
     # Second pass: Process all cases with progress bar
     total_cases = len(all_case_batches)
@@ -238,6 +301,7 @@ def process_cases(df):
                 prefetch_texts.append(text)
                 prefetch_ids.append(cid)
         if prefetch_texts:
+            t_stanza = time.perf_counter()
             if HAS_TQDM:
                 tqdm.write(
                     f"Stanza NER bulk prefetch: {len(prefetch_texts)} cases "
@@ -252,8 +316,10 @@ def process_cases(df):
                 prefetch_ids, ner_extractor.extract_entities_bulk(prefetch_texts)
             ):
                 ner_by_case_id[cid] = entities
+            stages["stanza"] = time.perf_counter() - t_stanza
 
     work: List[tuple] = []
+    t_pattern = time.perf_counter()
     for batch_info in extract_iterator:
         case_batch = batch_info['case_batch']
         source = batch_info['source']
@@ -282,6 +348,7 @@ def process_cases(df):
 
         pattern_features = extract_features(raw_case)
         work.append((batch_info, pattern_features, raw_case))
+    stages["pattern"] = time.perf_counter() - t_pattern
 
     if semantic_detector and semantic_detector.is_available() and work:
         try:
@@ -292,9 +359,26 @@ def process_cases(df):
                     f"Semantic concepts: batch-encoding {len(work)} cases…",
                     file=sys.stderr,
                 )
+            t_mini = time.perf_counter()
             semantic_detector.enhance_cases_with_concepts([w[1] for w in work])
+            stages["minilm"] = time.perf_counter() - t_mini
         except Exception:
             pass
+
+    spacy_by_id: Dict[str, Any] = {}
+    nlp = assertions_module.spacy_patterns.load_spacy()
+    if nlp is not None and work:
+        if HAS_TQDM:
+            tqdm.write(f"spaCy parse: {len(work)} cases")
+        else:
+            print(f"spaCy parse: {len(work)} cases", file=sys.stderr)
+        pairs = [(raw.get("case_id"), raw.get("case_text") or "") for _, _, raw in work]
+        t_spacy = time.perf_counter()
+        parsed = nlp.pipe((text for _, text in pairs), batch_size=8)
+        for (cid, _), doc in zip(pairs, parsed):
+            if cid:
+                spacy_by_id[cid] = doc
+        stages["spacy"] = time.perf_counter() - t_spacy
 
     if HAS_TQDM:
         merge_iterator = tqdm(work, desc="Processing cases", unit="case", total=len(work))
@@ -315,14 +399,49 @@ def process_cases(df):
                 except Exception:
                     ner_entities = None
 
-        merged_features = merger.merge_features(pattern_features, ner_entities)
+        case_text = raw_case.get('case_text') or ''
+        year = raw_case.get('year')
+        t_assert = time.perf_counter()
+        assertions = assertions_module.collect_assertions(
+            case_text,
+            case_id=raw_case.get('case_id') or '',
+            ner_entities=ner_entities,
+            batch_year=int(year) if str(year or '').isdigit() else None,
+            doc_kind=raw_case.get('document_kind') or 'press_release',
+            spacy_doc=spacy_by_id.get(raw_case.get('case_id')),
+        )
+        stages["assertions"] += time.perf_counter() - t_assert
+        batch_date = (pattern_features.get('date_range') or {}).get('start')
+        t_resolve = time.perf_counter()
+        resolutions = assertions_module.resolve(assertions, batch_date=batch_date, text=case_text)
+        stages["resolve"] += time.perf_counter() - t_resolve
+        if llm_cfg:
+            llm_assertions, _meta = llm_module.run_llm(
+                case_text, resolutions, assertions, assertions_module.gate_assertion,
+                cfg=llm_cfg, cache=llm_cache, digest=llm_digest,
+            )
+            if llm_assertions:
+                assertions = assertions + llm_assertions
+                resolutions = assertions_module.resolve(assertions, batch_date=batch_date, text=case_text)
+
+        t_merge = time.perf_counter()
+        merged_features = merger.merge_features(
+            pattern_features, ner_entities, assertions=assertions, resolutions=resolutions
+        )
         case_with_values = assign_comparison_values(merged_features)
+        stages["merge"] += time.perf_counter() - t_merge
 
         timestamp = datetime.now().isoformat()
         case_with_values['created_at'] = timestamp
         case_with_values['updated_at'] = timestamp
 
         processed_cases.append(case_with_values)
+
+    if profile and processed_cases:
+        n = len(processed_cases)
+        print(f"PROFILE cases={n}", file=sys.stderr)
+        for name, seconds in stages.items():
+            print(f"PROFILE {name:12} {seconds:8.2f}s  {seconds / n:6.3f}s/case", file=sys.stderr)
 
     return processed_cases
 

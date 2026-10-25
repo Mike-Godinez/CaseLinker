@@ -111,11 +111,18 @@ _SOURCES: list[dict[str, str]] = [
     {"code": "CBP", "name": "U.S. Customs and Border Protection", "description": "Child sexual exploitation border enforcement releases"},
     {"code": "ARMY CID", "name": "U.S. Army Criminal Investigation Division", "description": "ICAC releases"},
     {"code": "AF OSI", "name": "U.S. Air Force Office of Special Investigations", "description": "CSAM and exploitation press releases"},
-    {"code": "AFP", "name": "Australian Federal Police", "description": "Child exploitation media releases (harvested, ingest on request)"},
-    {"code": "QPS", "name": "Queensland Police Service", "description": "Child exploitation news posts (harvested, ingest on request)"},
-    {"code": "BRAZIL PF", "name": "Brazil Federal Police", "description": "Child sexual abuse operation press releases (harvested, ingest on request)"},
-    {"code": "EUROPOL", "name": "Europol", "description": "Child sexual exploitation operation press releases (harvested, ingest on request)"},
-    {"code": "NCA", "name": "UK National Crime Agency", "description": "Child sexual abuse prosecution press releases (harvested, ingest on request)"},
+    {"code": "AFP", "name": "Australian Federal Police", "description": "Child exploitation media releases"},
+    {"code": "QPS", "name": "Queensland Police Service", "description": "Child exploitation news posts"},
+    {"code": "BRAZIL PF", "name": "Brazil Federal Police", "description": "Child sexual abuse operation press releases, translated locally from Portuguese"},
+    {"code": "EUROPOL", "name": "Europol", "description": "Child sexual exploitation operation press releases"},
+    {"code": "NCA", "name": "National Crime Agency", "description": "Child sexual abuse prosecution press releases"},
+    {"code": "ALERT ICE", "name": "Alberta Law Enforcement Response Teams, Internet Child Exploitation Unit", "description": "Charge, arrest, and sentencing releases"},
+    {"code": "MDSP", "name": "Maryland State Police", "description": "Child Exploitation Unit arrest releases"},
+    {"code": "SCOTLAND POLICE", "name": "Police Scotland", "description": "Child sexual abuse and indecent-image sentencing releases"},
+    {"code": "NOVA ICAC", "name": "Northern Virginia–DC Internet Crimes Against Children Task Force", "description": "Task force press releases"},
+    {"code": "MN BCA", "name": "Minnesota Bureau of Criminal Apprehension", "description": "Predatory-crimes and ICAC releases"},
+    {"code": "NBI", "name": "Philippines National Bureau of Investigation", "description": "Child sexual abuse and exploitation arrest releases"},
+    {"code": "GARDA", "name": "An Garda Síochána", "description": "Online Child Exploitation Unit and Child Trafficking and Pornography Act releases"},
 ]
 
 
@@ -484,6 +491,51 @@ async def get_case(case_id: str) -> dict[str, Any]:
 
 
 @mcp.tool()
+async def get_case_assertions(case_id: str, field: str = "") -> dict[str, Any]:
+    """Per-method evidence behind one case's extracted values, not just the collapsed finals.
+
+    Returns every field assertion (method, method_version, evidence family, role, value,
+    character span into the case text, confidence) plus the latest resolution per field
+    (status: agreed | resolved | partial | disagreement | needs_review | empty, final value,
+    winning assertion ids, contested mentions). field: age | sentence | investigation_type | date
+    (empty = all). Use it to see what regex vs spaCy vs Stanza vs the LLM said, and why a value
+    finalized or stayed contested. Same daily limit as get_case.
+    """
+    try:
+        params = {"field": field.strip()} if field and field.strip() else None
+        result = await api_get(f"/api/cases/{case_id.strip()}/assertions", params=params)
+        return result if isinstance(result, dict) else {"data": result}
+    except Exception as e:
+        logger.exception("get_case_assertions failed")
+        return {"error": str(e)}
+
+
+@mcp.tool()
+async def get_field_disagreements(
+    field: str = "", status: str = "", limit: int = 50, offset: int = 0
+) -> dict[str, Any]:
+    """List cases whose extraction methods disagree or left a field unresolved.
+
+    status: needs_review | disagreement | partial (empty = all three). field: age | sentence |
+    investigation_type | date (empty = all). Each item has the case_id, resolution status, the
+    settled part of the final value, and the contested mentions with which evidence families
+    asserted which role. status_counts is always corpus-wide per field (it ignores the
+    field/status filters on this call). limit capped at 500.
+    """
+    try:
+        params: dict[str, Any] = {"limit": min(max(limit, 1), 500), "offset": max(offset, 0)}
+        if field and field.strip():
+            params["field"] = field.strip()
+        if status and status.strip():
+            params["status"] = status.strip()
+        result = await api_get("/api/assertions/disagreements", params=params)
+        return result if isinstance(result, dict) else {"data": result}
+    except Exception as e:
+        logger.exception("get_field_disagreements failed")
+        return {"error": str(e)}
+
+
+@mcp.tool()
 async def get_cases_page(limit: int = 50, offset: int = 0) -> dict[str, Any]:
     """Return a paginated page of case summaries (slim fields, no full narratives). limit capped at 500."""
     try:
@@ -819,14 +871,27 @@ async def get_case_studies() -> dict[str, Any]:
 
 
 @mcp.tool()
-async def q1_platform_evidence(platform: str | None = None, tier: str | None = None) -> dict[str, Any]:
-    """Query Q1 platform harm evidence as a cohort source for case2cac and get_case.
+async def platform_affordance_evidence(
+    platform: str | None = None,
+    tier: str | None = None,
+    require_fresh: bool = False,
+) -> dict[str, Any]:
+    """Query a precomputed platform affordance evidence snapshot, not a live cohort.
+
+    Every response includes top-level freshness. stale is true unless the
+    snapshot recorded the corpus case count and extraction-run fingerprint and
+    both still match this database. Equal case counts alone do not prove
+    freshness. live_case_count and coverage_pct are filled when the database
+    can be counted. Prefer filter_cases_by_tags for current cohorts.
+
+    require_fresh=true asks the API to error instead of returning a snapshot
+    that is stale, over the db_gaps warning threshold, or under the coverage bar.
 
     Without platform: platform index with case_count and per-tier counts (stated, inferred, named_only).
     With platform: matching case IDs (same format as get_case / case2cac), each with tier and evidence_quote.
     Optional tier filter: stated, inferred, or named_only.
 
-    Example: q1_platform_evidence(\"Snapchat\") then case2cac on returned case_ids.
+    Example: platform_affordance_evidence(\"Snapchat\") then case2cac on returned case_ids.
     """
     try:
         params: dict[str, str] = {}
@@ -834,10 +899,12 @@ async def q1_platform_evidence(platform: str | None = None, tier: str | None = N
             params["platform"] = platform.strip()
         if tier and tier.strip():
             params["tier"] = tier.strip().lower()
-        result = await api_get("/api/q1/platform-evidence", params=params or None)
+        if require_fresh:
+            params["require_fresh"] = "true"
+        result = await api_get("/api/platform-affordance-evidence", params=params or None)
         return result if isinstance(result, dict) else {"data": result}
     except Exception as e:
-        logger.exception("q1_platform_evidence failed")
+        logger.exception("platform_affordance_evidence failed")
         return {"error": str(e)}
 
 
@@ -1055,22 +1122,22 @@ async def export_case_graph_ttl(
 
 @mcp.tool()
 async def get_all_cases(include_raw_data: bool = False) -> dict[str, Any]:
-    """Bulk-export every case in the corpus (trusted key required).
+    """Bulk-export the corpus tables (trusted key required).
 
-    Wraps GET /api/cases. Returns 403 unless CASELINKER_KEY is in
-    CASELINKER_TRUSTED_KEYS on the server. Set include_raw_data=True for full
-    raw narrative payloads (much larger). Prefer get_cases_page for public access.
+    Wraps GET /api/corpus. Returns 403 unless CASELINKER_KEY is in
+    CASELINKER_TRUSTED_KEYS on the server. The body is one JSON object of
+    table rows (cases, field_assertions, resolutions, review queue, and the
+    rest). Every column is included. include_raw_data is accepted so existing
+    callers keep working; it does not drop columns.
+    Prefer get_cases_page for public access.
     """
     try:
         if err := require_caselinker_key():
             return err
-        result = await api_get(
-            "/api/cases",
-            params={"include_raw_data": include_raw_data},
-            timeout=BULK_TIMEOUT,
-        )
-        if isinstance(result, list):
-            return {"count": len(result), "cases": result}
+        _ = include_raw_data
+        result = await api_get("/api/corpus", timeout=600.0)
+        if isinstance(result, dict) and isinstance(result.get("cases"), list):
+            result.setdefault("count", len(result["cases"]))
         return result if isinstance(result, dict) else {"cases": result}
     except Exception as e:
         logger.exception("get_all_cases failed")
@@ -1184,7 +1251,12 @@ async def get_case_ids_by_filter(
     year: str = "",
     investigation_type: str = "",
 ) -> dict[str, Any]:
-    """Filter case IDs by organization, platform, severity, year, etc. Wraps GET /api/case-ids-by-filter."""
+    """Filter case IDs by organization, platform, severity, year, etc.
+
+    Wraps GET /api/case-ids-by-filter. Requires at least one non-empty filter —
+    empty calls no longer dump the full corpus. For topic+platform intersections
+    use filter_cases_by_tags instead.
+    """
     try:
         params = {
             k: v
@@ -1200,7 +1272,24 @@ async def get_case_ids_by_filter(
             }.items()
             if v
         }
-        result = await api_get("/api/case-ids-by-filter", params=params or None)
+        if not params:
+            return {
+                "error": "Provide at least one filter",
+                "allowed": [
+                    "organization",
+                    "relationship",
+                    "prosecution_status",
+                    "age_range",
+                    "severity_indicator",
+                    "platform",
+                    "year",
+                    "investigation_type",
+                ],
+                "hint": "Use filter_cases_by_tags for topic/platform intersections.",
+                "case_ids": [],
+                "count": 0,
+            }
+        result = await api_get("/api/case-ids-by-filter", params=params)
         return result if isinstance(result, dict) else {"case_ids": result}
     except Exception as e:
         logger.exception("get_case_ids_by_filter failed")
@@ -1271,20 +1360,6 @@ async def get_triage_model_corpus(facet_constraints_json: str = "") -> dict[str,
 
 
 @mcp.tool()
-async def get_case_study_notes(case_id: str) -> dict[str, Any]:
-    """Community notes for a case study id. Wraps GET /api/case-studies/notes/{case_id}."""
-    try:
-        cid = case_id.strip()
-        if not cid:
-            return {"error": "case_id is required"}
-        result = await api_get(f"/api/case-studies/notes/{cid}")
-        return result if isinstance(result, dict) else {"notes": result}
-    except Exception as e:
-        logger.exception("get_case_study_notes failed")
-        return {"error": str(e)}
-
-
-@mcp.tool()
 async def llm_chat(question: str, model: str = "", provider: str = "") -> dict[str, Any]:
     """Natural-language SQL assistant over the cases table. Wraps POST /api/llm/chat.
 
@@ -1303,6 +1378,46 @@ async def llm_chat(question: str, model: str = "", provider: str = "") -> dict[s
         return result if isinstance(result, dict) else {"data": result}
     except Exception as e:
         logger.exception("llm_chat failed")
+        return {"error": str(e)}
+
+
+@mcp.tool()
+async def sparql_query(
+    query: str,
+    backend: str = "auto",
+    endpoint: str = "",
+    nq_path: str = "",
+    timeout_s: float = 90.0,
+) -> dict[str, Any]:
+    """Run a SPARQL 1.1 Query over the CASE/UCO/CAC graphs (Query only; no Update).
+
+    Backends:
+    - ``live`` (default via ``auto`` when OXIGRAPH_URL unset): POST
+      ``{CASELINKER_API_URL}/sparql`` — Railway public proxy → hosted Oxigraph.
+    - ``oxigraph``: POST ``{OXIGRAPH_URL|/query}`` or ``http://127.0.0.1:7878/query``
+      when running a local Oxigraph.
+    - ``nq``: evaluate against a local N-Quads file (``nq_path`` or env
+      ``CASELINKER_NQ``). Soft size cap; prefer live/oxigraph for the full corpus.
+    - ``auto``: ``OXIGRAPH_URL`` → local Oxigraph on ``127.0.0.1:7878`` if up,
+      else live.
+
+    Optional ``endpoint`` overrides the live URL or Oxigraph base. Same policy as
+    the public ``/sparql`` route: Update (INSERT/DELETE/LOAD/DROP/…) and SERVICE
+    rejected; default outer LIMIT 1000 (max 10_000); default timeout 90s
+    (clamped 1–600).
+    """
+    try:
+        from caselinker_mcp.sparql_tool import run_sparql
+
+        return await run_sparql(
+            query,
+            backend=backend,
+            endpoint=endpoint,
+            nq_path=nq_path,
+            timeout_s=float(timeout_s),
+        )
+    except Exception as e:
+        logger.exception("sparql_query failed")
         return {"error": str(e)}
 
 
@@ -1723,3 +1838,4 @@ if __name__ == "__main__":
         uvicorn.run(_sse_app, host="0.0.0.0", port=PORT)
     else:
         mcp.run(transport="stdio")
+

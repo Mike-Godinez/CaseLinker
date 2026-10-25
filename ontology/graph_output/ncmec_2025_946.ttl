@@ -1,170 +1,138 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://cacontology.projectvic.org/platforms#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:27:14.170337" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/admission/1/extraction-confidence> a ns8:AssessmentResult ;
+    ns8:assesses <https://w3id.org/caselinker/resource/case/ncmec_2025_946/admission/1> ;
+    ns8:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2025_946> ;
+    ns8:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2025-05-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_946/event/possession> ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_946/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/virginia-beach-police-department> a ns8:OrganizationLikeEntity,
+        ns7:LocalAgency ;
+    rdfs:label "Virginia Beach Police Department" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946> a ns1:CACInvestigation,
+        ns8:EnduringEntity ;
+    dcterms:created "2026-10-18 00:01:26.225139" ;
     dcterms:identifier "ncmec_2025_946" ;
-    dcterms:modified "2026-09-15T21:27:14.170337" ;
-    dcterms:source <https://www.conchovalleyhomepage.com/news/local-news/san-angelo-man-arrested-on-child-porn-charges/>,
+    dcterms:modified "2026-10-18 00:01:26.225139" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ncmec_2025_946/provenance> ;
+    dcterms:source <https://www.13newsnow.com/article/news/crime/virginia-beach-man-child-pornography-charges-10-years-after-previous-conviction/291-efa1a560-9e30-4e47-abba-609d8bc1b3b9>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/brazoria-county>,
-        <https://caselinker.up.railway.app/resource/location/concho-valley>,
-        <https://caselinker.up.railway.app/resource/location/san-angelo>,
-        <https://caselinker.up.railway.app/resource/location/texas>,
-        <https://caselinker.up.railway.app/resource/location/tom-green-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/operation> ;
-    cacontology:usesMethod <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/tech/cybertipline> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/department-of-homeland-security>,
-        <https://caselinker.up.railway.app/resource/agency/hitchcock-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/hsi>,
-        <https://caselinker.up.railway.app/resource/agency/pearland-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/san-angelo-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/sugar-land-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/texas-department-of-public-safety>,
-        <https://caselinker.up.railway.app/resource/agency/tom-green-county-sheriffs-office> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/brazoria-county>,
-        <https://caselinker.up.railway.app/resource/location/concho-valley>,
-        <https://caselinker.up.railway.app/resource/location/san-angelo>,
-        <https://caselinker.up.railway.app/resource/location/texas>,
-        <https://caselinker.up.railway.app/resource/location/tom-green-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/va>,
+        <https://w3id.org/caselinker/resource/location/virginia>,
+        <https://w3id.org/caselinker/resource/location/virginia-beach> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_946/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2025_946/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2025_946/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_946/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_946/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_946/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_946/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/virginia-beach-police-department> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/va>,
+        <https://w3id.org/caselinker/resource/location/virginia>,
+        <https://w3id.org/caselinker/resource/location/virginia-beach> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns3:indictmentCounts 2 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/event/online-only>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/charge/2> a ns3:CSAM_Distribution,
+        ns3:CriminalCharge ;
+    rdfs:label "distribution of child pornography" .
 
-<https://caselinker.up.railway.app/resource/agency/department-of-homeland-security> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/event/distribution> a ns8:Event,
+        ns3:CSAM_Distribution ;
+    ns1:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/agency/hitchcock-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Hitchcock Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/agency/hsi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/legal-proceeding> a ns8:Event,
+        ns8:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2025_946/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2025_946/charge/2> ;
+    ns3:hasProceedingBeginPoint "2025-05-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/pearland-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Pearland Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/legal-step/sentenced> a ns8:Event,
+        ns8:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2025-05-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/agency/san-angelo-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "San Angelo Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 30 .
 
-<https://caselinker.up.railway.app/resource/agency/sugar-land-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Sugar Land Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/agency/texas-department-of-public-safety> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:StateAgency ;
-    rdfs:label "Texas Department of Public Safety" .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2025-05-09T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2025_946/event/possession> ;
+    ns1:perpetratorRegisteredSexOffender true ;
+    ns8:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2025_946/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/tom-green-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Tom Green County Sheriff's Office" .
+<https://w3id.org/caselinker/resource/platform/icloud> a ns8:DigitalSystemEntity,
+        ns4:FileHostingService ;
+    rdfs:label "iCloud" ;
+    ns4:platformType "cloud-backup" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 3 .
+<https://w3id.org/caselinker/resource/platform/kik> a ns8:DigitalSystemEntity,
+        ns4:MessagingService ;
+    rdfs:label "Kik" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/phase/sentenced> a ns8:Phase,
+        ns3:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2025-05-09T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/location/va> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Va." ;
+    ns5:name "Va." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/sentence/1> .
+<https://w3id.org/caselinker/resource/location/virginia> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Virginia" ;
+    ns5:name "Virginia" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/operation> a cac-core:Event,
-        cacontology-taskforce:TaskForceOperation .
+<https://w3id.org/caselinker/resource/location/virginia-beach> a ns8:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Virginia Beach" ;
+    ns5:name "Virginia Beach" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "tried accessing the Kik account about a year earlier" ;
+    dcterms:source <https://www.13newsnow.com/article/news/crime/virginia-beach-man-child-pornography-charges-10-years-after-previous-conviction/291-efa1a560-9e30-4e47-abba-609d8bc1b3b9> ;
+    ns5:description "tried accessing the Kik account about a year earlier" ;
+    ns2:admissionContext "he Kik, iCloud, and email accounts that were tied to the child sexual abuse material, but later admitted he tried accessing the Kik accou..." ;
+    ns2:admissionFrame "admitted_he_she" ;
+    ns2:admissionTheme "tech_use" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2025_946/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/tech/cybertipline> a cacontology-us-ncmec:NCMECCybertipReport ;
-    rdfs:label "CyberTipline" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2025-04-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/brazoria-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/concho-valley> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Concho Valley" ;
-    uco-core:name "Concho Valley" .
-
-<https://caselinker.up.railway.app/resource/location/san-angelo> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "San Angelo" ;
-    uco-core:name "San Angelo" .
-
-<https://caselinker.up.railway.app/resource/location/texas> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/tom-green-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Tom Green County" ;
-    uco-core:name "Tom Green County" .
-
-<https://caselinker.up.railway.app/resource/platform/facebook> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "Facebook" .
-
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
-
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/event/online-only> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/snapchat>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2025_946/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/facebook>,
-        <https://caselinker.up.railway.app/resource/platform/snapchat>,
-        <https://caselinker.up.railway.app/resource/platform/social-media> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2025_946/facet/possession> .
+<https://w3id.org/caselinker/resource/case/ncmec_2025_946/event/possession> a ns1:CSAMIncident,
+        ns8:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2025_946/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/icloud>,
+        <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns5:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2025_946/facet/possession> .
 

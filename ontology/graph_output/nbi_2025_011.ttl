@@ -1,0 +1,79 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/production#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_011> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 14:24:47.297264" ;
+    dcterms:identifier "nbi_2025_011" ;
+    dcterms:modified "2026-10-18 14:24:47.297264" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nbi_2025_011/provenance> ;
+    dcterms:source <https://nbi.gov.ph/press_releases/2025/07182025/8251/>,
+        "NBI" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/marikina-city> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/nbi_2025_011/phase/arrested> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/nbi_2025_011/phase/arrested> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/nbi_2025_011/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/nbi_2025_011/operation> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/belgian-police-department>,
+        <https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation>,
+        <https://w3id.org/caselinker/resource/agency/police-antwerpen-defensor-liberatis> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/marikina-city> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_011/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2025-07-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/nbi_2025_011/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_011/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2025-07-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/nbi_2025_011/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/platform/skype> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Skype" .
+
+<https://w3id.org/caselinker/resource/agency/belgian-police-department> a ns3:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "Belgian Police Department" .
+
+<https://w3id.org/caselinker/resource/agency/national-bureau-of-investigation> a ns6:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/police-antwerpen-defensor-liberatis> a ns3:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "Police Antwerpen Defensor Liberatis" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_011/charge/1> a ns5:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns7:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_011/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/nbi_2025_011/charge/1> ;
+    ns5:hasProceedingBeginPoint "2025-07-07T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_011/operation> a ns3:Event,
+        <https://cacontology.projectvic.org/taskforce#TaskForceOperation> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_011/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_011/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns1:victimAge 10 .
+
+<https://w3id.org/caselinker/resource/case/nbi_2025_011/phase/arrested> a ns2:InitialPhase,
+        ns3:Phase ;
+    ns2:hasPhaseBeginPoint "2025-07-07T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/marikina-city> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Marikina City" ;
+    ns4:name "Marikina City" .
+

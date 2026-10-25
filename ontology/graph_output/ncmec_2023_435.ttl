@@ -1,220 +1,117 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:55:01.123110" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435/admission/1/extraction-confidence> a ns2:AssessmentResult ;
+    ns2:assesses <https://w3id.org/caselinker/resource/case/ncmec_2023_435/admission/1> ;
+    ns2:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2023_435> ;
+    ns2:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-05-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_435/event/possession> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_435/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/department-of-homeland-security> a ns4:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/rhode-island-state-police-department> a ns4:StateAgency .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-17 22:21:33.312283" ;
     dcterms:identifier "ncmec_2023_435" ;
-    dcterms:modified "2026-09-15T20:55:01.123110" ;
-    dcterms:source <https://www.justice.gov/usao-wdwa/pr/port-townsend-washington-man-arrested-creating-images-child-sexual-abuse>,
+    dcterms:modified "2026-10-17 22:21:33.312283" ;
+    dcterms:source <https://patch.com/rhode-island/woonsocket/woonsocket-register-sex-offender-facing-child-pornography-charge>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/california>,
-        <https://caselinker.up.railway.app/resource/location/port-townsend>,
-        <https://caselinker.up.railway.app/resource/location/tacoma>,
-        <https://caselinker.up.railway.app/resource/location/united-states>,
-        <https://caselinker.up.railway.app/resource/location/washington>,
-        <https://caselinker.up.railway.app/resource/location/western-district-of-washington>,
-        <https://caselinker.up.railway.app/resource/location/western-washington> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/phase/convicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/phase/convicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/production>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/project-safe-childhood>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/legal-step/convicted>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/offense-event/charge-4> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/ceos>,
-        <https://caselinker.up.railway.app/resource/agency/hsi>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/jefferson-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec>,
-        <https://caselinker.up.railway.app/resource/agency/seattle-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/usao> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/california>,
-        <https://caselinker.up.railway.app/resource/location/port-townsend>,
-        <https://caselinker.up.railway.app/resource/location/tacoma>,
-        <https://caselinker.up.railway.app/resource/location/united-states>,
-        <https://caselinker.up.railway.app/resource/location/washington>,
-        <https://caselinker.up.railway.app/resource/location/western-district-of-washington>,
-        <https://caselinker.up.railway.app/resource/location/western-washington> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/providence>,
+        <https://w3id.org/caselinker/resource/location/woonsocket>,
+        <https://w3id.org/caselinker/resource/location/woonsocket-rhode-island> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_435/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2023_435/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2023_435/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_435/cybertip>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_435/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2023_435/legal-proceeding> ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/department-of-homeland-security>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/rhode-island-state-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/providence>,
+        <https://w3id.org/caselinker/resource/location/woonsocket>,
+        <https://w3id.org/caselinker/resource/location/woonsocket-rhode-island> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2023-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/production>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/offense-event/charge-4> ;
-    cacontology:perpetratorRegisteredSexOffender true ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/person/offender/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2023-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/production>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/offense-event/charge-4> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/person/victim/1> .
-
-<https://caselinker.up.railway.app/resource/agency/ceos> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:FederalAgency ;
-    rdfs:label "CEOS" .
-
-<https://caselinker.up.railway.app/resource/agency/hsi> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/agency/jefferson-county-sheriffs-office> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Jefferson County Sheriff's Office" .
-
-<https://caselinker.up.railway.app/resource/agency/seattle-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Seattle Police Department" .
-
-<https://caselinker.up.railway.app/resource/agency/usao> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:FederalAgency ;
-    rdfs:label "U.S. Attorney's Office" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435/charge/1> a ns7:CSAM_Possession,
+        ns7:CriminalCharge ;
     rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/charge/2> a cacontology-legal-outcomes:CSAM_Production,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "production of child pornography" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/charge/4> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/offense-event/charge-4> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/offense-event/charge-4> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns7:LegalProceeding ;
+    ns7:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2023_435/charge/1> ;
+    ns7:hasProceedingBeginPoint "2023-05-23T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 25 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-05-23T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2023_435/event/possession> ;
+    ns1:perpetratorRegisteredSexOffender true ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2023_435/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/project-safe-childhood> a cac-core:Event,
-        cacontology-multi:ProjectSafeChildhoodOperation ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns4:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435/phase/charged> a ns1:LegalProcessPhase,
+        ns2:Phase ;
+    ns1:hasPhaseBeginPoint "2023-05-23T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/location/providence> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Providence" ;
+    ns6:name "Providence" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/charge/3>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/charge/4> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/sentence/1> .
+<https://w3id.org/caselinker/resource/location/woonsocket> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Woonsocket" ;
+    ns6:name "Woonsocket" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/legal-step/convicted> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2023-10-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/woonsocket-rhode-island> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Woonsocket, Rhode Island" ;
+    ns6:name "Woonsocket, Rhode Island" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 32 .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "was caught with more than 8,000 images and videos of child pornography" ;
+    dcterms:source <https://patch.com/rhode-island/woonsocket/woonsocket-register-sex-offender-facing-child-pornography-charge> ;
+    ns3:admissionContext "RI — A registered sex offender from Woonsocket was charged in federal court in Providence Friday after prosecutors said he was caught wit..." ;
+    ns3:admissionFrame "said_paraphrase" ;
+    ns3:admissionTheme "harm_conduct" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2023_435/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" ;
+    ns6:description "was caught with more than 8,000 images and videos of child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435/event/possession> a ns1:CSAMIncident,
+        ns2:Event ;
+    ns1:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2023_435/admission/1> ;
+    ns1:severityLevel 3 ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2023_435/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:MandatoryMinimumSentencing ;
-    rdfs:label "[\"mandatory minimum\", \"25 years\"]" .
 
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/phase/convicted> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2023-10-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/california> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "California" ;
-    uco-core:name "California" .
-
-<https://caselinker.up.railway.app/resource/location/port-townsend> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Port Townsend" ;
-    uco-core:name "Port Townsend" .
-
-<https://caselinker.up.railway.app/resource/location/tacoma> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Tacoma" ;
-    uco-core:name "Tacoma" .
-
-<https://caselinker.up.railway.app/resource/location/united-states> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/washington> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Washington" ;
-    uco-core:name "Washington" .
-
-<https://caselinker.up.railway.app/resource/location/western-district-of-washington> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Western District of Washington" ;
-    uco-core:name "Western District of Washington" .
-
-<https://caselinker.up.railway.app/resource/location/western-washington> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Western Washington" ;
-    uco-core:name "Western Washington" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/facet/possession> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/event/production> a cac-core:Event,
-        cacontology-production:ProductionOffense ;
-    cacontology:severityLevel 3 ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2023_435/facet/production> .
-
-<https://caselinker.up.railway.app/resource/platform/kik> a cac-core:DigitalSystemEntity,
-        cacontology-platforms:MessagingService ;
-    rdfs:label "Kik" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2023_435/offense-event/charge-4> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child exploitation" ;
-    cacontology:usesChannel <https://caselinker.up.railway.app/resource/platform/kik> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2023_435> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2023_435/provenance> .

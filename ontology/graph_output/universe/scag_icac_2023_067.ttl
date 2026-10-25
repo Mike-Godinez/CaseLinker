@@ -1,0 +1,115 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067> a ns4:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 06:39:42.923452" ;
+    dcterms:identifier "scag_icac_2023_067" ;
+    dcterms:modified "2026-10-18 06:39:42.923452" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/provenance> ;
+    dcterms:source <https://www.scag.gov/about-the-office/news/mount-pleasant-man-arrested-on-child-sexual-abuse-material-and-related-charges-1/>,
+        "SCAG ICAC" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/mount-pleasant>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/phase/charged> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/phase/charged> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/event/possession>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/legal-proceeding> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office>,
+        <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/mount-pleasant-police-department> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/columbia>,
+        <https://w3id.org/caselinker/resource/location/mount-pleasant>,
+        <https://w3id.org/caselinker/resource/location/sc>,
+        <https://w3id.org/caselinker/resource/location/south-carolina> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2023-08-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2023-08-10T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:participatesInEvent <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office> a ns5:StateAgency .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/mount-pleasant-police-department> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
+    rdfs:label "sexual exploitation of a minor" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067/charge/2> a ns2:CSAM_Possession,
+        ns2:CriminalCharge ;
+    rdfs:label "child sexual abuse material" ;
+    ns2:indictmentCounts 2 .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067/charge/3> a ns2:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns6:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067/event/distribution> a ns3:Event,
+        ns2:CSAM_Distribution ;
+    ns4:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/charge/1>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/charge/2>,
+        <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/charge/3> ;
+    ns2:hasProceedingBeginPoint "2023-08-10T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 25 .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067/phase/charged> a ns4:LegalProcessPhase,
+        ns3:Phase ;
+    ns4:hasPhaseBeginPoint "2023-08-10T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/columbia> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Columbia" ;
+    ns1:name "Columbia" .
+
+<https://w3id.org/caselinker/resource/location/mount-pleasant> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mount Pleasant" ;
+    ns1:name "Mount Pleasant" .
+
+<https://w3id.org/caselinker/resource/location/sc> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "S.c." ;
+    ns1:name "S.c." .
+
+<https://w3id.org/caselinker/resource/location/south-carolina> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "South Carolina" ;
+    ns1:name "South Carolina" .
+
+<https://w3id.org/caselinker/resource/case/scag_icac_2023_067/event/possession> a ns4:CSAMIncident,
+        ns3:Event ;
+    ns4:severityLevel 3 ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/scag_icac_2023_067/facet/possession> .
+

@@ -1,143 +1,152 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-production: <https://cacontology.projectvic.org/production#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/admission/1/extraction-confidence> a ns5:AssessmentResult ;
+    ns5:assesses <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/admission/1> ;
+    ns5:generatedBy <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226> ;
+    ns5:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2026-04-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/event/production> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/fbi> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/fbi> a ns1:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/sun-prairie-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Sun Prairie Police Department" .
+<https://w3id.org/caselinker/resource/agency/sun-prairie-police-department> a ns1:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/university-of-wisconsin-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/university-of-wisconsin-police-department> a ns5:OrganizationLikeEntity,
+        ns1:LocalAgency ;
     rdfs:label "University of Wisconsin Police Department" .
 
-<https://caselinker.up.railway.app/resource/agency/usao> a cacontology-multi:FederalAgency .
+<https://w3id.org/caselinker/resource/agency/usao> a ns1:FederalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/wisconsin-department-of-justice-division-of-criminal-investigation> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/wisconsin-department-of-justice-division-of-criminal-investigation> a ns1:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T22:12:26.108535" ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226> a ns2:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-18 02:38:01.662625" ;
     dcterms:identifier "doj_safe_childhood_2026_226" ;
-    dcterms:modified "2026-09-15T22:12:26.108535" ;
+    dcterms:modified "2026-10-18 11:22:03.906443" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/provenance> ;
     dcterms:source <https://www.justice.gov/usao-wdwi/pr/former-sun-prairie-high-school-dean-students-sentenced-18-years-producing-child>,
         "DOJ SAFE CHILDHOOD" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/sun-prairie>,
-        <https://caselinker.up.railway.app/resource/location/united-states>,
-        <https://caselinker.up.railway.app/resource/location/wisconsin> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/phase/sentenced> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/phase/sentenced> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/event/production>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/event/project-safe-childhood>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/legal-step/sentenced> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/fbi>,
-        <https://caselinker.up.railway.app/resource/agency/sun-prairie-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/university-of-wisconsin-police-department>,
-        <https://caselinker.up.railway.app/resource/agency/usao>,
-        <https://caselinker.up.railway.app/resource/agency/wisconsin-department-of-justice-division-of-criminal-investigation> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/sun-prairie>,
-        <https://caselinker.up.railway.app/resource/location/united-states>,
-        <https://caselinker.up.railway.app/resource/location/wisconsin> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/sun-prairie>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/wisconsin> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/admission/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/event/production>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/legal-step/sentenced> ;
+    ns2:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/sun-prairie-police-department>,
+        <https://w3id.org/caselinker/resource/agency/university-of-wisconsin-police-department>,
+        <https://w3id.org/caselinker/resource/agency/usao>,
+        <https://w3id.org/caselinker/resource/agency/wisconsin-department-of-justice-division-of-criminal-investigation> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/sun-prairie>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/wisconsin> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
     rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/event/project-safe-childhood> a cac-core:Event,
-        cacontology-multi:ProjectSafeChildhoodOperation .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/event/project-safe-childhood> a ns5:Event,
+        ns1:ProjectSafeChildhoodOperation .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/facet/production> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/sentence/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns6:LegalProceeding ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/charge/1> ;
+    ns6:hasProceedingBeginPoint "2026-04-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns6:resultsSentence <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/sentence/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/sentence/2>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/sentence/3> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/legal-step/sentenced> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding,
-        cacontology-legal-outcomes:SentencingHearing ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/legal-step/sentenced> a ns5:Event,
+        ns5:LegalEvent,
+        ns6:LegalProceeding,
+        ns6:SentencingHearing ;
+    ns6:hasProceedingBeginPoint "2026-04-28T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 31 .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/person/victim/1> a uco-identity:Person ;
-    cacontology-production:victimAge 12 .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/event/csam>,
-        <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/event/production> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2026-04-28T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/event/production> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:SupervisedRelease ;
-    rdfs:label "[\"18 Years\", \"25 years of supervised release\", \"$10,000\"]" .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/sentence/1> a ns6:CriminalSentence,
+        ns6:PrisonSentence ;
+    rdfs:label "18 Years" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/admission/1> a cacontology-undercover:IncriminatingStatement ;
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/sentence/2> a ns6:CriminalSentence,
+        ns6:SupervisedRelease ;
+    rdfs:label "25 years supervised release" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/sentence/3> a ns6:CriminalSentence,
+        ns6:MonetaryPenalty ;
+    rdfs:label "$10,000" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
     rdfs:label "wanted to “ruin their life" ;
     dcterms:source <https://www.justice.gov/usao-wdwi/pr/former-sun-prairie-high-school-dean-students-sentenced-18-years-producing-child> ;
-    ns1:admissionContext "he anonymous tip in April 2025. He told the student that he found out the identity of the tipster and said that he wanted to “ruin their..." ;
-    ns1:admissionFrame "said_paraphrase" ;
-    ns1:admissionTheme "other" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "wanted to “ruin their life" .
+    ns4:description "wanted to “ruin their life" ;
+    ns3:admissionContext "he anonymous tip in April 2025. He told the student that he found out the identity of the tipster and said that he wanted to “ruin their..." ;
+    ns3:admissionFrame "said_paraphrase" ;
+    ns3:admissionTheme "other" ;
+    ns3:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/role/offender/1> ;
+    ns3:evidenceTier "press_release_stated" ;
+    ns3:quoteType "paraphrase" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/phase/sentenced> a cac-core:Phase,
-        cacontology-legal-outcomes:SentencingPhase ;
-    cacontology:hasPhaseBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/phase/sentenced> a ns5:Phase,
+        ns6:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2026-04-28T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/location/sun-prairie> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
+<https://w3id.org/caselinker/resource/location/sun-prairie> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
     rdfs:label "Sun Prairie" ;
-    uco-core:name "Sun Prairie" .
+    ns4:name "Sun Prairie" .
 
-<https://caselinker.up.railway.app/resource/location/united-states> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/united-states> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns4:name "United States" .
 
-<https://caselinker.up.railway.app/resource/location/wisconsin> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/wisconsin> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wisconsin" ;
+    ns4:name "Wisconsin" .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/event/csam> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/facet/csam> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/event/csam> a ns2:CSAMIncident,
+        ns5:Event ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/event/production> a cac-core:Event,
-        cacontology-production:ProductionOffense ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/doj_safe_childhood_2026_226/facet/production> .
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/event/production> a ns5:Event,
+        <https://cacontology.projectvic.org/production#ProductionOffense> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2026_226/facet/production> .
 

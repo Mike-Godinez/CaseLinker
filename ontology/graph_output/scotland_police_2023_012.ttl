@@ -1,0 +1,84 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_012> a ns1:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 14:18:20.474866" ;
+    dcterms:identifier "scotland_police_2023_012" ;
+    dcterms:modified "2026-10-18 14:18:20.474866" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scotland_police_2023_012/provenance> ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2023/november/man-jailed-for-series-of-serious-non-recent-sexual-offences-involving-children-in-aberdeen-area/>,
+        "SCOTLAND POLICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/aberdeen>,
+        <https://w3id.org/caselinker/resource/location/edinburgh> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/scotland_police_2023_012/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/scotland_police_2023_012/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/scotland_police_2023_012/event/hands-on>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2023_012/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2023_012/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/police-scotland> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/aberdeen>,
+        <https://w3id.org/caselinker/resource/location/edinburgh> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_012/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2023-11-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/scotland_police_2023_012/event/hands-on> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2023_012/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_012/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2023-11-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/scotland_police_2023_012/event/hands-on> ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2023_012/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/police-scotland> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_012/legal-proceeding> a ns2:Event,
+        ns2:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasProceedingBeginPoint "2023-11-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:resultsSentence <https://w3id.org/caselinker/resource/case/scotland_police_2023_012/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_012/legal-step/sentenced> a ns2:Event,
+        ns2:LegalEvent,
+        ns4:LegalProceeding,
+        ns4:SentencingHearing ;
+    ns4:hasProceedingBeginPoint "2023-11-22T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_012/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 59 .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_012/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_012/sentence/1> a ns4:CriminalSentence,
+        ns4:PrisonSentence ;
+    rdfs:label "four years" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_012/phase/sentenced> a ns2:Phase,
+        ns4:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2023-11-22T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/aberdeen> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Aberdeen" ;
+    ns3:name "Aberdeen" .
+
+<https://w3id.org/caselinker/resource/location/edinburgh> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Edinburgh" ;
+    ns3:name "Edinburgh" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2023_012/event/hands-on> a ns1:ChildSexualAbuseEvent,
+        ns2:Event ;
+    ns1:severityLevel 3 .
+

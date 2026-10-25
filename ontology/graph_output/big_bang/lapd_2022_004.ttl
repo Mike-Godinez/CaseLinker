@@ -1,0 +1,150 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 05:32:22.073616" ;
+    dcterms:identifier "lapd_2022_004" ;
+    dcterms:modified "2026-10-18 05:32:22.073616" ;
+    dcterms:source <https://www.lapdonline.org/newsroom/operation-protect-the-innocent-nr22265ah/>,
+        "LAPD" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/los-angeles>,
+        <https://w3id.org/caselinker/resource/location/orange>,
+        <https://w3id.org/caselinker/resource/location/san-bernardino>,
+        <https://w3id.org/caselinker/resource/location/santa-barbara>,
+        <https://w3id.org/caselinker/resource/location/southern-california-counties>,
+        <https://w3id.org/caselinker/resource/location/the-los-angeles-region>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/ventura> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/lapd_2022_004/phase/arrested> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/lapd_2022_004/phase/arrested> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/lapd_2022_004/cybertip>,
+        <https://w3id.org/caselinker/resource/case/lapd_2022_004/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/lapd_2022_004/event/possession>,
+        <https://w3id.org/caselinker/resource/case/lapd_2022_004/legal-proceeding> ;
+    ns1:investigationStatus "unknown" ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/lapd_2022_004/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/los-angeles-police-department>,
+        <https://w3id.org/caselinker/resource/agency/ncmec> ;
+    ns4:mentionsLocation <https://w3id.org/caselinker/resource/location/los-angeles>,
+        <https://w3id.org/caselinker/resource/location/orange>,
+        <https://w3id.org/caselinker/resource/location/san-bernardino>,
+        <https://w3id.org/caselinker/resource/location/santa-barbara>,
+        <https://w3id.org/caselinker/resource/location/southern-california-counties>,
+        <https://w3id.org/caselinker/resource/location/the-los-angeles-region>,
+        <https://w3id.org/caselinker/resource/location/united-states>,
+        <https://w3id.org/caselinker/resource/location/ventura> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-09-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/lapd_2022_004/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/lapd_2022_004/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-09-14T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/lapd_2022_004/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/lapd_2022_004/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/los-angeles-police-department> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/charge/1> a ns5:CriminalCharge,
+        ns5:StateCharge ;
+    rdfs:label "sexual exploitation of children" .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/charge/2> a ns5:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns4:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/cybertip> a ns7:NCMECCybertipReport ;
+    ns7:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/event/distribution> a ns3:Event,
+        ns5:CSAM_Distribution ;
+    ns1:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/lapd_2022_004/charge/1>,
+        <https://w3id.org/caselinker/resource/case/lapd_2022_004/charge/2> ;
+    ns5:hasProceedingBeginPoint "2022-09-14T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/tech/cybertipline> a ns7:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns6:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/phase/arrested> a ns1:InitialPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2022-09-14T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/los-angeles> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Los Angeles" ;
+    ns2:name "Los Angeles" .
+
+<https://w3id.org/caselinker/resource/location/orange> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Orange" ;
+    ns2:name "Orange" .
+
+<https://w3id.org/caselinker/resource/location/san-bernardino> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "San Bernardino" ;
+    ns2:name "San Bernardino" .
+
+<https://w3id.org/caselinker/resource/location/santa-barbara> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Santa Barbara" ;
+    ns2:name "Santa Barbara" .
+
+<https://w3id.org/caselinker/resource/location/southern-california-counties> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Southern California Counties" ;
+    ns2:name "Southern California Counties" .
+
+<https://w3id.org/caselinker/resource/location/the-los-angeles-region> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the Los Angeles Region" ;
+    ns2:name "the Los Angeles Region" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns2:name "United States" .
+
+<https://w3id.org/caselinker/resource/location/ventura> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ventura" ;
+    ns2:name "Ventura" .
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004/event/possession> a ns1:CSAMIncident,
+        ns3:Event ;
+    ns1:severityLevel 3 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/social-media> ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/lapd_2022_004/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/lapd_2022_004> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/lapd_2022_004/provenance> .

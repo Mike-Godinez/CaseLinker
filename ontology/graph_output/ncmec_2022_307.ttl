@@ -1,99 +1,80 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/detection#> .
+@prefix ns5: <https://cacontology.projectvic.org/core#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_307> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.252007" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_307> a ns1:CACInvestigation,
+        ns5:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:23.044791" ;
     dcterms:identifier "ncmec_2022_307" ;
-    dcterms:modified "2026-09-15T20:45:06.252007" ;
-    dcterms:source <https://www.nbc4i.com/news/local-news/crawford-county-man-arrested-for-child-pornography-possession/>,
+    dcterms:modified "2026-10-17 21:51:23.044791" ;
+    dcterms:source <https://theperrynews.com/urbandale-man-faces-child-porn-charges/>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/bucyrus>,
-        <https://caselinker.up.railway.app/resource/location/crawford-county>,
-        <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/st-crestline> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_307/phase/arrested> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_307/phase/arrested> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_307/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_307/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/crawford-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/crestline-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/bucyrus>,
-        <https://caselinker.up.railway.app/resource/location/crawford-county>,
-        <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/st-crestline> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/dallas-county>,
+        <https://w3id.org/caselinker/resource/location/urbandale> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_307/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_307/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_307/event/csam>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_307/legal-proceeding> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/urbandale-police-department> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/dallas-county>,
+        <https://w3id.org/caselinker/resource/location/urbandale> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_307/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_307/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_307/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_307/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_307/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_307/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_307/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_307/event/possession> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_307/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_307/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-10-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_307/event/csam> ;
+    ns5:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_307/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/crawford-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/urbandale-police-department> a ns7:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/crestline-police-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Crestline Police Department" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_307/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child pornography" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_307/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_307/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_307/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_307/legal-proceeding> a ns5:Event,
+        ns5:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in the Dallas County Jail" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_307/charge/1> ;
+    ns6:hasProceedingBeginPoint "2022-10-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_307/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_307/charge/1> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_307/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_307/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns4:ageEstimate 24 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_307/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_307/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_307/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_307/phase/charged> a ns1:LegalProcessPhase,
+        ns5:Phase ;
+    ns1:hasPhaseBeginPoint "2022-10-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_307/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/dallas-county> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Dallas County" ;
+    ns2:name "Dallas County" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_307/phase/arrested> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/urbandale> a ns5:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Urbandale" ;
+    ns2:name "Urbandale" .
 
-<https://caselinker.up.railway.app/resource/location/bucyrus> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Bucyrus" ;
-    uco-core:name "Bucyrus" .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_307/event/csam> a ns1:CSAMIncident,
+        ns5:Event ;
+    ns2:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_307/facet/csam> .
 
-<https://caselinker.up.railway.app/resource/location/crawford-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
 
-<https://caselinker.up.railway.app/resource/location/ohio> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/st-crestline> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "St. Crestline" ;
-    uco-core:name "St. Crestline" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_307/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_307/facet/possession> .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2022_307> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_307/provenance> .

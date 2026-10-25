@@ -1,0 +1,139 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
+@prefix ns8: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2023_003> a ns4:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-18 05:52:17.176372" ;
+    dcterms:identifier "nj_ag_2023_003" ;
+    dcterms:modified "2026-10-18 05:52:17.176372" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/nj_ag_2023_003/provenance> ;
+    dcterms:source <https://www.njoag.gov/update-ex-case-worker-for-department-of-children-and-families-pleads-guilty-after-abusing-his-authority-to-pressure-women-into-unwanted-sexual-conduct>,
+        "NJ AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/camden-county>,
+        <https://w3id.org/caselinker/resource/location/compitello>,
+        <https://w3id.org/caselinker/resource/location/freehold>,
+        <https://w3id.org/caselinker/resource/location/new-jersey>,
+        <https://w3id.org/caselinker/resource/location/nj>,
+        <https://w3id.org/caselinker/resource/location/spina>,
+        <https://w3id.org/caselinker/resource/location/tonacchio>,
+        <https://w3id.org/caselinker/resource/location/trenton>,
+        <https://w3id.org/caselinker/resource/location/woodbury> ;
+    ns4:currentPhase <https://w3id.org/caselinker/resource/case/nj_ag_2023_003/phase/sentenced> ;
+    ns4:hasPhase <https://w3id.org/caselinker/resource/case/nj_ag_2023_003/phase/sentenced> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/nj_ag_2023_003/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/nj_ag_2023_003/legal-step/sentenced> ;
+    ns4:investigationStatus "unknown" ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-office-of-public-integrity-and-accountability>,
+        <https://w3id.org/caselinker/resource/agency/new-jersey-department-of-children-and-families>,
+        <https://w3id.org/caselinker/resource/agency/opia-corruption-bureau> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/camden-county>,
+        <https://w3id.org/caselinker/resource/location/compitello>,
+        <https://w3id.org/caselinker/resource/location/freehold>,
+        <https://w3id.org/caselinker/resource/location/new-jersey>,
+        <https://w3id.org/caselinker/resource/location/nj>,
+        <https://w3id.org/caselinker/resource/location/spina>,
+        <https://w3id.org/caselinker/resource/location/tonacchio>,
+        <https://w3id.org/caselinker/resource/location/trenton>,
+        <https://w3id.org/caselinker/resource/location/woodbury> .
+
+<https://w3id.org/caselinker/resource/agency/attorney-generals-office-of-public-integrity-and-accountability> a ns1:OrganizationLikeEntity,
+        ns6:StateAgency ;
+    rdfs:label "Attorney General's Office of Public Integrity and Accountability" .
+
+<https://w3id.org/caselinker/resource/agency/new-jersey-department-of-children-and-families> a ns1:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "New Jersey Department of Children and Families" .
+
+<https://w3id.org/caselinker/resource/agency/opia-corruption-bureau> a ns1:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "OPIA Corruption Bureau" .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2023_003/event/trust-violation> a ns5:CustodialAbuse,
+        ns5:TrustViolation ;
+    ns5:violatesRelationship <https://w3id.org/caselinker/resource/case/nj_ag_2023_003/relationship/sister> .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2023_003/legal-step/sentenced> a ns1:Event,
+        ns1:LegalEvent,
+        ns8:LegalProceeding,
+        ns8:SentencingHearing ;
+    ns8:hasProceedingBeginPoint "2023-05-26T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2023_003/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 53 .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2023_003/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2023_003/relationship/sister> a ns5:CustodialRelationship,
+        ns5:FamilialRelationship ;
+    ns5:involvesChild <https://w3id.org/caselinker/resource/case/nj_ag_2023_003/role/victim/1> ;
+    ns5:involvesCustodian <https://w3id.org/caselinker/resource/case/nj_ag_2023_003/role/offender/1> ;
+    ns5:relationshipType "sister" .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2023_003/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2023-05-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/nj_ag_2023_003/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2023_003/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2023-05-26T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/nj_ag_2023_003/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/nj_ag_2023_003/phase/sentenced> a ns1:Phase,
+        ns8:SentencingPhase ;
+    ns4:hasPhaseBeginPoint "2023-05-26T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/camden-county> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Camden County" ;
+    ns2:name "Camden County" .
+
+<https://w3id.org/caselinker/resource/location/compitello> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Compitello" ;
+    ns2:name "Compitello" .
+
+<https://w3id.org/caselinker/resource/location/freehold> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Freehold" ;
+    ns2:name "Freehold" .
+
+<https://w3id.org/caselinker/resource/location/new-jersey> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Jersey" ;
+    ns2:name "New Jersey" .
+
+<https://w3id.org/caselinker/resource/location/nj> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "N.j." ;
+    ns2:name "N.j." .
+
+<https://w3id.org/caselinker/resource/location/spina> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Spina" ;
+    ns2:name "Spina" .
+
+<https://w3id.org/caselinker/resource/location/tonacchio> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tonacchio" ;
+    ns2:name "Tonacchio" .
+
+<https://w3id.org/caselinker/resource/location/trenton> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Trenton" ;
+    ns2:name "Trenton" .
+
+<https://w3id.org/caselinker/resource/location/woodbury> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Woodbury" ;
+    ns2:name "Woodbury" .
+

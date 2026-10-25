@@ -1,0 +1,118 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/detection#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2006_002> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 04:52:11.382423" ;
+    dcterms:identifier "illinois_ag_2006_002" ;
+    dcterms:modified "2026-10-18 04:52:11.382423" ;
+    dcterms:source <https://illinoisattorneygeneral.gov/News-Room/2006-2018-Press-Archive/200606-07%20WINFIELD%20POLICE%20ARREST%20ALLEGED%20CHILD%20PREDATOR.pdf>,
+        "ILLINOIS AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/chicago>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/schaumburg>,
+        <https://w3id.org/caselinker/resource/location/winfield> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/phase/charged> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/phase/charged> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/offense-event/charge-1> ;
+    ns1:usesMethod <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/tech/cybertipline> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/icac>,
+        <https://w3id.org/caselinker/resource/agency/illinois-department-of-corrections>,
+        <https://w3id.org/caselinker/resource/agency/winfield-police-department> ;
+    ns7:mentionsLocation <https://w3id.org/caselinker/resource/location/chicago>,
+        <https://w3id.org/caselinker/resource/location/illinois>,
+        <https://w3id.org/caselinker/resource/location/schaumburg>,
+        <https://w3id.org/caselinker/resource/location/winfield> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2006-06-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/offense-event/charge-1> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2006-06-07T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:participatesInEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/event/online-only>,
+        <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/offense-event/charge-1> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/agency/illinois-department-of-corrections> a ns6:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/winfield-police-department> a ns4:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "Winfield Police Department" .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/charge/1> a ns5:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/offense-event/charge-1> ;
+    ns7:chargeCluster "child_exploitation" ;
+    ns7:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/offense-event/charge-1> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/charge/1> ;
+    ns5:hasProceedingBeginPoint "2006-06-07T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns3:ageEstimate 32 .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/phase/charged> a ns1:LegalProcessPhase,
+        ns4:Phase ;
+    ns1:hasPhaseBeginPoint "2006-06-07T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/chicago> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Chicago" ;
+    ns2:name "Chicago" .
+
+<https://w3id.org/caselinker/resource/location/illinois> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Illinois" ;
+    ns2:name "Illinois" .
+
+<https://w3id.org/caselinker/resource/location/schaumburg> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Schaumburg" ;
+    ns2:name "Schaumburg" .
+
+<https://w3id.org/caselinker/resource/location/winfield> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Winfield" ;
+    ns2:name "Winfield" .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/event/online-only> a ns1:ChildSexualAbuseEvent,
+        ns4:Event ;
+    ns1:severityLevel 1 ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/chat> .
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/offense-event/charge-1> a ns1:ChildSexualAbuseEvent,
+        ns4:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" ;
+    ns1:usesChannel <https://w3id.org/caselinker/resource/platform/chat> .
+
+
+<https://w3id.org/caselinker/resource/case/illinois_ag_2006_002> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/illinois_ag_2006_002/provenance> .

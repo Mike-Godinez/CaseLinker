@@ -1,0 +1,162 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns2: <https://cacontology.projectvic.org/custodial#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix ns8: <https://cacontology.projectvic.org/detection#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080> a ns5:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 02:38:31.849887" ;
+    dcterms:identifier "doj_safe_childhood_2022_080" ;
+    dcterms:modified "2026-10-18 12:37:35.433869" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/provenance> ;
+    dcterms:source <https://www.justice.gov/usao-mdpa/pr/former-lackawanna-county-teacher-sentenced-child-pornography-charges>,
+        "DOJ SAFE CHILDHOOD" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/archbald>,
+        <https://w3id.org/caselinker/resource/location/lackawanna-county>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania>,
+        <https://w3id.org/caselinker/resource/location/scranton>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns5:currentPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/phase/sentenced> ;
+    ns5:hasPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/phase/sentenced> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/event/trust-violation>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/offense-event/charge-3> ;
+    ns5:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/ceos>,
+        <https://w3id.org/caselinker/resource/agency/doj>,
+        <https://w3id.org/caselinker/resource/agency/fbi>,
+        <https://w3id.org/caselinker/resource/agency/lackawanna-county-district-attorneys-office>,
+        <https://w3id.org/caselinker/resource/agency/usao> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/archbald>,
+        <https://w3id.org/caselinker/resource/location/lackawanna-county>,
+        <https://w3id.org/caselinker/resource/location/pennsylvania>,
+        <https://w3id.org/caselinker/resource/location/scranton>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
+
+<https://w3id.org/caselinker/resource/agency/ceos> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/doj> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/fbi> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/lackawanna-county-district-attorneys-office> a ns7:OrganizationLikeEntity,
+        ns4:StateAgency ;
+    rdfs:label "Lackawanna County District Attorney's Office" .
+
+<https://w3id.org/caselinker/resource/agency/usao> a ns4:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/charge/1> a ns1:CSAM_Possession,
+        ns1:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/charge/2> a ns1:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns3:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/charge/3> a ns1:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/offense-event/charge-3> ;
+    ns3:chargeCluster "child_exploitation" ;
+    ns3:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/offense-event/charge-3> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/event/project-safe-childhood> a ns7:Event,
+        ns4:ProjectSafeChildhoodOperation .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/event/trust-violation> a ns2:AuthorityAbuse,
+        ns2:TrustViolation ;
+    ns2:violatesRelationship <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/relationship/teacher> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns1:LegalProceeding ;
+    ns1:hasCharge <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/charge/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/charge/2>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/charge/3> ;
+    ns1:hasProceedingBeginPoint "2022-10-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns1:resultsSentence <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/legal-step/sentenced> a ns7:Event,
+        ns7:LegalEvent,
+        ns1:LegalProceeding,
+        ns1:SentencingHearing ;
+    ns1:hasProceedingBeginPoint "2022-10-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns8:ageEstimate 46 .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/relationship/teacher> a ns2:CustodialRelationship,
+        ns2:Teacher ;
+    ns2:involvesChild <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/role/victim/1> ;
+    ns2:involvesCustodian <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/role/offender/1> ;
+    ns2:relationshipType "teacher" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2022-10-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/offense-event/charge-3> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2022-10-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/offense-event/charge-3> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/sentence/1> a ns1:CriminalSentence,
+        ns1:PrisonSentence ;
+    rdfs:label "180 months" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/phase/sentenced> a ns7:Phase,
+        ns1:SentencingPhase ;
+    ns5:hasPhaseBeginPoint "2022-10-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/archbald> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Archbald" ;
+    ns6:name "Archbald" .
+
+<https://w3id.org/caselinker/resource/location/lackawanna-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lackawanna County" ;
+    ns6:name "Lackawanna County" .
+
+<https://w3id.org/caselinker/resource/location/pennsylvania> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Pennsylvania" ;
+    ns6:name "Pennsylvania" .
+
+<https://w3id.org/caselinker/resource/location/scranton> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Scranton" ;
+    ns6:name "Scranton" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns6:name "United States" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/event/csam> a ns5:CSAMIncident,
+        ns7:Event ;
+    ns6:hasFacet <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2022_080/offense-event/charge-3> a ns5:ChildSexualAbuseEvent,
+        ns7:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" .
+

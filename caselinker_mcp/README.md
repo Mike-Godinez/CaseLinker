@@ -2,15 +2,16 @@
 
 The CaseLinker MCP (Model Context Protocol) server exposes structured tools to agents and AI Applications (Cursor, Claude Desktop, and other MCP clients). Tools include corpus search and analysis, knowledge graphs, triage, free court records search (via CourtListener), and the **collector suite** (press PDFs and free RECAP downloads).
 
-- **29** tools wrap the CaseLinker REST API
+- **28** tools wrap the CaseLinker REST API
 - **8** are MCP-only corpus / graph helpers
+- **1** SPARQL tool (`sparql_query`) — live `/sparql`, local Oxigraph, or local `.nq`
 - **4** search free public court and DOJ press records
 - **1** collector READ (`probe_press_url`) always
 - **8** collector WRITE — **local MCP only** (not registered on Railway)
 - **2** local-disk READ tools (`find_ingested_duplicates`, `verify_duplicate_pdf_pages`) — local MCP only
 
-**Local stdio / local FastAPI mount:** **52 tools** (full READ + WRITE).
-**Railway hosted MCP:** **42 tools** (collector WRITE and local-disk duplicate tools omitted).
+**Local stdio / local FastAPI mount:** **54 tools** (full READ + WRITE).
+**Railway hosted MCP:** **44 tools** (collector WRITE and local-disk duplicate tools omitted).
 
 Corpus and analysis tools are read-only against the database. Collector WRITE tools write local JSON/PDFs only; they do not ingest into sqlite.
 
@@ -61,32 +62,37 @@ Set `CASELINKER_KEY` to a value listed in `CASELINKER_TRUSTED_KEYS` on Railway o
 
 ## Tool tiers
 
-**47 public** + **5 trusted-key sensitive** = **52 tools** on local MCP.
-On Railway hosted MCP the eight collector WRITE tools and the two local-disk duplicate tools are omitted → **37 public** + **5 trusted** = **42 tools**.
+**48 public** + **6 trusted-key sensitive** = **54 tools** on local MCP.
+On Railway hosted MCP the eight collector WRITE tools and the two local-disk duplicate tools are omitted → **38 public** + **6 trusted** = **44 tools**.
 
 ### Public tier
 
 Trusted key does **not** change behavior. Includes corpus search, analysis, ontology, stats, on-demand graphs, free public-record search, and collector helpers:
 
-- Corpus: `get_corpus_stats`, `get_cases_page`, `get_cases_by_ids`
+- Corpus: `get_corpus_stats`, `get_cases_page`, `get_cases_by_ids`, `get_field_disagreements` (per-field extraction disagreements / review queue)
 - Search / cohorts: `filter_cases_by_tags`, `get_facet_tree`, `get_cohort_members`, `tree_traversal`
 - Analysis: `run_automated_analysis`, `triage_text`, `get_triage_eval_metrics`
 - Stats / filters: `get_case_count`, `get_facet_distinct`, `get_unique_tags`, `tag_threader`, `get_case_ids_by_filter`, `get_stats_detailed`, `get_technology_revolver`, `get_cluster_groups`, `get_location_stats`, `get_triage_model_corpus`
 - Ontology (pre-merged): `get_knowledge_graph`, `get_case_graph_manifest`
-- Reference: `get_case_studies`, `get_case_study_notes`, `list_sources`
-- Q1 research: `q1_platform_evidence` (platform harm evidence cohorts)
+- Reference: `get_case_studies`, `list_sources`
+- Platform affordance evidence: `platform_affordance_evidence` (historical platform-harm snapshot cohorts)
+
+`platform_affordance_evidence` uses a precomputed index, not a live database cohort. Every successful index and platform-filtered response includes top-level `freshness` alongside the original `_meta`. `generated_at`, `cases_processed`, `db_gaps` and `text_cap` describe the recorded build. `live_case_count` and `coverage_pct` are filled from the database this process serves. `stale` is false only when the snapshot recorded `corpus_case_count` and `extraction_run_fingerprint` and both still match that database. Equal case counts alone do not establish freshness. `require_fresh=true` returns an error when the snapshot is stale, `db_gaps` is above the warning threshold, or coverage is under 95%. `coverage_status: reported_gaps` still does not treat zero gaps as proof of completeness.
+
+Use `filter_cases_by_tags` for current database cohorts and `get_corpus_stats` for reported corpus size. This disclosure does not rebuild the index, verify its records, or establish complete or current corpus coverage.
 - On-demand graphs (MCP-only): `case2cac`, `graph_get_neighbors`, `graph_find_cases_by_concept`, `graph_summarize`, `graph_compare_cohorts`, `export_case_graph_ttl`
 - Free public records (**READ**, all hosts): `search_doj_press_releases`, `search_courtlistener`, `list_free_recap_documents`, `resolve_free_recap_download`, `probe_press_url`
 - Collector **WRITE** (**local MCP only**): `harvest_doj_press_topic`, `fetch_press_listing_urls`, `resolve_press_urls`, `build_press_pdf`, `collect_case_dual_path`, `download_free_recap`, `fetch_free_key_docs`, `drop_collected_pdf_pages`
 
-### Trusted-key sensitive (5 tools)
+### Trusted-key sensitive (6 tools)
 
 | Tool | Without trusted key | With trusted key |
 |------|---------------------|------------------|
-| `get_all_cases` | **403** (bulk export blocked) | Full corpus export; optional `include_raw_data` |
+| `get_all_cases` | **403** (bulk export blocked) | Full corpus via `GET /api/corpus` (every column) |
 | `get_lifecycle_cases` | **403** (lifecycle export blocked) | Lifecycle swimlane / visualization payload |
 | `get_lifecycle_lstar` | **403** (L* export blocked) | Full `lstar_all_cases.json` (transition matrix, global L*, per-case details) |
 | `get_case` | Sanitized case (no `raw_data`) | Full case including narratives |
+| `get_case_assertions` | Per-method assertions and resolutions with offsets, no span excerpts | Includes span excerpts and LLM quotes |
 | `llm_chat` | 50 requests/IP/day | Daily cap exempt (slowapi 15/min still applies) |
 
 `get_all_cases` and lifecycle tools are blocked without trusted access. `get_case` and `llm_chat` are publicly accessible with reduced payload or stricter rate limits.
@@ -119,7 +125,7 @@ Fill in `CASELINKER_KEY` locally only if you need bulk export, full case narrati
 
 ## Hosted (Railway)
 
-CaseLinker exposes **two HTTP transports** on Railway (pick one in your MCP client config). Hosted MCP is **42 tools**: corpus + READ collector/public-records. Collector **WRITE** tools are not registered here — run local stdio MCP or the `collector/` CLI to write PDFs on your machine.
+CaseLinker exposes **two HTTP transports** on Railway (pick one in your MCP client config). Hosted MCP is **44 tools**: corpus + READ collector/public-records. Collector **WRITE** tools are not registered here — run local stdio MCP or the `collector/` CLI to write PDFs on your machine.
 
 | Transport | Client URL | How messages flow |
 |-----------|------------|-------------------|
@@ -177,7 +183,7 @@ Add `.cursor/mcp.json` to `.gitignore` if it contains secrets.
 
 ## Local corpus
 
-Useful once you are pointing MCP at localhost. The processed sqlite corpus is **10,362 case reports**, **126,314 extracted features**, and **4,000+ distinct law-enforcement agencies** (**61** sources, **10,362** per-case CAC graphs under `ontology/graph_output/`).
+Useful once you are pointing MCP at localhost. The live corpus is **10,711 case reports**, **131,332 extracted features**, and **4,428 distinct law-enforcement agencies** (**70** sources). Per-case graphs under `ontology/graph_output/` are the previous export until the Phase 3 reload.
 
 - **Railway:** same deployed snapshot, public rate limits. Set `CASELINKER_API_URL=https://caselinker.up.railway.app`.
 - **Localhost:** set `CASELINKER_API_URL=http://localhost:8000` after `python3 run/main.py`. The local DB starts empty unless you populate it.
@@ -190,7 +196,7 @@ export CASELINKER_API_URL=https://caselinker.up.railway.app
 python3 scripts/run/import_corpus_from_api.py
 ```
 
-That pulls the full production corpus via the trusted bulk API (`get_all_cases` / `GET /api/cases`). Without a trusted key, bulk export returns 403. You can also build a local DB by ingesting press-release PDFs yourself (see the repo root README and `collector/`).
+That pulls the full production corpus via `GET /api/corpus` (`get_all_cases` calls the same route). Without a trusted key, bulk export returns 403. You can also build a local DB by ingesting press-release PDFs yourself (see the repo root README and `collector/`).
 
 ## On-Demand Graph Generation
 
@@ -216,11 +222,12 @@ For a standalone SSE process (not via Railway mount), set `MCP_TRANSPORT=sse` an
 
 ## Tools
 
-**52 tools locally / 42 on Railway.** See [`tool_registry.md`](tool_registry.md) for the authoritative list. Summary by tier:
+**54 tools locally / 44 on Railway.** See [`tool_registry.md`](tool_registry.md) for the authoritative list. Summary by tier:
 
 | Tier | Local | Railway | Examples |
 |------|------:|--------:|----------|
-| Public (trusted key irrelevant) | 47 | 37 | `get_cases_page`, `verify_duplicate_pdf_pages`; WRITE only local |
-| Trusted-key sensitive | 5 | 5 | `get_all_cases`, `get_lifecycle_cases`, `get_lifecycle_lstar`, `get_case`, `llm_chat` |
+| Public (trusted key irrelevant) | 48 | 38 | `get_cases_page`, `verify_duplicate_pdf_pages`; WRITE only local |
+| Trusted-key sensitive | 6 | 6 | `get_all_cases`, `get_lifecycle_cases`, `get_lifecycle_lstar`, `get_case`, `get_case_assertions`, `llm_chat` |
 
 Authoritative implementation: `@mcp.tool()` definitions in `server.py`. Tool docstrings there remain the source of parameter and behavior detail.
+

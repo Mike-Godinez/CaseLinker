@@ -1,72 +1,101 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org#> .
+@prefix ns6: <https://w3id.org/caselinker/resource/vocab/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T20:16:29.695344" ;
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_013> a ns5:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 07:19:08.162642" ;
     dcterms:identifier "tbi_icac_2013_013" ;
-    dcterms:modified "2026-09-10T20:16:29.695344" ;
+    dcterms:modified "2026-10-18 07:19:08.162642" ;
     dcterms:source <https://tbinewsroom.com/2013/11/08/tennessee-receives-a-from-shared-hope-international-for-strength-of-human-sex-trafficking-laws/>,
         "TBI ICAC" ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/event/multi-jurisdiction>,
-        <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/event/trafficking>,
-        <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/a-human-trafficking-task-force>,
-        <https://caselinker.up.railway.app/resource/agency/tennessee-bureau-of-investigation> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/louisiana>,
+        <https://w3id.org/caselinker/resource/location/tennessee>,
+        <https://w3id.org/caselinker/resource/location/washington>,
+        <https://w3id.org/caselinker/resource/location/washington-dc> ;
+    ns5:hasStep <https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/event/multi-jurisdiction>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/event/trafficking>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/legal-proceeding> ;
+    ns5:investigationStatus "unknown" ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/a-human-trafficking-task-force>,
+        <https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> ;
+    ns6:mentionsLocation <https://w3id.org/caselinker/resource/location/louisiana>,
+        <https://w3id.org/caselinker/resource/location/tennessee>,
+        <https://w3id.org/caselinker/resource/location/washington>,
+        <https://w3id.org/caselinker/resource/location/washington-dc> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/role/offender/1> a ns5:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns5:hasRoleBeginPoint "2013-11-08T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/role/victim/1> a ns5:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns5:hasRoleBeginPoint "2013-11-08T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/agency/a-human-trafficking-task-force> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
+<https://w3id.org/caselinker/resource/agency/a-human-trafficking-task-force> a ns3:OrganizationLikeEntity,
+        ns1:LocalAgency ;
     rdfs:label "a Human Trafficking Task Force" .
 
-<https://caselinker.up.railway.app/resource/agency/tennessee-bureau-of-investigation> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/tennessee-bureau-of-investigation> a ns1:StateAgency .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/charge/1> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:StateCharge ;
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/charge/1> a ns2:CriminalCharge,
+        ns2:StateCharge ;
     rdfs:label "sexual exploitation of a minor" .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/charge/2> a cacontology-legal-outcomes:CriminalCharge,
-        cacontology-legal-outcomes:SexTrafficking ;
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/charge/2> a ns2:CriminalCharge,
+        ns2:SexTrafficking ;
     rdfs:label "sex trafficking" .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/charge/3> a cacontology-legal-outcomes:CriminalCharge ;
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/charge/3> a ns2:CriminalCharge ;
     rdfs:label "sexual exploitation" ;
-    ns1:chargeCluster "sexual_exploitation_unspecified" .
+    ns6:chargeCluster "sexual_exploitation_unspecified" .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/event/multi-jurisdiction> a cac-core:Event,
-        cacontology-multi:MultiJurisdictionalInvestigation ;
-    cacontology-multi:crossesBorders true .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/event/multi-jurisdiction> a ns3:Event,
+        ns1:MultiJurisdictionalInvestigation ;
+    ns1:crossesBorders true .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/event/trafficking> a cac-core:Event,
-        cacontology-legal-outcomes:SexTrafficking .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/event/trafficking> a ns3:Event,
+        ns2:SexTrafficking .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/charge/2>,
-        <https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/charge/3> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2013-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns2:LegalProceeding ;
+    ns2:hasCharge <https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/charge/1>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/charge/2>,
+        <https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/charge/3> ;
+    ns2:hasProceedingBeginPoint "2013-11-08T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/tbi_icac_2013_013/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
+<https://w3id.org/caselinker/resource/location/louisiana> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Louisiana" ;
+    ns4:name "Louisiana" .
+
+<https://w3id.org/caselinker/resource/location/tennessee> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Tennessee" ;
+    ns4:name "Tennessee" .
+
+<https://w3id.org/caselinker/resource/location/washington> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington" ;
+    ns4:name "Washington" .
+
+<https://w3id.org/caselinker/resource/location/washington-dc> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Washington D.c" ;
+    ns4:name "Washington D.c" .
+
+
+<https://w3id.org/caselinker/resource/case/tbi_icac_2013_013> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/tbi_icac_2013_013/provenance> .

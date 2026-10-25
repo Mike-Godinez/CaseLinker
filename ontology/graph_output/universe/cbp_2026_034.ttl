@@ -1,49 +1,82 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns2: <https://cacontology.projectvic.org/core#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org#> .
+@prefix ns5: <https://ontology.unifiedcyberontology.org/uco/core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_034> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-10T19:36:53.646802" ;
+<https://w3id.org/caselinker/resource/case/cbp_2026_034> a ns4:CACInvestigation,
+        ns2:EnduringEntity ;
+    dcterms:created "2026-10-18 00:55:13.838346" ;
     dcterms:identifier "cbp_2026_034" ;
-    dcterms:modified "2026-09-10T19:36:53.646802" ;
+    dcterms:modified "2026-10-18 00:55:13.838346" ;
     dcterms:source <https://www.cbp.gov/newsroom/local-media-release/laredo-cbp-officers-apprehend-fugitive-sought-child-indecency>,
         "CBP" ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/cbp_2026_034/event/distribution> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/dallas-county-sheriffs-office>,
-        <https://caselinker.up.railway.app/resource/agency/webb-county-sheriffs-office> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/dallas>,
+        <https://w3id.org/caselinker/resource/location/laredo>,
+        <https://w3id.org/caselinker/resource/location/mexico>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united-states> ;
+    ns4:hasStep <https://w3id.org/caselinker/resource/case/cbp_2026_034/event/distribution> ;
+    ns1:involvesAgency <https://w3id.org/caselinker/resource/agency/dallas-county-sheriffs-office>,
+        <https://w3id.org/caselinker/resource/agency/webb-county-sheriffs-office> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/dallas>,
+        <https://w3id.org/caselinker/resource/location/laredo>,
+        <https://w3id.org/caselinker/resource/location/mexico>,
+        <https://w3id.org/caselinker/resource/location/texas>,
+        <https://w3id.org/caselinker/resource/location/united-states> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_034/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/cbp_2026_034/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/cbp_2026_034/role/offender/1> a ns4:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns4:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/cbp_2026_034/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_034/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/cbp_2026_034/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/cbp_2026_034/role/victim/1> a ns4:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns4:hasRoleBeginPoint "2026-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:hasRole <https://w3id.org/caselinker/resource/case/cbp_2026_034/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/platform/twitter-x> a cacontology-platforms:SocialMediaPlatform ;
+<https://w3id.org/caselinker/resource/platform/twitter-x> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
     rdfs:label "Twitter / X" .
 
-<https://caselinker.up.railway.app/resource/agency/dallas-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/dallas-county-sheriffs-office> a ns1:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/agency/webb-county-sheriffs-office> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/webb-county-sheriffs-office> a ns1:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_034/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution ;
-    cacontology:severityLevel 3 .
+<https://w3id.org/caselinker/resource/case/cbp_2026_034/event/distribution> a ns2:Event,
+        <https://cacontology.projectvic.org/legal-outcomes#CSAM_Distribution> ;
+    ns4:severityLevel 3 .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_034/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 71 .
+<https://w3id.org/caselinker/resource/case/cbp_2026_034/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/cbp_2026_034/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/cbp_2026_034/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
+<https://w3id.org/caselinker/resource/location/dallas> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Dallas" ;
+    ns5:name "Dallas" .
+
+<https://w3id.org/caselinker/resource/location/laredo> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Laredo" ;
+    ns5:name "Laredo" .
+
+<https://w3id.org/caselinker/resource/location/mexico> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Mexico" ;
+    ns5:name "Mexico" .
+
+<https://w3id.org/caselinker/resource/location/texas> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns5:name "Texas" .
+
+<https://w3id.org/caselinker/resource/location/united-states> a ns2:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "United States" ;
+    ns5:name "United States" .
+
+
+<https://w3id.org/caselinker/resource/case/cbp_2026_034> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/cbp_2026_034/provenance> .

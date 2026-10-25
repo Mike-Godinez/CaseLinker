@@ -1,0 +1,136 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
+@prefix ns7: <https://cacontology.projectvic.org/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131> a ns2:CACInvestigation,
+        ns7:EnduringEntity ;
+    dcterms:created "2026-10-18 02:38:24.340643" ;
+    dcterms:identifier "doj_safe_childhood_2023_131" ;
+    dcterms:modified "2026-10-18 12:15:52.233461" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/provenance> ;
+    dcterms:source <https://www.justice.gov/usao-edtx/pr/denton-county-man-sentenced-20-years-federal-prison-child-pornography-violations>,
+        "DOJ SAFE CHILDHOOD" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/briggs>,
+        <https://w3id.org/caselinker/resource/location/denton-county>,
+        <https://w3id.org/caselinker/resource/location/texas> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/phase/sentenced> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/phase/sentenced> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/event/project-safe-childhood>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/legal-step/sentenced>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/offense-event/charge-3> ;
+    ns5:involvesAgency <https://w3id.org/caselinker/resource/agency/doj>,
+        <https://w3id.org/caselinker/resource/agency/plano-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/briggs>,
+        <https://w3id.org/caselinker/resource/location/denton-county>,
+        <https://w3id.org/caselinker/resource/location/texas> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2023-09-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/offense-event/charge-3> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2023-09-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/event/csam>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/offense-event/charge-3> ;
+    ns7:hasRole <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/doj> a ns5:FederalAgency .
+
+<https://w3id.org/caselinker/resource/agency/plano-police-department> a ns5:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/charge/1> a ns3:CSAM_Possession,
+        ns3:CriminalCharge ;
+    rdfs:label "child pornography" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/charge/2> a ns3:CriminalCharge ;
+    rdfs:label "sexual exploitation" ;
+    ns1:chargeCluster "sexual_exploitation_unspecified" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/charge/3> a ns3:CriminalCharge ;
+    rdfs:label "child exploitation" ;
+    rdfs:seeAlso <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/offense-event/charge-3> ;
+    ns1:chargeCluster "child_exploitation" ;
+    ns1:chargeOffenseEvent <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/offense-event/charge-3> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/event/distribution> a ns7:Event,
+        ns3:CSAM_Distribution ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/event/project-safe-childhood> a ns7:Event,
+        ns5:ProjectSafeChildhoodOperation ;
+    ns2:severityLevel 3 .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/facet/csam> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/legal-proceeding> a ns7:Event,
+        ns7:LegalEvent,
+        ns3:LegalProceeding ;
+    ns3:hasCharge <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/charge/1>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/charge/2>,
+        <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/charge/3> ;
+    ns3:hasProceedingBeginPoint "2023-09-27T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:resultsSentence <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/legal-step/sentenced> a ns7:Event,
+        ns7:LegalEvent,
+        ns3:LegalProceeding,
+        ns3:SentencingHearing ;
+    ns3:hasProceedingBeginPoint "2023-09-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 49 .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/sentence/1> a ns3:CriminalSentence,
+        ns3:PrisonSentence ;
+    rdfs:label "240 months" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/phase/sentenced> a ns7:Phase,
+        ns3:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2023-09-27T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/briggs> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Briggs’" ;
+    ns4:name "Briggs’" .
+
+<https://w3id.org/caselinker/resource/location/denton-county> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Denton County" ;
+    ns4:name "Denton County" .
+
+<https://w3id.org/caselinker/resource/location/texas> a ns7:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Texas" ;
+    ns4:name "Texas" .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/event/csam> a ns2:CSAMIncident,
+        ns7:Event ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/chat> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/facet/csam> .
+
+<https://w3id.org/caselinker/resource/case/doj_safe_childhood_2023_131/offense-event/charge-3> a ns2:ChildSexualAbuseEvent,
+        ns7:Event,
+        <https://ontology.unifiedcyberontology.org/uco/action/Crime> ;
+    rdfs:label "Inferred offense from charge: child exploitation" ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/chat> .
+

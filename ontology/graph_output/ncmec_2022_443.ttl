@@ -1,120 +1,126 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-undercover: <https://cacontology.projectvic.org/undercover#> .
-@prefix cacontology-us-ncmec: <https://cacontology.projectvic.org/us/ncmec#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org/core#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-action: <https://ontology.unifiedcyberontology.org/uco/action/> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/admission/1/extraction-confidence> a cac-core:AssessmentResult ;
-    cac-core:assesses <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/admission/1> ;
-    cac-core:generatedBy <https://caselinker.up.railway.app/resource/case/ncmec_2022_443> ;
-    cac-core:hasConfidence 0.65 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/admission/1/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_443/admission/1> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_443> ;
+    ns1:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2022-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/admission/2/extraction-confidence> a ns1:AssessmentResult ;
+    ns1:assesses <https://w3id.org/caselinker/resource/case/ncmec_2022_443/admission/2> ;
+    ns1:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2022_443> ;
+    ns1:hasConfidence 0.65 .
 
-<https://caselinker.up.railway.app/resource/agency/florida-department-of-law-enforcement> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/role/victim/1> a ns3:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns3:hasRoleBeginPoint "2022-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_443/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_443/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:45:06.371947" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/charge/1> a ns5:CriminalCharge ;
+    rdfs:label "FOX6 News Milwaukee Crime and Public Safety Published June" ;
+    ns5:indictmentCounts 13 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/charge/2> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "child pornography" ;
+    ns5:indictmentCounts 15 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/legal-proceeding> a ns1:Event,
+        ns1:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2022_443/charge/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_443/charge/2> ;
+    ns5:hasProceedingBeginPoint "2022-06-01T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns6:ageEstimate 69 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/tech/cybertipline> a <https://cacontology.projectvic.org/us/ncmec#NCMECCybertipReport> ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443> a ns3:CACInvestigation,
+        ns1:EnduringEntity ;
+    dcterms:created "2026-10-17 21:51:24.718441" ;
     dcterms:identifier "ncmec_2022_443" ;
-    dcterms:modified "2026-09-15T20:45:06.371947" ;
-    dcterms:source <https://www.villages-news.com/2022/08/23/search-warrant-leads-to-arrest-of-suspect-with-electronic-images-of-child-pornography/>,
+    dcterms:modified "2026-10-17 21:51:24.718441" ;
+    dcterms:source <https://www.fox6now.com/news/brookfield-child-pornography-charges-sturino>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/lady-lake> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/phase/booked> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/phase/booked> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/admission/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/cybertip>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/legal-proceeding>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/offense-event/charge-2> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/florida-department-of-law-enforcement>,
-        <https://caselinker.up.railway.app/resource/agency/ncmec> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/lady-lake> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/brookfield>,
+        <https://w3id.org/caselinker/resource/location/wis> ;
+    ns3:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_443/phase/charged> ;
+    ns3:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2022_443/phase/charged> ;
+    ns3:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2022_443/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_443/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_443/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_443/legal-proceeding> ;
+    ns3:investigationStatus "unknown" ;
+    ns3:usesMethod <https://w3id.org/caselinker/resource/case/ncmec_2022_443/tech/cybertipline> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/brookfield>,
+        <https://w3id.org/caselinker/resource/location/wis> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/charge/1> a cacontology-legal-outcomes:CSAM_Possession,
-        cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "possession of child pornography" ;
-    cacontology-legal-outcomes:indictmentCounts 2 .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/phase/charged> a ns3:LegalProcessPhase,
+        ns1:Phase ;
+    ns3:hasPhaseBeginPoint "2022-06-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/charge/2> a cacontology-legal-outcomes:CriminalCharge ;
-    rdfs:label "child exploitation" ;
-    rdfs:seeAlso <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/offense-event/charge-2> ;
-    ns1:chargeCluster "child_exploitation" ;
-    ns1:chargeOffenseEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/offense-event/charge-2> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/role/offender/1> a ns3:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns3:hasRoleBeginPoint "2022-06-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2022_443/event/possession> ;
+    ns1:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2022_443/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/cybertip> a cacontology-us-ncmec:NCMECCybertipReport ;
-    cacontology-us-ncmec:supportedBy <https://caselinker.up.railway.app/resource/agency/ncmec> .
+<https://w3id.org/caselinker/resource/location/brookfield> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Brookfield" ;
+    ns4:name "Brookfield" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+<https://w3id.org/caselinker/resource/location/wis> a ns1:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wis." ;
+    ns4:name "Wis." .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasCharge <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/charge/1>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/charge/2> ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2022-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "sending and receiving child porn after he \"became interested out of curiosity" ;
+    dcterms:source <https://www.fox6now.com/news/brookfield-child-pornography-charges-sturino> ;
+    ns2:admissionContext "IELD, Wis. - A Brookfield man is charged with 13 counts of child pornography possession. Prosecutors say Michael Sturino, 69, admitted to..." ;
+    ns2:admissionFrame "admitted_to" ;
+    ns2:admissionTheme "harm_conduct" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_443/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns4:description "sending and receiving child porn after he \"became interested out of curiosity" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "had accounts using a woman's name \"because he found it easier to communicate with people if they thought he was a female" ;
+    dcterms:source <https://www.fox6now.com/news/brookfield-child-pornography-charges-sturino> ;
+    ns2:admissionContext "mitted to sending and receiving child porn after he \"became interested out of curiosity.\" Sturino also admitted that he had accounts usin..." ;
+    ns2:admissionFrame "admitted_paraphrase" ;
+    ns2:admissionTheme "minimization" ;
+    ns2:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2022_443/role/offender/1> ;
+    ns2:evidenceTier "press_release_stated" ;
+    ns2:quoteType "paraphrase" ;
+    ns4:description "had accounts using a woman's name \"because he found it easier to communicate with people if they thought he was a female" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443/event/possession> a ns3:CSAMIncident,
+        ns1:Event ;
+    ns3:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2022_443/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2022_443/admission/2> ;
+    ns3:usesChannel <https://w3id.org/caselinker/resource/platform/kik> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2022_443/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2022-08-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology:participatesInEvent <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/event/possession>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/offense-event/charge-2> ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/agency/ncmec> a cacontology-multi:FederalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/phase/booked> a cacontology:InitialPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2022-08-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/lady-lake> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Lady Lake" ;
-    uco-core:name "Lady Lake" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/admission/1> a cacontology-undercover:IncriminatingStatement ;
-    rdfs:label "using a computer to access the internet for the purpose of searching for and purposely viewing child exploitation mat..." ;
-    dcterms:source <https://www.villages-news.com/2022/08/23/search-warrant-leads-to-arrest-of-suspect-with-electronic-images-of-child-pornography/> ;
-    ns1:admissionContext "w Enforcement. A warrant was obtained, leading to a search last week at Pollitt’s home. “Michael Pollitt admitted to using a computer to..." ;
-    ns1:admissionFrame "admitted_to" ;
-    ns1:admissionTheme "tech_use" ;
-    ns1:attributedToOffenderRole <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/role/offender/1> ;
-    ns1:evidenceTier "press_release_stated" ;
-    ns1:quoteType "paraphrase" ;
-    uco-core:description "using a computer to access the internet for the purpose of searching for and purposely viewing child exploitation material,” the affidavit said" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/event/possession> a cacontology:CSAMIncident,
-        cac-core:Event ;
-    cacontology:producesArtifact <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/admission/1> ;
-    uco-core:hasFacet <https://caselinker.up.railway.app/resource/case/ncmec_2022_443/facet/possession> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2022_443/offense-event/charge-2> a cacontology:ChildSexualAbuseEvent,
-        cac-core:Event,
-        uco-action:Crime ;
-    rdfs:label "Inferred offense from charge: child exploitation" .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2022_443> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2022_443/provenance> .

@@ -1,0 +1,139 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2024_008> a ns2:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 04:30:18.441174" ;
+    dcterms:identifier "fresno_so_2024_008" ;
+    dcterms:modified "2026-10-18 04:30:18.441174" ;
+    dcterms:source <https://www.fresnosheriff.org/media-relations/detectives-arrest-registered-sex-offender-for-possession-of-child-sexual-abuse-material.html>,
+        "FRESNO SO" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/fresno-county>,
+        <https://w3id.org/caselinker/resource/location/kingsburg>,
+        <https://w3id.org/caselinker/resource/location/lewis-st>,
+        <https://w3id.org/caselinker/resource/location/the-central-valley> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/fresno_so_2024_008/phase/convicted> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/fresno_so_2024_008/phase/convicted> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/fresno_so_2024_008/event/possession>,
+        <https://w3id.org/caselinker/resource/case/fresno_so_2024_008/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/fresno_so_2024_008/legal-step/convicted> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/icac> ;
+    ns3:mentionsLocation <https://w3id.org/caselinker/resource/location/fresno-county>,
+        <https://w3id.org/caselinker/resource/location/kingsburg>,
+        <https://w3id.org/caselinker/resource/location/lewis-st>,
+        <https://w3id.org/caselinker/resource/location/the-central-valley> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2024_008/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-05-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/fresno_so_2024_008/event/possession> ;
+    ns2:perpetratorRegisteredSexOffender true ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/fresno_so_2024_008/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2024_008/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-05-13T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/fresno_so_2024_008/event/possession> ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/fresno_so_2024_008/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/icac> a <https://cacontology.projectvic.org/taskforce#StateICACtaskForce> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2024_008/charge/1> a ns6:CSAM_Possession,
+        ns6:CriminalCharge ;
+    rdfs:label "child sexual abuse material" .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2024_008/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2024_008/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): booked into the Fresno County Jail" ;
+    ns6:hasCharge <https://w3id.org/caselinker/resource/case/fresno_so_2024_008/charge/1> ;
+    ns6:hasProceedingBeginPoint "2024-05-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2024_008/legal-step/convicted> a ns4:Event,
+        ns4:LegalEvent,
+        ns6:LegalProceeding,
+        ns6:SentencingHearing ;
+    ns6:hasProceedingBeginPoint "2024-05-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2024_008/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 34 .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2024_008/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/platform/chat> a <https://cacontology.projectvic.org/platforms#AnonymousChatPlatform> ;
+    rdfs:label "chat" .
+
+<https://w3id.org/caselinker/resource/platform/discord> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Discord" .
+
+<https://w3id.org/caselinker/resource/platform/facebook> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Facebook" .
+
+<https://w3id.org/caselinker/resource/platform/instagram> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Instagram" .
+
+<https://w3id.org/caselinker/resource/platform/kik> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Kik" .
+
+<https://w3id.org/caselinker/resource/platform/snapchat> a <https://cacontology.projectvic.org/platforms#MessagingService> ;
+    rdfs:label "Snapchat" .
+
+<https://w3id.org/caselinker/resource/platform/social-media> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "social media" .
+
+<https://w3id.org/caselinker/resource/platform/tiktok> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "TikTok" .
+
+<https://w3id.org/caselinker/resource/platform/twitter-x> a <https://cacontology.projectvic.org/platforms#SocialMediaPlatform> ;
+    rdfs:label "Twitter / X" .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2024_008/phase/convicted> a ns4:Phase,
+        ns6:SentencingPhase ;
+    ns2:hasPhaseBeginPoint "2024-05-13T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/fresno-county> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Fresno County" ;
+    ns1:name "Fresno County" .
+
+<https://w3id.org/caselinker/resource/location/kingsburg> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Kingsburg" ;
+    ns1:name "Kingsburg" .
+
+<https://w3id.org/caselinker/resource/location/lewis-st> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lewis St." ;
+    ns1:name "Lewis St." .
+
+<https://w3id.org/caselinker/resource/location/the-central-valley> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "the Central Valley" ;
+    ns1:name "the Central Valley" .
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2024_008/event/possession> a ns2:CSAMIncident,
+        ns4:Event ;
+    ns2:severityLevel 3 ;
+    ns2:usesChannel <https://w3id.org/caselinker/resource/platform/chat>,
+        <https://w3id.org/caselinker/resource/platform/discord>,
+        <https://w3id.org/caselinker/resource/platform/facebook>,
+        <https://w3id.org/caselinker/resource/platform/instagram>,
+        <https://w3id.org/caselinker/resource/platform/kik>,
+        <https://w3id.org/caselinker/resource/platform/snapchat>,
+        <https://w3id.org/caselinker/resource/platform/social-media>,
+        <https://w3id.org/caselinker/resource/platform/tiktok>,
+        <https://w3id.org/caselinker/resource/platform/twitter-x> ;
+    ns1:hasFacet <https://w3id.org/caselinker/resource/case/fresno_so_2024_008/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/fresno_so_2024_008> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/fresno_so_2024_008/provenance> .

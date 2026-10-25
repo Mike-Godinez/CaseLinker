@@ -68,8 +68,8 @@ LIMIT 8"""
 def test_q3_named_graph_mega_encryption(client):
     q = """SELECT ?p ?o
 WHERE {
-  GRAPH <https://caselinker.up.railway.app/resource/case/nj_ag_2017_001> {
-    <https://caselinker.up.railway.app/resource/platform/meganz> ?p ?o .
+  GRAPH <https://w3id.org/caselinker/resource/case/nj_ag_2017_001> {
+    <https://w3id.org/caselinker/resource/platform/meganz> ?p ?o .
   }
 }"""
     r = post(client, q)
@@ -117,7 +117,7 @@ def test_service_federation_400(client):
 def test_values_after_where_returns_results_not_400(client):
     q = (
         "SELECT ?s WHERE { ?s ?p ?o } "
-        "VALUES ?s { <https://caselinker.up.railway.app/resource/case/nj_ag_2017_001> }"
+        "VALUES ?s { <https://w3id.org/caselinker/resource/case/nj_ag_2017_001> }"
     )
     r = post(client, q)
     assert r.status_code == 200, r.text
@@ -224,8 +224,8 @@ def test_concurrent_ten_distinct_queries(client):
         "ASK { ?s ?p ?o }",
         "SELECT (COUNT(*) AS ?n) WHERE { ?s a <https://cacontology.projectvic.org#CACInvestigation> }",
         "SELECT ?id WHERE { ?s <http://purl.org/dc/terms/identifier> ?id } LIMIT 3",
-        "ASK { GRAPH <https://caselinker.up.railway.app/resource/case/nj_ag_2017_001> { ?s ?p ?o } }",
-        "SELECT ?l WHERE { <https://caselinker.up.railway.app/resource/platform/kik> <http://www.w3.org/2000/01/rdf-schema#label> ?l } LIMIT 1",
+        "ASK { GRAPH <https://w3id.org/caselinker/resource/case/nj_ag_2017_001> { ?s ?p ?o } }",
+        "SELECT ?l WHERE { <https://w3id.org/caselinker/resource/platform/kik> <http://www.w3.org/2000/01/rdf-schema#label> ?l } LIMIT 1",
         "SELECT ?s WHERE { ?s a <https://cacontology.projectvic.org/multi-jurisdiction#FederalAgency> } LIMIT 2",
         "ASK { ?s <https://cacontology.projectvic.org#usesChannel> ?o }",
         "SELECT ?g WHERE { GRAPH ?g { ?s a <https://cacontology.projectvic.org#CACInvestigation> } } LIMIT 2",

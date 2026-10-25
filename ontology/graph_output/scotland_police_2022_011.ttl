@@ -1,0 +1,80 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns3: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns4: <https://cacontology.projectvic.org/core#> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_011> a ns1:CACInvestigation,
+        ns4:EnduringEntity ;
+    dcterms:created "2026-10-18 14:18:19.860547" ;
+    dcterms:identifier "scotland_police_2022_011" ;
+    dcterms:modified "2026-10-18 14:18:19.860547" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/scotland_police_2022_011/provenance> ;
+    dcterms:source <https://www.scotland.police.uk/what-s-happening/news/2022/december/former-councillor-jailed-for-sexual-offences-involving-teenage-boys-in-lanarkshire/>,
+        "SCOTLAND POLICE" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/lanarkshire>,
+        <https://w3id.org/caselinker/resource/location/paisley> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/scotland_police_2022_011/phase/sentenced> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/scotland_police_2022_011/phase/sentenced> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/scotland_police_2022_011/legal-proceeding>,
+        <https://w3id.org/caselinker/resource/case/scotland_police_2022_011/legal-step/sentenced> ;
+    ns1:investigationStatus "unknown" ;
+    ns3:involvesAgency <https://w3id.org/caselinker/resource/agency/police-scotland>,
+        <https://w3id.org/caselinker/resource/agency/police-scotlands-national-child-abuse-investigation-unit> ;
+    ns2:mentionsLocation <https://w3id.org/caselinker/resource/location/lanarkshire>,
+        <https://w3id.org/caselinker/resource/location/paisley> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_011/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2022-12-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2022_011/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_011/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2022-12-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns4:hasRole <https://w3id.org/caselinker/resource/case/scotland_police_2022_011/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/police-scotland> a ns3:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/police-scotlands-national-child-abuse-investigation-unit> a ns4:OrganizationLikeEntity,
+        ns3:LocalAgency ;
+    rdfs:label "Police Scotland's National Child Abuse Investigation Unit" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_011/legal-proceeding> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding ;
+    ns5:hasProceedingBeginPoint "2022-12-02T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns5:resultsSentence <https://w3id.org/caselinker/resource/case/scotland_police_2022_011/sentence/1> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_011/legal-step/sentenced> a ns4:Event,
+        ns4:LegalEvent,
+        ns5:LegalProceeding,
+        ns5:SentencingHearing ;
+    ns5:hasProceedingBeginPoint "2022-12-02T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_011/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_011/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_011/sentence/1> a ns5:CriminalSentence,
+        ns5:PrisonSentence ;
+    rdfs:label "six years" .
+
+<https://w3id.org/caselinker/resource/case/scotland_police_2022_011/phase/sentenced> a ns4:Phase,
+        ns5:SentencingPhase ;
+    ns1:hasPhaseBeginPoint "2022-12-02T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/lanarkshire> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Lanarkshire" ;
+    ns6:name "Lanarkshire" .
+
+<https://w3id.org/caselinker/resource/location/paisley> a ns4:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Paisley" ;
+    ns6:name "Paisley" .
+

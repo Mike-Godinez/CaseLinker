@@ -6,9 +6,10 @@ This class is the "intersection" layer that combines:
 - ML Processing Layer: NER / semantic extraction (ages, dates, orgs, locations, etc.)
 
 Merge logic:
-- Ages: NER ages merged (age >= 18 → perpetrator_age, age <= 17 → case_demographics.ages)
-- Pattern processing takes precedence when both sources have data
-- NER supplements missing data from pattern processing
+- Ages, sentences, and CyberTip origin come from the resolved view over per-method
+  field assertions (assertions.py → resolution.py, CaseLinker 3.0). Roles come from
+  evidence attached to each mention, never from a numeric threshold.
+- Organizations and locations: pattern agencies plus NER supplements (unchanged)
 - Raw NER entities stored in ml_features.ner_entities for reference/debugging
 """
 
@@ -23,10 +24,10 @@ from agency_label_normalize import (
     normalize_agency_label_for_ingest,
 )
 
-_victim_gate_mod = None
 _agency_gate_mod = None
 _gender_extraction_mod = None
 _pattern_processing_mod = None
+_assertions_mod = None
 
 # Exact-string canonical aliases (applied after apostrophe/space cleanup, before ICAC/FBI rules).
 # Replaces DB-only patches; persists across re-ingest.
@@ -68,18 +69,6 @@ AGENCY_CANONICAL_ALIASES_CASEFOLD: Dict[str, str] = {
 }
 
 
-def _victim_age_gate():
-    global _victim_gate_mod
-    if _victim_gate_mod is None:
-        gate_path = Path(__file__).parent / "victim_age_gate.py"
-        spec = importlib.util.spec_from_file_location("victim_age_gate", gate_path)
-        mod = importlib.util.module_from_spec(spec)
-        assert spec.loader
-        spec.loader.exec_module(mod)
-        _victim_gate_mod = mod
-    return _victim_gate_mod
-
-
 def _gender_extraction():
     global _gender_extraction_mod
     if _gender_extraction_mod is None:
@@ -102,6 +91,18 @@ def _pattern_processing():
         spec.loader.exec_module(mod)
         _pattern_processing_mod = mod
     return _pattern_processing_mod
+
+
+def _assertions():
+    global _assertions_mod
+    if _assertions_mod is None:
+        path = Path(__file__).parent / "field_assertions" / "assertions.py"
+        spec = importlib.util.spec_from_file_location("assertions", path)
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader
+        spec.loader.exec_module(mod)
+        _assertions_mod = mod
+    return _assertions_mod
 
 
 def _agency_context_gate():
@@ -204,9 +205,8 @@ class MergeProcessing:
     Intersection class between Pattern Processing and ML (NER).
 
     Merge behavior:
-    - Ages: Merges NER ages (age >= 18 → perpetrator_age list, age <= 17 → victim ages)
-    - Pattern processing takes precedence when both sources have data
-    - NER supplements missing data from pattern processing
+    - Ages / sentences / CyberTip origin: derived from field resolutions (3.0)
+    - Organizations / locations: pattern agencies plus NER supplements
     - Raw NER entities stored in ml_features.ner_entities for reference
     """
 
@@ -219,55 +219,237 @@ class MergeProcessing:
         self,
         pattern_features: Dict[str, Any],
         ner_entities: Optional[Dict[str, List[Any]]] = None,
+        *,
+        assertions: Optional[List[Dict[str, Any]]] = None,
+        resolutions: Optional[Dict[str, Dict[str, Any]]] = None,
     ) -> Dict[str, Any]:
         """
-        Merge pattern-processing features with optional NER entities.
-
-        For now:
-        - Core behavior is pattern-only (pattern_features are authoritative)
-        - NER entities are **ignored** for decision-making and only stored
-          under `ml_features.ner_entities` if provided.
+        Merge pattern-processing features with NER entities and 3.0 field resolutions.
 
         Args:
             pattern_features: Feature dict from Pattern Processing Layer
             ner_entities: Optional dict from ML Processing Layer (NER)
+            assertions / resolutions: per-method field assertions and their resolution.
+                When omitted, deterministic assertions are collected and resolved here.
 
         Returns:
-            Dict with pattern_features merged with NER entities:
-            - Ages: NER ages merged (age >= 18 → perpetrator_age list, age <= 17 → case_demographics.ages)
-            - Organizations: ALL NER organizations stored in 'organizations' field
-            - Agencies: Law enforcement agencies filtered and merged into 'agencies_involved'
-            - Dates: NER dates stored as additional_event_dates
-            - Locations: NER locations (states, countries, cities) normalized and stored in 'locations' field
-            - NER entities kept in ml_features for reference
+            Dict with legacy fields derived from the resolved view:
+            - perpetrator_age / case_demographics.ages: settled perpetrator / victim ages
+            - prosecution_outcome.sentences: imposed terms, supervised release, probation, fines
+            - investigation_types: 2.x method types plus CyberTip only when case-scoped
+            - Organizations / agencies / locations: pattern + NER (unchanged)
+            - assertions / resolutions: kept on the dict for storage (not in the JSON blob)
         """
         merged = pattern_features.copy()
-        
+
         # Initialize ml_features if not present
         if 'ml_features' not in merged:
             merged['ml_features'] = {}
-        
+
+        if resolutions is None:
+            amod = _assertions()
+            year = (merged.get("raw_data") or {}).get("year")
+            assertions = amod.collect_assertions(
+                merged.get("case_text") or "",
+                case_id=merged.get("id") or merged.get("case_id") or "",
+                ner_entities=ner_entities,
+                batch_year=int(year) if str(year or "").isdigit() else None,
+                doc_kind=merged.get("document_kind") or "press_release",
+            )
+            resolutions = amod.resolve(
+                assertions,
+                batch_date=(merged.get("date_range") or {}).get("start"),
+                text=merged.get("case_text") or "",
+            )
+        merged['assertions'] = assertions or []
+        merged['resolutions'] = resolutions
+
+        merged = self._apply_resolved_ages(merged, resolutions.get("age") or {})
+        merged = self._apply_resolved_sentences(merged, resolutions.get("sentence") or {})
+        merged = self._apply_resolved_cybertip(merged, resolutions.get("investigation_type") or {})
+        merged = self._apply_resolved_dates(merged, resolutions.get("date") or {})
+
         # Store raw NER entities for reference/debugging
         if ner_entities:
-            merged['ml_features']['ner_entities'] = ner_entities
-            
-            # Merge ages (always call to filter pattern ages, even if no NER ages)
-            merged = self._merge_ages(merged, ner_entities)
-            
+            merged['ml_features']['ner_entities'] = {
+                k: v for k, v in ner_entities.items() if k not in ("number_spans", "person_spans")
+            }
+
             # Merge organizations (law enforcement only)
             merged = self._merge_organizations(merged, ner_entities)
-            
+
             # Merge locations (geography: states, countries, cities)
             merged = self._merge_locations(merged, ner_entities)
-        else:
-            # Even without NER entities, we need to filter pattern ages (remove 18+)
-            merged = self._merge_ages(merged, {'ages': []})
 
         # Merge semantic concepts (if present under ml_features.semantic_severity)
         merged = self._merge_semantic_concepts(merged)
 
         merged = self._supplement_jurisdictional_states(merged)
 
+        # Authority link (Census FIPS / FBI CDE ORI) — after mentions are settled
+        merged = self._apply_location_grounds(merged)
+        merged = self._apply_agency_grounds(merged)
+
+        return merged
+
+    def _apply_location_grounds(self, merged: Dict[str, Any]) -> Dict[str, Any]:
+        """Attach ``location_grounds`` for each settled location mention.
+
+        Deterministic linker against the pinned US Census gazetteer. Missing or
+        corrupt gazetteer raises — no silent slug fallback.
+        """
+        locations = merged.get("locations") or []
+        if not isinstance(locations, list) or not locations:
+            return merged
+        ground_path = Path(__file__).parent / "location_grounding.py"
+        if not ground_path.is_file():
+            return merged
+        import sys
+
+        spec = importlib.util.spec_from_file_location(
+            "location_grounding", ground_path
+        )
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader
+        sys.modules["location_grounding"] = mod
+        spec.loader.exec_module(mod)
+        # GazetteerError and other linker failures must surface — no silent slug fallback.
+        merged["location_grounds"] = mod.ground_case_locations(
+            locations,
+            source=merged.get("source"),
+            case_text=merged.get("case_text") or "",
+            case_id=merged.get("id") or merged.get("case_id"),
+        )
+        return merged
+
+    def _apply_agency_grounds(self, merged: Dict[str, Any]) -> Dict[str, Any]:
+        """Attach ``agency_grounds`` for each settled agency mention."""
+        agencies = merged.get("agencies_involved") or []
+        if not isinstance(agencies, list) or not agencies:
+            return merged
+        ground_path = Path(__file__).parent / "agency_grounding.py"
+        if not ground_path.is_file():
+            return merged
+        import sys
+
+        spec = importlib.util.spec_from_file_location("agency_grounding", ground_path)
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader
+        sys.modules["agency_grounding"] = mod
+        spec.loader.exec_module(mod)
+        merged["agency_grounds"] = mod.ground_case_agencies(
+            agencies,
+            source=merged.get("source"),
+            case_id=merged.get("id") or merged.get("case_id"),
+            location_grounds=merged.get("location_grounds"),
+        )
+        return merged
+
+    def _apply_resolved_sentences(self, merged: Dict[str, Any], res: Dict[str, Any]) -> Dict[str, Any]:
+        """Legacy ``prosecution_outcome.sentences`` from resolved buckets (never exposure or prior terms)."""
+        final = res.get("final_value") or {}
+        sentences: List[str] = list(final.get("imposed") or [])
+        sentences += [v if "supervis" in v.lower() else f"{v} supervised release" for v in final.get("supervised_release") or []]
+        sentences += [v if "probation" in v.lower() else f"{v} probation" for v in final.get("probation") or []]
+        sentences += list(final.get("fine") or [])
+        custody = list(final.get("custody") or [])
+        outcome = merged.get("prosecution_outcome")
+        if isinstance(outcome, dict):
+            outcome = dict(outcome)
+            outcome["sentences"] = sentences
+            if custody:
+                outcome["jail"] = custody[0] if len(custody) == 1 else "; ".join(custody)
+            merged["prosecution_outcome"] = outcome
+        elif sentences or custody:
+            merged["prosecution_outcome"] = {
+                "charges": [], "booking_status": None, "jail": custody[0] if len(custody) == 1 else ("; ".join(custody) or None),
+                "sentences": sentences,
+            }
+        return merged
+
+    def _apply_resolved_dates(self, merged: Dict[str, Any], res: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        When the batch date is only a year or a month (day 01), replace it with the
+        publication day the temporal detector read out of the release.
+        """
+        final = res.get("final_value") or {}
+        publication = final.get("publication")
+        if not isinstance(publication, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", publication):
+            return merged
+        current = dict(merged.get("date_range") or {})
+        start = str(current.get("start") or "")
+        if start and not re.fullmatch(r"\d{4}-\d{2}-01", start):
+            return merged
+        current["start"] = publication
+        current["end"] = publication
+        merged["date_range"] = current
+        return merged
+
+    def _apply_resolved_cybertip(self, merged: Dict[str, Any], res: Dict[str, Any]) -> Dict[str, Any]:
+        """CyberTip stays in investigation_types only when a case-scoped tip resolved."""
+        types = [t for t in (merged.get("investigation_types") or []) if t != "cybertip"]
+        if res.get("final_value") == ["cybertip"]:
+            types.insert(0, "cybertip")
+        merged["investigation_types"] = types
+        merged["investigation_type"] = _pattern_processing()._primary_investigation_type(types)
+        return merged
+
+    def _apply_resolved_ages(self, merged: Dict[str, Any], res: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Legacy age fields from the resolved view: settled perpetrators (one age per
+        defendant entity) and settled victims. Decoy, claimed, statutory, depicted,
+        and contested ages never reach these fields.
+        """
+        final = res.get("final_value") or {}
+        victims = list(final.get("victims") or [])
+        perps = list(final.get("perpetrators") or [])
+        case_text = merged.get("case_text") or ""
+        merged["perpetrator_age"] = perps or None
+
+        pp = _pattern_processing()
+        digest_pollution, multi_defendant = pp.classify_perpetrator_age_context(
+            case_text, perps, merged.get("source") or ""
+        )
+        merged["press_digest_pollution"] = digest_pollution
+        merged["multi_defendant_operation"] = multi_defendant
+
+        case_demo = merged.get("case_demographics")
+        if not isinstance(case_demo, dict):
+            case_demo = {}
+        case_demo = dict(case_demo)
+        case_demo["ages"] = victims
+        case_demo.pop("gender", None)
+        gender_mod = _gender_extraction()
+        vg = gender_mod.extract_victim_gender(case_text, victims)
+        if vg:
+            case_demo["victim_gender"] = vg
+        else:
+            case_demo.pop("victim_gender", None)
+        pg = gender_mod.extract_perpetrator_gender(case_text, perps or None)
+        if pg:
+            merged["perpetrator_gender"] = pg
+        else:
+            merged.pop("perpetrator_gender", None)
+        if case_demo.get("ages") or case_demo.get("age_range") or case_demo.get("victim_gender"):
+            merged["case_demographics"] = case_demo
+        else:
+            merged.pop("case_demographics", None)
+
+        # Same keys as the 2.x gate log, now read off the resolution.
+        contested = final.get("contested") or {}
+        merged["ml_features"]["victim_age_gate"] = {
+            "candidates": sorted(
+                {a["value"] for a in merged.get("assertions") or [] if a.get("field") == "age" and a.get("role") == "victim" and a.get("span_ok")}
+            ),
+            "final": victims,
+            "kept": [{"age": v, "decision": "keep", "reason": res.get("rule_id")} for v in victims],
+            "dropped": [{"age": x["age"], "decision": "reject", "reason": x["role"]} for x in final.get("excluded") or []],
+            "review_excluded": [
+                {"age": c["value"], "decision": "review", "reason": "contested"} for c in contested.values()
+            ] + [{"age": u["value"], "decision": "review", "reason": u["state"]} for u in final.get("unresolved") or []],
+            "resolution_status": res.get("status"),
+            "rule_set_version": res.get("rule_set_version"),
+        }
         return merged
 
     # ------------------------------------------------------------------ #
@@ -319,144 +501,6 @@ class MergeProcessing:
 
         return merged
 
-    def _merge_ages(
-        self,
-        merged: Dict[str, Any],
-        ner_entities: Dict[str, List[Any]]
-    ) -> Dict[str, Any]:
-        """
-        Merge ages from NER into pattern features.
-        
-        Logic:
-        - Age >= 18 → perpetrator_age (if not already set by pattern)
-        - Age <= 17 → case_demographics.ages (victim ages)
-        - Pattern ages take precedence if they exist
-        
-        Args:
-            merged: Merged features dict
-            ner_entities: NER entities dict
-            
-        Returns:
-            Updated merged dict with ages merged
-        """
-        ner_ages = ner_entities.get('ages', [])
-        
-        # Convert NER ages to integers and validate (filter invalid ages: 0, >100)
-        ner_age_ints = []
-        if ner_ages:
-            for age in ner_ages:
-                try:
-                    if isinstance(age, str):
-                        age_int = int(age)
-                    else:
-                        age_int = age
-                    # Filter invalid ages: must be between 1 and 99 (reasonable age range)
-                    if 1 <= age_int <= 99:
-                        ner_age_ints.append(age_int)
-                except (ValueError, TypeError):
-                    continue
-        
-        # Get existing pattern ages (ALWAYS filter, even if no NER ages)
-        pattern_victim_ages = []
-        pattern_perp_ages = merged.get('perpetrator_age')
-        
-        # Handle backward compatibility: convert single integer to list
-        if isinstance(pattern_perp_ages, int):
-            pattern_perp_ages = [pattern_perp_ages]
-        elif not isinstance(pattern_perp_ages, list):
-            pattern_perp_ages = []
-        
-        case_demo = merged.get('case_demographics', {})
-        if isinstance(case_demo, dict):
-            pattern_victim_ages = case_demo.get('ages', [])
-        
-        # Filter pattern victim ages: exclude ages >= 18 and invalid ages (0, >100)
-        pattern_victim_ages_filtered = [age for age in pattern_victim_ages if 1 <= age <= 17]
-        
-        # Check if pattern had any ages >= 18 that should be perpetrator ages (also filter invalid ages)
-        pattern_perp_candidates = [age for age in pattern_victim_ages if 18 <= age <= 99]
-        
-        # Filter existing perpetrator ages to valid range (1-99)
-        pattern_perp_ages = [age for age in pattern_perp_ages if 1 <= age <= 99]
-        
-        # Combine all pattern perpetrator ages
-        all_pattern_perp_ages = list(set(pattern_perp_ages + pattern_perp_candidates))
-        
-        # Separate NER ages into perpetrator (age >= 18) and victim (age <= 17)
-        ner_perp_ages = [age for age in ner_age_ints if age >= 18]
-        ner_victim_ages = [age for age in ner_age_ints if age <= 17]
-        
-        # Merge all perpetrator ages: combine pattern and NER, deduplicate
-        all_perp_ages = list(set(all_pattern_perp_ages + ner_perp_ages))
-        pp = _pattern_processing()
-        case_text = merged.get("case_text") or ""
-        all_perp_ages = pp.filter_sentence_year_perp_ages(case_text, all_perp_ages)
-        all_perp_ages.sort()
-
-        digest_pollution, multi_defendant = pp.classify_perpetrator_age_context(
-            case_text, all_perp_ages, merged.get("source") or ""
-        )
-        merged["press_digest_pollution"] = digest_pollution
-        merged["multi_defendant_operation"] = multi_defendant
-
-        if all_perp_ages:
-            merged['perpetrator_age'] = all_perp_ages
-        elif pattern_perp_candidates:
-            # Even if no other perp ages, set empty list to clear any old data
-            merged['perpetrator_age'] = []
-        
-        # Merge victim ages: combine filtered pattern and NER, deduplicate
-        # Ensure victim ages are valid (1-17) and don't overlap with perpetrator ages
-        candidate_victim_ages = list(
-            set(pattern_victim_ages_filtered + ner_victim_ages)
-        )
-        candidate_victim_ages = [
-            age
-            for age in candidate_victim_ages
-            if 1 <= age <= 17 and age not in all_perp_ages
-        ]
-
-        case_id = merged.get("case_id") or ""
-        case_text = merged.get("case_text") or ""
-        gate_mod = _victim_age_gate()
-        all_victim_ages, gate_log = gate_mod.apply_victim_age_gate(
-            case_id, case_text, candidate_victim_ages
-        )
-
-        if not isinstance(case_demo, dict):
-            case_demo = {}
-        case_demo["ages"] = all_victim_ages
-        case_demo.pop("gender", None)
-
-        gender_mod = _gender_extraction()
-        vg = gender_mod.extract_victim_gender(case_text, all_victim_ages)
-        if vg:
-            case_demo["victim_gender"] = vg
-        else:
-            case_demo.pop("victim_gender", None)
-
-        perp_for_gender = all_perp_ages if all_perp_ages else None
-        pg = gender_mod.extract_perpetrator_gender(case_text, perp_for_gender)
-        if pg:
-            merged["perpetrator_gender"] = pg
-        else:
-            merged.pop("perpetrator_gender", None)
-
-        if case_demo.get("ages") or case_demo.get("age_range") or case_demo.get("victim_gender"):
-            merged["case_demographics"] = case_demo
-        else:
-            merged.pop("case_demographics", None)
-
-        if "ml_features" not in merged:
-            merged["ml_features"] = {}
-        merged["ml_features"]["victim_age_gate"] = {
-            "candidates": sorted(candidate_victim_ages),
-            "final": all_victim_ages,
-            **gate_log,
-        }
-
-        return merged
-    
     def _merge_organizations(
         self,
         merged: Dict[str, Any],

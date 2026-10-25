@@ -1,0 +1,150 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns4: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns5: <https://cacontology.projectvic.org/detection#> .
+@prefix ns6: <https://cacontology.projectvic.org/core#> .
+@prefix ns7: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns8: <https://cacontology.projectvic.org/us/ncmec#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001> a ns2:CACInvestigation,
+        ns6:EnduringEntity ;
+    dcterms:created "2026-10-18 01:01:29.405072" ;
+    dcterms:identifier "de_ag_2013_001" ;
+    dcterms:modified "2026-10-18 01:01:29.405072" ;
+    dcterms:source <https://news.delaware.gov/2013/01/17/child-predator-task-force-disrupts-delaware-child-pornography-network>,
+        "DE AG" ;
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/chelsea-estates>,
+        <https://w3id.org/caselinker/resource/location/delaware>,
+        <https://w3id.org/caselinker/resource/location/georgetown>,
+        <https://w3id.org/caselinker/resource/location/new-castle>,
+        <https://w3id.org/caselinker/resource/location/wilmington> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/de_ag_2013_001/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/de_ag_2013_001/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/de_ag_2013_001/cybertip>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2013_001/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2013_001/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2013_001/event/possession>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2013_001/legal-proceeding> ;
+    ns2:investigationStatus "unknown" ;
+    ns2:usesMethod <https://w3id.org/caselinker/resource/case/de_ag_2013_001/tech/cybertipline> ;
+    ns7:involvesAgency <https://w3id.org/caselinker/resource/agency/child-predator-task-force>,
+        <https://w3id.org/caselinker/resource/agency/ncmec>,
+        <https://w3id.org/caselinker/resource/agency/new-castle-county-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/chelsea-estates>,
+        <https://w3id.org/caselinker/resource/location/delaware>,
+        <https://w3id.org/caselinker/resource/location/georgetown>,
+        <https://w3id.org/caselinker/resource/location/new-castle>,
+        <https://w3id.org/caselinker/resource/location/wilmington> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2013-01-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/de_ag_2013_001/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2013_001/event/possession> ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2013_001/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/child-predator-task-force> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/agency/new-castle-county-police-department> a ns7:LocalAgency .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/charge/1> a ns4:CSAM_Possession,
+        ns4:CriminalCharge ;
+    rdfs:label "Dealing in Child Pornography" ;
+    ns4:indictmentCounts 26 .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/charge/2> a ns4:CSAM_Distribution,
+        ns4:CriminalCharge ;
+    rdfs:label "distribution of child pornography" .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/cybertip> a ns8:NCMECCybertipReport ;
+    ns8:supportedBy <https://w3id.org/caselinker/resource/agency/ncmec> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/event/distribution> a ns6:Event,
+        ns4:CSAM_Distribution ;
+    ns2:severityLevel 1 .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/legal-proceeding> a ns6:Event,
+        ns6:LegalEvent,
+        ns4:LegalProceeding ;
+    ns4:hasCharge <https://w3id.org/caselinker/resource/case/de_ag_2013_001/charge/1>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2013_001/charge/2> ;
+    ns4:hasProceedingBeginPoint "2013-01-18T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 63 .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/person/offender/2> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns5:ageEstimate 70 .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2013-01-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/de_ag_2013_001/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2013_001/event/possession> ;
+    ns2:perpetratorRegisteredSexOffender true ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2013_001/person/offender/1> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/role/offender/2> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2013-01-18T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/de_ag_2013_001/event/conspiracy>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2013_001/event/possession> ;
+    ns2:perpetratorRegisteredSexOffender true ;
+    ns6:hasRole <https://w3id.org/caselinker/resource/case/de_ag_2013_001/person/offender/2> .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/tech/cybertipline> a ns8:NCMECCybertipReport ;
+    rdfs:label "CyberTipline" .
+
+<https://w3id.org/caselinker/resource/agency/ncmec> a ns7:FederalAgency .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/phase/charged> a ns2:LegalProcessPhase,
+        ns6:Phase ;
+    ns2:hasPhaseBeginPoint "2013-01-18T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/chelsea-estates> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Chelsea Estates" ;
+    ns3:name "Chelsea Estates" .
+
+<https://w3id.org/caselinker/resource/location/delaware> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Delaware" ;
+    ns3:name "Delaware" .
+
+<https://w3id.org/caselinker/resource/location/georgetown> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Georgetown" ;
+    ns3:name "Georgetown" .
+
+<https://w3id.org/caselinker/resource/location/new-castle> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Castle" ;
+    ns3:name "New Castle" .
+
+<https://w3id.org/caselinker/resource/location/wilmington> a ns6:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Wilmington" ;
+    ns3:name "Wilmington" .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/event/conspiracy> a ns2:ConspiracyToCommitCSA,
+        ns6:Event ;
+    ns2:conspiracyMemberCount 2 ;
+    ns2:participatesInConspiracy <https://w3id.org/caselinker/resource/case/de_ag_2013_001/role/offender/1>,
+        <https://w3id.org/caselinker/resource/case/de_ag_2013_001/role/offender/2> ;
+    ns2:severityLevel 1 .
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001/event/possession> a ns2:CSAMIncident,
+        ns6:Event ;
+    ns2:severityLevel 1 ;
+    ns3:hasFacet <https://w3id.org/caselinker/resource/case/de_ag_2013_001/facet/possession> .
+
+
+<https://w3id.org/caselinker/resource/case/de_ag_2013_001> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/de_ag_2013_001/provenance> .

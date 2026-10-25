@@ -1,85 +1,78 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-custodial: <https://cacontology.projectvic.org/custodial#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://cacontology.projectvic.org#> .
+@prefix ns2: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns5: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns6: <https://cacontology.projectvic.org/custodial#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T20:10:06.659279" ;
+<https://w3id.org/caselinker/resource/case/ohio_ag_2014_004> a ns1:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-18 06:14:13.666923" ;
     dcterms:identifier "ohio_ag_2014_004" ;
-    dcterms:modified "2026-09-15T20:10:06.659279" ;
+    dcterms:modified "2026-10-18 06:14:13.666923" ;
+    dcterms:provenance <https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/provenance> ;
     dcterms:source <https://www.ohioattorneygeneral.gov/Media/News-Releases/July-2014/Attorney-General-DeWine-Announces-Indictment-of-Fa>,
         "OHIO AG" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/new-lexington>,
-        <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/perry-county> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/phase/indicted> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/phase/indicted> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/event/trust-violation>,
-        <https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/legal-proceeding> ;
-    cacontology:investigationStatus "unknown" ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/attorney-generals-bureau-of-criminal-investigation>,
-        <https://caselinker.up.railway.app/resource/agency/new-lexington-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/new-lexington>,
-        <https://caselinker.up.railway.app/resource/location/ohio>,
-        <https://caselinker.up.railway.app/resource/location/perry-county> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/new-lexington>,
+        <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/perry-county> ;
+    ns1:currentPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/phase/indicted> ;
+    ns1:hasPhase <https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/phase/indicted> ;
+    ns1:hasStep <https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/event/trust-violation> ;
+    ns1:investigationStatus "unknown" ;
+    ns4:involvesAgency <https://w3id.org/caselinker/resource/agency/attorney-generals-bureau-of-criminal-investigation>,
+        <https://w3id.org/caselinker/resource/agency/new-lexington-police-department> ;
+    ns5:mentionsLocation <https://w3id.org/caselinker/resource/location/new-lexington>,
+        <https://w3id.org/caselinker/resource/location/ohio>,
+        <https://w3id.org/caselinker/resource/location/perry-county> .
 
-<https://caselinker.up.railway.app/resource/agency/attorney-generals-bureau-of-criminal-investigation> a cacontology-multi:StateAgency .
+<https://w3id.org/caselinker/resource/agency/attorney-generals-bureau-of-criminal-investigation> a ns4:StateAgency .
 
-<https://caselinker.up.railway.app/resource/agency/new-lexington-police-department> a cacontology-multi:LocalAgency .
+<https://w3id.org/caselinker/resource/agency/new-lexington-police-department> a ns4:LocalAgency .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/event/trust-violation> a cacontology-custodial:CustodialAbuse,
-        cacontology-custodial:TrustViolation ;
-    cacontology-custodial:violatesRelationship <https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/relationship/father> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/event/trust-violation> a ns6:CustodialAbuse,
+        ns6:TrustViolation ;
+    ns6:violatesRelationship <https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/relationship/father> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/sentence/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/person/offender/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/person/victim/1> a uco-identity:Person .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/relationship/father> a ns6:CustodialRelationship,
+        ns6:FamilialRelationship ;
+    ns6:involvesChild <https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/role/victim/1> ;
+    ns6:involvesCustodian <https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/role/offender/1> ;
+    ns6:relationshipType "father" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/relationship/father> a cacontology-custodial:CustodialRelationship,
-        cacontology-custodial:FamilialRelationship ;
-    cacontology-custodial:involvesChild <https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/role/victim/1> ;
-    cacontology-custodial:involvesCustodian <https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/role/offender/1> ;
-    cacontology-custodial:relationshipType "father" .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/role/offender/1> a ns1:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns1:hasRoleBeginPoint "2014-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/role/victim/1> a ns1:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns1:hasRoleBeginPoint "2014-07-01T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/person/victim/1> .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ohio_ag_2014_004/phase/indicted> a ns1:LegalProcessPhase,
+        ns3:Phase ;
+    ns1:hasPhaseBeginPoint "2014-07-01T00:00:00Z"^^xsd:dateTimeStamp .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
+<https://w3id.org/caselinker/resource/location/new-lexington> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "New Lexington" ;
+    ns2:name "New Lexington" .
 
-<https://caselinker.up.railway.app/resource/case/ohio_ag_2014_004/phase/indicted> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2014-01-01T00:00:00Z"^^xsd:dateTimeStamp .
+<https://w3id.org/caselinker/resource/location/ohio> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ohio" ;
+    ns2:name "Ohio" .
 
-<https://caselinker.up.railway.app/resource/location/new-lexington> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/ohio> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
-<https://caselinker.up.railway.app/resource/location/perry-county> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
+<https://w3id.org/caselinker/resource/location/perry-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Perry County" ;
+    ns2:name "Perry County" .
 

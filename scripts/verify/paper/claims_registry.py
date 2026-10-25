@@ -430,7 +430,7 @@ def build_claims() -> list[Claim]:
             "platform_manifest",
             "q1_json",
             bold=True,
-            why="Table 1 headline platform row; verified against q1_evidence.json tiers.",
+            why="Table 1 headline platform row; verified against platform_affordance_evidence.json tiers.",
             expected=f"{stated}|{total}",
         )
 

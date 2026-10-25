@@ -35,8 +35,8 @@ class VerifyContext:
     root: Path
     db_path: Path
     paper_text: str
-    q1_candidates: dict[str, Any]
-    q1_records: list[dict[str, Any]]
+    platform_affordance_evidence_candidates: dict[str, Any]
+    platform_affordance_evidence_records: list[dict[str, Any]]
     cache: dict[str, Any] = field(default_factory=dict)
 
     def db(self) -> sqlite3.Connection:
@@ -69,7 +69,7 @@ def _case_year_range(conn: sqlite3.Connection) -> tuple[int | None, int | None]:
     return lo, hi
 
 
-def _q1_case_tiers(records: list[dict[str, Any]]) -> dict[str, set[str]]:
+def _platform_affordance_evidence_case_tiers(records: list[dict[str, Any]]) -> dict[str, set[str]]:
     by_case: dict[str, set[str]] = defaultdict(set)
     for r in records:
         by_case[r["case_id"]].add(r.get("stated_vs_inferred", ""))
@@ -296,27 +296,27 @@ def verify_claim(claim: Claim, ctx: VerifyContext) -> VerifyResult:
     # --- Q1 ---
     if claim.id == "s3.q1_candidates" or claim.id == "s3.q1_platform_pairs":
         if claim.id == "s3.q1_candidates":
-            n = ctx.q1_candidates["summary"]["total_candidate_cases"]
+            n = ctx.platform_affordance_evidence_candidates["summary"]["total_candidate_cases"]
             obs = str(n)
-            return VerifyResult(claim.id, "pass" if n == 1875 else "fail", "candidates.json", obs, "1875", "ontology/q1/candidates.json")
-        n = ctx.q1_candidates["summary"]["total_platform_case_pairs"]
+            return VerifyResult(claim.id, "pass" if n == 1875 else "fail", "candidates.json", obs, "1875", "ontology/platform_affordance_evidence/candidates.json")
+        n = ctx.platform_affordance_evidence_candidates["summary"]["total_platform_case_pairs"]
         obs = str(n)
         return VerifyResult(claim.id, "pass" if n == 3128 else "fail", "platform-case pairs", obs, "3128", "candidates.json")
 
     if claim.id == "s3.q1_no_platform_pct":
         total = conn.execute("SELECT COUNT(*) FROM cases").fetchone()[0]
-        cand = ctx.q1_candidates["summary"]["total_candidate_cases"]
+        cand = ctx.platform_affordance_evidence_candidates["summary"]["total_candidate_cases"]
         pct = round(100.0 * (total - cand) / total, 1) if total else 0
         obs = str(pct)
         return VerifyResult(claim.id, "pass" if pct == 74.9 else "warn", f"unnamed share={pct}%", obs, "74.9", "computed")
 
     if claim.id in ("s3.q1_named_platforms", "s4.platform_labels"):
-        n = ctx.q1_candidates["summary"]["platforms_with_named_label"]
+        n = ctx.platform_affordance_evidence_candidates["summary"]["platforms_with_named_label"]
         obs = str(n)
         return VerifyResult(claim.id, "pass" if n == 54 else "fail", "named platforms", obs, "54", "candidates.json")
 
     if claim.id in ("s3.q1_stated_cases", "s3.q1_inferred_only", "s3.q1_named_only"):
-        by_case = _q1_case_tiers(ctx.q1_records)
+        by_case = _platform_affordance_evidence_case_tiers(ctx.platform_affordance_evidence_records)
         stated = sum(1 for t in by_case.values() if "stated" in t)
         inf_only = sum(1 for t in by_case.values() if "inferred" in t and "stated" not in t)
         named_only = sum(1 for t in by_case.values() if t == {"named_only"})
@@ -328,14 +328,14 @@ def verify_claim(claim: Claim, ctx: VerifyContext) -> VerifyResult:
         }
         val, target, pct = mapping[claim.id]
         obs = f"{val} ({pct})" if pct else str(val)
-        return VerifyResult(claim.id, "pass" if val == target else "fail", obs, str(val), str(target), "q1_evidence.json")
+        return VerifyResult(claim.id, "pass" if val == target else "fail", obs, str(val), str(target), "platform_affordance_evidence.json")
 
     if claim.id.startswith("manifest."):
         key = claim.id.split(".", 1)[1]
-        manifest = _platform_manifest(ctx.q1_records)
+        manifest = _platform_manifest(ctx.platform_affordance_evidence_records)
         notes: list[str] = []
         if key == "p2p":
-            subset = [r for r in ctx.q1_records if r.get("platform_type") == "P2PService"]
+            subset = [r for r in ctx.platform_affordance_evidence_records if r.get("platform_type") == "P2PService"]
             case_tiers_p2p: dict[str, set[str]] = defaultdict(set)
             for r in subset:
                 case_tiers_p2p[r["case_id"]].add(r.get("stated_vs_inferred", ""))
@@ -359,7 +359,7 @@ def verify_claim(claim: Claim, ctx: VerifyContext) -> VerifyResult:
             obs,
             obs,
             f"{exp_st}/{exp_tot}",
-            "q1_evidence.json",
+            "platform_affordance_evidence.json",
             notes,
         )
 
@@ -464,10 +464,10 @@ def verify_claim(claim: Claim, ctx: VerifyContext) -> VerifyResult:
         return VerifyResult(
             claim.id,
             "skip",
-            "Affordance-class case counts require hand-tuned crosswalk to q1_harm_analysis.json (not auto-verified yet).",
+            "Affordance-class case counts require hand-tuned crosswalk to platform_affordance_evidence_harm_analysis.json (not auto-verified yet).",
             "",
             claim.expected,
-            "ontology/q1/q1_harm_analysis.json",
+            "ontology/platform_affordance_evidence/platform_affordance_evidence_harm_analysis.json",
             ["TODO: wire harm_analysis platform→affordance class mapping."],
         )
 
@@ -480,9 +480,9 @@ def verify_all(claims: list[Claim], ctx: VerifyContext) -> list[VerifyResult]:
     return results
 
 
-def load_q1(root: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
-    cand = json.loads((root / "ontology/q1/candidates.json").read_text(encoding="utf-8"))
-    ev = json.loads((root / "ontology/q1/q1_evidence.json").read_text(encoding="utf-8"))
+def load_platform_affordance_evidence(root: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    cand = json.loads((root / "ontology/platform_affordance_evidence/candidates.json").read_text(encoding="utf-8"))
+    ev = json.loads((root / "ontology/platform_affordance_evidence/platform_affordance_evidence.json").read_text(encoding="utf-8"))
     records = ev["records"]
     return cand, records
 
@@ -494,5 +494,11 @@ def build_context(
 ) -> VerifyContext:
     root = root or REPO_ROOT
     db = db_path or root / "caselinker.db"
-    cand, records = load_q1(root)
-    return VerifyContext(root=root, db_path=db, paper_text=paper_text, q1_candidates=cand, q1_records=records)
+    cand, records = load_platform_affordance_evidence(root)
+    return VerifyContext(
+        root=root,
+        db_path=db,
+        paper_text=paper_text,
+        platform_affordance_evidence_candidates=cand,
+        platform_affordance_evidence_records=records,
+    )

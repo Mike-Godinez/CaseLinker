@@ -1,95 +1,155 @@
-@prefix cac-core: <https://cacontology.projectvic.org/core#> .
-@prefix cacontology: <https://cacontology.projectvic.org#> .
-@prefix cacontology-detection: <https://cacontology.projectvic.org/detection#> .
-@prefix cacontology-legal-outcomes: <https://cacontology.projectvic.org/legal-outcomes#> .
-@prefix cacontology-multi: <https://cacontology.projectvic.org/multi-jurisdiction#> .
-@prefix cacontology-platforms: <https://cacontology.projectvic.org/platforms#> .
-@prefix cacontology-taskforce: <https://cacontology.projectvic.org/taskforce#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <https://caselinker.up.railway.app/resource/vocab/> .
+@prefix ns1: <https://w3id.org/caselinker/resource/vocab/> .
+@prefix ns2: <https://cacontology.projectvic.org#> .
+@prefix ns3: <https://cacontology.projectvic.org/core#> .
+@prefix ns4: <https://ontology.unifiedcyberontology.org/uco/core/> .
+@prefix ns5: <https://cacontology.projectvic.org/legal-outcomes#> .
+@prefix ns6: <https://cacontology.projectvic.org/multi-jurisdiction#> .
+@prefix ns7: <https://cacontology.projectvic.org/detection#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix uco-core: <https://ontology.unifiedcyberontology.org/uco/core/> .
-@prefix uco-identity: <https://ontology.unifiedcyberontology.org/uco/identity/> .
-@prefix uco-location: <https://ontology.unifiedcyberontology.org/uco/location/> .
-@prefix uco-role: <https://ontology.unifiedcyberontology.org/uco/role/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_366> a cacontology:CACInvestigation,
-        cac-core:EnduringEntity ;
-    dcterms:created "2026-09-15T21:08:10.498982" ;
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/1/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/1> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_366> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/2/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/2> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_366> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/3/extraction-confidence> a ns3:AssessmentResult ;
+    ns3:assesses <https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/3> ;
+    ns3:generatedBy <https://w3id.org/caselinker/resource/case/ncmec_2024_366> ;
+    ns3:hasConfidence 0.65 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/role/victim/1> a ns2:VictimRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/VictimRole> ;
+    ns2:hasRoleBeginPoint "2024-07-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_366/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_366/person/victim/1> .
+
+<https://w3id.org/caselinker/resource/agency/urbana-police-department> a ns3:OrganizationLikeEntity,
+        ns6:LocalAgency ;
+    rdfs:label "Urbana Police Department" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/charge/1> a ns5:CSAM_Possession,
+        ns5:CriminalCharge ;
+    rdfs:label "possession of child pornography" ;
+    ns5:indictmentCounts 3 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/event/distribution> a ns3:Event,
+        ns5:CSAM_Distribution .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/facet/possession> a <https://ontology.unifiedcyberontology.org/uco/observable/ContentDataFacet> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/legal-proceeding> a ns3:Event,
+        ns3:LegalEvent,
+        ns5:LegalProceeding ;
+    rdfs:comment "Pretrial detention facility (not a sentence): held in jail" ;
+    ns5:hasCharge <https://w3id.org/caselinker/resource/case/ncmec_2024_366/charge/1> ;
+    ns5:hasProceedingBeginPoint "2024-07-22T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/person/offender/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> ;
+    ns7:ageEstimate 24 .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/person/victim/1> a <https://ontology.unifiedcyberontology.org/uco/identity/Person> .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/3> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "is the only person who uses that phone, admitted he came upon a website that shared photos of nude 5- to 8-year-old g..." ;
+    dcterms:source <https://www.yahoo.com/news/champaign-man-accused-having-child-035900279.html#:~:text=Stoudt%20faces%20two%20to%20five,may%20serve%20each%20sentence%20consecutively> ;
+    ns1:admissionContext "partment officers obtained a search warrant for Stoudt's phone. In a statement to police, Stoudt said he is the only person who uses that..." ;
+    ns1:admissionFrame "said_paraphrase" ;
+    ns1:admissionTheme "other" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_366/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "is the only person who uses that phone, admitted he came upon a website that shared photos of nude 5- to 8-year-old girls and their unclothed genitals, and he indicated that he visited the website on" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/phase/charged> a ns2:LegalProcessPhase,
+        ns3:Phase ;
+    ns2:hasPhaseBeginPoint "2024-07-22T00:00:00Z"^^xsd:dateTimeStamp .
+
+<https://w3id.org/caselinker/resource/location/champaign> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Champaign" ;
+    ns4:name "Champaign" .
+
+<https://w3id.org/caselinker/resource/location/champaign-county> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Champaign County" ;
+    ns4:name "Champaign County" .
+
+<https://w3id.org/caselinker/resource/location/ill> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Ill." ;
+    ns4:name "Ill." .
+
+<https://w3id.org/caselinker/resource/location/urbana> a ns3:PlaceLikeEntity,
+        <https://ontology.unifiedcyberontology.org/uco/location/Location> ;
+    rdfs:label "Urbana" ;
+    ns4:name "Urbana" .
+
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366> a ns2:CACInvestigation,
+        ns3:EnduringEntity ;
+    dcterms:created "2026-10-17 23:04:29.075010" ;
     dcterms:identifier "ncmec_2024_366" ;
-    dcterms:modified "2026-09-15T21:08:10.498982" ;
-    dcterms:source <https://muddyrivernews.com/noteworthy/quincy-man-arrested-after-allegedly-sending-nude-images-to-minors-on-snapchat/20240517103450/>,
+    dcterms:modified "2026-10-17 23:04:29.075010" ;
+    dcterms:source <https://www.yahoo.com/news/champaign-man-accused-having-child-035900279.html#:~:text=Stoudt%20faces%20two%20to%20five,may%20serve%20each%20sentence%20consecutively>,
         "NCMEC" ;
-    dcterms:spatial <https://caselinker.up.railway.app/resource/location/maine>,
-        <https://caselinker.up.railway.app/resource/location/quincy> ;
-    cacontology:currentPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_366/phase/charged> ;
-    cacontology:hasPhase <https://caselinker.up.railway.app/resource/case/ncmec_2024_366/phase/charged> ;
-    cacontology:hasStep <https://caselinker.up.railway.app/resource/case/ncmec_2024_366/event/distribution>,
-        <https://caselinker.up.railway.app/resource/case/ncmec_2024_366/legal-proceeding> ;
-    cacontology-multi:involvesAgency <https://caselinker.up.railway.app/resource/agency/adams-county-sheriffs-department>,
-        <https://caselinker.up.railway.app/resource/agency/icac>,
-        <https://caselinker.up.railway.app/resource/agency/illinois-attorney-generals-office>,
-        <https://caselinker.up.railway.app/resource/agency/illinois-department-of-corrections>,
-        <https://caselinker.up.railway.app/resource/agency/quincy-police-department> ;
-    ns1:mentionsLocation <https://caselinker.up.railway.app/resource/location/maine>,
-        <https://caselinker.up.railway.app/resource/location/quincy> .
+    dcterms:spatial <https://w3id.org/caselinker/resource/location/champaign>,
+        <https://w3id.org/caselinker/resource/location/champaign-county>,
+        <https://w3id.org/caselinker/resource/location/ill>,
+        <https://w3id.org/caselinker/resource/location/urbana> ;
+    ns2:currentPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_366/phase/charged> ;
+    ns2:hasPhase <https://w3id.org/caselinker/resource/case/ncmec_2024_366/phase/charged> ;
+    ns2:hasStep <https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/2>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/3>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_366/event/distribution>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_366/event/possession>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_366/legal-proceeding> ;
+    ns6:involvesAgency <https://w3id.org/caselinker/resource/agency/urbana-police-department> ;
+    ns1:mentionsLocation <https://w3id.org/caselinker/resource/location/champaign>,
+        <https://w3id.org/caselinker/resource/location/champaign-county>,
+        <https://w3id.org/caselinker/resource/location/ill>,
+        <https://w3id.org/caselinker/resource/location/urbana> .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_366/role/offender/1> a cacontology:OffenderRole,
-        uco-role:OffenderRole ;
-    cacontology:hasRoleBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_366/person/offender/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/1> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "did download the child pornography, and he believed he viewed images of kids as young in age as 1 or 2" ;
+    dcterms:source <https://www.yahoo.com/news/champaign-man-accused-having-child-035900279.html#:~:text=Stoudt%20faces%20two%20to%20five,may%20serve%20each%20sentence%20consecutively> ;
+    ns1:admissionContext "multiple occasions, Clark-Rivest said. Stoudt initially denied ever downloading them but later allegedly admitted he did download the chi..." ;
+    ns1:admissionFrame "admitted_he_she" ;
+    ns1:admissionTheme "harm_conduct",
+        "tech_use" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_366/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "did download the child pornography, and he believed he viewed images of kids as young in age as 1 or 2" .
 
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_366/role/victim/1> a cacontology:VictimRole,
-        uco-role:VictimRole ;
-    cacontology:hasRoleBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cac-core:hasRole <https://caselinker.up.railway.app/resource/case/ncmec_2024_366/person/victim/1> .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/2> a <https://cacontology.projectvic.org/undercover#IncriminatingStatement> ;
+    rdfs:label "increased the intensity of the child pornography he viewed as it was no longer exciting for him, Clark-Rivest said" ;
+    dcterms:source <https://www.yahoo.com/news/champaign-man-accused-having-child-035900279.html#:~:text=Stoudt%20faces%20two%20to%20five,may%20serve%20each%20sentence%20consecutively> ;
+    ns1:admissionContext "ung in age as 1 or 2. Stoudt told police he thought he viewed the images approximately 15 times and admitted he increased the intensity o..." ;
+    ns1:admissionFrame "admitted_he_she" ;
+    ns1:admissionTheme "harm_conduct" ;
+    ns1:attributedToOffenderRole <https://w3id.org/caselinker/resource/case/ncmec_2024_366/role/offender/1> ;
+    ns1:evidenceTier "press_release_stated" ;
+    ns1:quoteType "paraphrase" ;
+    ns4:description "increased the intensity of the child pornography he viewed as it was no longer exciting for him, Clark-Rivest said" .
 
-<https://caselinker.up.railway.app/resource/platform/snapchat> a cacontology-platforms:MessagingService ;
-    rdfs:label "Snapchat" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/event/possession> a ns2:CSAMIncident,
+        ns3:Event ;
+    ns2:producesArtifact <https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/1>,
+        <https://w3id.org/caselinker/resource/case/ncmec_2024_366/admission/2> ;
+    ns4:hasFacet <https://w3id.org/caselinker/resource/case/ncmec_2024_366/facet/possession> .
 
-<https://caselinker.up.railway.app/resource/platform/social-media> a cacontology-platforms:SocialMediaPlatform ;
-    rdfs:label "social media" .
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366/role/offender/1> a ns2:OffenderRole,
+        <https://ontology.unifiedcyberontology.org/uco/role/OffenderRole> ;
+    ns2:hasRoleBeginPoint "2024-07-22T00:00:00Z"^^xsd:dateTimeStamp ;
+    ns2:participatesInEvent <https://w3id.org/caselinker/resource/case/ncmec_2024_366/event/possession> ;
+    ns3:hasRole <https://w3id.org/caselinker/resource/case/ncmec_2024_366/person/offender/1> .
 
-<https://caselinker.up.railway.app/resource/agency/adams-county-sheriffs-department> a cac-core:OrganizationLikeEntity,
-        cacontology-multi:LocalAgency ;
-    rdfs:label "Adams County Sheriff's Department" .
 
-<https://caselinker.up.railway.app/resource/agency/icac> a cacontology-taskforce:StateICACtaskForce .
-
-<https://caselinker.up.railway.app/resource/agency/illinois-attorney-generals-office> a cacontology-multi:StateAgency .
-
-<https://caselinker.up.railway.app/resource/agency/illinois-department-of-corrections> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/agency/quincy-police-department> a cacontology-multi:LocalAgency .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_366/event/distribution> a cac-core:Event,
-        cacontology-legal-outcomes:CSAM_Distribution .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_366/legal-proceeding> a cac-core:Event,
-        cac-core:LegalEvent,
-        cacontology-legal-outcomes:LegalProceeding ;
-    cacontology-legal-outcomes:hasProceedingBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp ;
-    cacontology-legal-outcomes:resultsSentence <https://caselinker.up.railway.app/resource/case/ncmec_2024_366/sentence/1> .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_366/person/offender/1> a uco-identity:Person ;
-    cacontology-detection:ageEstimate 24 .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_366/person/victim/1> a uco-identity:Person .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_366/sentence/1> a cacontology-legal-outcomes:CriminalSentence,
-        cacontology-legal-outcomes:PrisonSentence ;
-    rdfs:label "[]" .
-
-<https://caselinker.up.railway.app/resource/case/ncmec_2024_366/phase/charged> a cacontology:LegalProcessPhase,
-        cac-core:Phase ;
-    cacontology:hasPhaseBeginPoint "2024-05-01T00:00:00Z"^^xsd:dateTimeStamp .
-
-<https://caselinker.up.railway.app/resource/location/maine> a cac-core:PlaceLikeEntity,
-        uco-location:Location ;
-    rdfs:label "Maine" ;
-    uco-core:name "Maine" .
-
-<https://caselinker.up.railway.app/resource/location/quincy> a cac-core:PlaceLikeEntity,
-        uco-location:Location .
-
+<https://w3id.org/caselinker/resource/case/ncmec_2024_366> <http://purl.org/dc/terms/provenance> <https://w3id.org/caselinker/resource/case/ncmec_2024_366/provenance> .
