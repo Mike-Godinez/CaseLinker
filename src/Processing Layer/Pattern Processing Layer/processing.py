@@ -1759,17 +1759,57 @@ _PLATFORM_SPECS: List[Tuple[str, str]] = [
 ]
 
 
+# Issuing-agency "follow us" footers name platforms the agency posts on, not offense
+# instruments (#21). Masked before platform matching only.
+# Within one sentence: a period ends it only when followed by whitespace and not part of a
+# dotted initialism ("U.S. Attorney's Office", "U.S. Customs" stay inside the sentence).
+_SENT = r"(?:\b(?:[A-Z]\.){2,}|[^.]|\.(?=\S))"
+_SENT_LINE = r"(?:\b(?:[A-Z]\.){2,}|[^.\n]|\.(?=\S))"
+_FOOTER_BRANDS = r"(?:Twitter|X|Facebook|Instagram|YouTube|TikTok)"
+_AGENCY_SOCIAL_FOOTER_RES: List[re.Pattern] = [
+    # NJ AG: "Follow the New Jersey Attorney General's Office online at Twitter, Facebook,
+    # Instagram & YouTube . The social media links provided are for reference only."
+    # Some extractions lose the "Follow the ..." lead-in and start at "Office online at".
+    re.compile(rf"\b(?:Follow\s+the\s+[^\n]{{0,120}}?\s+)?Office\s+online\s+at\b{_SENT}{{0,200}}"),
+    re.compile(
+        r"\b(?:The\s+)?social\s+media\s+links?\s+provided\s+are\s+for\s+reference\s+only\b",
+        re.IGNORECASE,
+    ),
+    # Agency voice: "Follow us on Twitter @DCoNews", "follow us on X, formerly known as
+    # Twitter, @ERONewOrleans", "Follow us on social: Facebook | Twitter | ...".
+    re.compile(rf"\bfollow\s+us\s+on\b{_SENT}{{0,250}}", re.IGNORECASE),
+    # Named account + handle: "Follow the U.S. Marshals on Twitter @USMSCleveland",
+    # "Follow the Director of CBP's ... Field Office on Twitter at @DFOLaredo , on Instagram ...".
+    # Capital F + capitalized object + @handle keeps offender quotes ("Follow me on Snapchat").
+    re.compile(
+        rf"\bFollow\s+(?:the\s+)?(?=[A-Z]){_SENT_LINE}{{0,120}}?\bon\s+{_FOOTER_BRANDS}\b"
+        rf"{_SENT}{{0,250}}?@\w+{_SENT}{{0,200}}"
+    ),
+    # USMS: "You can also follow the latest news and updates about the U.S. Marshals Service
+    # on Facebook and X (formerly Twitter); @USMarshalsHQ".
+    re.compile(rf"\bfollow\s+the\s+latest\s+news\b{_SENT}{{0,250}}?@\w+", re.IGNORECASE),
+]
+
+
+def mask_agency_social_footers(text: str) -> str:
+    """Blank out agency social-media footer sentences so their brand names are not matched."""
+    for rx in _AGENCY_SOCIAL_FOOTER_RES:
+        text = rx.sub(" ", text)
+    return text
+
+
 def extract_platforms(case: Dict[str, Any]) -> List[str]:
     """
     Extract platforms and online methods used (contact / distribution surfaces).
 
     Named brands and early-era chat surfaces map to stable labels for ``platforms_used``.
     Generic ``online`` / ``internet`` / ``chat`` / ``social media`` are last so specific hits win visually
-    in the same list.
+    in the same list. Agency "follow us" footers are masked first (#21).
     """
     case_text = case.get("case_text", "")
     if not case_text:
         return []
+    case_text = mask_agency_social_footers(case_text)
 
     found: List[str] = []
     seen = set()
