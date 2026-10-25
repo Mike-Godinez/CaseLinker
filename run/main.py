@@ -152,8 +152,26 @@ async def _app_lifespan(application: FastAPI):
 
 app = FastAPI(title="CaseLinker API", lifespan=_app_lifespan)
 
-# Trust Railway / reverse-proxy X-Forwarded-* headers for scheme and client IP.
-app.add_middleware(ProxyHeadersMiddleware, trusted_hosts="*")
+
+class _RecordConnectionPeer:
+    """Keep the TCP peer in scope before ProxyHeadersMiddleware rewrites scope["client"]."""
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] in ("http", "websocket"):
+            scope["caselinker.peer"] = scope.get("client")
+        await self.app(scope, receive, send)
+
+
+# X-Forwarded-* is honoured only from peers in CASELINKER_TRUSTED_PROXIES (Railway: "*").
+# It sets request.client for rate-limit keys; the localhost check never uses it.
+app.add_middleware(
+    ProxyHeadersMiddleware,
+    trusted_hosts=os.environ.get("CASELINKER_TRUSTED_PROXIES", "127.0.0.1"),
+)
+app.add_middleware(_RecordConnectionPeer)
 
 # Rate limiting
 limiter = Limiter(key_func=get_remote_address)
@@ -277,8 +295,9 @@ def read_utf8_text_file(path: Path) -> str:
 
 
 def _is_local_request(request: Request) -> bool:
-    """Treat localhost traffic as internal for local development."""
-    host = request.client.host if request.client else ""
+    """Treat localhost traffic as internal for local development (connection peer, not X-Forwarded-For)."""
+    peer = request.scope.get("caselinker.peer")
+    host = peer[0] if peer else ""
     return host in {"127.0.0.1", "::1", "localhost"}
 
 
@@ -332,7 +351,7 @@ def _enforce_case_id_daily_limit(request: Request) -> None:
     if _is_local_request(request) or _has_trusted_case_export_key(request):
         return
 
-    client_ip = request.headers.get("X-Forwarded-For", request.client.host).split(",")[0].strip()
+    client_ip = request.client.host if request.client else ""
     day = datetime.utcnow().strftime("%Y-%m-%d")
     bucket = f"{client_ip}|{day}"
 
@@ -361,7 +380,7 @@ def _enforce_llm_daily_limit(request: Request) -> None:
     if _is_local_request(request) or _has_trusted_case_export_key(request):
         return
 
-    client_ip = request.headers.get("X-Forwarded-For", request.client.host).split(",")[0].strip()
+    client_ip = request.client.host if request.client else ""
     day = datetime.utcnow().strftime("%Y-%m-%d")
     bucket = f"{client_ip}|{day}"
 
