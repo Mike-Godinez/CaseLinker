@@ -46,7 +46,21 @@ CASES = {
         ("DOJ SAFE CHILDHOOD", USAO, "federal"),  # "United States Attorney" is not a State's Attorney
         ("DOJ SAFE CHILDHOOD", CASES["doj_ack"][1], "unknown"),
         ("NZ DIA", CASES["nz"][1], "unknown"),
-        ("NCIS", "He was convicted at a general court-martial.", "unknown"),
+        ("NCIS", "He was convicted at a general court-martial of violating 18 U.S.C. 2252.", "unknown"),
+        # The U.S. Attorney's Office counts only in a prosecutor role.
+        ("NCMEC", "The case was prosecuted by the U.S. Attorney’s Office.", "federal"),
+        ("NCMEC", "According to a release from the United States Attorney’s Office, he pleaded guilty.", "federal"),
+        ("NCMEC", "For Immediate Release U.S. Attorney's Office, District of Rhode Island. A man was charged.", "federal"),
+        ("NCMEC", "The U.S. Attorney’s office says agents seized 15 devices.", "federal"),
+        ("NCMEC", "Officials thanked Assistant U.S. Attorney Jane Roe, who is prosecuting the case.", "federal"),
+        ("NCMEC", "Agencies included the County Sheriff’s Office, Idaho State Police, U.S. Attorney’s Office and HSI.", "unknown"),
+        ("NCMEC", "The task force works with support from the U.S. Attorney’s Office and other agencies.", "unknown"),
+        ("NCMEC", "Sheriff Roe thanked the U.S. Attorney’s Office for the District of Idaho, Sheriff Roe said.", "unknown"),
+        # A prison mention about an earlier sentence or someone's job is not this case's forum.
+        ("NCMEC", "He was sentenced to eight years in state prison.", "state"),
+        ("NCMEC", "In 2014, he served seven years of a ten year sentence in Florida State Prison.", "unknown"),
+        ("NCMEC", "He identified himself as a guard at the federal prison in Coleman.", "unknown"),
+        ("NCMEC", "He was convicted in 2013 in Marion County. He was sentenced to five years in state prison.", "unknown"),
     ],
 )
 def test_labels(source, text, label):
@@ -88,7 +102,7 @@ def test_mcp_filter_counts_and_keeps_unknown_separate(db):
     assert _filter(case_ids=list(CASES), jurisdiction="tribal")["error"]
 
 
-def test_case_payload_carries_jurisdiction_without_text(db, monkeypatch):
+def test_case_payload_carries_jurisdiction(db, monkeypatch):
     spec = importlib.util.spec_from_file_location("caselinker_run_main_jurisdiction", ROOT / "run" / "main.py")
     main = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
@@ -100,4 +114,6 @@ def test_case_payload_carries_jurisdiction_without_text(db, monkeypatch):
     body = got.json()
     assert body["jurisdiction"] == "state"
     assert "state:states_attorney" in body["jurisdiction_basis"]
-    assert "raw_data" not in body  # public payload still has no narrative text
+    # Public callers get the cleaned case_text by design, never raw_data (the raw ingestion record).
+    assert body["case_text"] == CASES["st"][1]
+    assert "raw_data" not in body
