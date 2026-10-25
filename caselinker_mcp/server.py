@@ -630,7 +630,7 @@ async def get_facet_tree(
     """
     try:
         if case_ids:
-            from facet_local import (  # noqa: E402
+            from caselinker_mcp.facet_local import (
                 _parse_constraints,
                 _parse_include_facets,
                 build_facet_tree_payload,
@@ -693,7 +693,7 @@ async def get_cohort_members(
     """
     try:
         if case_ids:
-            from facet_local import (  # noqa: E402
+            from caselinker_mcp.facet_local import (
                 _parse_constraints,
                 cohort_members_payload,
                 load_cases_by_ids,
@@ -760,7 +760,7 @@ async def tree_traversal(
     seed: optional RNG seed for reproducible samples.
     """
     try:
-        from facet_local import tree_traversal_payload  # noqa: E402
+        from caselinker_mcp.facet_local import tree_traversal_payload
 
         depth = None if max_depth <= 0 else max_depth
         return await asyncio.to_thread(
@@ -931,10 +931,22 @@ async def case2cac(case_ids: list[str]) -> dict[str, Any]:
     MCP-only. Not exposed as a REST endpoint.
 
     Returns graph_id plus a structural summary; use graph_id with traversal tools.
+
+    The graph describes the cohort you pass in; it does not find or rank similar
+    cases. Each case is mapped to CAC classes separately and merged. Only platform,
+    agency and location nodes are shared across cases, so cross-case links mean
+    "same platform / agency / location", not "similar criminal conduct". Build a
+    conduct cohort first (filter_cases_by_tags, get_case_ids_by_filter,
+    get_cohort_members), then graph it. Response carries interpretation_kind
+    "cac_concept_graph".
     """
     try:
         from graph_generate import generate_graph_for_ids  # noqa: E402
-        from graph_utils import build_graph_summary  # noqa: E402
+        from graph_utils import (  # noqa: E402
+            INTERPRETATION_GRAPH,
+            build_graph_summary,
+            interpretation_fields,
+        )
 
         ids = [cid.strip() for cid in case_ids if cid and cid.strip()][:1000]
         if not ids:
@@ -949,6 +961,7 @@ async def case2cac(case_ids: list[str]) -> dict[str, Any]:
                     "cac_classes_covered": [],
                 },
                 "note": "No case ids provided.",
+                **interpretation_fields(INTERPRETATION_GRAPH),
             }
 
         t0 = time.perf_counter()
@@ -977,7 +990,7 @@ async def case2cac(case_ids: list[str]) -> dict[str, Any]:
             payload.get("flat_nodes") or [],
             payload.get("metadata") or {},
         )
-        return {"graph_id": graph_id, "summary": summary}
+        return {"graph_id": graph_id, "summary": summary, **interpretation_fields(INTERPRETATION_GRAPH)}
     except Exception as e:
         logger.exception("case2cac failed")
         return {"error": str(e)}
@@ -985,15 +998,30 @@ async def case2cac(case_ids: list[str]) -> dict[str, Any]:
 
 @mcp.tool()
 async def graph_get_neighbors(graph_id: str, node_id: str) -> dict[str, Any]:
-    """Return all nodes directly connected to node_id in a session graph from case2cac."""
+    """Return all nodes directly connected to node_id in a session graph from case2cac.
+
+    One hop over RDF edges, both directions. Neighbors of a shared platform, agency
+    or location node are the events / roles of every case in the session that
+    touches it, whatever the offense. That is co-occurrence on a node, not conduct
+    similarity. Response carries interpretation_kind "cac_graph_adjacency".
+    """
     try:
-        from graph_utils import enrich_neighbors  # noqa: E402
+        from graph_utils import (  # noqa: E402
+            INTERPRETATION_NEIGHBORS,
+            enrich_neighbors,
+            interpretation_fields,
+        )
 
         graph = _graph_get(graph_id)
         if not graph:
             return {"error": "Graph not found. Call case2cac first."}
         neighbors = enrich_neighbors(graph, node_id.strip())
-        return {"graph_id": graph_id, "node_id": node_id, "neighbors": neighbors}
+        return {
+            "graph_id": graph_id,
+            "node_id": node_id,
+            "neighbors": neighbors,
+            **interpretation_fields(INTERPRETATION_NEIGHBORS),
+        }
     except Exception as e:
         logger.exception("graph_get_neighbors failed")
         return {"error": str(e)}
@@ -1001,7 +1029,16 @@ async def graph_get_neighbors(graph_id: str, node_id: str) -> dict[str, Any]:
 
 @mcp.tool()
 async def graph_find_cases_by_concept(graph_id: str, concept: str) -> dict[str, Any]:
-    """Find case IDs in a session graph linked to nodes matching a CAC class, affordance, or keyword."""
+    """Find case IDs in a session graph linked to nodes matching a CAC class, affordance, or keyword.
+
+    Case-insensitive substring match of concept against each node's IRI, label and
+    CAC class names; returns the cases attached to any matching node. Searches only
+    the cases already in this session graph (not the corpus). A match means "this
+    case's graph has a node mentioning the concept" (e.g. "discord" returns every
+    case on the shared Discord node, possession and production alike). It is not a
+    same-conduct or same-offense cohort. Response carries interpretation_kind
+    "cac_concept_match".
+    """
     try:
         from graph_utils import find_cases_by_concept  # noqa: E402
 
@@ -1016,7 +1053,14 @@ async def graph_find_cases_by_concept(graph_id: str, concept: str) -> dict[str, 
 
 @mcp.tool()
 async def graph_summarize(graph_id: str) -> dict[str, Any]:
-    """Return a structural summary of a session graph (types, bridges, co-occurrence, edge distribution)."""
+    """Return a structural summary of a session graph (types, bridges, co-occurrence, edge distribution).
+
+    Counts node types and edge types, ranks nodes by degree (top bridges are
+    usually shared platform / agency / location nodes) and counts CAC class pairs
+    that appear in the same case. Co-occurrence is of ontology classes within
+    cases, not conduct similarity between cases. Response carries interpretation_kind
+    "cac_concept_cooccurrence".
+    """
     try:
         from graph_utils import summarize_graph  # noqa: E402
 
@@ -1031,7 +1075,15 @@ async def graph_summarize(graph_id: str) -> dict[str, Any]:
 
 @mcp.tool()
 async def graph_compare_cohorts(graph_id_a: str, graph_id_b: str) -> dict[str, Any]:
-    """Compare two session graphs from separate case2cac calls (e.g. Discord vs Roblox cohorts)."""
+    """Compare two session graphs from separate case2cac calls (e.g. Discord vs Roblox cohorts).
+
+    Set overlap of CAC class names (shared_concepts / unique_to_a / unique_to_b) and
+    node_jaccard_similarity over node IRIs. Only platform, agency and location IRIs
+    are shared across cases, so node Jaccard measures shared platforms / agencies /
+    locations, not how alike the conduct is. The cohorts' conduct comparability
+    comes from how you built them, not from this tool. Response keeps the prose
+    "interpretation" string and adds interpretation_kind "cac_concept_overlap".
+    """
     try:
         from graph_utils import compare_graphs  # noqa: E402
 

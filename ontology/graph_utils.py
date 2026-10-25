@@ -11,6 +11,32 @@ from typing import Any, Dict, List, Set, Tuple
 RESERVED_KEYS = frozenset({"@id", "@type", "@context", "_isNlp", "_cases", "_isShared"})
 _FLAT_NODE_META_KEYS = frozenset({"_cases", "_isShared", "_isNlp"})
 
+# Graph tools answer "which CAC concepts / affordances do cases share in this
+# session graph", not "which cases involve similar criminal conduct" (#28).
+# In current mapper output only platform, agency and location nodes carry an
+# IRI shared across cases; events, roles and charges are per-case nodes. So the
+# only edges between two cases run through a shared platform, agency or location.
+INTERPRETATION_GRAPH = "cac_concept_graph"
+INTERPRETATION_NEIGHBORS = "cac_graph_adjacency"
+INTERPRETATION_CONCEPT_MATCH = "cac_concept_match"
+INTERPRETATION_SUMMARY = "cac_concept_cooccurrence"
+INTERPRETATION_COMPARE = "cac_concept_overlap"
+
+NOT_CONDUCT_SIMILARITY_NOTE = (
+    "Shared CAC ontology concepts / affordances within the case2cac session graph only. "
+    "Not a conduct-similarity score and not a same-offense cohort: cases are linked only "
+    "through shared platform, agency or location nodes, or by carrying the same mapped CAC "
+    "class. For a conduct cohort, filter with filter_cases_by_tags (topics, platforms, "
+    "severity, investigation type), get_case_ids_by_filter (perpetrator age_range, year) "
+    "and get_cohort_members (locations / agencies with case_ids)."
+)
+
+
+def interpretation_fields(kind: str) -> Dict[str, str]:
+    """Self-describing fields added to every graph tool response (#28)."""
+    return {"interpretation_kind": kind, "interpretation_note": NOT_CONDUCT_SIMILARITY_NOTE}
+
+
 SPINE_BASES = re.compile(
     r"^(EnduringEntity|Occurrent|Event|Role|Phase|Situation|"
     r"OrganizationLikeEntity|DigitalSystemEntity|PersonLikeEntity|CustodialRelationship)$"
@@ -268,6 +294,7 @@ def summarize_graph(graph: Dict[str, Any]) -> Dict[str, Any]:
             "nodes": len(nodes),
             "edges": len(edges),
         },
+        **interpretation_fields(INTERPRETATION_SUMMARY),
     }
 
 
@@ -301,6 +328,7 @@ def find_cases_by_concept(graph: Dict[str, Any], concept: str) -> Dict[str, Any]
         "matched_cases": sorted(matched_cases),
         "match_count": len(matched_cases),
         "matched_nodes": matched_nodes[:50],
+        **interpretation_fields(INTERPRETATION_CONCEPT_MATCH),
     }
 
 
@@ -350,7 +378,9 @@ def compare_graphs(graph_a: Dict[str, Any], graph_b: Dict[str, Any]) -> Dict[str
         f"{(' (e.g. ' + ', '.join(unique_a[:3]) + ')') if unique_a else ''}; "
         f"cohort B has {len(unique_b)} unique concepts"
         f"{(' (e.g. ' + ', '.join(unique_b[:3]) + ')') if unique_b else ''}. "
-        f"{shared_case_count} case(s) overlap between cohorts."
+        f"{shared_case_count} case(s) overlap between cohorts. "
+        "Node Jaccard counts shared node IRIs; only platform, agency and location nodes "
+        "are shared across cases, so it is not a conduct-similarity measure."
     )
 
     return {
@@ -360,6 +390,7 @@ def compare_graphs(graph_a: Dict[str, Any], graph_b: Dict[str, Any]) -> Dict[str
         "node_jaccard_similarity": round(jaccard, 4),
         "shared_case_count": shared_case_count,
         "interpretation": interpretation,
+        **interpretation_fields(INTERPRETATION_COMPARE),
     }
 
 

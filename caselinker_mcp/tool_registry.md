@@ -105,11 +105,11 @@ Trusted key does **not** change behavior (still subject to normal slowapi / publ
 | `get_case_studies` | `GET /api/case-studies` | Era-based narratives |
 | `platform_affordance_evidence` | `GET /api/platform-affordance-evidence` | Platform affordance evidence cohort index or per-platform evidence |
 | `list_sources` | (static) | Source catalog |
-| `case2cac` | MCP-only | On-demand cohort graph → `graph_id` |
-| `graph_get_neighbors` | MCP-only | Traverse session graph |
-| `graph_find_cases_by_concept` | MCP-only | Concept → case IDs |
-| `graph_summarize` | MCP-only | Structural graph summary |
-| `graph_compare_cohorts` | MCP-only | Diff two session graphs |
+| `case2cac` | MCP-only | On-demand CAC graph of given IDs → `graph_id` (finds no new cases) |
+| `graph_get_neighbors` | MCP-only | One-hop neighbors in session graph (not conduct similarity) |
+| `graph_find_cases_by_concept` | MCP-only | Substring concept match → case IDs in session graph (`cac_concept_match`, not a conduct cohort) |
+| `graph_summarize` | MCP-only | Structural summary + CAC class co-occurrence |
+| `graph_compare_cohorts` | MCP-only | CAC concept overlap of two session graphs (node Jaccard ≈ shared platforms / agencies / locations) |
 | `export_case_graph_ttl` | MCP-only | Session graph → JSON-LD + Turtle; optional save to graph_output pool |
 | `sparql_query` | MCP-only | SPARQL 1.1 Query: `live` → `CASELINKER_API_URL/sparql`, `oxigraph` → `OXIGRAPH_URL` or `127.0.0.1:7878`, `nq` → local `.nq` |
 | `get_case_count` | `GET /api/case-count` | Fast COUNT |
@@ -140,8 +140,11 @@ Trusted key does **not** change behavior (still subject to normal slowapi / publ
 
 ### On-demand graph workflow
 
+0. Build the cohort with filters first: `filter_cases_by_tags` (topics, platforms, severity, investigation type), `get_case_ids_by_filter` (perpetrator `age_range`, `year`), `get_cohort_members` (`locations` / `agencies_involved` with `case_ids`). See `README.md` → "What the graph tools answer".
 1. `case2cac(case_ids)` → `graph_id`
-2. `graph_get_neighbors` / `graph_find_cases_by_concept` / `graph_summarize`
+2. `graph_get_neighbors` / `graph_find_cases_by_concept` / `graph_summarize` / `graph_compare_cohorts`
+
+Graph tools answer "shared CAC concepts / affordances in this session graph", not "similar criminal conduct". Only platform, agency and location nodes are shared across cases. Each response carries `interpretation_kind` (`cac_concept_graph`, `cac_graph_adjacency`, `cac_concept_match`, `cac_concept_cooccurrence`, `cac_concept_overlap`) and `interpretation_note`.
 3. `export_case_graph_ttl(graph_id, case_id?, pool?)` → `{ jsonld, turtle, triple_count, node_count, saved? }`
 
 Session graphs are stored in Redis when available (`caselinker:mcp:graph:{id}`, 2-hour TTL); otherwise in-process memory for local dev.
