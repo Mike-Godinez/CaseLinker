@@ -1348,6 +1348,135 @@ async def get_case_ids_by_filter(
         return {"error": str(e)}
 
 
+CONDUCT_COHORT_NOTE = (
+    "Cohort is the intersection of the filters listed in steps, nothing more. It is not a "
+    "validated same-conduct claim: each filter reads stored extracted fields. Jurisdiction "
+    "is an exact, case-sensitive match on raw extracted location strings (no normalization: "
+    "'Ark.' and 'Arkansas', or 'CHARLOTTE' and 'Charlotte', are different values), unioned "
+    "across the values passed."
+)
+
+
+def _error_message(exc: Exception) -> str:
+    """Never an empty string: httpx timeouts stringify to ''."""
+    return f"{type(exc).__name__}: {exc}" if str(exc) else type(exc).__name__
+
+
+@mcp.tool()
+async def build_conduct_cohort(
+    tags: list[str] | None = None,
+    platform: str = "",
+    age_range: str = "",
+    investigation_type: str = "",
+    locations: list[str] | None = None,
+) -> dict[str, Any]:
+    """Build a conduct cohort in one call by intersecting the existing filters.
+
+    One-call version of the conduct-cohort recipe in caselinker_mcp/README.md.
+    Steps run in this order and each one narrows the previous result:
+      1. tags: filter_cases_by_tags intersection (case_topics, platforms_used,
+         severity_indicators, investigation_types). Unknown tags fail closed.
+      2. platform: get_case_ids_by_filter(platform=...), one value.
+      3. age_range: get_case_ids_by_filter(age_range=...), perpetrator age, e.g. "25-29".
+      4. investigation_type: get_case_ids_by_filter(investigation_type=...), one value.
+      5. locations: get_cohort_members on the locations facet with the current
+         case_ids; exact raw-string match, unioned across the values passed.
+    Pass at least one of steps 1-4. Response has case_ids, count, per-step
+    count_after / excluded, resolved_tags, and interpretation_kind
+    "conduct_filter_intersection". The cohort is defined by these filters; it is
+    not a validated same-conduct cohort and not a similarity score.
+    """
+    steps: list[dict[str, Any]] = []
+    resolved_tags: list[dict[str, str]] = []
+    current: set[str] | None = None
+
+    def _apply(step: str, filt: dict[str, Any], matched: set[str]) -> None:
+        nonlocal current
+        before = None if current is None else len(current)
+        current = matched if current is None else current & matched
+        steps.append({
+            "step": step,
+            "filter": filt,
+            "matched": len(matched),
+            "count_before": before,
+            "count_after": len(current),
+            "excluded": None if before is None else before - len(current),
+        })
+
+    def _failed(step: str, message: str, **extra: Any) -> dict[str, Any]:
+        return {
+            "error": message or f"{step}: unexpected API response with no error message",
+            "failed_step": step,
+            "steps": steps,
+            "case_ids": [],
+            "count": 0,
+            "resolved_tags": resolved_tags,
+            **extra,
+        }
+
+    tags = [t for t in (tags or []) if t and t.strip()]
+    locations = [loc for loc in (locations or []) if loc and loc.strip()]
+    filters = {
+        "platform": platform.strip(),
+        "age_range": age_range.strip(),
+        "investigation_type": investigation_type.strip(),
+    }
+    if not tags and not any(filters.values()):
+        return _failed(
+            "input",
+            "Provide at least one of tags, platform, age_range or investigation_type; "
+            "locations only narrows an existing cohort.",
+        )
+
+    step = "tags"
+    try:
+        if tags:
+            resolved_tags = await _tags_to_api_payload(tags)
+            result = await api_post("/api/return-tagged-cases", resolved_tags)
+            if not isinstance(result, dict) or not isinstance(result.get("cases"), list):
+                return _failed(step, (result or {}).get("error") if isinstance(result, dict) else "")
+            _apply(step, {"tags": tags}, {str(c["id"]) for c in result["cases"] if c.get("id")})
+
+        for step, value in filters.items():
+            if not value:
+                continue
+            result = await api_get("/api/case-ids-by-filter", params={step: value})
+            if not isinstance(result, dict) or "error" in result or "case_ids" not in result:
+                return _failed(step, str(result.get("error", "")) if isinstance(result, dict) else "")
+            _apply(step, {step: value}, {str(c) for c in result["case_ids"]})
+
+        if locations and current:
+            step = "locations"
+            from caselinker_mcp.facet_local import cohort_members_payload, load_cases_by_ids
+
+            cases = await asyncio.to_thread(load_cases_by_ids, sorted(current))
+            matched: set[str] = set()
+            for loc in locations:
+                out = await asyncio.to_thread(
+                    cohort_members_payload, cases, [{"facet": "locations", "value": loc}]
+                )
+                matched.update(out["case_ids"])
+            _apply(step, {"locations": locations}, matched)
+        elif locations:
+            step = "locations"
+            _apply(step, {"locations": locations}, set())
+    except UnknownTagError as e:
+        return {**unknown_tag_error_payload(e), "failed_step": "tags", "steps": steps, "case_ids": []}
+    except Exception as e:
+        logger.exception("build_conduct_cohort failed at %s", step)
+        return _failed(step, _error_message(e))
+
+    case_ids = sorted(current or set())
+    return {
+        "case_ids": case_ids,
+        "count": len(case_ids),
+        "steps": steps,
+        "resolved_tags": resolved_tags,
+        "interpretation_kind": "conduct_filter_intersection",
+        "interpretation_note": CONDUCT_COHORT_NOTE,
+    }
+
+
 @mcp.tool()
 async def get_stats_detailed() -> dict[str, Any]:
     """Detailed visualization stats: feature coverage, platform trends, org frequency, etc. Wraps GET /api/stats-detailed."""
