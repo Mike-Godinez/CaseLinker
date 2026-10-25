@@ -630,7 +630,7 @@ async def get_facet_tree(
     """
     try:
         if case_ids:
-            from facet_local import (  # noqa: E402
+            from caselinker_mcp.facet_local import (
                 _parse_constraints,
                 _parse_include_facets,
                 build_facet_tree_payload,
@@ -693,7 +693,7 @@ async def get_cohort_members(
     """
     try:
         if case_ids:
-            from facet_local import (  # noqa: E402
+            from caselinker_mcp.facet_local import (
                 _parse_constraints,
                 cohort_members_payload,
                 load_cases_by_ids,
@@ -760,7 +760,7 @@ async def tree_traversal(
     seed: optional RNG seed for reproducible samples.
     """
     try:
-        from facet_local import tree_traversal_payload  # noqa: E402
+        from caselinker_mcp.facet_local import tree_traversal_payload
 
         depth = None if max_depth <= 0 else max_depth
         return await asyncio.to_thread(
