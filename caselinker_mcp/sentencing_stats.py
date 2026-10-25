@@ -31,7 +31,9 @@ INTERPRETATION_NOTE = (
     "longest single imposed custodial term, nominal as written. Life is counted, not given "
     "months. Dropped and counted, never guessed: spans the resolver left unlabelled or under "
     "review (kind_unknown), multi-defendant, split/suspended or indeterminate terms, imposed "
-    "spans without sentencing context, exposure-only (statutory_max) and not-yet-sentenced "
+    "spans without sentencing context (plea terms, recommendations, what the law provides, "
+    "earlier sentences, restitution and payments), exposure-only and statutory fines "
+    "(statutory_max) and not-yet-sentenced "
     "cases. 'pending' is a heuristic from booking_status. Death sentences are not extracted."
 )
 
@@ -62,12 +64,14 @@ _SPLIT_RE = re.compile(
     r"|\bcredit\s+for\b",
     re.IGNORECASE,
 )
-# A resolver-labelled imposed span needs sentencing context: a sentencing verb before it or a
-# custody noun right after it ("may one day wear the uniform" is not a term), and no statutory
-# wording just before it ("mandatory minimum period of imprisonment of 15 years").
+# A resolver-labelled imposed span needs sentencing context in its own sentence: a sentencing
+# verb before it or a custody noun right after it ("may one day wear the uniform" is not a
+# term), no statutory wording just before it ("mandatory minimum period of imprisonment of 15
+# years"), and a sentence that is not a plea term, a recommendation, what the law provides, or
+# an earlier sentence.
 _SENTENCING_VERB_RE = re.compile(r"\bsentenc|\bto\s+serve\b|\bwas\s+given\b|\breceived\b", re.IGNORECASE)
 _CUSTODY_AFTER_RE = re.compile(
-    r"^\W{0,3}(?:of\s+)?(?:in\s+(?:a\s+)?(?:federal\s+|state\s+|county\s+)?(?:prison|jail|custody)|imprisonment|incarceration|behind\s+bars)",
+    r"^\W{0,3}(?:term\s+)?(?:of\s+)?(?:in\s+(?:a\s+)?(?:federal\s+|state\s+|county\s+)?(?:prison|jail|custody)|imprisonment|incarceration|behind\s+bars)",
     re.IGNORECASE,
 )
 _JAILED_FOR_RE = re.compile(r"\b(?:jailed|imprisoned|locked\s+up)\s+(?:for\s+)?$|\bimposed\s+(?:a|an|the)?\s*$", re.IGNORECASE)
@@ -75,17 +79,84 @@ _STATUTORY_BEFORE_RE = re.compile(
     r"\bmandatory\s+minimum\b|\bmaximum\b|\bminimum\s+(?:penalty|sentence|term)\b|\bfaces?\b|\bpunishable\b|\bup\s+to\s*$",
     re.IGNORECASE,
 )
+_PLEA_TERM_RE = re.compile(
+    r"\bplea\s+agreement\s+(?:calls|contemplates|provides|requires)\b|\bterms\s+of\s+(?:the\s+|today['’]s\s+)?plea\b"
+    r"|\bagreed\s+to\s+be\s+sentenced\b|\bagreed-upon\b|\bcannot\s+be\s+sentenced\b",
+    re.IGNORECASE,
+)
+_RECOMMENDATION_RE = re.compile(
+    r"\brecommend|\basked\s+(?:for|the\s+(?:judge|court))\b|\brequest(?:s|ed)?\s+(?:the\s+court|a\s+(?:total\s+)?sentence)\b"
+    r"|\bsought\s+a\s+sentence\b|\bprosecutors?\s+(?:want|seek)",
+    re.IGNORECASE,
+)
+_LAW_PROVIDES_RE = re.compile(r"\b(?:law|statute)s?\s+provides?\b|\bprovides\s+for\s+a\b|\bcarr(?:y|ies)\s+a\b", re.IGNORECASE)
+_PRIOR_SENTENCE_RE = re.compile(
+    r"\bpreviously\s+sentenced\b|\bfor\s+which\s+(?:he|she)\s+was\s+sentenced\b|\bprior\s+(?:\w+\s+){0,2}conviction\b"
+    r"|^\W*in\s+(?:19|20)\d\d\b",
+    re.IGNORECASE,
+)
+_NOT_IMPOSED_RES = (_PLEA_TERM_RE, _RECOMMENDATION_RE, _LAW_PROVIDES_RE, _PRIOR_SENTENCE_RE)
+_SENTENCE_END_RE = re.compile(r"(\w*)[.;!?]\s|\n\s*\n")
+# Periods that do not end a sentence: initials ("James D. Cain"), "U.S.", "Jr.", "Hon." and the like.
+_ABBREVIATIONS = frozenset({"jr", "sr", "dr", "mr", "mrs", "ms", "st", "hon", "no", "inc", "co", "gov", "lt", "sgt", "det", "capt", "ofc"})
 _VERB_WINDOW, _STATUTORY_WINDOW = 250, 60
+
+
+def _clause_before(text: str, start: int) -> str:
+    """Text from the start of the span's sentence (at most 250 characters back) to the span."""
+    window = text[max(0, start - _VERB_WINDOW) : start]
+    cut = 0
+    for m in _SENTENCE_END_RE.finditer(window):
+        word = m.group(1) or ""
+        if word and (len(word) == 1 or word.lower() in _ABBREVIATIONS):
+            continue
+        cut = m.end()
+    return window[cut:]
 
 
 def _imposed_context_ok(text: str, start: int, end: int) -> bool:
     if _STATUTORY_BEFORE_RE.search(text[max(0, start - _STATUTORY_WINDOW) : start]):
         return False
+    clause = _clause_before(text, start)
+    if any(rx.search(clause) for rx in _NOT_IMPOSED_RES):
+        return False
     return bool(
-        _SENTENCING_VERB_RE.search(text[max(0, start - _VERB_WINDOW) : start])
+        _SENTENCING_VERB_RE.search(clause)
         or _JAILED_FOR_RE.search(text[max(0, start - 25) : start])
         or _CUSTODY_AFTER_RE.search(text[end : end + 40])
     )
+
+
+# Probation and fines count only when the span itself was imposed: "fined $500", "a $5,000
+# fine", "sentenced to two years of probation". Statutory fines ("a fine of up to $250,000"),
+# restitution, special assessments, forfeiture and payments in the facts of the case do not.
+_NON_CUSTODIAL_VERB_RE = re.compile(r"\bsentenc|\bplaced\s+on\b|\bfined\b|\bordered\b|\bwill\s+serve\b|\bto\s+serve\b|\bwas\s+given\b", re.IGNORECASE)
+_STATUTORY_FINE_RE = re.compile(
+    r"\bmaximum\b|\bup\s+to\b|\bnot\s+(?:more\s+than|to\s+exceed)\b|\branging\s+from\b|\bpossible\b|\bpunishable\b"
+    r"|\bfaces?\b|\bcarr(?:y|ies)\b|\bsubject\s+to\b|\bprovides\b|\bcould\b",
+    re.IGNORECASE,
+)
+_NOT_A_FINE_RE = re.compile(
+    r"\brestitution\b|\bassessment\b|\bforfeit|\bcosts?\b|\bfees\b|\b(?:agreed|offered|negotiated)\s+to\s+pay\b",
+    re.IGNORECASE,
+)
+_FINE_WORD_RE = re.compile(r"\bfine[ds]?\b", re.IGNORECASE)
+_PROBATION_WORD_RE = re.compile(r"\bprobation\b", re.IGNORECASE)
+
+
+def _non_custodial_context_ok(text: str, role: str, start: int, end: int) -> bool:
+    clause = _clause_before(text, start)
+    after = text[end : end + 40]
+    if _STATUTORY_FINE_RE.search(clause) or any(rx.search(clause) for rx in _NOT_IMPOSED_RES):
+        return False
+    if not _NON_CUSTODIAL_VERB_RE.search(clause):
+        return False
+    if role == "fine":
+        near = text[max(0, start - 20) : start] + after[:15]
+        return bool(_FINE_WORD_RE.search(near)) and not _NOT_A_FINE_RE.search(text[max(0, start - 40) : end + 12])
+    return bool(_PROBATION_WORD_RE.search(text[max(0, start - 25) : start] + after))
+
+
 _INDETERMINATE_LIFE_RE = re.compile(r"\bup\s+to\s+life\b|\b(?:years?|yrs?|months?)\s+to\s+life\b", re.IGNORECASE)
 
 
@@ -128,6 +199,16 @@ def _kind_unknown_detail(resolution: Optional[Dict[str, Any]]) -> Optional[str]:
     return None
 
 
+def _spans(final: Dict[str, Any], assertions: Sequence[Dict[str, Any]], role: str) -> List[Dict[str, Any]]:
+    """Assertions of ``role`` whose value made it into that final bucket."""
+    wanted = {sg.normalize_surface(str(v)).strip().lower() for v in final.get(role) or []}
+    return [
+        a for a in assertions
+        if a.get("role") == role and a.get("span_start") is not None
+        and sg.normalize_surface(str(a.get("value"))).strip().lower() in wanted
+    ]
+
+
 def _near_imposed(text: str, assertions: Sequence[Dict[str, Any]], rx: re.Pattern) -> bool:
     for a in assertions:
         s, e = a.get("span_start"), a.get("span_end")
@@ -157,12 +238,7 @@ def classify_case(
         base = {"imposed": imposed, "list_form": any(t["list_form"] for t in terms)}
         if any(t["kind"] == "unparseable" for t in terms):
             return {**base, "outcome": None, "reason": "unparseable_term"}
-        wanted = {sg.normalize_surface(v).strip().lower() for v in imposed}
-        spans = [
-            a for a in assertions
-            if a.get("role") == "imposed" and a.get("span_start") is not None
-            and sg.normalize_surface(str(a.get("value"))).strip().lower() in wanted
-        ]
+        spans = _spans(final, assertions, "imposed")
         if not spans or any(not _imposed_context_ok(text, a["span_start"], a["span_end"]) for a in spans):
             return {**base, "outcome": None, "reason": "doubtful_imposed_context"}
         defendants = {(a.get("extras") or {}).get("defendant") for a in assertions if a.get("role") == "imposed"}
@@ -176,13 +252,21 @@ def classify_case(
         if any(t["kind"] == "life" for t in terms):
             return {**base, "outcome": "life", "reason": None, "months": None}
         return {**base, "outcome": "custodial", "reason": None, "months": max(months), "multiple_terms": len(imposed) > 1}
-    if final.get("probation") or final.get("fine"):
+    # Statutory fines and exposure never become non-custodial: a probation or fine bucket
+    # counts only through a span that was itself imposed.
+    nc_spans = [(role, a) for role in ("probation", "fine") for a in _spans(final, assertions, role)]
+    if any(_non_custodial_context_ok(text, role, a["span_start"], a["span_end"]) for role, a in nc_spans):
         return {"outcome": "non_custodial", "reason": None}
-    if final.get("exposure"):
+    statutory_fine = any(
+        role == "fine" and _STATUTORY_FINE_RE.search(_clause_before(text, a["span_start"])) for role, a in nc_spans
+    )
+    if final.get("exposure") or statutory_fine:
         return {"outcome": None, "reason": "statutory_max"}
     status = (case.get("prosecution_outcome") or {}).get("status") or (case.get("prosecution_outcome") or {}).get("booking_status")
     if status in PENDING_STATUSES:
         return {"outcome": None, "reason": "pending", "booking_status": status}
+    if final.get("probation") or final.get("fine"):
+        return {"outcome": None, "reason": "doubtful_imposed_context"}
     return {"outcome": None, "reason": "no_sentence"}
 
 

@@ -542,10 +542,12 @@ async def get_sentencing_stats(case_ids: list[str]) -> dict[str, Any]:
     Uses the persisted sentence-kind buckets (imposed / exposure / supervised_release /
     probation / fine), never the flat prosecution_outcome.sentences strings. Each case gets
     one outcome: custodial (longest single imposed term, months), life, or non_custodial
-    (probation / fine only); or one drop reason: not_found, kind_unknown (resolver left a
-    span unlabelled or under review), unparseable_term, multi_defendant_suspected,
-    split_or_suspended_term, indeterminate_term, statutory_max (exposure only), pending
-    (pre-sentence booking_status, heuristic) or no_sentence. Returns n_used, n_dropped, the
+    (an imposed probation term or fine); or one drop reason: not_found, kind_unknown (resolver
+    left a span unlabelled or under review), unparseable_term, doubtful_imposed_context (span
+    has no sentencing context, or is a plea term, recommendation, what the law provides, an
+    earlier sentence, restitution or a payment), multi_defendant_suspected,
+    split_or_suspended_term, indeterminate_term, statutory_max (exposure or statutory fine
+    only), pending (pre-sentence booking_status, heuristic) or no_sentence. Returns n_used, n_dropped, the
     count per drop reason, custodial_months {n, median, mean, min, max}, per-case results
     and interpretation_kind "imposed_sentence_summary". Descriptive only; not a validated
     disparity claim. Hard cap: 1000 case_ids.

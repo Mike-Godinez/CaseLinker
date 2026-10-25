@@ -29,11 +29,11 @@ def _res(status="resolved", unknown=(), **buckets):
     }
 
 
-def _imposed(text: str, value: str) -> dict:
+def _imposed(text: str, value: str, role: str = "imposed") -> dict:
     start = text.index(value)
     return {
         "field": "sentence", "method": "regex", "method_version": "test", "family": "surface_pattern",
-        "value": value, "role": "imposed", "span_start": start, "span_end": start + len(value),
+        "value": value, "role": role, "span_start": start, "span_end": start + len(value),
         "span_text": value, "span_ok": True, "confidence": 0.9, "extras": {},
     }
 
@@ -43,14 +43,16 @@ TEXT_TWO = "He was sentenced to 10 years in prison. Unrelated filler text follow
 TEXT_SPLIT = "He was sentenced to 100 years with 50 years suspended."
 TEXT_CODEF = "Both men were sentenced; the co-defendant received 12 years and he received 8 years."
 
-# case_id -> (case_text, booking_status, sentence resolution or None, imposed values)
+# case_id -> (case_text, booking_status, sentence resolution or None, asserted spans).
+# A span is a value (role imposed) or a (role, value) pair.
 CASES = {
     "clean": (TEXT_CLEAN, "sentenced", _res(imposed=["15 years"], supervised_release=["20 years"]), ["15 years"]),
     "two_terms": (TEXT_TWO, "sentenced", _res(imposed=["10 years", "5 years"]), ["10 years", "5 years"]),
     "list_form": ("He was sentenced to 360 and 24 months.", "sentenced", _res(imposed=["360 and 24 months"]), ["360 and 24 months"]),
     "life": ("He was sentenced to life in prison.", "sentenced", _res(imposed=["sentenced to life"]), ["sentenced to life"]),
     "to_life": ("He was sentenced to three years to life.", "sentenced", _res(imposed=["three years to life"]), ["three years to life"]),
-    "probation": ("He was placed on probation.", "sentenced", _res(probation=["five years"]), []),
+    "probation": ("He was sentenced to five years of probation.", "sentenced", _res(probation=["five years"]),
+                  [("probation", "five years")]),
     "exposure": ("He faces up to 30 years in prison.", "charged", _res(exposure=["30 years"]), []),
     "pending": ("He was charged and booked into the county jail.", "charged", _res(custody=["booked into the county jail"]), []),
     "nothing": ("A press release with no sentence.", "sentenced", _res(status="empty"), []),
@@ -58,13 +60,36 @@ CASES = {
     "review": (TEXT_CLEAN, "sentenced", _res(status="needs_review"), []),
     "no_resolution": (TEXT_CLEAN, "sentenced", None, []),
     "split": (TEXT_SPLIT, "sentenced", _res(imposed=["100 years", "50 years"]), ["100 years", "50 years"]),
+    "suspended": ("He was sentenced to 10 years in prison, all but 4 suspended.", "sentenced", _res(imposed=["10 years"]), ["10 years"]),
     "codefendant": (TEXT_CODEF, "sentenced", _res(imposed=["12 years", "8 years"]), ["12 years", "8 years"]),
     "money": ("He was ordered to pay $500.", "sentenced", _res(imposed=["$500"]), ["$500"]),
-    # Resolver mislabels the guard must catch: no sentencing context, statutory wording.
+    # Resolver mislabels the context guard must catch.
     "no_context": ("Recruits may one day wear the uniform.", "sentenced", _res(imposed=["one day"]), ["one day"]),
-    "statutory": ("He pleaded guilty. There is a mandatory minimum period of imprisonment of 15 years.", "sentenced",
-                  _res(imposed=["15 years"]), ["15 years"]),
+    "statutory": ("If sentenced, he faces a maximum of 15 years in prison.", "sentenced", _res(imposed=["15 years"]), ["15 years"]),
+    "plea_term": ("The plea agreement calls for him to be sentenced to 25 years in prison.", "sentenced",
+                  _res(imposed=["25 years"]), ["25 years"]),
+    "recommended": ("Prosecutors are recommending that he be sentenced to 30 years in prison.", "sentenced",
+                    _res(imposed=["30 years"]), ["30 years"]),
+    "law_provides": ("The law provides for a total sentence of 80 years in prison.", "sentenced", _res(imposed=["80 years"]), ["80 years"]),
+    "prior": ("He has a prior federal conviction, for which he was sentenced to 7 years in prison.", "sentenced",
+              _res(imposed=["7 years"]), ["7 years"]),
+    "other_sentence": ("He was sentenced on Monday. The program lasts 3 years for most participants.", "sentenced",
+                       _res(imposed=["3 years"]), ["3 years"]),
+    # Kept: initials and "U.S." do not end the sentence; "by agreement" after "sentenced" is imposed.
+    "initials": ("He was sentenced by U.S. District Judge James D. Cain, Jr. to 180 months for receipt.", "sentenced",
+                 _res(imposed=["180 months"]), ["180 months"]),
     "jailed_for": ("A man has been jailed for 18 years for the offences.", "sentenced", _res(imposed=["18 years"]), ["18 years"]),
+    "custody_after": ("A man got 6 years in prison for the offences.", "sentenced", _res(imposed=["6 years"]), ["6 years"]),
+    "by_agreement": ("The Court sentenced the defendant by agreement to 2 years in jail.", "sentenced",
+                     _res(imposed=["2 years"]), ["2 years"]),
+    # Non-custodial only through an imposed probation or fine span.
+    "fined": ("The court fined him $5,000 for the offence.", "sentenced", _res(fine=["$5,000"]), [("fine", "$5,000")]),
+    "statutory_fine": ("If sentenced, he faces a fine of up to $250,000.", "sentenced", _res(fine=["$250,000"]),
+                       [("fine", "$250,000")]),
+    "restitution": ("The judge ordered him to pay a fine and $5,000 restitution.", "sentenced", _res(fine=["$5,000"]),
+                    [("fine", "$5,000")]),
+    "exposure_and_probation": ("He faced up to 10 years. He was sentenced to 3 years of probation.", "sentenced",
+                               _res(exposure=["10 years"], probation=["3 years"]), [("probation", "3 years")]),
 }
 
 
@@ -86,7 +111,8 @@ def db(tmp_path: Path, monkeypatch) -> Path:
             continue
         write_case_assertions(
             cur, case_id=cid, run_id=f"run-{cid}",
-            assertions=[_imposed(text, v) for v in imposed] or [_imposed("x", "x")],
+            assertions=[_imposed(text, *reversed(v)) if isinstance(v, tuple) else _imposed(text, v) for v in imposed]
+            or [_imposed("x", "x")],
             resolutions={"sentence": res}, dialect="sqlite",
         )
     conn.commit()
@@ -118,21 +144,34 @@ def test_each_case_gets_one_outcome_or_drop_reason(db):
         "review": "kind_unknown",
         "no_resolution": "kind_unknown",
         "split": "split_or_suspended_term",
+        "suspended": "split_or_suspended_term",
         "codefendant": "multi_defendant_suspected",
         "money": "unparseable_term",
         "no_context": "doubtful_imposed_context",
         "statutory": "doubtful_imposed_context",
+        "plea_term": "doubtful_imposed_context",
+        "recommended": "doubtful_imposed_context",
+        "law_provides": "doubtful_imposed_context",
+        "prior": "doubtful_imposed_context",
+        "other_sentence": "doubtful_imposed_context",
+        "initials": "custodial",
         "jailed_for": "custodial",
+        "custody_after": "custodial",
+        "by_agreement": "custodial",
+        "fined": "non_custodial",
+        "statutory_fine": "statutory_max",
+        "restitution": "doubtful_imposed_context",
+        "exposure_and_probation": "non_custodial",
         "missing_id": "not_found",
     }
-    assert out["n_requested"] == 19
-    assert out["n_used"] == 5
-    assert out["n_dropped"] == 14
+    assert out["n_requested"] == 32
+    assert out["n_used"] == 10
+    assert out["n_dropped"] == 22
     assert out["dropped"]["kind_unknown"] == 3
     assert out["kind_unknown_detail"] == {"unlabelled_span": 1, "review_status": 1, "no_current_resolution": 1}
-    assert out["dropped"]["statutory_max"] == 1 and out["dropped"]["pending"] == 1
-    assert out["outcomes"] == {"custodial": 3, "life": 1, "non_custodial": 1}
-    assert out["dropped"]["doubtful_imposed_context"] == 2
+    assert out["dropped"]["statutory_max"] == 2 and out["dropped"]["pending"] == 1
+    assert out["outcomes"] == {"custodial": 6, "life": 1, "non_custodial": 3}
+    assert out["dropped"]["doubtful_imposed_context"] == 8
     assert out["interpretation_kind"] == "imposed_sentence_summary"
     assert "not a validated disparity" in out["interpretation_note"]
 
