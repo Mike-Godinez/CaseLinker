@@ -29,8 +29,10 @@ def _res(status="resolved", unknown=(), **buckets):
     }
 
 
-def _imposed(text: str, value: str, role: str = "imposed") -> dict:
-    start = text.index(value)
+def _imposed(text: str, value: str, role: str = "imposed", nth: int = 0) -> dict:
+    start = -1
+    for _ in range(nth + 1):
+        start = text.index(value, start + 1)
     return {
         "field": "sentence", "method": "regex", "method_version": "test", "family": "surface_pattern",
         "value": value, "role": role, "span_start": start, "span_end": start + len(value),
@@ -88,6 +90,14 @@ CASES = {
                        [("fine", "$250,000")]),
     "restitution": ("The judge ordered him to pay a fine and $5,000 restitution.", "sentenced", _res(fine=["$5,000"]),
                     [("fine", "$5,000")]),
+    # The same value restated without a verb does not sink the sentence that has one.
+    "restated": ("He was sentenced to 360 months in prison. His term of imprisonment consists of 360 months on each count.",
+                 "sentenced", _res(imposed=["360 months"]), ["360 months", ("imposed", "360 months", 1)]),
+    "restated_prior": ("He was sentenced to 9 years in prison. A co-defendant was previously sentenced to 9 years.", "sentenced",
+                       _res(imposed=["9 years"]), ["9 years", ("imposed", "9 years", 1)]),
+    "range_cut": ("He will serve 16½ to 33 years in prison.", "sentenced", _res(imposed=["33 years"]), ["33 years"]),
+    "convicted_in_year": ("He was convicted in May 2022 and was placed on probation for five years.", "sentenced",
+                          _res(probation=["five years"]), [("probation", "five years")]),
     "exposure_and_probation": ("He faced up to 10 years. He was sentenced to 3 years of probation.", "sentenced",
                                _res(exposure=["10 years"], probation=["3 years"]), [("probation", "3 years")]),
 }
@@ -111,7 +121,7 @@ def db(tmp_path: Path, monkeypatch) -> Path:
             continue
         write_case_assertions(
             cur, case_id=cid, run_id=f"run-{cid}",
-            assertions=[_imposed(text, *reversed(v)) if isinstance(v, tuple) else _imposed(text, v) for v in imposed]
+            assertions=[_imposed(text, v[1], v[0], *v[2:]) if isinstance(v, tuple) else _imposed(text, v) for v in imposed]
             or [_imposed("x", "x")],
             resolutions={"sentence": res}, dialect="sqlite",
         )
@@ -162,16 +172,20 @@ def test_each_case_gets_one_outcome_or_drop_reason(db):
         "statutory_fine": "statutory_max",
         "restitution": "doubtful_imposed_context",
         "exposure_and_probation": "non_custodial",
+        "range_cut": "indeterminate_term",
+        "restated": "custodial",
+        "restated_prior": "doubtful_imposed_context",
+        "convicted_in_year": "doubtful_imposed_context",
         "missing_id": "not_found",
     }
-    assert out["n_requested"] == 32
-    assert out["n_used"] == 10
-    assert out["n_dropped"] == 22
+    assert out["n_requested"] == 36
+    assert out["n_used"] == 11
+    assert out["n_dropped"] == 25
     assert out["dropped"]["kind_unknown"] == 3
     assert out["kind_unknown_detail"] == {"unlabelled_span": 1, "review_status": 1, "no_current_resolution": 1}
     assert out["dropped"]["statutory_max"] == 2 and out["dropped"]["pending"] == 1
-    assert out["outcomes"] == {"custodial": 6, "life": 1, "non_custodial": 3}
-    assert out["dropped"]["doubtful_imposed_context"] == 8
+    assert out["outcomes"] == {"custodial": 7, "life": 1, "non_custodial": 3}
+    assert out["dropped"]["doubtful_imposed_context"] == 10
     assert out["interpretation_kind"] == "imposed_sentence_summary"
     assert "not a validated disparity" in out["interpretation_note"]
 

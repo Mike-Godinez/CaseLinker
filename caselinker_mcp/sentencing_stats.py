@@ -92,7 +92,7 @@ _RECOMMENDATION_RE = re.compile(
 _LAW_PROVIDES_RE = re.compile(r"\b(?:law|statute)s?\s+provides?\b|\bprovides\s+for\s+a\b|\bcarr(?:y|ies)\s+a\b", re.IGNORECASE)
 _PRIOR_SENTENCE_RE = re.compile(
     r"\bpreviously\s+sentenced\b|\bfor\s+which\s+(?:he|she)\s+was\s+sentenced\b|\bprior\s+(?:\w+\s+){0,2}conviction\b"
-    r"|^\W*in\s+(?:19|20)\d\d\b",
+    r"|^\W*in\s+(?:19|20)\d\d\b|\bconvicted\s+in\s+(?:[A-Z][a-z]+\s+)?(?:19|20)\d\d\b",
     re.IGNORECASE,
 )
 _NOT_IMPOSED_RES = (_PLEA_TERM_RE, _RECOMMENDATION_RE, _LAW_PROVIDES_RE, _PRIOR_SENTENCE_RE)
@@ -114,12 +114,18 @@ def _clause_before(text: str, start: int) -> str:
     return window[cut:]
 
 
-def _imposed_context_ok(text: str, start: int, end: int) -> bool:
+def _imposed_disqualified(text: str, start: int) -> bool:
+    """Statutory, plea, recommendation, law-provides or earlier-sentence wording around the span."""
     if _STATUTORY_BEFORE_RE.search(text[max(0, start - _STATUTORY_WINDOW) : start]):
+        return True
+    clause = _clause_before(text, start)
+    return any(rx.search(clause) for rx in _NOT_IMPOSED_RES)
+
+
+def _imposed_context_ok(text: str, start: int, end: int) -> bool:
+    if _imposed_disqualified(text, start):
         return False
     clause = _clause_before(text, start)
-    if any(rx.search(clause) for rx in _NOT_IMPOSED_RES):
-        return False
     return bool(
         _SENTENCING_VERB_RE.search(clause)
         or _JAILED_FOR_RE.search(text[max(0, start - 25) : start])
@@ -157,6 +163,8 @@ def _non_custodial_context_ok(text: str, role: str, start: int, end: int) -> boo
     return bool(_PROBATION_WORD_RE.search(text[max(0, start - 25) : start] + after))
 
 
+# The span kept only the top of a range: "will serve 16½ to [[33 years]]".
+_RANGE_BEFORE_RE = re.compile(r"(?<![\d,])\b\d{1,3}(?:[½¼¾]|\.\d+)?\s*(?:years?\s+|months?\s+)?(?:to|-|–)\s*$", re.IGNORECASE)
 _INDETERMINATE_LIFE_RE = re.compile(r"\bup\s+to\s+life\b|\b(?:years?|yrs?|months?)\s+to\s+life\b", re.IGNORECASE)
 
 
@@ -199,13 +207,16 @@ def _kind_unknown_detail(resolution: Optional[Dict[str, Any]]) -> Optional[str]:
     return None
 
 
+def _norm(value: Any) -> str:
+    return sg.normalize_surface(str(value)).strip().lower()
+
+
 def _spans(final: Dict[str, Any], assertions: Sequence[Dict[str, Any]], role: str) -> List[Dict[str, Any]]:
     """Assertions of ``role`` whose value made it into that final bucket."""
-    wanted = {sg.normalize_surface(str(v)).strip().lower() for v in final.get(role) or []}
+    wanted = {_norm(v) for v in final.get(role) or []}
     return [
         a for a in assertions
-        if a.get("role") == role and a.get("span_start") is not None
-        and sg.normalize_surface(str(a.get("value"))).strip().lower() in wanted
+        if a.get("role") == role and a.get("span_start") is not None and _norm(a.get("value")) in wanted
     ]
 
 
@@ -239,7 +250,13 @@ def classify_case(
         if any(t["kind"] == "unparseable" for t in terms):
             return {**base, "outcome": None, "reason": "unparseable_term"}
         spans = _spans(final, assertions, "imposed")
-        if not spans or any(not _imposed_context_ok(text, a["span_start"], a["span_end"]) for a in spans):
+        # A value that passes in one place ("sentenced to 360 months") is not doubtful because a
+        # restatement elsewhere ("term of imprisonment consists of 360 months") lacks the verb.
+        # Disqualifying wording ("Co-Conspirator Previously Sentenced to 27 Years") always fails.
+        passing = {_norm(a["value"]) for a in spans if _imposed_context_ok(text, a["span_start"], a["span_end"])}
+        if not spans or any(
+            _norm(a["value"]) not in passing or _imposed_disqualified(text, a["span_start"]) for a in spans
+        ):
             return {**base, "outcome": None, "reason": "doubtful_imposed_context"}
         defendants = {(a.get("extras") or {}).get("defendant") for a in assertions if a.get("role") == "imposed"}
         if len(defendants - {None, ""}) > 1 or _near_imposed(text, assertions, _MULTI_DEFENDANT_RE):
@@ -247,7 +264,9 @@ def classify_case(
         months = [t["months"] for t in terms if t["kind"] == "months"]
         if _near_imposed(text, assertions, _SPLIT_RE) or (len(months) > 1 and min(months) > 0 and max(months) / min(months) >= 2):
             return {**base, "outcome": None, "reason": "split_or_suspended_term"}
-        if any(t["kind"] == "indeterminate" for t in terms):
+        if any(t["kind"] == "indeterminate" for t in terms) or any(
+            _RANGE_BEFORE_RE.search(text[max(0, a["span_start"] - 14) : a["span_start"]]) for a in spans
+        ):
             return {**base, "outcome": None, "reason": "indeterminate_term"}
         if any(t["kind"] == "life" for t in terms):
             return {**base, "outcome": "life", "reason": None, "months": None}
