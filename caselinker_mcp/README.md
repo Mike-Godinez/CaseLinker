@@ -202,13 +202,36 @@ That pulls the full production corpus via `GET /api/corpus` (`get_all_cases` cal
 
 Workflow for cohort-specific CAC ontology graphs (MCP-only; not REST):
 
-1. Use `filter_cases_by_tags` or `get_cohort_members` to find case IDs
+1. Use `filter_cases_by_tags` or `get_cohort_members` to find case IDs (the filters define the cohort; the graph tools below do not, see "What the graph tools answer")
 2. Call `case2cac(case_ids)` (returns `graph_id` and a structural summary)
 3. Use `graph_id` with `graph_get_neighbors`, `graph_find_cases_by_concept`, or `graph_summarize`
 4. Call `export_case_graph_ttl(graph_id, case_id=..., pool="analysis")` to get JSON-LD + Turtle and optionally save `{case_id}.jsonld`/`.ttl` under `ontology/graph_output/analysis/` for Patterns
-5. Optionally run `case2cac` on a second cohort and call `graph_compare_cohorts` to diff them (e.g. Discord vs Roblox for Q1/Q2/Q3 research)
+5. Optionally run `case2cac` on a second cohort and call `graph_compare_cohorts` to diff their CAC concepts (e.g. Discord vs Roblox for Q1/Q2/Q3 research)
 
 Session graphs are stored in Redis on Railway (`caselinker:mcp:graph:{id}`, 2-hour TTL) with in-memory fallback when Redis is unavailable (local dev). `export_case_graph_ttl` reconstructs RDF from session `flat_nodes` via rdflib (strips merge metadata `_cases` / `_isShared` / `_isNlp`).
+
+### What the graph tools answer (and what they do not)
+
+The graph tools answer "which CAC concepts and affordances do the cases in this session graph share". They do not answer "which cases involve similar criminal conduct". `case2cac` maps each case on its own and merges the results. In current mapper output only platform, agency and location nodes carry an IRI shared across cases. Events, roles and charges are per-case nodes. So two cases are linked in a session graph only through a shared platform, agency or location, or by carrying the same mapped CAC class. A possession-only case and a production case on Discord sit one hop apart.
+
+| Tool | What it computes | `interpretation_kind` |
+|------|------------------|-----------------------|
+| `case2cac` | Merged CAC graph of the IDs you pass. Finds no new cases | `cac_concept_graph` |
+| `graph_get_neighbors` | One-hop neighbors of a node, both edge directions | `cac_graph_adjacency` |
+| `graph_find_cases_by_concept` | Case-insensitive substring match on node IRI, label and CAC class names. Returns the cases attached to matching nodes, within this session graph only | `cac_concept_match` |
+| `graph_summarize` | Node and edge type counts, highest-degree nodes, CAC class pairs that co-occur within a case | `cac_concept_cooccurrence` |
+| `graph_compare_cohorts` | Set overlap of CAC class names, and Jaccard over node IRIs (in practice shared platforms, agencies and locations). Keeps its prose `interpretation` string | `cac_concept_overlap` |
+
+Every successful graph tool response carries `interpretation_kind` and `interpretation_note` so the result describes itself. Do not report graph neighbors, concept matches or node Jaccard as conduct-matched cohorts.
+
+**Conduct cohort recipe (existing tools).** Build the cohort with filters first, then graph it if you need CAC structure:
+
+1. `filter_cases_by_tags([...])`: intersection over `case_topics` (e.g. `sextortion`, `possession`, `production`), `platforms_used`, `severity_indicators` (victim age band: `infant`, `under_10`, `under_12`) and `investigation_types` (`proactive`, `reactive`, `undercover`, `cybertip`). Unknown tags fail closed (#22, fixed in #26). Check `resolved_tags`.
+2. `get_case_ids_by_filter(age_range="25-29", year=...)` for perpetrator age (matches `perpetrator_age` between 18 and 99 only) or year, then intersect the IDs with step 1.
+3. Jurisdiction: `get_facet_tree(case_ids=ids, include_facets="locations")` to list location values, then `get_cohort_members(path=[{"facet": "locations", "value": ...}], case_ids=ids)`. Location values are raw extracted strings, so `Ark.` and `Arkansas` are separate values. Union the variants yourself. Use `agencies_involved` the same way for agency.
+4. Optional: `case2cac(ids)` on the filtered cohort.
+
+There is no single conduct-cohort tool and no conduct-feature similarity search yet. `get_cluster_groups` / `run_automated_analysis` return precomputed groups from a weighted tag-feature score (topics, platforms, severity, demographics, relationship, investigation and agencies). That score is not the graph tools, and it is not a validated same-conduct cohort either.
 
 ## Local stdio transport
 
