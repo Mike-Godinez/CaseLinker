@@ -70,7 +70,7 @@ On Railway hosted MCP the eight collector WRITE tools and the two local-disk dup
 Trusted key does **not** change behavior. Includes corpus search, analysis, ontology, stats, on-demand graphs, free public-record search, and collector helpers:
 
 - Corpus: `get_corpus_stats`, `get_cases_page`, `get_cases_by_ids`, `get_field_disagreements` (per-field extraction disagreements / review queue)
-- Search / cohorts: `filter_cases_by_tags`, `get_facet_tree`, `get_cohort_members`, `tree_traversal`
+- Search / cohorts: `filter_cases_by_tags`, `build_conduct_cohort`, `get_facet_tree`, `get_cohort_members`, `tree_traversal`
 - Analysis: `run_automated_analysis`, `triage_text`, `get_triage_eval_metrics`
 - Stats / filters: `get_case_count`, `get_facet_distinct`, `get_unique_tags`, `tag_threader`, `get_case_ids_by_filter`, `get_stats_detailed`, `get_technology_revolver`, `get_cluster_groups`, `get_location_stats`, `get_triage_model_corpus`
 - Ontology (pre-merged): `get_knowledge_graph`, `get_case_graph_manifest`
@@ -231,7 +231,9 @@ Every successful graph tool response carries `interpretation_kind` and `interpre
 3. Jurisdiction: `get_facet_tree(case_ids=ids, include_facets="locations")` to list location values, then `get_cohort_members(path=[{"facet": "locations", "value": ...}], case_ids=ids)`. Location values are raw extracted strings, so `Ark.` and `Arkansas` are separate values. Union the variants yourself. Use `agencies_involved` the same way for agency.
 4. Optional: `case2cac(ids)` on the filtered cohort.
 
-There is no single conduct-cohort tool and no conduct-feature similarity search yet. `get_cluster_groups` / `run_automated_analysis` return precomputed groups from a weighted tag-feature score (topics, platforms, severity, demographics, relationship, investigation and agencies). That score is not the graph tools, and it is not a validated same-conduct cohort either.
+**One call: `build_conduct_cohort`.** The same recipe in one tool: `build_conduct_cohort(tags=["sextortion", "snapchat"], age_range="25-29", locations=[...])`. Optional single-value `platform` and `investigation_type` go through `get_case_ids_by_filter`. It runs the steps in order, intersects the IDs, and returns `case_ids`, `count`, per-step `count_after` / `excluded`, `resolved_tags`, and `interpretation_kind: "conduct_filter_intersection"` with a note. Unknown tags return the tag error payload; a failing step returns `error` with a message and `failed_step`, never an empty cohort. `locations` is the same exact, case-sensitive raw-string match as step 3, unioned across the values you pass. The cohort is defined by these filters; it is not a validated same-conduct claim.
+
+There is no conduct-feature similarity search yet. `get_cluster_groups` / `run_automated_analysis` return precomputed groups from a weighted tag-feature score (topics, platforms, severity, demographics, relationship, investigation and agencies). That score is not the graph tools, and it is not a validated same-conduct cohort either.
 
 ## Local stdio transport
 

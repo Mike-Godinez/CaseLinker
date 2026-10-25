@@ -117,6 +117,7 @@ Trusted key does **not** change behavior (still subject to normal slowapi / publ
 | `get_unique_tags` | `GET /api/tags` | All tag dimensions |
 | `tag_threader` | `POST /api/tag-threader` | Tag intersection + threads |
 | `get_case_ids_by_filter` | `GET /api/case-ids-by-filter` | Structured ID filters |
+| `build_conduct_cohort` | MCP-only (composes `POST /api/return-tagged-cases`, `GET /api/case-ids-by-filter`, local `locations` facet) | One-call conduct cohort: tags ∩ platform ∩ perpetrator `age_range` ∩ investigation type ∩ raw `locations`; per-step counts; `interpretation_kind` `conduct_filter_intersection` |
 | `get_stats_detailed` | `GET /api/stats-detailed` | Chart-ready stats |
 | `get_technology_revolver` | `GET /api/technology-revolver` | Tech by era |
 | `get_cluster_groups` | `GET /api/cluster-groups` | Similarity clusters |
@@ -140,7 +141,7 @@ Trusted key does **not** change behavior (still subject to normal slowapi / publ
 
 ### On-demand graph workflow
 
-0. Build the cohort with filters first: `filter_cases_by_tags` (topics, platforms, severity, investigation type), `get_case_ids_by_filter` (perpetrator `age_range`, `year`), `get_cohort_members` (`locations` / `agencies_involved` with `case_ids`). See `README.md` → "What the graph tools answer".
+0. Build the cohort with filters first, in one call with `build_conduct_cohort` or by hand: `filter_cases_by_tags` (topics, platforms, severity, investigation type), `get_case_ids_by_filter` (perpetrator `age_range`, `year`), `get_cohort_members` (`locations` / `agencies_involved` with `case_ids`). See `README.md` → "What the graph tools answer".
 1. `case2cac(case_ids)` → `graph_id`
 2. `graph_get_neighbors` / `graph_find_cases_by_concept` / `graph_summarize` / `graph_compare_cohorts`
 
