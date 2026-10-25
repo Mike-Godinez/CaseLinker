@@ -39,14 +39,15 @@ _FEDERAL = {
     ),
     "federal_grand_jury": re.compile(r"\bfederal\s+grand\s+jury\b", re.I),
     "federal_prison": re.compile(r"\bfederal\s+prison\b", re.I),
-    "usc_citation": re.compile(r"\b\d+\s+U\.\s?S\.\s?C\.?", re.I),
+    # Criminal titles only: "42 U.S.C. § 671" (foster care) is not a prosecution.
+    "usc_citation": re.compile(r"\b(?:18|21|8)\s+U\.\s?S\.\s?C\.?", re.I),
 }
 _STATE = {
     # Apostrophe required and not "United States Attorney" / "U.S. Attorney".
     "states_attorney": re.compile(r"(?<!United\s)(?<!U\.S\.\s)\bState['’]s\s+Attorney\b", re.I),
     "district_attorney": re.compile(r"\bDistrict\s+Attorney\b", re.I),
     "commonwealths_attorney": re.compile(r"\bCommonwealth['’]s\s+Attorney\b", re.I),
-    "state_trial_court": re.compile(r"(?<!U\.S\.\s)(?<!Federal\s)\b(?:Superior|Circuit)\s+Court\b|\bCourt\s+of\s+Common\s+Pleas\b", re.I),
+    "state_trial_court": re.compile(r"(?<!U\.S\.\s)(?<!Federal\s)\b(?:Superior|Circuit)\s+Court\b(?!\s+of\s+Appeals)|\bCourt\s+of\s+Common\s+Pleas\b", re.I),
     "state_prison": re.compile(r"\bstate\s+prison\b", re.I),
     "penal_code": re.compile(r"\bPenal\s+Code\b", re.I),
 }
@@ -61,13 +62,15 @@ _PARTNER_CONTEXT = re.compile(
 _PRISON_SIGNALS = frozenset({"federal_prison", "state_prison"})
 _EARLIER_OR_JOB = re.compile(
     r"\bpreviously\s+(?:been\s+)?(?:sentenced|served|convicted|incarcerated)\b|\bprior\b|\bearlier\b|\bhad\s+(?:been|served)\b"
-    r"|\bserv(?:ed|ing)\b(?!\s+as\b)|\breleased\s+from\b"
+    r"|(?<!will\sbe\s)\bserv(?:ed|ing)\b(?!\s+as\b)|\breleased\s+from\b|\bspent\b"
     r"|^\W*in\s+(?:\w+\s+)?(?:19|20)\d\d\b|\bconvicted\s+in\s+(?:19|20)\d\d\b"
     r"|\bguard\b|\bworked\b|\bemploy|\bofficer\s+at\b|\bcorrections?\s+officer\b|\bwarden\b",
     re.I,
 )
+_CURRENT = re.compile(r"\b(?:now|today)\b", re.I)
 _CONVICTED_IN_YEAR = re.compile(r"\bconvicted\s+in\s+(?:19|20)\d\d\b", re.I)
 _MILITARY = re.compile(r"\bcourt[-\s]martial\b", re.I)
+_YEAR = re.compile(r"\b(?:19|20)\d\d\b")
 _SENTENCE_END = re.compile(r"(\w*)[.;!?][\"”’)]*\s|\n\s*\n")
 
 
@@ -93,7 +96,12 @@ def _signal_counts(name: str, rx: re.Pattern, text: str) -> bool:
             if _PARTNER_CONTEXT.search(text[max(lo, m.start() - 80) : min(hi, m.end() + 40)]):
                 continue
         elif name in _PRISON_SIGNALS:
-            if _EARLIER_OR_JOB.search(text[max(lo, m.start() - 120) : m.start()]) or _EARLIER_OR_JOB.search(text[m.end() : min(hi, m.end() + 40)]):
+            before = text[max(lo, m.start() - 120) : m.start()]
+            cue = _EARLIER_OR_JOB.search(before)
+            # "four prior state convictions … has now been sentenced to ten years in federal prison"
+            if cue and _CURRENT.search(before[cue.end() :]):
+                cue = None
+            if cue or _EARLIER_OR_JOB.search(text[m.end() : min(hi, m.end() + 40)]):
                 continue
             # "He was convicted in 2013 … He was sentenced to five years in state prison."
             prev_lo = _sentence_bounds(text, lo - 2, lo - 1)[0] if lo > 1 else lo
@@ -122,7 +130,9 @@ def derive_jurisdiction(case: Dict[str, Any]) -> Dict[str, Any]:
     if source in NON_US_SOURCES:
         return {"jurisdiction": "unknown", "jurisdiction_basis": ["non_us_source"]}
     text = _case_text(case)
-    if _MILITARY.search(text):
+    # An earlier court-martial ("his 2017 court-martial", "convicted by court-martial in 1998")
+    # is history, not this case's forum.
+    if any(not _YEAR.search(text[max(0, m.start() - 25) : m.end() + 25]) for m in _MILITARY.finditer(text)):
         return {"jurisdiction": "unknown", "jurisdiction_basis": ["military_court"]}
     federal: List[str] = ["doj_usao_source"] if source in DOJ_USAO_SOURCES else []
     federal += [name for name, rx in _FEDERAL.items() if _signal_counts(name, rx, text)]

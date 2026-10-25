@@ -47,6 +47,7 @@ CASES = {
         ("DOJ SAFE CHILDHOOD", CASES["doj_ack"][1], "unknown"),
         ("NZ DIA", CASES["nz"][1], "unknown"),
         ("NCIS", "He was convicted at a general court-martial of violating 18 U.S.C. 2252.", "unknown"),
+        ("DOJ SAFE CHILDHOOD", "He registered as a sex offender after his 2017 court-martial. A U.S. District Judge sentenced him.", "federal"),
         # The U.S. Attorney's Office counts only in a prosecutor role.
         ("NCMEC", "The case was prosecuted by the U.S. Attorney’s Office.", "federal"),
         ("NCMEC", "According to a release from the United States Attorney’s Office, he pleaded guilty.", "federal"),
@@ -61,6 +62,15 @@ CASES = {
         ("NCMEC", "In 2014, he served seven years of a ten year sentence in Florida State Prison.", "unknown"),
         ("NCMEC", "He identified himself as a guard at the federal prison in Coleman.", "unknown"),
         ("NCMEC", "He was convicted in 2013 in Marion County. He was sentenced to five years in state prison.", "unknown"),
+        ("NCMEC", "A man who spent 15 years in federal prison for possession now faces new charges.", "unknown"),
+        ("NCMEC", "A man with four prior convictions has now been sentenced to ten years in state prison.", "state"),
+        ("NCMEC", "The sentence will be served in state prison.", "state"),
+        # Appeals courts are not state trial courts; numbered state circuits are.
+        ("DOJ SAFE CHILDHOOD", "The Eighth Circuit Court of Appeals affirmed. He was sentenced by a U.S. District Judge.", "federal"),
+        ("NCMEC", "He was convicted by a jury in the 32nd Circuit Court of Ontonagon County.", "state"),
+        # Only criminal titles of the U.S. Code.
+        ("NCMEC", "Agencies must report under 42 U.S.C. 671 when a child goes missing from care.", "unknown"),
+        ("NCMEC", "He was charged under 18 U.S.C. 2252A.", "federal"),
     ],
 )
 def test_labels(source, text, label):
