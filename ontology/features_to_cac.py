@@ -1274,24 +1274,21 @@ class CaseToCAC:
         class_uri: URIRef,
         extra_props: Dict[str, str],
     ) -> URIRef:
-        """Return a shared singleton platform URIRef, creating it if new."""
+        """Return a shared singleton platform URIRef and write its full node.
+
+        The registry is only an IRI cache. Types, label, and ``extra_props`` go
+        into every case graph that references the platform, so a case's graph
+        does not depend on which case in the batch saw the slug first (#10).
+        """
         uri = self._platform_registry.get(slug)
         if uri is None:
             uri = BASE[f"platform/{slug}"]
             self._platform_registry[slug] = uri
-            g.add((uri, RDF.type, class_uri))
-            g.add((uri, RDF.type, CAC_CORE.DigitalSystemEntity))
-            g.add((uri, RDFS.label, Literal(label)))
-            for prop_name, prop_val in extra_props.items():
-                prop_uri = CAC_PLATFORMS[prop_name]
-                g.add((uri, prop_uri, Literal(prop_val)))
-        else:
-            # Node already registered; just add triples to current graph
-            for triple in [
-                (uri, RDF.type, class_uri),
-                (uri, RDFS.label, Literal(label)),
-            ]:
-                g.add(triple)
+        g.add((uri, RDF.type, class_uri))
+        g.add((uri, RDF.type, CAC_CORE.DigitalSystemEntity))
+        g.add((uri, RDFS.label, Literal(label)))
+        for prop_name, prop_val in extra_props.items():
+            g.add((uri, CAC_PLATFORMS[prop_name], Literal(prop_val)))
         return uri
 
     # ------------------------------------------------------------------
