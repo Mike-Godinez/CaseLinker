@@ -35,6 +35,25 @@ def _store() -> rdflib.Dataset:
     return dataset
 
 
+def _first_location_iri(dataset: rdflib.Dataset) -> str:
+    """Read whichever location IRI the committed case graph actually asserts.
+
+    #43: tests used to hardcode ``location/indiana``, which only holds while
+    that committed slug happens to match. A re-grounded export can legally
+    mint ``location/indiana-in`` instead. Reading the slug back out of the
+    graph under test keeps these tests correct regardless of which slug the
+    grounder picked, without re-simulating the whole grounding pipeline.
+    """
+    spatial = rdflib.URIRef("http://purl.org/dc/terms/spatial")
+    case_graph = dataset.graph(rdflib.URIRef(CASE_IRI))
+    locations = sorted(
+        str(o)
+        for _, _, o in case_graph.triples((rdflib.URIRef(CASE_IRI), spatial, None))
+    )
+    assert locations, f"{CASE_ID} graph asserts no dcterms:spatial location"
+    return locations[0]
+
+
 def _serve(dataset: rdflib.Dataset) -> str:
     class Handler(BaseHTTPRequestHandler):
         def do_POST(self):
@@ -153,7 +172,10 @@ def test_provenance_vocabulary_is_html_for_browsers_and_turtle_for_clients(monke
 
 
 def test_resource_route_negotiates_a_local_store_and_links_cac_classes(monkeypatch):
-    base = _serve(_store())
+    dataset = _store()
+    location_iri = _first_location_iri(dataset)
+    location_slug = location_iri.rsplit("/", 1)[-1]
+    base = _serve(dataset)
     monkeypatch.setenv("OXIGRAPH_URL", base)
     monkeypatch.delenv("DATABASE_URL", raising=False)
     main = _load_main()
@@ -161,7 +183,7 @@ def test_resource_route_negotiates_a_local_store_and_links_cac_classes(monkeypat
     turtle = client.get(f"/resource/case/{CASE_ID}", headers={"Accept": "text/turtle"})
     page = client.get(f"/resource/case/{CASE_ID}", headers={"Accept": "text/html"})
     data = client.get(f"/resource/case/{CASE_ID}", headers={"Accept": "application/ld+json"})
-    place = client.get("/resource/location/indiana", headers={"Accept": "text/turtle"})
+    place = client.get(f"/resource/location/{location_slug}", headers={"Accept": "text/turtle"})
     prov = client.get(f"/resource/case/{CASE_ID}/provenance", headers={"Accept": "text/turtle"})
     missing = client.get("/resource/case/no_such_case", headers={"Accept": "text/turtle"})
     assert turtle.status_code == 200 and CASE_IRI in turtle.text
@@ -169,7 +191,9 @@ def test_resource_route_negotiates_a_local_store_and_links_cac_classes(monkeypat
     assert 'href="https://cacontology.projectvic.org' in page.text
     assert data.status_code == 200 and "application/ld+json" in data.headers["content-type"]
     assert CASE_IRI in data.text
-    assert place.status_code == 200 and "indiana" in place.text.lower()
+    assert place.status_code == 200 and location_slug.replace("-", " ") in place.text.lower().replace(
+        "-", " "
+    )
     assert "cacontology.projectvic.org" in place.text
     assert prov.status_code == 200 and "resolve_v3.0" in prov.text
     assert missing.status_code == 404
@@ -177,12 +201,15 @@ def test_resource_route_negotiates_a_local_store_and_links_cac_classes(monkeypat
 
 def test_hub_page_lists_cases_referencing_this(monkeypatch):
     """Agency/platform/location HTML includes a reverse case list from SPARQL."""
-    base = _serve(_store())
+    dataset = _store()
+    location_iri = _first_location_iri(dataset)
+    location_slug = location_iri.rsplit("/", 1)[-1]
+    base = _serve(dataset)
     monkeypatch.setenv("OXIGRAPH_URL", base)
     monkeypatch.delenv("DATABASE_URL", raising=False)
     main = _load_main()
     client = TestClient(main.app)
-    place = client.get("/resource/location/indiana", headers={"Accept": "text/html"})
+    place = client.get(f"/resource/location/{location_slug}", headers={"Accept": "text/html"})
     assert place.status_code == 200
     assert "Cases referencing this" in place.text
     assert CASE_ID in place.text
